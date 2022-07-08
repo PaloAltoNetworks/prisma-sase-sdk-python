@@ -1,0 +1,2293 @@
+#!/usr/bin/env python
+"""
+Prisma SASE Python SDK - DELETE
+
+**Author:** Palo Alto Networks
+
+**Copyright:** (c) 2017-2022 Palo Alto Networks, Inc
+
+**License:** MIT
+"""
+import logging
+
+__author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
+__email__ = "prisma-sase-developers@paloaltonetworks.com"
+__copyright__ = "Copyright (c) 2017-2022 Palo Alto Networks, Inc"
+__license__ = """
+    MIT License
+
+    Copyright (c) 2017-2022 Palo Alto Networks, Inc
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+"""
+
+# Set logging to function name
+api_logger = logging.getLogger(__name__)
+"""logging.getlogger object to enable debug printing via `prisma_sase.API.set_debug`"""
+
+
+class Delete(object):
+    """
+    Prisma SASE API - DELETE requests
+
+    Object to handle making Delete requests via shared Requests Session.
+    """
+
+    # placeholder for parent class namespace
+    _parent_class = None
+
+    def access_elementusers(self, elementuser_id, access_id, api_version="v2.1"):
+        """
+        Delete element user Access
+
+          **Parameters:**:
+
+          - **elementuser_id**: Element User ID
+          - **access_id**: Access ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}/access/{}".format(api_version,
+                                                                               elementuser_id,
+                                                                               access_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def apnprofiles(self, apnprofile_id, api_version="v2.0"):
+        """
+        DELETE Apnprofiles API Function
+
+          **Parameters:**:
+
+          - **apnprofile_id**: APN Profile ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/apnprofiles/{}".format(api_version,
+                                                                    apnprofile_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def appdefs(self, appdef_id, api_version="v2.4"):
+        """
+        Delete a application definition
+
+          **Parameters:**:
+
+          - **appdef_id**: Application Definition ID
+          - **api_version**: API version to use (default v2.4)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/appdefs/{}".format(api_version,
+                                                                appdef_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def appdefs_overrides(self, appdef_id, override_id, api_version="v2.3"):
+        """
+        Delete application definition overrides for system appdef
+
+          **Parameters:**:
+
+          - **appdef_id**: Application Definition ID
+          - **override_id**: AppDef Override ID
+          - **api_version**: API version to use (default v2.3)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/appdefs/{}/overrides/{}".format(api_version,
+                                                                             appdef_id,
+                                                                             override_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def authtokens(self, operator_id, authtoken_id, api_version="v2.1"):
+        """
+        Delete an auth token
+
+          **Parameters:**:
+
+          - **operator_id**: Operator ID
+          - **authtoken_id**: Static AUTH_TOKEN ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/operators/{}/authtokens/{}".format(api_version,
+                                                                                operator_id,
+                                                                                authtoken_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def bgppeers(self, site_id, element_id, bgppeer_id, api_version="v2.2"):
+        """
+        Delete BGP Peer config
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **bgppeer_id**: BGP Peer ID
+          - **api_version**: API version to use (default v2.2)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/bgppeers/{}".format(api_version,
+                                                                                      site_id,
+                                                                                      element_id,
+                                                                                      bgppeer_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def dhcpservers(self, site_id, dhcpserver_id, api_version="v2.1"):
+        """
+        Delete DHCPServer for a Tenant on a site
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **dhcpserver_id**: DHCP Server ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/dhcpservers/{}".format(api_version,
+                                                                             site_id,
+                                                                             dhcpserver_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def dnsserviceprofiles(self, dnsserviceprofile_id, api_version="v2.0"):
+        """
+        Delete a DNS service profile
+
+          **Parameters:**:
+
+          - **dnsserviceprofile_id**: DNS Service Profile ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/dnsserviceprofiles/{}".format(api_version,
+                                                                           dnsserviceprofile_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def dnsserviceroles(self, dnsservicerole_id, api_version="v2.0"):
+        """
+        Delete a DNS service role
+
+          **Parameters:**:
+
+          - **dnsservicerole_id**: DNS Service Role ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/dnsserviceroles/{}".format(api_version,
+                                                                        dnsservicerole_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def dnsservices(self, site_id, element_id, dnsservice_id, api_version="v2.0"):
+        """
+        Delete a DNS service config
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **dnsservice_id**: DNS Service ID 
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/dnsservices/{}".format(api_version,
+                                                                                         site_id,
+                                                                                         element_id,
+                                                                                         dnsservice_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def element_extensions(self, site_id, element_id, extension_id, api_version="v2.0"):
+        """
+        Delete a specific extension associated with an element
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **extension_id**: Extension ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/extensions/{}".format(api_version,
+                                                                                        site_id,
+                                                                                        element_id,
+                                                                                        extension_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def element_passages(self, element_id, passage_id, api_version="v2.0"):
+        """
+        DELETE Element_Passages API Function
+
+          **Parameters:**:
+
+          - **element_id**: Element (Device) ID
+          - **passage_id**: Passage Configuration ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/passages/{}".format(api_version,
+                                                                             element_id,
+                                                                             passage_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def element_toolkitsessions(self, element_id, toolkitsession_id, api_version="v2.0"):
+        """
+        DELETE Element_Toolkitsessions API Function
+
+          **Parameters:**:
+
+          - **element_id**: Element (Device) ID
+          - **toolkitsession_id**: Toolkit Session ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/toolkitsessions/{}".format(api_version,
+                                                                                    element_id,
+                                                                                    toolkitsession_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def elementpassageconfigs(self, element_id, elementpassageconfig_id, api_version="v2.0"):
+        """
+        DELETE Elementpassageconfigs API Function
+
+          **Parameters:**:
+
+          - **element_id**: Element (Device) ID
+          - **elementpassageconfig_id**: Element Passage Configuration ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/elementpassageconfigs/{}".format(api_version,
+                                                                                          element_id,
+                                                                                          elementpassageconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def elementsecurityzones(self, site_id, element_id, securityzone_id, api_version="v2.0"):
+        """
+        Delete an existing security zone
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **securityzone_id**: Security Zone (ZBFW) ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/securityzones/{}".format(api_version,
+                                                                                           site_id,
+                                                                                           element_id,
+                                                                                           securityzone_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def elementusers(self, elementuser_id, api_version="v2.1"):
+        """
+        Delete element user
+
+          **Parameters:**:
+
+          - **elementuser_id**: Element User ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}".format(api_version,
+                                                                     elementuser_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def esp_operator_permissions_client(self, operator_id, client_id, api_version="v2.1"):
+        """
+        Delete esp operator permissions assigned under a client
+
+          **Parameters:**:
+
+          - **operator_id**: Operator ID
+          - **client_id**: ESP/MSP Client ID (typically their tenant_id)
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/operators/{}/clients/{}/permissions".format(api_version,
+                                                                                         operator_id,
+                                                                                         client_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def eventcorrelationpolicyrules(self, eventcorrelationpolicyset_id, eventcorrelationpolicyrule_id, api_version="v2.0"):
+        """
+        Delete specific event correlation policy rule
+
+          **Parameters:**:
+
+          - **eventcorrelationpolicyset_id**: Event Correlation Policy Set ID
+          - **eventcorrelationpolicyrule_id**: Event Correlation Policy Rule ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/eventcorrelationpolicysets/{}/eventcorrelationpolicyrules/{}".format(api_version,
+                                                                                                                  eventcorrelationpolicyset_id,
+                                                                                                                  eventcorrelationpolicyrule_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def eventcorrelationpolicysets(self, eventcorrelationpolicyset_id, api_version="v2.0"):
+        """
+        Delete specific event correlation policyset
+
+          **Parameters:**:
+
+          - **eventcorrelationpolicyset_id**: Event Correlation Policy Set ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/eventcorrelationpolicysets/{}".format(api_version,
+                                                                                   eventcorrelationpolicyset_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def externalcaconfigs(self, externalcaconfig_id, api_version="v2.0"):
+        """
+        DELETE Externalcaconfigs API Function
+
+          **Parameters:**:
+
+          - **externalcaconfig_id**: External CA Config ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/externalcaconfigs/{}".format(api_version,
+                                                                          externalcaconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def globalprefixfilters(self, globalprefixfilter_id, api_version="v2.0"):
+        """
+        Delete a global prefix filter.
+
+          **Parameters:**:
+
+          - **globalprefixfilter_id**: Global Prefix Filter ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/globalprefixfilters/{}".format(api_version,
+                                                                            globalprefixfilter_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def hubclustermembers(self, site_id, hubcluster_id, hubclustermember_id, api_version="v3.0"):
+        """
+        Deletes specific hub cluster member.
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **hubcluster_id**: Hub (DC) Cluster ID
+          - **hubclustermember_id**: Hub Cluster Member ID
+          - **api_version**: API version to use (default v3.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/hubclusters/{}/hubclustermembers/{}".format(api_version,
+                                                                                                  site_id,
+                                                                                                  hubcluster_id,
+                                                                                                  hubclustermember_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def hubclusters(self, site_id, hubcluster_id, api_version="v3.0"):
+        """
+        Delete hub cluster
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **hubcluster_id**: Hub (DC) Cluster ID
+          - **api_version**: API version to use (default v3.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/hubclusters/{}".format(api_version,
+                                                                             site_id,
+                                                                             hubcluster_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def idps(self, idp_id, api_version="v3.2"):
+        """
+        Delete idp
+
+          **Parameters:**:
+
+          - **idp_id**: SAML IDentity provider configuration ID
+          - **api_version**: API version to use (default v3.2)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/idps/{}".format(api_version,
+                                                             idp_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def interfaces(self, site_id, element_id, interface_id, api_version="v4.12"):
+        """
+        Delete Interface
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **interface_id**: Interface ID
+          - **api_version**: API version to use (default v4.12)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/interfaces/{}".format(api_version,
+                                                                                        site_id,
+                                                                                        element_id,
+                                                                                        interface_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def ipfix(self, site_id, element_id, ipfix_id, api_version="v2.0"):
+        """
+        Delete IPFix config
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **ipfix_id**: IPFix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/ipfix/{}".format(api_version,
+                                                                                   site_id,
+                                                                                   element_id,
+                                                                                   ipfix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def ipfixcollectorcontexts(self, ipfixcollectorcontext_id, api_version="v2.0"):
+        """
+        Delete a IPFix collector context
+
+          **Parameters:**:
+
+          - **ipfixcollectorcontext_id**: IPFix Collector Context ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixcollectorcontexts/{}".format(api_version,
+                                                                               ipfixcollectorcontext_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def ipfixfiltercontexts(self, ipfixfiltercontext_id, api_version="v2.0"):
+        """
+        Delete a IPFix filter context
+
+          **Parameters:**:
+
+          - **ipfixfiltercontext_id**: IPFix Filter Context ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixfiltercontexts/{}".format(api_version,
+                                                                            ipfixfiltercontext_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def ipfixglobalprefixes(self, ipfixglobalprefix_id, api_version="v2.0"):
+        """
+        Delete a IPFix global prefix
+
+          **Parameters:**:
+
+          - **ipfixglobalprefix_id**: IPFix Global Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixglobalprefixes/{}".format(api_version,
+                                                                            ipfixglobalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def ipfixprofiles(self, ipfixprofile_id, api_version="v2.0"):
+        """
+        Delete IPFix Profile
+
+          **Parameters:**:
+
+          - **ipfixprofile_id**: IPFix Profile ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixprofiles/{}".format(api_version,
+                                                                      ipfixprofile_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def ipfixtemplates(self, ipfixtemplate_id, api_version="v2.0"):
+        """
+        Delete a IPFix template
+
+          **Parameters:**:
+
+          - **ipfixtemplate_id**: IPFix Template ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixtemplates/{}".format(api_version,
+                                                                       ipfixtemplate_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def ipsecprofiles(self, ipsecprofile_id, api_version="v2.1"):
+        """
+        Delete a IPSEC Profile
+
+          **Parameters:**:
+
+          - **ipsecprofile_id**: IPSEC Profile ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/ipsecprofiles/{}".format(api_version,
+                                                                      ipsecprofile_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def lannetworks(self, site_id, lannetwork_id, api_version="v3.1"):
+        """
+        Delete an existing LAN
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **lannetwork_id**: LAN Network ID
+          - **api_version**: API version to use (default v3.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/lannetworks/{}".format(api_version,
+                                                                             site_id,
+                                                                             lannetwork_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def localprefixfilters(self, localprefixfilter_id, api_version="v2.0"):
+        """
+        Delete a local prefix filter.
+
+          **Parameters:**:
+
+          - **localprefixfilter_id**: Local Prefix Filter ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/localprefixfilters/{}".format(api_version,
+                                                                           localprefixfilter_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def multicastpeergroups(self, multicastpeergroup_id, api_version="v2.0"):
+        """
+        DELETE Multicastpeergroups API Function
+
+          **Parameters:**:
+
+          - **multicastpeergroup_id**: Multicast Peer Group ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/multicastpeergroups/{}".format(api_version,
+                                                                            multicastpeergroup_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def multicastrps(self, site_id, element_id, multicastrp_id, api_version="v2.0"):
+        """
+        DELETE Multicastrps API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **multicastrp_id**: Multicast RP ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/multicastrps/{}".format(api_version,
+                                                                                          site_id,
+                                                                                          element_id,
+                                                                                          multicastrp_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def natglobalprefixes(self, natglobalprefix_id, api_version="v2.0"):
+        """
+        Delete a NAT Global Prefix.
+
+          **Parameters:**:
+
+          - **natglobalprefix_id**: NAT Global Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/natglobalprefixes/{}".format(api_version,
+                                                                          natglobalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def natlocalprefixes(self, natlocalprefix_id, api_version="v2.0"):
+        """
+        Delete a NAT local prefix.
+
+          **Parameters:**:
+
+          - **natlocalprefix_id**: NAT Local Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/natlocalprefixes/{}".format(api_version,
+                                                                         natlocalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def natpolicypools(self, natpolicypool_id, api_version="v2.0"):
+        """
+        Delete a NAT Policy Pool.
+
+          **Parameters:**:
+
+          - **natpolicypool_id**: NAT Policy Pool ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicypools/{}".format(api_version,
+                                                                       natpolicypool_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def natpolicyrules(self, natpolicyset_id, natpolicyrule_id, api_version="v2.0"):
+        """
+        Delete NAT policy rule of tenant.
+
+          **Parameters:**:
+
+          - **natpolicyset_id**: NAT Policy Set ID
+          - **natpolicyrule_id**: NAT Policy Rule ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicysets/{}/natpolicyrules/{}".format(api_version,
+                                                                                        natpolicyset_id,
+                                                                                        natpolicyrule_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def natpolicysets(self, natpolicyset_id, api_version="v2.0"):
+        """
+        Delete NAT policy set.
+
+          **Parameters:**:
+
+          - **natpolicyset_id**: NAT Policy Set ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicysets/{}".format(api_version,
+                                                                      natpolicyset_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def natpolicysetstacks(self, natpolicysetstack_id, api_version="v2.0"):
+        """
+        Delete NAT Policy Set Stack.
+
+          **Parameters:**:
+
+          - **natpolicysetstack_id**: NAT Policy Set Stack ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicysetstacks/{}".format(api_version,
+                                                                           natpolicysetstack_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def natzones(self, natzone_id, api_version="v2.0"):
+        """
+        Delete a Nat Policy Zone.
+
+          **Parameters:**:
+
+          - **natzone_id**: NAT Zone ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/natzones/{}".format(api_version,
+                                                                 natzone_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def networkcontexts(self, networkcontext_id, api_version="v2.0"):
+        """
+        Delete LAN segment
+
+          **Parameters:**:
+
+          - **networkcontext_id**: Network Context ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/networkcontexts/{}".format(api_version,
+                                                                        networkcontext_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def networkpolicyglobalprefixes(self, networkpolicyglobalprefix_id, api_version="v2.0"):
+        """
+        Delete a Network Policy Global Prefix.
+
+          **Parameters:**:
+
+          - **networkpolicyglobalprefix_id**: Network Policy Global Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicyglobalprefixes/{}".format(api_version,
+                                                                                    networkpolicyglobalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id, api_version="v2.1"):
+        """
+        Delete network policy rule of tenant.
+
+          **Parameters:**:
+
+          - **networkpolicyset_id**: Network Policy Set ID
+          - **networkpolicyrule_id**: Network Policy Rule ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicysets/{}/networkpolicyrules/{}".format(api_version,
+                                                                                                networkpolicyset_id,
+                                                                                                networkpolicyrule_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def networkpolicysets(self, networkpolicyset_id, api_version="v2.0"):
+        """
+        Delete Network Policy Set.
+
+          **Parameters:**:
+
+          - **networkpolicyset_id**: Network Policy Set ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicysets/{}".format(api_version,
+                                                                          networkpolicyset_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def networkpolicysetstacks(self, networkpolicysetstack_id, api_version="v2.0"):
+        """
+        Delete a NetworkPolicySetStack
+
+          **Parameters:**:
+
+          - **networkpolicysetstack_id**: Network Policy Set Stack ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicysetstacks/{}".format(api_version,
+                                                                               networkpolicysetstack_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def ngfwsecuritypolicyglobalprefixes(self, ngfwsecuritypolicyglobalprefix_id, api_version="v2.0"):
+        """
+        DELETE Ngfwsecuritypolicyglobalprefixes API Function
+
+          **Parameters:**:
+
+          - **ngfwsecuritypolicyglobalprefix_id**: NGFW Security Policy Global Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicyglobalprefixes/{}".format(api_version,
+                                                                                         ngfwsecuritypolicyglobalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def ngfwsecuritypolicylocalprefixes(self, ngfwsecuritypolicylocalprefix_id, api_version="v2.0"):
+        """
+        DELETE Ngfwsecuritypolicylocalprefixes API Function
+
+          **Parameters:**:
+
+          - **ngfwsecuritypolicylocalprefix_id**: NGFW Security Policy Local Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicylocalprefixes/{}".format(api_version,
+                                                                                        ngfwsecuritypolicylocalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, api_version="v2.0"):
+        """
+        DELETE Ngfwsecuritypolicyrules API Function
+
+          **Parameters:**:
+
+          - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
+          - **ngfwsecuritypolicyrule_id**: NGFW Security Policy Rule ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicysets/{}/ngfwsecuritypolicyrules/{}".format(api_version,
+                                                                                                          ngfwsecuritypolicyset_id,
+                                                                                                          ngfwsecuritypolicyrule_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def ngfwsecuritypolicysets(self, ngfwsecuritypolicyset_id, api_version="v2.0"):
+        """
+        DELETE Ngfwsecuritypolicysets API Function
+
+          **Parameters:**:
+
+          - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicysets/{}".format(api_version,
+                                                                               ngfwsecuritypolicyset_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def ngfwsecuritypolicysetstacks(self, ngfwsecuritypolicysetstack_id, api_version="v2.0"):
+        """
+        DELETE Ngfwsecuritypolicysetstacks API Function
+
+          **Parameters:**:
+
+          - **ngfwsecuritypolicysetstack_id**: NGFW Security Policy Set Stack ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicysetstacks/{}".format(api_version,
+                                                                                    ngfwsecuritypolicysetstack_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def operator_sessions(self, operator_id, session_id, api_version="v2.0"):
+        """
+        Delete session for tenant_id, operator id, and session id
+
+          **Parameters:**:
+
+          - **operator_id**: Operator ID
+          - **session_id**: User Session ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/operators/{}/sessions/{}".format(api_version,
+                                                                              operator_id,
+                                                                              session_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def pathgroups(self, pathgroup_id, api_version="v2.1"):
+        """
+        Delete A Path Group of a tenant.
+
+          **Parameters:**:
+
+          - **pathgroup_id**: Path Group ID (for network service/DC routing)
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/pathgroups/{}".format(api_version,
+                                                                   pathgroup_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def policyrules(self, policyset_id, policyrule_id, api_version="v3.1"):
+        """
+        Delete policy rule of tenant.
+
+          **Parameters:**:
+
+          - **policyset_id**: Policy Set ID
+          - **policyrule_id**: Policy Rule ID
+          - **api_version**: API version to use (default v3.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/policysets/{}/policyrules/{}".format(api_version,
+                                                                                  policyset_id,
+                                                                                  policyrule_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def policysets(self, policyset_id, api_version="v3.0"):
+        """
+        Delete policy set.
+
+          **Parameters:**:
+
+          - **policyset_id**: Policy Set ID
+          - **api_version**: API version to use (default v3.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/policysets/{}".format(api_version,
+                                                                   policyset_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def prefixfilters(self, site_id, prefixfilter_id, api_version="v2.0"):
+        """
+        Delete an existing security prefix filter
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **prefixfilter_id**: Prefix Filter ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prefixfilters/{}".format(api_version,
+                                                                               site_id,
+                                                                               prefixfilter_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def prioritypolicyglobalprefixes(self, prioritypolicyglobalprefix_id, api_version="v2.0"):
+        """
+        Delete a Priority Policy Global Prefix.
+
+          **Parameters:**:
+
+          - **prioritypolicyglobalprefix_id**: Priority Policy Global Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicyglobalprefixes/{}".format(api_version,
+                                                                                     prioritypolicyglobalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id, api_version="v2.0"):
+        """
+        Delete priority policy rule of tenant.
+
+          **Parameters:**:
+
+          - **prioritypolicyset_id**: Priority Policy Set ID
+          - **prioritypolicyrule_id**: Priority Policy Rule ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicysets/{}/prioritypolicyrules/{}".format(api_version,
+                                                                                                  prioritypolicyset_id,
+                                                                                                  prioritypolicyrule_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def prioritypolicysets(self, prioritypolicyset_id, api_version="v2.0"):
+        """
+        Delete Priority Policy Set.
+
+          **Parameters:**:
+
+          - **prioritypolicyset_id**: Priority Policy Set ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicysets/{}".format(api_version,
+                                                                           prioritypolicyset_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def prioritypolicysetstacks(self, prioritypolicysetstack_id, api_version="v2.0"):
+        """
+        Delete a PriorityPolicySetStack
+
+          **Parameters:**:
+
+          - **prioritypolicysetstack_id**: Priority Policy Stack ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicysetstacks/{}".format(api_version,
+                                                                                prioritypolicysetstack_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def prismaaccess_configs(self, site_id, prismaaccess_config_id, api_version="v2.0"):
+        """
+        DELETE Prismaaccess_Configs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **prismaaccess_config_id**: Prisma Acceess Config ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prismaaccess_configs/{}".format(api_version,
+                                                                                      site_id,
+                                                                                      prismaaccess_config_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def roles(self, role_id, api_version="v2.1"):
+        """
+        Delete a custom role
+
+          **Parameters:**:
+
+          - **role_id**: Role ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/roles/{}".format(api_version,
+                                                              role_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def routing_aspathaccesslists(self, site_id, element_id, routing_aspathaccesslist_id, api_version="v2.1"):
+        """
+        Delete Access List
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **routing_aspathaccesslist_id**: Routing AS-PATH Access List ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_aspathaccesslists/{}".format(api_version,
+                                                                                                       site_id,
+                                                                                                       element_id,
+                                                                                                       routing_aspathaccesslist_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def routing_ipcommunitylists(self, site_id, element_id, routing_ipcommunitylist_id, api_version="v2.0"):
+        """
+        Delete Community List
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **routing_ipcommunitylist_id**: Routing IP Community List ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_ipcommunitylists/{}".format(api_version,
+                                                                                                      site_id,
+                                                                                                      element_id,
+                                                                                                      routing_ipcommunitylist_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def routing_prefixlists(self, site_id, element_id, routing_prefixlist_id, api_version="v2.0"):
+        """
+        Delete Prefix List
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **routing_prefixlist_id**: Routing IP Prefix List ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_prefixlists/{}".format(api_version,
+                                                                                                 site_id,
+                                                                                                 element_id,
+                                                                                                 routing_prefixlist_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def routing_routemaps(self, site_id, element_id, routing_routemap_id, api_version="v2.1"):
+        """
+        Delete Route Map
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **routing_routemap_id**: Routing Route Map ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_routemaps/{}".format(api_version,
+                                                                                               site_id,
+                                                                                               element_id,
+                                                                                               routing_routemap_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def sdwanapps_configs(self, sdwanapp_id, config_id, api_version="v2.0"):
+        """
+        DELETE Sdwanapps_Configs API Function
+
+          **Parameters:**:
+
+          - **sdwanapp_id**: SDWAN Application ID
+          - **config_id**: SDWAN App Config ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sdwanapps/{}/configs/{}".format(api_version,
+                                                                             sdwanapp_id,
+                                                                             config_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def securitypolicyrules(self, securitypolicyset_id, securitypolicyrule_id, api_version="v2.0"):
+        """
+        Delete a security policyrule.
+
+          **Parameters:**:
+
+          - **securitypolicyset_id**: Security Policy Set ID
+          - **securitypolicyrule_id**: Security Policy Rule ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/securitypolicysets/{}/securitypolicyrules/{}".format(api_version,
+                                                                                                  securitypolicyset_id,
+                                                                                                  securitypolicyrule_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def securitypolicysets(self, securitypolicyset_id, api_version="v2.0"):
+        """
+        Delete a security policyset.
+
+          **Parameters:**:
+
+          - **securitypolicyset_id**: Security Policy Set ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/securitypolicysets/{}".format(api_version,
+                                                                           securitypolicyset_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def securityzones(self, securityzone_id, api_version="v2.0"):
+        """
+        Delete an existing security zone
+
+          **Parameters:**:
+
+          - **securityzone_id**: Security Zone (ZBFW) ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/securityzones/{}".format(api_version,
+                                                                      securityzone_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def servicebindingmaps(self, servicebindingmap_id, api_version="v2.1"):
+        """
+        Delete a Service Binding Map
+
+          **Parameters:**:
+
+          - **servicebindingmap_id**: Service Binding Map ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/servicebindingmaps/{}".format(api_version,
+                                                                           servicebindingmap_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def serviceendpoints(self, serviceendpoint_id, api_version="v2.3"):
+        """
+        Delete a Service Endpoint
+
+          **Parameters:**:
+
+          - **serviceendpoint_id**: Service Endpoint ID
+          - **api_version**: API version to use (default v2.3)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/serviceendpoints/{}".format(api_version,
+                                                                         serviceendpoint_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def servicelabels(self, servicelabel_id, api_version="v2.1"):
+        """
+        Delete a Service Label
+
+          **Parameters:**:
+
+          - **servicelabel_id**: Service Label ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/servicelabels/{}".format(api_version,
+                                                                      servicelabel_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def site_extensions(self, site_id, extension_id, api_version="v2.0"):
+        """
+        Delete a specific extension associated with a site
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **extension_id**: Extension ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/extensions/{}".format(api_version,
+                                                                            site_id,
+                                                                            extension_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def site_ipfixlocalprefixes(self, site_id, ipfixlocalprefix_id, api_version="v2.0"):
+        """
+        Delete a IPFix site prefix association
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **ipfixlocalprefix_id**: IPFix Local Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/ipfixlocalprefixes/{}".format(api_version,
+                                                                                    site_id,
+                                                                                    ipfixlocalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def site_natlocalprefixes(self, site_id, natlocalprefix_id, api_version="v2.0"):
+        """
+        Delete an existing Site NAT prefix
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **natlocalprefix_id**: NAT Local Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/natlocalprefixes/{}".format(api_version,
+                                                                                  site_id,
+                                                                                  natlocalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def site_networkpolicylocalprefixes(self, site_id, networkpolicylocalprefix_id, api_version="v2.0"):
+        """
+        Delete an existing Site Network Policy local prefix association
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **networkpolicylocalprefix_id**: Network Policy Local Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/networkpolicylocalprefixes/{}".format(api_version,
+                                                                                            site_id,
+                                                                                            networkpolicylocalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def site_ngfwsecuritypolicylocalprefixes(self, site_id, ngfwsecuritypolicylocalprefix_id, api_version="v2.0"):
+        """
+        DELETE Site_Ngfwsecuritypolicylocalprefixes API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **ngfwsecuritypolicylocalprefix_id**: NGFW Security Policy Local Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/ngfwsecuritypolicylocalprefixes/{}".format(api_version,
+                                                                                                 site_id,
+                                                                                                 ngfwsecuritypolicylocalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def site_prioritypolicylocalprefixes(self, site_id, prioritypolicylocalprefix_id, api_version="v2.0"):
+        """
+        Delete an existing Site Priority Policy local prefix association
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **prioritypolicylocalprefix_id**: Priority Policy Local Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prioritypolicylocalprefixes/{}".format(api_version,
+                                                                                             site_id,
+                                                                                             prioritypolicylocalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def sites(self, site_id, api_version="v4.7"):
+        """
+        Delete a site
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **api_version**: API version to use (default v4.7)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}".format(api_version,
+                                                              site_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def sitesecurityzones(self, site_id, sitesecurityzone_id, api_version="v2.0"):
+        """
+        Delete an existing security zone
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **sitesecurityzone_id**: Site Security Zone ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/sitesecurityzones/{}".format(api_version,
+                                                                                   site_id,
+                                                                                   sitesecurityzone_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def snmpagents(self, site_id, element_id, snmpagent_id, api_version="v2.1"):
+        """
+        delete SNMP Agent
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **snmpagent_id**: SNMP Agent ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/snmpagents/{}".format(api_version,
+                                                                                        site_id,
+                                                                                        element_id,
+                                                                                        snmpagent_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def snmptraps(self, site_id, element_id, snmptrap_id, api_version="v2.0"):
+        """
+        delete SNMP Trap
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **snmptrap_id**: SNMP Trap ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/snmptraps/{}".format(api_version,
+                                                                                       site_id,
+                                                                                       element_id,
+                                                                                       snmptrap_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def spokeclusters(self, site_id, spokecluster_id, api_version="v2.0"):
+        """
+        Delete spoke cluster.
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **spokecluster_id**: Spoke Cluster ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/spokeclusters/{}".format(api_version,
+                                                                               site_id,
+                                                                               spokecluster_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def staticroutes(self, site_id, element_id, staticroute_id, api_version="v2.2"):
+        """
+        Delete static route
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **staticroute_id**: Static Route ID
+          - **api_version**: API version to use (default v2.2)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/staticroutes/{}".format(api_version,
+                                                                                          site_id,
+                                                                                          element_id,
+                                                                                          staticroute_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def syslogserverprofiles(self, syslogserverprofile_id, api_version="v2.0"):
+        """
+        DELETE Syslogserverprofiles API Function
+
+          **Parameters:**:
+
+          - **syslogserverprofile_id**: Sys Log Server Profile ID 
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/syslogserverprofiles/{}".format(api_version,
+                                                                             syslogserverprofile_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def syslogservers(self, site_id, element_id, syslogserver_id, api_version="v2.2"):
+        """
+        Delete Syslog Server
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **syslogserver_id**: SYSLOG server ID
+          - **api_version**: API version to use (default v2.2)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/syslogservers/{}".format(api_version,
+                                                                                           site_id,
+                                                                                           element_id,
+                                                                                           syslogserver_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def templates_ntp(self, ntp_id, api_version="v2.0"):
+        """
+        Delete an existing NTP Template
+
+          **Parameters:**:
+
+          - **ntp_id**: NTP Configuration ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/templates/ntp/{}".format(api_version,
+                                                                      ntp_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def tenant_anynetlinks(self, anynetlink_id, api_version="v3.4"):
+        """
+        DELETE Tenant_Anynetlinks API Function
+
+          **Parameters:**:
+
+          - **anynetlink_id**: Anynet (Secure Fabric) Link ID
+          - **api_version**: API version to use (default v3.4)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/anynetlinks/{}".format(api_version,
+                                                                    anynetlink_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def tenant_ipfixlocalprefixes(self, ipfixlocalprefix_id, api_version="v2.0"):
+        """
+        Delete a IPFix local prefix
+
+          **Parameters:**:
+
+          - **ipfixlocalprefix_id**: IPFix Local Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixlocalprefixes/{}".format(api_version,
+                                                                           ipfixlocalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def tenant_networkpolicylocalprefixes(self, networkpolicylocalprefix_id, api_version="v2.0"):
+        """
+        Delete a Network Policy local prefix.
+
+          **Parameters:**:
+
+          - **networkpolicylocalprefix_id**: Network Policy Local Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicylocalprefixes/{}".format(api_version,
+                                                                                   networkpolicylocalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def tenant_operators(self, operator_id, api_version="v2.1"):
+        """
+        Delete a tenant operator
+
+          **Parameters:**:
+
+          - **operator_id**: Operator ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/operators/{}".format(api_version,
+                                                                  operator_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def tenant_permissions(self, permission_id, api_version="v2.0"):
+        """
+        Delete a tenant custom permission
+
+          **Parameters:**:
+
+          - **permission_id**: Permission ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/permissions/{}".format(api_version,
+                                                                    permission_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def tenant_prioritypolicylocalprefixes(self, prioritypolicylocalprefix_id, api_version="v2.0"):
+        """
+        Delete a Priority Policy local prefix.
+
+          **Parameters:**:
+
+          - **prioritypolicylocalprefix_id**: Priority Policy Local Prefix ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicylocalprefixes/{}".format(api_version,
+                                                                                    prioritypolicylocalprefix_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def tenantpassageconfigs(self, tenantpassageconfig_id, api_version="v2.0"):
+        """
+        DELETE Tenantpassageconfigs API Function
+
+          **Parameters:**:
+
+          - **tenantpassageconfig_id**: Tenant Passage Config ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/tenantpassageconfigs/{}".format(api_version,
+                                                                             tenantpassageconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def users(self, user_id, api_version="v2.0"):
+        """
+        Delete an user identity.
+
+          **Parameters:**:
+
+          - **user_id**: User ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/users/{}".format(api_version,
+                                                              user_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def waninterfaces(self, site_id, waninterface_id, api_version="v2.7"):
+        """
+        Delete existing WAN interface
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **waninterface_id**: WAN Interface ID
+          - **api_version**: API version to use (default v2.7)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/waninterfaces/{}".format(api_version,
+                                                                               site_id,
+                                                                               waninterface_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def wannetworks(self, wannetwork_id, api_version="v2.1"):
+        """
+        Delete an existing WAN
+
+          **Parameters:**:
+
+          - **wannetwork_id**: WAN Network ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/wannetworks/{}".format(api_version,
+                                                                    wannetwork_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def wanoverlays(self, wanoverlay_id, api_version="v2.0"):
+        """
+        Delete app/wan context
+
+          **Parameters:**:
+
+          - **wanoverlay_id**: WAN Overlay ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/wanoverlays/{}".format(api_version,
+                                                                    wanoverlay_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def ws_extensions(self, extension_id, api_version="v2.0"):
+        """
+        DELETE Ws_Extensions API Function
+
+          **Parameters:**:
+
+          - **extension_id**: Extension ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/ws/extensions/{}".format(api_version,
+                                                                      extension_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    # Public Digest compatibility maps below, mapping what is available via
+    # /v2.0/permissions API versus what is used in this SDK.
+
+    anynetlinks_t = tenant_anynetlinks
+    """ Backwards-compatibility alias of `anynetlinks_t` to `tenant_anynetlinks`"""
+
+    configs_sdwanapps = sdwanapps_configs
+    """ Backwards-compatibility alias of `configs_sdwanapps` to `sdwanapps_configs`"""
+
+    elementpassageconfigs_e = elementpassageconfigs
+    """ Backwards-compatibility alias of `elementpassageconfigs_e` to `elementpassageconfigs`"""
+
+    extensions_i = element_extensions
+    """ Backwards-compatibility alias of `extensions_i` to `element_extensions`"""
+
+    extensions_s = site_extensions
+    """ Backwards-compatibility alias of `extensions_s` to `site_extensions`"""
+
+    extensions_ws = ws_extensions
+    """ Backwards-compatibility alias of `extensions_ws` to `ws_extensions`"""
+
+    ipfixlocalprefixes_s = site_ipfixlocalprefixes
+    """ Backwards-compatibility alias of `ipfixlocalprefixes_s` to `site_ipfixlocalprefixes`"""
+
+    ipfixlocalprefixes_t = tenant_ipfixlocalprefixes
+    """ Backwards-compatibility alias of `ipfixlocalprefixes_t` to `tenant_ipfixlocalprefixes`"""
+
+    natlocalprefixes_s = site_natlocalprefixes
+    """ Backwards-compatibility alias of `natlocalprefixes_s` to `site_natlocalprefixes`"""
+
+    natlocalprefixes_t = natlocalprefixes
+    """ Backwards-compatibility alias of `natlocalprefixes_t` to `natlocalprefixes`"""
+
+    networkpolicylocalprefixes_s = site_networkpolicylocalprefixes
+    """ Backwards-compatibility alias of `networkpolicylocalprefixes_s` to `site_networkpolicylocalprefixes`"""
+
+    networkpolicylocalprefixes_t = tenant_networkpolicylocalprefixes
+    """ Backwards-compatibility alias of `networkpolicylocalprefixes_t` to `tenant_networkpolicylocalprefixes`"""
+
+    ngfwsecuritypolicylocalprefixes_s = site_ngfwsecuritypolicylocalprefixes
+    """ Backwards-compatibility alias of `ngfwsecuritypolicylocalprefixes_s` to `site_ngfwsecuritypolicylocalprefixes`"""
+
+    ngfwsecuritypolicylocalprefixes_t = ngfwsecuritypolicylocalprefixes
+    """ Backwards-compatibility alias of `ngfwsecuritypolicylocalprefixes_t` to `ngfwsecuritypolicylocalprefixes`"""
+
+    ntp_templates = templates_ntp
+    """ Backwards-compatibility alias of `ntp_templates` to `templates_ntp`"""
+
+    operators_t = tenant_operators
+    """ Backwards-compatibility alias of `operators_t` to `tenant_operators`"""
+
+    overrides_appdefs = appdefs_overrides
+    """ Backwards-compatibility alias of `overrides_appdefs` to `appdefs_overrides`"""
+
+    passages_e = element_passages
+    """ Backwards-compatibility alias of `passages_e` to `element_passages`"""
+
+    permissions_clients_o = esp_operator_permissions_client
+    """ Backwards-compatibility alias of `permissions_clients_o` to `esp_operator_permissions_client`"""
+
+    permissions_t = tenant_permissions
+    """ Backwards-compatibility alias of `permissions_t` to `tenant_permissions`"""
+
+    prioritypolicylocalprefixes_s = site_prioritypolicylocalprefixes
+    """ Backwards-compatibility alias of `prioritypolicylocalprefixes_s` to `site_prioritypolicylocalprefixes`"""
+
+    prioritypolicylocalprefixes_t = tenant_prioritypolicylocalprefixes
+    """ Backwards-compatibility alias of `prioritypolicylocalprefixes_t` to `tenant_prioritypolicylocalprefixes`"""
+
+    sessions_t = operator_sessions
+    """ Backwards-compatibility alias of `sessions_t` to `operator_sessions`"""
+
+    toolkitsessions_e = element_toolkitsessions
+    """ Backwards-compatibility alias of `toolkitsessions_e` to `element_toolkitsessions`"""
+

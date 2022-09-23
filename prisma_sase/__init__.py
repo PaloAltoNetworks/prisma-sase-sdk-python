@@ -417,7 +417,7 @@ class API(object):
     use_jwt = False
     """generate token flag"""
 
-    sase_debug_sdk = False
+    sase_qa_env = False
     """ sase debug mode to use the qa or dev shared service url.."""
 
     use_x_auth_token = False
@@ -1027,7 +1027,9 @@ class API(object):
             headers = {}
 
         if not self.use_jwt:
-            self._refresh_jwt()
+            if not self._refresh_jwt():
+                api_logger.debug("Re-generation of JWT failed..")
+                return False
 
         # add session headers
         headers.update(self._session.headers)
@@ -1688,7 +1690,7 @@ class API(object):
 
         self.use_jwt = True
 
-        if self.sase_debug_sdk:
+        if self.sase_qa_env:
             _shared_service_url = self.oauth_access_token_qa_url
             data = {'grant_type': 'client_credentials', 'scope': 'tsg_id:{0}'.format(self.tsg_id),
                     'client_id': self.client_id, 'client_secret': self.client_secret}
@@ -1764,8 +1766,22 @@ class API(object):
 
         """
         if self.jwt_expires_in <= 60:
+            self._session = requests.Session()
             if self._generate_jwt():
                 api_logger.debug("Re-generated Token..")
                 self.use_jwt = False
+
+                api_logger.info('Regenerating Token: get profile call')
+                profile = self.get.profile()
+                if profile.cgx_status:
+                    return True
+                else:
+                    print("Regenerating Token: Profile retrieval failed.")
+                    # clear password out of memory
+                    return False
+
             else:
                 api_logger.debug("Failed to re-generate token..")
+                return False
+
+        return True

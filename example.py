@@ -119,7 +119,7 @@ print("{0} v{1} ({2})\n".format(SCRIPT_NAME, SDK_VERSION, sdk.controller))
 # interactive or cmd-line specified initial login
 
 while sdk.tenant_name is None:
-    sdk.interactive.login_secret(args["client_id"], args["client_secret"], args["tsg_id"])
+    sdk.interactive.login_secret(client_id=args["client_id"], client_secret=args["client_secret"], tsg_id=args["tsg_id"])
 
 
 ############################################################################

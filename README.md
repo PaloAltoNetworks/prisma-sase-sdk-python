@@ -30,7 +30,9 @@ from prisma_sase import API, jd
 sdk = API()
 
 # Call Prisma SASE API login using the Interactive helpers (Handle SAML2.0 login and MSP functions too!).
-sdk.interactive.login_secret()
+sdk.interactive.login_secret(client_id='api_user1@1111111111.iam.panserviceaccount.com', 
+                             client_secret='xxxxxx', 
+                             tsg_id=1111111111)
 
 # Print a dump of the list of sites for your selected account
 jd(sdk.get.sites())

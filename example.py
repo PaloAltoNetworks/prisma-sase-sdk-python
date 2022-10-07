@@ -2,7 +2,7 @@
 """
 Prisma SASE API -> list sites, example proof of concept.
 
-**Author:** Prisma SASE
+**Author:** Palo Alto Networks
 
 **Copyright:** (c) 2017-2022 Palo Alto Networks, Inc
 

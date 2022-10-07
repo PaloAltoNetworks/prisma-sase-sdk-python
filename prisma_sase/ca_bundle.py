@@ -2,9 +2,9 @@
 """
 Prisma SASE Explicit CA Certificate Bundle for API calls (CA Pinning).
 
-**Author:** Prisma SASE
+**Author:** Palo Alto Networks
 
-**Copyright:** (c) 2017-2022 Prisma SASE, Inc
+**Copyright:** © 2022 Palo Alto Networks. All rights reserved
 
 **License:** MIT
 """

@@ -703,6 +703,10 @@ class Interactive(object):
 
             api_logger.debug("new tenant_dict: %s", tenant_dict)
 
+            telemetry_region = tenant_dict.get('telemetry_region')
+            self._parent_class.panw_region = self._parent_class.telemetry_panw_mapping.get(telemetry_region)
+            self._parent_class.add_headers({'X-PANW-Region': self._parent_class.panw_region})
+
             # Get Tenant info.
             self._parent_class.tenant_name = tenant_dict.get('name', self._parent_class.tenant_id)
             # is ESP/MSP?

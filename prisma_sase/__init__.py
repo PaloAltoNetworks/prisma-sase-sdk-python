@@ -1,7 +1,7 @@
 """
 Python2 and Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.0.1b1
+**Version:** v6.1.1b1
 
 **Author:** Palo Alto Networks
 
@@ -143,7 +143,7 @@ if PYTHON36_FEATURES:
 
 
 # Version of SDK
-version = "6.0.1b1"
+version = "6.1.1b1"
 """SDK Version string"""
 __version__ = version
 
@@ -422,6 +422,12 @@ class API(object):
 
     use_x_auth_token = False
     """ if user has generated x_auth_token from sdwan UI"""
+
+    telemetry_panw_mapping = { "dev02-us": "americas", "dev2-us": "americas", "dev2-jp": "jp", "qa01-us": "americas",
+                               "qa1-us": "americas", "stg01-us": "americas", "stg1-us": "americas", "us": "americas",
+                               "qa02-eu": "europe", "qa2-eu": "europe", "qa02-us": "europe", "qa2-us": "europe",
+                               "eu": "europe" }
+    """ static mapping of telemetry region to x_panw_region """
 
     def __init__(self, controller=controller, ssl_verify=verify, update_check=True):
         """

@@ -1,22 +1,22 @@
 #!/usr/bin/env python
 """
-Prisma SASE Python SDK - PUT
+PRISMA SASE Python SDK - PUT
 
 **Author:** Palo Alto Networks
 
-**Copyright:** © 2022 Palo Alto Networks. All rights reserved
+**Copyright:** (c) 2022 Palo Alto Networks, Inc
 
 **License:** MIT
 """
 import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
-__email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright © 2022 Palo Alto Networks. All rights reserved"
+__email__ = "prisma-sase-developers@paloaltonetworks.comm"
+__copyright__ = "Copyright (c) 2022 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright © 2022 Palo Alto Networks. All rights reserved
+    Copyright (c) 2022 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -52,35 +52,9 @@ class Put(object):
     # placeholder for parent class namespace
     _parent_class = None
 
-    def access_elementusers(self, elementuser_id, access_id, data, api_version="v2.1"):
-        """
-        Update an existing element user access.
-
-          **Parameters:**:
-
-          - **elementuser_id**: Element User ID
-          - **access_id**: Access ID
-          - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.1)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}/access/{}".format(api_version,
-                                                                               elementuser_id,
-                                                                               access_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "put", data=data)
-
     def apnprofiles(self, apnprofile_id, data, api_version="v2.0"):
         """
-        PUT Apnprofiles API Function
+        Update an APN Profile (v2.0)
 
           **Parameters:**:
 
@@ -104,7 +78,7 @@ class Put(object):
 
     def appdefs(self, appdef_id, data, api_version="v2.4"):
         """
-        Update a application definition
+        Update a application definition (v2.4)
 
           **Parameters:**:
 
@@ -128,7 +102,7 @@ class Put(object):
 
     def appdefs_overrides(self, appdef_id, override_id, data, api_version="v2.3"):
         """
-        Update a application definition overrides for system appdef
+        Update a application definition overrides for system appdef (v2.3)
 
           **Parameters:**:
 
@@ -154,7 +128,7 @@ class Put(object):
 
     def appdefs_version(self, appdefs_version_id, data, api_version="v2.0"):
         """
-        Change standard apps version
+        Change standard apps version (v2.0)
 
           **Parameters:**:
 
@@ -178,7 +152,7 @@ class Put(object):
 
     def application_probe(self, site_id, element_id, data, api_version="v2.0"):
         """
-        Update application probe configuration
+        Update application probe configuration (v2.0)
 
           **Parameters:**:
 
@@ -204,7 +178,7 @@ class Put(object):
 
     def bgpconfigs(self, site_id, element_id, bgpconfig_id, data, api_version="v2.2"):
         """
-        Updates BGP config
+        Updates BGP config (v2.2)
 
           **Parameters:**:
 
@@ -232,7 +206,7 @@ class Put(object):
 
     def bgppeers(self, site_id, element_id, bgppeer_id, data, api_version="v2.2"):
         """
-        Updates BGP Peer config
+        Updates BGP Peer config (v2.2)
 
           **Parameters:**:
 
@@ -260,7 +234,7 @@ class Put(object):
 
     def cellular_modules_sim_security(self, element_id, cellular_module_id, sim_security_id, data, api_version="v2.0"):
         """
-        PUT Cellular_Modules_Sim_Security API Function
+        Update cellular module (v2.0)
 
           **Parameters:**:
 
@@ -288,7 +262,7 @@ class Put(object):
 
     def dhcpservers(self, site_id, dhcpserver_id, data, api_version="v2.1"):
         """
-        Update an existing dhcp server configuration for a subnet
+        Update an existing dhcp server configuration for a subnet (v2.1)
 
           **Parameters:**:
 
@@ -314,7 +288,7 @@ class Put(object):
 
     def dnsserviceprofiles(self, dnsserviceprofile_id, data, api_version="v2.0"):
         """
-        Update a DNS service profile
+        Update a DNS service profile (v2.0)
 
           **Parameters:**:
 
@@ -338,7 +312,7 @@ class Put(object):
 
     def dnsserviceroles(self, dnsservicerole_id, data, api_version="v2.0"):
         """
-        Update a DNS service role
+        Update a DNS service role (v2.0)
 
           **Parameters:**:
 
@@ -362,7 +336,7 @@ class Put(object):
 
     def dnsservices(self, site_id, element_id, dnsservice_id, data, api_version="v2.0"):
         """
-        Update a DNS service config
+        Update a DNS service config (v2.0)
 
           **Parameters:**:
 
@@ -390,7 +364,7 @@ class Put(object):
 
     def element_admin_state(self, site_id, element_id, data, api_version="v2.0"):
         """
-        Update admin state Northbound
+        Update admin state Northbound (v2.0)
 
           **Parameters:**:
 
@@ -416,7 +390,7 @@ class Put(object):
 
     def element_cellular_modules(self, element_id, cellular_module_id, data, api_version="v2.0"):
         """
-        PUT Element_Cellular_Modules API Function
+        Update cellular module (v2.0)
 
           **Parameters:**:
 
@@ -442,7 +416,7 @@ class Put(object):
 
     def element_cellular_modules_firmware(self, element_id, cellular_module_id, data, api_version="v2.0"):
         """
-        PUT Element_Cellular_Modules_Firmware API Function
+        Update cellular module firmware configuration (v2.0)
 
           **Parameters:**:
 
@@ -468,7 +442,7 @@ class Put(object):
 
     def element_extensions(self, site_id, element_id, extension_id, data, api_version="v2.0"):
         """
-        Update element level extension configuration
+        Update element level extension configuration (v2.0)
 
           **Parameters:**:
 
@@ -494,9 +468,33 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
+    def element_state(self, element_id, data, api_version="v2.0"):
+        """
+        PUT Element_State API Function
+
+          **Parameters:**:
+
+          - **element_id**: Element (Device) ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/state".format(api_version,
+                                                                       element_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
     def elementaccessconfigs(self, element_id, elementaccessconfig_id, data, api_version="v2.2"):
         """
-        Update an Access Config on particular element.
+        Update an Access Config on particular element. (v2.2)
 
           **Parameters:**:
 
@@ -520,15 +518,15 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def elements(self, element_id, data, api_version="v2.5"):
+    def elements(self, element_id, data, api_version="v3.0"):
         """
-        Used for associations and element updates
+        Used for associations and element updates (v3.0)
 
           **Parameters:**:
 
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.5)
+          - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
 
@@ -546,7 +544,7 @@ class Put(object):
 
     def elementsecurityzones(self, site_id, element_id, securityzone_id, data, api_version="v2.0"):
         """
-        Update an existing element security zone
+        Update an existing element security zone (v2.0)
 
           **Parameters:**:
 
@@ -574,7 +572,7 @@ class Put(object):
 
     def elementusers(self, elementuser_id, data, api_version="v2.1"):
         """
-        Update an existing element user.
+        Update an existing element user. (v2.1)
 
           **Parameters:**:
 
@@ -592,6 +590,32 @@ class Put(object):
 
         url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}".format(api_version,
                                                                      elementuser_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def elementusers_access(self, elementuser_id, access_id, data, api_version="v2.1"):
+        """
+        PUT Elementusers_Access API Function
+
+          **Parameters:**:
+
+          - **elementuser_id**: Element User ID
+          - **access_id**: Access ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.1)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}/access/{}".format(api_version,
+                                                                               elementuser_id,
+                                                                               access_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
@@ -620,7 +644,7 @@ class Put(object):
 
     def esp_operator_permissions_client(self, operator_id, client_id, data, api_version="v2.1"):
         """
-        Create or update esp operator permissions assigned under a client
+        Create or update esp operator permissions assigned under a client (v2.1)
 
           **Parameters:**:
 
@@ -646,7 +670,7 @@ class Put(object):
 
     def eventcorrelationpolicyrules(self, eventcorrelationpolicyset_id, eventcorrelationpolicyrule_id, data, api_version="v2.0"):
         """
-        Update event correlation policyrule configuration
+        Update event correlation policyrule configuration (v2.0)
 
           **Parameters:**:
 
@@ -672,7 +696,7 @@ class Put(object):
 
     def eventcorrelationpolicysets(self, eventcorrelationpolicyset_id, data, api_version="v2.0"):
         """
-        Update event correlation policyset configuration
+        Update event correlation policyset configuration (v2.0)
 
           **Parameters:**:
 
@@ -744,7 +768,7 @@ class Put(object):
 
     def globalprefixfilters(self, globalprefixfilter_id, data, api_version="v2.0"):
         """
-        Update a new global prefix filter.
+        Update a new global prefix filter. (v2.0)
 
           **Parameters:**:
 
@@ -768,7 +792,7 @@ class Put(object):
 
     def hubclustermembers(self, site_id, hubcluster_id, hubclustermember_id, data, api_version="v3.0"):
         """
-        Update specific hub cluster member.
+        Update specific hub cluster member. (v3.0)
 
           **Parameters:**:
 
@@ -794,16 +818,16 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def hubclusters(self, site_id, hubcluster_id, data, api_version="v3.0"):
+    def hubclusters(self, site_id, hubcluster_id, data, api_version="v4.0"):
         """
-        Update hub cluster
+        Update hub cluster (v4.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **hubcluster_id**: Hub (DC) Cluster ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v3.0)
+          - **api_version**: API version to use (default v4.0)
 
           **Payload Attributes:** 
 
@@ -820,15 +844,15 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def idps(self, idp_id, data, api_version="v3.2"):
+    def idps(self, idp_id, data, api_version="v3.3"):
         """
-        Update sso
+        Update sso (v3.3)
 
           **Parameters:**:
 
           - **idp_id**: SAML IDentity provider configuration ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v3.2)
+          - **api_version**: API version to use (default v3.3)
 
           **Payload Attributes:** 
 
@@ -844,9 +868,9 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def interfaces(self, site_id, element_id, interface_id, data, api_version="v4.12"):
+    def interfaces(self, site_id, element_id, interface_id, data, api_version="v4.14"):
         """
-        Update a Interface
+        Update a Cellular Interface (v4.14)
 
           **Parameters:**:
 
@@ -854,7 +878,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v4.12)
+          - **api_version**: API version to use (default v4.14)
 
           **Payload Attributes:** 
 
@@ -874,7 +898,7 @@ class Put(object):
 
     def ipfix(self, site_id, element_id, ipfix_id, data, api_version="v2.0"):
         """
-        Update a IPFix Config
+        Update a IPFix Config (v2.0)
 
           **Parameters:**:
 
@@ -902,7 +926,7 @@ class Put(object):
 
     def ipfixcollectorcontexts(self, ipfixcollectorcontext_id, data, api_version="v2.0"):
         """
-        Update a IPFix Collector context
+        Update a IPFix Collector context (v2.0)
 
           **Parameters:**:
 
@@ -926,7 +950,7 @@ class Put(object):
 
     def ipfixfiltercontexts(self, ipfixfiltercontext_id, data, api_version="v2.0"):
         """
-        Update a IPFix Filter context
+        Update a IPFix Filter context (v2.0)
 
           **Parameters:**:
 
@@ -950,7 +974,7 @@ class Put(object):
 
     def ipfixglobalprefixes(self, ipfixglobalprefix_id, data, api_version="v2.0"):
         """
-        Update a IPFix Global prefix
+        Update a IPFix Global prefix (v2.0)
 
           **Parameters:**:
 
@@ -974,7 +998,7 @@ class Put(object):
 
     def ipfixprofiles(self, ipfixprofile_id, data, api_version="v2.0"):
         """
-        Update a IPFix Profile
+        Update a IPFix Profile (v2.0)
 
           **Parameters:**:
 
@@ -998,7 +1022,7 @@ class Put(object):
 
     def ipfixtemplates(self, ipfixtemplate_id, data, api_version="v2.0"):
         """
-        Update a IPFix template
+        Update a IPFix template (v2.0)
 
           **Parameters:**:
 
@@ -1022,7 +1046,7 @@ class Put(object):
 
     def ipsecprofiles(self, ipsecprofile_id, data, api_version="v2.1"):
         """
-        Update a IPSECProfile
+        Update a IPSECProfile (v2.1)
 
           **Parameters:**:
 
@@ -1046,7 +1070,7 @@ class Put(object):
 
     def lannetworks(self, site_id, lannetwork_id, data, api_version="v3.1"):
         """
-        Update an existing LAN
+        Update an existing LAN (v3.1)
 
           **Parameters:**:
 
@@ -1072,7 +1096,7 @@ class Put(object):
 
     def localprefixfilters(self, localprefixfilter_id, data, api_version="v2.0"):
         """
-        Update a new local prefix filter.
+        Update a new local prefix filter. (v2.0)
 
           **Parameters:**:
 
@@ -1096,7 +1120,7 @@ class Put(object):
 
     def machine_cellular_modules_firmware(self, machine_id, cellular_module_id, data, api_version="v2.0"):
         """
-        PUT Machine_Cellular_Modules_Firmware API Function
+        Update cellular module firmware configuration (v2.0)
 
           **Parameters:**:
 
@@ -1120,9 +1144,37 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
+    def mstp_instances(self, site_id, element_id, mstp_instance_id, data, api_version="v2.0"):
+        """
+        PUT Mstp_Instances API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **mstp_instance_id**: MSTP Instance ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/mstp_instances/{}".format(api_version,
+                                                                                            site_id,
+                                                                                            element_id,
+                                                                                            mstp_instance_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
     def multicastglobalconfigs(self, site_id, element_id, multicastglobalconfig_id, data, api_version="v2.1"):
         """
-        PUT Multicastglobalconfigs API Function
+        Update Multicast config (v2.1)
 
           **Parameters:**:
 
@@ -1148,7 +1200,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def multicastpeergroups(self, multicastpeergroup_id, data, api_version="v2.0"):
+    def multicastpeergroups(self, multicastpeergroup_id, data, api_version="v2.1"):
         """
         PUT Multicastpeergroups API Function
 
@@ -1156,7 +1208,7 @@ class Put(object):
 
           - **multicastpeergroup_id**: Multicast Peer Group ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -1174,7 +1226,7 @@ class Put(object):
 
     def multicastrps(self, site_id, element_id, multicastrp_id, data, api_version="v2.0"):
         """
-        PUT Multicastrps API Function
+        Updates Multicast RP config (v2.0)
 
           **Parameters:**:
 
@@ -1200,9 +1252,35 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
+    def multicastsourcesiteconfigs(self, site_id, multicastsourcesiteconfig_id, data, api_version="v2.0"):
+        """
+        PUT Multicastsourcesiteconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **multicastsourcesiteconfig_id**: Multicast Source Site Config ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/multicastsourcesiteconfigs/{}".format(api_version,
+                                                                                            site_id,
+                                                                                            multicastsourcesiteconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
     def natglobalprefixes(self, natglobalprefix_id, data, api_version="v2.0"):
         """
-        Update an existing NAT prefix.
+        Update an existing NAT prefix. (v2.0)
 
           **Parameters:**:
 
@@ -1226,7 +1304,7 @@ class Put(object):
 
     def natlocalprefixes(self, natlocalprefix_id, data, api_version="v2.0"):
         """
-        Update a  NAT local prefix.
+        Update a  NAT local prefix. (v2.0)
 
           **Parameters:**:
 
@@ -1250,7 +1328,7 @@ class Put(object):
 
     def natpolicypools(self, natpolicypool_id, data, api_version="v2.0"):
         """
-        Update a  NAT Policy Pool.
+        Update a  NAT Policy Pool. (v2.0)
 
           **Parameters:**:
 
@@ -1274,7 +1352,7 @@ class Put(object):
 
     def natpolicyrules(self, natpolicyset_id, natpolicyrule_id, data, api_version="v2.0"):
         """
-        Update policy rule of tenant.
+        Update policy rule of tenant. (v2.0)
 
           **Parameters:**:
 
@@ -1300,7 +1378,7 @@ class Put(object):
 
     def natpolicysets(self, natpolicyset_id, data, api_version="v2.0"):
         """
-        Update NAT policy set.
+        Update NAT policy set. (v2.0)
 
           **Parameters:**:
 
@@ -1324,7 +1402,7 @@ class Put(object):
 
     def natpolicysetstacks(self, natpolicysetstack_id, data, api_version="v2.0"):
         """
-        Update NAT Policy Set Stack.
+        Update NAT Policy Set Stack. (v2.0)
 
           **Parameters:**:
 
@@ -1348,7 +1426,7 @@ class Put(object):
 
     def natzones(self, natzone_id, data, api_version="v2.0"):
         """
-        Update a Nat Policy Zone.
+        Update a Nat Policy Zone. (v2.0)
 
           **Parameters:**:
 
@@ -1372,7 +1450,7 @@ class Put(object):
 
     def networkcontexts(self, networkcontext_id, data, api_version="v2.0"):
         """
-        Update LAN segment
+        Update LAN segment (v2.0)
 
           **Parameters:**:
 
@@ -1396,7 +1474,7 @@ class Put(object):
 
     def networkpolicyglobalprefixes(self, networkpolicyglobalprefix_id, data, api_version="v2.0"):
         """
-        Update a Network global prefix.
+        Update a Network global prefix. (v2.0)
 
           **Parameters:**:
 
@@ -1420,7 +1498,7 @@ class Put(object):
 
     def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id, data, api_version="v2.1"):
         """
-        Update network policy rule of tenant.
+        Update network policy rule of tenant. (v2.1)
 
           **Parameters:**:
 
@@ -1446,7 +1524,7 @@ class Put(object):
 
     def networkpolicysets(self, networkpolicyset_id, data, api_version="v2.0"):
         """
-        Update Network Policy Set.
+        Update Network Policy Set. (v2.0)
 
           **Parameters:**:
 
@@ -1470,7 +1548,7 @@ class Put(object):
 
     def networkpolicysetstacks(self, networkpolicysetstack_id, data, api_version="v2.0"):
         """
-        Update a NetworkPolicySetStack
+        Update a NetworkPolicySetStack (v2.0)
 
           **Parameters:**:
 
@@ -1494,7 +1572,7 @@ class Put(object):
 
     def ngfwsecuritypolicyglobalprefixes(self, ngfwsecuritypolicyglobalprefix_id, data, api_version="v2.0"):
         """
-        PUT Ngfwsecuritypolicyglobalprefixes API Function
+        Update an existing Security Policy V2 Global Prefix (v2.0)
 
           **Parameters:**:
 
@@ -1518,7 +1596,7 @@ class Put(object):
 
     def ngfwsecuritypolicylocalprefixes(self, ngfwsecuritypolicylocalprefix_id, data, api_version="v2.0"):
         """
-        PUT Ngfwsecuritypolicylocalprefixes API Function
+        Update an existing Security Policy V2 Local Prefix (v2.0)
 
           **Parameters:**:
 
@@ -1542,7 +1620,7 @@ class Put(object):
 
     def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, data, api_version="v2.0"):
         """
-        PUT Ngfwsecuritypolicyrules API Function
+        Update an existing Security Policy V2 Rule under a policy set (v2.0)
 
           **Parameters:**:
 
@@ -1568,7 +1646,7 @@ class Put(object):
 
     def ngfwsecuritypolicysets(self, ngfwsecuritypolicyset_id, data, api_version="v2.0"):
         """
-        PUT Ngfwsecuritypolicysets API Function
+        Update an existing Security Policy V2 Set (v2.0)
 
           **Parameters:**:
 
@@ -1592,7 +1670,7 @@ class Put(object):
 
     def ngfwsecuritypolicysetstacks(self, ngfwsecuritypolicysetstack_id, data, api_version="v2.0"):
         """
-        PUT Ngfwsecuritypolicysetstacks API Function
+        Update an existing Security Policy V2 Set Stack (v2.0)
 
           **Parameters:**:
 
@@ -1616,7 +1694,7 @@ class Put(object):
 
     def ntp(self, element_id, ntp_id, data, api_version="v2.0"):
         """
-        Update an existing element NTP.
+        Update an existing element NTP. (v2.0)
 
           **Parameters:**:
 
@@ -1642,7 +1720,7 @@ class Put(object):
 
     def otpaccessconfigs(self, otpaccessconfig_id, data, api_version="v2.0"):
         """
-        Update an OTP Access for all elements under an Tenant.
+        Update an OTP Access for all elements under an Tenant. (v2.0)
 
           **Parameters:**:
 
@@ -1666,7 +1744,7 @@ class Put(object):
 
     def pathgroups(self, pathgroup_id, data, api_version="v2.1"):
         """
-        Update A Path Group of a tenant.
+        Update A Path Group of a tenant. (v2.1)
 
           **Parameters:**:
 
@@ -1690,7 +1768,7 @@ class Put(object):
 
     def policyrules(self, policyset_id, policyrule_id, data, api_version="v3.1"):
         """
-        Update policy rule of tenant.
+        Update policy rule of tenant. (v3.1)
 
           **Parameters:**:
 
@@ -1716,7 +1794,7 @@ class Put(object):
 
     def policysets(self, policyset_id, data, api_version="v3.0"):
         """
-        Update policy set.
+        Update policy set. (v3.0)
 
           **Parameters:**:
 
@@ -1740,7 +1818,7 @@ class Put(object):
 
     def prefixfilters(self, site_id, prefixfilter_id, data, api_version="v2.0"):
         """
-        Update an existing security prefix filter
+        Update an existing security prefix filter (v2.0)
 
           **Parameters:**:
 
@@ -1766,7 +1844,7 @@ class Put(object):
 
     def prioritypolicyglobalprefixes(self, prioritypolicyglobalprefix_id, data, api_version="v2.0"):
         """
-        Update a  Priority global prefix.
+        Update a  Priority global prefix. (v2.0)
 
           **Parameters:**:
 
@@ -1790,7 +1868,7 @@ class Put(object):
 
     def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id, data, api_version="v2.0"):
         """
-        Update priority policy rule of tenant.
+        Update priority policy rule of tenant. (v2.0)
 
           **Parameters:**:
 
@@ -1816,7 +1894,7 @@ class Put(object):
 
     def prioritypolicysets(self, prioritypolicyset_id, data, api_version="v2.0"):
         """
-        Update Priority Policy Set.
+        Update Priority Policy Set. (v2.0)
 
           **Parameters:**:
 
@@ -1840,7 +1918,7 @@ class Put(object):
 
     def prioritypolicysetstacks(self, prioritypolicysetstack_id, data, api_version="v2.0"):
         """
-        Update a PriorityPolicySetStack
+        Update a PriorityPolicySetStack (v2.0)
 
           **Parameters:**:
 
@@ -1864,7 +1942,7 @@ class Put(object):
 
     def prismaaccess_configs(self, site_id, prismaaccess_config_id, data, api_version="v2.0"):
         """
-        PUT Prismaaccess_Configs API Function
+        Update a Prisma Access Config with remote networks and security processing node (v2.0)
 
           **Parameters:**:
 
@@ -1888,9 +1966,35 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
+    def radii(self, element_id, radii_id, data, api_version="v2.0"):
+        """
+        PUT Radii API Function
+
+          **Parameters:**:
+
+          - **element_id**: Element (Device) ID
+          - **radii_id**: Radii ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/radii/{}".format(api_version,
+                                                                          element_id,
+                                                                          radii_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
     def recovery_tokens(self, machine_id, recovery_token_id, data, api_version="v2.1"):
         """
-        PUT Recovery_Tokens API Function
+        Update Recovery Token for Fips change mode (v2.1)
 
           **Parameters:**:
 
@@ -1916,7 +2020,7 @@ class Put(object):
 
     def roles(self, role_id, data, api_version="v2.1"):
         """
-        Update a custom role
+        Update a custom role (v2.1)
 
           **Parameters:**:
 
@@ -1940,7 +2044,7 @@ class Put(object):
 
     def routing_aspathaccesslists(self, site_id, element_id, routing_aspathaccesslist_id, data, api_version="v2.1"):
         """
-        Updates Access List
+        Updates Access List (v2.1)
 
           **Parameters:**:
 
@@ -1968,7 +2072,7 @@ class Put(object):
 
     def routing_ipcommunitylists(self, site_id, element_id, routing_ipcommunitylist_id, data, api_version="v2.0"):
         """
-        Updates Community List
+        Updates Community List (v2.0)
 
           **Parameters:**:
 
@@ -1996,7 +2100,7 @@ class Put(object):
 
     def routing_prefixlists(self, site_id, element_id, routing_prefixlist_id, data, api_version="v2.0"):
         """
-        Updates Prefix List
+        Updates Prefix List (v2.0)
 
           **Parameters:**:
 
@@ -2024,7 +2128,7 @@ class Put(object):
 
     def routing_routemaps(self, site_id, element_id, routing_routemap_id, data, api_version="v2.1"):
         """
-        Updates Route Map
+        Updates Route Map (v2.1)
 
           **Parameters:**:
 
@@ -2078,7 +2182,7 @@ class Put(object):
 
     def securitypolicyrules(self, securitypolicyset_id, securitypolicyrule_id, data, api_version="v2.0"):
         """
-        Update a tenant security policy rule.
+        Update a tenant security policy rule. (v2.0)
 
           **Parameters:**:
 
@@ -2104,7 +2208,7 @@ class Put(object):
 
     def securitypolicysets(self, securitypolicyset_id, data, api_version="v2.0"):
         """
-        Update a tenant security policy set.
+        Update a tenant security policy set. (v2.0)
 
           **Parameters:**:
 
@@ -2128,7 +2232,7 @@ class Put(object):
 
     def securityzones(self, securityzone_id, data, api_version="v2.0"):
         """
-        Update an existing security zone
+        Update an existing security zone (v2.0)
 
           **Parameters:**:
 
@@ -2152,7 +2256,7 @@ class Put(object):
 
     def servicebindingmaps(self, servicebindingmap_id, data, api_version="v2.1"):
         """
-        Update a ServiceBindingMap
+        Update a ServiceBindingMap (v2.1)
 
           **Parameters:**:
 
@@ -2176,7 +2280,7 @@ class Put(object):
 
     def serviceendpoints(self, serviceendpoint_id, data, api_version="v2.3"):
         """
-        Update a ServiceEndpoint
+        Update a ServiceEndpoint (v2.3)
 
           **Parameters:**:
 
@@ -2200,7 +2304,7 @@ class Put(object):
 
     def servicelabels(self, servicelabel_id, data, api_version="v2.1"):
         """
-        Update a ServiceLabel
+        Update a ServiceLabel (v2.1)
 
           **Parameters:**:
 
@@ -2224,7 +2328,7 @@ class Put(object):
 
     def site_admin_state(self, site_id, data, api_version="v3.0"):
         """
-        Update an existing site
+        Update an existing site (v3.0)
 
           **Parameters:**:
 
@@ -2248,7 +2352,7 @@ class Put(object):
 
     def site_extensions(self, site_id, extension_id, data, api_version="v2.0"):
         """
-        Update site level extension configuration
+        Update site level extension configuration (v2.0)
 
           **Parameters:**:
 
@@ -2274,7 +2378,7 @@ class Put(object):
 
     def site_ipfixlocalprefixes(self, site_id, ipfixlocalprefix_id, data, api_version="v2.0"):
         """
-        Update a IPFix site prefix association
+        Update a IPFix site prefix association (v2.0)
 
           **Parameters:**:
 
@@ -2300,7 +2404,7 @@ class Put(object):
 
     def site_natlocalprefixes(self, site_id, natlocalprefix_id, data, api_version="v2.0"):
         """
-        Update an existing Site NAT Local prefix Association
+        Update an existing Site NAT Local prefix Association (v2.0)
 
           **Parameters:**:
 
@@ -2326,7 +2430,7 @@ class Put(object):
 
     def site_networkpolicylocalprefixes(self, site_id, networkpolicylocalprefix_id, data, api_version="v2.0"):
         """
-        Update an existing Site Network policy local prefix
+        Update an existing Site Network policy local prefix (v2.0)
 
           **Parameters:**:
 
@@ -2352,7 +2456,7 @@ class Put(object):
 
     def site_ngfwsecuritypolicylocalprefixes(self, site_id, ngfwsecuritypolicylocalprefix_id, data, api_version="v2.0"):
         """
-        PUT Site_Ngfwsecuritypolicylocalprefixes API Function
+        Update an existing security policy V2 local prefix site association (v2.0)
 
           **Parameters:**:
 
@@ -2378,7 +2482,7 @@ class Put(object):
 
     def site_prioritypolicylocalprefixes(self, site_id, prioritypolicylocalprefix_id, data, api_version="v2.0"):
         """
-        Update an existing Site Priority policy local prefix
+        Update an existing Site Priority policy local prefix (v2.0)
 
           **Parameters:**:
 
@@ -2404,7 +2508,7 @@ class Put(object):
 
     def siteciphers(self, site_id, data, api_version="v2.0"):
         """
-        Update site cipher
+        Update site cipher (v2.0)
 
           **Parameters:**:
 
@@ -2428,7 +2532,7 @@ class Put(object):
 
     def sites(self, site_id, data, api_version="v4.7"):
         """
-        Update an existing v4.6 site
+        Update an existing site (v4.7)
 
           **Parameters:**:
 
@@ -2452,7 +2556,7 @@ class Put(object):
 
     def sitesecurityzones(self, site_id, sitesecurityzone_id, data, api_version="v2.0"):
         """
-        Update an existing security zone
+        Update an existing security zone (v2.0)
 
           **Parameters:**:
 
@@ -2478,7 +2582,7 @@ class Put(object):
 
     def snmpagents(self, site_id, element_id, snmpagent_id, data, api_version="v2.1"):
         """
-        Update SNMP Agent
+        Update SNMP Agent (v2.1)
 
           **Parameters:**:
 
@@ -2506,7 +2610,7 @@ class Put(object):
 
     def snmptraps(self, site_id, element_id, snmptrap_id, data, api_version="v2.0"):
         """
-        Update SNMP Trap
+        Update SNMP Trap (v2.0)
 
           **Parameters:**:
 
@@ -2534,7 +2638,7 @@ class Put(object):
 
     def software(self, machine_id, software_id, data, api_version="v2.0"):
         """
-        Update Machine Software
+        Update Machine Software (v2.0)
 
           **Parameters:**:
 
@@ -2560,7 +2664,7 @@ class Put(object):
 
     def software_state(self, element_id, data, api_version="v2.0"):
         """
-        Upgrade an element
+        Upgrade an element (v2.0)
 
           **Parameters:**:
 
@@ -2584,7 +2688,7 @@ class Put(object):
 
     def spokeclusters(self, site_id, spokecluster_id, data, api_version="v2.0"):
         """
-        Update Spoke Cluster
+        Update Spoke Cluster (v2.0)
 
           **Parameters:**:
 
@@ -2608,33 +2712,9 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def state(self, element_id, data, api_version="v2.0"):
-        """
-        Update element state
-
-          **Parameters:**:
-
-          - **element_id**: Element (Device) ID
-          - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/state".format(api_version,
-                                                                       element_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "put", data=data)
-
     def staticroutes(self, site_id, element_id, staticroute_id, data, api_version="v2.2"):
         """
-        Update static route
+        Update static route (v2.2)
 
           **Parameters:**:
 
@@ -2662,7 +2742,7 @@ class Put(object):
 
     def syslogserverprofiles(self, syslogserverprofile_id, data, api_version="v2.0"):
         """
-        PUT Syslogserverprofiles API Function
+        Update Syslog Server Profile (v2.0)
 
           **Parameters:**:
 
@@ -2686,7 +2766,7 @@ class Put(object):
 
     def syslogservers(self, site_id, element_id, syslogserver_id, data, api_version="v2.2"):
         """
-        Update Syslog Server
+        Update Syslog Server (v2.2)
 
           **Parameters:**:
 
@@ -2714,7 +2794,7 @@ class Put(object):
 
     def templates_ntp(self, ntp_id, data, api_version="v2.0"):
         """
-        Update an existing NTP Template
+        Update an existing NTP Template (v2.0)
 
           **Parameters:**:
 
@@ -2762,7 +2842,7 @@ class Put(object):
 
     def tenant_ipfixlocalprefixes(self, ipfixlocalprefix_id, data, api_version="v2.0"):
         """
-        Update a IPFix local prefix
+        Update a IPFix local prefix (v2.0)
 
           **Parameters:**:
 
@@ -2786,7 +2866,7 @@ class Put(object):
 
     def tenant_networkpolicylocalprefixes(self, networkpolicylocalprefix_id, data, api_version="v2.0"):
         """
-        Update a  Network Policy local prefix.
+        Update a  Network Policy local prefix. (v2.0)
 
           **Parameters:**:
 
@@ -2810,7 +2890,7 @@ class Put(object):
 
     def tenant_operators(self, operator_id, data, api_version="v2.1"):
         """
-        Update a tenant operator
+        Update a tenant operator (v2.1)
 
           **Parameters:**:
 
@@ -2834,7 +2914,7 @@ class Put(object):
 
     def tenant_permissions(self, permission_id, data, api_version="v2.0"):
         """
-        Update a custom permission
+        Update a custom permission (v2.0)
 
           **Parameters:**:
 
@@ -2858,7 +2938,7 @@ class Put(object):
 
     def tenant_prioritypolicylocalprefixes(self, prioritypolicylocalprefix_id, data, api_version="v2.0"):
         """
-        Update a  Priority Policy local prefix.
+        Update a  Priority Policy local prefix. (v2.0)
 
           **Parameters:**:
 
@@ -2882,7 +2962,7 @@ class Put(object):
 
     def tenants(self, data, api_version="v2.3"):
         """
-        Update tenant
+        Update tenant (v2.3)
 
           **Parameters:**:
 
@@ -2904,7 +2984,7 @@ class Put(object):
 
     def users(self, user_id, data, api_version="v2.0"):
         """
-        Put an user identity.
+        Put an user identity. (v2.0)
 
           **Parameters:**:
 
@@ -2928,7 +3008,7 @@ class Put(object):
 
     def vfflicense_tokens(self, vfflicense_id, token_id, data, api_version="v2.0"):
         """
-        Update Tenant Vff License Token
+        Update Tenant Vff License Token (v2.0)
 
           **Parameters:**:
 
@@ -2954,7 +3034,7 @@ class Put(object):
 
     def vpnlinks_state(self, vpnlink_id, data, api_version="v2.0"):
         """
-        Change the VPNLink admin state
+        Change the VPNLink admin state (v2.0)
 
           **Parameters:**:
 
@@ -2978,7 +3058,7 @@ class Put(object):
 
     def waninterfacelabels(self, waninterfacelabel_id, data, api_version="v2.4"):
         """
-        Update specific WAN interface label
+        Update specific WAN interface label (v2.4)
 
           **Parameters:**:
 
@@ -3002,7 +3082,7 @@ class Put(object):
 
     def waninterfaces(self, site_id, waninterface_id, data, api_version="v2.7"):
         """
-        Update the Site WAN interface
+        Update the Site WAN interface (v2.7)
 
           **Parameters:**:
 
@@ -3028,7 +3108,7 @@ class Put(object):
 
     def wannetworks(self, wannetwork_id, data, api_version="v2.1"):
         """
-        Update an existing WAN
+        Update an existing WAN (v2.1)
 
           **Parameters:**:
 
@@ -3052,7 +3132,7 @@ class Put(object):
 
     def wanoverlays(self, wanoverlay_id, data, api_version="v2.0"):
         """
-        Update app/wan context
+        Update app/wan context (v2.0)
 
           **Parameters:**:
 
@@ -3100,6 +3180,9 @@ class Put(object):
 
     # Public Digest compatibility maps below, mapping what is available via
     # /v2.0/permissions API versus what is used in this SDK.
+
+    access_elementusers = elementusers_access
+    """ Backwards-compatibility alias of `access_elementusers` to `elementusers_access`"""
 
     admin_state_i = element_admin_state
     """ Backwards-compatibility alias of `admin_state_i` to `element_admin_state`"""
@@ -3178,6 +3261,9 @@ class Put(object):
 
     sim_security_cellular_modules = cellular_modules_sim_security
     """ Backwards-compatibility alias of `sim_security_cellular_modules` to `cellular_modules_sim_security`"""
+
+    state = element_state
+    """ Backwards-compatibility alias of `state` to `element_state`"""
 
     state_software = software_state
     """ Backwards-compatibility alias of `state_software` to `software_state`"""

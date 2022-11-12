@@ -1,22 +1,22 @@
 #!/usr/bin/env python
 """
-Prisma SASE Python SDK - PATCH
+PRISMA SASE Python SDK - PATCH
 
 **Author:** Palo Alto Networks
 
-**Copyright:** © 2022 Palo Alto Networks. All rights reserved
+**Copyright:** (c) 2022 Palo Alto Networks, Inc
 
 **License:** MIT
 """
 import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
-__email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright © 2022 Palo Alto Networks. All rights reserved"
+__email__ = "prisma-sase-developers@paloaltonetworks.comm"
+__copyright__ = "Copyright (c) 2022 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright © 2022 Palo Alto Networks. All rights reserved
+    Copyright (c) 2022 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -54,7 +54,7 @@ class Patch(object):
 
     def tenant_operators(self, operator_id, data, api_version="v2.1"):
         """
-        Patch a tenant operator
+        Patch a tenant operator (v2.1)
 
           **Parameters:**:
 
@@ -78,7 +78,7 @@ class Patch(object):
 
     def tenants(self, data, api_version="v2.3"):
         """
-        Patch tenant
+        Patch tenant (v2.3)
 
           **Parameters:**:
 

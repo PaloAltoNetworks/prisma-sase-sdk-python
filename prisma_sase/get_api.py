@@ -61,7 +61,7 @@ class Get(object):
           - **anynetlink_id**: Anynet (Secure Fabric) Link ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -81,7 +81,7 @@ class Get(object):
           - **apnprofile_id**: (optional) APN Profile ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -104,7 +104,7 @@ class Get(object):
           - **appdef_id**: (optional) Application Definition ID
           - **api_version**: API version to use (default v2.4)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -128,7 +128,7 @@ class Get(object):
           - **override_id**: (optional) AppDef Override ID
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -153,7 +153,7 @@ class Get(object):
           - **appdefs_version_id**: (optional) Application Definition Version ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -177,7 +177,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -198,7 +198,7 @@ class Get(object):
           - **auditlog_id**: (optional) Audit Log ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -222,7 +222,7 @@ class Get(object):
           - **authtoken_id**: (optional) Static AUTH_TOKEN ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -246,7 +246,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -264,7 +264,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -283,7 +283,7 @@ class Get(object):
           - **site_id**: Site ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -305,7 +305,7 @@ class Get(object):
           - **bgpconfig_id**: (optional) BGP Configuration ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -334,7 +334,7 @@ class Get(object):
           - **bgppeer_id**: (optional) BGP Peer ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -363,7 +363,7 @@ class Get(object):
           - **bgppeer_id**: BGP Peer ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -387,7 +387,7 @@ class Get(object):
           - **bgppeer_id**: BGP Peer ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -411,7 +411,7 @@ class Get(object):
           - **bgppeer_id**: BGP Peer ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -434,7 +434,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -455,7 +455,7 @@ class Get(object):
           - **cellular_module_image_id**: (optional) Cellular Module Image ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -480,7 +480,7 @@ class Get(object):
           - **sim_security_id**: (optional) SIM Security ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -507,7 +507,7 @@ class Get(object):
           - **entitie_id**: Entitie ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -526,7 +526,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -545,7 +545,7 @@ class Get(object):
           - **client_id**: ESP/MSP Client ID (typically their tenant_id)
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -566,7 +566,7 @@ class Get(object):
           - **machine_id**: (optional) Machine ID
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -592,7 +592,7 @@ class Get(object):
           - **role_id**: (optional) Role ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -618,7 +618,7 @@ class Get(object):
           - **demstatus_id**: (optional) DEM Status ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -644,7 +644,7 @@ class Get(object):
           - **dhcpserver_id**: (optional) DHCP Server ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -669,7 +669,7 @@ class Get(object):
           - **dnsserviceprofile_id**: (optional) DNS Service Profile ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -692,7 +692,7 @@ class Get(object):
           - **dnsservicerole_id**: (optional) DNS Service Role ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -717,7 +717,7 @@ class Get(object):
           - **dnsservice_id**: (optional) DNS Service ID 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -746,7 +746,7 @@ class Get(object):
           - **bgppeer_id**: BGP Peer ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -769,7 +769,7 @@ class Get(object):
           - **cellular_module_id**: (optional) Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -795,7 +795,7 @@ class Get(object):
           - **cellular_module_id**: Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -817,7 +817,7 @@ class Get(object):
           - **cellular_module_id**: Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -839,7 +839,7 @@ class Get(object):
           - **cellular_module_id**: Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -861,7 +861,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -884,7 +884,7 @@ class Get(object):
           - **extension_id**: (optional) Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -911,7 +911,7 @@ class Get(object):
           - **element_image_id**: (optional) Element Code Image ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -935,7 +935,7 @@ class Get(object):
           - **passage_id**: (optional) Passage Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -960,7 +960,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -980,7 +980,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1002,7 +1002,7 @@ class Get(object):
           - **waninterface_id**: WAN Interface ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1025,7 +1025,7 @@ class Get(object):
           - **elementaccessconfig_id**: (optional) Element Access Config ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1050,7 +1050,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1070,7 +1070,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1090,7 +1090,7 @@ class Get(object):
           - **element_id**: (optional) Element (Device) ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1115,7 +1115,7 @@ class Get(object):
           - **securityzone_id**: (optional) Security Zone (ZBFW) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1142,7 +1142,7 @@ class Get(object):
           - **elementuser_id**: (optional) Element User ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1166,7 +1166,7 @@ class Get(object):
           - **access_id**: (optional) Access ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1191,7 +1191,7 @@ class Get(object):
           - **elementuser_id**: Element User ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1210,7 +1210,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1228,7 +1228,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1247,7 +1247,7 @@ class Get(object):
           - **operator_id**: Operator ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1268,7 +1268,7 @@ class Get(object):
           - **client_id**: ESP/MSP Client ID (typically their tenant_id)
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1288,7 +1288,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1308,7 +1308,7 @@ class Get(object):
           - **eventcorrelationpolicyrule_id**: (optional) Event Correlation Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1333,7 +1333,7 @@ class Get(object):
           - **eventcorrelationpolicyset_id**: (optional) Event Correlation Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1356,7 +1356,7 @@ class Get(object):
           - **event_id**: Event ID
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1376,7 +1376,7 @@ class Get(object):
           - **externalcaconfig_id**: (optional) External CA Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1399,7 +1399,7 @@ class Get(object):
           - **globalprefixfilter_id**: (optional) Global Prefix Filter ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1422,7 +1422,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1444,7 +1444,7 @@ class Get(object):
           - **hubclustermember_id**: Hub Cluster Member ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1468,7 +1468,7 @@ class Get(object):
           - **hubclustermember_id**: (optional) Hub Cluster Member ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1496,7 +1496,7 @@ class Get(object):
           - **hubcluster_id**: (optional) Hub (DC) Cluster ID
           - **api_version**: API version to use (default v4.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1522,7 +1522,7 @@ class Get(object):
           - **hubcluster_id**: Hub (DC) Cluster ID
           - **api_version**: API version to use (default v4.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1543,7 +1543,7 @@ class Get(object):
           - **idp_id**: (optional) SAML IDentity provider configuration ID
           - **api_version**: API version to use (default v3.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1566,7 +1566,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1589,7 +1589,7 @@ class Get(object):
           - **multicastigmpmembership_id**: (optional) Multicast IGMP Membership ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1620,7 +1620,7 @@ class Get(object):
           - **interface_id**: (optional) Interface ID
           - **api_version**: API version to use (default v4.14)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1649,7 +1649,7 @@ class Get(object):
           - **interface_id**: Interface ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1673,7 +1673,7 @@ class Get(object):
           - **interface_id**: Interface ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1697,7 +1697,7 @@ class Get(object):
           - **interface_id**: Interface ID
           - **api_version**: API version to use (default v3.5)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1721,7 +1721,7 @@ class Get(object):
           - **ipfix_id**: (optional) IPFix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1748,7 +1748,7 @@ class Get(object):
           - **ipfixcollectorcontext_id**: (optional) IPFix Collector Context ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1771,7 +1771,7 @@ class Get(object):
           - **ipfixfiltercontext_id**: (optional) IPFix Filter Context ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1794,7 +1794,7 @@ class Get(object):
           - **ipfixglobalprefix_id**: (optional) IPFix Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1817,7 +1817,7 @@ class Get(object):
           - **ipfixprofile_id**: (optional) IPFix Profile ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1840,7 +1840,7 @@ class Get(object):
           - **ipfixtemplate_id**: (optional) IPFix Template ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1863,7 +1863,7 @@ class Get(object):
           - **ipsecprofile_id**: (optional) IPSEC Profile ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1887,7 +1887,7 @@ class Get(object):
           - **lannetwork_id**: (optional) LAN Network ID
           - **api_version**: API version to use (default v3.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1912,7 +1912,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1932,7 +1932,7 @@ class Get(object):
           - **localprefixfilter_id**: (optional) Local Prefix Filter ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1955,7 +1955,7 @@ class Get(object):
           - **site_id**: Site ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1974,7 +1974,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1992,7 +1992,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2011,7 +2011,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2032,7 +2032,7 @@ class Get(object):
           - **cellular_module_id**: (optional) Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2058,7 +2058,7 @@ class Get(object):
           - **cellular_module_id**: Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2080,7 +2080,7 @@ class Get(object):
           - **cellular_module_id**: Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2102,7 +2102,7 @@ class Get(object):
           - **cellular_module_id**: Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2123,7 +2123,7 @@ class Get(object):
           - **machine_id**: (optional) Machine ID
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2148,7 +2148,7 @@ class Get(object):
           - **status_id**: (optional) Software Status ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2175,7 +2175,7 @@ class Get(object):
           - **machine_id**: Machine ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2195,7 +2195,7 @@ class Get(object):
           - **monitor_id**: 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2215,7 +2215,7 @@ class Get(object):
           - **monitor_id**: 
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2235,7 +2235,7 @@ class Get(object):
           - **monitor_id**: 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2255,7 +2255,7 @@ class Get(object):
           - **monitor_id**: 
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2275,7 +2275,7 @@ class Get(object):
           - **monitor_id**: 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2295,7 +2295,7 @@ class Get(object):
           - **monitor_id**: 
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2316,7 +2316,7 @@ class Get(object):
           - **bulk_metric_id**: Bulk Metric ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2337,7 +2337,7 @@ class Get(object):
           - **monitor_id**: 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2358,7 +2358,7 @@ class Get(object):
           - **metric_id**: Metric ID
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2379,7 +2379,7 @@ class Get(object):
           - **monitor_id**: 
           - **api_version**: API version to use (default v2.4)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2399,7 +2399,7 @@ class Get(object):
           - **monitor_id**: 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2419,7 +2419,7 @@ class Get(object):
           - **monitor_id**: 
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2441,7 +2441,7 @@ class Get(object):
           - **mstp_instance_id**: (optional) MSTP Instance ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2470,7 +2470,7 @@ class Get(object):
           - **mstp_instance_id**: MSTP Instance ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2494,7 +2494,7 @@ class Get(object):
           - **multicastdynamicrp_id**: (optional) Multicast Dynamic RP ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2523,7 +2523,7 @@ class Get(object):
           - **multicastglobalconfig_id**: (optional) Multicast Global Config ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2550,7 +2550,7 @@ class Get(object):
           - **multicastpeergroup_id**: (optional) Multicast Peer Group ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2574,7 +2574,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2596,7 +2596,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2619,7 +2619,7 @@ class Get(object):
           - **multicastrp_id**: (optional) Multicast RP ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2647,7 +2647,7 @@ class Get(object):
           - **multicastsourcesiderp_id**: (optional) Multicast Source Side RP ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2673,7 +2673,7 @@ class Get(object):
           - **multicastsourcesiteconfig_id**: (optional) Multicast Source Site Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2700,7 +2700,7 @@ class Get(object):
           - **multicastwanstatu_id**: (optional) 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2727,7 +2727,7 @@ class Get(object):
           - **natglobalprefix_id**: (optional) NAT Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2750,7 +2750,7 @@ class Get(object):
           - **natlocalprefix_id**: (optional) NAT Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2773,7 +2773,7 @@ class Get(object):
           - **natpolicypool_id**: (optional) NAT Policy Pool ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2797,7 +2797,7 @@ class Get(object):
           - **natpolicyrule_id**: (optional) NAT Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2822,7 +2822,7 @@ class Get(object):
           - **natpolicyset_id**: (optional) NAT Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2845,7 +2845,7 @@ class Get(object):
           - **natpolicyset_id**: NAT Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2865,7 +2865,7 @@ class Get(object):
           - **natpolicysetstack_id**: (optional) NAT Policy Set Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2888,7 +2888,7 @@ class Get(object):
           - **natzone_id**: (optional) NAT Zone ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2911,7 +2911,7 @@ class Get(object):
           - **networkcontext_id**: (optional) Network Context ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2934,7 +2934,7 @@ class Get(object):
           - **networkpolicyglobalprefix_id**: (optional) Network Policy Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2958,7 +2958,7 @@ class Get(object):
           - **networkpolicyrule_id**: (optional) Network Policy Rule ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2983,7 +2983,7 @@ class Get(object):
           - **networkpolicyset_id**: (optional) Network Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3006,7 +3006,7 @@ class Get(object):
           - **networkpolicyset_id**: Network Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3026,7 +3026,7 @@ class Get(object):
           - **networkpolicysetstack_id**: (optional) Network Policy Set Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3049,7 +3049,7 @@ class Get(object):
           - **ngfwsecuritypolicyglobalprefix_id**: (optional) NGFW Security Policy Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3072,7 +3072,7 @@ class Get(object):
           - **ngfwsecuritypolicylocalprefix_id**: (optional) NGFW Security Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3096,7 +3096,7 @@ class Get(object):
           - **ngfwsecuritypolicyrule_id**: (optional) NGFW Security Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3121,7 +3121,7 @@ class Get(object):
           - **ngfwsecuritypolicyset_id**: (optional) NGFW Security Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3144,7 +3144,7 @@ class Get(object):
           - **ngfwsecuritypolicysetstack_id**: (optional) NGFW Security Policy Set Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3168,7 +3168,7 @@ class Get(object):
           - **ntp_id**: (optional) NTP Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3194,7 +3194,7 @@ class Get(object):
           - **ntp_id**: NTP Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3214,7 +3214,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3232,7 +3232,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3252,7 +3252,7 @@ class Get(object):
           - **session_id**: (optional) User Session ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3276,7 +3276,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3295,7 +3295,7 @@ class Get(object):
           - **pathgroup_id**: (optional) Path Group ID (for network service/DC routing)
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3318,7 +3318,7 @@ class Get(object):
           - **permission_id**: (optional) Permission ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3342,7 +3342,7 @@ class Get(object):
           - **policyrule_id**: (optional) Policy Rule ID
           - **api_version**: API version to use (default v3.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3367,7 +3367,7 @@ class Get(object):
           - **policyset_id**: (optional) Policy Set ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3390,7 +3390,7 @@ class Get(object):
           - **policyset_id**: Policy Set ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3411,7 +3411,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3433,7 +3433,7 @@ class Get(object):
           - **prefixfilter_id**: (optional) Prefix Filter ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3458,7 +3458,7 @@ class Get(object):
           - **prioritypolicyglobalprefix_id**: (optional) Priority Policy Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3482,7 +3482,7 @@ class Get(object):
           - **prioritypolicyrule_id**: (optional) Priority Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3507,7 +3507,7 @@ class Get(object):
           - **prioritypolicyset_id**: (optional) Priority Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3530,7 +3530,7 @@ class Get(object):
           - **prioritypolicyset_id**: Priority Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3550,7 +3550,7 @@ class Get(object):
           - **prioritypolicysetstack_id**: (optional) Priority Policy Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3574,7 +3574,7 @@ class Get(object):
           - **prismaaccess_config_id**: (optional) Prisma Acceess Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3598,7 +3598,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3618,7 +3618,7 @@ class Get(object):
           - **radii_id**: (optional) Radii ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3644,7 +3644,7 @@ class Get(object):
           - **radii_id**: Radii ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3665,7 +3665,7 @@ class Get(object):
           - **machine_id**: Machine ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3684,7 +3684,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3702,7 +3702,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3721,7 +3721,7 @@ class Get(object):
           - **role_id**: (optional) Role ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3746,7 +3746,7 @@ class Get(object):
           - **routing_aspathaccesslist_id**: (optional) Routing AS-PATH Access List ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3775,7 +3775,7 @@ class Get(object):
           - **routing_ipcommunitylist_id**: (optional) Routing IP Community List ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3804,7 +3804,7 @@ class Get(object):
           - **routing_prefixlist_id**: (optional) Routing IP Prefix List ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3833,7 +3833,7 @@ class Get(object):
           - **routing_routemap_id**: (optional) Routing Route Map ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3860,7 +3860,7 @@ class Get(object):
           - **sdwanapp_id**: (optional) SDWAN Application ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3884,7 +3884,7 @@ class Get(object):
           - **appstatus_id**: SDWAN App Status ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3905,7 +3905,7 @@ class Get(object):
           - **sdwanapp_id**: SDWAN Application ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3925,7 +3925,7 @@ class Get(object):
           - **sdwanapp_id**: SDWAN Application ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3945,7 +3945,7 @@ class Get(object):
           - **sdwanapp_id**: SDWAN Application ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3966,7 +3966,7 @@ class Get(object):
           - **config_id**: (optional) SDWAN App Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3991,7 +3991,7 @@ class Get(object):
           - **sdwanapp_id**: SDWAN Application ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4012,7 +4012,7 @@ class Get(object):
           - **securitypolicyrule_id**: (optional) Security Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4037,7 +4037,7 @@ class Get(object):
           - **securitypolicyset_id**: (optional) Security Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4060,7 +4060,7 @@ class Get(object):
           - **securityzone_id**: (optional) Security Zone (ZBFW) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4083,7 +4083,7 @@ class Get(object):
           - **servicebindingmap_id**: (optional) Service Binding Map ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4106,7 +4106,7 @@ class Get(object):
           - **serviceendpoint_id**: (optional) Service Endpoint ID
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4129,7 +4129,7 @@ class Get(object):
           - **servicelabel_id**: (optional) Service Label ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4153,7 +4153,7 @@ class Get(object):
           - **anynetlink_id**: Anynet (Secure Fabric) Link ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4174,7 +4174,7 @@ class Get(object):
           - **site_id**: Site ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4195,7 +4195,7 @@ class Get(object):
           - **extension_id**: (optional) Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4220,7 +4220,7 @@ class Get(object):
           - **site_id**: Site ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4241,7 +4241,7 @@ class Get(object):
           - **ipfixlocalprefix_id**: (optional) IPFix Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4267,7 +4267,7 @@ class Get(object):
           - **natlocalprefix_id**: (optional) NAT Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4293,7 +4293,7 @@ class Get(object):
           - **networkpolicylocalprefix_id**: (optional) Network Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4319,7 +4319,7 @@ class Get(object):
           - **ngfwsecuritypolicylocalprefix_id**: (optional) NGFW Security Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4345,7 +4345,7 @@ class Get(object):
           - **prioritypolicylocalprefix_id**: (optional) Priority Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4370,7 +4370,7 @@ class Get(object):
           - **site_id**: Site ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4390,7 +4390,7 @@ class Get(object):
           - **site_id**: Site ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4410,7 +4410,7 @@ class Get(object):
           - **site_id**: Site ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4430,7 +4430,7 @@ class Get(object):
           - **site_id**: (optional) Site ID
           - **api_version**: API version to use (default v4.7)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4454,7 +4454,7 @@ class Get(object):
           - **sitesecurityzone_id**: (optional) Site Security Zone ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4481,7 +4481,7 @@ class Get(object):
           - **snmpagent_id**: (optional) SNMP Agent ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4510,7 +4510,7 @@ class Get(object):
           - **snmptrap_id**: (optional) SNMP Trap ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4538,7 +4538,7 @@ class Get(object):
           - **software_id**: (optional) Software ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4563,7 +4563,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4583,7 +4583,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4604,7 +4604,7 @@ class Get(object):
           - **spokecluster_id**: (optional) Spoke Cluster ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4630,7 +4630,7 @@ class Get(object):
           - **spokecluster_id**: Spoke Cluster ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4653,7 +4653,7 @@ class Get(object):
           - **staticroute_id**: (optional) Static Route ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4682,7 +4682,7 @@ class Get(object):
           - **staticroute_id**: Static Route ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4704,7 +4704,7 @@ class Get(object):
           - **syslogserverprofile_id**: (optional) Sys Log Server Profile ID 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4729,7 +4729,7 @@ class Get(object):
           - **syslogserver_id**: (optional) SYSLOG server ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4756,7 +4756,7 @@ class Get(object):
           - **ntp_id**: (optional) NTP Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4779,7 +4779,7 @@ class Get(object):
           - **anynetlink_id**: Anynet (Secure Fabric) Link ID
           - **api_version**: API version to use (default v3.4)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4798,7 +4798,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4816,7 +4816,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4834,7 +4834,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4853,7 +4853,7 @@ class Get(object):
           - **extension_id**: (optional) Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4875,7 +4875,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4894,7 +4894,7 @@ class Get(object):
           - **ipfixlocalprefix_id**: (optional) IPFix Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4917,7 +4917,7 @@ class Get(object):
           - **networkpolicylocalprefix_id**: (optional) Network Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4940,7 +4940,7 @@ class Get(object):
           - **operator_id**: (optional) Operator ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4962,7 +4962,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4981,7 +4981,7 @@ class Get(object):
           - **permission_id**: (optional) Permission ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5004,7 +5004,7 @@ class Get(object):
           - **prioritypolicylocalprefix_id**: (optional) Priority Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5026,7 +5026,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5044,7 +5044,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5062,7 +5062,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5080,7 +5080,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5099,7 +5099,7 @@ class Get(object):
           - **user_id**: (optional) User ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5122,7 +5122,7 @@ class Get(object):
           - **vfflicense_id**: Virtual Form Factor License ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5143,7 +5143,7 @@ class Get(object):
           - **token_id**: (optional) Token ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5168,7 +5168,7 @@ class Get(object):
           - **vfflicense_id**: (optional) Virtual Form Factor License ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5192,7 +5192,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5213,7 +5213,7 @@ class Get(object):
           - **vpnlink_id**: VPN Link ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5233,7 +5233,7 @@ class Get(object):
           - **vpnlink_id**: VPN Link ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5253,7 +5253,7 @@ class Get(object):
           - **waninterfacelabel_id**: (optional) WAN Interface Label ID
           - **api_version**: API version to use (default v2.4)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5277,7 +5277,7 @@ class Get(object):
           - **waninterface_id**: (optional) WAN Interface ID
           - **api_version**: API version to use (default v2.7)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5303,7 +5303,7 @@ class Get(object):
           - **waninterface_id**: WAN Interface ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5324,7 +5324,7 @@ class Get(object):
           - **wannetwork_id**: (optional) WAN Network ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5347,7 +5347,7 @@ class Get(object):
           - **wanoverlaychannel_id**: (optional) WAN Overlay Channel ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5370,7 +5370,7 @@ class Get(object):
           - **wanoverlay_id**: (optional) WAN Overlay ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5393,7 +5393,7 @@ class Get(object):
           - **site_id**: Site ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5414,7 +5414,7 @@ class Get(object):
           - **waninterface_id**: WAN Interface ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5435,7 +5435,7 @@ class Get(object):
           - **extension_id**: (optional) Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller

@@ -64,7 +64,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -86,7 +86,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -108,7 +108,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -130,7 +130,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -153,7 +153,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -176,7 +176,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -198,7 +198,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -221,7 +221,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -246,7 +246,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -273,7 +273,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -300,7 +300,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -324,7 +324,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -346,7 +346,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -369,7 +369,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -393,7 +393,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -416,7 +416,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -439,7 +439,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -462,7 +462,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -486,7 +486,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -510,7 +510,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -533,7 +533,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -556,7 +556,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -578,7 +578,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -600,7 +600,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -622,7 +622,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -646,7 +646,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -670,7 +670,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -692,7 +692,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -714,7 +714,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -738,7 +738,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -764,7 +764,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -788,7 +788,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -811,7 +811,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -836,7 +836,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -860,7 +860,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -882,7 +882,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -905,7 +905,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -930,7 +930,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -955,7 +955,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -978,7 +978,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1000,7 +1000,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1022,7 +1022,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1044,7 +1044,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1066,7 +1066,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1088,7 +1088,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1111,7 +1111,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1134,7 +1134,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1156,7 +1156,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1180,7 +1180,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1205,7 +1205,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1230,7 +1230,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1254,7 +1254,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1278,7 +1278,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1302,7 +1302,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1324,7 +1324,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1348,7 +1348,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1372,7 +1372,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1394,7 +1394,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1416,7 +1416,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1438,7 +1438,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1460,7 +1460,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1482,7 +1482,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1504,7 +1504,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1526,7 +1526,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1548,7 +1548,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1570,7 +1570,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1592,7 +1592,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1614,7 +1614,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1636,7 +1636,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1658,7 +1658,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1681,7 +1681,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1704,7 +1704,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1726,7 +1726,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1748,7 +1748,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1770,7 +1770,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1792,7 +1792,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1814,7 +1814,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1837,7 +1837,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1861,7 +1861,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1885,7 +1885,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1909,7 +1909,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1933,7 +1933,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1957,7 +1957,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1981,7 +1981,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2005,7 +2005,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2029,7 +2029,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2053,7 +2053,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2077,7 +2077,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2101,7 +2101,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2125,7 +2125,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2149,7 +2149,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2173,7 +2173,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2197,7 +2197,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2221,7 +2221,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2245,7 +2245,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2269,7 +2269,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2293,7 +2293,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2317,7 +2317,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2341,7 +2341,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2365,7 +2365,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2389,7 +2389,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2413,7 +2413,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2437,7 +2437,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2461,7 +2461,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2485,7 +2485,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2509,7 +2509,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2534,7 +2534,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2558,7 +2558,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2580,7 +2580,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2602,7 +2602,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2624,7 +2624,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2646,7 +2646,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2670,7 +2670,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2694,7 +2694,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2717,7 +2717,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2741,7 +2741,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2764,7 +2764,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2786,7 +2786,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2808,7 +2808,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2830,7 +2830,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2852,7 +2852,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2874,7 +2874,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2896,7 +2896,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2918,7 +2918,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2941,7 +2941,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2964,7 +2964,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2986,7 +2986,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3008,7 +3008,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3030,7 +3030,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3052,7 +3052,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3074,7 +3074,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3096,7 +3096,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3118,7 +3118,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3140,7 +3140,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3162,7 +3162,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3184,7 +3184,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3206,7 +3206,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3229,7 +3229,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3252,7 +3252,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3274,7 +3274,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3296,7 +3296,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3318,7 +3318,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3340,7 +3340,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3362,7 +3362,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3384,7 +3384,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3406,7 +3406,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3428,7 +3428,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3450,7 +3450,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3473,7 +3473,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3496,7 +3496,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3518,7 +3518,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3540,7 +3540,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3562,7 +3562,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3584,7 +3584,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3607,7 +3607,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3630,7 +3630,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3652,7 +3652,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3674,7 +3674,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3697,7 +3697,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3720,7 +3720,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3742,7 +3742,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3764,7 +3764,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3786,7 +3786,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3808,7 +3808,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3831,7 +3831,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3855,7 +3855,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3878,7 +3878,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3900,7 +3900,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3922,7 +3922,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3945,7 +3945,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3968,7 +3968,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3990,7 +3990,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4012,7 +4012,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4034,7 +4034,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4056,7 +4056,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4079,7 +4079,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4102,7 +4102,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4125,7 +4125,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4149,7 +4149,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4172,7 +4172,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4194,7 +4194,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4216,7 +4216,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4240,7 +4240,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4266,7 +4266,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4292,7 +4292,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4318,7 +4318,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4344,7 +4344,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4370,7 +4370,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4396,7 +4396,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4422,7 +4422,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4446,7 +4446,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4469,7 +4469,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4493,7 +4493,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4517,7 +4517,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4540,7 +4540,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4562,7 +4562,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4584,7 +4584,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4606,7 +4606,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4628,7 +4628,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4650,7 +4650,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4672,7 +4672,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4694,7 +4694,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4716,7 +4716,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4738,7 +4738,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4760,7 +4760,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4782,7 +4782,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4804,7 +4804,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4826,7 +4826,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4849,7 +4849,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4873,7 +4873,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4897,7 +4897,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4921,7 +4921,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4945,7 +4945,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4969,7 +4969,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4993,7 +4993,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5017,7 +5017,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5040,7 +5040,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5063,7 +5063,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5087,7 +5087,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5110,7 +5110,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5133,7 +5133,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5156,7 +5156,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5180,7 +5180,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5206,7 +5206,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5230,7 +5230,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5252,7 +5252,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5274,7 +5274,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5296,7 +5296,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5319,7 +5319,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5344,7 +5344,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5368,7 +5368,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5392,7 +5392,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5416,7 +5416,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5438,7 +5438,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5462,7 +5462,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5486,7 +5486,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5508,7 +5508,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5530,7 +5530,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5553,7 +5553,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5576,7 +5576,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5598,7 +5598,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5620,7 +5620,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5643,7 +5643,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5666,7 +5666,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5688,7 +5688,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5710,7 +5710,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5732,7 +5732,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5754,7 +5754,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5776,7 +5776,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5798,7 +5798,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5820,7 +5820,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5842,7 +5842,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5864,7 +5864,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5887,7 +5887,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5911,7 +5911,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5934,7 +5934,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5956,7 +5956,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5979,7 +5979,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -6002,7 +6002,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -6024,7 +6024,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -6047,7 +6047,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -6070,7 +6070,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -6093,7 +6093,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -6116,7 +6116,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -6138,7 +6138,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -6160,7 +6160,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -6182,7 +6182,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -6204,7 +6204,7 @@ class Post(object):
           **Payload Attributes:** 
 
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller

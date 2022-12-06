@@ -17,11 +17,11 @@ import sys
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright (c) 2017-2022 Prisma SASE, Inc"
+__copyright__ = "Copyright © 2022 Palo Alto Networks. All rights reserved"
 __license__ = """
     MIT License
 
-    Copyright (c) 2017-2022 Prisma SASE, Inc
+    **Copyright:** © 2022 Palo Alto Networks. All rights reserved
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -155,13 +155,13 @@ class Interactive(object):
         # call the login API.
         response = self._parent_class.post.login({"email": email, "password": password})
 
-        if response.cgx_status:
+        if response.sdk_status:
             # Check for SAML 2.0 login or different region
-            if not response.cgx_content.get('x_auth_token'):
+            if not response.sdk_content.get('x_auth_token'):
                 # SAML attributes
-                urlpath = response.cgx_content.get("urlpath", "")
-                request_id = response.cgx_content.get("requestId", "")
-                login_region = response.cgx_content.get("login_region", "")
+                urlpath = response.sdk_content.get("urlpath", "")
+                request_id = response.sdk_content.get("requestId", "")
+                login_region = response.sdk_content.get("login_region", "")
                 if urlpath and request_id:
                     # SAML 2.0
                     # try to open web browser automatically
@@ -183,7 +183,7 @@ class Interactive(object):
                     for i in range(saml_wait_loops):
                         print('Waiting for {0} seconds for authentication...'.format((20 - i) * 5))
                         saml_response = self.check_sso_login(email, request_id)
-                        if saml_response.cgx_status and saml_response.cgx_content.get('x_auth_token'):
+                        if saml_response.sdk_status and saml_response.sdk_content.get('x_auth_token'):
                             found_auth_token = True
                             break
                         # wait before retry.
@@ -218,7 +218,7 @@ class Interactive(object):
             api_logger.info('Login API response OK.')
             # if we got here, we either got an x_auth_token in the original login, or
             # we got an auth_token cookie set via SAML. Figure out which.
-            auth_token = response.cgx_content.get('x_auth_token')
+            auth_token = response.sdk_content.get('x_auth_token')
             if auth_token:
                 # token in the original login (not saml) means region parsing has not been done.
                 # do now, and recheck if cookie needs set.
@@ -226,7 +226,7 @@ class Interactive(object):
                 self._parent_class.update_region_to_controller(auth_region)
                 self._parent_class.reparse_login_cookie_after_region_update(response)
             # debug info if needed
-            api_logger.debug("AUTH_TOKEN=%s", response.cgx_content.get('x_auth_token'))
+            api_logger.debug("AUTH_TOKEN=%s", response.sdk_content.get('x_auth_token'))
 
             # Step 2: Get operator profile for tenant ID and other info. Verify we have tenant_id.
             if self.update_profile_vars() and self._parent_class.tenant_id:
@@ -271,13 +271,13 @@ class Interactive(object):
 
         else:
             # log response when debug
-            api_logger.debug("LOGIN_FAIL_RESPONSE = %s", json.dumps(response.cgx_content, indent=4))
+            api_logger.debug("LOGIN_FAIL_RESPONSE = %s", json.dumps(response.sdk_content, indent=4))
             # print login error
             error_text = self._parent_class.pull_content_error(response)
             if error_text:
                 print("Login failed: {0}".format(error_text))
             else:
-                print('Login failed, please try again:', response.cgx_content)
+                print('Login failed, please try again:', response.sdk_content)
             # Flush command-line entered login info if failure.
             self._parent_class.email = None
             self._parent_class.password = None
@@ -286,7 +286,8 @@ class Interactive(object):
             self._parent_class.remove_header('Referer')
         return False
 
-    def login_secret(self, client_id=None, client_secret=None, tsg_id=None, prompt=None):
+    def login_secret(self, client_id=None, client_secret=None, tsg_id=None, grant_type=None,
+                     scope=None, prompt=None):
         """
         Interactive login using the `prisma_sase.API` object. This function is more robust and handles SAML and MSP accounts.
         Expects interactive capability. if this is not available, use `prisma_sase.API.post.login` directly.
@@ -300,6 +301,8 @@ class Interactive(object):
             - `minimal` displays "login: " and "Password: "
             - `detailed` displays "<controller hostname> login: " and "<controller hostname> password: "
             - Any other value will display "<entered value> login: " and <entered value> password: "
+         - **grant_type**: Optional. Grant Type for generating JWT. Default is 'client_credentials'.
+         - **scope**: Optional. Authentication scope. Default is 'tsg_id:<tsg_id> email profile'.
 
         **Returns:** Bool. In addition the function will mutate the `prisma_sase.API` constructor items as needed.
         """
@@ -314,46 +317,64 @@ class Interactive(object):
             client_id_prompt = "Prisma SASE Client ID: "
             client_secret_prompt = "Prisma SASE Client Secret: "
             tsg_id_prompt = "Prisma SASE TSG ID: "
+            grant_type_prompt = "Prisma SASE Authentication Grant Type: "
+            scope_prompt = "Prisma SASE Authentication Scope: "
         elif prompt.lower() == "minimal":
             client_id_prompt = "Client ID: "
             client_secret_prompt = "Client Secret: "
             tsg_id_prompt = "TSG ID: "
+            grant_type_prompt = "Grant Type: "
+            scope_prompt = "Scope: "
         elif prompt.lower() == "detailed":
             client_id_prompt = "{0} Client ID: ".format(self._parent_class.controller)
             client_secret_prompt = "{0} Client Secret: ".format(self._parent_class.controller)
             tsg_id_prompt = "{0} TSG ID: ".format(self._parent_class.controller)
+            grant_type_prompt = "{0} Authentication Grant Type: ".format(self._parent_class.controller)
+            scope_prompt = "{0} Authentication Scope: ".format(self._parent_class.controller)
         else:
             # custom prompt
             client_id_prompt = "{0} Client ID: ".format(prompt)
             client_secret_prompt = "{0} Client Secret: ".format(prompt)
-            tsg_id_prompt = "{0}} TSG ID: ".format(prompt)
+            tsg_id_prompt = "{0} TSG ID: ".format(prompt)
+            grant_type_prompt = "{0} Grant Type: ".format(prompt)
+            scope_prompt = "{0} Scope: ".format(prompt)
 
         # if email not given in function, or if first login fails, prompt.
 
         if client_id is None:
-            # If user is not set, pull from cache. If not in cache, prompt.
+            # If client_id is not set, pull from cache. If not in cache, prompt.
             if self._parent_class.client_id:
                 client_id = self._parent_class.client_id
             else:
                 client_id = compat_input(client_id_prompt)
 
         if client_secret is None:
-            # if pass not given on function, or if first login fails, prompt.
+            # if client_secret not given on function, or if first login fails, prompt.
             if self._parent_class.client_secret:
                 client_secret = self._parent_class.client_secret
             else:
                 client_secret = getpass.getpass(client_secret_prompt)
 
         if tsg_id is None:
-            # if pass not given on function, or if first login fails, prompt.
+            # if tsg_id not given on function, or if first login fails, prompt.
             if self._parent_class.tsg_id:
                 tsg_id = self._parent_class.tsg_id
             else:
-                tsg_id = getpass.getpass(tsg_id_prompt)
+                tsg_id = compat_input(tsg_id_prompt)
+
+        if grant_type is None:
+            # if grant_type not given.
+            grant_type = 'client_credentials'
+
+        if scope is None:
+            # if grant_type not given.
+            scope = 'tsg_id:{0} email profile'.format(tsg_id)
 
         self._parent_class.client_id = client_id
         self._parent_class.client_secret = client_secret
         self._parent_class.tsg_id = tsg_id
+        self._parent_class.grant_type = grant_type
+        self._parent_class.scope = scope
 
         response = self._parent_class._generate_jwt()
         self._parent_class.use_jwt = False
@@ -435,19 +456,19 @@ class Interactive(object):
                                           data=account_data, jsonify_data=False,
                                           content_json=False)
 
-        if account_response.cgx_status:
+        if account_response.sdk_status:
 
             if action == 'post':
 
                 api_logger.info('Creating Service Account response OK..')
 
-                sa_client_id = account_response.cgx_content.get('client_id')
-                sa_client_secret = account_response.cgx_content.get('client_secret')
-                sa_contact_email = account_response.cgx_content.get('contact_email')
-                sa_description = account_response.cgx_content.get('description')
-                sa_name = account_response.cgx_content.get('client_secret')
-                sa_tsg_id = account_response.cgx_content.get('tsg_id')
-                sa_req_id = account_response.cgx_content.get('id')
+                sa_client_id = account_response.sdk_content.get('client_id')
+                sa_client_secret = account_response.sdk_content.get('client_secret')
+                sa_contact_email = account_response.sdk_content.get('contact_email')
+                sa_description = account_response.sdk_content.get('description')
+                sa_name = account_response.sdk_content.get('client_secret')
+                sa_tsg_id = account_response.sdk_content.get('tsg_id')
+                sa_req_id = account_response.sdk_content.get('id')
 
                 print("Service Account deatils:")
                 print("Client ID: {0}".format(sa_client_id))
@@ -467,17 +488,17 @@ class Interactive(object):
                                                   data=policy_data, jsonify_data=False,
                                                   content_json=False)
 
-                if policy_response.cgx_status:
+                if policy_response.sdk_status:
                     api_logger.debug("Assigned role {0} to account {1}".format(data['role'], data['name']))
                     print("Service account creation completed successfully")
                     return account_response
                 else:
-                    api_logger.debug("SERVICE_ACCOUNT_ASSIGN_POLICY_FAILURE = %s", json.dumps(policy_response.cgx_content, indent=4))
+                    api_logger.debug("SERVICE_ACCOUNT_ASSIGN_POLICY_FAILURE = %s", json.dumps(policy_response.sdk_content, indent=4))
                     error_text = self._parent_class.pull_content_error(policy_response)
                     if error_text:
                         print("assigning policy failed: {0}".format(error_text))
                     else:
-                        print('assigning policy, please try again:', policy_response.cgx_content)
+                        print('assigning policy, please try again:', policy_response.sdk_content)
 
                     return account_response
 
@@ -491,13 +512,13 @@ class Interactive(object):
             # Step 2: Get operator profile for tenant ID and other info.
             else:
             # log response when debug
-                api_logger.debug("SERVICE_ACCOUNT_CREATION_FAIL_RESPONSE = %s", json.dumps(account_response.cgx_content, indent=4))
+                api_logger.debug("SERVICE_ACCOUNT_CREATION_FAIL_RESPONSE = %s", json.dumps(account_response.sdk_content, indent=4))
                 # print login error
                 error_text = self._parent_class.pull_content_error(account_response)
                 if error_text:
                     print("service account creation failed: {0}".format(error_text))
                 else:
-                    print('service account creation, please try again:', account_response.cgx_content)
+                    print('service account creation, please try again:', account_response.sdk_content)
 
                 return account_response
 
@@ -528,11 +549,11 @@ class Interactive(object):
                 # attempt to login as client
                 clogin_resp = self._parent_class.post.clients_login(chosen_client_id, {})
 
-                if clogin_resp.cgx_status:
+                if clogin_resp.sdk_status:
                     # see if we need to change regions.
-                    redirect_region = clogin_resp.cgx_content.get('redirect_region')
-                    redirect_x_auth_token = clogin_resp.cgx_content.get('redirect_x_auth_token')
-                    redirect_urlpath = clogin_resp.cgx_content.get('redirect_urlpath')
+                    redirect_region = clogin_resp.sdk_content.get('redirect_region')
+                    redirect_x_auth_token = clogin_resp.sdk_content.get('redirect_x_auth_token')
+                    redirect_urlpath = clogin_resp.sdk_content.get('redirect_urlpath')
 
                     if redirect_region is not None and redirect_x_auth_token is not None:
                         api_logger.debug('CLIENT REGION SWITCH: %s -> %s', self._parent_class.controller_region,
@@ -623,11 +644,11 @@ class Interactive(object):
         # make the client_logout call.
         clogout_resp = self._parent_class.post.clients_logout({})
 
-        if clogout_resp.cgx_status:
+        if clogout_resp.sdk_status:
             # see if we need to change regions.
-            redirect_region = clogout_resp.cgx_content.get('redirect_region')
-            redirect_x_auth_token = clogout_resp.cgx_content.get('redirect_x_auth_token')
-            redirect_urlpath = clogout_resp.cgx_content.get('redirect_urlpath')
+            redirect_region = clogout_resp.sdk_content.get('redirect_region')
+            redirect_x_auth_token = clogout_resp.sdk_content.get('redirect_x_auth_token')
+            redirect_urlpath = clogout_resp.sdk_content.get('redirect_urlpath')
 
             if redirect_region is not None and redirect_x_auth_token is not None:
                 api_logger.debug('CLIENT REGION SWITCH: %s -> %s', self._parent_class.controller_region,
@@ -696,8 +717,8 @@ class Interactive(object):
         """
         api_logger.info('tenant_update_vars function:')
         tenant_resp = self._parent_class.get.tenants()
-        status = tenant_resp.cgx_status
-        tenant_dict = tenant_resp.cgx_content
+        status = tenant_resp.sdk_status
+        tenant_dict = tenant_resp.sdk_content
 
         if status:
 
@@ -739,16 +760,16 @@ class Interactive(object):
 
         profile = self._parent_class.get.profile()
 
-        if profile.cgx_status:
+        if profile.sdk_status:
 
             # if successful, save tenant id and email info to cli state.
-            self._parent_class.tenant_id = profile.cgx_content.get('tenant_id')
-            self._parent_class.email = profile.cgx_content.get('email')
-            self._parent_class.operator_id = profile.cgx_content.get('id')
+            self._parent_class.tenant_id = profile.sdk_content.get('tenant_id')
+            self._parent_class.email = profile.sdk_content.get('email')
+            self._parent_class.operator_id = profile.sdk_content.get('id')
             # for backwards compatible _user_id after promoting operator_id to public.
             self._parent_class._user_id = self._parent_class.operator_id
-            self._parent_class.roles = profile.cgx_content.get('roles', [])
-            self._parent_class.token_session = profile.cgx_content.get('token_session')
+            self._parent_class.roles = profile.sdk_content.get('roles', [])
+            self._parent_class.token_session = profile.sdk_content.get('token_session')
 
             return True
 
@@ -773,10 +794,10 @@ class Interactive(object):
             clients = self._parent_class.get.tenant_clients()
             clients_perms = self._parent_class.get.esp_operator_permissions(self._parent_class.operator_id)
 
-            client_status = clients.cgx_status
-            clients_dict = clients.cgx_content
-            c_perms_status = clients_perms.cgx_status
-            c_perms_dict = clients_perms.cgx_content
+            client_status = clients.sdk_status
+            clients_dict = clients.sdk_content
+            c_perms_status = clients_perms.sdk_status
+            c_perms_dict = clients_perms.sdk_content
 
             # Build MSP/ESP id-name dict, get list of allowed tenants.
             if client_status and c_perms_status:
@@ -978,7 +999,7 @@ class Interactive(object):
         response = self._parent_class.post.login(data=data)
 
         # If valid response, but no token.
-        if not response.cgx_content.get('x_auth_token'):
+        if not response.sdk_content.get('x_auth_token'):
             # no valid login yet.
             return response
 
@@ -1008,7 +1029,7 @@ class Interactive(object):
         if force or not self._parent_class.token_session:
             # Call Logout
             result = self._parent_class.get.logout()
-            if result.cgx_status:
+            if result.sdk_status:
                 # clear info from session.
                 self._parent_class.tenant_id = None
                 self._parent_class.tenant_name = None
@@ -1026,7 +1047,7 @@ class Interactive(object):
                 if session.headers.get('X-Auth-Token'):
                     self._parent_class.remove_header('X-Auth-Token')
 
-            return result.cgx_status
+            return result.sdk_status
 
         else:
             # Token Session and not forced.
@@ -1055,15 +1076,15 @@ class Interactive(object):
         """
         JD (JSON Dump) function. Meant for quick pretty-printing of Prisma SASE Response objects.
 
-        Example: `jd(cgx_sess.get.sites())`
+        Example: `jd(sdk_sess.get.sites())`
 
         **Returns:** No Return, directly prints all output.
         """
         try:
-            # attempt to print the cgx_content. should always be a Dict if it exists.
-            print(json.dumps(api_response.cgx_content, indent=4))
+            # attempt to print the sdk_content. should always be a Dict if it exists.
+            print(json.dumps(api_response.sdk_content, indent=4))
         except (TypeError, ValueError, AttributeError):
-            # cgx_content did not exist, or was not JSON serializable. Try pretty printing the base obj.
+            # sdk_content did not exist, or was not JSON serializable. Try pretty printing the base obj.
             try:
                 print(json.dumps(api_response, indent=4))
             except (TypeError, ValueError, AttributeError):

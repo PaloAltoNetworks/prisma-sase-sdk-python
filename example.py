@@ -4,17 +4,17 @@ Prisma SASE API -> list sites, example proof of concept.
 
 **Author:** Palo Alto Networks
 
-**Copyright:** (c) 2017-2022 Palo Alto Networks, Inc
+**Copyright:** © 2022 Palo Alto Networks. All rights reserved
 
 **License:** MIT
 """
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright (c) 2017-2022 Palo Alto Networks, Inc"
+__copyright__ = "Copyright © 2022 Palo Alto Networks. All rights reserved"
 __license__ = """
     MIT License
 
-    Copyright (c) 2017-2022 Palo Alto Networks, Inc
+    Copyright © 2022 Palo Alto Networks. All rights reserved
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -130,9 +130,9 @@ while sdk.tenant_name is None:
 response = sdk.get.sites()
 
 # status is a boolean based on success/failure. If success, print raw dictionary
-if response.cgx_status:
+if response.sdk_status:
     # Can Print as formatted JSON using json module using commented code below.
-    # raw_sites_dict = response.cgx_content
+    # raw_sites_dict = response.sdk_content
     # print(json.dumps(raw_sites_dict, indent=4))
     # But Prisma SASE has a built-in pretty printer, can just use that on native response as a shortcut.
     # Output is the same as code above.
@@ -146,4 +146,4 @@ else:
     jd_detailed(response)
 
 # end of script, run logout to clear session.
-print(sdk.get.logout().cgx_content)
+print(sdk.get.logout().sdk_content)

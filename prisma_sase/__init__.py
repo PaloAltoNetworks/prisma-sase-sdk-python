@@ -195,10 +195,10 @@ def jdout(api_response):
     **Returns:** Pretty-formatted text of the Response body
     """
     try:
-        # attempt to output the cgx_content. should always be a Dict if it exists.
-        output = json.dumps(api_response.cgx_content, indent=4)
+        # attempt to output the sdk_content. should always be a Dict if it exists.
+        output = json.dumps(api_response.sdk_content, indent=4)
     except (TypeError, ValueError, AttributeError):
-        # cgx_content did not exist, or was not JSON serializable. Try pretty output the base obj.
+        # sdk_content did not exist, or was not JSON serializable. Try pretty output the base obj.
         try:
             output = json.dumps(api_response, indent=4)
         except (TypeError, ValueError, AttributeError):
@@ -212,7 +212,7 @@ def jd_detailed(api_response, sensitive=False):
     JD (JSON Dump) Detailed function. Meant for quick DETAILED pretty-printing of Prisma SASE Request and Response
     objects for troubleshooting.
 
-    Example: `jd_detailed(cgx_sess.get.sites())`
+    Example: `jd_detailed(sdk_sess.get.sites())`
 
       **Parameters:**
 
@@ -279,12 +279,12 @@ def jdout_detailed(api_response, sensitive=False):
             output += "\t{0}: {1}\n".format(key, value)
         try:
             # look for CGX content first.
-            output += "RESPONSE DATA:\n{0}".format(json.dumps(api_response.cgx_content, indent=4))
+            output += "RESPONSE DATA:\n{0}".format(json.dumps(api_response.sdk_content, indent=4))
         except (TypeError, ValueError, AttributeError):
             # look for standard response data.
             output += "RESPONSE DATA:\n{0}".format(json.dumps(json.loads(api_response.content), indent=4))
     except (TypeError, ValueError, AttributeError, UnicodeDecodeError):
-        # cgx_content did not exist, or was not JSON serializable. Try pretty output the base obj.
+        # sdk_content did not exist, or was not JSON serializable. Try pretty output the base obj.
         try:
             output = json.dumps(api_response, indent=4)
         except (TypeError, ValueError, AttributeError):
@@ -468,9 +468,9 @@ class API(object):
         # Identify SDK in the User-Agent.
         user_agent = self._session.headers.get('User-Agent')
         if user_agent:
-            user_agent += ' (CGX SDK v{0})'.format(self.version)
+            user_agent += ' (PRISMA SASE SDK v{0})'.format(self.version)
         else:
-            user_agent = 'python-requests/UNKNOWN (CGX SDK v{0})'.format(self.version)
+            user_agent = 'python-requests/UNKNOWN (PRISMA SASE SDK v{0})'.format(self.version)
 
         # Update Headers
         self._session.headers.update({
@@ -494,7 +494,7 @@ class API(object):
                 websocketlib_name = 'websockets'
             if not websocketlib_version:
                 websocketlib_version = 'UNKNOWN'
-            ws_user_agent = 'python-{0}/{1} (CGX SDK v{2})'.format(websocketlib_name,
+            ws_user_agent = 'python-{0}/{1} (PRISMA SASE SDK v{2})'.format(websocketlib_name,
                                                                    websocketlib_version,
                                                                    self.version)
             self._websocket_headers = {
@@ -998,11 +998,11 @@ class API(object):
 
         **Returns:** Requests.Response object, extended with:
 
-          - **cgx_status**: Bool, True if a successful Prisma SASE response, False if error.
-          - **cgx_content**: Content of the response, guaranteed to be in Dict format. Empty/invalid responses
+          - **sdk_status**: Bool, True if a successful Prisma SASE response, False if error.
+          - **sdk_content**: Content of the response, guaranteed to be in Dict format. Empty/invalid responses
           will be converted to a Dict response.
-          - **cgx_errors**: Text error messages if any are present. None if none. List if raw_msgs is True.
-          - **cgx_warnings**: Text warning messages if any are present. None if none. List if raw_msgs is True.
+          - **sdk_errors**: Text error messages if any are present. None if none. List if raw_msgs is True.
+          - **sdk_warnings**: Text warning messages if any are present. None if none. List if raw_msgs is True.
 
         """
         # pull retry related items from Constructor if not specified.
@@ -1058,7 +1058,7 @@ class API(object):
                                              stream=True, timeout=timeout, headers=headers, allow_redirects=False)
 
             # Request complete - lets parse.
-            # if it's a non-CGX-good response, return with cgx_status = False
+            # if it's a non-CGX-good response, return with sdk_status = False
             if response.status_code not in [requests.codes.ok,
                                             requests.codes.no_content,
                                             requests.codes.created,
@@ -1082,16 +1082,21 @@ class API(object):
                 api_logger.debug("Error, non-200 response received: %s", response.status_code)
 
                 # CGX extend requests.Response for return
-                response.cgx_status = False
-                response.cgx_content = self._catch_nonjson_streamresponse(response.text)
+                response.sdk_status = False
+                response.sdk_content = self._catch_nonjson_streamresponse(response.text)
 
                 # CGX extend requests.Response for any errors/warnings.
-                response.cgx_warnings = self.pull_content_warning(response, raw=raw_msgs)
-                response.cgx_errors = self.pull_content_error(response, raw=raw_msgs)
+                response.sdk_warnings = self.pull_content_warning(response, raw=raw_msgs)
+                response.sdk_errors = self.pull_content_error(response, raw=raw_msgs)
+
+                response.cgx_status = response.sdk_status
+                response.cgx_content = response.sdk_content
+                response.cgx_warnings = response.sdk_warnings
+                response.cgx_errors = response.sdk_errors
 
                 # We are in a failed request. If no error text in response, give the response code and detail.
-                if response.cgx_errors is None:
-                    response.cgx_errors = text_type("{0} ({1})".format(response.reason, response.status_code))
+                if response.sdk_errors is None:
+                    response.sdk_errors = text_type("{0} ({1})".format(response.reason, response.status_code))
 
                 return response
 
@@ -1110,12 +1115,18 @@ class API(object):
                     api_logger.debug('RESPONSE NOT LOGGED (sensitive content)')
 
                 # CGX extend requests.Response for return
-                response.cgx_status = True
-                response.cgx_content = self._catch_nonjson_streamresponse(response.text)
+                response.sdk_status = True
+                response.sdk_content = self._catch_nonjson_streamresponse(response.text)
 
                 # CGX extend requests.Response for any errors/warnings.
-                response.cgx_warnings = self.pull_content_warning(response, raw=raw_msgs)
-                response.cgx_errors = self.pull_content_error(response, raw=raw_msgs)
+                response.sdk_warnings = self.pull_content_warning(response, raw=raw_msgs)
+                response.sdk_errors = self.pull_content_error(response, raw=raw_msgs)
+
+                response.cgx_status = response.sdk_status
+                response.cgx_content = response.sdk_content
+                response.cgx_warnings = response.sdk_warnings
+                response.cgx_errors = response.sdk_errors
+
                 return response
 
         except (requests.exceptions.Timeout, requests.exceptions.ConnectionError, urllib3.exceptions.MaxRetryError)\
@@ -1127,8 +1138,8 @@ class API(object):
             response = requests.Response
 
             # CGX extend requests.Response for return
-            response.cgx_status = False
-            response.cgx_content = {
+            response.sdk_status = False
+            response.sdk_content = {
                 '_error': [
                     {
                         'message': 'REST Request Exception: {}'.format(e),
@@ -1138,8 +1149,14 @@ class API(object):
             }
 
             # CGX extend requests.Response for any errors/warnings.
-            response.cgx_warnings = self.pull_content_warning(response, raw=raw_msgs)
-            response.cgx_errors = self.pull_content_error(response, raw=raw_msgs)
+            response.sdk_warnings = self.pull_content_warning(response, raw=raw_msgs)
+            response.sdk_errors = self.pull_content_error(response, raw=raw_msgs)
+
+            response.cgx_status = response.sdk_status
+            response.cgx_content = response.sdk_content
+            response.cgx_warnings = response.sdk_warnings
+            response.cgx_errors = response.sdk_errors
+
             return response
 
     def websocket_call(self, url, *args, **kwargs):
@@ -1336,7 +1353,7 @@ class API(object):
 
         **Returns:** region name.
         """
-        auth_token = login_response.cgx_content['x_auth_token']
+        auth_token = login_response.sdk_content['x_auth_token']
         auth_token_dict = self.parse_auth_token(auth_token)
         auth_region = auth_token_dict.get('region')
         return auth_region
@@ -1477,9 +1494,9 @@ class API(object):
         if pass_code_list is None:
             pass_code_list = [404, 400]
 
-        items = resp_object.cgx_content.get(items_key)
+        items = resp_object.sdk_content.get(items_key)
 
-        if resp_object.cgx_status and items is not None:
+        if resp_object.sdk_status and items is not None:
             return items
 
         # handle 404 and other error codes for certain APIs where objects may not exist
@@ -1567,10 +1584,10 @@ class API(object):
         api_logger.debug('pull_content_error function:')
 
         try:
-            # attempt to grab the cgx_content. should always be a Dict if it exists.
-            data = resp_object.cgx_content
+            # attempt to grab the sdk_content. should always be a Dict if it exists.
+            data = resp_object.sdk_content
         except (TypeError, ValueError, AttributeError):
-            # cgx_content did not exist. check root object for dict as end-user may pass the content and not the
+            # sdk_content did not exist. check root object for dict as end-user may pass the content and not the
             # extended `requests.Response` object.
             data = resp_object
 
@@ -1633,10 +1650,10 @@ class API(object):
         api_logger.debug('pull_content_warning function:')
 
         try:
-            # attempt to grab the cgx_content. should always be a Dict if it exists.
-            data = resp_object.cgx_content
+            # attempt to grab the sdk_content. should always be a Dict if it exists.
+            data = resp_object.sdk_content
         except (TypeError, ValueError, AttributeError):
-            # cgx_content did not exist. check root object for dict as end-user may pass the content and not the
+            # sdk_content did not exist. check root object for dict as end-user may pass the content and not the
             # extended `requests.Response` object.
             data = resp_object
 
@@ -1698,14 +1715,25 @@ class API(object):
 
         if self.sase_qa_env:
             _shared_service_url = self.oauth_access_token_qa_url
-            data = {'grant_type': 'client_credentials', 'scope': 'tsg_id:{0}'.format(self.tsg_id),
-                    'client_id': self.client_id, 'client_secret': self.client_secret}
 
-            if 'authorization' in self.view_headers():
-                self.remove_header('authorization')
+            data = {'grant_type': self.grant_type, 'scope': self.scope}
+
+            if self.grant_type == 'password':
+                auth_type = 'eng-qa' + ':'
+                auth_type_b64 = base64.b64encode(auth_type.encode('utf-8')).decode('utf-8')
+
+                auth_header = {
+                    'authorization': 'Basic {0}'.format(auth_type_b64)
+                }
+                self.add_headers(auth_header)
+                data.update({'username': self.client_id, 'password': self.client_secret})
+            else:
+                if 'authorization' in self.view_headers():
+                    self.remove_header('authorization')
+                data.update({'client_id': self.client_id, 'client_secret': self.client_secret})
         else:
             _shared_service_url = self.oauth_access_token_url
-            data = {'grant_type': 'client_credentials', 'scope': 'tsg_id:{0}'.format(self.tsg_id)}
+            data = {'grant_type': self.grant_type, 'scope': self.scope}
 
             client_creds = self.client_id + ':' + self.client_secret
             client_creds_b64 = base64.b64encode(client_creds.encode('utf-8')).decode('utf-8')
@@ -1719,21 +1747,21 @@ class API(object):
         response = self.rest_call(_shared_service_url, "post",
                                   data=data, jsonify_data=False, content_json=False)
 
-        if response.cgx_status:
-            if 'access_token' not in response.cgx_content and not response.cgx_content.get('access_token'):
-                print("Failed to retrieve access token : {0}".format(response.cgx_content))
+        if response.sdk_status:
+            if 'access_token' not in response.sdk_content and not response.sdk_content.get('access_token'):
+                print("Failed to retrieve access token : {0}".format(response.sdk_content))
                 self.use_jwt = False
                 return False
 
             api_logger.info('Generating Access token response OK.')
             # if we got here, we either got an x_auth_token in the original login, or
             # we got an auth_token cookie set via SAML. Figure out which.
-            access_token = response.cgx_content.get('access_token')
+            access_token = response.sdk_content.get('access_token')
 
-            self.jwt_expires_at = datetime.datetime.now() + datetime.timedelta(seconds=response.cgx_content.get('expires_in'))
+            self.jwt_expires_at = datetime.datetime.now() + datetime.timedelta(seconds=response.sdk_content.get('expires_in'))
 
             # debug info if needed
-            api_logger.debug("ACCESS_TOKEN=%s", response.cgx_content.get('access_token'))
+            api_logger.debug("ACCESS_TOKEN=%s", response.sdk_content.get('access_token'))
 
             # Start setup of constructor.
             session = self.expose_session()
@@ -1753,13 +1781,13 @@ class API(object):
 
         else:
             # log response when debug
-            api_logger.debug("GENERATE_TOKEN_FAIL_RESPONSE = %s", json.dumps(response.cgx_content, indent=4))
+            api_logger.debug("GENERATE_TOKEN_FAIL_RESPONSE = %s", json.dumps(response.sdk_content, indent=4))
             # print login error
             error_text = self.pull_content_error(response)
             if error_text:
                 print("generate token failed: {0}".format(error_text))
             else:
-                print('generate token, please try again:', response.cgx_content)
+                print('generate token, please try again:', response.sdk_content)
 
             self.use_jwt = False
 
@@ -1779,7 +1807,7 @@ class API(object):
 
                 api_logger.info('Regenerating Token: get profile call')
                 profile = self.get.profile()
-                if profile.cgx_status:
+                if profile.sdk_status:
                     return True
                 else:
                     print("Regenerating Token: Profile retrieval failed.")

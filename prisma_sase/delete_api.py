@@ -61,7 +61,7 @@ class Delete(object):
           - **apnprofile_id**: APN Profile ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -81,7 +81,7 @@ class Delete(object):
           - **appdef_id**: Application Definition ID
           - **api_version**: API version to use (default v2.4)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -102,7 +102,7 @@ class Delete(object):
           - **override_id**: AppDef Override ID
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -124,7 +124,7 @@ class Delete(object):
           - **authtoken_id**: Static AUTH_TOKEN ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -147,7 +147,7 @@ class Delete(object):
           - **bgppeer_id**: BGP Peer ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -170,7 +170,7 @@ class Delete(object):
           - **dhcpserver_id**: DHCP Server ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -191,7 +191,7 @@ class Delete(object):
           - **dnsserviceprofile_id**: DNS Service Profile ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -211,7 +211,7 @@ class Delete(object):
           - **dnsservicerole_id**: DNS Service Role ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -233,7 +233,7 @@ class Delete(object):
           - **dnsservice_id**: DNS Service ID 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -257,7 +257,7 @@ class Delete(object):
           - **extension_id**: Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -280,7 +280,7 @@ class Delete(object):
           - **passage_id**: Passage Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -302,7 +302,7 @@ class Delete(object):
           - **toolkitsession_id**: Toolkit Session ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -324,7 +324,7 @@ class Delete(object):
           - **elementpassageconfig_id**: Element Passage Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -347,7 +347,7 @@ class Delete(object):
           - **securityzone_id**: Security Zone (ZBFW) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -369,7 +369,7 @@ class Delete(object):
           - **elementuser_id**: Element User ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -390,7 +390,7 @@ class Delete(object):
           - **access_id**: Access ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -412,7 +412,7 @@ class Delete(object):
           - **client_id**: ESP/MSP Client ID (typically their tenant_id)
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -434,7 +434,7 @@ class Delete(object):
           - **eventcorrelationpolicyrule_id**: Event Correlation Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -455,7 +455,7 @@ class Delete(object):
           - **eventcorrelationpolicyset_id**: Event Correlation Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -475,7 +475,7 @@ class Delete(object):
           - **externalcaconfig_id**: External CA Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -495,7 +495,7 @@ class Delete(object):
           - **globalprefixfilter_id**: Global Prefix Filter ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -517,7 +517,7 @@ class Delete(object):
           - **hubclustermember_id**: Hub Cluster Member ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -540,7 +540,7 @@ class Delete(object):
           - **hubcluster_id**: Hub (DC) Cluster ID
           - **api_version**: API version to use (default v4.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -561,7 +561,7 @@ class Delete(object):
           - **idp_id**: SAML IDentity provider configuration ID
           - **api_version**: API version to use (default v3.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -583,7 +583,7 @@ class Delete(object):
           - **interface_id**: Interface ID
           - **api_version**: API version to use (default v4.14)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -607,7 +607,7 @@ class Delete(object):
           - **ipfix_id**: IPFix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -629,7 +629,7 @@ class Delete(object):
           - **ipfixcollectorcontext_id**: IPFix Collector Context ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -649,7 +649,7 @@ class Delete(object):
           - **ipfixfiltercontext_id**: IPFix Filter Context ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -669,7 +669,7 @@ class Delete(object):
           - **ipfixglobalprefix_id**: IPFix Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -689,7 +689,7 @@ class Delete(object):
           - **ipfixprofile_id**: IPFix Profile ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -709,7 +709,7 @@ class Delete(object):
           - **ipfixtemplate_id**: IPFix Template ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -729,7 +729,7 @@ class Delete(object):
           - **ipsecprofile_id**: IPSEC Profile ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -750,7 +750,7 @@ class Delete(object):
           - **lannetwork_id**: LAN Network ID
           - **api_version**: API version to use (default v3.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -771,7 +771,7 @@ class Delete(object):
           - **localprefixfilter_id**: Local Prefix Filter ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -793,7 +793,7 @@ class Delete(object):
           - **mstp_instance_id**: MSTP Instance ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -815,7 +815,7 @@ class Delete(object):
           - **multicastpeergroup_id**: Multicast Peer Group ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -837,7 +837,7 @@ class Delete(object):
           - **multicastrp_id**: Multicast RP ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -860,7 +860,7 @@ class Delete(object):
           - **multicastsourcesiteconfig_id**: Multicast Source Site Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -881,7 +881,7 @@ class Delete(object):
           - **natglobalprefix_id**: NAT Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -901,7 +901,7 @@ class Delete(object):
           - **natlocalprefix_id**: NAT Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -921,7 +921,7 @@ class Delete(object):
           - **natpolicypool_id**: NAT Policy Pool ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -942,7 +942,7 @@ class Delete(object):
           - **natpolicyrule_id**: NAT Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -963,7 +963,7 @@ class Delete(object):
           - **natpolicyset_id**: NAT Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -983,7 +983,7 @@ class Delete(object):
           - **natpolicysetstack_id**: NAT Policy Set Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1003,7 +1003,7 @@ class Delete(object):
           - **natzone_id**: NAT Zone ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1023,7 +1023,7 @@ class Delete(object):
           - **networkcontext_id**: Network Context ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1043,7 +1043,7 @@ class Delete(object):
           - **networkpolicyglobalprefix_id**: Network Policy Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1064,7 +1064,7 @@ class Delete(object):
           - **networkpolicyrule_id**: Network Policy Rule ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1085,7 +1085,7 @@ class Delete(object):
           - **networkpolicyset_id**: Network Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1105,7 +1105,7 @@ class Delete(object):
           - **networkpolicysetstack_id**: Network Policy Set Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1125,7 +1125,7 @@ class Delete(object):
           - **ngfwsecuritypolicyglobalprefix_id**: NGFW Security Policy Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1145,7 +1145,7 @@ class Delete(object):
           - **ngfwsecuritypolicylocalprefix_id**: NGFW Security Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1166,7 +1166,7 @@ class Delete(object):
           - **ngfwsecuritypolicyrule_id**: NGFW Security Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1187,7 +1187,7 @@ class Delete(object):
           - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1207,7 +1207,7 @@ class Delete(object):
           - **ngfwsecuritypolicysetstack_id**: NGFW Security Policy Set Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1228,7 +1228,7 @@ class Delete(object):
           - **session_id**: User Session ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1249,7 +1249,7 @@ class Delete(object):
           - **pathgroup_id**: Path Group ID (for network service/DC routing)
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1270,7 +1270,7 @@ class Delete(object):
           - **policyrule_id**: Policy Rule ID
           - **api_version**: API version to use (default v3.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1291,7 +1291,7 @@ class Delete(object):
           - **policyset_id**: Policy Set ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1312,7 +1312,7 @@ class Delete(object):
           - **prefixfilter_id**: Prefix Filter ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1333,7 +1333,7 @@ class Delete(object):
           - **prioritypolicyglobalprefix_id**: Priority Policy Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1354,7 +1354,7 @@ class Delete(object):
           - **prioritypolicyrule_id**: Priority Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1375,7 +1375,7 @@ class Delete(object):
           - **prioritypolicyset_id**: Priority Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1395,7 +1395,7 @@ class Delete(object):
           - **prioritypolicysetstack_id**: Priority Policy Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1416,7 +1416,7 @@ class Delete(object):
           - **prismaaccess_config_id**: Prisma Acceess Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1438,7 +1438,7 @@ class Delete(object):
           - **radii_id**: Radii ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1459,7 +1459,7 @@ class Delete(object):
           - **role_id**: Role ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1481,7 +1481,7 @@ class Delete(object):
           - **routing_aspathaccesslist_id**: Routing AS-PATH Access List ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1505,7 +1505,7 @@ class Delete(object):
           - **routing_ipcommunitylist_id**: Routing IP Community List ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1529,7 +1529,7 @@ class Delete(object):
           - **routing_prefixlist_id**: Routing IP Prefix List ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1553,7 +1553,7 @@ class Delete(object):
           - **routing_routemap_id**: Routing Route Map ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1576,7 +1576,7 @@ class Delete(object):
           - **config_id**: SDWAN App Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1598,7 +1598,7 @@ class Delete(object):
           - **securitypolicyrule_id**: Security Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1619,7 +1619,7 @@ class Delete(object):
           - **securitypolicyset_id**: Security Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1639,7 +1639,7 @@ class Delete(object):
           - **securityzone_id**: Security Zone (ZBFW) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1659,7 +1659,7 @@ class Delete(object):
           - **servicebindingmap_id**: Service Binding Map ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1679,7 +1679,7 @@ class Delete(object):
           - **serviceendpoint_id**: Service Endpoint ID
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1699,7 +1699,7 @@ class Delete(object):
           - **servicelabel_id**: Service Label ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1720,7 +1720,7 @@ class Delete(object):
           - **extension_id**: Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1742,7 +1742,7 @@ class Delete(object):
           - **ipfixlocalprefix_id**: IPFix Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1764,7 +1764,7 @@ class Delete(object):
           - **natlocalprefix_id**: NAT Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1786,7 +1786,7 @@ class Delete(object):
           - **networkpolicylocalprefix_id**: Network Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1808,7 +1808,7 @@ class Delete(object):
           - **ngfwsecuritypolicylocalprefix_id**: NGFW Security Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1830,7 +1830,7 @@ class Delete(object):
           - **prioritypolicylocalprefix_id**: Priority Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1851,7 +1851,7 @@ class Delete(object):
           - **site_id**: Site ID
           - **api_version**: API version to use (default v4.7)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1872,7 +1872,7 @@ class Delete(object):
           - **sitesecurityzone_id**: Site Security Zone ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1895,7 +1895,7 @@ class Delete(object):
           - **snmpagent_id**: SNMP Agent ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1919,7 +1919,7 @@ class Delete(object):
           - **snmptrap_id**: SNMP Trap ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1942,7 +1942,7 @@ class Delete(object):
           - **spokecluster_id**: Spoke Cluster ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1965,7 +1965,7 @@ class Delete(object):
           - **staticroute_id**: Static Route ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1987,7 +1987,7 @@ class Delete(object):
           - **syslogserverprofile_id**: Sys Log Server Profile ID 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2009,7 +2009,7 @@ class Delete(object):
           - **syslogserver_id**: SYSLOG server ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2031,7 +2031,7 @@ class Delete(object):
           - **ntp_id**: NTP Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2051,7 +2051,7 @@ class Delete(object):
           - **anynetlink_id**: Anynet (Secure Fabric) Link ID
           - **api_version**: API version to use (default v3.4)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2071,7 +2071,7 @@ class Delete(object):
           - **ipfixlocalprefix_id**: IPFix Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2091,7 +2091,7 @@ class Delete(object):
           - **networkpolicylocalprefix_id**: Network Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2111,7 +2111,7 @@ class Delete(object):
           - **operator_id**: Operator ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2131,7 +2131,7 @@ class Delete(object):
           - **permission_id**: Permission ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2151,7 +2151,7 @@ class Delete(object):
           - **prioritypolicylocalprefix_id**: Priority Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2171,7 +2171,7 @@ class Delete(object):
           - **tenantpassageconfig_id**: Tenant Passage Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2191,7 +2191,7 @@ class Delete(object):
           - **user_id**: User ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2212,7 +2212,7 @@ class Delete(object):
           - **waninterface_id**: WAN Interface ID
           - **api_version**: API version to use (default v2.7)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2233,7 +2233,7 @@ class Delete(object):
           - **wannetwork_id**: WAN Network ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2253,7 +2253,7 @@ class Delete(object):
           - **wanoverlay_id**: WAN Overlay ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2273,7 +2273,7 @@ class Delete(object):
           - **extension_id**: Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller

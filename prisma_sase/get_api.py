@@ -11,7 +11,7 @@ PRISMA SASE Python SDK - GET
 import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
-__email__ = "prisma-sase-developers@paloaltonetworks.comm"
+__email__ = "prisma-sase-developers@paloaltonetworks.com"
 __copyright__ = "Copyright (c) 2022 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
@@ -2186,13 +2186,12 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_aaa_metrics(self, monitor_id, api_version="v2.0"):
+    def monitor_aaa_metrics(self, api_version="v2.0"):
         """
         GET Monitor_Aaa_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2200,19 +2199,17 @@ class Get(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aaa_metrics".format(api_version,
-                                                                                 monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aaa_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_aggregates(self, monitor_id, api_version="v3.0"):
+    def monitor_aggregates(self, api_version="v3.0"):
         """
         GET Monitor_Aggregates API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **api_version**: API version to use (default v3.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2220,19 +2217,17 @@ class Get(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates".format(api_version,
-                                                                                monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_aiops_aggregates(self, monitor_id, api_version="v2.0"):
+    def monitor_aiops_aggregates(self, api_version="v2.0"):
         """
         GET Monitor_Aiops_Aggregates API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2240,19 +2235,17 @@ class Get(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/aggregates".format(api_version,
-                                                                                      monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/aggregates".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_aiops_forecast(self, monitor_id, api_version="v2.1"):
+    def monitor_aiops_forecast(self, api_version="v2.1"):
         """
         GET Monitor_Aiops_Forecast API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2260,19 +2253,17 @@ class Get(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/forecast".format(api_version,
-                                                                                    monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/forecast".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_aiops_health(self, monitor_id, api_version="v2.0"):
+    def monitor_aiops_health(self, api_version="v2.0"):
         """
         GET Monitor_Aiops_Health API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2280,19 +2271,17 @@ class Get(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/health".format(api_version,
-                                                                                  monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/health".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_aiops_object_stats(self, monitor_id, api_version="v2.1"):
+    def monitor_aiops_object_stats(self, api_version="v2.1"):
         """
         GET Monitor_Aiops_Object_Stats API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2300,19 +2289,17 @@ class Get(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/object_stats".format(api_version,
-                                                                                        monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/object_stats".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_bulk_metrics(self, monitor_id, bulk_metric_id, api_version="v2.0"):
+    def monitor_bulk_metrics(self, bulk_metric_id, api_version="v2.0"):
         """
         GET Monitor_Bulk_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **bulk_metric_id**: Bulk Metric ID
           - **api_version**: API version to use (default v2.0)
 
@@ -2322,19 +2309,17 @@ class Get(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/bulk_metrics/{}".format(api_version,
-                                                                                     monitor_id,
                                                                                      bulk_metric_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_cellular_metrics(self, monitor_id, api_version="v2.0"):
+    def monitor_cellular_metrics(self, api_version="v2.0"):
         """
         GET Monitor_Cellular_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2342,19 +2327,17 @@ class Get(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/cellular_metrics".format(api_version,
-                                                                                      monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/cellular_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_metrics(self, monitor_id, metric_id, api_version="v2.3"):
+    def monitor_metrics(self, metric_id, api_version="v2.3"):
         """
         GET Monitor_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **metric_id**: Metric ID
           - **api_version**: API version to use (default v2.3)
 
@@ -2364,19 +2347,17 @@ class Get(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/metrics/{}".format(api_version,
-                                                                                monitor_id,
                                                                                 metric_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_object_stats(self, monitor_id, api_version="v2.4"):
+    def monitor_object_stats(self, api_version="v2.4"):
         """
         GET Monitor_Object_Stats API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **api_version**: API version to use (default v2.4)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2384,19 +2365,17 @@ class Get(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/object_stats".format(api_version,
-                                                                                  monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/object_stats".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_qos_metrics(self, monitor_id, api_version="v2.0"):
+    def monitor_qos_metrics(self, api_version="v2.0"):
         """
         GET Monitor_Qos_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2404,19 +2383,17 @@ class Get(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/qos_metrics".format(api_version,
-                                                                                 monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/qos_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_sys_metrics(self, monitor_id, api_version="v2.2"):
+    def monitor_sys_metrics(self, api_version="v2.2"):
         """
         GET Monitor_Sys_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2424,8 +2401,7 @@ class Get(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/sys_metrics".format(api_version,
-                                                                                 monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/sys_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")

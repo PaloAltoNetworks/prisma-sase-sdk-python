@@ -11,7 +11,7 @@ PRISMA SASE Python SDK - PUT
 import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
-__email__ = "prisma-sase-developers@paloaltonetworks.comm"
+__email__ = "prisma-sase-developers@paloaltonetworks.com"
 __copyright__ = "Copyright (c) 2022 Palo Alto Networks, Inc"
 __license__ = """
     MIT License

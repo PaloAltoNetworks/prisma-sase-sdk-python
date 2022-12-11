@@ -11,7 +11,7 @@ PRISMA SASE Python SDK - POST
 import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
-__email__ = "prisma-sase-developers@paloaltonetworks.comm"
+__email__ = "prisma-sase-developers@paloaltonetworks.com"
 __copyright__ = "Copyright (c) 2022 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
@@ -1824,13 +1824,12 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aaa_client_metrics(self, monitor_id, data, api_version="v2.0"):
+    def monitor_aaa_client_metrics(self, data, api_version="v2.0"):
         """
         POST Monitor_Aaa_Client_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -1842,19 +1841,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aaa_client_metrics".format(api_version,
-                                                                                        monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aaa_client_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aaa_metrics(self, monitor_id, data, api_version="v2.0"):
+    def monitor_aaa_metrics(self, data, api_version="v2.0"):
         """
         POST Monitor_Aaa_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -1866,19 +1863,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aaa_metrics".format(api_version,
-                                                                                 monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aaa_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aaa_metrics_topn(self, monitor_id, data, api_version="v2.0"):
+    def monitor_aaa_metrics_topn(self, data, api_version="v2.0"):
         """
         POST Monitor_Aaa_Metrics_Topn API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -1890,19 +1885,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aaa_metrics/topn".format(api_version,
-                                                                                      monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aaa_metrics/topn".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aggregates(self, monitor_id, data, api_version="v3.0"):
+    def monitor_aggregates(self, data, api_version="v3.0"):
         """
         POST Monitor_Aggregates API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v3.0)
 
@@ -1914,19 +1907,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates".format(api_version,
-                                                                                monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aggregates_healthscore(self, monitor_id, data, api_version="v2.0"):
+    def monitor_aggregates_healthscore(self, data, api_version="v2.0"):
         """
         POST Monitor_Aggregates_Healthscore API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -1938,19 +1929,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates/healthscore".format(api_version,
-                                                                                            monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates/healthscore".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aggregates_multicast_mroute(self, monitor_id, data, api_version="v2.0"):
+    def monitor_aggregates_multicast_mroute(self, data, api_version="v2.0"):
         """
         POST Monitor_Aggregates_Multicast_Mroute API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -1962,19 +1951,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates/multicast/mroute".format(api_version,
-                                                                                                 monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates/multicast/mroute".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aggregates_multicast_wan_neighbor(self, monitor_id, data, api_version="v2.0"):
+    def monitor_aggregates_multicast_wan_neighbor(self, data, api_version="v2.0"):
         """
         POST Monitor_Aggregates_Multicast_Wan_Neighbor API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -1986,19 +1973,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates/multicast/wan_neighbor".format(api_version,
-                                                                                                       monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates/multicast/wan_neighbor".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aiops_aggregates(self, monitor_id, data, api_version="v2.0"):
+    def monitor_aiops_aggregates(self, data, api_version="v2.0"):
         """
         POST Monitor_Aiops_Aggregates API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2010,19 +1995,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/aggregates".format(api_version,
-                                                                                      monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/aggregates".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aiops_forecast(self, monitor_id, data, api_version="v2.1"):
+    def monitor_aiops_forecast(self, data, api_version="v2.1"):
         """
         POST Monitor_Aiops_Forecast API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.1)
 
@@ -2034,19 +2017,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/forecast".format(api_version,
-                                                                                    monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/forecast".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aiops_health(self, monitor_id, data, api_version="v2.0"):
+    def monitor_aiops_health(self, data, api_version="v2.0"):
         """
         POST Monitor_Aiops_Health API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2058,19 +2039,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/health".format(api_version,
-                                                                                  monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/health".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aiops_object_stats(self, monitor_id, data, api_version="v2.1"):
+    def monitor_aiops_object_stats(self, data, api_version="v2.1"):
         """
         POST Monitor_Aiops_Object_Stats API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.1)
 
@@ -2082,19 +2061,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/object_stats".format(api_version,
-                                                                                        monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/object_stats".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aiops_topn(self, monitor_id, data, api_version="v2.0"):
+    def monitor_aiops_topn(self, data, api_version="v2.0"):
         """
         POST Monitor_Aiops_Topn API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2106,19 +2083,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/topn".format(api_version,
-                                                                                monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/topn".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_bulk_metrics(self, monitor_id, data, api_version="v2.0"):
+    def monitor_bulk_metrics(self, data, api_version="v2.0"):
         """
         POST Monitor_Bulk_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2130,19 +2105,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/bulk_metrics".format(api_version,
-                                                                                  monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/bulk_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_cellular_metrics(self, monitor_id, data, api_version="v2.0"):
+    def monitor_cellular_metrics(self, data, api_version="v2.0"):
         """
         POST Monitor_Cellular_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2154,19 +2127,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/cellular_metrics".format(api_version,
-                                                                                      monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/cellular_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_cellular_metrics_topn(self, monitor_id, data, api_version="v2.0"):
+    def monitor_cellular_metrics_topn(self, data, api_version="v2.0"):
         """
         POST Monitor_Cellular_Metrics_Topn API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2178,19 +2149,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/cellular_metrics/topn".format(api_version,
-                                                                                           monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/cellular_metrics/topn".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_flows(self, monitor_id, data, api_version="v3.6"):
+    def monitor_flows(self, data, api_version="v3.6"):
         """
         POST Monitor_Flows API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v3.6)
 
@@ -2202,19 +2171,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/flows".format(api_version,
-                                                                           monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/flows".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_insights(self, monitor_id, data, api_version="v2.0"):
+    def monitor_insights(self, data, api_version="v2.0"):
         """
         POST Monitor_Insights API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2226,19 +2193,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/insights".format(api_version,
-                                                                              monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/insights".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_insightslist(self, monitor_id, data, api_version="v2.0"):
+    def monitor_insightslist(self, data, api_version="v2.0"):
         """
         POST Monitor_Insightslist API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2250,19 +2215,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/insightslist".format(api_version,
-                                                                                  monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/insightslist".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_lqm_point_metrics(self, monitor_id, data, api_version="v2.0"):
+    def monitor_lqm_point_metrics(self, data, api_version="v2.0"):
         """
         POST Lqm_Point_Metrics_Monitor API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2274,19 +2237,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/lqm_point_metrics".format(api_version,
-                                                                                       monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/lqm_point_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_metrics(self, monitor_id, data, api_version="v2.3"):
+    def monitor_metrics(self, data, api_version="v2.3"):
         """
         POST Monitor_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.3)
 
@@ -2298,19 +2259,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/metrics".format(api_version,
-                                                                             monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_network_point_metrics(self, monitor_id, data, api_version="v2.0"):
+    def monitor_network_point_metrics(self, data, api_version="v2.0"):
         """
         POST Monitor_Network_Point_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2322,19 +2281,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/network_point_metrics".format(api_version,
-                                                                                           monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/network_point_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_network_point_metrics_bw(self, monitor_id, data, api_version="v2.0"):
+    def monitor_network_point_metrics_bw(self, data, api_version="v2.0"):
         """
         POST Monitor_Network_Point_Metrics_Bw API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2346,19 +2303,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/network_point_metrics_bw".format(api_version,
-                                                                                              monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/network_point_metrics_bw".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_network_point_metrics_hs(self, monitor_id, data, api_version="v2.0"):
+    def monitor_network_point_metrics_hs(self, data, api_version="v2.0"):
         """
         POST Monitor_Network_Point_Metrics_Hs API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2370,19 +2325,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/network_point_metrics_hs".format(api_version,
-                                                                                              monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/network_point_metrics_hs".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_object_stats(self, monitor_id, data, api_version="v2.4"):
+    def monitor_object_stats(self, data, api_version="v2.4"):
         """
         POST Monitor_Object_Stats API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.4)
 
@@ -2394,19 +2347,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/object_stats".format(api_version,
-                                                                                  monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/object_stats".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_qos_metrics(self, monitor_id, data, api_version="v2.0"):
+    def monitor_qos_metrics(self, data, api_version="v2.0"):
         """
         POST Monitor_Qos_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2418,19 +2369,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/qos_metrics".format(api_version,
-                                                                                 monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/qos_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_sys_metrics(self, monitor_id, data, api_version="v2.2"):
+    def monitor_sys_metrics(self, data, api_version="v2.2"):
         """
         POST Monitor_Sys_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.2)
 
@@ -2442,19 +2391,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/sys_metrics".format(api_version,
-                                                                                 monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/sys_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_sys_metrics_topn(self, monitor_id, data, api_version="v2.1"):
+    def monitor_sys_metrics_topn(self, data, api_version="v2.1"):
         """
         POST Topn_Sys_Metrics_Monitor API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.1)
 
@@ -2466,19 +2413,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/sys_metrics/topn".format(api_version,
-                                                                                      monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/sys_metrics/topn".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_sys_point_metrics(self, monitor_id, data, api_version="v2.0"):
+    def monitor_sys_point_metrics(self, data, api_version="v2.0"):
         """
         POST Monitor_Sys_Point_Metrics API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2490,19 +2435,17 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/sys_point_metrics".format(api_version,
-                                                                                       monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/sys_point_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_topn(self, monitor_id, data, api_version="v3.1"):
+    def monitor_topn(self, data, api_version="v3.1"):
         """
         POST Monitor_Topn API Function
 
           **Parameters:**:
 
-          - **monitor_id**: 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v3.1)
 
@@ -2514,8 +2457,7 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/topn".format(api_version,
-                                                                          monitor_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/topn".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)

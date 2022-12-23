@@ -2848,7 +2848,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Prisma SASE Developer Support &lt;prisma-sase-developers@paloaltonetworks.com&gt;&quot;</span>
-<span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;prisma-sase-developers@paloaltonetworks.comm&quot;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;prisma-sase-developers@paloaltonetworks.com&quot;</span>
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright (c) 2022 Palo Alto Networks, Inc&quot;</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    MIT License</span>
@@ -5023,13 +5023,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_aaa_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_aaa_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Aaa_Metrics API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -5037,19 +5036,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aaa_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                 <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aaa_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_aggregates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v3.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_aggregates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v3.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Aggregates API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v3.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -5057,19 +5054,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aggregates&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aggregates&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_aiops_aggregates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_aiops_aggregates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Aiops_Aggregates API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -5077,19 +5072,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/aggregates&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                      <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/aggregates&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_aiops_forecast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_aiops_forecast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Aiops_Forecast API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -5097,19 +5090,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/forecast&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                    <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/forecast&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_aiops_health</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_aiops_health</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Aiops_Health API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -5117,19 +5108,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/health&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                  <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/health&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_aiops_object_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_aiops_object_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Aiops_Object_Stats API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -5137,19 +5126,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/object_stats&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                        <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/object_stats&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_bulk_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">bulk_metric_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_bulk_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bulk_metric_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Bulk_Metrics API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **bulk_metric_id**: Bulk Metric ID</span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
@@ -5159,19 +5146,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
         <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/bulk_metrics/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                     <span class="n">monitor_id</span><span class="p">,</span>
                                                                                      <span class="n">bulk_metric_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_cellular_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_cellular_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Cellular_Metrics API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -5179,19 +5164,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/cellular_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                      <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/cellular_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">metric_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.3&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metric_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.3&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Metrics API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **metric_id**: Metric ID</span>
 <span class="sd">          - **api_version**: API version to use (default v2.3)</span>
 
@@ -5201,19 +5184,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
         <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/metrics/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                <span class="n">monitor_id</span><span class="p">,</span>
                                                                                 <span class="n">metric_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_object_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_object_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Object_Stats API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.4)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -5221,19 +5202,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/object_stats&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                  <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/object_stats&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_qos_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_qos_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Qos_Metrics API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -5241,19 +5220,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/qos_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                 <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/qos_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_sys_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_sys_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Sys_Metrics API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.2)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -5261,8 +5238,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/sys_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                 <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/sys_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
@@ -10786,13 +10762,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_aaa_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_aaa_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Aaa_Metrics API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -10800,19 +10775,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aaa_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                 <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aaa_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_aggregates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v3.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_aggregates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v3.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Aggregates API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v3.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -10820,19 +10793,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aggregates&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aggregates&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_aiops_aggregates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_aiops_aggregates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Aiops_Aggregates API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -10840,19 +10811,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/aggregates&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                      <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/aggregates&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_aiops_forecast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_aiops_forecast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Aiops_Forecast API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -10860,19 +10829,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/forecast&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                    <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/forecast&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_aiops_health</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_aiops_health</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Aiops_Health API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -10880,19 +10847,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/health&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                  <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/health&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_aiops_object_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_aiops_object_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Aiops_Object_Stats API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -10900,19 +10865,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/object_stats&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                        <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/object_stats&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_bulk_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">bulk_metric_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_bulk_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bulk_metric_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Bulk_Metrics API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **bulk_metric_id**: Bulk Metric ID</span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
@@ -10922,19 +10885,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
         <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/bulk_metrics/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                     <span class="n">monitor_id</span><span class="p">,</span>
                                                                                      <span class="n">bulk_metric_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_cellular_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_cellular_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Cellular_Metrics API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -10942,19 +10903,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/cellular_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                      <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/cellular_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">metric_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.3&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metric_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.3&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Metrics API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **metric_id**: Metric ID</span>
 <span class="sd">          - **api_version**: API version to use (default v2.3)</span>
 
@@ -10964,19 +10923,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
         <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/metrics/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                <span class="n">monitor_id</span><span class="p">,</span>
                                                                                 <span class="n">metric_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_object_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_object_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Object_Stats API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.4)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -10984,19 +10941,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/object_stats&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                  <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/object_stats&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_qos_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_qos_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Qos_Metrics API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -11004,19 +10959,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/qos_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                 <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/qos_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">monitor_sys_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">monitor_sys_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        GET Monitor_Sys_Metrics API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **monitor_id**: </span>
 <span class="sd">          - **api_version**: API version to use (default v2.2)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -11024,8 +10977,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/sys_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                 <span class="n">monitor_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/sys_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
@@ -19520,7 +19472,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.get_api.Get.monitor_aaa_metrics">
     <div class="name def">
-    <p>def <span class="ident">monitor_aaa_metrics</span>(</p><p>self, monitor_id, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">monitor_aaa_metrics</span>(</p><p>self, api_version=&#39;v2.0&#39;)</p>
     </div>
     
 
@@ -19529,24 +19481,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <div class="desc"><p>GET Monitor_Aaa_Metrics API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>monitor_id</strong>: </li>
 <li><strong>api_version</strong>: API version to use (default v2.0)</li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.monitor_aaa_metrics', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.get_api.Get.monitor_aaa_metrics" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_aaa_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_aaa_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GET Monitor_Aaa_Metrics API Function</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **monitor_id**: </span>
 <span class="sd">      - **api_version**: API version to use (default v2.0)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aaa_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                             <span class="n">monitor_id</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aaa_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 </pre></div>
@@ -19559,7 +19508,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.get_api.Get.monitor_aggregates">
     <div class="name def">
-    <p>def <span class="ident">monitor_aggregates</span>(</p><p>self, monitor_id, api_version=&#39;v3.0&#39;)</p>
+    <p>def <span class="ident">monitor_aggregates</span>(</p><p>self, api_version=&#39;v3.0&#39;)</p>
     </div>
     
 
@@ -19568,24 +19517,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <div class="desc"><p>GET Monitor_Aggregates API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>monitor_id</strong>: </li>
 <li><strong>api_version</strong>: API version to use (default v3.0)</li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.monitor_aggregates', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.get_api.Get.monitor_aggregates" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_aggregates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v3.0&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_aggregates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v3.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GET Monitor_Aggregates API Function</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **monitor_id**: </span>
 <span class="sd">      - **api_version**: API version to use (default v3.0)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aggregates&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                            <span class="n">monitor_id</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aggregates&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 </pre></div>
@@ -19598,7 +19544,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.get_api.Get.monitor_aiops_aggregates">
     <div class="name def">
-    <p>def <span class="ident">monitor_aiops_aggregates</span>(</p><p>self, monitor_id, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">monitor_aiops_aggregates</span>(</p><p>self, api_version=&#39;v2.0&#39;)</p>
     </div>
     
 
@@ -19607,24 +19553,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <div class="desc"><p>GET Monitor_Aiops_Aggregates API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>monitor_id</strong>: </li>
 <li><strong>api_version</strong>: API version to use (default v2.0)</li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.monitor_aiops_aggregates', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.get_api.Get.monitor_aiops_aggregates" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_aiops_aggregates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_aiops_aggregates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GET Monitor_Aiops_Aggregates API Function</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **monitor_id**: </span>
 <span class="sd">      - **api_version**: API version to use (default v2.0)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/aggregates&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                  <span class="n">monitor_id</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/aggregates&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 </pre></div>
@@ -19637,7 +19580,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.get_api.Get.monitor_aiops_forecast">
     <div class="name def">
-    <p>def <span class="ident">monitor_aiops_forecast</span>(</p><p>self, monitor_id, api_version=&#39;v2.1&#39;)</p>
+    <p>def <span class="ident">monitor_aiops_forecast</span>(</p><p>self, api_version=&#39;v2.1&#39;)</p>
     </div>
     
 
@@ -19646,24 +19589,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <div class="desc"><p>GET Monitor_Aiops_Forecast API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>monitor_id</strong>: </li>
 <li><strong>api_version</strong>: API version to use (default v2.1)</li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.monitor_aiops_forecast', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.get_api.Get.monitor_aiops_forecast" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_aiops_forecast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_aiops_forecast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GET Monitor_Aiops_Forecast API Function</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **monitor_id**: </span>
 <span class="sd">      - **api_version**: API version to use (default v2.1)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/forecast&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                <span class="n">monitor_id</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/forecast&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 </pre></div>
@@ -19676,7 +19616,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.get_api.Get.monitor_aiops_health">
     <div class="name def">
-    <p>def <span class="ident">monitor_aiops_health</span>(</p><p>self, monitor_id, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">monitor_aiops_health</span>(</p><p>self, api_version=&#39;v2.0&#39;)</p>
     </div>
     
 
@@ -19685,24 +19625,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <div class="desc"><p>GET Monitor_Aiops_Health API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>monitor_id</strong>: </li>
 <li><strong>api_version</strong>: API version to use (default v2.0)</li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.monitor_aiops_health', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.get_api.Get.monitor_aiops_health" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_aiops_health</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_aiops_health</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GET Monitor_Aiops_Health API Function</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **monitor_id**: </span>
 <span class="sd">      - **api_version**: API version to use (default v2.0)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/health&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                              <span class="n">monitor_id</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/health&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 </pre></div>
@@ -19715,7 +19652,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.get_api.Get.monitor_aiops_object_stats">
     <div class="name def">
-    <p>def <span class="ident">monitor_aiops_object_stats</span>(</p><p>self, monitor_id, api_version=&#39;v2.1&#39;)</p>
+    <p>def <span class="ident">monitor_aiops_object_stats</span>(</p><p>self, api_version=&#39;v2.1&#39;)</p>
     </div>
     
 
@@ -19724,24 +19661,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <div class="desc"><p>GET Monitor_Aiops_Object_Stats API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>monitor_id</strong>: </li>
 <li><strong>api_version</strong>: API version to use (default v2.1)</li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.monitor_aiops_object_stats', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.get_api.Get.monitor_aiops_object_stats" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_aiops_object_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_aiops_object_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GET Monitor_Aiops_Object_Stats API Function</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **monitor_id**: </span>
 <span class="sd">      - **api_version**: API version to use (default v2.1)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/object_stats&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                    <span class="n">monitor_id</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/aiops/object_stats&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 </pre></div>
@@ -19754,7 +19688,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.get_api.Get.monitor_bulk_metrics">
     <div class="name def">
-    <p>def <span class="ident">monitor_bulk_metrics</span>(</p><p>self, monitor_id, bulk_metric_id, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">monitor_bulk_metrics</span>(</p><p>self, bulk_metric_id, api_version=&#39;v2.0&#39;)</p>
     </div>
     
 
@@ -19763,7 +19697,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <div class="desc"><p>GET Monitor_Bulk_Metrics API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>monitor_id</strong>: </li>
 <li><strong>bulk_metric_id</strong>: Bulk Metric ID</li>
 <li><strong>api_version</strong>: API version to use (default v2.0)</li>
 </ul>
@@ -19771,18 +19704,16 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.monitor_bulk_metrics', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.get_api.Get.monitor_bulk_metrics" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_bulk_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">bulk_metric_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_bulk_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bulk_metric_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GET Monitor_Bulk_Metrics API Function</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **monitor_id**: </span>
 <span class="sd">      - **bulk_metric_id**: Bulk Metric ID</span>
 <span class="sd">      - **api_version**: API version to use (default v2.0)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
     <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/bulk_metrics/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                 <span class="n">monitor_id</span><span class="p">,</span>
                                                                                  <span class="n">bulk_metric_id</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
@@ -19796,7 +19727,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.get_api.Get.monitor_cellular_metrics">
     <div class="name def">
-    <p>def <span class="ident">monitor_cellular_metrics</span>(</p><p>self, monitor_id, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">monitor_cellular_metrics</span>(</p><p>self, api_version=&#39;v2.0&#39;)</p>
     </div>
     
 
@@ -19805,24 +19736,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <div class="desc"><p>GET Monitor_Cellular_Metrics API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>monitor_id</strong>: </li>
 <li><strong>api_version</strong>: API version to use (default v2.0)</li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.monitor_cellular_metrics', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.get_api.Get.monitor_cellular_metrics" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_cellular_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_cellular_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GET Monitor_Cellular_Metrics API Function</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **monitor_id**: </span>
 <span class="sd">      - **api_version**: API version to use (default v2.0)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/cellular_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                  <span class="n">monitor_id</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/cellular_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 </pre></div>
@@ -19835,7 +19763,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.get_api.Get.monitor_metrics">
     <div class="name def">
-    <p>def <span class="ident">monitor_metrics</span>(</p><p>self, monitor_id, metric_id, api_version=&#39;v2.3&#39;)</p>
+    <p>def <span class="ident">monitor_metrics</span>(</p><p>self, metric_id, api_version=&#39;v2.3&#39;)</p>
     </div>
     
 
@@ -19844,7 +19772,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <div class="desc"><p>GET Monitor_Metrics API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>monitor_id</strong>: </li>
 <li><strong>metric_id</strong>: Metric ID</li>
 <li><strong>api_version</strong>: API version to use (default v2.3)</li>
 </ul>
@@ -19852,18 +19779,16 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.monitor_metrics', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.get_api.Get.monitor_metrics" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">metric_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.3&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metric_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.3&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GET Monitor_Metrics API Function</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **monitor_id**: </span>
 <span class="sd">      - **metric_id**: Metric ID</span>
 <span class="sd">      - **api_version**: API version to use (default v2.3)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
     <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/metrics/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                            <span class="n">monitor_id</span><span class="p">,</span>
                                                                             <span class="n">metric_id</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
@@ -19877,7 +19802,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.get_api.Get.monitor_object_stats">
     <div class="name def">
-    <p>def <span class="ident">monitor_object_stats</span>(</p><p>self, monitor_id, api_version=&#39;v2.4&#39;)</p>
+    <p>def <span class="ident">monitor_object_stats</span>(</p><p>self, api_version=&#39;v2.4&#39;)</p>
     </div>
     
 
@@ -19886,24 +19811,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <div class="desc"><p>GET Monitor_Object_Stats API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>monitor_id</strong>: </li>
 <li><strong>api_version</strong>: API version to use (default v2.4)</li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.monitor_object_stats', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.get_api.Get.monitor_object_stats" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_object_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_object_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GET Monitor_Object_Stats API Function</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **monitor_id**: </span>
 <span class="sd">      - **api_version**: API version to use (default v2.4)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/object_stats&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                              <span class="n">monitor_id</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/object_stats&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 </pre></div>
@@ -19916,7 +19838,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.get_api.Get.monitor_qos_metrics">
     <div class="name def">
-    <p>def <span class="ident">monitor_qos_metrics</span>(</p><p>self, monitor_id, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">monitor_qos_metrics</span>(</p><p>self, api_version=&#39;v2.0&#39;)</p>
     </div>
     
 
@@ -19925,24 +19847,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <div class="desc"><p>GET Monitor_Qos_Metrics API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>monitor_id</strong>: </li>
 <li><strong>api_version</strong>: API version to use (default v2.0)</li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.monitor_qos_metrics', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.get_api.Get.monitor_qos_metrics" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_qos_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_qos_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GET Monitor_Qos_Metrics API Function</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **monitor_id**: </span>
 <span class="sd">      - **api_version**: API version to use (default v2.0)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/qos_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                             <span class="n">monitor_id</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/qos_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 </pre></div>
@@ -19955,7 +19874,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.get_api.Get.monitor_sys_metrics">
     <div class="name def">
-    <p>def <span class="ident">monitor_sys_metrics</span>(</p><p>self, monitor_id, api_version=&#39;v2.2&#39;)</p>
+    <p>def <span class="ident">monitor_sys_metrics</span>(</p><p>self, api_version=&#39;v2.2&#39;)</p>
     </div>
     
 
@@ -19964,24 +19883,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <div class="desc"><p>GET Monitor_Sys_Metrics API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>monitor_id</strong>: </li>
 <li><strong>api_version</strong>: API version to use (default v2.2)</li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.monitor_sys_metrics', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.get_api.Get.monitor_sys_metrics" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_sys_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">monitor_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">monitor_sys_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GET Monitor_Sys_Metrics API Function</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **monitor_id**: </span>
 <span class="sd">      - **api_version**: API version to use (default v2.2)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/sys_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                             <span class="n">monitor_id</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/monitor/</span><span class="si">{}</span><span class="s2">/api/monitor/sys_metrics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 </pre></div>

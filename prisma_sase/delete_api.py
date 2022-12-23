@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 """
-Prisma SASE Python SDK - DELETE
+PRISMA SASE Python SDK - DELETE
 
 **Author:** Palo Alto Networks
 
-**Copyright:** © 2022 Palo Alto Networks. All rights reserved
+**Copyright:** (c) 2022 Palo Alto Networks, Inc
 
 **License:** MIT
 """
@@ -12,11 +12,11 @@ import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright © 2022 Palo Alto Networks. All rights reserved"
+__copyright__ = "Copyright (c) 2022 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright © 2022 Palo Alto Networks. All rights reserved
+    Copyright (c) 2022 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -52,38 +52,16 @@ class Delete(object):
     # placeholder for parent class namespace
     _parent_class = None
 
-    def access_elementusers(self, elementuser_id, access_id, api_version="v2.1"):
-        """
-        Delete element user Access
-
-          **Parameters:**:
-
-          - **elementuser_id**: Element User ID
-          - **access_id**: Access ID
-          - **api_version**: API version to use (default v2.1)
-
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}/access/{}".format(api_version,
-                                                                               elementuser_id,
-                                                                               access_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "delete")
-
     def apnprofiles(self, apnprofile_id, api_version="v2.0"):
         """
-        DELETE Apnprofiles API Function
+        Delete an APN Profile (v2.0)
 
           **Parameters:**:
 
           - **apnprofile_id**: APN Profile ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -96,14 +74,14 @@ class Delete(object):
 
     def appdefs(self, appdef_id, api_version="v2.4"):
         """
-        Delete a application definition
+        Delete a application definition (v2.4)
 
           **Parameters:**:
 
           - **appdef_id**: Application Definition ID
           - **api_version**: API version to use (default v2.4)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -116,7 +94,7 @@ class Delete(object):
 
     def appdefs_overrides(self, appdef_id, override_id, api_version="v2.3"):
         """
-        Delete application definition overrides for system appdef
+        Delete application definition overrides for system appdef (v2.3)
 
           **Parameters:**:
 
@@ -124,7 +102,7 @@ class Delete(object):
           - **override_id**: AppDef Override ID
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -138,7 +116,7 @@ class Delete(object):
 
     def authtokens(self, operator_id, authtoken_id, api_version="v2.1"):
         """
-        Delete an auth token
+        Delete an auth token (v2.1)
 
           **Parameters:**:
 
@@ -146,7 +124,7 @@ class Delete(object):
           - **authtoken_id**: Static AUTH_TOKEN ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -160,7 +138,7 @@ class Delete(object):
 
     def bgppeers(self, site_id, element_id, bgppeer_id, api_version="v2.2"):
         """
-        Delete BGP Peer config
+        Delete BGP Peer config (v2.2)
 
           **Parameters:**:
 
@@ -169,7 +147,7 @@ class Delete(object):
           - **bgppeer_id**: BGP Peer ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -184,7 +162,7 @@ class Delete(object):
 
     def dhcpservers(self, site_id, dhcpserver_id, api_version="v2.1"):
         """
-        Delete DHCPServer for a Tenant on a site
+        Delete DHCPServer for a Tenant on a site (v2.1)
 
           **Parameters:**:
 
@@ -192,7 +170,7 @@ class Delete(object):
           - **dhcpserver_id**: DHCP Server ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -206,14 +184,14 @@ class Delete(object):
 
     def dnsserviceprofiles(self, dnsserviceprofile_id, api_version="v2.0"):
         """
-        Delete a DNS service profile
+        Delete a DNS service profile (v2.0)
 
           **Parameters:**:
 
           - **dnsserviceprofile_id**: DNS Service Profile ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -226,14 +204,14 @@ class Delete(object):
 
     def dnsserviceroles(self, dnsservicerole_id, api_version="v2.0"):
         """
-        Delete a DNS service role
+        Delete a DNS service role (v2.0)
 
           **Parameters:**:
 
           - **dnsservicerole_id**: DNS Service Role ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -246,7 +224,7 @@ class Delete(object):
 
     def dnsservices(self, site_id, element_id, dnsservice_id, api_version="v2.0"):
         """
-        Delete a DNS service config
+        Delete a DNS service config (v2.0)
 
           **Parameters:**:
 
@@ -255,7 +233,7 @@ class Delete(object):
           - **dnsservice_id**: DNS Service ID 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -270,7 +248,7 @@ class Delete(object):
 
     def element_extensions(self, site_id, element_id, extension_id, api_version="v2.0"):
         """
-        Delete a specific extension associated with an element
+        Delete a specific extension associated with an element (v2.0)
 
           **Parameters:**:
 
@@ -279,7 +257,7 @@ class Delete(object):
           - **extension_id**: Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -302,7 +280,7 @@ class Delete(object):
           - **passage_id**: Passage Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -324,7 +302,7 @@ class Delete(object):
           - **toolkitsession_id**: Toolkit Session ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -346,7 +324,7 @@ class Delete(object):
           - **elementpassageconfig_id**: Element Passage Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -360,7 +338,7 @@ class Delete(object):
 
     def elementsecurityzones(self, site_id, element_id, securityzone_id, api_version="v2.0"):
         """
-        Delete an existing security zone
+        Delete an existing security zone (v2.0)
 
           **Parameters:**:
 
@@ -369,7 +347,7 @@ class Delete(object):
           - **securityzone_id**: Security Zone (ZBFW) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -384,14 +362,14 @@ class Delete(object):
 
     def elementusers(self, elementuser_id, api_version="v2.1"):
         """
-        Delete element user
+        Delete element user (v2.1)
 
           **Parameters:**:
 
           - **elementuser_id**: Element User ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -402,9 +380,31 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def elementusers_access(self, elementuser_id, access_id, api_version="v2.1"):
+        """
+        DELETE Elementusers_Access API Function
+
+          **Parameters:**:
+
+          - **elementuser_id**: Element User ID
+          - **access_id**: Access ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}/access/{}".format(api_version,
+                                                                               elementuser_id,
+                                                                               access_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def esp_operator_permissions_client(self, operator_id, client_id, api_version="v2.1"):
         """
-        Delete esp operator permissions assigned under a client
+        Delete esp operator permissions assigned under a client (v2.1)
 
           **Parameters:**:
 
@@ -412,7 +412,7 @@ class Delete(object):
           - **client_id**: ESP/MSP Client ID (typically their tenant_id)
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -426,7 +426,7 @@ class Delete(object):
 
     def eventcorrelationpolicyrules(self, eventcorrelationpolicyset_id, eventcorrelationpolicyrule_id, api_version="v2.0"):
         """
-        Delete specific event correlation policy rule
+        Delete specific event correlation policy rule (v2.0)
 
           **Parameters:**:
 
@@ -434,7 +434,7 @@ class Delete(object):
           - **eventcorrelationpolicyrule_id**: Event Correlation Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -448,14 +448,14 @@ class Delete(object):
 
     def eventcorrelationpolicysets(self, eventcorrelationpolicyset_id, api_version="v2.0"):
         """
-        Delete specific event correlation policyset
+        Delete specific event correlation policyset (v2.0)
 
           **Parameters:**:
 
           - **eventcorrelationpolicyset_id**: Event Correlation Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -475,7 +475,7 @@ class Delete(object):
           - **externalcaconfig_id**: External CA Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -488,14 +488,14 @@ class Delete(object):
 
     def globalprefixfilters(self, globalprefixfilter_id, api_version="v2.0"):
         """
-        Delete a global prefix filter.
+        Delete a global prefix filter. (v2.0)
 
           **Parameters:**:
 
           - **globalprefixfilter_id**: Global Prefix Filter ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -508,7 +508,7 @@ class Delete(object):
 
     def hubclustermembers(self, site_id, hubcluster_id, hubclustermember_id, api_version="v3.0"):
         """
-        Deletes specific hub cluster member.
+        Deletes specific hub cluster member. (v3.0)
 
           **Parameters:**:
 
@@ -517,7 +517,7 @@ class Delete(object):
           - **hubclustermember_id**: Hub Cluster Member ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -530,17 +530,17 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def hubclusters(self, site_id, hubcluster_id, api_version="v3.0"):
+    def hubclusters(self, site_id, hubcluster_id, api_version="v4.0"):
         """
-        Delete hub cluster
+        Delete hub cluster (v4.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **hubcluster_id**: Hub (DC) Cluster ID
-          - **api_version**: API version to use (default v3.0)
+          - **api_version**: API version to use (default v4.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -552,16 +552,16 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def idps(self, idp_id, api_version="v3.2"):
+    def idps(self, idp_id, api_version="v3.3"):
         """
-        Delete idp
+        Delete idp (v3.3)
 
           **Parameters:**:
 
           - **idp_id**: SAML IDentity provider configuration ID
-          - **api_version**: API version to use (default v3.2)
+          - **api_version**: API version to use (default v3.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -572,18 +572,18 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def interfaces(self, site_id, element_id, interface_id, api_version="v4.12"):
+    def interfaces(self, site_id, element_id, interface_id, api_version="v4.14"):
         """
-        Delete Interface
+        Delete Cellular Interface (v4.14)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
-          - **api_version**: API version to use (default v4.12)
+          - **api_version**: API version to use (default v4.14)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -598,7 +598,7 @@ class Delete(object):
 
     def ipfix(self, site_id, element_id, ipfix_id, api_version="v2.0"):
         """
-        Delete IPFix config
+        Delete IPFix config (v2.0)
 
           **Parameters:**:
 
@@ -607,7 +607,7 @@ class Delete(object):
           - **ipfix_id**: IPFix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -622,14 +622,14 @@ class Delete(object):
 
     def ipfixcollectorcontexts(self, ipfixcollectorcontext_id, api_version="v2.0"):
         """
-        Delete a IPFix collector context
+        Delete a IPFix collector context (v2.0)
 
           **Parameters:**:
 
           - **ipfixcollectorcontext_id**: IPFix Collector Context ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -642,14 +642,14 @@ class Delete(object):
 
     def ipfixfiltercontexts(self, ipfixfiltercontext_id, api_version="v2.0"):
         """
-        Delete a IPFix filter context
+        Delete a IPFix filter context (v2.0)
 
           **Parameters:**:
 
           - **ipfixfiltercontext_id**: IPFix Filter Context ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -662,14 +662,14 @@ class Delete(object):
 
     def ipfixglobalprefixes(self, ipfixglobalprefix_id, api_version="v2.0"):
         """
-        Delete a IPFix global prefix
+        Delete a IPFix global prefix (v2.0)
 
           **Parameters:**:
 
           - **ipfixglobalprefix_id**: IPFix Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -682,14 +682,14 @@ class Delete(object):
 
     def ipfixprofiles(self, ipfixprofile_id, api_version="v2.0"):
         """
-        Delete IPFix Profile
+        Delete IPFix Profile (v2.0)
 
           **Parameters:**:
 
           - **ipfixprofile_id**: IPFix Profile ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -702,14 +702,14 @@ class Delete(object):
 
     def ipfixtemplates(self, ipfixtemplate_id, api_version="v2.0"):
         """
-        Delete a IPFix template
+        Delete a IPFix template (v2.0)
 
           **Parameters:**:
 
           - **ipfixtemplate_id**: IPFix Template ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -722,14 +722,14 @@ class Delete(object):
 
     def ipsecprofiles(self, ipsecprofile_id, api_version="v2.1"):
         """
-        Delete a IPSEC Profile
+        Delete a IPSEC Profile (v2.1)
 
           **Parameters:**:
 
           - **ipsecprofile_id**: IPSEC Profile ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -742,7 +742,7 @@ class Delete(object):
 
     def lannetworks(self, site_id, lannetwork_id, api_version="v3.1"):
         """
-        Delete an existing LAN
+        Delete an existing LAN (v3.1)
 
           **Parameters:**:
 
@@ -750,7 +750,7 @@ class Delete(object):
           - **lannetwork_id**: LAN Network ID
           - **api_version**: API version to use (default v3.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -764,14 +764,14 @@ class Delete(object):
 
     def localprefixfilters(self, localprefixfilter_id, api_version="v2.0"):
         """
-        Delete a local prefix filter.
+        Delete a local prefix filter. (v2.0)
 
           **Parameters:**:
 
           - **localprefixfilter_id**: Local Prefix Filter ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -782,16 +782,40 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def multicastpeergroups(self, multicastpeergroup_id, api_version="v2.0"):
+    def mstp_instances(self, site_id, element_id, mstp_instance_id, api_version="v2.0"):
+        """
+        DELETE Mstp_Instances API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **mstp_instance_id**: MSTP Instance ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/mstp_instances/{}".format(api_version,
+                                                                                            site_id,
+                                                                                            element_id,
+                                                                                            mstp_instance_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def multicastpeergroups(self, multicastpeergroup_id, api_version="v2.1"):
         """
         DELETE Multicastpeergroups API Function
 
           **Parameters:**:
 
           - **multicastpeergroup_id**: Multicast Peer Group ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -804,7 +828,7 @@ class Delete(object):
 
     def multicastrps(self, site_id, element_id, multicastrp_id, api_version="v2.0"):
         """
-        DELETE Multicastrps API Function
+        Deletes Multicast RP config (v2.0)
 
           **Parameters:**:
 
@@ -813,7 +837,7 @@ class Delete(object):
           - **multicastrp_id**: Multicast RP ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -826,16 +850,38 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def multicastsourcesiteconfigs(self, site_id, multicastsourcesiteconfig_id, api_version="v2.0"):
+        """
+        DELETE Multicastsourcesiteconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **multicastsourcesiteconfig_id**: Multicast Source Site Config ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/multicastsourcesiteconfigs/{}".format(api_version,
+                                                                                            site_id,
+                                                                                            multicastsourcesiteconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def natglobalprefixes(self, natglobalprefix_id, api_version="v2.0"):
         """
-        Delete a NAT Global Prefix.
+        Delete a NAT Global Prefix. (v2.0)
 
           **Parameters:**:
 
           - **natglobalprefix_id**: NAT Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -848,14 +894,14 @@ class Delete(object):
 
     def natlocalprefixes(self, natlocalprefix_id, api_version="v2.0"):
         """
-        Delete a NAT local prefix.
+        Delete a NAT local prefix. (v2.0)
 
           **Parameters:**:
 
           - **natlocalprefix_id**: NAT Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -868,14 +914,14 @@ class Delete(object):
 
     def natpolicypools(self, natpolicypool_id, api_version="v2.0"):
         """
-        Delete a NAT Policy Pool.
+        Delete a NAT Policy Pool. (v2.0)
 
           **Parameters:**:
 
           - **natpolicypool_id**: NAT Policy Pool ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -888,7 +934,7 @@ class Delete(object):
 
     def natpolicyrules(self, natpolicyset_id, natpolicyrule_id, api_version="v2.0"):
         """
-        Delete NAT policy rule of tenant.
+        Delete NAT policy rule of tenant. (v2.0)
 
           **Parameters:**:
 
@@ -896,7 +942,7 @@ class Delete(object):
           - **natpolicyrule_id**: NAT Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -910,14 +956,14 @@ class Delete(object):
 
     def natpolicysets(self, natpolicyset_id, api_version="v2.0"):
         """
-        Delete NAT policy set.
+        Delete NAT policy set. (v2.0)
 
           **Parameters:**:
 
           - **natpolicyset_id**: NAT Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -930,14 +976,14 @@ class Delete(object):
 
     def natpolicysetstacks(self, natpolicysetstack_id, api_version="v2.0"):
         """
-        Delete NAT Policy Set Stack.
+        Delete NAT Policy Set Stack. (v2.0)
 
           **Parameters:**:
 
           - **natpolicysetstack_id**: NAT Policy Set Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -950,14 +996,14 @@ class Delete(object):
 
     def natzones(self, natzone_id, api_version="v2.0"):
         """
-        Delete a Nat Policy Zone.
+        Delete a Nat Policy Zone. (v2.0)
 
           **Parameters:**:
 
           - **natzone_id**: NAT Zone ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -970,14 +1016,14 @@ class Delete(object):
 
     def networkcontexts(self, networkcontext_id, api_version="v2.0"):
         """
-        Delete LAN segment
+        Delete LAN segment (v2.0)
 
           **Parameters:**:
 
           - **networkcontext_id**: Network Context ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -990,14 +1036,14 @@ class Delete(object):
 
     def networkpolicyglobalprefixes(self, networkpolicyglobalprefix_id, api_version="v2.0"):
         """
-        Delete a Network Policy Global Prefix.
+        Delete a Network Policy Global Prefix. (v2.0)
 
           **Parameters:**:
 
           - **networkpolicyglobalprefix_id**: Network Policy Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1010,7 +1056,7 @@ class Delete(object):
 
     def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id, api_version="v2.1"):
         """
-        Delete network policy rule of tenant.
+        Delete network policy rule of tenant. (v2.1)
 
           **Parameters:**:
 
@@ -1018,7 +1064,7 @@ class Delete(object):
           - **networkpolicyrule_id**: Network Policy Rule ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1032,14 +1078,14 @@ class Delete(object):
 
     def networkpolicysets(self, networkpolicyset_id, api_version="v2.0"):
         """
-        Delete Network Policy Set.
+        Delete Network Policy Set. (v2.0)
 
           **Parameters:**:
 
           - **networkpolicyset_id**: Network Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1052,14 +1098,14 @@ class Delete(object):
 
     def networkpolicysetstacks(self, networkpolicysetstack_id, api_version="v2.0"):
         """
-        Delete a NetworkPolicySetStack
+        Delete a NetworkPolicySetStack (v2.0)
 
           **Parameters:**:
 
           - **networkpolicysetstack_id**: Network Policy Set Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1072,14 +1118,14 @@ class Delete(object):
 
     def ngfwsecuritypolicyglobalprefixes(self, ngfwsecuritypolicyglobalprefix_id, api_version="v2.0"):
         """
-        DELETE Ngfwsecuritypolicyglobalprefixes API Function
+        Delete a Security Policy V2 Local Prefix by tenant ID and its ID (v2.0)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicyglobalprefix_id**: NGFW Security Policy Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1092,14 +1138,14 @@ class Delete(object):
 
     def ngfwsecuritypolicylocalprefixes(self, ngfwsecuritypolicylocalprefix_id, api_version="v2.0"):
         """
-        DELETE Ngfwsecuritypolicylocalprefixes API Function
+        Delete a Security Policy V2 Local Prefix by tenant ID and its ID (v2.0)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicylocalprefix_id**: NGFW Security Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1112,7 +1158,7 @@ class Delete(object):
 
     def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, api_version="v2.0"):
         """
-        DELETE Ngfwsecuritypolicyrules API Function
+        Delete an existing Security Policy V2 Rule under a policy set (v2.0)
 
           **Parameters:**:
 
@@ -1120,7 +1166,7 @@ class Delete(object):
           - **ngfwsecuritypolicyrule_id**: NGFW Security Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1134,14 +1180,14 @@ class Delete(object):
 
     def ngfwsecuritypolicysets(self, ngfwsecuritypolicyset_id, api_version="v2.0"):
         """
-        DELETE Ngfwsecuritypolicysets API Function
+        Delete an existing Security Policy V2 Set by tenant ID and its ID (v2.0)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1154,14 +1200,14 @@ class Delete(object):
 
     def ngfwsecuritypolicysetstacks(self, ngfwsecuritypolicysetstack_id, api_version="v2.0"):
         """
-        DELETE Ngfwsecuritypolicysetstacks API Function
+        Delete an existing Security Policy V2 Set Stack by tenant ID and its ID (v2.0)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicysetstack_id**: NGFW Security Policy Set Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1174,7 +1220,7 @@ class Delete(object):
 
     def operator_sessions(self, operator_id, session_id, api_version="v2.0"):
         """
-        Delete session for tenant_id, operator id, and session id
+        Delete session for tenant_id, operator id, and session id (v2.0)
 
           **Parameters:**:
 
@@ -1182,7 +1228,7 @@ class Delete(object):
           - **session_id**: User Session ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1196,14 +1242,14 @@ class Delete(object):
 
     def pathgroups(self, pathgroup_id, api_version="v2.1"):
         """
-        Delete A Path Group of a tenant.
+        Delete A Path Group of a tenant. (v2.1)
 
           **Parameters:**:
 
           - **pathgroup_id**: Path Group ID (for network service/DC routing)
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1216,7 +1262,7 @@ class Delete(object):
 
     def policyrules(self, policyset_id, policyrule_id, api_version="v3.1"):
         """
-        Delete policy rule of tenant.
+        Delete policy rule of tenant. (v3.1)
 
           **Parameters:**:
 
@@ -1224,7 +1270,7 @@ class Delete(object):
           - **policyrule_id**: Policy Rule ID
           - **api_version**: API version to use (default v3.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1238,14 +1284,14 @@ class Delete(object):
 
     def policysets(self, policyset_id, api_version="v3.0"):
         """
-        Delete policy set.
+        Delete policy set. (v3.0)
 
           **Parameters:**:
 
           - **policyset_id**: Policy Set ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1258,7 +1304,7 @@ class Delete(object):
 
     def prefixfilters(self, site_id, prefixfilter_id, api_version="v2.0"):
         """
-        Delete an existing security prefix filter
+        Delete an existing security prefix filter (v2.0)
 
           **Parameters:**:
 
@@ -1266,7 +1312,7 @@ class Delete(object):
           - **prefixfilter_id**: Prefix Filter ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1280,14 +1326,14 @@ class Delete(object):
 
     def prioritypolicyglobalprefixes(self, prioritypolicyglobalprefix_id, api_version="v2.0"):
         """
-        Delete a Priority Policy Global Prefix.
+        Delete a Priority Policy Global Prefix. (v2.0)
 
           **Parameters:**:
 
           - **prioritypolicyglobalprefix_id**: Priority Policy Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1300,7 +1346,7 @@ class Delete(object):
 
     def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id, api_version="v2.0"):
         """
-        Delete priority policy rule of tenant.
+        Delete priority policy rule of tenant. (v2.0)
 
           **Parameters:**:
 
@@ -1308,7 +1354,7 @@ class Delete(object):
           - **prioritypolicyrule_id**: Priority Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1322,14 +1368,14 @@ class Delete(object):
 
     def prioritypolicysets(self, prioritypolicyset_id, api_version="v2.0"):
         """
-        Delete Priority Policy Set.
+        Delete Priority Policy Set. (v2.0)
 
           **Parameters:**:
 
           - **prioritypolicyset_id**: Priority Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1342,14 +1388,14 @@ class Delete(object):
 
     def prioritypolicysetstacks(self, prioritypolicysetstack_id, api_version="v2.0"):
         """
-        Delete a PriorityPolicySetStack
+        Delete a PriorityPolicySetStack (v2.0)
 
           **Parameters:**:
 
           - **prioritypolicysetstack_id**: Priority Policy Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1362,7 +1408,7 @@ class Delete(object):
 
     def prismaaccess_configs(self, site_id, prismaaccess_config_id, api_version="v2.0"):
         """
-        DELETE Prismaaccess_Configs API Function
+        Delete a Prisma Access Config with remote networks and security processing node (v2.0)
 
           **Parameters:**:
 
@@ -1370,7 +1416,7 @@ class Delete(object):
           - **prismaaccess_config_id**: Prisma Acceess Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1382,16 +1428,38 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def radii(self, element_id, radii_id, api_version="v2.0"):
+        """
+        DELETE Radii API Function
+
+          **Parameters:**:
+
+          - **element_id**: Element (Device) ID
+          - **radii_id**: Radii ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/radii/{}".format(api_version,
+                                                                          element_id,
+                                                                          radii_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def roles(self, role_id, api_version="v2.1"):
         """
-        Delete a custom role
+        Delete a custom role (v2.1)
 
           **Parameters:**:
 
           - **role_id**: Role ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1404,7 +1472,7 @@ class Delete(object):
 
     def routing_aspathaccesslists(self, site_id, element_id, routing_aspathaccesslist_id, api_version="v2.1"):
         """
-        Delete Access List
+        Delete Access List (v2.1)
 
           **Parameters:**:
 
@@ -1413,7 +1481,7 @@ class Delete(object):
           - **routing_aspathaccesslist_id**: Routing AS-PATH Access List ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1428,7 +1496,7 @@ class Delete(object):
 
     def routing_ipcommunitylists(self, site_id, element_id, routing_ipcommunitylist_id, api_version="v2.0"):
         """
-        Delete Community List
+        Delete Community List (v2.0)
 
           **Parameters:**:
 
@@ -1437,7 +1505,7 @@ class Delete(object):
           - **routing_ipcommunitylist_id**: Routing IP Community List ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1452,7 +1520,7 @@ class Delete(object):
 
     def routing_prefixlists(self, site_id, element_id, routing_prefixlist_id, api_version="v2.0"):
         """
-        Delete Prefix List
+        Delete Prefix List (v2.0)
 
           **Parameters:**:
 
@@ -1461,7 +1529,7 @@ class Delete(object):
           - **routing_prefixlist_id**: Routing IP Prefix List ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1476,7 +1544,7 @@ class Delete(object):
 
     def routing_routemaps(self, site_id, element_id, routing_routemap_id, api_version="v2.1"):
         """
-        Delete Route Map
+        Delete Route Map (v2.1)
 
           **Parameters:**:
 
@@ -1485,7 +1553,7 @@ class Delete(object):
           - **routing_routemap_id**: Routing Route Map ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1508,7 +1576,7 @@ class Delete(object):
           - **config_id**: SDWAN App Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1522,7 +1590,7 @@ class Delete(object):
 
     def securitypolicyrules(self, securitypolicyset_id, securitypolicyrule_id, api_version="v2.0"):
         """
-        Delete a security policyrule.
+        Delete a security policyrule. (v2.0)
 
           **Parameters:**:
 
@@ -1530,7 +1598,7 @@ class Delete(object):
           - **securitypolicyrule_id**: Security Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1544,14 +1612,14 @@ class Delete(object):
 
     def securitypolicysets(self, securitypolicyset_id, api_version="v2.0"):
         """
-        Delete a security policyset.
+        Delete a security policyset. (v2.0)
 
           **Parameters:**:
 
           - **securitypolicyset_id**: Security Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1564,14 +1632,14 @@ class Delete(object):
 
     def securityzones(self, securityzone_id, api_version="v2.0"):
         """
-        Delete an existing security zone
+        Delete an existing security zone (v2.0)
 
           **Parameters:**:
 
           - **securityzone_id**: Security Zone (ZBFW) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1584,14 +1652,14 @@ class Delete(object):
 
     def servicebindingmaps(self, servicebindingmap_id, api_version="v2.1"):
         """
-        Delete a Service Binding Map
+        Delete a Service Binding Map (v2.1)
 
           **Parameters:**:
 
           - **servicebindingmap_id**: Service Binding Map ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1604,14 +1672,14 @@ class Delete(object):
 
     def serviceendpoints(self, serviceendpoint_id, api_version="v2.3"):
         """
-        Delete a Service Endpoint
+        Delete a Service Endpoint (v2.3)
 
           **Parameters:**:
 
           - **serviceendpoint_id**: Service Endpoint ID
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1624,14 +1692,14 @@ class Delete(object):
 
     def servicelabels(self, servicelabel_id, api_version="v2.1"):
         """
-        Delete a Service Label
+        Delete a Service Label (v2.1)
 
           **Parameters:**:
 
           - **servicelabel_id**: Service Label ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1644,7 +1712,7 @@ class Delete(object):
 
     def site_extensions(self, site_id, extension_id, api_version="v2.0"):
         """
-        Delete a specific extension associated with a site
+        Delete a specific extension associated with a site (v2.0)
 
           **Parameters:**:
 
@@ -1652,7 +1720,7 @@ class Delete(object):
           - **extension_id**: Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1666,7 +1734,7 @@ class Delete(object):
 
     def site_ipfixlocalprefixes(self, site_id, ipfixlocalprefix_id, api_version="v2.0"):
         """
-        Delete a IPFix site prefix association
+        Delete a IPFix site prefix association (v2.0)
 
           **Parameters:**:
 
@@ -1674,7 +1742,7 @@ class Delete(object):
           - **ipfixlocalprefix_id**: IPFix Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1688,7 +1756,7 @@ class Delete(object):
 
     def site_natlocalprefixes(self, site_id, natlocalprefix_id, api_version="v2.0"):
         """
-        Delete an existing Site NAT prefix
+        Delete an existing Site NAT prefix (v2.0)
 
           **Parameters:**:
 
@@ -1696,7 +1764,7 @@ class Delete(object):
           - **natlocalprefix_id**: NAT Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1710,7 +1778,7 @@ class Delete(object):
 
     def site_networkpolicylocalprefixes(self, site_id, networkpolicylocalprefix_id, api_version="v2.0"):
         """
-        Delete an existing Site Network Policy local prefix association
+        Delete an existing Site Network Policy local prefix association (v2.0)
 
           **Parameters:**:
 
@@ -1718,7 +1786,7 @@ class Delete(object):
           - **networkpolicylocalprefix_id**: Network Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1732,7 +1800,7 @@ class Delete(object):
 
     def site_ngfwsecuritypolicylocalprefixes(self, site_id, ngfwsecuritypolicylocalprefix_id, api_version="v2.0"):
         """
-        DELETE Site_Ngfwsecuritypolicylocalprefixes API Function
+        Delete an existing security policy v2 local prefix site association (v2.0)
 
           **Parameters:**:
 
@@ -1740,7 +1808,7 @@ class Delete(object):
           - **ngfwsecuritypolicylocalprefix_id**: NGFW Security Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1754,7 +1822,7 @@ class Delete(object):
 
     def site_prioritypolicylocalprefixes(self, site_id, prioritypolicylocalprefix_id, api_version="v2.0"):
         """
-        Delete an existing Site Priority Policy local prefix association
+        Delete an existing Site Priority Policy local prefix association (v2.0)
 
           **Parameters:**:
 
@@ -1762,7 +1830,7 @@ class Delete(object):
           - **prioritypolicylocalprefix_id**: Priority Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1776,14 +1844,14 @@ class Delete(object):
 
     def sites(self, site_id, api_version="v4.7"):
         """
-        Delete a site
+        Delete a site (v4.7)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **api_version**: API version to use (default v4.7)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1796,7 +1864,7 @@ class Delete(object):
 
     def sitesecurityzones(self, site_id, sitesecurityzone_id, api_version="v2.0"):
         """
-        Delete an existing security zone
+        Delete an existing security zone (v2.0)
 
           **Parameters:**:
 
@@ -1804,7 +1872,7 @@ class Delete(object):
           - **sitesecurityzone_id**: Site Security Zone ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1818,7 +1886,7 @@ class Delete(object):
 
     def snmpagents(self, site_id, element_id, snmpagent_id, api_version="v2.1"):
         """
-        delete SNMP Agent
+        delete SNMP Agent (v2.1)
 
           **Parameters:**:
 
@@ -1827,7 +1895,7 @@ class Delete(object):
           - **snmpagent_id**: SNMP Agent ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1842,7 +1910,7 @@ class Delete(object):
 
     def snmptraps(self, site_id, element_id, snmptrap_id, api_version="v2.0"):
         """
-        delete SNMP Trap
+        delete SNMP Trap (v2.0)
 
           **Parameters:**:
 
@@ -1851,7 +1919,7 @@ class Delete(object):
           - **snmptrap_id**: SNMP Trap ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1866,7 +1934,7 @@ class Delete(object):
 
     def spokeclusters(self, site_id, spokecluster_id, api_version="v2.0"):
         """
-        Delete spoke cluster.
+        Delete spoke cluster. (v2.0)
 
           **Parameters:**:
 
@@ -1874,7 +1942,7 @@ class Delete(object):
           - **spokecluster_id**: Spoke Cluster ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1888,7 +1956,7 @@ class Delete(object):
 
     def staticroutes(self, site_id, element_id, staticroute_id, api_version="v2.2"):
         """
-        Delete static route
+        Delete static route (v2.2)
 
           **Parameters:**:
 
@@ -1897,7 +1965,7 @@ class Delete(object):
           - **staticroute_id**: Static Route ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1912,14 +1980,14 @@ class Delete(object):
 
     def syslogserverprofiles(self, syslogserverprofile_id, api_version="v2.0"):
         """
-        DELETE Syslogserverprofiles API Function
+        Delete Syslog Server Profile (v2.0)
 
           **Parameters:**:
 
           - **syslogserverprofile_id**: Sys Log Server Profile ID 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1932,7 +2000,7 @@ class Delete(object):
 
     def syslogservers(self, site_id, element_id, syslogserver_id, api_version="v2.2"):
         """
-        Delete Syslog Server
+        Delete Syslog Server (v2.2)
 
           **Parameters:**:
 
@@ -1941,7 +2009,7 @@ class Delete(object):
           - **syslogserver_id**: SYSLOG server ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1956,14 +2024,14 @@ class Delete(object):
 
     def templates_ntp(self, ntp_id, api_version="v2.0"):
         """
-        Delete an existing NTP Template
+        Delete an existing NTP Template (v2.0)
 
           **Parameters:**:
 
           - **ntp_id**: NTP Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1983,7 +2051,7 @@ class Delete(object):
           - **anynetlink_id**: Anynet (Secure Fabric) Link ID
           - **api_version**: API version to use (default v3.4)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1996,14 +2064,14 @@ class Delete(object):
 
     def tenant_ipfixlocalprefixes(self, ipfixlocalprefix_id, api_version="v2.0"):
         """
-        Delete a IPFix local prefix
+        Delete a IPFix local prefix (v2.0)
 
           **Parameters:**:
 
           - **ipfixlocalprefix_id**: IPFix Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2016,14 +2084,14 @@ class Delete(object):
 
     def tenant_networkpolicylocalprefixes(self, networkpolicylocalprefix_id, api_version="v2.0"):
         """
-        Delete a Network Policy local prefix.
+        Delete a Network Policy local prefix. (v2.0)
 
           **Parameters:**:
 
           - **networkpolicylocalprefix_id**: Network Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2036,14 +2104,14 @@ class Delete(object):
 
     def tenant_operators(self, operator_id, api_version="v2.1"):
         """
-        Delete a tenant operator
+        Delete a tenant operator (v2.1)
 
           **Parameters:**:
 
           - **operator_id**: Operator ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2056,14 +2124,14 @@ class Delete(object):
 
     def tenant_permissions(self, permission_id, api_version="v2.0"):
         """
-        Delete a tenant custom permission
+        Delete a tenant custom permission (v2.0)
 
           **Parameters:**:
 
           - **permission_id**: Permission ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2076,14 +2144,14 @@ class Delete(object):
 
     def tenant_prioritypolicylocalprefixes(self, prioritypolicylocalprefix_id, api_version="v2.0"):
         """
-        Delete a Priority Policy local prefix.
+        Delete a Priority Policy local prefix. (v2.0)
 
           **Parameters:**:
 
           - **prioritypolicylocalprefix_id**: Priority Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2103,7 +2171,7 @@ class Delete(object):
           - **tenantpassageconfig_id**: Tenant Passage Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2116,14 +2184,14 @@ class Delete(object):
 
     def users(self, user_id, api_version="v2.0"):
         """
-        Delete an user identity.
+        Delete an user identity. (v2.0)
 
           **Parameters:**:
 
           - **user_id**: User ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2136,7 +2204,7 @@ class Delete(object):
 
     def waninterfaces(self, site_id, waninterface_id, api_version="v2.7"):
         """
-        Delete existing WAN interface
+        Delete existing WAN interface (v2.7)
 
           **Parameters:**:
 
@@ -2144,7 +2212,7 @@ class Delete(object):
           - **waninterface_id**: WAN Interface ID
           - **api_version**: API version to use (default v2.7)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2158,14 +2226,14 @@ class Delete(object):
 
     def wannetworks(self, wannetwork_id, api_version="v2.1"):
         """
-        Delete an existing WAN
+        Delete an existing WAN (v2.1)
 
           **Parameters:**:
 
           - **wannetwork_id**: WAN Network ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2178,14 +2246,14 @@ class Delete(object):
 
     def wanoverlays(self, wanoverlay_id, api_version="v2.0"):
         """
-        Delete app/wan context
+        Delete app/wan context (v2.0)
 
           **Parameters:**:
 
           - **wanoverlay_id**: WAN Overlay ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2205,7 +2273,7 @@ class Delete(object):
           - **extension_id**: Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2218,6 +2286,9 @@ class Delete(object):
 
     # Public Digest compatibility maps below, mapping what is available via
     # /v2.0/permissions API versus what is used in this SDK.
+
+    access_elementusers = elementusers_access
+    """ Backwards-compatibility alias of `access_elementusers` to `elementusers_access`"""
 
     anynetlinks_t = tenant_anynetlinks
     """ Backwards-compatibility alias of `anynetlinks_t` to `tenant_anynetlinks`"""

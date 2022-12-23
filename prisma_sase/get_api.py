@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 """
-Prisma SASE Python SDK - GET
+PRISMA SASE Python SDK - GET
 
 **Author:** Palo Alto Networks
 
-**Copyright:** © 2022 Palo Alto Networks. All rights reserved
+**Copyright:** (c) 2022 Palo Alto Networks, Inc
 
 **License:** MIT
 """
@@ -12,11 +12,11 @@ import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright © 2022 Palo Alto Networks. All rights reserved"
+__copyright__ = "Copyright (c) 2022 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright © 2022 Palo Alto Networks. All rights reserved
+    Copyright (c) 2022 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -52,32 +52,6 @@ class Get(object):
     # placeholder for parent class namespace
     _parent_class = None
 
-    def access_elementusers(self, elementuser_id, access_id=None, api_version="v2.1"):
-        """
-        Get all accesses for a particular user
-
-          **Parameters:**:
-
-          - **elementuser_id**: Element User ID
-          - **access_id**: (optional) Access ID
-          - **api_version**: API version to use (default v2.1)
-
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        if not access_id:
-            url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}/access".format(api_version,
-                                                                                elementuser_id)
-        else:
-            url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}/access/{}".format(api_version,
-                                                                                   elementuser_id,
-                                                                                   access_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "get")
-
     def anynetlinks_correlationevents(self, anynetlink_id, api_version="v2.1"):
         """
         GET Anynetlinks_Correlationevents API Function
@@ -87,7 +61,7 @@ class Get(object):
           - **anynetlink_id**: Anynet (Secure Fabric) Link ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -100,14 +74,14 @@ class Get(object):
 
     def apnprofiles(self, apnprofile_id=None, api_version="v2.0"):
         """
-        GET Apnprofiles API Function
+        Get all APN Profiles (v2.0)
 
           **Parameters:**:
 
           - **apnprofile_id**: (optional) APN Profile ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -123,14 +97,14 @@ class Get(object):
 
     def appdefs(self, appdef_id=None, api_version="v2.4"):
         """
-        Get all application definitions
+        Get all application definitions (v2.4)
 
           **Parameters:**:
 
           - **appdef_id**: (optional) Application Definition ID
           - **api_version**: API version to use (default v2.4)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -146,7 +120,7 @@ class Get(object):
 
     def appdefs_overrides(self, appdef_id, override_id=None, api_version="v2.3"):
         """
-        Get application definition overrides for system appdef
+        Get application definition overrides for system appdef (v2.3)
 
           **Parameters:**:
 
@@ -154,7 +128,7 @@ class Get(object):
           - **override_id**: (optional) AppDef Override ID
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -172,14 +146,14 @@ class Get(object):
 
     def appdefs_version(self, appdefs_version_id=None, api_version="v2.0"):
         """
-        Get application version for a tenant
+        Get application version for a tenant (v2.0)
 
           **Parameters:**:
 
           - **appdefs_version_id**: (optional) Application Definition Version ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -195,7 +169,7 @@ class Get(object):
 
     def application_probe(self, site_id, element_id, api_version="v2.0"):
         """
-        Get application probe configuration of element
+        Get application probe configuration of element (v2.0)
 
           **Parameters:**:
 
@@ -203,7 +177,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -224,7 +198,7 @@ class Get(object):
           - **auditlog_id**: (optional) Audit Log ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -240,7 +214,7 @@ class Get(object):
 
     def authtokens(self, operator_id, authtoken_id=None, api_version="v2.1"):
         """
-        Get a list of auth tokens
+        Get a list of auth tokens (v2.1)
 
           **Parameters:**:
 
@@ -248,7 +222,7 @@ class Get(object):
           - **authtoken_id**: (optional) Static AUTH_TOKEN ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -266,13 +240,13 @@ class Get(object):
 
     def base_permissions(self, api_version="v2.0"):
         """
-        Get a list of tenant base permissions
+        Get a list of tenant base permissions (v2.0)
 
           **Parameters:**:
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -284,13 +258,13 @@ class Get(object):
 
     def base_roles(self, api_version="v2.0"):
         """
-        Get a list of tenant base roles
+        Get a list of tenant base roles (v2.0)
 
           **Parameters:**:
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -309,7 +283,7 @@ class Get(object):
           - **site_id**: Site ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -322,7 +296,7 @@ class Get(object):
 
     def bgpconfigs(self, site_id, element_id, bgpconfig_id=None, api_version="v2.2"):
         """
-        Get all BGP configs from NB
+        Get all BGP configs from NB (v2.2)
 
           **Parameters:**:
 
@@ -331,7 +305,7 @@ class Get(object):
           - **bgpconfig_id**: (optional) BGP Configuration ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -351,7 +325,7 @@ class Get(object):
 
     def bgppeers(self, site_id, element_id, bgppeer_id=None, api_version="v2.2"):
         """
-        Get all BGP Peer configs from NB
+        Get all BGP Peer configs from NB (v2.2)
 
           **Parameters:**:
 
@@ -360,7 +334,7 @@ class Get(object):
           - **bgppeer_id**: (optional) BGP Peer ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -389,7 +363,7 @@ class Get(object):
           - **bgppeer_id**: BGP Peer ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -413,7 +387,7 @@ class Get(object):
           - **bgppeer_id**: BGP Peer ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -437,7 +411,7 @@ class Get(object):
           - **bgppeer_id**: BGP Peer ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -460,7 +434,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -472,16 +446,16 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def cellular_module_images(self, cellular_module_image_id=None, api_version="v2.0"):
+    def cellular_module_images(self, cellular_module_image_id=None, api_version="v2.1"):
         """
-        GET Cellular_Module_Images API Function
+        Get existing element cellular module images (v2.1)
 
           **Parameters:**:
 
           - **cellular_module_image_id**: (optional) Cellular Module Image ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -497,7 +471,7 @@ class Get(object):
 
     def cellular_modules_sim_security(self, element_id, cellular_module_id, sim_security_id=None, api_version="v2.0"):
         """
-        GET Cellular_Modules_Sim_Security API Function
+        Get all cellular modules sim security info (v2.0)
 
           **Parameters:**:
 
@@ -506,7 +480,7 @@ class Get(object):
           - **sim_security_id**: (optional) SIM Security ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -533,7 +507,7 @@ class Get(object):
           - **entitie_id**: Entitie ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -552,7 +526,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -564,14 +538,14 @@ class Get(object):
 
     def clients_base_roles(self, client_id, api_version="v2.0"):
         """
-        Get a list of client base roles
+        Get a list of client base roles (v2.0)
 
           **Parameters:**:
 
           - **client_id**: ESP/MSP Client ID (typically their tenant_id)
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -582,17 +556,17 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def clients_machines(self, client_id, machine_id=None, api_version="v2.2"):
+    def clients_machines(self, client_id, machine_id=None, api_version="v2.3"):
         """
-        Get all machines allocated by ESP to a client tenant
+        Get all machines allocated by ESP to a client tenant (v2.3)
 
           **Parameters:**:
 
           - **client_id**: ESP/MSP Client ID (typically their tenant_id)
           - **machine_id**: (optional) Machine ID
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -610,7 +584,7 @@ class Get(object):
 
     def clients_roles(self, client_id, role_id=None, api_version="v2.1"):
         """
-        Get a list of client custom roles
+        Get a list of client custom roles (v2.1)
 
           **Parameters:**:
 
@@ -618,7 +592,7 @@ class Get(object):
           - **role_id**: (optional) Role ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -636,7 +610,7 @@ class Get(object):
 
     def demstatus(self, site_id, demstatus_id=None, api_version="v2.0"):
         """
-        GET Demstatus API Function
+        Get all ADEM status for a site (v2.0)
 
           **Parameters:**:
 
@@ -644,7 +618,7 @@ class Get(object):
           - **demstatus_id**: (optional) DEM Status ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -662,7 +636,7 @@ class Get(object):
 
     def dhcpservers(self, site_id, dhcpserver_id=None, api_version="v2.1"):
         """
-        Get all DHCPServers for a Tenant on a site
+        Get all DHCPServers for a Tenant on a site (v2.1)
 
           **Parameters:**:
 
@@ -670,7 +644,7 @@ class Get(object):
           - **dhcpserver_id**: (optional) DHCP Server ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -688,14 +662,14 @@ class Get(object):
 
     def dnsserviceprofiles(self, dnsserviceprofile_id=None, api_version="v2.0"):
         """
-        Read all DNS service profiles
+        Read all DNS service profiles (v2.0)
 
           **Parameters:**:
 
           - **dnsserviceprofile_id**: (optional) DNS Service Profile ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -711,14 +685,14 @@ class Get(object):
 
     def dnsserviceroles(self, dnsservicerole_id=None, api_version="v2.0"):
         """
-        Read all DNS service roles
+        Read all DNS service roles (v2.0)
 
           **Parameters:**:
 
           - **dnsservicerole_id**: (optional) DNS Service Role ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -734,7 +708,7 @@ class Get(object):
 
     def dnsservices(self, site_id, element_id, dnsservice_id=None, api_version="v2.0"):
         """
-        Read all DNS service configs
+        Read all DNS service configs (v2.0)
 
           **Parameters:**:
 
@@ -743,7 +717,7 @@ class Get(object):
           - **dnsservice_id**: (optional) DNS Service ID 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -772,7 +746,7 @@ class Get(object):
           - **bgppeer_id**: BGP Peer ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -787,7 +761,7 @@ class Get(object):
 
     def element_cellular_modules(self, element_id, cellular_module_id=None, api_version="v2.0"):
         """
-        GET Element_Cellular_Modules API Function
+        Get all cellular modules (v2.0)
 
           **Parameters:**:
 
@@ -795,7 +769,7 @@ class Get(object):
           - **cellular_module_id**: (optional) Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -813,7 +787,7 @@ class Get(object):
 
     def element_cellular_modules_firmware(self, element_id, cellular_module_id, api_version="v2.0"):
         """
-        GET Element_Cellular_Modules_Firmware API Function
+        Get cellular module firmware configuration (v2.0)
 
           **Parameters:**:
 
@@ -821,7 +795,7 @@ class Get(object):
           - **cellular_module_id**: Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -835,7 +809,7 @@ class Get(object):
 
     def element_cellular_modules_firmware_status(self, element_id, cellular_module_id, api_version="v2.0"):
         """
-        GET Element_Cellular_Modules_Firmware_Status API Function
+        Get cellular module firmware configuration status (v2.0)
 
           **Parameters:**:
 
@@ -843,7 +817,7 @@ class Get(object):
           - **cellular_module_id**: Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -857,7 +831,7 @@ class Get(object):
 
     def element_cellular_modules_status(self, element_id, cellular_module_id, api_version="v2.0"):
         """
-        GET Element_Cellular_Modules_Status API Function
+        Get cellular module status (v2.0)
 
           **Parameters:**:
 
@@ -865,7 +839,7 @@ class Get(object):
           - **cellular_module_id**: Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -887,7 +861,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -901,7 +875,7 @@ class Get(object):
 
     def element_extensions(self, site_id, element_id, extension_id=None, api_version="v2.0"):
         """
-        Get all element level extensions
+        Get all element level extensions (v2.0)
 
           **Parameters:**:
 
@@ -910,7 +884,7 @@ class Get(object):
           - **extension_id**: (optional) Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -930,14 +904,14 @@ class Get(object):
 
     def element_images(self, element_image_id=None, api_version="v2.2"):
         """
-        Get existing machine images
+        Get existing machine images (v2.2)
 
           **Parameters:**:
 
           - **element_image_id**: (optional) Element Code Image ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -961,7 +935,7 @@ class Get(object):
           - **passage_id**: (optional) Passage Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -977,16 +951,36 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def element_status(self, element_id, api_version="v2.0"):
+    def element_state(self, element_id, api_version="v2.0"):
         """
-        GET Element_Status API Function
+        GET Element_State API Function
 
           **Parameters:**:
 
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/state".format(api_version,
+                                                                       element_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def element_status(self, element_id, api_version="v2.1"):
+        """
+        Get specific element status for a tenant (v2.1)
+
+          **Parameters:**:
+
+          - **element_id**: Element (Device) ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -999,7 +993,7 @@ class Get(object):
 
     def element_waninterfaces_state(self, site_id, element_id, waninterface_id, api_version="v2.1"):
         """
-        Get Element WAN interface status
+        Get Element WAN interface status (v2.1)
 
           **Parameters:**:
 
@@ -1008,7 +1002,7 @@ class Get(object):
           - **waninterface_id**: WAN Interface ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1023,7 +1017,7 @@ class Get(object):
 
     def elementaccessconfigs(self, element_id, elementaccessconfig_id=None, api_version="v2.2"):
         """
-        Get all Element Access Configs
+        Get all Element Access Configs (v2.2)
 
           **Parameters:**:
 
@@ -1031,7 +1025,7 @@ class Get(object):
           - **elementaccessconfig_id**: (optional) Element Access Config ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1049,14 +1043,14 @@ class Get(object):
 
     def elementaccessstates(self, element_id, api_version="v2.0"):
         """
-        Get specific element's Access State
+        Get specific element's Access State (v2.0)
 
           **Parameters:**:
 
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1076,7 +1070,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1087,16 +1081,16 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def elements(self, element_id=None, api_version="v2.5"):
+    def elements(self, element_id=None, api_version="v3.0"):
         """
-        Get Elements of a tenant
+        Get Elements of a tenant (v3.0)
 
           **Parameters:**:
 
           - **element_id**: (optional) Element (Device) ID
-          - **api_version**: API version to use (default v2.5)
+          - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1112,7 +1106,7 @@ class Get(object):
 
     def elementsecurityzones(self, site_id, element_id, securityzone_id=None, api_version="v2.0"):
         """
-        Get element security zones
+        Get element security zones (v2.0)
 
           **Parameters:**:
 
@@ -1121,7 +1115,7 @@ class Get(object):
           - **securityzone_id**: (optional) Security Zone (ZBFW) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1141,14 +1135,14 @@ class Get(object):
 
     def elementusers(self, elementuser_id=None, api_version="v2.1"):
         """
-        Get all element User
+        Get all element User (v2.1)
 
           **Parameters:**:
 
           - **elementuser_id**: (optional) Element User ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1162,16 +1156,42 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def elementusers_access(self, elementuser_id, access_id=None, api_version="v2.1"):
+        """
+        GET Elementusers_Access API Function
+
+          **Parameters:**:
+
+          - **elementuser_id**: Element User ID
+          - **access_id**: (optional) Access ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not access_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}/access".format(api_version,
+                                                                                elementuser_id)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}/access/{}".format(api_version,
+                                                                                   elementuser_id,
+                                                                                   access_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def elementusers_password(self, elementuser_id, api_version="v2.1"):
         """
-        Get element user password
+        Get element user password (v2.1)
 
           **Parameters:**:
 
           - **elementuser_id**: Element User ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1190,7 +1210,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1202,13 +1222,13 @@ class Get(object):
 
     def esp(self, api_version="v2.0"):
         """
-        Get esp tenant details for tenant id
+        Get esp tenant details for tenant id (v2.0)
 
           **Parameters:**:
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1220,14 +1240,14 @@ class Get(object):
 
     def esp_operator_permissions(self, operator_id, api_version="v2.0"):
         """
-        Get esp operator permissions assigned under all clients
+        Get esp operator permissions assigned under all clients (v2.0)
 
           **Parameters:**:
 
           - **operator_id**: Operator ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1240,7 +1260,7 @@ class Get(object):
 
     def esp_operator_permissions_client(self, operator_id, client_id, api_version="v2.1"):
         """
-        Get esp operator permissions assigned under a client
+        Get esp operator permissions assigned under a client (v2.1)
 
           **Parameters:**:
 
@@ -1248,7 +1268,7 @@ class Get(object):
           - **client_id**: ESP/MSP Client ID (typically their tenant_id)
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1268,7 +1288,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1280,7 +1300,7 @@ class Get(object):
 
     def eventcorrelationpolicyrules(self, eventcorrelationpolicyset_id, eventcorrelationpolicyrule_id=None, api_version="v2.0"):
         """
-        Get all event correlation policyrules
+        Get all event correlation policyrules (v2.0)
 
           **Parameters:**:
 
@@ -1288,7 +1308,7 @@ class Get(object):
           - **eventcorrelationpolicyrule_id**: (optional) Event Correlation Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1306,14 +1326,14 @@ class Get(object):
 
     def eventcorrelationpolicysets(self, eventcorrelationpolicyset_id=None, api_version="v2.0"):
         """
-        Get all event correlation policysets
+        Get all event correlation policysets (v2.0)
 
           **Parameters:**:
 
           - **eventcorrelationpolicyset_id**: (optional) Event Correlation Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1336,7 +1356,7 @@ class Get(object):
           - **event_id**: Event ID
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1356,7 +1376,7 @@ class Get(object):
           - **externalcaconfig_id**: (optional) External CA Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1372,14 +1392,14 @@ class Get(object):
 
     def globalprefixfilters(self, globalprefixfilter_id=None, api_version="v2.0"):
         """
-        Get global prefix filters.
+        Get global prefix filters. (v2.0)
 
           **Parameters:**:
 
           - **globalprefixfilter_id**: (optional) Global Prefix Filter ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1395,14 +1415,14 @@ class Get(object):
 
     def hardwarebypass(self, element_id, api_version="v2.0"):
         """
-        Get a list of all the hardware bypasses in element
+        Get a list of all the hardware bypasses in element (v2.0)
 
           **Parameters:**:
 
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1413,31 +1433,9 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def hubcluster_status(self, site_id, hubcluster_id, api_version="v3.0"):
-        """
-        Get specific hub cluster state
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **hubcluster_id**: Hub (DC) Cluster ID
-          - **api_version**: API version to use (default v3.0)
-
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/hubclusters/{}/status".format(api_version,
-                                                                                    site_id,
-                                                                                    hubcluster_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "get")
-
     def hubclustermember_status(self, site_id, hubcluster_id, hubclustermember_id, api_version="v3.0"):
         """
-        Get specific hub cluster member state.
+        Get specific hub cluster member state. (v3.0)
 
           **Parameters:**:
 
@@ -1446,7 +1444,7 @@ class Get(object):
           - **hubclustermember_id**: Hub Cluster Member ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1461,7 +1459,7 @@ class Get(object):
 
     def hubclustermembers(self, site_id, hubcluster_id, hubclustermember_id=None, api_version="v3.0"):
         """
-        Get all hub cluster members
+        Get all hub cluster members (v3.0)
 
           **Parameters:**:
 
@@ -1470,7 +1468,7 @@ class Get(object):
           - **hubclustermember_id**: (optional) Hub Cluster Member ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1488,17 +1486,17 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def hubclusters(self, site_id, hubcluster_id=None, api_version="v3.0"):
+    def hubclusters(self, site_id, hubcluster_id=None, api_version="v4.0"):
         """
-        Get all hub clusters
+        Get all hub clusters (v4.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **hubcluster_id**: (optional) Hub (DC) Cluster ID
-          - **api_version**: API version to use (default v3.0)
+          - **api_version**: API version to use (default v4.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1514,16 +1512,38 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def idps(self, idp_id=None, api_version="v3.2"):
+    def hubclusters_status(self, site_id, hubcluster_id, api_version="v4.0"):
         """
-        Get all idps
+        Get hub cluster status (v4.0)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **hubcluster_id**: Hub (DC) Cluster ID
+          - **api_version**: API version to use (default v4.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/hubclusters/{}/status".format(api_version,
+                                                                                    site_id,
+                                                                                    hubcluster_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def idps(self, idp_id=None, api_version="v3.3"):
+        """
+        Get all idps (v3.3)
 
           **Parameters:**:
 
           - **idp_id**: (optional) SAML IDentity provider configuration ID
-          - **api_version**: API version to use (default v3.2)
+          - **api_version**: API version to use (default v3.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1537,9 +1557,29 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def interface_authentication_status(self, element_id, api_version="v2.0"):
+        """
+        GET Interface_Authentication_Status API Function
+
+          **Parameters:**:
+
+          - **element_id**: Element (Device) ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/interface_authentication/status".format(api_version,
+                                                                                                 element_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def interface_multicastigmpmemberships(self, site_id, element_id, interface_id, multicastigmpmembership_id=None, api_version="v2.0"):
         """
-        GET interface_Multicastigmpmemberships API Function
+        GET Interface_Multicastigmpmemberships API Function
 
           **Parameters:**:
 
@@ -1549,7 +1589,7 @@ class Get(object):
           - **multicastigmpmembership_id**: (optional) Multicast IGMP Membership ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1569,18 +1609,18 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def interfaces(self, site_id, element_id, interface_id=None, api_version="v4.12"):
+    def interfaces(self, site_id, element_id, interface_id=None, api_version="v4.14"):
         """
-        Get all Interfaces
+        Get all Cellular Interfaces (v4.14)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **interface_id**: (optional) Interface ID
-          - **api_version**: API version to use (default v4.12)
+          - **api_version**: API version to use (default v4.14)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1609,7 +1649,7 @@ class Get(object):
           - **interface_id**: Interface ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1624,7 +1664,7 @@ class Get(object):
 
     def interfaces_multicaststatus(self, site_id, element_id, interface_id, api_version="v2.0"):
         """
-        GET Interfaces_Multicaststatus API Function
+        Get all Multicast status info (v2.0)
 
           **Parameters:**:
 
@@ -1633,7 +1673,7 @@ class Get(object):
           - **interface_id**: Interface ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1646,18 +1686,18 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def interfaces_status(self, site_id, element_id, interface_id, api_version="v3.4"):
+    def interfaces_status(self, site_id, element_id, interface_id, api_version="v3.5"):
         """
-        Get element interface state
+        Get interface status (v3.5)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
-          - **api_version**: API version to use (default v3.4)
+          - **api_version**: API version to use (default v3.5)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1672,7 +1712,7 @@ class Get(object):
 
     def ipfix(self, site_id, element_id, ipfix_id=None, api_version="v2.0"):
         """
-        Get all IPFix config
+        Get all IPFix config (v2.0)
 
           **Parameters:**:
 
@@ -1681,7 +1721,7 @@ class Get(object):
           - **ipfix_id**: (optional) IPFix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1701,14 +1741,14 @@ class Get(object):
 
     def ipfixcollectorcontexts(self, ipfixcollectorcontext_id=None, api_version="v2.0"):
         """
-        Get all IPFix collector context
+        Get all IPFix collector context (v2.0)
 
           **Parameters:**:
 
           - **ipfixcollectorcontext_id**: (optional) IPFix Collector Context ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1724,14 +1764,14 @@ class Get(object):
 
     def ipfixfiltercontexts(self, ipfixfiltercontext_id=None, api_version="v2.0"):
         """
-        Get all IPFix filter context
+        Get all IPFix filter context (v2.0)
 
           **Parameters:**:
 
           - **ipfixfiltercontext_id**: (optional) IPFix Filter Context ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1747,14 +1787,14 @@ class Get(object):
 
     def ipfixglobalprefixes(self, ipfixglobalprefix_id=None, api_version="v2.0"):
         """
-        Get all IPFix global prefix
+        Get all IPFix global prefix (v2.0)
 
           **Parameters:**:
 
           - **ipfixglobalprefix_id**: (optional) IPFix Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1770,14 +1810,14 @@ class Get(object):
 
     def ipfixprofiles(self, ipfixprofile_id=None, api_version="v2.0"):
         """
-        Get all IPFix Profiles
+        Get all IPFix Profiles (v2.0)
 
           **Parameters:**:
 
           - **ipfixprofile_id**: (optional) IPFix Profile ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1793,14 +1833,14 @@ class Get(object):
 
     def ipfixtemplates(self, ipfixtemplate_id=None, api_version="v2.0"):
         """
-        Get all IPFix templates
+        Get all IPFix templates (v2.0)
 
           **Parameters:**:
 
           - **ipfixtemplate_id**: (optional) IPFix Template ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1816,14 +1856,14 @@ class Get(object):
 
     def ipsecprofiles(self, ipsecprofile_id=None, api_version="v2.1"):
         """
-        Get IPSECProfileList
+        Get IPSECProfileList (v2.1)
 
           **Parameters:**:
 
           - **ipsecprofile_id**: (optional) IPSEC Profile ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1839,7 +1879,7 @@ class Get(object):
 
     def lannetworks(self, site_id, lannetwork_id=None, api_version="v3.1"):
         """
-        Get LAN networks
+        Get LAN networks (v3.1)
 
           **Parameters:**:
 
@@ -1847,7 +1887,7 @@ class Get(object):
           - **lannetwork_id**: (optional) LAN Network ID
           - **api_version**: API version to use (default v3.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1863,16 +1903,36 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def lldp_neighbors_status(self, element_id, api_version="v2.0"):
+        """
+        GET Lldp_Neighbors_Status API Function
+
+          **Parameters:**:
+
+          - **element_id**: Element (Device) ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/lldp_neighbors/status".format(api_version,
+                                                                                       element_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def localprefixfilters(self, localprefixfilter_id=None, api_version="v2.0"):
         """
-        Get local prefix filters.
+        Get local prefix filters. (v2.0)
 
           **Parameters:**:
 
           - **localprefixfilter_id**: (optional) Local Prefix Filter ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1895,7 +1955,7 @@ class Get(object):
           - **site_id**: Site ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1914,7 +1974,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1932,7 +1992,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1942,9 +2002,29 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def mac_addresses_status(self, element_id, api_version="v2.0"):
+        """
+        GET Mac_Addresses_Status API Function
+
+          **Parameters:**:
+
+          - **element_id**: Element (Device) ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/mac_addresses/status".format(api_version,
+                                                                                      element_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def machine_cellular_modules(self, machine_id, cellular_module_id=None, api_version="v2.0"):
         """
-        GET Machine_Cellular_Modules API Function
+        Get all cellular modules (v2.0)
 
           **Parameters:**:
 
@@ -1952,7 +2032,7 @@ class Get(object):
           - **cellular_module_id**: (optional) Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1970,7 +2050,7 @@ class Get(object):
 
     def machine_cellular_modules_firmware(self, machine_id, cellular_module_id, api_version="v2.0"):
         """
-        GET Machine_Cellular_Modules_Firmware API Function
+        Get cellular module firmware configuration (v2.0)
 
           **Parameters:**:
 
@@ -1978,7 +2058,7 @@ class Get(object):
           - **cellular_module_id**: Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -1992,7 +2072,7 @@ class Get(object):
 
     def machine_cellular_modules_firmware_status(self, machine_id, cellular_module_id, api_version="v2.0"):
         """
-        GET Machine_Cellular_Modules_Firmware_Status API Function
+        Get cellular module firmware configuration status (v2.0)
 
           **Parameters:**:
 
@@ -2000,7 +2080,7 @@ class Get(object):
           - **cellular_module_id**: Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2014,7 +2094,7 @@ class Get(object):
 
     def machine_cellular_modules_status(self, machine_id, cellular_module_id, api_version="v2.0"):
         """
-        GET Machine_Cellular_Modules_Status API Function
+        Get cellular module status (v2.0)
 
           **Parameters:**:
 
@@ -2022,7 +2102,7 @@ class Get(object):
           - **cellular_module_id**: Cellular Module ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2034,16 +2114,16 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def machines(self, machine_id=None, api_version="v2.2"):
+    def machines(self, machine_id=None, api_version="v2.3"):
         """
-        Get all machines of a tenant
+        Get all machines of a tenant (v2.3)
 
           **Parameters:**:
 
           - **machine_id**: (optional) Machine ID
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2059,7 +2139,7 @@ class Get(object):
 
     def machines_software_status(self, machine_id, software_id, status_id=None, api_version="v2.0"):
         """
-        Get all Machine Software Statuses
+        Get all Machine Software Statuses (v2.0)
 
           **Parameters:**:
 
@@ -2068,7 +2148,7 @@ class Get(object):
           - **status_id**: (optional) Software Status ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2088,20 +2168,38 @@ class Get(object):
 
     def machinesystemstatus(self, machine_id, api_version="v2.1"):
         """
-        GET Machinesystemstatus API Function
+        Get Machine system status for a tenant (v2.1)
 
           **Parameters:**:
 
           - **machine_id**: Machine ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api/machines/{}/machinesystemstatus".format(api_version,
                                                                                      machine_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def monitor_aaa_metrics(self, api_version="v2.0"):
+        """
+        GET Monitor_Aaa_Metrics API Function
+
+          **Parameters:**:
+
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aaa_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
@@ -2114,12 +2212,84 @@ class Get(object):
 
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/monitor/aggregates".format(api_version)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def monitor_aiops_aggregates(self, api_version="v2.0"):
+        """
+        GET Monitor_Aiops_Aggregates API Function
+
+          **Parameters:**:
+
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/aggregates".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def monitor_aiops_forecast(self, api_version="v2.1"):
+        """
+        GET Monitor_Aiops_Forecast API Function
+
+          **Parameters:**:
+
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/forecast".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def monitor_aiops_health(self, api_version="v2.0"):
+        """
+        GET Monitor_Aiops_Health API Function
+
+          **Parameters:**:
+
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/health".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def monitor_aiops_object_stats(self, api_version="v2.1"):
+        """
+        GET Monitor_Aiops_Object_Stats API Function
+
+          **Parameters:**:
+
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/object_stats".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
@@ -2133,13 +2303,13 @@ class Get(object):
           - **bulk_metric_id**: Bulk Metric ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/monitor/bulk_metrics/{}".format(api_version,
-                                                                             bulk_metric_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/bulk_metrics/{}".format(api_version,
+                                                                                     bulk_metric_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
@@ -2152,50 +2322,50 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/monitor/cellular_metrics".format(api_version)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/cellular_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_metrics(self, metric_id, api_version="v2.2"):
+    def monitor_metrics(self, metric_id, api_version="v2.3"):
         """
         GET Monitor_Metrics API Function
 
           **Parameters:**:
 
           - **metric_id**: Metric ID
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/monitor/metrics/{}".format(api_version,
-                                                                        metric_id)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/metrics/{}".format(api_version,
+                                                                                metric_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_object_stats(self, api_version="v2.3"):
+    def monitor_object_stats(self, api_version="v2.4"):
         """
         GET Monitor_Object_Stats API Function
 
           **Parameters:**:
 
-          - **api_version**: API version to use (default v2.3)
+          - **api_version**: API version to use (default v2.4)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/monitor/object_stats".format(api_version)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/object_stats".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
@@ -2208,30 +2378,83 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/monitor/qos_metrics".format(api_version)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/qos_metrics".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_sys_metrics(self, api_version="v2.1"):
+    def monitor_sys_metrics(self, api_version="v2.2"):
         """
         GET Monitor_Sys_Metrics API Function
 
           **Parameters:**:
 
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/monitor/sys_metrics".format(api_version)
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/sys_metrics".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def mstp_instances(self, site_id, element_id, mstp_instance_id=None, api_version="v2.0"):
+        """
+        GET Mstp_Instances API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **mstp_instance_id**: (optional) MSTP Instance ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not mstp_instance_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/mstp_instances".format(api_version,
+                                                                                             site_id,
+                                                                                             element_id)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/mstp_instances/{}".format(api_version,
+                                                                                                site_id,
+                                                                                                element_id,
+                                                                                                mstp_instance_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def mstp_instances_status(self, site_id, element_id, mstp_instance_id, api_version="v2.0"):
+        """
+        GET Mstp_Instances_Status API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **mstp_instance_id**: MSTP Instance ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/mstp_instances/{}/status".format(api_version,
+                                                                                                   site_id,
+                                                                                                   element_id,
+                                                                                                   mstp_instance_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
@@ -2247,7 +2470,7 @@ class Get(object):
           - **multicastdynamicrp_id**: (optional) Multicast Dynamic RP ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2267,7 +2490,7 @@ class Get(object):
 
     def multicastglobalconfigs(self, site_id, element_id, multicastglobalconfig_id=None, api_version="v2.1"):
         """
-        GET Multicastglobalconfigs API Function
+        Get all Multicast configs (v2.1)
 
           **Parameters:**:
 
@@ -2276,7 +2499,7 @@ class Get(object):
           - **multicastglobalconfig_id**: (optional) Multicast Global Config ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2294,16 +2517,16 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def multicastpeergroups(self, multicastpeergroup_id=None, api_version="v2.0"):
+    def multicastpeergroups(self, multicastpeergroup_id=None, api_version="v2.1"):
         """
         GET Multicastpeergroups API Function
 
           **Parameters:**:
 
           - **multicastpeergroup_id**: (optional) Multicast Peer Group ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2319,7 +2542,7 @@ class Get(object):
 
     def multicastprotocolparameters(self, site_id, element_id, api_version="v2.0"):
         """
-        GET Multicastprotocolparameters API Function
+        Get all Multicast Protocol Parameters (v2.0)
 
           **Parameters:**:
 
@@ -2327,7 +2550,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2341,7 +2564,7 @@ class Get(object):
 
     def multicastroutes(self, site_id, element_id, api_version="v2.0"):
         """
-        GET Multicastroutes API Function
+        Get all Multicast routes (v2.0)
 
           **Parameters:**:
 
@@ -2349,7 +2572,7 @@ class Get(object):
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2363,7 +2586,7 @@ class Get(object):
 
     def multicastrps(self, site_id, element_id, multicastrp_id=None, api_version="v2.0"):
         """
-        GET Multicastrps API Function
+        Get all Multicast RP configs (v2.0)
 
           **Parameters:**:
 
@@ -2372,7 +2595,7 @@ class Get(object):
           - **multicastrp_id**: (optional) Multicast RP ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2390,6 +2613,58 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def multicastsourcesiderps(self, site_id, multicastsourcesiderp_id=None, api_version="v2.0"):
+        """
+        GET Multicastsourcesiderps API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **multicastsourcesiderp_id**: (optional) Multicast Source Side RP ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not multicastsourcesiderp_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/multicastsourcesiderps".format(api_version,
+                                                                                         site_id)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/multicastsourcesiderps/{}".format(api_version,
+                                                                                            site_id,
+                                                                                            multicastsourcesiderp_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def multicastsourcesiteconfigs(self, site_id, multicastsourcesiteconfig_id=None, api_version="v2.0"):
+        """
+        GET Multicastsourcesiteconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **multicastsourcesiteconfig_id**: (optional) Multicast Source Site Config ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not multicastsourcesiteconfig_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/multicastsourcesiteconfigs".format(api_version,
+                                                                                             site_id)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/multicastsourcesiteconfigs/{}".format(api_version,
+                                                                                                site_id,
+                                                                                                multicastsourcesiteconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def multicastwanstatus(self, site_id, element_id, multicastwanstatu_id=None, api_version="v2.0"):
         """
         GET Multicastwanstatus API Function
@@ -2401,7 +2676,7 @@ class Get(object):
           - **multicastwanstatu_id**: (optional) 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2421,14 +2696,14 @@ class Get(object):
 
     def natglobalprefixes(self, natglobalprefix_id=None, api_version="v2.0"):
         """
-        Get all Global NAT prefixes.
+        Get all Global NAT prefixes. (v2.0)
 
           **Parameters:**:
 
           - **natglobalprefix_id**: (optional) NAT Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2444,14 +2719,14 @@ class Get(object):
 
     def natlocalprefixes(self, natlocalprefix_id=None, api_version="v2.0"):
         """
-        Get NAT local prefixes.
+        Get NAT local prefixes. (v2.0)
 
           **Parameters:**:
 
           - **natlocalprefix_id**: (optional) NAT Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2467,14 +2742,14 @@ class Get(object):
 
     def natpolicypools(self, natpolicypool_id=None, api_version="v2.0"):
         """
-        Get NAT Policy Pools.
+        Get NAT Policy Pools. (v2.0)
 
           **Parameters:**:
 
           - **natpolicypool_id**: (optional) NAT Policy Pool ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2490,7 +2765,7 @@ class Get(object):
 
     def natpolicyrules(self, natpolicyset_id, natpolicyrule_id=None, api_version="v2.0"):
         """
-        Get policy rules of policy set
+        Get policy rules of policy set (v2.0)
 
           **Parameters:**:
 
@@ -2498,7 +2773,7 @@ class Get(object):
           - **natpolicyrule_id**: (optional) NAT Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2516,14 +2791,14 @@ class Get(object):
 
     def natpolicysets(self, natpolicyset_id=None, api_version="v2.0"):
         """
-        Get all NAT policy sets of tenant.
+        Get all NAT policy sets of tenant. (v2.0)
 
           **Parameters:**:
 
           - **natpolicyset_id**: (optional) NAT Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2539,14 +2814,14 @@ class Get(object):
 
     def natpolicysets_status(self, natpolicyset_id, api_version="v2.0"):
         """
-        Get a specific NAT policy set status of tenant.
+        Get a specific NAT policy set status of tenant. (v2.0)
 
           **Parameters:**:
 
           - **natpolicyset_id**: NAT Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2559,14 +2834,14 @@ class Get(object):
 
     def natpolicysetstacks(self, natpolicysetstack_id=None, api_version="v2.0"):
         """
-        Get all NAT policy Set stacks of tenant.
+        Get all NAT policy Set stacks of tenant. (v2.0)
 
           **Parameters:**:
 
           - **natpolicysetstack_id**: (optional) NAT Policy Set Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2582,14 +2857,14 @@ class Get(object):
 
     def natzones(self, natzone_id=None, api_version="v2.0"):
         """
-        Get Nat Policy Zones.
+        Get Nat Policy Zones. (v2.0)
 
           **Parameters:**:
 
           - **natzone_id**: (optional) NAT Zone ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2605,14 +2880,14 @@ class Get(object):
 
     def networkcontexts(self, networkcontext_id=None, api_version="v2.0"):
         """
-        Get LAN segments
+        Get LAN segments (v2.0)
 
           **Parameters:**:
 
           - **networkcontext_id**: (optional) Network Context ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2628,14 +2903,14 @@ class Get(object):
 
     def networkpolicyglobalprefixes(self, networkpolicyglobalprefix_id=None, api_version="v2.0"):
         """
-        Get all Network policy global prefixes.
+        Get all Network policy global prefixes. (v2.0)
 
           **Parameters:**:
 
           - **networkpolicyglobalprefix_id**: (optional) Network Policy Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2651,7 +2926,7 @@ class Get(object):
 
     def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id=None, api_version="v2.1"):
         """
-        Get network policy rules of tenant
+        Get network policy rules of tenant (v2.1)
 
           **Parameters:**:
 
@@ -2659,7 +2934,7 @@ class Get(object):
           - **networkpolicyrule_id**: (optional) Network Policy Rule ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2677,14 +2952,14 @@ class Get(object):
 
     def networkpolicysets(self, networkpolicyset_id=None, api_version="v2.0"):
         """
-        Get all network policy sets of tenant.
+        Get all network policy sets of tenant. (v2.0)
 
           **Parameters:**:
 
           - **networkpolicyset_id**: (optional) Network Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2700,14 +2975,14 @@ class Get(object):
 
     def networkpolicysets_status(self, networkpolicyset_id, api_version="v2.0"):
         """
-        Get a specific network policy set status of tenant.
+        Get a specific network policy set status of tenant. (v2.0)
 
           **Parameters:**:
 
           - **networkpolicyset_id**: Network Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2720,14 +2995,14 @@ class Get(object):
 
     def networkpolicysetstacks(self, networkpolicysetstack_id=None, api_version="v2.0"):
         """
-        Get all network policy set stacks of tenant.
+        Get all network policy set stacks of tenant. (v2.0)
 
           **Parameters:**:
 
           - **networkpolicysetstack_id**: (optional) Network Policy Set Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2743,14 +3018,14 @@ class Get(object):
 
     def ngfwsecuritypolicyglobalprefixes(self, ngfwsecuritypolicyglobalprefix_id=None, api_version="v2.0"):
         """
-        GET Ngfwsecuritypolicyglobalprefixes API Function
+        Get all Security Policy V2 Global Prefixes for a tenant (v2.0)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicyglobalprefix_id**: (optional) NGFW Security Policy Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2766,14 +3041,14 @@ class Get(object):
 
     def ngfwsecuritypolicylocalprefixes(self, ngfwsecuritypolicylocalprefix_id=None, api_version="v2.0"):
         """
-        GET Ngfwsecuritypolicylocalprefixes API Function
+        Get all Security Policy V2 Local Prefixes for a tenant (v2.0)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicylocalprefix_id**: (optional) NGFW Security Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2789,7 +3064,7 @@ class Get(object):
 
     def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id=None, api_version="v2.0"):
         """
-        GET Ngfwsecuritypolicyrules API Function
+        Get all Security Policy V2 Rules under a policy set (v2.0)
 
           **Parameters:**:
 
@@ -2797,7 +3072,7 @@ class Get(object):
           - **ngfwsecuritypolicyrule_id**: (optional) NGFW Security Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2815,14 +3090,14 @@ class Get(object):
 
     def ngfwsecuritypolicysets(self, ngfwsecuritypolicyset_id=None, api_version="v2.0"):
         """
-        GET Ngfwsecuritypolicysets API Function
+        Get all Security Policy V2 Sets by tenant ID (v2.0)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicyset_id**: (optional) NGFW Security Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2838,14 +3113,14 @@ class Get(object):
 
     def ngfwsecuritypolicysetstacks(self, ngfwsecuritypolicysetstack_id=None, api_version="v2.0"):
         """
-        GET Ngfwsecuritypolicysetstacks API Function
+        Get all Security Policy V2 Set Stacks by tenant ID (v2.0)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicysetstack_id**: (optional) NGFW Security Policy Set Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2861,7 +3136,7 @@ class Get(object):
 
     def ntp(self, element_id, ntp_id=None, api_version="v2.0"):
         """
-        Get all element NTP
+        Get all element NTP (v2.0)
 
           **Parameters:**:
 
@@ -2869,7 +3144,7 @@ class Get(object):
           - **ntp_id**: (optional) NTP Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2887,7 +3162,7 @@ class Get(object):
 
     def ntp_status(self, element_id, ntp_id, api_version="v2.0"):
         """
-        Get specific element NTP
+        Get specific element NTP (v2.0)
 
           **Parameters:**:
 
@@ -2895,7 +3170,7 @@ class Get(object):
           - **ntp_id**: NTP Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2915,7 +3190,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2933,7 +3208,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2945,7 +3220,7 @@ class Get(object):
 
     def operator_sessions(self, operator_id, session_id=None, api_version="v2.0"):
         """
-        Get all sessions for operator id belonging to a tenant id
+        Get all sessions for operator id belonging to a tenant id (v2.0)
 
           **Parameters:**:
 
@@ -2953,7 +3228,7 @@ class Get(object):
           - **session_id**: (optional) User Session ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2971,13 +3246,13 @@ class Get(object):
 
     def otpaccessconfigs(self, api_version="v2.0"):
         """
-        Get all otp access configs.
+        Get all otp access configs. (v2.0)
 
           **Parameters:**:
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -2989,14 +3264,14 @@ class Get(object):
 
     def pathgroups(self, pathgroup_id=None, api_version="v2.1"):
         """
-        get all Path Groups for a tenant.
+        get all Path Groups for a tenant. (v2.1)
 
           **Parameters:**:
 
           - **pathgroup_id**: (optional) Path Group ID (for network service/DC routing)
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3012,14 +3287,14 @@ class Get(object):
 
     def permissions(self, permission_id=None, api_version="v2.0"):
         """
-        Get list of permitted APIs that the current operator can invoke
+        Get list of permitted APIs that the current operator can invoke (v2.0)
 
           **Parameters:**:
 
           - **permission_id**: (optional) Permission ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3035,7 +3310,7 @@ class Get(object):
 
     def policyrules(self, policyset_id, policyrule_id=None, api_version="v3.1"):
         """
-        Get policy rules of tenant
+        Get policy rules of tenant (v3.1)
 
           **Parameters:**:
 
@@ -3043,7 +3318,7 @@ class Get(object):
           - **policyrule_id**: (optional) Policy Rule ID
           - **api_version**: API version to use (default v3.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3061,14 +3336,14 @@ class Get(object):
 
     def policysets(self, policyset_id=None, api_version="v3.0"):
         """
-        Get all policy sets of tenant.
+        Get all policy sets of tenant. (v3.0)
 
           **Parameters:**:
 
           - **policyset_id**: (optional) Policy Set ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3084,14 +3359,14 @@ class Get(object):
 
     def policysets_status(self, policyset_id, api_version="v3.0"):
         """
-        Get a specific policy set status of tenant.
+        Get a specific policy set status of tenant. (v3.0)
 
           **Parameters:**:
 
           - **policyset_id**: Policy Set ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3102,9 +3377,31 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def port_vlan_members(self, site_id, element_id, api_version="v2.0"):
+        """
+        GET Port_Vlan_Members API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/port_vlan_members".format(api_version,
+                                                                                            site_id,
+                                                                                            element_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def prefixfilters(self, site_id, prefixfilter_id=None, api_version="v2.0"):
         """
-        Get site security filters
+        Get site security filters (v2.0)
 
           **Parameters:**:
 
@@ -3112,7 +3409,7 @@ class Get(object):
           - **prefixfilter_id**: (optional) Prefix Filter ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3130,14 +3427,14 @@ class Get(object):
 
     def prioritypolicyglobalprefixes(self, prioritypolicyglobalprefix_id=None, api_version="v2.0"):
         """
-        Get all Priority policy prefixes.
+        Get all Priority policy prefixes. (v2.0)
 
           **Parameters:**:
 
           - **prioritypolicyglobalprefix_id**: (optional) Priority Policy Global Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3153,7 +3450,7 @@ class Get(object):
 
     def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id=None, api_version="v2.0"):
         """
-        Get priority policy rules of tenant
+        Get priority policy rules of tenant (v2.0)
 
           **Parameters:**:
 
@@ -3161,7 +3458,7 @@ class Get(object):
           - **prioritypolicyrule_id**: (optional) Priority Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3179,14 +3476,14 @@ class Get(object):
 
     def prioritypolicysets(self, prioritypolicyset_id=None, api_version="v2.0"):
         """
-        Get all priority policy sets of tenant.
+        Get all priority policy sets of tenant. (v2.0)
 
           **Parameters:**:
 
           - **prioritypolicyset_id**: (optional) Priority Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3202,14 +3499,14 @@ class Get(object):
 
     def prioritypolicysets_status(self, prioritypolicyset_id, api_version="v2.0"):
         """
-        Get a specific priority policy set status of tenant.
+        Get a specific priority policy set status of tenant. (v2.0)
 
           **Parameters:**:
 
           - **prioritypolicyset_id**: Priority Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3222,14 +3519,14 @@ class Get(object):
 
     def prioritypolicysetstacks(self, prioritypolicysetstack_id=None, api_version="v2.0"):
         """
-        Get all Priority policy set stacks of tenant.
+        Get all Priority policy set stacks of tenant. (v2.0)
 
           **Parameters:**:
 
           - **prioritypolicysetstack_id**: (optional) Priority Policy Stack ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3245,7 +3542,7 @@ class Get(object):
 
     def prismaaccess_configs(self, site_id, prismaaccess_config_id=None, api_version="v2.0"):
         """
-        GET Prismaaccess_Configs API Function
+        Get all Prisma Access Configs for a site (v2.0)
 
           **Parameters:**:
 
@@ -3253,7 +3550,7 @@ class Get(object):
           - **prismaaccess_config_id**: (optional) Prisma Acceess Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3271,13 +3568,13 @@ class Get(object):
 
     def profile(self, api_version="v2.1"):
         """
-        Get current user profile
+        Get current user profile (v2.1)
 
           **Parameters:**:
 
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3287,16 +3584,64 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def radii(self, element_id, radii_id=None, api_version="v2.0"):
+        """
+        GET Radii API Function
+
+          **Parameters:**:
+
+          - **element_id**: Element (Device) ID
+          - **radii_id**: (optional) Radii ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not radii_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/radii".format(api_version,
+                                                                           element_id)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/radii/{}".format(api_version,
+                                                                              element_id,
+                                                                              radii_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def radii_status(self, element_id, radii_id, api_version="v2.0"):
+        """
+        GET Radii_Status API Function
+
+          **Parameters:**:
+
+          - **element_id**: Element (Device) ID
+          - **radii_id**: Radii ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/radii/{}/status".format(api_version,
+                                                                                 element_id,
+                                                                                 radii_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def recovery_tokens(self, machine_id, api_version="v2.1"):
         """
-        GET Recovery_Tokens API Function
+        Get recovery token for a machine (v2.1)
 
           **Parameters:**:
 
           - **machine_id**: Machine ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3315,7 +3660,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3333,7 +3678,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3345,14 +3690,14 @@ class Get(object):
 
     def roles(self, role_id=None, api_version="v2.1"):
         """
-        Get a list of custom roles
+        Get a list of custom roles (v2.1)
 
           **Parameters:**:
 
           - **role_id**: (optional) Role ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3368,7 +3713,7 @@ class Get(object):
 
     def routing_aspathaccesslists(self, site_id, element_id, routing_aspathaccesslist_id=None, api_version="v2.1"):
         """
-        Get all Access List for Element
+        Get all Access List for Element (v2.1)
 
           **Parameters:**:
 
@@ -3377,7 +3722,7 @@ class Get(object):
           - **routing_aspathaccesslist_id**: (optional) Routing AS-PATH Access List ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3397,7 +3742,7 @@ class Get(object):
 
     def routing_ipcommunitylists(self, site_id, element_id, routing_ipcommunitylist_id=None, api_version="v2.0"):
         """
-        Get all Community List for Element
+        Get all Community List for Element (v2.0)
 
           **Parameters:**:
 
@@ -3406,7 +3751,7 @@ class Get(object):
           - **routing_ipcommunitylist_id**: (optional) Routing IP Community List ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3426,7 +3771,7 @@ class Get(object):
 
     def routing_prefixlists(self, site_id, element_id, routing_prefixlist_id=None, api_version="v2.0"):
         """
-        Get all Prefix List for Element
+        Get all Prefix List for Element (v2.0)
 
           **Parameters:**:
 
@@ -3435,7 +3780,7 @@ class Get(object):
           - **routing_prefixlist_id**: (optional) Routing IP Prefix List ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3455,7 +3800,7 @@ class Get(object):
 
     def routing_routemaps(self, site_id, element_id, routing_routemap_id=None, api_version="v2.1"):
         """
-        Get all Route Map for Element
+        Get all Route Map for Element (v2.1)
 
           **Parameters:**:
 
@@ -3464,7 +3809,7 @@ class Get(object):
           - **routing_routemap_id**: (optional) Routing Route Map ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3491,7 +3836,7 @@ class Get(object):
           - **sdwanapp_id**: (optional) SDWAN Application ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3515,7 +3860,7 @@ class Get(object):
           - **appstatus_id**: SDWAN App Status ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3536,7 +3881,7 @@ class Get(object):
           - **sdwanapp_id**: SDWAN Application ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3556,7 +3901,7 @@ class Get(object):
           - **sdwanapp_id**: SDWAN Application ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3576,7 +3921,7 @@ class Get(object):
           - **sdwanapp_id**: SDWAN Application ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3597,7 +3942,7 @@ class Get(object):
           - **config_id**: (optional) SDWAN App Config ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3622,7 +3967,7 @@ class Get(object):
           - **sdwanapp_id**: SDWAN Application ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3635,7 +3980,7 @@ class Get(object):
 
     def securitypolicyrules(self, securitypolicyset_id, securitypolicyrule_id=None, api_version="v2.0"):
         """
-        Get tenant security policy rules.
+        Get tenant security policy rules. (v2.0)
 
           **Parameters:**:
 
@@ -3643,7 +3988,7 @@ class Get(object):
           - **securitypolicyrule_id**: (optional) Security Policy Rule ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3661,14 +4006,14 @@ class Get(object):
 
     def securitypolicysets(self, securitypolicyset_id=None, api_version="v2.0"):
         """
-        Get tenant security policy sets.
+        Get tenant security policy sets. (v2.0)
 
           **Parameters:**:
 
           - **securitypolicyset_id**: (optional) Security Policy Set ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3684,14 +4029,14 @@ class Get(object):
 
     def securityzones(self, securityzone_id=None, api_version="v2.0"):
         """
-        Get security zones
+        Get security zones (v2.0)
 
           **Parameters:**:
 
           - **securityzone_id**: (optional) Security Zone (ZBFW) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3707,14 +4052,14 @@ class Get(object):
 
     def servicebindingmaps(self, servicebindingmap_id=None, api_version="v2.1"):
         """
-        Get getServiceBindingMapList
+        Get getServiceBindingMapList (v2.1)
 
           **Parameters:**:
 
           - **servicebindingmap_id**: (optional) Service Binding Map ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3730,14 +4075,14 @@ class Get(object):
 
     def serviceendpoints(self, serviceendpoint_id=None, api_version="v2.3"):
         """
-        Get ServiceEndpointList
+        Get ServiceEndpointList (v2.3)
 
           **Parameters:**:
 
           - **serviceendpoint_id**: (optional) Service Endpoint ID
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3753,14 +4098,14 @@ class Get(object):
 
     def servicelabels(self, servicelabel_id=None, api_version="v2.1"):
         """
-        Get getServiceLabelList
+        Get getServiceLabelList (v2.1)
 
           **Parameters:**:
 
           - **servicelabel_id**: (optional) Service Label ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3784,7 +4129,7 @@ class Get(object):
           - **anynetlink_id**: Anynet (Secure Fabric) Link ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3805,7 +4150,7 @@ class Get(object):
           - **site_id**: Site ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3818,7 +4163,7 @@ class Get(object):
 
     def site_extensions(self, site_id, extension_id=None, api_version="v2.0"):
         """
-        Get all site level extensions
+        Get all site level extensions (v2.0)
 
           **Parameters:**:
 
@@ -3826,7 +4171,7 @@ class Get(object):
           - **extension_id**: (optional) Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3842,9 +4187,29 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def site_hubserviceendpoints(self, site_id, api_version="v2.0"):
+        """
+        GET Site_Hubserviceendpoints API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/hubserviceendpoints".format(api_version,
+                                                                                  site_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def site_ipfixlocalprefixes(self, site_id, ipfixlocalprefix_id=None, api_version="v2.0"):
         """
-        Get all IPFix site prefix association
+        Get all IPFix site prefix association (v2.0)
 
           **Parameters:**:
 
@@ -3852,7 +4217,7 @@ class Get(object):
           - **ipfixlocalprefix_id**: (optional) IPFix Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3870,7 +4235,7 @@ class Get(object):
 
     def site_natlocalprefixes(self, site_id, natlocalprefix_id=None, api_version="v2.0"):
         """
-        Get site NAT prefixes
+        Get site NAT prefixes (v2.0)
 
           **Parameters:**:
 
@@ -3878,7 +4243,7 @@ class Get(object):
           - **natlocalprefix_id**: (optional) NAT Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3896,7 +4261,7 @@ class Get(object):
 
     def site_networkpolicylocalprefixes(self, site_id, networkpolicylocalprefix_id=None, api_version="v2.0"):
         """
-        Get site Network policy prefix associations
+        Get site Network policy prefix associations (v2.0)
 
           **Parameters:**:
 
@@ -3904,7 +4269,7 @@ class Get(object):
           - **networkpolicylocalprefix_id**: (optional) Network Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3922,7 +4287,7 @@ class Get(object):
 
     def site_ngfwsecuritypolicylocalprefixes(self, site_id, ngfwsecuritypolicylocalprefix_id=None, api_version="v2.0"):
         """
-        GET Site_Ngfwsecuritypolicylocalprefixes API Function
+        Get all security policy v2 local prefix site association for a site (v2.0)
 
           **Parameters:**:
 
@@ -3930,7 +4295,7 @@ class Get(object):
           - **ngfwsecuritypolicylocalprefix_id**: (optional) NGFW Security Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3948,7 +4313,7 @@ class Get(object):
 
     def site_prioritypolicylocalprefixes(self, site_id, prioritypolicylocalprefix_id=None, api_version="v2.0"):
         """
-        Get site Priority policy prefix associations
+        Get site Priority policy prefix associations (v2.0)
 
           **Parameters:**:
 
@@ -3956,7 +4321,7 @@ class Get(object):
           - **prioritypolicylocalprefix_id**: (optional) Priority Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3972,16 +4337,36 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def site_status(self, site_id, api_version="v2.0"):
+    def site_serviceconnections(self, site_id, api_version="v2.0"):
         """
-        Get site status
+        GET Site_Serviceconnections API Function
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/serviceconnections".format(api_version,
+                                                                                 site_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def site_status(self, site_id, api_version="v2.0"):
+        """
+        Get site status (v2.0)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -3994,14 +4379,14 @@ class Get(object):
 
     def siteciphers(self, site_id, api_version="v2.0"):
         """
-        Get site ciphers
+        Get site ciphers (v2.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4014,14 +4399,14 @@ class Get(object):
 
     def sites(self, site_id=None, api_version="v4.7"):
         """
-        Get all sites of a tenant
+        Get all sites of a tenant (v4.7)
 
           **Parameters:**:
 
           - **site_id**: (optional) Site ID
           - **api_version**: API version to use (default v4.7)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4037,7 +4422,7 @@ class Get(object):
 
     def sitesecurityzones(self, site_id, sitesecurityzone_id=None, api_version="v2.0"):
         """
-        Get site security zones
+        Get site security zones (v2.0)
 
           **Parameters:**:
 
@@ -4045,7 +4430,7 @@ class Get(object):
           - **sitesecurityzone_id**: (optional) Site Security Zone ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4063,7 +4448,7 @@ class Get(object):
 
     def snmpagents(self, site_id, element_id, snmpagent_id=None, api_version="v2.1"):
         """
-        Get SNMP Agent on an element
+        Get SNMP Agent on an element (v2.1)
 
           **Parameters:**:
 
@@ -4072,7 +4457,7 @@ class Get(object):
           - **snmpagent_id**: (optional) SNMP Agent ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4092,7 +4477,7 @@ class Get(object):
 
     def snmptraps(self, site_id, element_id, snmptrap_id=None, api_version="v2.0"):
         """
-        Get All SNMP Trap on an element
+        Get All SNMP Trap on an element (v2.0)
 
           **Parameters:**:
 
@@ -4101,7 +4486,7 @@ class Get(object):
           - **snmptrap_id**: (optional) SNMP Trap ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4121,7 +4506,7 @@ class Get(object):
 
     def software(self, machine_id, software_id=None, api_version="v2.0"):
         """
-        Get all Machine Software
+        Get all Machine Software (v2.0)
 
           **Parameters:**:
 
@@ -4129,7 +4514,7 @@ class Get(object):
           - **software_id**: (optional) Software ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4147,14 +4532,14 @@ class Get(object):
 
     def software_state(self, element_id, api_version="v2.0"):
         """
-        Get the software upgrade configuration of an element
+        Get the software upgrade configuration of an element (v2.0)
 
           **Parameters:**:
 
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4167,14 +4552,14 @@ class Get(object):
 
     def software_status(self, element_id, api_version="v2.1"):
         """
-        Get all software upgrade status (up to 5) started by the tenant user
+        Get all software upgrade status (up to 5) started by the tenant user (v2.1)
 
           **Parameters:**:
 
           - **element_id**: Element (Device) ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4187,7 +4572,7 @@ class Get(object):
 
     def spokeclusters(self, site_id, spokecluster_id=None, api_version="v2.0"):
         """
-        Get all spokeclusters
+        Get all spokeclusters (v2.0)
 
           **Parameters:**:
 
@@ -4195,7 +4580,7 @@ class Get(object):
           - **spokecluster_id**: (optional) Spoke Cluster ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4213,7 +4598,7 @@ class Get(object):
 
     def spokeclusters_status(self, site_id, spokecluster_id, api_version="v2.0"):
         """
-        Get Spoke Cluster Status.
+        Get Spoke Cluster Status. (v2.0)
 
           **Parameters:**:
 
@@ -4221,7 +4606,7 @@ class Get(object):
           - **spokecluster_id**: Spoke Cluster ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4233,29 +4618,9 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def state(self, element_id, api_version="v2.0"):
-        """
-        Get element state
-
-          **Parameters:**:
-
-          - **element_id**: Element (Device) ID
-          - **api_version**: API version to use (default v2.0)
-
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/state".format(api_version,
-                                                                       element_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "get")
-
     def staticroutes(self, site_id, element_id, staticroute_id=None, api_version="v2.2"):
         """
-        Get static routes
+        Get static routes (v2.2)
 
           **Parameters:**:
 
@@ -4264,7 +4629,7 @@ class Get(object):
           - **staticroute_id**: (optional) Static Route ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4284,7 +4649,7 @@ class Get(object):
 
     def staticroutes_status(self, site_id, element_id, staticroute_id, api_version="v2.2"):
         """
-        Get static route status
+        Get static route status (v2.2)
 
           **Parameters:**:
 
@@ -4293,7 +4658,7 @@ class Get(object):
           - **staticroute_id**: Static Route ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4308,14 +4673,14 @@ class Get(object):
 
     def syslogserverprofiles(self, syslogserverprofile_id=None, api_version="v2.0"):
         """
-        GET Syslogserverprofiles API Function
+        Get Syslog Server Profiles (v2.0)
 
           **Parameters:**:
 
           - **syslogserverprofile_id**: (optional) Sys Log Server Profile ID 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4331,7 +4696,7 @@ class Get(object):
 
     def syslogservers(self, site_id, element_id, syslogserver_id=None, api_version="v2.2"):
         """
-        Get Syslog Servers on an element
+        Get Syslog Servers on an element (v2.2)
 
           **Parameters:**:
 
@@ -4340,7 +4705,7 @@ class Get(object):
           - **syslogserver_id**: (optional) SYSLOG server ID
           - **api_version**: API version to use (default v2.2)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4360,14 +4725,14 @@ class Get(object):
 
     def templates_ntp(self, ntp_id=None, api_version="v2.0"):
         """
-        Get all existing NTP Template of tenant.
+        Get all existing NTP Template of tenant. (v2.0)
 
           **Parameters:**:
 
           - **ntp_id**: (optional) NTP Configuration ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4390,7 +4755,7 @@ class Get(object):
           - **anynetlink_id**: Anynet (Secure Fabric) Link ID
           - **api_version**: API version to use (default v3.4)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4403,13 +4768,13 @@ class Get(object):
 
     def tenant_api_versions(self, api_version="v2.0"):
         """
-        Get API versions for given apiVersions
+        Get API versions for given apiVersions (v2.0)
 
           **Parameters:**:
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4421,13 +4786,13 @@ class Get(object):
 
     def tenant_clients(self, api_version="v2.0"):
         """
-        Get esp tenant clients details for tenant id
+        Get esp tenant clients details for tenant id (v2.0)
 
           **Parameters:**:
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4445,7 +4810,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4457,14 +4822,14 @@ class Get(object):
 
     def tenant_extensions(self, extension_id=None, api_version="v2.0"):
         """
-        Get all extensions from NB
+        Get all extensions from NB (v2.0)
 
           **Parameters:**:
 
           - **extension_id**: (optional) Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4478,16 +4843,34 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def tenant_hubserviceendpoints(self, api_version="v2.0"):
+        """
+        GET Tenant_Hubserviceendpoints API Function
+
+          **Parameters:**:
+
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/hubserviceendpoints".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def tenant_ipfixlocalprefixes(self, ipfixlocalprefix_id=None, api_version="v2.0"):
         """
-        Get all IPFix local prefix
+        Get all IPFix local prefix (v2.0)
 
           **Parameters:**:
 
           - **ipfixlocalprefix_id**: (optional) IPFix Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4503,14 +4886,14 @@ class Get(object):
 
     def tenant_networkpolicylocalprefixes(self, networkpolicylocalprefix_id=None, api_version="v2.0"):
         """
-        Get Network Policy local prefixes.
+        Get Network Policy local prefixes. (v2.0)
 
           **Parameters:**:
 
           - **networkpolicylocalprefix_id**: (optional) Network Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4526,14 +4909,14 @@ class Get(object):
 
     def tenant_operators(self, operator_id=None, api_version="v2.1"):
         """
-        Get a list of tenant operators
+        Get a list of tenant operators (v2.1)
 
           **Parameters:**:
 
           - **operator_id**: (optional) Operator ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4555,7 +4938,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4567,14 +4950,14 @@ class Get(object):
 
     def tenant_permissions(self, permission_id=None, api_version="v2.0"):
         """
-        Get a list of custom permissions
+        Get a list of custom permissions (v2.0)
 
           **Parameters:**:
 
           - **permission_id**: (optional) Permission ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4590,14 +4973,14 @@ class Get(object):
 
     def tenant_prioritypolicylocalprefixes(self, prioritypolicylocalprefix_id=None, api_version="v2.0"):
         """
-        Get Priority Policy local prefixes.
+        Get Priority Policy local prefixes. (v2.0)
 
           **Parameters:**:
 
           - **prioritypolicylocalprefix_id**: (optional) Priority Policy Local Prefix ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4611,6 +4994,24 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def tenant_serviceconnections(self, api_version="v2.0"):
+        """
+        GET Tenant_Serviceconnections API Function
+
+          **Parameters:**:
+
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/serviceconnections".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def tenantpassageconfigs(self, api_version="v2.0"):
         """
         GET Tenantpassageconfigs API Function
@@ -4619,7 +5020,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4631,13 +5032,13 @@ class Get(object):
 
     def tenants(self, api_version="v2.3"):
         """
-        Get tenant details for tenant id
+        Get tenant details for tenant id (v2.3)
 
           **Parameters:**:
 
           - **api_version**: API version to use (default v2.3)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4655,7 +5056,7 @@ class Get(object):
 
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4667,14 +5068,14 @@ class Get(object):
 
     def users(self, user_id=None, api_version="v2.0"):
         """
-        Get Users.
+        Get Users. (v2.0)
 
           **Parameters:**:
 
           - **user_id**: (optional) User ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4688,16 +5089,16 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def vfflicense_status(self, vfflicense_id, api_version="v2.0"):
+    def vfflicense_status(self, vfflicense_id, api_version="v2.1"):
         """
-        Get status for Vff License
+        Get status for Vff License (v2.1)
 
           **Parameters:**:
 
           - **vfflicense_id**: Virtual Form Factor License ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4710,7 +5111,7 @@ class Get(object):
 
     def vfflicense_tokens(self, vfflicense_id, token_id=None, api_version="v2.0"):
         """
-        Get all Tenant Vff License Tokens
+        Get all Tenant Vff License Tokens (v2.0)
 
           **Parameters:**:
 
@@ -4718,7 +5119,7 @@ class Get(object):
           - **token_id**: (optional) Token ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4734,16 +5135,16 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def vfflicenses(self, vfflicense_id=None, api_version="v2.0"):
+    def vfflicenses(self, vfflicense_id=None, api_version="v2.1"):
         """
-        Get all Vff Licenses for Tenant
+        Get all Vff Licenses for Tenant (v2.1)
 
           **Parameters:**:
 
           - **vfflicense_id**: (optional) Virtual Form Factor License ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4757,16 +5158,38 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def vlan_port_members(self, site_id, element_id, api_version="v2.0"):
+        """
+        GET Vlan_Port_Members API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/vlan_port_members".format(api_version,
+                                                                                            site_id,
+                                                                                            element_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def vpnlinks_state(self, vpnlink_id, api_version="v2.0"):
         """
-        Get the VPNLink admin state
+        Get the VPNLink admin state (v2.0)
 
           **Parameters:**:
 
           - **vpnlink_id**: VPN Link ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4779,14 +5202,14 @@ class Get(object):
 
     def vpnlinks_status(self, vpnlink_id, api_version="v2.1"):
         """
-        Get the VPNLink status
+        Get the VPNLink status (v2.1)
 
           **Parameters:**:
 
           - **vpnlink_id**: VPN Link ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4799,14 +5222,14 @@ class Get(object):
 
     def waninterfacelabels(self, waninterfacelabel_id=None, api_version="v2.4"):
         """
-        Get WAN interface labels for a tenant
+        Get WAN interface labels for a tenant (v2.4)
 
           **Parameters:**:
 
           - **waninterfacelabel_id**: (optional) WAN Interface Label ID
           - **api_version**: API version to use (default v2.4)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4822,7 +5245,7 @@ class Get(object):
 
     def waninterfaces(self, site_id, waninterface_id=None, api_version="v2.7"):
         """
-        Get all Site WAN interfaces
+        Get all Site WAN interfaces (v2.7)
 
           **Parameters:**:
 
@@ -4830,7 +5253,7 @@ class Get(object):
           - **waninterface_id**: (optional) WAN Interface ID
           - **api_version**: API version to use (default v2.7)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4848,7 +5271,7 @@ class Get(object):
 
     def waninterfaces_status(self, site_id, waninterface_id, api_version="v2.1"):
         """
-        Get a specific Site WAN interface status
+        Get a specific Site WAN interface status (v2.1)
 
           **Parameters:**:
 
@@ -4856,7 +5279,7 @@ class Get(object):
           - **waninterface_id**: WAN Interface ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4870,14 +5293,14 @@ class Get(object):
 
     def wannetworks(self, wannetwork_id=None, api_version="v2.1"):
         """
-        Get all tenant WAN networks
+        Get all tenant WAN networks (v2.1)
 
           **Parameters:**:
 
           - **wannetwork_id**: (optional) WAN Network ID
           - **api_version**: API version to use (default v2.1)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4900,7 +5323,7 @@ class Get(object):
           - **wanoverlaychannel_id**: (optional) WAN Overlay Channel ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4916,14 +5339,14 @@ class Get(object):
 
     def wanoverlays(self, wanoverlay_id=None, api_version="v2.0"):
         """
-        Get app/wan contexts
+        Get app/wan contexts (v2.0)
 
           **Parameters:**:
 
           - **wanoverlay_id**: (optional) WAN Overlay ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4946,7 +5369,7 @@ class Get(object):
           - **site_id**: Site ID
           - **api_version**: API version to use (default v3.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4967,7 +5390,7 @@ class Get(object):
           - **waninterface_id**: WAN Interface ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -4988,7 +5411,7 @@ class Get(object):
           - **extension_id**: (optional) Extension ID
           - **api_version**: API version to use (default v2.0)
 
-        **Returns:** requests.Response object extended with cgx_status and cgx_content properties.
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
         cur_ctlr = self._parent_class.controller
@@ -5005,8 +5428,17 @@ class Get(object):
     # Public Digest compatibility maps below, mapping what is available via
     # /v2.0/permissions API versus what is used in this SDK.
 
+    aaa_metrics_monitor = monitor_aaa_metrics
+    """ Backwards-compatibility alias of `aaa_metrics_monitor` to `monitor_aaa_metrics`"""
+
+    access_elementusers = elementusers_access
+    """ Backwards-compatibility alias of `access_elementusers` to `elementusers_access`"""
+
     advertisedprefixes_bgppeers = bgppeers_advertisedprefixes
     """ Backwards-compatibility alias of `advertisedprefixes_bgppeers` to `bgppeers_advertisedprefixes`"""
+
+    aggregates_aiops_monitor = monitor_aiops_aggregates
+    """ Backwards-compatibility alias of `aggregates_aiops_monitor` to `monitor_aiops_aggregates`"""
 
     aggregates_monitor = monitor_aggregates
     """ Backwards-compatibility alias of `aggregates_monitor` to `monitor_aggregates`"""
@@ -5089,6 +5521,18 @@ class Get(object):
     firmware_cellular_modules_m = machine_cellular_modules_firmware
     """ Backwards-compatibility alias of `firmware_cellular_modules_m` to `machine_cellular_modules_firmware`"""
 
+    forecast_aiops_monitor = monitor_aiops_forecast
+    """ Backwards-compatibility alias of `forecast_aiops_monitor` to `monitor_aiops_forecast`"""
+
+    health_aiops_monitor = monitor_aiops_health
+    """ Backwards-compatibility alias of `health_aiops_monitor` to `monitor_aiops_health`"""
+
+    hubserviceendpoints_s = site_hubserviceendpoints
+    """ Backwards-compatibility alias of `hubserviceendpoints_s` to `site_hubserviceendpoints`"""
+
+    hubserviceendpoints_t = tenant_hubserviceendpoints
+    """ Backwards-compatibility alias of `hubserviceendpoints_t` to `tenant_hubserviceendpoints`"""
+
     icon_appstatus_sdwanapps = sdwanapps_appstatus_icon
     """ Backwards-compatibility alias of `icon_appstatus_sdwanapps` to `sdwanapps_appstatus_icon`"""
 
@@ -5133,6 +5577,9 @@ class Get(object):
 
     ntp_templates = templates_ntp
     """ Backwards-compatibility alias of `ntp_templates` to `templates_ntp`"""
+
+    object_stats_aiops_monitor = monitor_aiops_object_stats
+    """ Backwards-compatibility alias of `object_stats_aiops_monitor` to `monitor_aiops_object_stats`"""
 
     object_stats_monitor = monitor_object_stats
     """ Backwards-compatibility alias of `object_stats_monitor` to `monitor_object_stats`"""
@@ -5179,11 +5626,20 @@ class Get(object):
     roles_clients = clients_roles
     """ Backwards-compatibility alias of `roles_clients` to `clients_roles`"""
 
+    serviceconnections_s = site_serviceconnections
+    """ Backwards-compatibility alias of `serviceconnections_s` to `site_serviceconnections`"""
+
+    serviceconnections_t = tenant_serviceconnections
+    """ Backwards-compatibility alias of `serviceconnections_t` to `tenant_serviceconnections`"""
+
     sessions_t = operator_sessions
     """ Backwards-compatibility alias of `sessions_t` to `operator_sessions`"""
 
     sim_security_cellular_modules = cellular_modules_sim_security
     """ Backwards-compatibility alias of `sim_security_cellular_modules` to `cellular_modules_sim_security`"""
+
+    state = element_state
+    """ Backwards-compatibility alias of `state` to `element_state`"""
 
     state_software = software_state
     """ Backwards-compatibility alias of `state_software` to `software_state`"""
@@ -5218,11 +5674,23 @@ class Get(object):
     status_hubclustermembers = hubclustermember_status
     """ Backwards-compatibility alias of `status_hubclustermembers` to `hubclustermember_status`"""
 
-    status_i = hubcluster_status
-    """ Backwards-compatibility alias of `status_i` to `hubcluster_status`"""
+    status_i = hubclusters_status
+    """ Backwards-compatibility alias of `status_i` to `hubclusters_status`"""
+
+    status_interface_authentication = interface_authentication_status
+    """ Backwards-compatibility alias of `status_interface_authentication` to `interface_authentication_status`"""
 
     status_interfaces = interfaces_status
     """ Backwards-compatibility alias of `status_interfaces` to `interfaces_status`"""
+
+    status_lldp_neighbors = lldp_neighbors_status
+    """ Backwards-compatibility alias of `status_lldp_neighbors` to `lldp_neighbors_status`"""
+
+    status_mac_addresses = mac_addresses_status
+    """ Backwards-compatibility alias of `status_mac_addresses` to `mac_addresses_status`"""
+
+    status_mstp_instances = mstp_instances_status
+    """ Backwards-compatibility alias of `status_mstp_instances` to `mstp_instances_status`"""
 
     status_natpolicysets = natpolicysets_status
     """ Backwards-compatibility alias of `status_natpolicysets` to `natpolicysets_status`"""
@@ -5238,6 +5706,9 @@ class Get(object):
 
     status_prioritypolicysets = prioritypolicysets_status
     """ Backwards-compatibility alias of `status_prioritypolicysets` to `prioritypolicysets_status`"""
+
+    status_radii = radii_status
+    """ Backwards-compatibility alias of `status_radii` to `radii_status`"""
 
     status_s = site_status
     """ Backwards-compatibility alias of `status_s` to `site_status`"""
@@ -5277,4 +5748,7 @@ class Get(object):
 
     elements_correlationevents = element_correlationevents
     """ Backwards-compatibility alias of `elements_correlationevents` to `element_correlationevents`"""
+
+    hubcluster_status = hubclusters_status
+    """ Backwards-compatibility alias of `hubcluster_status` to `hubclusters_status`"""
 

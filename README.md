@@ -1,10 +1,10 @@
+[![PyPI](https://img.shields.io/pypi/v/prisma-sase.svg)](https://pypi.org/project/prisma-sase/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/prisma-sase.svg)](https://pypi.org/project/prisma-sase/)
+[![Downloads](https://pepy.tech/badge/prisma-sase)](https://pepy.tech/project/prisma-sase)
+[![PyPI - License](https://img.shields.io/pypi/l/prisma-sase.svg?color=brightgreen)](https://pypi.org/project/prisma-sase/)
+[![GitHub issues](https://img.shields.io/github/issues/PaloAltoNetworks/prisma-sase-sdk-python.svg)](https://github.com/PaloAltoNetworks/prisma-sase-sdk-python/issues)
 
-[![image](https://img.shields.io/pypi/v/cloudgenix.svg)](https://pypi.org/project/prisma-sase/)
-[![image](https://img.shields.io/pypi/pyversions/cloudgenix.svg)](https://pypi.org/project/prisma-sase/)
-[![Downloads](https://pepy.tech/badge/cloudgenix)](https://pypi.org/project/prisma-sase)
-[![License: MIT](https://img.shields.io/pypi/l/cloudgenix.svg?color=brightgreen)](https://pypi.org/project/prisma-sase/)
-[![GitHub issues open](https://img.shields.io/github/issues/CloudGenix/sdk-python.svg)](https://github.com/PaloAltoNetworks/prisma-sase-sdk-python/issues)
-# Palo Alto Networks Prisma SASE Python SDK v6.0.1b1
+# Palo Alto Networks Prisma SASE Python SDK v6.1.1b1
 Python2 and Python3 SDK for the Prisma SASE AppFabric
 
 #### Synopsis
@@ -44,6 +44,7 @@ MIT
 #### Version
 | Version | Build | Changes |
 | ------- | ----- | ------- |
+| **6.1.1** | **b1** | Support for November 2022 Controller release. |
 | **6.0.1** | **b1** | Support for May 2022 Controller release. |
 
 ## For more info

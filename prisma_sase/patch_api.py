@@ -4,7 +4,7 @@ PRISMA SASE Python SDK - PATCH
 
 **Author:** Palo Alto Networks
 
-**Copyright:** (c) 2022 Palo Alto Networks, Inc
+**Copyright:** (c) 2023 Palo Alto Networks, Inc
 
 **License:** MIT
 """
@@ -12,11 +12,11 @@ import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright (c) 2022 Palo Alto Networks, Inc"
+__copyright__ = "Copyright (c) 2023 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright (c) 2022 Palo Alto Networks, Inc
+    Copyright (c) 2023 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -52,7 +52,7 @@ class Patch(object):
     # placeholder for parent class namespace
     _parent_class = None
 
-    def tenant_operators(self, operator_id, data, api_version="v2.1"):
+    def tenant_operators(self, operator_id, data, api_version="v2.2"):
         """
         Patch a tenant operator (v2.1)
 
@@ -60,7 +60,7 @@ class Patch(object):
 
           - **operator_id**: Operator ID
           - **data**: Dictionary containing data to PATCH as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
@@ -76,14 +76,14 @@ class Patch(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "patch", data=data)
 
-    def tenants(self, data, api_version="v2.3"):
+    def tenants(self, data, api_version="v2.4"):
         """
         Patch tenant (v2.3)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to PATCH as JSON
-          - **api_version**: API version to use (default v2.3)
+          - **api_version**: API version to use (default v2.4)
 
           **Payload Attributes:** 
 

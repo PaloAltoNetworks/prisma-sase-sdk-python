@@ -4,7 +4,7 @@ PRISMA SASE Python SDK - GET
 
 **Author:** Palo Alto Networks
 
-**Copyright:** (c) 2022 Palo Alto Networks, Inc
+**Copyright:** (c) 2023 Palo Alto Networks, Inc
 
 **License:** MIT
 """
@@ -12,11 +12,11 @@ import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright (c) 2022 Palo Alto Networks, Inc"
+__copyright__ = "Copyright (c) 2023 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright (c) 2022 Palo Alto Networks, Inc
+    Copyright (c) 2023 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -2222,13 +2222,13 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_aiops_aggregates(self, api_version="v2.0"):
+    def monitor_aiops_aggregates(self, api_version="v2.1"):
         """
         GET Monitor_Aiops_Aggregates API Function
 
           **Parameters:**:
 
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2665,7 +2665,7 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def multicastwanstatus(self, site_id, element_id, multicastwanstatu_id=None, api_version="v2.0"):
+    def multicastwanstatus(self, site_id, element_id, multicastwanstatus_id=None, api_version="v2.0"):
         """
         GET Multicastwanstatus API Function
 
@@ -2673,7 +2673,7 @@ class Get(object):
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
-          - **multicastwanstatu_id**: (optional) 
+          - **multicastwanstatus_id**: (optional) Multicast WAN Status ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2681,7 +2681,7 @@ class Get(object):
 
         cur_ctlr = self._parent_class.controller
 
-        if not multicastwanstatu_id:
+        if not multicastwanstatus_id:
             url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/multicastwanstatus".format(api_version,
                                                                                                  site_id,
                                                                                                  element_id)
@@ -2689,7 +2689,7 @@ class Get(object):
             url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/multicastwanstatus/{}".format(api_version,
                                                                                                     site_id,
                                                                                                     element_id,
-                                                                                                    multicastwanstatu_id)
+                                                                                                    multicastwanstatus_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
@@ -4907,14 +4907,14 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def tenant_operators(self, operator_id=None, api_version="v2.1"):
+    def tenant_operators(self, operator_id=None, api_version="v2.2"):
         """
         Get a list of tenant operators (v2.1)
 
           **Parameters:**:
 
           - **operator_id**: (optional) Operator ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -5030,13 +5030,13 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def tenants(self, api_version="v2.3"):
+    def tenants(self, api_version="v2.4"):
         """
         Get tenant details for tenant id (v2.3)
 
           **Parameters:**:
 
-          - **api_version**: API version to use (default v2.3)
+          - **api_version**: API version to use (default v2.4)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """

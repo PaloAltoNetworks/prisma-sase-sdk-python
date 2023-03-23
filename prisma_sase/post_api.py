@@ -4,7 +4,7 @@ PRISMA SASE Python SDK - POST
 
 **Author:** Palo Alto Networks
 
-**Copyright:** (c) 2022 Palo Alto Networks, Inc
+**Copyright:** (c) 2023 Palo Alto Networks, Inc
 
 **License:** MIT
 """
@@ -12,11 +12,11 @@ import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright (c) 2022 Palo Alto Networks, Inc"
+__copyright__ = "Copyright (c) 2023 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright (c) 2022 Palo Alto Networks, Inc
+    Copyright (c) 2023 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -1978,14 +1978,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aiops_aggregates(self, data, api_version="v2.0"):
+    def monitor_aiops_aggregates(self, data, api_version="v2.1"):
         """
         POST Monitor_Aiops_Aggregates API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3738,14 +3738,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prefixes_query(self, data, api_version="v2.0"):
+    def prefixes_query(self, data, api_version="v3.0"):
         """
         POST Prefixes_Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
 

@@ -4,7 +4,7 @@ PRISMA SASE Python SDK - DELETE
 
 **Author:** Palo Alto Networks
 
-**Copyright:** (c) 2022 Palo Alto Networks, Inc
+**Copyright:** (c) 2023 Palo Alto Networks, Inc
 
 **License:** MIT
 """
@@ -12,11 +12,11 @@ import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright (c) 2022 Palo Alto Networks, Inc"
+__copyright__ = "Copyright (c) 2023 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright (c) 2022 Palo Alto Networks, Inc
+    Copyright (c) 2023 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -2102,14 +2102,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def tenant_operators(self, operator_id, api_version="v2.1"):
+    def tenant_operators(self, operator_id, api_version="v2.2"):
         """
         Delete a tenant operator (v2.1)
 
           **Parameters:**:
 
           - **operator_id**: Operator ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """

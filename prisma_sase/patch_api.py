@@ -76,14 +76,14 @@ class Patch(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "patch", data=data)
 
-    def tenants(self, data, api_version="v2.4"):
+    def tenants(self, data, api_version="v2.5"):
         """
         Patch tenant (v2.3)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to PATCH as JSON
-          - **api_version**: API version to use (default v2.4)
+          - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 

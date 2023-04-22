@@ -262,7 +262,8 @@ class Interactive(object):
                     return False
 
             else:
-                print("Profile retrieval failed.")
+                print("Warning: Prisma SD-WAN profile retrieval failure. Please check if the service account "
+                      "has the right privileges or Prisma SD-WAN is activated.")
                 # Profile detail retrieval failed
                 self._parent_class.email = None
                 self._parent_class._password = None
@@ -404,7 +405,8 @@ class Interactive(object):
                     return False
 
             else:
-                print("Profile retrieval failed.")
+                print("Warning: Prisma SD-WAN profile retrieval failure. Please check if the service account "
+                      "has the right privileges or Prisma SD-WAN is activated.")
                 # Profile detail retrieval failed
                 self._parent_class.client_id = None
                 self._parent_class.client_secret = None
@@ -774,7 +776,7 @@ class Interactive(object):
             return True
 
         else:
-            print("Profile retrieval failed.")
+            api_logger.info('Profile retrieval failed.')
             # clear password out of memory
             self._parent_class._password = None
             return False

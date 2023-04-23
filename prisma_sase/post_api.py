@@ -52,6 +52,28 @@ class Post(object):
     # placeholder for parent class namespace
     _parent_class = None
 
+    def activeuserips_query(self, data, api_version="v2.0"):
+        """
+        POST Activeuserips_Query API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/activeuserips/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def anynetlinks_correlationevents_query(self, data, api_version="v2.1"):
         """
         POST Anynetlinks_Correlationevents_Query API Function
@@ -118,14 +140,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def appdefs(self, data, api_version="v2.4"):
+    def appdefs(self, data, api_version="v2.5"):
         """
         Create a application definition (v2.4)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.4)
+          - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
@@ -164,14 +186,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def appdefs_query(self, data, api_version="v2.4"):
+    def appdefs_query(self, data, api_version="v2.5"):
         """
         Queries db for limit number of app defs that match query params. (v2.4)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.4)
+          - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
@@ -520,7 +542,31 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def dhcpservers(self, site_id, data, api_version="v2.1"):
+    def deviceidconfigs(self, site_id, data, api_version="v2.0"):
+        """
+        POST Deviceidconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs".format(api_version,
+                                                                              site_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def dhcpservers(self, site_id, data, api_version="v2.2"):
         """
         Create a new dhcp server configuration for a subnet (v2.1)
 
@@ -528,7 +574,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
@@ -544,9 +590,9 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def dnsserviceprofiles(self, data, api_version="v2.0"):
+    def directoryservices(self, data, api_version="v2.0"):
         """
-        Create a new DNS service profile (v2.0)
+        POST Directoryservices API Function
 
           **Parameters:**:
 
@@ -561,19 +607,85 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
+        url = str(cur_ctlr) + "/sdwan/{}/api/directoryservices".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def directoryusergroups_query(self, data, api_version="v2.0"):
+        """
+        POST Directoryusergroups_Query API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/directoryusergroups/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def directoryusers_query(self, data, api_version="v2.0"):
+        """
+        POST Directoryusers_Query API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/directoryusers/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def dnsserviceprofiles(self, data, api_version="v2.1"):
+        """
+        Create a new DNS service profile (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.1)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
         url = str(cur_ctlr) + "/sdwan/{}/api/dnsserviceprofiles".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def dnsserviceprofiles_query(self, data, api_version="v2.0"):
+    def dnsserviceprofiles_query(self, data, api_version="v2.1"):
         """
         Query DNS service profile based on parameters (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -1264,7 +1376,7 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def interfaces(self, site_id, element_id, data, api_version="v4.14"):
+    def interfaces(self, site_id, element_id, data, api_version="v4.15"):
         """
         Create a Interface (v4.14)
 
@@ -1273,7 +1385,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v4.14)
+          - **api_version**: API version to use (default v4.15)
 
           **Payload Attributes:** 
 
@@ -1312,14 +1424,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def interfaces_query(self, data, api_version="v4.14"):
+    def interfaces_query(self, data, api_version="v4.15"):
         """
         Queries db for limit number of interfaces that match query params. (v4.14)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v4.14)
+          - **api_version**: API version to use (default v4.15)
 
           **Payload Attributes:** 
 
@@ -1668,7 +1780,7 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def lannetworks(self, site_id, data, api_version="v3.1"):
+    def lannetworks(self, site_id, data, api_version="v3.2"):
         """
         Create a new LAN (v3.1)
 
@@ -1676,7 +1788,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v3.1)
+          - **api_version**: API version to use (default v3.2)
 
           **Payload Attributes:** 
 
@@ -1692,14 +1804,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def lannetworks_query(self, data, api_version="v3.1"):
+    def lannetworks_query(self, data, api_version="v3.2"):
         """
         Query db for Site LAN networks that match query parameters (v3.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v3.1)
+          - **api_version**: API version to use (default v3.2)
 
           **Payload Attributes:** 
 
@@ -1912,6 +2024,28 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
+    def monitor_aggregates_application_qos(self, data, api_version="v2.0"):
+        """
+        POST Monitor_Aggregates_Application_Qos API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates/application/qos".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def monitor_aggregates_healthscore(self, data, api_version="v2.0"):
         """
         POST Monitor_Aggregates_Healthscore API Function
@@ -1996,6 +2130,28 @@ class Post(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/aggregates".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def monitor_aiops_anomaly(self, data, api_version="v2.0"):
+        """
+        POST Monitor_Aiops_Anomaly API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/anomaly".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -2088,6 +2244,50 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
+    def monitor_application_qos_metrics(self, data, api_version="v2.0"):
+        """
+        POST Monitor_Application_Qos_Metrics API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/application/qos_metrics".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def monitor_application_users(self, data, api_version="v2.0"):
+        """
+        POST Monitor_Application_Users API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/application/users".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def monitor_bulk_metrics(self, data, api_version="v2.0"):
         """
         POST Monitor_Bulk_Metrics API Function
@@ -2154,14 +2354,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_flows(self, data, api_version="v3.6"):
+    def monitor_flows(self, data, api_version="v3.7"):
         """
         POST Monitor_Flows API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v3.6)
+          - **api_version**: API version to use (default v3.7)
 
           **Payload Attributes:** 
 
@@ -2330,14 +2530,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_object_stats(self, data, api_version="v2.4"):
+    def monitor_object_stats(self, data, api_version="v2.5"):
         """
         POST Monitor_Object_Stats API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.4)
+          - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
@@ -2374,14 +2574,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_sys_metrics(self, data, api_version="v2.2"):
+    def monitor_sys_metrics(self, data, api_version="v2.3"):
         """
         POST Monitor_Sys_Metrics API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
@@ -3092,14 +3292,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicyglobalprefixes(self, data, api_version="v2.0"):
+    def networkpolicyglobalprefixes(self, data, api_version="v2.1"):
         """
         Create a new global prefix. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3114,14 +3314,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicyglobalprefixes_query(self, data, api_version="v2.0"):
+    def networkpolicyglobalprefixes_query(self, data, api_version="v2.1"):
         """
         Query Network Global Prefixes. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3136,14 +3336,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicylocalprefixes_query(self, data, api_version="v2.0"):
+    def networkpolicylocalprefixes_query(self, data, api_version="v2.1"):
         """
         Query site network prefix association. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3158,7 +3358,7 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicyrules(self, networkpolicyset_id, data, api_version="v2.1"):
+    def networkpolicyrules(self, networkpolicyset_id, data, api_version="v2.2"):
         """
         Create a new NetworkPolicyRule (v2.1)
 
@@ -3166,7 +3366,7 @@ class Post(object):
 
           - **networkpolicyset_id**: Network Policy Set ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
@@ -3182,14 +3382,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicyrules_query(self, data, api_version="v2.1"):
+    def networkpolicyrules_query(self, data, api_version="v2.2"):
         """
         Query Network policy rules. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
@@ -3314,14 +3514,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicyglobalprefixes(self, data, api_version="v2.0"):
+    def ngfwsecuritypolicyglobalprefixes(self, data, api_version="v2.1"):
         """
         Create an Security Policy V2 Global Prefix (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3336,14 +3536,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicyglobalprefixes_query(self, data, api_version="v2.0"):
+    def ngfwsecuritypolicyglobalprefixes_query(self, data, api_version="v2.1"):
         """
         Query Security Policy V2 Global Prefixes of a tenant (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3380,14 +3580,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicylocalprefixes_query(self, data, api_version="v2.0"):
+    def ngfwsecuritypolicylocalprefixes_query(self, data, api_version="v2.1"):
         """
         Query security policy v2 local prefix site associations of a tenant (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3402,7 +3602,7 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, data, api_version="v2.0"):
+    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, data, api_version="v2.1"):
         """
         Create a Security Policy V2 Rule under a policy set (v2.0)
 
@@ -3410,7 +3610,7 @@ class Post(object):
 
           - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3426,14 +3626,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicyrules_query(self, data, api_version="v2.0"):
+    def ngfwsecuritypolicyrules_query(self, data, api_version="v2.1"):
         """
         Query security policy v2 rules of a tenant (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3808,14 +4008,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicyglobalprefixes(self, data, api_version="v2.0"):
+    def prioritypolicyglobalprefixes(self, data, api_version="v2.1"):
         """
         Create a new global prefix. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3830,14 +4030,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicyglobalprefixes_query(self, data, api_version="v2.0"):
+    def prioritypolicyglobalprefixes_query(self, data, api_version="v2.1"):
         """
         Query Priority Global Prefixes. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3852,14 +4052,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicylocalprefixes_query(self, data, api_version="v2.0"):
+    def prioritypolicylocalprefixes_query(self, data, api_version="v2.1"):
         """
         Query site priority prefix association. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3874,7 +4074,7 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicyrules(self, prioritypolicyset_id, data, api_version="v2.0"):
+    def prioritypolicyrules(self, prioritypolicyset_id, data, api_version="v2.1"):
         """
         Create a new PriorityPolicyRule (v2.0)
 
@@ -3882,7 +4082,7 @@ class Post(object):
 
           - **prioritypolicyset_id**: Priority Policy Set ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3898,14 +4098,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicyrules_query(self, data, api_version="v2.0"):
+    def prioritypolicyrules_query(self, data, api_version="v2.1"):
         """
         Query Priority policy rules. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -4850,7 +5050,7 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_lannetworks_query(self, site_id, data, api_version="v3.1"):
+    def site_lannetworks_query(self, site_id, data, api_version="v3.2"):
         """
         Query LAN networks that match query params (v3.1)
 
@@ -4858,7 +5058,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v3.1)
+          - **api_version**: API version to use (default v3.2)
 
           **Payload Attributes:** 
 
@@ -4898,7 +5098,7 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_networkpolicylocalprefixes(self, site_id, data, api_version="v2.0"):
+    def site_networkpolicylocalprefixes(self, site_id, data, api_version="v2.1"):
         """
         Create an association between site and Network local Prefix. (v2.0)
 
@@ -4906,7 +5106,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -4922,7 +5122,7 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_ngfwsecuritypolicylocalprefixes(self, site_id, data, api_version="v2.0"):
+    def site_ngfwsecuritypolicylocalprefixes(self, site_id, data, api_version="v2.1"):
         """
         Create a security policy V2 local prefix site association (v2.0)
 
@@ -4930,7 +5130,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -4946,7 +5146,7 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_prioritypolicylocalprefixes(self, site_id, data, api_version="v2.0"):
+    def site_prioritypolicylocalprefixes(self, site_id, data, api_version="v2.1"):
         """
         Create an association between site and Priority local Prefix. (v2.0)
 
@@ -4954,7 +5154,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -5346,14 +5546,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def status_query(self, data, api_version="v2.1"):
+    def status_query(self, data, api_version="v2.2"):
         """
         Query and get element status objects for a tenant (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
@@ -5772,6 +5972,50 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
+    def useridagents(self, data, api_version="v2.0"):
+        """
+        POST Useridagents API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/useridagents".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def useridagents_query(self, data, api_version="v2.0"):
+        """
+        POST Useridagents_Query API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/useridagents/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def users(self, data, api_version="v2.0"):
         """
         Create an user identity. (v2.0)
@@ -6174,6 +6418,9 @@ class Post(object):
     aggregates_monitor = monitor_aggregates
     """ Backwards-compatibility alias of `aggregates_monitor` to `monitor_aggregates`"""
 
+    anomaly_aiops_monitor = monitor_aiops_anomaly
+    """ Backwards-compatibility alias of `anomaly_aiops_monitor` to `monitor_aiops_anomaly`"""
+
     anynetlinks_t = tenant_anynetlinks
     """ Backwards-compatibility alias of `anynetlinks_t` to `tenant_anynetlinks`"""
 
@@ -6309,8 +6556,17 @@ class Post(object):
     prioritypolicylocalprefixes_t = tenant_prioritypolicylocalprefixes
     """ Backwards-compatibility alias of `prioritypolicylocalprefixes_t` to `tenant_prioritypolicylocalprefixes`"""
 
+    qos_application_aggregates_monitor = monitor_aggregates_application_qos
+    """ Backwards-compatibility alias of `qos_application_aggregates_monitor` to `monitor_aggregates_application_qos`"""
+
+    qos_metrics_application_monitor = monitor_application_qos_metrics
+    """ Backwards-compatibility alias of `qos_metrics_application_monitor` to `monitor_application_qos_metrics`"""
+
     qos_metrics_monitor = monitor_qos_metrics
     """ Backwards-compatibility alias of `qos_metrics_monitor` to `monitor_qos_metrics`"""
+
+    query_activeuserips = activeuserips_query
+    """ Backwards-compatibility alias of `query_activeuserips` to `activeuserips_query`"""
 
     query_apnprofiles = apnprofiles_query
     """ Backwards-compatibility alias of `query_apnprofiles` to `apnprofiles_query`"""
@@ -6365,6 +6621,12 @@ class Post(object):
 
     query_demstatus = demstatus_query
     """ Backwards-compatibility alias of `query_demstatus` to `demstatus_query`"""
+
+    query_directoryusergroups = directoryusergroups_query
+    """ Backwards-compatibility alias of `query_directoryusergroups` to `directoryusergroups_query`"""
+
+    query_directoryusers = directoryusers_query
+    """ Backwards-compatibility alias of `query_directoryusers` to `directoryusers_query`"""
 
     query_dnsserviceprofiles = dnsserviceprofiles_query
     """ Backwards-compatibility alias of `query_dnsserviceprofiles` to `dnsserviceprofiles_query`"""
@@ -6642,6 +6904,9 @@ class Post(object):
     query_upgrade_status = upgrade_status_query
     """ Backwards-compatibility alias of `query_upgrade_status` to `upgrade_status_query`"""
 
+    query_useridagents = useridagents_query
+    """ Backwards-compatibility alias of `query_useridagents` to `useridagents_query`"""
+
     query_vpnlinks = vpnlinks_query
     """ Backwards-compatibility alias of `query_vpnlinks` to `vpnlinks_query`"""
 
@@ -6692,6 +6957,9 @@ class Post(object):
 
     topn_sys_metrics_monitor = monitor_sys_metrics_topn
     """ Backwards-compatibility alias of `topn_sys_metrics_monitor` to `monitor_sys_metrics_topn`"""
+
+    users_application_monitor = monitor_application_users
+    """ Backwards-compatibility alias of `users_application_monitor` to `monitor_application_users`"""
 
     wan_neighbor_multicast_aggregates_monitor = monitor_aggregates_multicast_wan_neighbor
     """ Backwards-compatibility alias of `wan_neighbor_multicast_aggregates_monitor` to `monitor_aggregates_multicast_wan_neighbor`"""

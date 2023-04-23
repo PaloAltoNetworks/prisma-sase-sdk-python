@@ -1,11 +1,11 @@
 """
 Python2 and Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.1.2b1
+**Version:** v6.2.1b1
 
 **Author:** Palo Alto Networks
 
-**Copyright:** © 2022 Palo Alto Networks. All rights reserved
+**Copyright:** © 2023 Palo Alto Networks. All rights reserved
 
 **License:** MIT
 
@@ -109,11 +109,11 @@ Loaded from `prisma_sase.ca_bundle.CG_CA_BUNDLE`
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright © 2022 Palo Alto Networks. All rights reserved"
+__copyright__ = "Copyright © 2023 Palo Alto Networks. All rights reserved"
 __license__ = """
     MIT License
     
-    Copyright © 2022 Palo Alto Networks. All rights reserved
+    Copyright © 2023 Palo Alto Networks. All rights reserved
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -143,7 +143,7 @@ if PYTHON36_FEATURES:
 
 
 # Version of SDK
-version = "6.1.2b1"
+version = "6.2.1b1"
 """SDK Version string"""
 __version__ = version
 

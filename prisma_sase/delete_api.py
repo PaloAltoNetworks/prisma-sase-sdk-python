@@ -72,14 +72,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def appdefs(self, appdef_id, api_version="v2.4"):
+    def appdefs(self, appdef_id, api_version="v2.5"):
         """
         Delete a application definition (v2.4)
 
           **Parameters:**:
 
           - **appdef_id**: Application Definition ID
-          - **api_version**: API version to use (default v2.4)
+          - **api_version**: API version to use (default v2.5)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -160,7 +160,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def dhcpservers(self, site_id, dhcpserver_id, api_version="v2.1"):
+    def dhcpservers(self, site_id, dhcpserver_id, api_version="v2.2"):
         """
         Delete DHCPServer for a Tenant on a site (v2.1)
 
@@ -168,7 +168,7 @@ class Delete(object):
 
           - **site_id**: Site ID
           - **dhcpserver_id**: DHCP Server ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -182,14 +182,34 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def dnsserviceprofiles(self, dnsserviceprofile_id, api_version="v2.0"):
+    def directoryservices(self, directoryservice_id, api_version="v2.0"):
+        """
+        DELETE Directoryservices API Function
+
+          **Parameters:**:
+
+          - **directoryservice_id**: Directory Service ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/directoryservices/{}".format(api_version,
+                                                                          directoryservice_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def dnsserviceprofiles(self, dnsserviceprofile_id, api_version="v2.1"):
         """
         Delete a DNS service profile (v2.0)
 
           **Parameters:**:
 
           - **dnsserviceprofile_id**: DNS Service Profile ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -572,7 +592,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def interfaces(self, site_id, element_id, interface_id, api_version="v4.14"):
+    def interfaces(self, site_id, element_id, interface_id, api_version="v4.15"):
         """
         Delete Cellular Interface (v4.14)
 
@@ -581,7 +601,7 @@ class Delete(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
-          - **api_version**: API version to use (default v4.14)
+          - **api_version**: API version to use (default v4.15)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -740,7 +760,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def lannetworks(self, site_id, lannetwork_id, api_version="v3.1"):
+    def lannetworks(self, site_id, lannetwork_id, api_version="v3.2"):
         """
         Delete an existing LAN (v3.1)
 
@@ -748,7 +768,7 @@ class Delete(object):
 
           - **site_id**: Site ID
           - **lannetwork_id**: LAN Network ID
-          - **api_version**: API version to use (default v3.1)
+          - **api_version**: API version to use (default v3.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1034,14 +1054,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def networkpolicyglobalprefixes(self, networkpolicyglobalprefix_id, api_version="v2.0"):
+    def networkpolicyglobalprefixes(self, networkpolicyglobalprefix_id, api_version="v2.1"):
         """
         Delete a Network Policy Global Prefix. (v2.0)
 
           **Parameters:**:
 
           - **networkpolicyglobalprefix_id**: Network Policy Global Prefix ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1054,7 +1074,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id, api_version="v2.1"):
+    def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id, api_version="v2.2"):
         """
         Delete network policy rule of tenant. (v2.1)
 
@@ -1062,7 +1082,7 @@ class Delete(object):
 
           - **networkpolicyset_id**: Network Policy Set ID
           - **networkpolicyrule_id**: Network Policy Rule ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1116,14 +1136,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def ngfwsecuritypolicyglobalprefixes(self, ngfwsecuritypolicyglobalprefix_id, api_version="v2.0"):
+    def ngfwsecuritypolicyglobalprefixes(self, ngfwsecuritypolicyglobalprefix_id, api_version="v2.1"):
         """
         Delete a Security Policy V2 Local Prefix by tenant ID and its ID (v2.0)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicyglobalprefix_id**: NGFW Security Policy Global Prefix ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1156,7 +1176,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, api_version="v2.0"):
+    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, api_version="v2.1"):
         """
         Delete an existing Security Policy V2 Rule under a policy set (v2.0)
 
@@ -1164,7 +1184,7 @@ class Delete(object):
 
           - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
           - **ngfwsecuritypolicyrule_id**: NGFW Security Policy Rule ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1324,14 +1344,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def prioritypolicyglobalprefixes(self, prioritypolicyglobalprefix_id, api_version="v2.0"):
+    def prioritypolicyglobalprefixes(self, prioritypolicyglobalprefix_id, api_version="v2.1"):
         """
         Delete a Priority Policy Global Prefix. (v2.0)
 
           **Parameters:**:
 
           - **prioritypolicyglobalprefix_id**: Priority Policy Global Prefix ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1344,7 +1364,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id, api_version="v2.0"):
+    def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id, api_version="v2.1"):
         """
         Delete priority policy rule of tenant. (v2.0)
 
@@ -1352,7 +1372,7 @@ class Delete(object):
 
           - **prioritypolicyset_id**: Priority Policy Set ID
           - **prioritypolicyrule_id**: Priority Policy Rule ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1776,7 +1796,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def site_networkpolicylocalprefixes(self, site_id, networkpolicylocalprefix_id, api_version="v2.0"):
+    def site_networkpolicylocalprefixes(self, site_id, networkpolicylocalprefix_id, api_version="v2.1"):
         """
         Delete an existing Site Network Policy local prefix association (v2.0)
 
@@ -1784,7 +1804,7 @@ class Delete(object):
 
           - **site_id**: Site ID
           - **networkpolicylocalprefix_id**: Network Policy Local Prefix ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1798,7 +1818,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def site_ngfwsecuritypolicylocalprefixes(self, site_id, ngfwsecuritypolicylocalprefix_id, api_version="v2.0"):
+    def site_ngfwsecuritypolicylocalprefixes(self, site_id, ngfwsecuritypolicylocalprefix_id, api_version="v2.1"):
         """
         Delete an existing security policy v2 local prefix site association (v2.0)
 
@@ -1806,7 +1826,7 @@ class Delete(object):
 
           - **site_id**: Site ID
           - **ngfwsecuritypolicylocalprefix_id**: NGFW Security Policy Local Prefix ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1820,7 +1840,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def site_prioritypolicylocalprefixes(self, site_id, prioritypolicylocalprefix_id, api_version="v2.0"):
+    def site_prioritypolicylocalprefixes(self, site_id, prioritypolicylocalprefix_id, api_version="v2.1"):
         """
         Delete an existing Site Priority Policy local prefix association (v2.0)
 
@@ -1828,7 +1848,7 @@ class Delete(object):
 
           - **site_id**: Site ID
           - **prioritypolicylocalprefix_id**: Priority Policy Local Prefix ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2178,6 +2198,26 @@ class Delete(object):
 
         url = str(cur_ctlr) + "/sdwan/{}/api/tenantpassageconfigs/{}".format(api_version,
                                                                              tenantpassageconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def useridagents(self, useridagent_id, api_version="v2.0"):
+        """
+        DELETE Useridagents API Function
+
+          **Parameters:**:
+
+          - **useridagent_id**: User Id Agent ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/useridagents/{}".format(api_version,
+                                                                     useridagent_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")

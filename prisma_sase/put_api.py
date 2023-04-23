@@ -76,7 +76,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def appdefs(self, appdef_id, data, api_version="v2.4"):
+    def appdefs(self, appdef_id, data, api_version="v2.5"):
         """
         Update a application definition (v2.4)
 
@@ -84,7 +84,7 @@ class Put(object):
 
           - **appdef_id**: Application Definition ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.4)
+          - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
@@ -260,7 +260,33 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def dhcpservers(self, site_id, dhcpserver_id, data, api_version="v2.1"):
+    def deviceidconfigs(self, site_id, deviceidconfig_id, data, api_version="v2.0"):
+        """
+        PUT Deviceidconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **deviceidconfig_id**: Device Id Config ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}".format(api_version,
+                                                                                 site_id,
+                                                                                 deviceidconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def dhcpservers(self, site_id, dhcpserver_id, data, api_version="v2.2"):
         """
         Update an existing dhcp server configuration for a subnet (v2.1)
 
@@ -269,7 +295,7 @@ class Put(object):
           - **site_id**: Site ID
           - **dhcpserver_id**: DHCP Server ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
@@ -286,7 +312,31 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def dnsserviceprofiles(self, dnsserviceprofile_id, data, api_version="v2.0"):
+    def directoryservices(self, directoryservice_id, data, api_version="v2.0"):
+        """
+        PUT Directoryservices API Function
+
+          **Parameters:**:
+
+          - **directoryservice_id**: Directory Service ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/directoryservices/{}".format(api_version,
+                                                                          directoryservice_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def dnsserviceprofiles(self, dnsserviceprofile_id, data, api_version="v2.1"):
         """
         Update a DNS service profile (v2.0)
 
@@ -294,7 +344,7 @@ class Put(object):
 
           - **dnsserviceprofile_id**: DNS Service Profile ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -620,14 +670,14 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def enterpriseprefixset(self, data, api_version="v2.0"):
+    def enterpriseprefixset(self, data, api_version="v2.1"):
         """
         PUT Enterpriseprefixset API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -868,7 +918,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def interfaces(self, site_id, element_id, interface_id, data, api_version="v4.14"):
+    def interfaces(self, site_id, element_id, interface_id, data, api_version="v4.15"):
         """
         Update a Cellular Interface (v4.14)
 
@@ -878,7 +928,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v4.14)
+          - **api_version**: API version to use (default v4.15)
 
           **Payload Attributes:** 
 
@@ -1068,7 +1118,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def lannetworks(self, site_id, lannetwork_id, data, api_version="v3.1"):
+    def lannetworks(self, site_id, lannetwork_id, data, api_version="v3.2"):
         """
         Update an existing LAN (v3.1)
 
@@ -1077,7 +1127,7 @@ class Put(object):
           - **site_id**: Site ID
           - **lannetwork_id**: LAN Network ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v3.1)
+          - **api_version**: API version to use (default v3.2)
 
           **Payload Attributes:** 
 
@@ -1472,7 +1522,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def networkpolicyglobalprefixes(self, networkpolicyglobalprefix_id, data, api_version="v2.0"):
+    def networkpolicyglobalprefixes(self, networkpolicyglobalprefix_id, data, api_version="v2.1"):
         """
         Update a Network global prefix. (v2.0)
 
@@ -1480,7 +1530,7 @@ class Put(object):
 
           - **networkpolicyglobalprefix_id**: Network Policy Global Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -1496,7 +1546,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id, data, api_version="v2.1"):
+    def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id, data, api_version="v2.2"):
         """
         Update network policy rule of tenant. (v2.1)
 
@@ -1505,7 +1555,7 @@ class Put(object):
           - **networkpolicyset_id**: Network Policy Set ID
           - **networkpolicyrule_id**: Network Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
@@ -1570,7 +1620,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ngfwsecuritypolicyglobalprefixes(self, ngfwsecuritypolicyglobalprefix_id, data, api_version="v2.0"):
+    def ngfwsecuritypolicyglobalprefixes(self, ngfwsecuritypolicyglobalprefix_id, data, api_version="v2.1"):
         """
         Update an existing Security Policy V2 Global Prefix (v2.0)
 
@@ -1578,7 +1628,7 @@ class Put(object):
 
           - **ngfwsecuritypolicyglobalprefix_id**: NGFW Security Policy Global Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -1618,7 +1668,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, data, api_version="v2.0"):
+    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, data, api_version="v2.1"):
         """
         Update an existing Security Policy V2 Rule under a policy set (v2.0)
 
@@ -1627,7 +1677,7 @@ class Put(object):
           - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
           - **ngfwsecuritypolicyrule_id**: NGFW Security Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -1842,7 +1892,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prioritypolicyglobalprefixes(self, prioritypolicyglobalprefix_id, data, api_version="v2.0"):
+    def prioritypolicyglobalprefixes(self, prioritypolicyglobalprefix_id, data, api_version="v2.1"):
         """
         Update a  Priority global prefix. (v2.0)
 
@@ -1850,7 +1900,7 @@ class Put(object):
 
           - **prioritypolicyglobalprefix_id**: Priority Policy Global Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -1866,7 +1916,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id, data, api_version="v2.0"):
+    def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id, data, api_version="v2.1"):
         """
         Update priority policy rule of tenant. (v2.0)
 
@@ -1875,7 +1925,7 @@ class Put(object):
           - **prioritypolicyset_id**: Priority Policy Set ID
           - **prioritypolicyrule_id**: Priority Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -2428,7 +2478,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def site_networkpolicylocalprefixes(self, site_id, networkpolicylocalprefix_id, data, api_version="v2.0"):
+    def site_networkpolicylocalprefixes(self, site_id, networkpolicylocalprefix_id, data, api_version="v2.1"):
         """
         Update an existing Site Network policy local prefix (v2.0)
 
@@ -2437,7 +2487,7 @@ class Put(object):
           - **site_id**: Site ID
           - **networkpolicylocalprefix_id**: Network Policy Local Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -2454,7 +2504,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def site_ngfwsecuritypolicylocalprefixes(self, site_id, ngfwsecuritypolicylocalprefix_id, data, api_version="v2.0"):
+    def site_ngfwsecuritypolicylocalprefixes(self, site_id, ngfwsecuritypolicylocalprefix_id, data, api_version="v2.1"):
         """
         Update an existing security policy V2 local prefix site association (v2.0)
 
@@ -2463,7 +2513,7 @@ class Put(object):
           - **site_id**: Site ID
           - **ngfwsecuritypolicylocalprefix_id**: NGFW Security Policy Local Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -2480,7 +2530,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def site_prioritypolicylocalprefixes(self, site_id, prioritypolicylocalprefix_id, data, api_version="v2.0"):
+    def site_prioritypolicylocalprefixes(self, site_id, prioritypolicylocalprefix_id, data, api_version="v2.1"):
         """
         Update an existing Site Priority policy local prefix (v2.0)
 
@@ -2489,7 +2539,7 @@ class Put(object):
           - **site_id**: Site ID
           - **prioritypolicylocalprefix_id**: Priority Policy Local Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -2960,14 +3010,14 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tenants(self, data, api_version="v2.4"):
+    def tenants(self, data, api_version="v2.5"):
         """
         Update tenant (v2.3)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.4)
+          - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
@@ -2978,6 +3028,30 @@ class Put(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def useridagents(self, useridagent_id, data, api_version="v2.0"):
+        """
+        PUT Useridagents API Function
+
+          **Parameters:**:
+
+          - **useridagent_id**: User Id Agent ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/useridagents/{}".format(api_version,
+                                                                     useridagent_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)

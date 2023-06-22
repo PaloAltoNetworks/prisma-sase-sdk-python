@@ -14,7 +14,8 @@ setup(name='prisma-sase',
       license='MIT',
       install_requires=[
             'requests[security] >= 2.22.0',
-            'websockets >= 8.1; python_version >= "3.6"'
+            'websockets >= 8.1; python_version >= "3.6"',
+            'urllib3 <= 1.26.16'
       ],
       packages=['prisma_sase'],
       classifiers=[

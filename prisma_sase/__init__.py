@@ -1,7 +1,7 @@
 """
 Python2 and Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.2.1b1
+**Version:** v6.2.2b1
 
 **Author:** Palo Alto Networks
 
@@ -21,6 +21,7 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
 * Python modules:
     * Requests + Security Extras >= 2.22.0- <http://docs.python-requests.org/en/master/>
     * Websockets (if Python >= 3.6) >= 8.1- <https://websockets.readthedocs.io/en/stable/index.html>
+    * urllib3 <= 1.26.16 - <https://urllib3.readthedocs.io/en/stable/>
 
 #### Code Example
 Super-simplified example code (rewrite of example.py in ~4 lines of code):
@@ -143,7 +144,7 @@ if PYTHON36_FEATURES:
 
 
 # Version of SDK
-version = "6.2.1b1"
+version = "6.2.2b1"
 """SDK Version string"""
 __version__ = version
 
@@ -484,6 +485,9 @@ class API(object):
                          self.controller,
                          self.verify,
                          self._session)
+
+        print("WARNING: prisma_sase SDK will soon end support for python versions 2.x, 3.6 and below. "
+                "Please update your python environment to 3.7 or above by the end of September 2023. ")
 
         # Websocket/Python 3.6_ features
         if PYTHON36_FEATURES:

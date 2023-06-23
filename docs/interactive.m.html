@@ -2879,7 +2879,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                     <span class="k">return</span> <span class="kc">False</span>
 
             <span class="k">else</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profile retrieval failed.&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Prisma SD-WAN profile retrieval failure. Please check if the service account &quot;</span>
+                      <span class="s2">&quot;has the right privileges or Prisma SD-WAN is activated.&quot;</span><span class="p">)</span>
                 <span class="c1"># Profile detail retrieval failed</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="kc">None</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">_password</span> <span class="o">=</span> <span class="kc">None</span>
@@ -3021,7 +3022,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                     <span class="k">return</span> <span class="kc">False</span>
 
             <span class="k">else</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profile retrieval failed.&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Prisma SD-WAN profile retrieval failure. Please check if the service account &quot;</span>
+                      <span class="s2">&quot;has the right privileges or Prisma SD-WAN is activated.&quot;</span><span class="p">)</span>
                 <span class="c1"># Profile detail retrieval failed</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_id</span> <span class="o">=</span> <span class="kc">None</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_secret</span> <span class="o">=</span> <span class="kc">None</span>
@@ -3391,7 +3393,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             <span class="k">return</span> <span class="kc">True</span>
 
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profile retrieval failed.&quot;</span><span class="p">)</span>
+            <span class="n">api_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Profile retrieval failed.&#39;</span><span class="p">)</span>
             <span class="c1"># clear password out of memory</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">_password</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">return</span> <span class="kc">False</span>
@@ -4048,7 +4050,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                     <span class="k">return</span> <span class="kc">False</span>
 
             <span class="k">else</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profile retrieval failed.&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Prisma SD-WAN profile retrieval failure. Please check if the service account &quot;</span>
+                      <span class="s2">&quot;has the right privileges or Prisma SD-WAN is activated.&quot;</span><span class="p">)</span>
                 <span class="c1"># Profile detail retrieval failed</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="kc">None</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">_password</span> <span class="o">=</span> <span class="kc">None</span>
@@ -4190,7 +4193,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                     <span class="k">return</span> <span class="kc">False</span>
 
             <span class="k">else</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profile retrieval failed.&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Prisma SD-WAN profile retrieval failure. Please check if the service account &quot;</span>
+                      <span class="s2">&quot;has the right privileges or Prisma SD-WAN is activated.&quot;</span><span class="p">)</span>
                 <span class="c1"># Profile detail retrieval failed</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_id</span> <span class="o">=</span> <span class="kc">None</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_secret</span> <span class="o">=</span> <span class="kc">None</span>
@@ -4560,7 +4564,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             <span class="k">return</span> <span class="kc">True</span>
 
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profile retrieval failed.&quot;</span><span class="p">)</span>
+            <span class="n">api_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Profile retrieval failed.&#39;</span><span class="p">)</span>
             <span class="c1"># clear password out of memory</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">_password</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">return</span> <span class="kc">False</span>
@@ -5620,7 +5624,8 @@ Expects interactive capability. if this is not available, use <code>prisma_sase.
                 <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">remove_header</span><span class="p">(</span><span class="s1">&#39;Referer&#39;</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">False</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profile retrieval failed.&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Prisma SD-WAN profile retrieval failure. Please check if the service account &quot;</span>
+                  <span class="s2">&quot;has the right privileges or Prisma SD-WAN is activated.&quot;</span><span class="p">)</span>
             <span class="c1"># Profile detail retrieval failed</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">_password</span> <span class="o">=</span> <span class="kc">None</span>
@@ -5776,7 +5781,8 @@ Expects interactive capability. if this is not available, use <code>prisma_sase.
                 <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_secret</span> <span class="o">=</span> <span class="kc">None</span>
                 <span class="k">return</span> <span class="kc">False</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profile retrieval failed.&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Prisma SD-WAN profile retrieval failure. Please check if the service account &quot;</span>
+                  <span class="s2">&quot;has the right privileges or Prisma SD-WAN is activated.&quot;</span><span class="p">)</span>
             <span class="c1"># Profile detail retrieval failed</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_id</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_secret</span> <span class="o">=</span> <span class="kc">None</span>
@@ -6380,7 +6386,7 @@ Expects interactive capability. if this is not available, use <code>prisma_sase.
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">token_session</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token_session&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Profile retrieval failed.&quot;</span><span class="p">)</span>
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Profile retrieval failed.&#39;</span><span class="p">)</span>
         <span class="c1"># clear password out of memory</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">_password</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="kc">False</span>

@@ -486,6 +486,9 @@ class API(object):
                          self.verify,
                          self._session)
 
+        print("WARNING: prisma_sase SDK will soon end support for python versions 2.x, 3.6 and below. "
+                "Please update your python environment to 3.7 or above by the end of September 2023. ")
+
         # Websocket/Python 3.6_ features
         if PYTHON36_FEATURES:
             # Update Headers for WebSocket requests

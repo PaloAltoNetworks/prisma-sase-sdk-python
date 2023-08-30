@@ -136,7 +136,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def bgppeers(self, site_id, element_id, bgppeer_id, api_version="v2.2"):
+    def bgppeers(self, site_id, element_id, bgppeer_id, api_version="v2.3"):
         """
         Delete BGP Peer config (v2.2)
 
@@ -145,7 +145,7 @@ class Delete(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **bgppeer_id**: BGP Peer ID
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -160,7 +160,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def dhcpservers(self, site_id, dhcpserver_id, api_version="v2.2"):
+    def dhcpservers(self, site_id, dhcpserver_id, api_version="v2.3"):
         """
         Delete DHCPServer for a Tenant on a site (v2.1)
 
@@ -168,7 +168,7 @@ class Delete(object):
 
           - **site_id**: Site ID
           - **dhcpserver_id**: DHCP Server ID
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -592,7 +592,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def interfaces(self, site_id, element_id, interface_id, api_version="v4.15"):
+    def interfaces(self, site_id, element_id, interface_id, api_version="v4.16"):
         """
         Delete Cellular Interface (v4.14)
 
@@ -601,7 +601,7 @@ class Delete(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
-          - **api_version**: API version to use (default v4.15)
+          - **api_version**: API version to use (default v4.16)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -760,7 +760,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def lannetworks(self, site_id, lannetwork_id, api_version="v3.2"):
+    def lannetworks(self, site_id, lannetwork_id, api_version="v3.3"):
         """
         Delete an existing LAN (v3.1)
 
@@ -768,7 +768,7 @@ class Delete(object):
 
           - **site_id**: Site ID
           - **lannetwork_id**: LAN Network ID
-          - **api_version**: API version to use (default v3.2)
+          - **api_version**: API version to use (default v3.3)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1448,6 +1448,46 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def prismasase_connections(self, site_id, prismasase_connection_id, api_version="v2.0"):
+        """
+        DELETE Prismasase_Connections API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **prismasase_connection_id**: Prisma SASE Connection ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prismasase_connections/{}".format(api_version,
+                                                                                        site_id,
+                                                                                        prismasase_connection_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def prismasase_connections_configs(self, api_version="v2.0"):
+        """
+        DELETE Prismasase_Connections_Configs API Function
+
+          **Parameters:**:
+
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/prismasase_connections/configs".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def radii(self, element_id, radii_id, api_version="v2.0"):
         """
         DELETE Radii API Function
@@ -1862,14 +1902,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def sites(self, site_id, api_version="v4.7"):
+    def sites(self, site_id, api_version="v4.8"):
         """
         Delete a site (v4.7)
 
           **Parameters:**:
 
           - **site_id**: Site ID
-          - **api_version**: API version to use (default v4.7)
+          - **api_version**: API version to use (default v4.8)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1974,7 +2014,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def staticroutes(self, site_id, element_id, staticroute_id, api_version="v2.2"):
+    def staticroutes(self, site_id, element_id, staticroute_id, api_version="v2.3"):
         """
         Delete static route (v2.2)
 
@@ -1983,7 +2023,7 @@ class Delete(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **staticroute_id**: Static Route ID
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2242,6 +2282,46 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def vrfcontextprofiles(self, vrfcontextprofile_id, api_version="v2.0"):
+        """
+        DELETE Vrfcontextprofiles API Function
+
+          **Parameters:**:
+
+          - **vrfcontextprofile_id**: VRF Context Profile ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/vrfcontextprofiles/{}".format(api_version,
+                                                                           vrfcontextprofile_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def vrfcontexts(self, vrfcontext_id, api_version="v2.0"):
+        """
+        DELETE Vrfcontexts API Function
+
+          **Parameters:**:
+
+          - **vrfcontext_id**: VRF Context ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/vrfcontexts/{}".format(api_version,
+                                                                    vrfcontext_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def waninterfaces(self, site_id, waninterface_id, api_version="v2.7"):
         """
         Delete existing WAN interface (v2.7)
@@ -2332,6 +2412,9 @@ class Delete(object):
 
     anynetlinks_t = tenant_anynetlinks
     """ Backwards-compatibility alias of `anynetlinks_t` to `tenant_anynetlinks`"""
+
+    configs_prismasase_connections = prismasase_connections_configs
+    """ Backwards-compatibility alias of `configs_prismasase_connections` to `prismasase_connections_configs`"""
 
     configs_sdwanapps = sdwanapps_configs
     """ Backwards-compatibility alias of `configs_sdwanapps` to `sdwanapps_configs`"""

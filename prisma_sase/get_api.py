@@ -323,7 +323,7 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def bgppeers(self, site_id, element_id, bgppeer_id=None, api_version="v2.2"):
+    def bgppeers(self, site_id, element_id, bgppeer_id=None, api_version="v2.3"):
         """
         Get all BGP Peer configs from NB (v2.2)
 
@@ -332,7 +332,7 @@ class Get(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **bgppeer_id**: (optional) BGP Peer ID
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -376,7 +376,7 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def bgppeers_discoveredprefixes(self, site_id, element_id, bgppeer_id, api_version="v2.0"):
+    def bgppeers_discoveredprefixes(self, site_id, element_id, bgppeer_id, api_version="v2.1"):
         """
         GET Bgppeers_Discoveredprefixes API Function
 
@@ -385,7 +385,7 @@ class Get(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **bgppeer_id**: BGP Peer ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -660,7 +660,7 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def dhcpservers(self, site_id, dhcpserver_id=None, api_version="v2.2"):
+    def dhcpservers(self, site_id, dhcpserver_id=None, api_version="v2.3"):
         """
         Get all DHCPServers for a Tenant on a site (v2.1)
 
@@ -668,7 +668,7 @@ class Get(object):
 
           - **site_id**: Site ID
           - **dhcpserver_id**: (optional) DHCP Server ID
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1739,7 +1739,7 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def interfaces(self, site_id, element_id, interface_id=None, api_version="v4.15"):
+    def interfaces(self, site_id, element_id, interface_id=None, api_version="v4.16"):
         """
         Get all Cellular Interfaces (v4.14)
 
@@ -1748,7 +1748,7 @@ class Get(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **interface_id**: (optional) Interface ID
-          - **api_version**: API version to use (default v4.15)
+          - **api_version**: API version to use (default v4.16)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1816,7 +1816,7 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def interfaces_status(self, site_id, element_id, interface_id, api_version="v3.5"):
+    def interfaces_status(self, site_id, element_id, interface_id, api_version="v3.6"):
         """
         Get interface status (v3.5)
 
@@ -1825,7 +1825,7 @@ class Get(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
-          - **api_version**: API version to use (default v3.5)
+          - **api_version**: API version to use (default v3.6)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2007,7 +2007,7 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def lannetworks(self, site_id, lannetwork_id=None, api_version="v3.2"):
+    def lannetworks(self, site_id, lannetwork_id=None, api_version="v3.3"):
         """
         Get LAN networks (v3.1)
 
@@ -2015,7 +2015,7 @@ class Get(object):
 
           - **site_id**: Site ID
           - **lannetwork_id**: (optional) LAN Network ID
-          - **api_version**: API version to use (default v3.2)
+          - **api_version**: API version to use (default v3.3)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -3734,6 +3734,72 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def prismasase_connections(self, site_id, prismasase_connection_id=None, api_version="v2.0"):
+        """
+        GET Prismasase_Connections API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **prismasase_connection_id**: (optional) Prisma SASE Connection ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not prismasase_connection_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prismasase_connections".format(api_version,
+                                                                                         site_id)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prismasase_connections/{}".format(api_version,
+                                                                                            site_id,
+                                                                                            prismasase_connection_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def prismasase_connections_configs(self, api_version="v2.0"):
+        """
+        GET Prismasase_Connections_Configs API Function
+
+          **Parameters:**:
+
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/prismasase_connections/configs".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def prismasase_connections_status(self, site_id, prismasase_connection_id, api_version="v2.0"):
+        """
+        GET Prismasase_Connections_Status API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **prismasase_connection_id**: Prisma SASE Connection ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prismasase_connections/{}/status".format(api_version,
+                                                                                               site_id,
+                                                                                               prismasase_connection_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def profile(self, api_version="v2.1"):
         """
         Get current user profile (v2.1)
@@ -4565,14 +4631,14 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def sites(self, site_id=None, api_version="v4.7"):
+    def sites(self, site_id=None, api_version="v4.8"):
         """
         Get all sites of a tenant (v4.7)
 
           **Parameters:**:
 
           - **site_id**: (optional) Site ID
-          - **api_version**: API version to use (default v4.7)
+          - **api_version**: API version to use (default v4.8)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -4786,7 +4852,7 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def staticroutes(self, site_id, element_id, staticroute_id=None, api_version="v2.2"):
+    def staticroutes(self, site_id, element_id, staticroute_id=None, api_version="v2.3"):
         """
         Get static routes (v2.2)
 
@@ -4795,7 +4861,7 @@ class Get(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **staticroute_id**: (optional) Static Route ID
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -5198,13 +5264,13 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def tenants(self, api_version="v2.5"):
+    def tenants(self, api_version="v2.6"):
         """
         Get tenant details for tenant id (v2.3)
 
           **Parameters:**:
 
-          - **api_version**: API version to use (default v2.5)
+          - **api_version**: API version to use (default v2.6)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -5407,6 +5473,52 @@ class Get(object):
 
         url = str(cur_ctlr) + "/sdwan/{}/api/vpnlinks/{}/status".format(api_version,
                                                                         vpnlink_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def vrfcontextprofiles(self, vrfcontextprofile_id=None, api_version="v2.0"):
+        """
+        GET Vrfcontextprofiles API Function
+
+          **Parameters:**:
+
+          - **vrfcontextprofile_id**: (optional) VRF Context Profile ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not vrfcontextprofile_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/vrfcontextprofiles".format(api_version)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/vrfcontextprofiles/{}".format(api_version,
+                                                                               vrfcontextprofile_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def vrfcontexts(self, vrfcontext_id=None, api_version="v2.0"):
+        """
+        GET Vrfcontexts API Function
+
+          **Parameters:**:
+
+          - **vrfcontext_id**: (optional) VRF Context ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not vrfcontext_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/vrfcontexts".format(api_version)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/vrfcontexts/{}".format(api_version,
+                                                                        vrfcontext_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
@@ -5667,6 +5779,9 @@ class Get(object):
     clients_t = tenant_clients
     """ Backwards-compatibility alias of `clients_t` to `tenant_clients`"""
 
+    configs_prismasase_connections = prismasase_connections_configs
+    """ Backwards-compatibility alias of `configs_prismasase_connections` to `prismasase_connections_configs`"""
+
     configs_sdwanapps = sdwanapps_configs
     """ Backwards-compatibility alias of `configs_sdwanapps` to `sdwanapps_configs`"""
 
@@ -5909,6 +6024,9 @@ class Get(object):
 
     status_prioritypolicysets = prioritypolicysets_status
     """ Backwards-compatibility alias of `status_prioritypolicysets` to `prioritypolicysets_status`"""
+
+    status_prismasase_connections = prismasase_connections_status
+    """ Backwards-compatibility alias of `status_prismasase_connections` to `prismasase_connections_status`"""
 
     status_radii = radii_status
     """ Backwards-compatibility alias of `status_radii` to `radii_status`"""

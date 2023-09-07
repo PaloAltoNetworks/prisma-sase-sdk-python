@@ -4,7 +4,7 @@
 [![PyPI - License](https://img.shields.io/pypi/l/prisma-sase.svg?color=brightgreen)](https://pypi.org/project/prisma-sase/)
 [![GitHub issues](https://img.shields.io/github/issues/PaloAltoNetworks/prisma-sase-sdk-python.svg)](https://github.com/PaloAltoNetworks/prisma-sase-sdk-python/issues)
 
-# Palo Alto Networks Prisma SASE Python SDK v6.2.2b1
+# Palo Alto Networks Prisma SASE Python SDK v6.2.3b1
 Python2 and Python3 SDK for the Prisma SASE AppFabric
 
 #### Synopsis
@@ -45,6 +45,7 @@ MIT
 #### Version
 | Version | Build | Changes |
 | ------- | ----- | ------- |
+| **6.2.3** | **b1** | Support for August 2023 Controller release. |
 | **6.2.2** | **b1** | Support for June 2023 Controller release. |
 | **6.2.1** | **b1** | Support for April 2023 Controller release. |
 | **6.1.2** | **b1** | Support for January 2023 Controller release. |

@@ -1,7 +1,7 @@
 """
 Python2 and Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.2.2b1
+**Version:** v6.2.3b1
 
 **Author:** Palo Alto Networks
 
@@ -144,7 +144,7 @@ if PYTHON36_FEATURES:
 
 
 # Version of SDK
-version = "6.2.2b1"
+version = "6.2.3b1"
 """SDK Version string"""
 __version__ = version
 
@@ -486,8 +486,9 @@ class API(object):
                          self.verify,
                          self._session)
 
-        print("WARNING: prisma_sase SDK will soon end support for python versions 2.x, 3.6 and below. "
-                "Please update your python environment to 3.7 or above by the end of September 2023. ")
+        if update_check and (not PYTHON36_FEATURES or sys.version_info < (3, 7,)):
+            print("WARNING: cloudgenix SDK will soon end support for python versions 2.x, 3.6 and below. "
+                  "Please update your python environment to 3.7 or above by the end of September 2023.")
 
         # Websocket/Python 3.6_ features
         if PYTHON36_FEATURES:

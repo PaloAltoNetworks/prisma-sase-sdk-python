@@ -3778,6 +3778,28 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def prismasase_connections_status(self, site_id, prismasase_connection_id, api_version="v2.0"):
+        """
+        GET Prismasase_Connections_Status API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **prismasase_connection_id**: Prisma SASE Connection ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prismasase_connections/{}/status".format(api_version,
+                                                                                               site_id,
+                                                                                               prismasase_connection_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def profile(self, api_version="v2.1"):
         """
         Get current user profile (v2.1)
@@ -4879,28 +4901,6 @@ class Get(object):
                                                                                                  site_id,
                                                                                                  element_id,
                                                                                                  staticroute_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "get")
-
-    def status_prismasase_connections(self, site_id, prismasase_connection_id, api_version="v2.0"):
-        """
-        GET Status_Prismasase_Connections API Function
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **prismasase_connection_id**: Prisma SASE Connection ID
-          - **api_version**: API version to use (default v2.0)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prismasase_connections/{}/status".format(api_version,
-                                                                                               site_id,
-                                                                                               prismasase_connection_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
@@ -6024,6 +6024,9 @@ class Get(object):
 
     status_prioritypolicysets = prioritypolicysets_status
     """ Backwards-compatibility alias of `status_prioritypolicysets` to `prioritypolicysets_status`"""
+
+    status_prismasase_connections = prismasase_connections_status
+    """ Backwards-compatibility alias of `status_prismasase_connections` to `prismasase_connections_status`"""
 
     status_radii = radii_status
     """ Backwards-compatibility alias of `status_radii` to `radii_status`"""

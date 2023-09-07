@@ -2735,6 +2735,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.get_api.Get.prismaaccess_configs">prismaaccess_configs</a></li>
     <li class="mono"><a href="#prisma_sase.get_api.Get.prismasase_connections">prismasase_connections</a></li>
     <li class="mono"><a href="#prisma_sase.get_api.Get.prismasase_connections_configs">prismasase_connections_configs</a></li>
+    <li class="mono"><a href="#prisma_sase.get_api.Get.prismasase_connections_status">prismasase_connections_status</a></li>
     <li class="mono"><a href="#prisma_sase.get_api.Get.profile">profile</a></li>
     <li class="mono"><a href="#prisma_sase.get_api.Get.radii">radii</a></li>
     <li class="mono"><a href="#prisma_sase.get_api.Get.radii_status">radii_status</a></li>
@@ -2782,7 +2783,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.get_api.Get.spokeclusters_status">spokeclusters_status</a></li>
     <li class="mono"><a href="#prisma_sase.get_api.Get.staticroutes">staticroutes</a></li>
     <li class="mono"><a href="#prisma_sase.get_api.Get.staticroutes_status">staticroutes_status</a></li>
-    <li class="mono"><a href="#prisma_sase.get_api.Get.status_prismasase_connections">status_prismasase_connections</a></li>
     <li class="mono"><a href="#prisma_sase.get_api.Get.syslogserverprofiles">syslogserverprofiles</a></li>
     <li class="mono"><a href="#prisma_sase.get_api.Get.syslogservers">syslogservers</a></li>
     <li class="mono"><a href="#prisma_sase.get_api.Get.templates_ntp">templates_ntp</a></li>
@@ -6627,6 +6627,28 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">prismasase_connections_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">prismasase_connection_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        GET Prismasase_Connections_Status API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **site_id**: Site ID</span>
+<span class="sd">          - **prismasase_connection_id**: Prisma SASE Connection ID</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/prismasase_connections/</span><span class="si">{}</span><span class="s2">/status&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                               <span class="n">site_id</span><span class="p">,</span>
+                                                                                               <span class="n">prismasase_connection_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">profile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get current user profile (v2.1)</span>
@@ -7728,28 +7750,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                                                                                                  <span class="n">site_id</span><span class="p">,</span>
                                                                                                  <span class="n">element_id</span><span class="p">,</span>
                                                                                                  <span class="n">staticroute_id</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">status_prismasase_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">prismasase_connection_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        GET Status_Prismasase_Connections API Function</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **site_id**: Site ID</span>
-<span class="sd">          - **prismasase_connection_id**: Prisma SASE Connection ID</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/prismasase_connections/</span><span class="si">{}</span><span class="s2">/status&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                               <span class="n">site_id</span><span class="p">,</span>
-                                                                                               <span class="n">prismasase_connection_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
@@ -8873,6 +8873,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="n">status_prioritypolicysets</span> <span class="o">=</span> <span class="n">prioritypolicysets_status</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `status_prioritypolicysets` to `prioritypolicysets_status`&quot;&quot;&quot;</span>
+
+    <span class="n">status_prismasase_connections</span> <span class="o">=</span> <span class="n">prismasase_connections_status</span>
+    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `status_prismasase_connections` to `prismasase_connections_status`&quot;&quot;&quot;</span>
 
     <span class="n">status_radii</span> <span class="o">=</span> <span class="n">radii_status</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `status_radii` to `radii_status`&quot;&quot;&quot;</span>
@@ -12684,6 +12687,28 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">prismasase_connections_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">prismasase_connection_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        GET Prismasase_Connections_Status API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **site_id**: Site ID</span>
+<span class="sd">          - **prismasase_connection_id**: Prisma SASE Connection ID</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/prismasase_connections/</span><span class="si">{}</span><span class="s2">/status&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                               <span class="n">site_id</span><span class="p">,</span>
+                                                                                               <span class="n">prismasase_connection_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">profile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get current user profile (v2.1)</span>
@@ -13785,28 +13810,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                                                                                                  <span class="n">site_id</span><span class="p">,</span>
                                                                                                  <span class="n">element_id</span><span class="p">,</span>
                                                                                                  <span class="n">staticroute_id</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">status_prismasase_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">prismasase_connection_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        GET Status_Prismasase_Connections API Function</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **site_id**: Site ID</span>
-<span class="sd">          - **prismasase_connection_id**: Prisma SASE Connection ID</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/prismasase_connections/</span><span class="si">{}</span><span class="s2">/status&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                               <span class="n">site_id</span><span class="p">,</span>
-                                                                                               <span class="n">prismasase_connection_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
@@ -14930,6 +14933,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="n">status_prioritypolicysets</span> <span class="o">=</span> <span class="n">prioritypolicysets_status</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `status_prioritypolicysets` to `prioritypolicysets_status`&quot;&quot;&quot;</span>
+
+    <span class="n">status_prismasase_connections</span> <span class="o">=</span> <span class="n">prismasase_connections_status</span>
+    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `status_prismasase_connections` to `prismasase_connections_status`&quot;&quot;&quot;</span>
 
     <span class="n">status_radii</span> <span class="o">=</span> <span class="n">radii_status</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `status_radii` to `radii_status`&quot;&quot;&quot;</span>
@@ -16084,6 +16090,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   
     <div class="desc"><p>Backwards-compatibility alias of <code>status_prioritypolicysets</code> to <code>prioritypolicysets_status</code></p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item" id="prisma_sase.get_api.Get.status_prismasase_connections">
+            <p class="name">var <span class="ident">status_prismasase_connections</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Backwards-compatibility alias of <code>status_prismasase_connections</code> to <code>prismasase_connections_status</code></p></div>
   <div class="source_cont">
 </div>
 
@@ -23127,6 +23144,48 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   </div>
   
             
+  <div class="item" id="prisma_sase.get_api.Get.prismasase_connections_status">
+    <div class="name def">
+    <p>def <span class="ident">prismasase_connections_status</span>(</p><p>self, site_id, prismasase_connection_id, api_version=&#39;v2.0&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>GET Prismasase_Connections_Status API Function</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>site_id</strong>: Site ID</li>
+<li><strong>prismasase_connection_id</strong>: Prisma SASE Connection ID</li>
+<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+</ul>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.prismasase_connections_status', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.get_api.Get.prismasase_connections_status" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">prismasase_connections_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">prismasase_connection_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    GET Prismasase_Connections_Status API Function</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **site_id**: Site ID</span>
+<span class="sd">      - **prismasase_connection_id**: Prisma SASE Connection ID</span>
+<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/prismasase_connections/</span><span class="si">{}</span><span class="s2">/status&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                           <span class="n">site_id</span><span class="p">,</span>
+                                                                                           <span class="n">prismasase_connection_id</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
   <div class="item" id="prisma_sase.get_api.Get.profile">
     <div class="name def">
     <p>def <span class="ident">profile</span>(</p><p>self, api_version=&#39;v2.1&#39;)</p>
@@ -25144,48 +25203,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                                                                                              <span class="n">site_id</span><span class="p">,</span>
                                                                                              <span class="n">element_id</span><span class="p">,</span>
                                                                                              <span class="n">staticroute_id</span><span class="p">)</span>
-    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
-</pre></div>
-
-  </div>
-</div>
-
-  </div>
-  
-            
-  <div class="item" id="prisma_sase.get_api.Get.status_prismasase_connections">
-    <div class="name def">
-    <p>def <span class="ident">status_prismasase_connections</span>(</p><p>self, site_id, prismasase_connection_id, api_version=&#39;v2.0&#39;)</p>
-    </div>
-    
-
-    
-  
-    <div class="desc"><p>GET Status_Prismasase_Connections API Function</p>
-<p><strong>Parameters:</strong>:</p>
-<ul>
-<li><strong>site_id</strong>: Site ID</li>
-<li><strong>prismasase_connection_id</strong>: Prisma SASE Connection ID</li>
-<li><strong>api_version</strong>: API version to use (default v2.0)</li>
-</ul>
-<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
-  <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.get_api.Get.status_prismasase_connections', this);">Show source &equiv;</a></p>
-  <div id="source-prisma_sase.get_api.Get.status_prismasase_connections" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">status_prismasase_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">prismasase_connection_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    GET Status_Prismasase_Connections API Function</span>
-<span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **site_id**: Site ID</span>
-<span class="sd">      - **prismasase_connection_id**: Prisma SASE Connection ID</span>
-<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
-<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/prismasase_connections/</span><span class="si">{}</span><span class="s2">/status&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                           <span class="n">site_id</span><span class="p">,</span>
-                                                                                           <span class="n">prismasase_connection_id</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">)</span>
 </pre></div>

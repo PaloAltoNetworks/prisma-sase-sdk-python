@@ -1,7 +1,7 @@
 """
 Python2 and Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.2.3b1
+**Version:** v6.3.1b1
 
 **Author:** Palo Alto Networks
 
@@ -144,7 +144,7 @@ if PYTHON36_FEATURES:
 
 
 # Version of SDK
-version = "6.2.3b1"
+version = "6.3.1b1"
 """SDK Version string"""
 __version__ = version
 

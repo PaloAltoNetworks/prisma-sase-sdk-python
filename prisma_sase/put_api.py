@@ -176,7 +176,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def bgpconfigs(self, site_id, element_id, bgpconfig_id, data, api_version="v2.2"):
+    def bgpconfigs(self, site_id, element_id, bgpconfig_id, data, api_version="v2.3"):
         """
         Updates BGP config (v2.2)
 
@@ -186,7 +186,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **bgpconfig_id**: BGP Configuration ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
@@ -204,7 +204,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def bgppeers(self, site_id, element_id, bgppeer_id, data, api_version="v2.3"):
+    def bgppeers(self, site_id, element_id, bgppeer_id, data, api_version="v2.4"):
         """
         Updates BGP Peer config (v2.2)
 
@@ -214,7 +214,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **bgppeer_id**: BGP Peer ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.3)
+          - **api_version**: API version to use (default v2.4)
 
           **Payload Attributes:** 
 
@@ -228,6 +228,30 @@ class Put(object):
                                                                                       site_id,
                                                                                       element_id,
                                                                                       bgppeer_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def bulkconfigurations_sitetemplates(self, sitetemplate_id, data, api_version="v2.0"):
+        """
+        PUT Bulkconfigurations_Sitetemplates API Function
+
+          **Parameters:**:
+
+          - **sitetemplate_id**: Site Template ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/bulkconfigurations/sitetemplates/{}".format(api_version,
+                                                                                         sitetemplate_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
@@ -260,7 +284,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def deviceidconfigs(self, site_id, deviceidconfig_id, data, api_version="v2.0"):
+    def deviceidconfigs(self, site_id, deviceidconfig_id, data, api_version="v2.1"):
         """
         PUT Deviceidconfigs API Function
 
@@ -269,7 +293,7 @@ class Put(object):
           - **site_id**: Site ID
           - **deviceidconfig_id**: Device Id Config ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -282,6 +306,58 @@ class Put(object):
         url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}".format(api_version,
                                                                                  site_id,
                                                                                  deviceidconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def deviceidconfigs_snmpdiscoverystartnodes(self, site_id, deviceidconfig_id, snmpdiscoverystartnode_id, data, api_version="v2.0"):
+        """
+        PUT Deviceidconfigs_Snmpdiscoverystartnodes API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **deviceidconfig_id**: Device Id Config ID
+          - **snmpdiscoverystartnode_id**: SNMP Discovery Start Node ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}/snmpdiscoverystartnodes/{}".format(api_version,
+                                                                                                            site_id,
+                                                                                                            deviceidconfig_id,
+                                                                                                            snmpdiscoverystartnode_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def deviceidprofiles(self, deviceidprofile_id, data, api_version="v2.0"):
+        """
+        PUT Deviceidprofiles API Function
+
+          **Parameters:**:
+
+          - **deviceidprofile_id**: Device Id Profile ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/deviceidprofiles/{}".format(api_version,
+                                                                         deviceidprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
@@ -490,6 +566,34 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
+    def element_deviceidconfigs(self, site_id, element_id, deviceidconfig_id, data, api_version="v2.0"):
+        """
+        PUT Element_Deviceidconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **deviceidconfig_id**: Device Id Config ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/deviceidconfigs/{}".format(api_version,
+                                                                                             site_id,
+                                                                                             element_id,
+                                                                                             deviceidconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
     def element_extensions(self, site_id, element_id, extension_id, data, api_version="v2.0"):
         """
         Update element level extension configuration (v2.0)
@@ -568,7 +672,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def elements(self, element_id, data, api_version="v3.0"):
+    def elements(self, element_id, data, api_version="v3.1"):
         """
         Used for associations and element updates (v3.0)
 
@@ -576,7 +680,7 @@ class Put(object):
 
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v3.0)
+          - **api_version**: API version to use (default v3.1)
 
           **Payload Attributes:** 
 
@@ -616,6 +720,32 @@ class Put(object):
                                                                                            site_id,
                                                                                            element_id,
                                                                                            securityzone_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def elementshells(self, site_id, elementshell_id, data, api_version="v2.0"):
+        """
+        PUT Elementshells API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **elementshell_id**: Element Shell ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elementshells/{}".format(api_version,
+                                                                               site_id,
+                                                                               elementshell_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
@@ -718,7 +848,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def eventcorrelationpolicyrules(self, eventcorrelationpolicyset_id, eventcorrelationpolicyrule_id, data, api_version="v2.0"):
+    def eventcorrelationpolicyrules(self, eventcorrelationpolicyset_id, eventcorrelationpolicyrule_id, data, api_version="v2.1"):
         """
         Update event correlation policyrule configuration (v2.0)
 
@@ -727,7 +857,7 @@ class Put(object):
           - **eventcorrelationpolicyset_id**: Event Correlation Policy Set ID
           - **eventcorrelationpolicyrule_id**: Event Correlation Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -918,7 +1048,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def interfaces(self, site_id, element_id, interface_id, data, api_version="v4.16"):
+    def interfaces(self, site_id, element_id, interface_id, data, api_version="v4.17"):
         """
         Update a Cellular Interface (v4.14)
 
@@ -928,7 +1058,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v4.16)
+          - **api_version**: API version to use (default v4.17)
 
           **Payload Attributes:** 
 
@@ -942,6 +1072,34 @@ class Put(object):
                                                                                         site_id,
                                                                                         element_id,
                                                                                         interface_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def interfaces_elementshells(self, site_id, elementshell_id, interface_id, data, api_version="v2.0"):
+        """
+        PUT Interfaces_Elementshells API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **elementshell_id**: Element Shell ID
+          - **interface_id**: Interface ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elementshells/{}/interfaces/{}".format(api_version,
+                                                                                             site_id,
+                                                                                             elementshell_id,
+                                                                                             interface_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
@@ -1816,6 +1974,104 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
+    def perfmgmtpolicysets(self, perfmgmtpolicyset_id, data, api_version="v2.0"):
+        """
+        PUT Perfmgmtpolicysets API Function
+
+          **Parameters:**:
+
+          - **perfmgmtpolicyset_id**: Performance Management Policy Set ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysets/{}".format(api_version,
+                                                                           perfmgmtpolicyset_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, data, api_version="v2.0"):
+        """
+        PUT Perfmgmtpolicysets_Perfmgmtpolicyrules API Function
+
+          **Parameters:**:
+
+          - **perfmgmtpolicyset_id**: Performance Management Policy Set ID
+          - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysets/{}/perfmgmtpolicyrules/{}".format(api_version,
+                                                                                                  perfmgmtpolicyset_id,
+                                                                                                  perfmgmtpolicyrule_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def perfmgmtpolicysetstacks(self, perfmgmtpolicysetstack_id, data, api_version="v2.0"):
+        """
+        PUT Perfmgmtpolicysetstacks API Function
+
+          **Parameters:**:
+
+          - **perfmgmtpolicysetstack_id**: Performance Management Policy Set Stack ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysetstacks/{}".format(api_version,
+                                                                                perfmgmtpolicysetstack_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def perfmgmtthresholdprofiles(self, perfmgmtthresholdprofile_id, data, api_version="v2.0"):
+        """
+        PUT Perfmgmtthresholdprofiles API Function
+
+          **Parameters:**:
+
+          - **perfmgmtthresholdprofile_id**: Performance Management Threshold Profile ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtthresholdprofiles/{}".format(api_version,
+                                                                                  perfmgmtthresholdprofile_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
     def policyrules(self, policyset_id, policyrule_id, data, api_version="v3.1"):
         """
         Update policy rule of tenant. (v3.1)
@@ -2196,7 +2452,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def routing_prefixlists(self, site_id, element_id, routing_prefixlist_id, data, api_version="v2.0"):
+    def routing_prefixlists(self, site_id, element_id, routing_prefixlist_id, data, api_version="v2.1"):
         """
         Updates Prefix List (v2.0)
 
@@ -2206,7 +2462,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **routing_prefixlist_id**: Routing IP Prefix List ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -2224,7 +2480,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def routing_routemaps(self, site_id, element_id, routing_routemap_id, data, api_version="v2.1"):
+    def routing_routemaps(self, site_id, element_id, routing_routemap_id, data, api_version="v2.2"):
         """
         Updates Route Map (v2.1)
 
@@ -2234,7 +2490,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **routing_routemap_id**: Routing Route Map ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
@@ -2628,7 +2884,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def sites(self, site_id, data, api_version="v4.8"):
+    def sites(self, site_id, data, api_version="v4.9"):
         """
         Update an existing site (v4.7)
 
@@ -2636,7 +2892,7 @@ class Put(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v4.8)
+          - **api_version**: API version to use (default v4.9)
 
           **Payload Attributes:** 
 
@@ -3058,14 +3314,14 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tenants(self, data, api_version="v2.6"):
+    def tenants(self, data, api_version="v2.7"):
         """
         Update tenant (v2.3)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.6)
+          - **api_version**: API version to use (default v2.7)
 
           **Payload Attributes:** 
 
@@ -3372,6 +3628,9 @@ class Put(object):
     configs_sdwanapps = sdwanapps_configs
     """ Backwards-compatibility alias of `configs_sdwanapps` to `sdwanapps_configs`"""
 
+    deviceidconfigs_i = element_deviceidconfigs
+    """ Backwards-compatibility alias of `deviceidconfigs_i` to `element_deviceidconfigs`"""
+
     extensions_i = element_extensions
     """ Backwards-compatibility alias of `extensions_i` to `element_extensions`"""
 
@@ -3420,6 +3679,9 @@ class Put(object):
     overrides_appdefs = appdefs_overrides
     """ Backwards-compatibility alias of `overrides_appdefs` to `appdefs_overrides`"""
 
+    perfmgmtpolicyrules_perfmgmtpolicysets = perfmgmtpolicysets_perfmgmtpolicyrules
+    """ Backwards-compatibility alias of `perfmgmtpolicyrules_perfmgmtpolicysets` to `perfmgmtpolicysets_perfmgmtpolicyrules`"""
+
     permissions_clients_o = esp_operator_permissions_client
     """ Backwards-compatibility alias of `permissions_clients_o` to `esp_operator_permissions_client`"""
 
@@ -3434,6 +3696,12 @@ class Put(object):
 
     sim_security_cellular_modules = cellular_modules_sim_security
     """ Backwards-compatibility alias of `sim_security_cellular_modules` to `cellular_modules_sim_security`"""
+
+    sitetemplates_bulkconfigurations = bulkconfigurations_sitetemplates
+    """ Backwards-compatibility alias of `sitetemplates_bulkconfigurations` to `bulkconfigurations_sitetemplates`"""
+
+    snmpdiscoverystartnodes_deviceidconfigs = deviceidconfigs_snmpdiscoverystartnodes
+    """ Backwards-compatibility alias of `snmpdiscoverystartnodes_deviceidconfigs` to `deviceidconfigs_snmpdiscoverystartnodes`"""
 
     state = element_state
     """ Backwards-compatibility alias of `state` to `element_state`"""

@@ -2747,7 +2747,7 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/insights".format(api_version)
+        url = str(cur_ctlr) + "/sdwan/{}/api/monitor/insights".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -2769,7 +2769,7 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/insightslist".format(api_version)
+        url = str(cur_ctlr) + "/sdwan/{}/api/monitor/insightslist".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)

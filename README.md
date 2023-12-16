@@ -15,9 +15,9 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
 * Active Prisma SASE Account
 * Python >=3.7
 * Python modules:
-    * Requests + Security Extras >= 2.22.0 - <http://docs.python-requests.org/en/master/>
+    * Requests - <http://docs.python-requests.org/en/master/>
     * Websockets >= 8.1 - <https://websockets.readthedocs.io/en/stable/index.html>
-    * urllib3 >= 1.26.18 - <https://urllib3.readthedocs.io/en/stable/>
+    * urllib3 >= 2.0.0 - <https://urllib3.readthedocs.io/en/stable/>
 
 #### Code Example
 Comes with `example.py` that shows usage to get a JSON list of sites.

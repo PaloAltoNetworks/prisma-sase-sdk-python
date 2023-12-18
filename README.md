@@ -5,7 +5,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/PaloAltoNetworks/prisma-sase-sdk-python.svg)](https://github.com/PaloAltoNetworks/prisma-sase-sdk-python/issues)
 
 # Palo Alto Networks Prisma SASE Python SDK v6.3.1b1
-Python2 and Python3 SDK for the Prisma SASE AppFabric
+Python3 SDK for the Prisma SASE AppFabric
 
 #### Synopsis
 Intended to be a small, lightweight SDK wrapper around the Prisma SASE API for easy use. 
@@ -13,11 +13,11 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
 
 #### Requirements
 * Active Prisma SASE Account
-* Python >= 2.7 or >=3.6
+* Python >= 3.7
 * Python modules:
-    * Requests + Security Extras >= 2.22.0 - <http://docs.python-requests.org/en/master/>
-    * Websockets (if Python >= 3.6) >= 8.1 - <https://websockets.readthedocs.io/en/stable/index.html>
-    * urllib3 == 1.26.18 - <https://urllib3.readthedocs.io/en/stable/>
+    * Requests - <http://docs.python-requests.org/en/master/>
+    * Websockets >= 8.1 - <https://websockets.readthedocs.io/en/stable/index.html>
+    * urllib3 >= 2.0.0 - <https://urllib3.readthedocs.io/en/stable/>
 
 #### Code Example
 Comes with `example.py` that shows usage to get a JSON list of sites.

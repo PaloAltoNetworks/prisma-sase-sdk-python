@@ -13,7 +13,7 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
 
 #### Requirements
 * Active Prisma SASE Account
-* Python >=3.7
+* Python >= 3.7
 * Python modules:
     * Requests - <http://docs.python-requests.org/en/master/>
     * Websockets >= 8.1 - <https://websockets.readthedocs.io/en/stable/index.html>

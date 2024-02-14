@@ -202,6 +202,28 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def demsiteconfigs(self, site_id, demsiteconfig_id, api_version="v2.0"):
+        """
+        DELETE Demsiteconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **demsiteconfig_id**: NO DESCRIPTION
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/demsiteconfigs/{}".format(api_version,
+                                                                                site_id,
+                                                                                demsiteconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def deviceidconfigs_snmpdiscoverystartnodes(self, site_id, deviceidconfig_id, snmpdiscoverystartnode_id, api_version="v2.0"):
         """
         DELETE Deviceidconfigs_Snmpdiscoverystartnodes API Function
@@ -1968,14 +1990,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def serviceendpoints(self, serviceendpoint_id, api_version="v2.3"):
+    def serviceendpoints(self, serviceendpoint_id, api_version="v2.4"):
         """
         Delete a Service Endpoint (v2.3)
 
           **Parameters:**:
 
           - **serviceendpoint_id**: Service Endpoint ID
-          - **api_version**: API version to use (default v2.3)
+          - **api_version**: API version to use (default v2.4)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """

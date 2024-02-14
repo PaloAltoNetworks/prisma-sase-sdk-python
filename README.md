@@ -45,6 +45,7 @@ MIT
 #### Version
 | Version   | Build | Changes                                       |
 |-----------| ----- |-----------------------------------------------|
+| **6.3.2** | **b1** | Support for February 2023 Controller release. |
 | **6.3.1** | **b1** | Support for November 2023 Controller release. |
 | **6.2.3** | **b1** | Support for August 2023 Controller release.   |
 | **6.2.2** | **b1** | Support for June 2023 Controller release.     |

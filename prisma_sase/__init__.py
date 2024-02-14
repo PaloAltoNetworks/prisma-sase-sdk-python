@@ -1,7 +1,7 @@
 """
 Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.3.1b1
+**Version:** v6.3.2b1
 
 **Author:** Palo Alto Networks
 
@@ -161,7 +161,7 @@ ws_logger = logging.getLogger('websockets')
 """websocket logger is handled slightly differently, so we will have a seperate handle."""
 
 # Version of SDK
-version = "6.3.1b1"
+version = "6.3.2b1"
 """SDK Version string"""
 __version__ = version
 
@@ -481,6 +481,12 @@ class API(object):
                               "eu": "europe"}
     """ static mapping of telemetry region to x_panw_region """
 
+    client_secret = None
+    """ needed for login_secret func """
+
+    tsg_id = None
+    """ needed for login_secret func """
+    
     def __init__(self, controller=controller, ssl_verify=verify, update_check=True):
         """
         Create the API constructor object

@@ -71,14 +71,12 @@ class WebSockets(object):
         if tenant_id is None and self._parent_class.tenant_id:
             # Pull tenant_id from parent namespace cache.
             tenant_id = self._parent_class.tenant_id
-        elif not tenant_id:
-            # No value for tenant_id.
-            raise TypeError("tenant_id is required but not set or cached.")
+
         # set controller, converting protocol to wss
         wss_ctlr = self._parent_class.controller.replace('https://', 'wss://', 1)
 
         url = str(wss_ctlr) + "/sdwan/{}/api/elements/{}/ws/toolkitsessions?cols={}&rows={}" \
-                              "".format(api_version, tenant_id, element_id, cols, rows)
+                              "".format(api_version, element_id, cols, rows)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.websocket_call(url, **kwargs)
@@ -99,14 +97,12 @@ class WebSockets(object):
         if tenant_id is None and self._parent_class.tenant_id:
             # Pull tenant_id from parent namespace cache.
             tenant_id = self._parent_class.tenant_id
-        elif not tenant_id:
-            # No value for tenant_id.
-            raise TypeError("tenant_id is required but not set or cached.")
+
         # set controller, converting protocol to wss
         wss_ctlr = self._parent_class.controller.replace('https://', 'wss://', 1)
 
         url = str(wss_ctlr) + "/sdwan/{}/api/ws" \
-                              "".format(api_version, tenant_id)
+                              "".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.websocket_call(url)

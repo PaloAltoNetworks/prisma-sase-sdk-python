@@ -670,6 +670,32 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def demsiteconfigs(self, site_id, demsiteconfig_id=None, api_version="v2.0"):
+        """
+        GET Demsiteconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **demsiteconfig_id**: (optional) NO DESCRIPTION
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not demsiteconfig_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/demsiteconfigs".format(api_version,
+                                                                                 site_id)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/demsiteconfigs/{}".format(api_version,
+                                                                                    site_id,
+                                                                                    demsiteconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def demstatus(self, site_id, demstatus_id=None, api_version="v2.0"):
         """
         Get all ADEM status for a site (v2.0)
@@ -1428,6 +1454,28 @@ class Get(object):
             url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elementshells/{}".format(api_version,
                                                                                    site_id,
                                                                                    elementshell_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def elementshells_copy_element_configurations_status(self, site_id, elementshell_id, api_version="v2.0"):
+        """
+        GET Elementshells_Copy_Element_Configurations_Status API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **elementshell_id**: Element Shell ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elementshells/{}/copy_element_configurations/status".format(api_version,
+                                                                                                                  site_id,
+                                                                                                                  elementshell_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
@@ -2698,14 +2746,14 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_metrics(self, metric_id, api_version="v2.4"):
+    def monitor_metrics(self, metric_id, api_version="v2.5"):
         """
         GET Monitor_Metrics API Function
 
           **Parameters:**:
 
           - **metric_id**: Metric ID
-          - **api_version**: API version to use (default v2.4)
+          - **api_version**: API version to use (default v2.5)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -4620,14 +4668,14 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def serviceendpoints(self, serviceendpoint_id=None, api_version="v2.3"):
+    def serviceendpoints(self, serviceendpoint_id=None, api_version="v2.4"):
         """
         Get ServiceEndpointList (v2.3)
 
           **Parameters:**:
 
           - **serviceendpoint_id**: (optional) Service Endpoint ID
-          - **api_version**: API version to use (default v2.3)
+          - **api_version**: API version to use (default v2.4)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -5619,13 +5667,13 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def tenants(self, api_version="v2.7"):
+    def tenants(self, api_version="v2.8"):
         """
         Get tenant details for tenant id (v2.3)
 
           **Parameters:**:
 
-          - **api_version**: API version to use (default v2.7)
+          - **api_version**: API version to use (default v2.8)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -6346,6 +6394,9 @@ class Get(object):
 
     status_cellular_modules_m = machine_cellular_modules_status
     """ Backwards-compatibility alias of `status_cellular_modules_m` to `machine_cellular_modules_status`"""
+
+    status_copy_element_configurations_elementshells = elementshells_copy_element_configurations_status
+    """ Backwards-compatibility alias of `status_copy_element_configurations_elementshells` to `elementshells_copy_element_configurations_status`"""
 
     status_directoryservices = directoryservices_status
     """ Backwards-compatibility alias of `status_directoryservices` to `directoryservices_status`"""

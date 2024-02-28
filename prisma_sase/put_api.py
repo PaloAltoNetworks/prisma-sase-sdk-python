@@ -284,6 +284,32 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
+    def demsiteconfigs(self, site_id, demsiteconfig_id, data, api_version="v2.0"):
+        """
+        PUT Demsiteconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **demsiteconfig_id**: NO DESCRIPTION
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/demsiteconfigs/{}".format(api_version,
+                                                                                site_id,
+                                                                                demsiteconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
     def deviceidconfigs(self, site_id, deviceidconfig_id, data, api_version="v2.1"):
         """
         PUT Deviceidconfigs API Function
@@ -2632,7 +2658,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def serviceendpoints(self, serviceendpoint_id, data, api_version="v2.3"):
+    def serviceendpoints(self, serviceendpoint_id, data, api_version="v2.4"):
         """
         Update a ServiceEndpoint (v2.3)
 
@@ -2640,7 +2666,7 @@ class Put(object):
 
           - **serviceendpoint_id**: Service Endpoint ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.3)
+          - **api_version**: API version to use (default v2.4)
 
           **Payload Attributes:** 
 
@@ -3314,14 +3340,14 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tenants(self, data, api_version="v2.7"):
+    def tenants(self, data, api_version="v2.8"):
         """
         Update tenant (v2.3)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.7)
+          - **api_version**: API version to use (default v2.8)
 
           **Payload Attributes:** 
 

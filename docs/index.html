@@ -8,7 +8,7 @@
     <title>prisma_sase documentation</title>
     <meta name="description" content="Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.3.1b1
+**Version:** v6.3.2b1
 
 **Author:** Palo Alto Networks
 
@@ -2676,7 +2676,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <header id="section-intro">
   <h1 class="title"><span class="name">prisma_sase</span> module</h1>
   <p>Python3 SDK for the Prisma SASE AppFabric</p>
-<p><strong>Version:</strong> v6.3.1b1</p>
+<p><strong>Version:</strong> v6.3.2b1</p>
 <p><strong>Author:</strong> Palo Alto Networks</p>
 <p><strong>Copyright:</strong> © 2023 Palo Alto Networks. All rights reserved</p>
 <p><strong>License:</strong> MIT</p>
@@ -2725,7 +2725,7 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
     <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Python3 SDK for the Prisma SASE AppFabric</span>
 
-<span class="sd">**Version:** v6.3.1b1</span>
+<span class="sd">**Version:** v6.3.2b1</span>
 
 <span class="sd">**Author:** Palo Alto Networks</span>
 
@@ -2885,7 +2885,7 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
 <span class="sd">&quot;&quot;&quot;websocket logger is handled slightly differently, so we will have a seperate handle.&quot;&quot;&quot;</span>
 
 <span class="c1"># Version of SDK</span>
-<span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;6.3.1b1&quot;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;6.3.2b1&quot;</span>
 <span class="sd">&quot;&quot;&quot;SDK Version string&quot;&quot;&quot;</span>
 <span class="n">__version__</span> <span class="o">=</span> <span class="n">version</span>
 
@@ -3205,6 +3205,12 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
                               <span class="s2">&quot;eu&quot;</span><span class="p">:</span> <span class="s2">&quot;europe&quot;</span><span class="p">}</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; static mapping of telemetry region to x_panw_region &quot;&quot;&quot;</span>
 
+    <span class="n">client_secret</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; needed for login_secret func &quot;&quot;&quot;</span>
+
+    <span class="n">tsg_id</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; needed for login_secret func &quot;&quot;&quot;</span>
+    
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="o">=</span><span class="n">controller</span><span class="p">,</span> <span class="n">ssl_verify</span><span class="o">=</span><span class="n">verify</span><span class="p">,</span> <span class="n">update_check</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create the API constructor object</span>
@@ -5060,6 +5066,12 @@ and Response Body.</p></div>
                               <span class="s2">&quot;eu&quot;</span><span class="p">:</span> <span class="s2">&quot;europe&quot;</span><span class="p">}</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; static mapping of telemetry region to x_panw_region &quot;&quot;&quot;</span>
 
+    <span class="n">client_secret</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; needed for login_secret func &quot;&quot;&quot;</span>
+
+    <span class="n">tsg_id</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; needed for login_secret func &quot;&quot;&quot;</span>
+    
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="o">=</span><span class="n">controller</span><span class="p">,</span> <span class="n">ssl_verify</span><span class="o">=</span><span class="n">verify</span><span class="p">,</span> <span class="n">update_check</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create the API constructor object</span>
@@ -6507,6 +6519,17 @@ filename in event of local file.</p></div>
 </div>
 
             </div>
+            <div class="item" id="prisma_sase.API.client_secret">
+            <p class="name">var <span class="ident">client_secret</span></p>
+            
+
+            
+  
+    <div class="desc"><p>needed for login_secret func</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
             <div class="item" id="prisma_sase.API.controller">
             <p class="name">var <span class="ident">controller</span></p>
             
@@ -6712,6 +6735,17 @@ filename in event of local file.</p></div>
             
   
     <div class="desc"><p>Is this login from a static AUTH_TOKEN (True), or a standard login (False)</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item" id="prisma_sase.API.tsg_id">
+            <p class="name">var <span class="ident">tsg_id</span></p>
+            
+
+            
+  
+    <div class="desc"><p>needed for login_secret func</p></div>
   <div class="source_cont">
 </div>
 
@@ -7081,7 +7115,7 @@ filename in event of local file.</p></div>
             
   <div class="item" id="prisma_sase.API.modify_rest_retry">
     <div class="name def">
-    <p>def <span class="ident">modify_rest_retry</span>(</p><p>self, total=8, connect=None, read=None, redirect=None, status=None, other=0, allowed_methods=frozenset({&#39;GET&#39;, &#39;TRACE&#39;, &#39;OPTIONS&#39;, &#39;DELETE&#39;, &#39;PUT&#39;, &#39;HEAD&#39;}), status_forcelist=None, backoff_factor=0.705883, raise_on_redirect=True, raise_on_status=True, respect_retry_after_header=True, update_adapter=True)</p>
+    <p>def <span class="ident">modify_rest_retry</span>(</p><p>self, total=8, connect=None, read=None, redirect=None, status=None, other=0, allowed_methods=frozenset({&#39;GET&#39;, &#39;OPTIONS&#39;, &#39;DELETE&#39;, &#39;TRACE&#39;, &#39;PUT&#39;, &#39;HEAD&#39;}), status_forcelist=None, backoff_factor=0.705883, raise_on_redirect=True, raise_on_status=True, respect_retry_after_header=True, update_adapter=True)</p>
     </div>
     
 

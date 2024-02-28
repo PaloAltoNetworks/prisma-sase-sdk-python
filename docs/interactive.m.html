@@ -2979,8 +2979,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             <span class="c1"># if tsg_id not given on function, or if first login fails, prompt.</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span><span class="p">:</span>
                 <span class="n">tsg_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">tsg_id</span> <span class="o">=</span> <span class="n">compat_input</span><span class="p">(</span><span class="n">tsg_id_prompt</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">grant_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># if grant_type not given.</span>
@@ -2988,7 +2986,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="k">if</span> <span class="n">scope</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># if grant_type not given.</span>
-            <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;tsg_id:</span><span class="si">{0}</span><span class="s1"> email profile&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tsg_id</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">tsg_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">tsg_id</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;email profile&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;tsg_id:</span><span class="si">{0}</span><span class="s1"> email profile&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tsg_id</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_id</span> <span class="o">=</span> <span class="n">client_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_secret</span> <span class="o">=</span> <span class="n">client_secret</span>
@@ -4150,8 +4151,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             <span class="c1"># if tsg_id not given on function, or if first login fails, prompt.</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span><span class="p">:</span>
                 <span class="n">tsg_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">tsg_id</span> <span class="o">=</span> <span class="n">compat_input</span><span class="p">(</span><span class="n">tsg_id_prompt</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">grant_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># if grant_type not given.</span>
@@ -4159,7 +4158,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="k">if</span> <span class="n">scope</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># if grant_type not given.</span>
-            <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;tsg_id:</span><span class="si">{0}</span><span class="s1"> email profile&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tsg_id</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">tsg_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">tsg_id</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;email profile&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;tsg_id:</span><span class="si">{0}</span><span class="s1"> email profile&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tsg_id</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_id</span> <span class="o">=</span> <span class="n">client_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_secret</span> <span class="o">=</span> <span class="n">client_secret</span>
@@ -5747,14 +5749,15 @@ Expects interactive capability. if this is not available, use <code>prisma_sase.
         <span class="c1"># if tsg_id not given on function, or if first login fails, prompt.</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span><span class="p">:</span>
             <span class="n">tsg_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">tsg_id</span> <span class="o">=</span> <span class="n">compat_input</span><span class="p">(</span><span class="n">tsg_id_prompt</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">grant_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># if grant_type not given.</span>
         <span class="n">grant_type</span> <span class="o">=</span> <span class="s1">&#39;client_credentials&#39;</span>
     <span class="k">if</span> <span class="n">scope</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># if grant_type not given.</span>
-        <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;tsg_id:</span><span class="si">{0}</span><span class="s1"> email profile&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tsg_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tsg_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">tsg_id</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;email profile&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;tsg_id:</span><span class="si">{0}</span><span class="s1"> email profile&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tsg_id</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_id</span> <span class="o">=</span> <span class="n">client_id</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_secret</span> <span class="o">=</span> <span class="n">client_secret</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span> <span class="o">=</span> <span class="n">tsg_id</span>

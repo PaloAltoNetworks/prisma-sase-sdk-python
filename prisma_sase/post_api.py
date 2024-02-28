@@ -610,9 +610,9 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def copy_element_configurations_elementshells(self, site_id, elementshell_id, data, api_version="v2.0"):
+    def elementshells_copy_element_configurations(self, site_id, elementshell_id, data, api_version="v2.0"):
         """
-        POST Copy_Element_Configurations_Elementshells API Function
+        POST Elementshells_Copy_Element_Configurations API Function
 
           **Parameters:**:
 
@@ -7292,6 +7292,9 @@ class Post(object):
 
     configs_sdwanapps = sdwanapps_configs
     """ Backwards-compatibility alias of `configs_sdwanapps` to `sdwanapps_configs`"""
+
+    copy_element_configurations_elementshells = elementshells_copy_element_configurations
+    """ Backwards-compatibility alias of `copy_element_configurations_elementshells` to `elementshells_copy_element_configurations`"""
 
     deltasync_directoryservices = directoryservices_deltasync
     """ Backwards-compatibility alias of `deltasync_directoryservices` to `directoryservices_deltasync`"""

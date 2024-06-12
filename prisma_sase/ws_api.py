@@ -4,7 +4,7 @@ Prisma SASE Python SDK - WebSocket Functions
 
 **Author:** Palo Alto Networks
 
-**Copyright:** © 2023 Palo Alto Networks. All rights reserved
+**Copyright:** © 2024 Palo Alto Networks. All rights reserved
 
 **License:** MIT
 """
@@ -12,11 +12,11 @@ import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright © 2023 Palo Alto Networks. All rights reserved"
+__copyright__ = "Copyright © 2024 Palo Alto Networks. All rights reserved"
 __license__ = """
     MIT License
 
-    Copyright © 2023 Palo Alto Networks. All rights reserved
+    Copyright © 2024 Palo Alto Networks. All rights reserved
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -71,12 +71,14 @@ class WebSockets(object):
         if tenant_id is None and self._parent_class.tenant_id:
             # Pull tenant_id from parent namespace cache.
             tenant_id = self._parent_class.tenant_id
-
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         # set controller, converting protocol to wss
         wss_ctlr = self._parent_class.controller.replace('https://', 'wss://', 1)
 
         url = str(wss_ctlr) + "/sdwan/{}/api/elements/{}/ws/toolkitsessions?cols={}&rows={}" \
-                              "".format(api_version, element_id, cols, rows)
+                              "".format(api_version, tenant_id, element_id, cols, rows)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.websocket_call(url, **kwargs)
@@ -97,12 +99,14 @@ class WebSockets(object):
         if tenant_id is None and self._parent_class.tenant_id:
             # Pull tenant_id from parent namespace cache.
             tenant_id = self._parent_class.tenant_id
-
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         # set controller, converting protocol to wss
         wss_ctlr = self._parent_class.controller.replace('https://', 'wss://', 1)
 
         url = str(wss_ctlr) + "/sdwan/{}/api/ws" \
-                              "".format(api_version)
+                              "".format(api_version, tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.websocket_call(url)

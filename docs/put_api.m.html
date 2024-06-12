@@ -10,7 +10,7 @@
 
 **Author:** Palo Alto Networks
 
-**Copyright:** (c) 2023 Palo Alto Netw..." />
+**Copyright:** (c) 2024 Palo Alto Netw..." />
 
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
   
@@ -2649,6 +2649,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.put_api.Put.ngfwsecuritypolicysets">ngfwsecuritypolicysets</a></li>
     <li class="mono"><a href="#prisma_sase.put_api.Put.ngfwsecuritypolicysetstacks">ngfwsecuritypolicysetstacks</a></li>
     <li class="mono"><a href="#prisma_sase.put_api.Put.ntp">ntp</a></li>
+    <li class="mono"><a href="#prisma_sase.put_api.Put.ospfconfigs">ospfconfigs</a></li>
+    <li class="mono"><a href="#prisma_sase.put_api.Put.ospfglobalconfigs">ospfglobalconfigs</a></li>
     <li class="mono"><a href="#prisma_sase.put_api.Put.otpaccessconfigs">otpaccessconfigs</a></li>
     <li class="mono"><a href="#prisma_sase.put_api.Put.pathgroups">pathgroups</a></li>
     <li class="mono"><a href="#prisma_sase.put_api.Put.perfmgmtpolicysets">perfmgmtpolicysets</a></li>
@@ -2665,6 +2667,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.put_api.Put.prismaaccess_configs">prismaaccess_configs</a></li>
     <li class="mono"><a href="#prisma_sase.put_api.Put.prismasase_connections">prismasase_connections</a></li>
     <li class="mono"><a href="#prisma_sase.put_api.Put.prismasase_connections_configs">prismasase_connections_configs</a></li>
+    <li class="mono"><a href="#prisma_sase.put_api.Put.probeconfigs">probeconfigs</a></li>
+    <li class="mono"><a href="#prisma_sase.put_api.Put.probeprofiles">probeprofiles</a></li>
     <li class="mono"><a href="#prisma_sase.put_api.Put.radii">radii</a></li>
     <li class="mono"><a href="#prisma_sase.put_api.Put.recovery_tokens">recovery_tokens</a></li>
     <li class="mono"><a href="#prisma_sase.put_api.Put.roles">roles</a></li>
@@ -2737,7 +2741,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <h1 class="title"><span class="name">prisma_sase.put_api</span> module</h1>
   <p>PRISMA SASE Python SDK - PUT</p>
 <p><strong>Author:</strong> Palo Alto Networks</p>
-<p><strong>Copyright:</strong> (c) 2023 Palo Alto Networks, Inc</p>
+<p><strong>Copyright:</strong> (c) 2024 Palo Alto Networks, Inc</p>
 <p><strong>License:</strong> MIT</p>
   
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api', this);">Show source &equiv;</a></p>
@@ -2748,7 +2752,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">**Author:** Palo Alto Networks</span>
 
-<span class="sd">**Copyright:** (c) 2023 Palo Alto Networks, Inc</span>
+<span class="sd">**Copyright:** (c) 2024 Palo Alto Networks, Inc</span>
 
 <span class="sd">**License:** MIT</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -2756,11 +2760,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Prisma SASE Developer Support &lt;prisma-sase-developers@paloaltonetworks.com&gt;&quot;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;prisma-sase-developers@paloaltonetworks.com&quot;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright (c) 2023 Palo Alto Networks, Inc&quot;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright (c) 2024 Palo Alto Networks, Inc&quot;</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    MIT License</span>
 
-<span class="s2">    Copyright (c) 2023 Palo Alto Networks, Inc</span>
+<span class="s2">    Copyright (c) 2024 Palo Alto Networks, Inc</span>
 
 <span class="s2">    Permission is hereby granted, free of charge, to any person obtaining a copy</span>
 <span class="s2">    of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
@@ -2820,7 +2824,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">appdefs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdef_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.5&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">appdefs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdef_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.6&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update a application definition (v2.4)</span>
 
@@ -2828,7 +2832,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          - **appdef_id**: Application Definition ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.5)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.6)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -2870,7 +2874,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">appdefs_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdefs_version_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">appdefs_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdefs_version_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Change standard apps version (v2.0)</span>
 
@@ -2878,7 +2882,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          - **appdefs_version_id**: Application Definition Version ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -2920,7 +2924,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">bgpconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">bgpconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.3&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">bgpconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">bgpconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates BGP config (v2.2)</span>
 
@@ -2930,7 +2934,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **element_id**: Element (Device) ID</span>
 <span class="sd">          - **bgpconfig_id**: BGP Configuration ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.3)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.4)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -2948,7 +2952,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">bgppeers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">bgppeer_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">bgppeers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">bgppeer_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.5&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates BGP Peer config (v2.2)</span>
 
@@ -2958,7 +2962,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **element_id**: Element (Device) ID</span>
 <span class="sd">          - **bgppeer_id**: BGP Peer ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.4)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.5)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -3035,7 +3039,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          **Parameters:**:</span>
 
 <span class="sd">          - **site_id**: Site ID</span>
-<span class="sd">          - **demsiteconfig_id**: NO DESCRIPTION</span>
+<span class="sd">          - **demsiteconfig_id**: DEM Site Config ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
@@ -3818,7 +3822,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v4.17&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v4.18&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update a Cellular Interface (v4.14)</span>
 
@@ -3828,7 +3832,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **element_id**: Element (Device) ID</span>
 <span class="sd">          - **interface_id**: Interface ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v4.17)</span>
+<span class="sd">          - **api_version**: API version to use (default v4.18)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -3846,7 +3850,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">interfaces_elementshells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">elementshell_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">interfaces_elementshells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">elementshell_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        PUT Interfaces_Elementshells API Function</span>
 
@@ -3856,7 +3860,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **elementshell_id**: Element Shell ID</span>
 <span class="sd">          - **interface_id**: Interface ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -4696,6 +4700,62 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">ospfconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">ospfconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        PUT Ospfconfigs API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **site_id**: Site ID</span>
+<span class="sd">          - **element_id**: Element (Device) ID</span>
+<span class="sd">          - **ospfconfig_id**: OSPF Config ID</span>
+<span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elements/</span><span class="si">{}</span><span class="s2">/ospfconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                         <span class="n">site_id</span><span class="p">,</span>
+                                                                                         <span class="n">element_id</span><span class="p">,</span>
+                                                                                         <span class="n">ospfconfig_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">ospfglobalconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">ospfglobalconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        PUT Ospfglobalconfigs API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **site_id**: Site ID</span>
+<span class="sd">          - **element_id**: Element (Device) ID</span>
+<span class="sd">          - **ospfglobalconfig_id**: OSPF Global Config ID</span>
+<span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elements/</span><span class="si">{}</span><span class="s2">/ospfglobalconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                               <span class="n">site_id</span><span class="p">,</span>
+                                                                                               <span class="n">element_id</span><span class="p">,</span>
+                                                                                               <span class="n">ospfglobalconfig_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">otpaccessconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">otpaccessconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update an OTP Access for all elements under an Tenant. (v2.0)</span>
@@ -4768,7 +4828,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">perfmgmtpolicysets_perfmgmtpolicyrules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">perfmgmtpolicyrule_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">perfmgmtpolicysets_perfmgmtpolicyrules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">perfmgmtpolicyrule_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        PUT Perfmgmtpolicysets_Perfmgmtpolicyrules API Function</span>
 
@@ -4777,7 +4837,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **perfmgmtpolicyset_id**: Performance Management Policy Set ID</span>
 <span class="sd">          - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -4818,7 +4878,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">perfmgmtthresholdprofiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtthresholdprofile_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">perfmgmtthresholdprofiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtthresholdprofile_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        PUT Perfmgmtthresholdprofiles API Function</span>
 
@@ -4826,7 +4886,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          - **perfmgmtthresholdprofile_id**: Performance Management Threshold Profile ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -5042,7 +5102,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">prismasase_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">prismasase_connection_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">prismasase_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">prismasase_connection_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        PUT Prismasase_Connections API Function</span>
 
@@ -5051,7 +5111,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **site_id**: Site ID</span>
 <span class="sd">          - **prismasase_connection_id**: Prisma SASE Connection ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -5068,12 +5128,35 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">prismasase_connections_configs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">prismasase_connections_configs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        PUT Prismasase_Connections_Configs API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
+<span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.1)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/prismasase_connections/configs&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">probeconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probeconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        PUT Probeconfigs API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **probeconfig_id**: Probe Config ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
@@ -5085,7 +5168,32 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/prismasase_connections/configs&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/probeconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                     <span class="n">probeconfig_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">probeprofiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probeprofile_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        PUT Probeprofiles API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **probeprofile_id**: Probe Profile ID</span>
+<span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/probeprofiles/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                      <span class="n">probeprofile_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
@@ -5250,7 +5358,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">routing_routemaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">routing_routemap_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">routing_routemaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">routing_routemap_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.3&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates Route Map (v2.1)</span>
 
@@ -5260,7 +5368,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **element_id**: Element (Device) ID</span>
 <span class="sd">          - **routing_routemap_id**: Routing Route Map ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.2)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.3)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -5654,7 +5762,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">sites</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v4.9&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">sites</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v4.10&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update an existing site (v4.7)</span>
 
@@ -5662,7 +5770,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          - **site_id**: Site ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v4.9)</span>
+<span class="sd">          - **api_version**: API version to use (default v4.10)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -6084,14 +6192,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.8&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.9&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update tenant (v2.3)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.8)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.9)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -6252,7 +6360,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">waninterfacelabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waninterfacelabel_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">waninterfacelabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waninterfacelabel_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.5&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update specific WAN interface label (v2.4)</span>
 
@@ -6260,7 +6368,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          - **waninterfacelabel_id**: WAN Interface Label ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.4)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.5)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -6276,7 +6384,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">waninterfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">waninterface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.7&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">waninterfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">waninterface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.8&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update the Site WAN interface (v2.7)</span>
 
@@ -6285,7 +6393,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **site_id**: Site ID</span>
 <span class="sd">          - **waninterface_id**: WAN Interface ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.7)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.8)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -6548,7 +6656,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">appdefs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdef_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.5&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">appdefs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdef_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.6&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update a application definition (v2.4)</span>
 
@@ -6556,7 +6664,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          - **appdef_id**: Application Definition ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.5)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.6)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -6598,7 +6706,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">appdefs_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdefs_version_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">appdefs_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdefs_version_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Change standard apps version (v2.0)</span>
 
@@ -6606,7 +6714,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          - **appdefs_version_id**: Application Definition Version ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -6648,7 +6756,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">bgpconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">bgpconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.3&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">bgpconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">bgpconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates BGP config (v2.2)</span>
 
@@ -6658,7 +6766,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **element_id**: Element (Device) ID</span>
 <span class="sd">          - **bgpconfig_id**: BGP Configuration ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.3)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.4)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -6676,7 +6784,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">bgppeers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">bgppeer_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">bgppeers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">bgppeer_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.5&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates BGP Peer config (v2.2)</span>
 
@@ -6686,7 +6794,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **element_id**: Element (Device) ID</span>
 <span class="sd">          - **bgppeer_id**: BGP Peer ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.4)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.5)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -6763,7 +6871,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          **Parameters:**:</span>
 
 <span class="sd">          - **site_id**: Site ID</span>
-<span class="sd">          - **demsiteconfig_id**: NO DESCRIPTION</span>
+<span class="sd">          - **demsiteconfig_id**: DEM Site Config ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
@@ -7546,7 +7654,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v4.17&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v4.18&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update a Cellular Interface (v4.14)</span>
 
@@ -7556,7 +7664,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **element_id**: Element (Device) ID</span>
 <span class="sd">          - **interface_id**: Interface ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v4.17)</span>
+<span class="sd">          - **api_version**: API version to use (default v4.18)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -7574,7 +7682,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">interfaces_elementshells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">elementshell_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">interfaces_elementshells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">elementshell_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        PUT Interfaces_Elementshells API Function</span>
 
@@ -7584,7 +7692,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **elementshell_id**: Element Shell ID</span>
 <span class="sd">          - **interface_id**: Interface ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -8424,6 +8532,62 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">ospfconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">ospfconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        PUT Ospfconfigs API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **site_id**: Site ID</span>
+<span class="sd">          - **element_id**: Element (Device) ID</span>
+<span class="sd">          - **ospfconfig_id**: OSPF Config ID</span>
+<span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elements/</span><span class="si">{}</span><span class="s2">/ospfconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                         <span class="n">site_id</span><span class="p">,</span>
+                                                                                         <span class="n">element_id</span><span class="p">,</span>
+                                                                                         <span class="n">ospfconfig_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">ospfglobalconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">ospfglobalconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        PUT Ospfglobalconfigs API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **site_id**: Site ID</span>
+<span class="sd">          - **element_id**: Element (Device) ID</span>
+<span class="sd">          - **ospfglobalconfig_id**: OSPF Global Config ID</span>
+<span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elements/</span><span class="si">{}</span><span class="s2">/ospfglobalconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                               <span class="n">site_id</span><span class="p">,</span>
+                                                                                               <span class="n">element_id</span><span class="p">,</span>
+                                                                                               <span class="n">ospfglobalconfig_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">otpaccessconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">otpaccessconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update an OTP Access for all elements under an Tenant. (v2.0)</span>
@@ -8496,7 +8660,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">perfmgmtpolicysets_perfmgmtpolicyrules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">perfmgmtpolicyrule_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">perfmgmtpolicysets_perfmgmtpolicyrules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">perfmgmtpolicyrule_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        PUT Perfmgmtpolicysets_Perfmgmtpolicyrules API Function</span>
 
@@ -8505,7 +8669,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **perfmgmtpolicyset_id**: Performance Management Policy Set ID</span>
 <span class="sd">          - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -8546,7 +8710,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">perfmgmtthresholdprofiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtthresholdprofile_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">perfmgmtthresholdprofiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtthresholdprofile_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        PUT Perfmgmtthresholdprofiles API Function</span>
 
@@ -8554,7 +8718,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          - **perfmgmtthresholdprofile_id**: Performance Management Threshold Profile ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -8770,7 +8934,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">prismasase_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">prismasase_connection_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">prismasase_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">prismasase_connection_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        PUT Prismasase_Connections API Function</span>
 
@@ -8779,7 +8943,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **site_id**: Site ID</span>
 <span class="sd">          - **prismasase_connection_id**: Prisma SASE Connection ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.1)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -8796,12 +8960,35 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">prismasase_connections_configs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">prismasase_connections_configs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        PUT Prismasase_Connections_Configs API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
+<span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.1)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/prismasase_connections/configs&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">probeconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probeconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        PUT Probeconfigs API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **probeconfig_id**: Probe Config ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
@@ -8813,7 +9000,32 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/prismasase_connections/configs&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/probeconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                     <span class="n">probeconfig_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">probeprofiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probeprofile_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        PUT Probeprofiles API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **probeprofile_id**: Probe Profile ID</span>
+<span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/probeprofiles/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                      <span class="n">probeprofile_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
@@ -8978,7 +9190,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">routing_routemaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">routing_routemap_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">routing_routemaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">routing_routemap_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.3&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates Route Map (v2.1)</span>
 
@@ -8988,7 +9200,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **element_id**: Element (Device) ID</span>
 <span class="sd">          - **routing_routemap_id**: Routing Route Map ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.2)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.3)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -9382,7 +9594,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">sites</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v4.9&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">sites</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v4.10&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update an existing site (v4.7)</span>
 
@@ -9390,7 +9602,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          - **site_id**: Site ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v4.9)</span>
+<span class="sd">          - **api_version**: API version to use (default v4.10)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -9812,14 +10024,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.8&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.9&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update tenant (v2.3)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.8)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.9)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -9980,7 +10192,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">waninterfacelabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waninterfacelabel_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">waninterfacelabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waninterfacelabel_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.5&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update specific WAN interface label (v2.4)</span>
 
@@ -9988,7 +10200,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          - **waninterfacelabel_id**: WAN Interface Label ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.4)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.5)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -10004,7 +10216,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">waninterfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">waninterface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.7&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">waninterfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">waninterface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.8&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update the Site WAN interface (v2.7)</span>
 
@@ -10013,7 +10225,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">          - **site_id**: Site ID</span>
 <span class="sd">          - **waninterface_id**: WAN Interface ID</span>
 <span class="sd">          - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.7)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.8)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
@@ -10668,7 +10880,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.appdefs">
     <div class="name def">
-    <p>def <span class="ident">appdefs</span>(</p><p>self, appdef_id, data, api_version=&#39;v2.5&#39;)</p>
+    <p>def <span class="ident">appdefs</span>(</p><p>self, appdef_id, data, api_version=&#39;v2.6&#39;)</p>
     </div>
     
 
@@ -10679,20 +10891,20 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <ul>
 <li><strong>appdef_id</strong>: Application Definition ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.5)</li>
+<li><strong>api_version</strong>: API version to use (default v2.6)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.appdefs', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.appdefs" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">appdefs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdef_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.5&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">appdefs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdef_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.6&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Update a application definition (v2.4)</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **appdef_id**: Application Definition ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.5)</span>
+<span class="sd">      - **api_version**: API version to use (default v2.6)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -10757,7 +10969,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.appdefs_version">
     <div class="name def">
-    <p>def <span class="ident">appdefs_version</span>(</p><p>self, appdefs_version_id, data, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">appdefs_version</span>(</p><p>self, appdefs_version_id, data, api_version=&#39;v2.1&#39;)</p>
     </div>
     
 
@@ -10768,20 +10980,20 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <ul>
 <li><strong>appdefs_version_id</strong>: Application Definition Version ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+<li><strong>api_version</strong>: API version to use (default v2.1)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.appdefs_version', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.appdefs_version" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">appdefs_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdefs_version_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">appdefs_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdefs_version_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Change standard apps version (v2.0)</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **appdefs_version_id**: Application Definition Version ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">      - **api_version**: API version to use (default v2.1)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -10846,7 +11058,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.bgpconfigs">
     <div class="name def">
-    <p>def <span class="ident">bgpconfigs</span>(</p><p>self, site_id, element_id, bgpconfig_id, data, api_version=&#39;v2.3&#39;)</p>
+    <p>def <span class="ident">bgpconfigs</span>(</p><p>self, site_id, element_id, bgpconfig_id, data, api_version=&#39;v2.4&#39;)</p>
     </div>
     
 
@@ -10859,14 +11071,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>element_id</strong>: Element (Device) ID</li>
 <li><strong>bgpconfig_id</strong>: BGP Configuration ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.3)</li>
+<li><strong>api_version</strong>: API version to use (default v2.4)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.bgpconfigs', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.bgpconfigs" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">bgpconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">bgpconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.3&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">bgpconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">bgpconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates BGP config (v2.2)</span>
 <span class="sd">      **Parameters:**:</span>
@@ -10874,7 +11086,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">      - **element_id**: Element (Device) ID</span>
 <span class="sd">      - **bgpconfig_id**: BGP Configuration ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.3)</span>
+<span class="sd">      - **api_version**: API version to use (default v2.4)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -10895,7 +11107,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.bgppeers">
     <div class="name def">
-    <p>def <span class="ident">bgppeers</span>(</p><p>self, site_id, element_id, bgppeer_id, data, api_version=&#39;v2.4&#39;)</p>
+    <p>def <span class="ident">bgppeers</span>(</p><p>self, site_id, element_id, bgppeer_id, data, api_version=&#39;v2.5&#39;)</p>
     </div>
     
 
@@ -10908,14 +11120,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>element_id</strong>: Element (Device) ID</li>
 <li><strong>bgppeer_id</strong>: BGP Peer ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.4)</li>
+<li><strong>api_version</strong>: API version to use (default v2.5)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.bgppeers', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.bgppeers" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">bgppeers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">bgppeer_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">bgppeers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">bgppeer_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.5&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates BGP Peer config (v2.2)</span>
 <span class="sd">      **Parameters:**:</span>
@@ -10923,7 +11135,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">      - **element_id**: Element (Device) ID</span>
 <span class="sd">      - **bgppeer_id**: BGP Peer ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.4)</span>
+<span class="sd">      - **api_version**: API version to use (default v2.5)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -11046,7 +11258,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <p><strong>Parameters:</strong>:</p>
 <ul>
 <li><strong>site_id</strong>: Site ID</li>
-<li><strong>demsiteconfig_id</strong>: NO DESCRIPTION</li>
+<li><strong>demsiteconfig_id</strong>: DEM Site Config ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
 <li><strong>api_version</strong>: API version to use (default v2.0)</li>
 </ul>
@@ -11060,7 +11272,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">    PUT Demsiteconfigs API Function</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **site_id**: Site ID</span>
-<span class="sd">      - **demsiteconfig_id**: NO DESCRIPTION</span>
+<span class="sd">      - **demsiteconfig_id**: DEM Site Config ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
 <span class="sd">      - **api_version**: API version to use (default v2.0)</span>
 <span class="sd">      **Payload Attributes:** </span>
@@ -12438,7 +12650,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.interfaces">
     <div class="name def">
-    <p>def <span class="ident">interfaces</span>(</p><p>self, site_id, element_id, interface_id, data, api_version=&#39;v4.17&#39;)</p>
+    <p>def <span class="ident">interfaces</span>(</p><p>self, site_id, element_id, interface_id, data, api_version=&#39;v4.18&#39;)</p>
     </div>
     
 
@@ -12451,14 +12663,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>element_id</strong>: Element (Device) ID</li>
 <li><strong>interface_id</strong>: Interface ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v4.17)</li>
+<li><strong>api_version</strong>: API version to use (default v4.18)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.interfaces', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.interfaces" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v4.17&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v4.18&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Update a Cellular Interface (v4.14)</span>
 <span class="sd">      **Parameters:**:</span>
@@ -12466,7 +12678,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">      - **element_id**: Element (Device) ID</span>
 <span class="sd">      - **interface_id**: Interface ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v4.17)</span>
+<span class="sd">      - **api_version**: API version to use (default v4.18)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -12487,7 +12699,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.interfaces_elementshells">
     <div class="name def">
-    <p>def <span class="ident">interfaces_elementshells</span>(</p><p>self, site_id, elementshell_id, interface_id, data, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">interfaces_elementshells</span>(</p><p>self, site_id, elementshell_id, interface_id, data, api_version=&#39;v2.1&#39;)</p>
     </div>
     
 
@@ -12500,14 +12712,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>elementshell_id</strong>: Element Shell ID</li>
 <li><strong>interface_id</strong>: Interface ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+<li><strong>api_version</strong>: API version to use (default v2.1)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.interfaces_elementshells', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.interfaces_elementshells" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">interfaces_elementshells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">elementshell_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">interfaces_elementshells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">elementshell_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    PUT Interfaces_Elementshells API Function</span>
 <span class="sd">      **Parameters:**:</span>
@@ -12515,7 +12727,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">      - **elementshell_id**: Element Shell ID</span>
 <span class="sd">      - **interface_id**: Interface ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">      - **api_version**: API version to use (default v2.1)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -13998,6 +14210,104 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   </div>
   
             
+  <div class="item" id="prisma_sase.put_api.Put.ospfconfigs">
+    <div class="name def">
+    <p>def <span class="ident">ospfconfigs</span>(</p><p>self, site_id, element_id, ospfconfig_id, data, api_version=&#39;v2.0&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>PUT Ospfconfigs API Function</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>site_id</strong>: Site ID</li>
+<li><strong>element_id</strong>: Element (Device) ID</li>
+<li><strong>ospfconfig_id</strong>: OSPF Config ID</li>
+<li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
+<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+</ul>
+<p><strong>Payload Attributes:</strong> </p>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.ospfconfigs', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.put_api.Put.ospfconfigs" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ospfconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">ospfconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    PUT Ospfconfigs API Function</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **site_id**: Site ID</span>
+<span class="sd">      - **element_id**: Element (Device) ID</span>
+<span class="sd">      - **ospfconfig_id**: OSPF Config ID</span>
+<span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
+<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">      **Payload Attributes:** </span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elements/</span><span class="si">{}</span><span class="s2">/ospfconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                     <span class="n">site_id</span><span class="p">,</span>
+                                                                                     <span class="n">element_id</span><span class="p">,</span>
+                                                                                     <span class="n">ospfconfig_id</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item" id="prisma_sase.put_api.Put.ospfglobalconfigs">
+    <div class="name def">
+    <p>def <span class="ident">ospfglobalconfigs</span>(</p><p>self, site_id, element_id, ospfglobalconfig_id, data, api_version=&#39;v2.0&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>PUT Ospfglobalconfigs API Function</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>site_id</strong>: Site ID</li>
+<li><strong>element_id</strong>: Element (Device) ID</li>
+<li><strong>ospfglobalconfig_id</strong>: OSPF Global Config ID</li>
+<li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
+<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+</ul>
+<p><strong>Payload Attributes:</strong> </p>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.ospfglobalconfigs', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.put_api.Put.ospfglobalconfigs" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ospfglobalconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">ospfglobalconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    PUT Ospfglobalconfigs API Function</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **site_id**: Site ID</span>
+<span class="sd">      - **element_id**: Element (Device) ID</span>
+<span class="sd">      - **ospfglobalconfig_id**: OSPF Global Config ID</span>
+<span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
+<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">      **Payload Attributes:** </span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elements/</span><span class="si">{}</span><span class="s2">/ospfglobalconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                           <span class="n">site_id</span><span class="p">,</span>
+                                                                                           <span class="n">element_id</span><span class="p">,</span>
+                                                                                           <span class="n">ospfglobalconfig_id</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
   <div class="item" id="prisma_sase.put_api.Put.otpaccessconfigs">
     <div class="name def">
     <p>def <span class="ident">otpaccessconfigs</span>(</p><p>self, otpaccessconfig_id, data, api_version=&#39;v2.0&#39;)</p>
@@ -14129,7 +14439,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.perfmgmtpolicysets_perfmgmtpolicyrules">
     <div class="name def">
-    <p>def <span class="ident">perfmgmtpolicysets_perfmgmtpolicyrules</span>(</p><p>self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, data, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">perfmgmtpolicysets_perfmgmtpolicyrules</span>(</p><p>self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, data, api_version=&#39;v2.1&#39;)</p>
     </div>
     
 
@@ -14141,21 +14451,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>perfmgmtpolicyset_id</strong>: Performance Management Policy Set ID</li>
 <li><strong>perfmgmtpolicyrule_id</strong>: Performance Management Policy Rule ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+<li><strong>api_version</strong>: API version to use (default v2.1)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.perfmgmtpolicysets_perfmgmtpolicyrules', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.perfmgmtpolicysets_perfmgmtpolicyrules" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">perfmgmtpolicysets_perfmgmtpolicyrules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">perfmgmtpolicyrule_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">perfmgmtpolicysets_perfmgmtpolicyrules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">perfmgmtpolicyrule_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    PUT Perfmgmtpolicysets_Perfmgmtpolicyrules API Function</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **perfmgmtpolicyset_id**: Performance Management Policy Set ID</span>
 <span class="sd">      - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">      - **api_version**: API version to use (default v2.1)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -14218,7 +14528,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.perfmgmtthresholdprofiles">
     <div class="name def">
-    <p>def <span class="ident">perfmgmtthresholdprofiles</span>(</p><p>self, perfmgmtthresholdprofile_id, data, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">perfmgmtthresholdprofiles</span>(</p><p>self, perfmgmtthresholdprofile_id, data, api_version=&#39;v2.1&#39;)</p>
     </div>
     
 
@@ -14229,20 +14539,20 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <ul>
 <li><strong>perfmgmtthresholdprofile_id</strong>: Performance Management Threshold Profile ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+<li><strong>api_version</strong>: API version to use (default v2.1)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.perfmgmtthresholdprofiles', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.perfmgmtthresholdprofiles" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">perfmgmtthresholdprofiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtthresholdprofile_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">perfmgmtthresholdprofiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtthresholdprofile_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    PUT Perfmgmtthresholdprofiles API Function</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **perfmgmtthresholdprofile_id**: Performance Management Threshold Profile ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">      - **api_version**: API version to use (default v2.1)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -14617,7 +14927,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.prismasase_connections">
     <div class="name def">
-    <p>def <span class="ident">prismasase_connections</span>(</p><p>self, site_id, prismasase_connection_id, data, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">prismasase_connections</span>(</p><p>self, site_id, prismasase_connection_id, data, api_version=&#39;v2.1&#39;)</p>
     </div>
     
 
@@ -14629,21 +14939,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>site_id</strong>: Site ID</li>
 <li><strong>prismasase_connection_id</strong>: Prisma SASE Connection ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+<li><strong>api_version</strong>: API version to use (default v2.1)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.prismasase_connections', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.prismasase_connections" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">prismasase_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">prismasase_connection_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">prismasase_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">prismasase_connection_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    PUT Prismasase_Connections API Function</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **site_id**: Site ID</span>
 <span class="sd">      - **prismasase_connection_id**: Prisma SASE Connection ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">      - **api_version**: API version to use (default v2.1)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -14663,7 +14973,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.prismasase_connections_configs">
     <div class="name def">
-    <p>def <span class="ident">prismasase_connections_configs</span>(</p><p>self, data, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">prismasase_connections_configs</span>(</p><p>self, data, api_version=&#39;v2.1&#39;)</p>
     </div>
     
 
@@ -14673,24 +14983,110 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <p><strong>Parameters:</strong>:</p>
 <ul>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+<li><strong>api_version</strong>: API version to use (default v2.1)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.prismasase_connections_configs', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.prismasase_connections_configs" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">prismasase_connections_configs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">prismasase_connections_configs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.1&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    PUT Prismasase_Connections_Configs API Function</span>
 <span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
+<span class="sd">      - **api_version**: API version to use (default v2.1)</span>
+<span class="sd">      **Payload Attributes:** </span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/prismasase_connections/configs&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item" id="prisma_sase.put_api.Put.probeconfigs">
+    <div class="name def">
+    <p>def <span class="ident">probeconfigs</span>(</p><p>self, probeconfig_id, data, api_version=&#39;v2.0&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>PUT Probeconfigs API Function</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>probeconfig_id</strong>: Probe Config ID</li>
+<li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
+<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+</ul>
+<p><strong>Payload Attributes:</strong> </p>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.probeconfigs', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.put_api.Put.probeconfigs" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">probeconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probeconfig_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    PUT Probeconfigs API Function</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **probeconfig_id**: Probe Config ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
 <span class="sd">      - **api_version**: API version to use (default v2.0)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/prismasase_connections/configs&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/probeconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                 <span class="n">probeconfig_id</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item" id="prisma_sase.put_api.Put.probeprofiles">
+    <div class="name def">
+    <p>def <span class="ident">probeprofiles</span>(</p><p>self, probeprofile_id, data, api_version=&#39;v2.0&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>PUT Probeprofiles API Function</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>probeprofile_id</strong>: Probe Profile ID</li>
+<li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
+<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+</ul>
+<p><strong>Payload Attributes:</strong> </p>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.probeprofiles', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.put_api.Put.probeprofiles" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">probeprofiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probeprofile_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    PUT Probeprofiles API Function</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **probeprofile_id**: Probe Profile ID</span>
+<span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
+<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">      **Payload Attributes:** </span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/probeprofiles/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                  <span class="n">probeprofile_id</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;put&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
@@ -14985,7 +15381,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.routing_routemaps">
     <div class="name def">
-    <p>def <span class="ident">routing_routemaps</span>(</p><p>self, site_id, element_id, routing_routemap_id, data, api_version=&#39;v2.2&#39;)</p>
+    <p>def <span class="ident">routing_routemaps</span>(</p><p>self, site_id, element_id, routing_routemap_id, data, api_version=&#39;v2.3&#39;)</p>
     </div>
     
 
@@ -14998,14 +15394,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>element_id</strong>: Element (Device) ID</li>
 <li><strong>routing_routemap_id</strong>: Routing Route Map ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.2)</li>
+<li><strong>api_version</strong>: API version to use (default v2.3)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.routing_routemaps', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.routing_routemaps" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">routing_routemaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">routing_routemap_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">routing_routemaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">routing_routemap_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.3&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates Route Map (v2.1)</span>
 <span class="sd">      **Parameters:**:</span>
@@ -15013,7 +15409,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">      - **element_id**: Element (Device) ID</span>
 <span class="sd">      - **routing_routemap_id**: Routing Route Map ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.2)</span>
+<span class="sd">      - **api_version**: API version to use (default v2.3)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -15703,7 +16099,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.sites">
     <div class="name def">
-    <p>def <span class="ident">sites</span>(</p><p>self, site_id, data, api_version=&#39;v4.9&#39;)</p>
+    <p>def <span class="ident">sites</span>(</p><p>self, site_id, data, api_version=&#39;v4.10&#39;)</p>
     </div>
     
 
@@ -15714,20 +16110,20 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <ul>
 <li><strong>site_id</strong>: Site ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v4.9)</li>
+<li><strong>api_version</strong>: API version to use (default v4.10)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.sites', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.sites" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">sites</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v4.9&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">sites</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v4.10&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Update an existing site (v4.7)</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **site_id**: Site ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v4.9)</span>
+<span class="sd">      - **api_version**: API version to use (default v4.10)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -16467,7 +16863,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.tenants">
     <div class="name def">
-    <p>def <span class="ident">tenants</span>(</p><p>self, data, api_version=&#39;v2.8&#39;)</p>
+    <p>def <span class="ident">tenants</span>(</p><p>self, data, api_version=&#39;v2.9&#39;)</p>
     </div>
     
 
@@ -16477,19 +16873,19 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <p><strong>Parameters:</strong>:</p>
 <ul>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.8)</li>
+<li><strong>api_version</strong>: API version to use (default v2.9)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.tenants', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.tenants" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.8&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.9&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Update tenant (v2.3)</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.8)</span>
+<span class="sd">      - **api_version**: API version to use (default v2.9)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -16768,7 +17164,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.waninterfacelabels">
     <div class="name def">
-    <p>def <span class="ident">waninterfacelabels</span>(</p><p>self, waninterfacelabel_id, data, api_version=&#39;v2.4&#39;)</p>
+    <p>def <span class="ident">waninterfacelabels</span>(</p><p>self, waninterfacelabel_id, data, api_version=&#39;v2.5&#39;)</p>
     </div>
     
 
@@ -16779,20 +17175,20 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <ul>
 <li><strong>waninterfacelabel_id</strong>: WAN Interface Label ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.4)</li>
+<li><strong>api_version</strong>: API version to use (default v2.5)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.waninterfacelabels', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.waninterfacelabels" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">waninterfacelabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waninterfacelabel_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">waninterfacelabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waninterfacelabel_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.5&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Update specific WAN interface label (v2.4)</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **waninterfacelabel_id**: WAN Interface Label ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.4)</span>
+<span class="sd">      - **api_version**: API version to use (default v2.5)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -16811,7 +17207,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.put_api.Put.waninterfaces">
     <div class="name def">
-    <p>def <span class="ident">waninterfaces</span>(</p><p>self, site_id, waninterface_id, data, api_version=&#39;v2.7&#39;)</p>
+    <p>def <span class="ident">waninterfaces</span>(</p><p>self, site_id, waninterface_id, data, api_version=&#39;v2.8&#39;)</p>
     </div>
     
 
@@ -16823,21 +17219,21 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>site_id</strong>: Site ID</li>
 <li><strong>waninterface_id</strong>: WAN Interface ID</li>
 <li><strong>data</strong>: Dictionary containing data to PUT as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.7)</li>
+<li><strong>api_version</strong>: API version to use (default v2.8)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.waninterfaces', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.waninterfaces" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">waninterfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">waninterface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.7&quot;</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">waninterfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">waninterface_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.8&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Update the Site WAN interface (v2.7)</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **site_id**: Site ID</span>
 <span class="sd">      - **waninterface_id**: WAN Interface ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.7)</span>
+<span class="sd">      - **api_version**: API version to use (default v2.8)</span>
 <span class="sd">      **Payload Attributes:** </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>

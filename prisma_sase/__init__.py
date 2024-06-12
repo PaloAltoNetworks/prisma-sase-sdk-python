@@ -1,11 +1,11 @@
 """
 Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.3.2b1
+**Version:** v6.4.1b1
 
 **Author:** Palo Alto Networks
 
-**Copyright:** © 2023 Palo Alto Networks. All rights reserved
+**Copyright:** © 2024 Palo Alto Networks. All rights reserved
 
 **License:** MIT
 
@@ -161,7 +161,7 @@ ws_logger = logging.getLogger('websockets')
 """websocket logger is handled slightly differently, so we will have a seperate handle."""
 
 # Version of SDK
-version = "6.3.2b1"
+version = "6.4.1b1"
 """SDK Version string"""
 __version__ = version
 

@@ -4,7 +4,7 @@ PRISMA SASE Python SDK - PUT
 
 **Author:** Palo Alto Networks
 
-**Copyright:** (c) 2023 Palo Alto Networks, Inc
+**Copyright:** (c) 2024 Palo Alto Networks, Inc
 
 **License:** MIT
 """
@@ -12,11 +12,11 @@ import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright (c) 2023 Palo Alto Networks, Inc"
+__copyright__ = "Copyright (c) 2024 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright (c) 2023 Palo Alto Networks, Inc
+    Copyright (c) 2024 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -76,7 +76,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def appdefs(self, appdef_id, data, api_version="v2.5"):
+    def appdefs(self, appdef_id, data, api_version="v2.6"):
         """
         Update a application definition (v2.4)
 
@@ -84,7 +84,7 @@ class Put(object):
 
           - **appdef_id**: Application Definition ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.5)
+          - **api_version**: API version to use (default v2.6)
 
           **Payload Attributes:** 
 
@@ -126,7 +126,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def appdefs_version(self, appdefs_version_id, data, api_version="v2.0"):
+    def appdefs_version(self, appdefs_version_id, data, api_version="v2.1"):
         """
         Change standard apps version (v2.0)
 
@@ -134,7 +134,7 @@ class Put(object):
 
           - **appdefs_version_id**: Application Definition Version ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -176,7 +176,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def bgpconfigs(self, site_id, element_id, bgpconfig_id, data, api_version="v2.3"):
+    def bgpconfigs(self, site_id, element_id, bgpconfig_id, data, api_version="v2.4"):
         """
         Updates BGP config (v2.2)
 
@@ -186,7 +186,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **bgpconfig_id**: BGP Configuration ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.3)
+          - **api_version**: API version to use (default v2.4)
 
           **Payload Attributes:** 
 
@@ -204,7 +204,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def bgppeers(self, site_id, element_id, bgppeer_id, data, api_version="v2.4"):
+    def bgppeers(self, site_id, element_id, bgppeer_id, data, api_version="v2.5"):
         """
         Updates BGP Peer config (v2.2)
 
@@ -214,7 +214,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **bgppeer_id**: BGP Peer ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.4)
+          - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
@@ -291,7 +291,7 @@ class Put(object):
           **Parameters:**:
 
           - **site_id**: Site ID
-          - **demsiteconfig_id**: NO DESCRIPTION
+          - **demsiteconfig_id**: DEM Site Config ID
           - **data**: Dictionary containing data to PUT as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -1074,7 +1074,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def interfaces(self, site_id, element_id, interface_id, data, api_version="v4.17"):
+    def interfaces(self, site_id, element_id, interface_id, data, api_version="v4.18"):
         """
         Update a Cellular Interface (v4.14)
 
@@ -1084,7 +1084,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v4.17)
+          - **api_version**: API version to use (default v4.18)
 
           **Payload Attributes:** 
 
@@ -1102,7 +1102,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def interfaces_elementshells(self, site_id, elementshell_id, interface_id, data, api_version="v2.0"):
+    def interfaces_elementshells(self, site_id, elementshell_id, interface_id, data, api_version="v2.1"):
         """
         PUT Interfaces_Elementshells API Function
 
@@ -1112,7 +1112,7 @@ class Put(object):
           - **elementshell_id**: Element Shell ID
           - **interface_id**: Interface ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -1952,6 +1952,62 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
+    def ospfconfigs(self, site_id, element_id, ospfconfig_id, data, api_version="v2.0"):
+        """
+        PUT Ospfconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **ospfconfig_id**: OSPF Config ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/ospfconfigs/{}".format(api_version,
+                                                                                         site_id,
+                                                                                         element_id,
+                                                                                         ospfconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def ospfglobalconfigs(self, site_id, element_id, ospfglobalconfig_id, data, api_version="v2.0"):
+        """
+        PUT Ospfglobalconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **ospfglobalconfig_id**: OSPF Global Config ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/ospfglobalconfigs/{}".format(api_version,
+                                                                                               site_id,
+                                                                                               element_id,
+                                                                                               ospfglobalconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
     def otpaccessconfigs(self, otpaccessconfig_id, data, api_version="v2.0"):
         """
         Update an OTP Access for all elements under an Tenant. (v2.0)
@@ -2024,7 +2080,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, data, api_version="v2.0"):
+    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, data, api_version="v2.1"):
         """
         PUT Perfmgmtpolicysets_Perfmgmtpolicyrules API Function
 
@@ -2033,7 +2089,7 @@ class Put(object):
           - **perfmgmtpolicyset_id**: Performance Management Policy Set ID
           - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -2074,7 +2130,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def perfmgmtthresholdprofiles(self, perfmgmtthresholdprofile_id, data, api_version="v2.0"):
+    def perfmgmtthresholdprofiles(self, perfmgmtthresholdprofile_id, data, api_version="v2.1"):
         """
         PUT Perfmgmtthresholdprofiles API Function
 
@@ -2082,7 +2138,7 @@ class Put(object):
 
           - **perfmgmtthresholdprofile_id**: Performance Management Threshold Profile ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -2298,7 +2354,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prismasase_connections(self, site_id, prismasase_connection_id, data, api_version="v2.0"):
+    def prismasase_connections(self, site_id, prismasase_connection_id, data, api_version="v2.1"):
         """
         PUT Prismasase_Connections API Function
 
@@ -2307,7 +2363,7 @@ class Put(object):
           - **site_id**: Site ID
           - **prismasase_connection_id**: Prisma SASE Connection ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -2324,12 +2380,35 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prismasase_connections_configs(self, data, api_version="v2.0"):
+    def prismasase_connections_configs(self, data, api_version="v2.1"):
         """
         PUT Prismasase_Connections_Configs API Function
 
           **Parameters:**:
 
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.1)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/prismasase_connections/configs".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def probeconfigs(self, probeconfig_id, data, api_version="v2.0"):
+        """
+        PUT Probeconfigs API Function
+
+          **Parameters:**:
+
+          - **probeconfig_id**: Probe Config ID
           - **data**: Dictionary containing data to PUT as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -2341,7 +2420,32 @@ class Put(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prismasase_connections/configs".format(api_version)
+        url = str(cur_ctlr) + "/sdwan/{}/api/probeconfigs/{}".format(api_version,
+                                                                     probeconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def probeprofiles(self, probeprofile_id, data, api_version="v2.0"):
+        """
+        PUT Probeprofiles API Function
+
+          **Parameters:**:
+
+          - **probeprofile_id**: Probe Profile ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/probeprofiles/{}".format(api_version,
+                                                                      probeprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
@@ -2506,7 +2610,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def routing_routemaps(self, site_id, element_id, routing_routemap_id, data, api_version="v2.2"):
+    def routing_routemaps(self, site_id, element_id, routing_routemap_id, data, api_version="v2.3"):
         """
         Updates Route Map (v2.1)
 
@@ -2516,7 +2620,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **routing_routemap_id**: Routing Route Map ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
@@ -2910,7 +3014,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def sites(self, site_id, data, api_version="v4.9"):
+    def sites(self, site_id, data, api_version="v4.10"):
         """
         Update an existing site (v4.7)
 
@@ -2918,7 +3022,7 @@ class Put(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v4.9)
+          - **api_version**: API version to use (default v4.10)
 
           **Payload Attributes:** 
 
@@ -3340,14 +3444,14 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tenants(self, data, api_version="v2.8"):
+    def tenants(self, data, api_version="v2.9"):
         """
         Update tenant (v2.3)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.8)
+          - **api_version**: API version to use (default v2.9)
 
           **Payload Attributes:** 
 
@@ -3508,7 +3612,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def waninterfacelabels(self, waninterfacelabel_id, data, api_version="v2.4"):
+    def waninterfacelabels(self, waninterfacelabel_id, data, api_version="v2.5"):
         """
         Update specific WAN interface label (v2.4)
 
@@ -3516,7 +3620,7 @@ class Put(object):
 
           - **waninterfacelabel_id**: WAN Interface Label ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.4)
+          - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
@@ -3532,7 +3636,7 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def waninterfaces(self, site_id, waninterface_id, data, api_version="v2.7"):
+    def waninterfaces(self, site_id, waninterface_id, data, api_version="v2.8"):
         """
         Update the Site WAN interface (v2.7)
 
@@ -3541,7 +3645,7 @@ class Put(object):
           - **site_id**: Site ID
           - **waninterface_id**: WAN Interface ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.7)
+          - **api_version**: API version to use (default v2.8)
 
           **Payload Attributes:** 
 

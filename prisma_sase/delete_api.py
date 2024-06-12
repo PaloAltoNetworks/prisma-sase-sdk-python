@@ -4,7 +4,7 @@ PRISMA SASE Python SDK - DELETE
 
 **Author:** Palo Alto Networks
 
-**Copyright:** (c) 2023 Palo Alto Networks, Inc
+**Copyright:** (c) 2024 Palo Alto Networks, Inc
 
 **License:** MIT
 """
@@ -12,11 +12,11 @@ import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright (c) 2023 Palo Alto Networks, Inc"
+__copyright__ = "Copyright (c) 2024 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright (c) 2023 Palo Alto Networks, Inc
+    Copyright (c) 2024 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -72,14 +72,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def appdefs(self, appdef_id, api_version="v2.5"):
+    def appdefs(self, appdef_id, api_version="v2.6"):
         """
         Delete a application definition (v2.4)
 
           **Parameters:**:
 
           - **appdef_id**: Application Definition ID
-          - **api_version**: API version to use (default v2.5)
+          - **api_version**: API version to use (default v2.6)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -136,7 +136,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def bgppeers(self, site_id, element_id, bgppeer_id, api_version="v2.4"):
+    def bgppeers(self, site_id, element_id, bgppeer_id, api_version="v2.5"):
         """
         Delete BGP Peer config (v2.2)
 
@@ -145,7 +145,7 @@ class Delete(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **bgppeer_id**: BGP Peer ID
-          - **api_version**: API version to use (default v2.4)
+          - **api_version**: API version to use (default v2.5)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -209,7 +209,7 @@ class Delete(object):
           **Parameters:**:
 
           - **site_id**: Site ID
-          - **demsiteconfig_id**: NO DESCRIPTION
+          - **demsiteconfig_id**: DEM Site Config ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -746,7 +746,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def interfaces(self, site_id, element_id, interface_id, api_version="v4.17"):
+    def interfaces(self, site_id, element_id, interface_id, api_version="v4.18"):
         """
         Delete Cellular Interface (v4.14)
 
@@ -755,7 +755,7 @@ class Delete(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
-          - **api_version**: API version to use (default v4.17)
+          - **api_version**: API version to use (default v4.18)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -770,7 +770,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def interfaces_elementshells(self, site_id, elementshell_id, interface_id, api_version="v2.0"):
+    def interfaces_elementshells(self, site_id, elementshell_id, interface_id, api_version="v2.1"):
         """
         DELETE Interfaces_Elementshells API Function
 
@@ -779,7 +779,7 @@ class Delete(object):
           - **site_id**: Site ID
           - **elementshell_id**: Element Shell ID
           - **interface_id**: Interface ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1438,6 +1438,30 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def ospfconfigs(self, site_id, element_id, ospfconfig_id, api_version="v2.0"):
+        """
+        DELETE Ospfconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **ospfconfig_id**: OSPF Config ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/ospfconfigs/{}".format(api_version,
+                                                                                         site_id,
+                                                                                         element_id,
+                                                                                         ospfconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def pathgroups(self, pathgroup_id, api_version="v2.1"):
         """
         Delete A Path Group of a tenant. (v2.1)
@@ -1478,7 +1502,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, api_version="v2.0"):
+    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, api_version="v2.1"):
         """
         DELETE Perfmgmtpolicysets_Perfmgmtpolicyrules API Function
 
@@ -1486,7 +1510,7 @@ class Delete(object):
 
           - **perfmgmtpolicyset_id**: Performance Management Policy Set ID
           - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1520,14 +1544,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def perfmgmtthresholdprofiles(self, perfmgmtthresholdprofile_id, api_version="v2.0"):
+    def perfmgmtthresholdprofiles(self, perfmgmtthresholdprofile_id, api_version="v2.1"):
         """
         DELETE Perfmgmtthresholdprofiles API Function
 
           **Parameters:**:
 
           - **perfmgmtthresholdprofile_id**: Performance Management Threshold Profile ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1708,7 +1732,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def prismasase_connections(self, site_id, prismasase_connection_id, api_version="v2.0"):
+    def prismasase_connections(self, site_id, prismasase_connection_id, api_version="v2.1"):
         """
         DELETE Prismasase_Connections API Function
 
@@ -1716,7 +1740,7 @@ class Delete(object):
 
           - **site_id**: Site ID
           - **prismasase_connection_id**: Prisma SASE Connection ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1730,13 +1754,13 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def prismasase_connections_configs(self, api_version="v2.0"):
+    def prismasase_connections_configs(self, api_version="v2.1"):
         """
         DELETE Prismasase_Connections_Configs API Function
 
           **Parameters:**:
 
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1744,6 +1768,46 @@ class Delete(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api/prismasase_connections/configs".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def probeconfigs(self, probeconfig_id, api_version="v2.0"):
+        """
+        DELETE Probeconfigs API Function
+
+          **Parameters:**:
+
+          - **probeconfig_id**: Probe Config ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/probeconfigs/{}".format(api_version,
+                                                                     probeconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def probeprofiles(self, probeprofile_id, api_version="v2.0"):
+        """
+        DELETE Probeprofiles API Function
+
+          **Parameters:**:
+
+          - **probeprofile_id**: Probe Profile ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/probeprofiles/{}".format(api_version,
+                                                                      probeprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
@@ -1862,7 +1926,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def routing_routemaps(self, site_id, element_id, routing_routemap_id, api_version="v2.2"):
+    def routing_routemaps(self, site_id, element_id, routing_routemap_id, api_version="v2.3"):
         """
         Delete Route Map (v2.1)
 
@@ -1871,7 +1935,7 @@ class Delete(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **routing_routemap_id**: Routing Route Map ID
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2162,14 +2226,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def sites(self, site_id, api_version="v4.9"):
+    def sites(self, site_id, api_version="v4.10"):
         """
         Delete a site (v4.7)
 
           **Parameters:**:
 
           - **site_id**: Site ID
-          - **api_version**: API version to use (default v4.9)
+          - **api_version**: API version to use (default v4.10)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2582,7 +2646,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def waninterfaces(self, site_id, waninterface_id, api_version="v2.7"):
+    def waninterfaces(self, site_id, waninterface_id, api_version="v2.8"):
         """
         Delete existing WAN interface (v2.7)
 
@@ -2590,7 +2654,7 @@ class Delete(object):
 
           - **site_id**: Site ID
           - **waninterface_id**: WAN Interface ID
-          - **api_version**: API version to use (default v2.7)
+          - **api_version**: API version to use (default v2.8)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """

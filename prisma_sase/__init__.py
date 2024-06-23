@@ -276,7 +276,7 @@ def jdout_detailed(api_response, sensitive=False):
                 # got list of cookies, muted as needed. recombine.
                 muted_value = "; ".join(muted_cookie_list)
                 output += "\t{0}: {1}\n".format(key, muted_value)
-            elif key.lower() in ['x-auth-token'] and not sensitive:
+            elif key.lower() in ['x-auth-token', 'authorization'] and not sensitive:
                 output += "\t{0}: {1}\n".format(key, "<SENSITIVE - NOT SHOWN BY DEFAULT>")
             else:
                 output += "\t{0}: {1}\n".format(key, value)

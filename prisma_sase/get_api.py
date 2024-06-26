@@ -2029,9 +2029,9 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def interfaces_elementshells(self, site_id, elementshell_id, interface_id=None, api_version="v2.1"):
+    def elementshells_interfaces(self, site_id, elementshell_id, interface_id=None, api_version="v2.1"):
         """
-        GET Interfaces_Elementshells API Function
+        GET elementshells_interfaces API Function
 
           **Parameters:**:
 
@@ -5423,9 +5423,9 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def state_m(self, machine_id, api_version="v2.1"):
+    def machine_state(self, machine_id, api_version="v2.1"):
         """
-        GET State_M API Function
+        GET machine_state API Function
 
           **Parameters:**:
 
@@ -6470,6 +6470,9 @@ class Get(object):
     icon_appstatus_sdwanapps = sdwanapps_appstatus_icon
     """ Backwards-compatibility alias of `icon_appstatus_sdwanapps` to `sdwanapps_appstatus_icon`"""
 
+    interfaces_elementshells = elementshells_interfaces
+    """ Backwards-compatibility alias of `interfaces_elementshells` to `elementshells_interfaces`"""
+
     ipfixlocalprefixes_s = site_ipfixlocalprefixes
     """ Backwards-compatibility alias of `ipfixlocalprefixes_s` to `site_ipfixlocalprefixes`"""
 
@@ -6595,6 +6598,9 @@ class Get(object):
 
     state = element_state
     """ Backwards-compatibility alias of `state` to `element_state`"""
+
+    state_m = machine_state
+    """ Backwards-compatibility alias of `state_m` to `machine_state`"""
 
     state_software = software_state
     """ Backwards-compatibility alias of `state_software` to `software_state`"""

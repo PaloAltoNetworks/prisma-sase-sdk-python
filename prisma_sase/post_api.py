@@ -1866,9 +1866,9 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def interfaces_elementshells(self, site_id, elementshell_id, data, api_version="v2.1"):
+    def elementshells_interfaces(self, site_id, elementshell_id, data, api_version="v2.1"):
         """
-        POST Interfaces_Elementshells API Function
+        POST elementshells_interfaces API Function
 
           **Parameters:**:
 
@@ -7633,6 +7633,9 @@ class Post(object):
 
     insightslist_monitor = monitor_insightslist
     """ Backwards-compatibility alias of `insightslist_monitor` to `monitor_insightslist`"""
+
+    interfaces_elementshells = elementshells_interfaces
+    """ Backwards-compatibility alias of `interfaces_elementshells` to `elementshells_interfaces`"""
 
     ipfixlocalprefixes_s = site_ipfixlocalprefixes
     """ Backwards-compatibility alias of `ipfixlocalprefixes_s` to `site_ipfixlocalprefixes`"""

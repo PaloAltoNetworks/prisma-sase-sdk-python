@@ -1102,9 +1102,9 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def interfaces_elementshells(self, site_id, elementshell_id, interface_id, data, api_version="v2.1"):
+    def elementshells_interfaces(self, site_id, elementshell_id, interface_id, data, api_version="v2.1"):
         """
-        PUT Interfaces_Elementshells API Function
+        PUT elementshells_interfaces API Function
 
           **Parameters:**:
 
@@ -3775,6 +3775,9 @@ class Put(object):
 
     firmware_cellular_modules_m = machine_cellular_modules_firmware
     """ Backwards-compatibility alias of `firmware_cellular_modules_m` to `machine_cellular_modules_firmware`"""
+
+    interfaces_elementshells = elementshells_interfaces
+    """ Backwards-compatibility alias of `interfaces_elementshells` to `elementshells_interfaces`"""
 
     ipfixlocalprefixes_s = site_ipfixlocalprefixes
     """ Backwards-compatibility alias of `ipfixlocalprefixes_s` to `site_ipfixlocalprefixes`"""

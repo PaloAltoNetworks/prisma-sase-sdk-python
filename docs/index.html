@@ -8,7 +8,7 @@
     <title>prisma_sase documentation</title>
     <meta name="description" content="Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.3.2b1
+**Version:** v6.4.1b1
 
 **Author:** Palo Alto Networks
 
@@ -2676,9 +2676,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <header id="section-intro">
   <h1 class="title"><span class="name">prisma_sase</span> module</h1>
   <p>Python3 SDK for the Prisma SASE AppFabric</p>
-<p><strong>Version:</strong> v6.3.2b1</p>
+<p><strong>Version:</strong> v6.4.1b1</p>
 <p><strong>Author:</strong> Palo Alto Networks</p>
-<p><strong>Copyright:</strong> © 2023 Palo Alto Networks. All rights reserved</p>
+<p><strong>Copyright:</strong> © 2024 Palo Alto Networks. All rights reserved</p>
 <p><strong>License:</strong> MIT</p>
 <p><strong>Location:</strong> <a href="https://github.com/PaloAltoNetworks/prisma-sase-sdk-python">https://github.com/PaloAltoNetworks/prisma-sase-sdk-python</a></p>
 <h4>Synopsis</h4>
@@ -2725,11 +2725,11 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
     <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Python3 SDK for the Prisma SASE AppFabric</span>
 
-<span class="sd">**Version:** v6.3.2b1</span>
+<span class="sd">**Version:** v6.4.1b1</span>
 
 <span class="sd">**Author:** Palo Alto Networks</span>
 
-<span class="sd">**Copyright:** © 2023 Palo Alto Networks. All rights reserved</span>
+<span class="sd">**Copyright:** © 2024 Palo Alto Networks. All rights reserved</span>
 
 <span class="sd">**License:** MIT</span>
 
@@ -2885,7 +2885,7 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
 <span class="sd">&quot;&quot;&quot;websocket logger is handled slightly differently, so we will have a seperate handle.&quot;&quot;&quot;</span>
 
 <span class="c1"># Version of SDK</span>
-<span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;6.3.2b1&quot;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;6.4.1b1&quot;</span>
 <span class="sd">&quot;&quot;&quot;SDK Version string&quot;&quot;&quot;</span>
 <span class="n">__version__</span> <span class="o">=</span> <span class="n">version</span>
 
@@ -3000,7 +3000,7 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
                 <span class="c1"># got list of cookies, muted as needed. recombine.</span>
                 <span class="n">muted_value</span> <span class="o">=</span> <span class="s2">&quot;; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">muted_cookie_list</span><span class="p">)</span>
                 <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="si">{0}</span><span class="s2">: </span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">muted_value</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x-auth-token&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">sensitive</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x-auth-token&#39;</span><span class="p">,</span> <span class="s1">&#39;authorization&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">sensitive</span><span class="p">:</span>
                 <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="si">{0}</span><span class="s2">: </span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;&lt;SENSITIVE - NOT SHOWN BY DEFAULT&gt;&quot;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="si">{0}</span><span class="s2">: </span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
@@ -4872,7 +4872,7 @@ and Response Body.</p></div>
                 <span class="c1"># got list of cookies, muted as needed. recombine.</span>
                 <span class="n">muted_value</span> <span class="o">=</span> <span class="s2">&quot;; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">muted_cookie_list</span><span class="p">)</span>
                 <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="si">{0}</span><span class="s2">: </span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">muted_value</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x-auth-token&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">sensitive</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x-auth-token&#39;</span><span class="p">,</span> <span class="s1">&#39;authorization&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">sensitive</span><span class="p">:</span>
                 <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="si">{0}</span><span class="s2">: </span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;&lt;SENSITIVE - NOT SHOWN BY DEFAULT&gt;&quot;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="si">{0}</span><span class="s2">: </span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
@@ -7115,7 +7115,7 @@ filename in event of local file.</p></div>
             
   <div class="item" id="prisma_sase.API.modify_rest_retry">
     <div class="name def">
-    <p>def <span class="ident">modify_rest_retry</span>(</p><p>self, total=8, connect=None, read=None, redirect=None, status=None, other=0, allowed_methods=frozenset({&#39;GET&#39;, &#39;OPTIONS&#39;, &#39;DELETE&#39;, &#39;TRACE&#39;, &#39;PUT&#39;, &#39;HEAD&#39;}), status_forcelist=None, backoff_factor=0.705883, raise_on_redirect=True, raise_on_status=True, respect_retry_after_header=True, update_adapter=True)</p>
+    <p>def <span class="ident">modify_rest_retry</span>(</p><p>self, total=8, connect=None, read=None, redirect=None, status=None, other=0, allowed_methods=frozenset({&#39;GET&#39;, &#39;TRACE&#39;, &#39;DELETE&#39;, &#39;PUT&#39;, &#39;OPTIONS&#39;, &#39;HEAD&#39;}), status_forcelist=None, backoff_factor=0.705883, raise_on_redirect=True, raise_on_status=True, respect_retry_after_header=True, update_adapter=True)</p>
     </div>
     
 
@@ -9304,7 +9304,7 @@ when subclassing the
   
     <div class="desc"><p>Prisma SASE Explicit CA Certificate Bundle for API calls (CA Pinning).</p>
 <p><strong>Author:</strong> Palo Alto Networks</p>
-<p><strong>Copyright:</strong> © 2023 Palo Alto Networks. All rights reserved</p>
+<p><strong>Copyright:</strong> © 2024 Palo Alto Networks. All rights reserved</p>
 <p><strong>License:</strong> MIT</p></div>
 
       </div>
@@ -9314,7 +9314,7 @@ when subclassing the
   
     <div class="desc"><p>PRISMA SASE Python SDK - DELETE</p>
 <p><strong>Author:</strong> Palo Alto Networks</p>
-<p><strong>Copyright:</strong> (c) 2023 Palo Alto Networks, Inc</p>
+<p><strong>Copyright:</strong> (c) 2024 Palo Alto Networks, Inc</p>
 <p><strong>License:</strong> MIT</p></div>
 
       </div>
@@ -9324,7 +9324,7 @@ when subclassing the
   
     <div class="desc"><p>PRISMA SASE Python SDK - GET</p>
 <p><strong>Author:</strong> Palo Alto Networks</p>
-<p><strong>Copyright:</strong> (c) 2023 Palo Alto Networks, Inc</p>
+<p><strong>Copyright:</strong> (c) 2024 Palo Alto Networks, Inc</p>
 <p><strong>License:</strong> MIT</p></div>
 
       </div>
@@ -9334,7 +9334,7 @@ when subclassing the
   
     <div class="desc"><p>Prisma SASE Python Interactive SDK Helper functions</p>
 <p><strong>Author:</strong> Palo Alto Networks</p>
-<p><strong>Copyright:</strong> © 2023 Palo Alto Networks. All rights reserved</p>
+<p><strong>Copyright:</strong> © 2024 Palo Alto Networks. All rights reserved</p>
 <p><strong>License:</strong> MIT</p></div>
 
       </div>
@@ -9344,7 +9344,7 @@ when subclassing the
   
     <div class="desc"><p>PRISMA SASE Python SDK - PATCH</p>
 <p><strong>Author:</strong> Palo Alto Networks</p>
-<p><strong>Copyright:</strong> (c) 2023 Palo Alto Networks, Inc</p>
+<p><strong>Copyright:</strong> (c) 2024 Palo Alto Networks, Inc</p>
 <p><strong>License:</strong> MIT</p></div>
 
       </div>
@@ -9354,7 +9354,7 @@ when subclassing the
   
     <div class="desc"><p>PRISMA SASE Python SDK - POST</p>
 <p><strong>Author:</strong> Palo Alto Networks</p>
-<p><strong>Copyright:</strong> (c) 2023 Palo Alto Networks, Inc</p>
+<p><strong>Copyright:</strong> (c) 2024 Palo Alto Networks, Inc</p>
 <p><strong>License:</strong> MIT</p></div>
 
       </div>
@@ -9364,7 +9364,7 @@ when subclassing the
   
     <div class="desc"><p>PRISMA SASE Python SDK - PUT</p>
 <p><strong>Author:</strong> Palo Alto Networks</p>
-<p><strong>Copyright:</strong> (c) 2023 Palo Alto Networks, Inc</p>
+<p><strong>Copyright:</strong> (c) 2024 Palo Alto Networks, Inc</p>
 <p><strong>License:</strong> MIT</p></div>
 
       </div>
@@ -9374,7 +9374,7 @@ when subclassing the
   
     <div class="desc"><p>Prisma SASE Python SDK - WebSocket Functions</p>
 <p><strong>Author:</strong> Palo Alto Networks</p>
-<p><strong>Copyright:</strong> © 2023 Palo Alto Networks. All rights reserved</p>
+<p><strong>Copyright:</strong> © 2024 Palo Alto Networks. All rights reserved</p>
 <p><strong>License:</strong> MIT</p></div>
 
       </div>

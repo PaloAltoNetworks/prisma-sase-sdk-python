@@ -1,11 +1,11 @@
 """
 Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.3.2b1
+**Version:** v6.4.1b1
 
 **Author:** Palo Alto Networks
 
-**Copyright:** © 2023 Palo Alto Networks. All rights reserved
+**Copyright:** © 2024 Palo Alto Networks. All rights reserved
 
 **License:** MIT
 
@@ -161,7 +161,7 @@ ws_logger = logging.getLogger('websockets')
 """websocket logger is handled slightly differently, so we will have a seperate handle."""
 
 # Version of SDK
-version = "6.3.2b1"
+version = "6.4.1b1"
 """SDK Version string"""
 __version__ = version
 
@@ -276,7 +276,7 @@ def jdout_detailed(api_response, sensitive=False):
                 # got list of cookies, muted as needed. recombine.
                 muted_value = "; ".join(muted_cookie_list)
                 output += "\t{0}: {1}\n".format(key, muted_value)
-            elif key.lower() in ['x-auth-token'] and not sensitive:
+            elif key.lower() in ['x-auth-token', 'authorization'] and not sensitive:
                 output += "\t{0}: {1}\n".format(key, "<SENSITIVE - NOT SHOWN BY DEFAULT>")
             else:
                 output += "\t{0}: {1}\n".format(key, value)

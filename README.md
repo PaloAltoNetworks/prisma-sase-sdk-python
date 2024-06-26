@@ -4,7 +4,9 @@
 [![PyPI - License](https://img.shields.io/pypi/l/prisma-sase.svg?color=brightgreen)](https://pypi.org/project/prisma-sase/)
 [![GitHub issues](https://img.shields.io/github/issues/PaloAltoNetworks/prisma-sase-sdk-python.svg)](https://github.com/PaloAltoNetworks/prisma-sase-sdk-python/issues)
 
+
 # Palo Alto Networks Prisma SASE Python SDK v6.4.1b1
+
 Python3 SDK for the Prisma SASE AppFabric
 
 #### Synopsis

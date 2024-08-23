@@ -1,7 +1,7 @@
 """
 Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.4.1b1
+**Version:** v6.4.2b1
 
 **Author:** Palo Alto Networks
 
@@ -128,11 +128,11 @@ Default TLS v1.2/v1.3 or higher.
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright © 2023 Palo Alto Networks. All rights reserved"
+__copyright__ = "Copyright © 2024 Palo Alto Networks. All rights reserved"
 __license__ = """
     MIT License
     
-    Copyright © 2023 Palo Alto Networks. All rights reserved
+    Copyright © 2024 Palo Alto Networks. All rights reserved
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -161,7 +161,7 @@ ws_logger = logging.getLogger('websockets')
 """websocket logger is handled slightly differently, so we will have a seperate handle."""
 
 # Version of SDK
-version = "6.4.1b1"
+version = "6.4.2b1"
 """SDK Version string"""
 __version__ = version
 

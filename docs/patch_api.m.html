@@ -2356,7 +2356,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .codehilite .cs { color: #808072 } /* Comment.Special */
 .codehilite .gd { color: #A9B7C6 } /* Generic.Deleted */
 .codehilite .ge { color: #808072; font-style: italic } /* Generic.Emph */
-.codehilite .ges { color: #808072 } /* Generic.EmphStrong */
 .codehilite .gr { color: #808072 } /* Generic.Error */
 .codehilite .gh { color: #88BE05; font-weight: bold } /* Generic.Heading */
 .codehilite .gi { color: #88BE05 } /* Generic.Inserted */
@@ -2389,7 +2388,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .codehilite .nt { color: #F1C829 } /* Name.Tag */
 .codehilite .nv { color: #A9B7C6 } /* Name.Variable */
 .codehilite .ow { color: #A9B7C6 } /* Operator.Word */
-.codehilite .pm { color: #A9B7C6 } /* Punctuation.Marker */
 .codehilite .w { color: #A9B7C6 } /* Text.Whitespace */
 .codehilite .mb { color: #6897BB } /* Literal.Number.Bin */
 .codehilite .mf { color: #6897BB } /* Literal.Number.Float */
@@ -2647,7 +2645,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 
 <span class="k">class</span> <span class="nc">Patch</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Prisma SASE API - PATCH requests</span>
 
 <span class="sd">    Object to handle making Patch requests via shared Requests Session.</span>
@@ -2657,8 +2655,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">_parent_class</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">tenant_operators</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Patch a tenant operator (v2.1)</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Patch a tenant operator (v2.2)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
@@ -2668,6 +2666,87 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          **Payload Attributes:** </span>
 
+<span class="sd">           - **addresses:**           </span>
+<span class="sd">               - **city:**  Type: string </span>
+<span class="sd">               - **country:**  Type: string </span>
+<span class="sd">               - **post_code:**  Type: string </span>
+<span class="sd">               - **state:**  Type: string </span>
+<span class="sd">               - **street:**  Type: string </span>
+<span class="sd">               - **street2:**  Type: string </span>
+<span class="sd">           - **custom_roles:**           </span>
+<span class="sd">               - **custom_permissions:**           </span>
+<span class="sd">                   - **allowed_after_ms:**  Type: integer </span>
+<span class="sd">                   - **allowed_before_ms:**  Type: integer </span>
+<span class="sd">                   - **disabled:**  Type: boolean </span>
+<span class="sd">                   - **disabled_reason:**  Type: string </span>
+<span class="sd">                   - **disallow_permission:**  Type: boolean </span>
+<span class="sd">                   - **id:**  Type: string </span>
+<span class="sd">                   - **inactive:**  Type: boolean </span>
+<span class="sd">                   - **inactive_reason:**  Type: string </span>
+<span class="sd">                   - **region:**  Type: string </span>
+<span class="sd">                   - **tenant_id:**  Type: string </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">               - **description:**  Type: string </span>
+<span class="sd">               - **disabled:**  Type: boolean </span>
+<span class="sd">               - **disabled_reason:**  Type: string </span>
+<span class="sd">               - **disallow_permissions:**           </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">               - **id:**  Type: string </span>
+<span class="sd">               - **inactive:**  Type: boolean </span>
+<span class="sd">               - **inactive_reason:**  Type: string </span>
+<span class="sd">               - **is_system_owned:**  Type: boolean </span>
+<span class="sd">               - **name:**  Type: string </span>
+<span class="sd">               - **permissions:**           </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">               - **region:**  Type: string </span>
+<span class="sd">               - **roles:**           </span>
+<span class="sd">                   - **name:**  Type: string </span>
+<span class="sd">               - **tenant_id:**  Type: string </span>
+<span class="sd">           - **disable_idp_login:**  Type: boolean </span>
+<span class="sd">           - **disabled:**  Type: boolean </span>
+<span class="sd">           - **disabled_reason:**  Type: string </span>
+<span class="sd">           - **email:**  Type: string </span>
+<span class="sd">           - **email_iam:**  Type: string </span>
+<span class="sd">           - **email_validated:**  Type: boolean </span>
+<span class="sd">           - **enable_session_ip_lock:**  Type: boolean </span>
+<span class="sd">           - **first_name:**  Type: string </span>
+<span class="sd">           - **from_esp:**  Type: boolean </span>
+<span class="sd">           - **from_esp_name:**  Type: string </span>
+<span class="sd">           - **from_esp_tenant_id:**  Type: string </span>
+<span class="sd">           - **inactive:**  Type: boolean </span>
+<span class="sd">           - **inactive_reason:**  Type: string </span>
+<span class="sd">           - **ipv4_list:**           </span>
+<span class="sd">               - **ipv4:**  Type: string </span>
+<span class="sd">           - **is_locked:**  Type: boolean </span>
+<span class="sd">           - **is_system_owned:**  Type: boolean </span>
+<span class="sd">           - **last_login:**  Type: string </span>
+<span class="sd">           - **last_name:**  Type: string </span>
+<span class="sd">           - **linked_accounts:**           </span>
+<span class="sd">               - **disabled:**  Type: boolean </span>
+<span class="sd">               - **disabled_reason:**  Type: string </span>
+<span class="sd">               - **failed_login_attempts:**  Type: integer </span>
+<span class="sd">               - **id:**  Type: string </span>
+<span class="sd">               - **inactive:**  Type: boolean </span>
+<span class="sd">               - **inactive_reason:**  Type: string </span>
+<span class="sd">               - **provider_key:**  Type: string </span>
+<span class="sd">               - **provider_value:**  Type: string </span>
+<span class="sd">               - **provider_value_updated_on:**  Type: integer </span>
+<span class="sd">               - **region:**  Type: string </span>
+<span class="sd">               - **tenant_id:**  Type: string </span>
+<span class="sd">           - **migration_state:**           </span>
+<span class="sd">           - **phone_numbers:**           </span>
+<span class="sd">               - **country_code:**  Type: integer </span>
+<span class="sd">               - **local_extension:**  Type: integer </span>
+<span class="sd">               - **number:**  Type: integer </span>
+<span class="sd">               - **types:**           </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">           - **region:**  Type: string </span>
+<span class="sd">           - **roles:**           </span>
+<span class="sd">               - **name:**  Type: string </span>
+<span class="sd">           - **secondary_emails:**           </span>
+<span class="sd">               - **email:**  Type: string </span>
+<span class="sd">           - **settings:**  Type: string </span>
+<span class="sd">           - **tenant_id:**  Type: string </span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2680,17 +2759,206 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;patch&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.9&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Patch tenant (v2.3)</span>
+    <span class="k">def</span> <span class="nf">tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.10&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Patch tenant (v2.10)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
 <span class="sd">          - **data**: Dictionary containing data to PATCH as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.9)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.10)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
+<span class="sd">           - **:**  Type: string </span>
+<span class="sd">           - **address:**           </span>
+<span class="sd">               - **city:**  Type: string </span>
+<span class="sd">               - **country:**  Type: string </span>
+<span class="sd">               - **post_code:**  Type: string </span>
+<span class="sd">               - **state:**  Type: string </span>
+<span class="sd">               - **street:**  Type: string </span>
+<span class="sd">               - **street2:**  Type: string </span>
+<span class="sd">           - **adem_enabled:**  Type: boolean </span>
+<span class="sd">           - **app_acceleration_enabled:**  Type: boolean </span>
+<span class="sd">           - **canonical_name:**  Type: string </span>
+<span class="sd">           - **clients:**  [Type: string] </span>
+<span class="sd">           - **csp_tenant_id:**  Type: string </span>
+<span class="sd">           - **description:**  Type: string </span>
+<span class="sd">           - **disabled:**  Type: string </span>
+<span class="sd">           - **disabled_reason:**  Type: string </span>
+<span class="sd">           - **inactive:**  Type: string </span>
+<span class="sd">           - **inactive_reason:**  Type: string </span>
+<span class="sd">           - **ipv4_list:**           </span>
+<span class="sd">               - **ipv4:**  Type: string </span>
+<span class="sd">           - **is_esp:**  Type: boolean </span>
+<span class="sd">           - **is_oneapp_ready:**  Type: boolean </span>
+<span class="sd">           - **is_pa_iot_security_license:**  Type: boolean </span>
+<span class="sd">           - **is_sase_edge:**  Type: boolean </span>
+<span class="sd">           - **is_support:**  Type: boolean </span>
+<span class="sd">           - **name:**  Type: string </span>
+<span class="sd">           - **operator:**           </span>
+<span class="sd">               - **addresses:**           </span>
+<span class="sd">                   - **city:**  Type: string </span>
+<span class="sd">                   - **country:**  Type: string </span>
+<span class="sd">                   - **post_code:**  Type: string </span>
+<span class="sd">                   - **state:**  Type: string </span>
+<span class="sd">                   - **street:**  Type: string </span>
+<span class="sd">                   - **street2:**  Type: string </span>
+<span class="sd">               - **custom_roles:**           </span>
+<span class="sd">                   - **custom_permissions:**           </span>
+<span class="sd">                       - **allowed_after_ms:**  Type: integer </span>
+<span class="sd">                       - **allowed_before_ms:**  Type: integer </span>
+<span class="sd">                       - **disabled:**  Type: boolean </span>
+<span class="sd">                       - **disabled_reason:**  Type: string </span>
+<span class="sd">                       - **disallow_permission:**  Type: boolean </span>
+<span class="sd">                       - **id:**  Type: string </span>
+<span class="sd">                       - **inactive:**  Type: boolean </span>
+<span class="sd">                       - **inactive_reason:**  Type: string </span>
+<span class="sd">                       - **region:**  Type: string </span>
+<span class="sd">                       - **tenant_id:**  Type: string </span>
+<span class="sd">                       - **value:**  Type: string </span>
+<span class="sd">                   - **disabled:**  Type: boolean </span>
+<span class="sd">                   - **disallow_permissions:**           </span>
+<span class="sd">                       - **value:**  Type: string </span>
+<span class="sd">                   - **id:**  Type: string </span>
+<span class="sd">                   - **inactive:**  Type: boolean </span>
+<span class="sd">                   - **name:**  Type: string </span>
+<span class="sd">                   - **permissions:**           </span>
+<span class="sd">                       - **value:**  Type: string </span>
+<span class="sd">                   - **roles:**           </span>
+<span class="sd">                       - **name:**  Type: string </span>
+<span class="sd">               - **disable_idp_login:**  Type: boolean </span>
+<span class="sd">               - **disabled:**  Type: boolean </span>
+<span class="sd">               - **disabled_reason:**  Type: string </span>
+<span class="sd">               - **email:**  Type: string </span>
+<span class="sd">               - **email_iam:**  Type: string </span>
+<span class="sd">               - **email_validated:**  Type: boolean </span>
+<span class="sd">               - **enable_session_ip_lock:**  Type: boolean </span>
+<span class="sd">               - **first_name:**  Type: string </span>
+<span class="sd">               - **from_esp:**  Type: boolean </span>
+<span class="sd">               - **from_esp_name:**  Type: string </span>
+<span class="sd">               - **from_esp_tenant_id:**  Type: string </span>
+<span class="sd">               - **id:**  Type: string </span>
+<span class="sd">               - **inactive:**  Type: boolean </span>
+<span class="sd">               - **inactive_reason:**  Type: string </span>
+<span class="sd">               - **ipv4_list:**           </span>
+<span class="sd">                   - **ipv4:**  Type: string </span>
+<span class="sd">               - **is_locked:**  Type: boolean </span>
+<span class="sd">               - **is_system_owned:**  Type: boolean </span>
+<span class="sd">               - **last_login:**  Type: string </span>
+<span class="sd">               - **last_name:**  Type: string </span>
+<span class="sd">               - **linked_accounts:**           </span>
+<span class="sd">                   - **disabled:**  Type: boolean </span>
+<span class="sd">                   - **disabled_reason:**  Type: string </span>
+<span class="sd">                   - **failed_login_attempts:**  Type: integer </span>
+<span class="sd">                   - **id:**  Type: string </span>
+<span class="sd">                   - **inactive:**  Type: boolean </span>
+<span class="sd">                   - **inactive_reason:**  Type: string </span>
+<span class="sd">                   - **provider_key:**  Type: string </span>
+<span class="sd">                   - **provider_value:**  Type: string </span>
+<span class="sd">                   - **provider_value_updated_on:**  Type: integer </span>
+<span class="sd">                   - **region:**  Type: string </span>
+<span class="sd">                   - **tenant_id:**  Type: string </span>
+<span class="sd">               - **migration_state:**           </span>
+<span class="sd">               - **name:**  Type: string </span>
+<span class="sd">               - **phone_numbers:**           </span>
+<span class="sd">                   - **country_code:**  Type: integer </span>
+<span class="sd">                   - **local_extension:**  Type: integer </span>
+<span class="sd">                   - **number:**  Type: integer </span>
+<span class="sd">                   - **types:**           </span>
+<span class="sd">                       - **value:**  Type: string </span>
+<span class="sd">               - **region:**  Type: string </span>
+<span class="sd">               - **roles:**           </span>
+<span class="sd">                   - **name:**  Type: string </span>
+<span class="sd">               - **secondary_emails:**           </span>
+<span class="sd">                   - **email:**  Type: string </span>
+<span class="sd">               - **settings:**  Type: string </span>
+<span class="sd">               - **tenant_id:**  Type: string </span>
+<span class="sd">           - **pan_account_id:**  Type: string </span>
+<span class="sd">           - **pan_tenant_id:**  Type: string </span>
+<span class="sd">           - **password_policy:**           </span>
+<span class="sd">               - **enable_failed_login_attempts:**  Type: boolean </span>
+<span class="sd">               - **enable_failed_login_time_delay:**  Type: boolean </span>
+<span class="sd">               - **enable_maximum_password_length:**  Type: boolean </span>
+<span class="sd">               - **enable_minimum_password_length:**  Type: boolean </span>
+<span class="sd">               - **enable_password_aging:**  Type: boolean </span>
+<span class="sd">               - **enable_password_identity_difference:**  Type: boolean </span>
+<span class="sd">               - **enable_password_no_reuse_count:**  Type: boolean </span>
+<span class="sd">               - **enable_session_ip_lock:**  Type: boolean </span>
+<span class="sd">               - **enable_two_lower_case_letters:**  Type: boolean </span>
+<span class="sd">               - **enable_two_numbers:**  Type: boolean </span>
+<span class="sd">               - **enable_two_special_characters:**  Type: boolean </span>
+<span class="sd">               - **enable_two_upper_case_letters:**  Type: boolean </span>
+<span class="sd">               - **failed_login_attempts:**  Type: integer </span>
+<span class="sd">               - **maximum_password_length:**  Type: integer </span>
+<span class="sd">               - **minimum_password_length:**  Type: integer </span>
+<span class="sd">               - **password_aging_days:**  Type: integer </span>
+<span class="sd">               - **password_aging_notification:**  Type: integer </span>
+<span class="sd">               - **password_no_reuse_count:**  Type: integer </span>
+<span class="sd">               - **special_characters:**  Type: string </span>
+<span class="sd">               - **special_characters_regex:**  Type: string </span>
+<span class="sd">           - **phone_numbers:**           </span>
+<span class="sd">               - **country_code:**  Type: integer </span>
+<span class="sd">               - **local_extension:**  Type: integer </span>
+<span class="sd">               - **number:**  Type: integer </span>
+<span class="sd">               - **types:**           </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">           - **prisma_access_tenant_id:**  Type: string </span>
+<span class="sd">           - **provider_data:**           </span>
+<span class="sd">               - **certificate:**           </span>
+<span class="sd">                   - **certificate:**  Type: string </span>
+<span class="sd">                   - **certificate_expiry_utc:**  Type: integer </span>
+<span class="sd">                   - **certificate_type:**  Type: string </span>
+<span class="sd">                   - **disabled:**  Type: boolean </span>
+<span class="sd">                   - **disabled_reason:**  Type: string </span>
+<span class="sd">                   - **id:**  Type: string </span>
+<span class="sd">                   - **inactive:**  Type: boolean </span>
+<span class="sd">                   - **inactive_reason:**  Type: string </span>
+<span class="sd">                   - **issued_by:**           </span>
+<span class="sd">                       - **common_name:**  Type: string </span>
+<span class="sd">                       - **country:**  Type: string </span>
+<span class="sd">                       - **location:**  Type: string </span>
+<span class="sd">                       - **organization:**  Type: string </span>
+<span class="sd">                       - **organization_unit:**  Type: string </span>
+<span class="sd">                       - **state:**  Type: string </span>
+<span class="sd">                   - **issued_to:**           </span>
+<span class="sd">                       - **common_name:**  Type: string </span>
+<span class="sd">                       - **country:**  Type: string </span>
+<span class="sd">                       - **location:**  Type: string </span>
+<span class="sd">                       - **organization:**  Type: string </span>
+<span class="sd">                       - **organization_unit:**  Type: string </span>
+<span class="sd">                       - **state:**  Type: string </span>
+<span class="sd">                   - **parent_id:** </span>
+<span class="sd">                   - **region:**  Type: string </span>
+<span class="sd">                   - **serial_number:**  Type: string </span>
+<span class="sd">                   - **tenant_id:**  Type: string </span>
+<span class="sd">                   - **version:**  Type: string </span>
+<span class="sd">               - **password_hash:**  Type: string </span>
+<span class="sd">               - **provider:**           </span>
+<span class="sd">                   - **canonical_name:**  Type: string </span>
+<span class="sd">                   - **description:**  Type: string </span>
+<span class="sd">                   - **disabled:**  Type: boolean </span>
+<span class="sd">                   - **disabled_reason:**  Type: string </span>
+<span class="sd">                   - **id:**  Type: string </span>
+<span class="sd">                   - **inactive:**  Type: boolean </span>
+<span class="sd">                   - **inactive_reason:**  Type: string </span>
+<span class="sd">                   - **map_external_group:**  Type: object </span>
+<span class="sd">                   - **name:**  Type: string </span>
+<span class="sd">                   - **protocol:**           </span>
+<span class="sd">                   - **region:**  Type: string </span>
+<span class="sd">                   - **template:**  Type: string </span>
+<span class="sd">                   - **tenant_id:**  Type: string </span>
+<span class="sd">               - **salt:**  Type: string </span>
+<span class="sd">               - **security:**  Type: string </span>
+<span class="sd">           - **region:**  Type: string </span>
+<span class="sd">           - **sase_at:**  Type: string </span>
+<span class="sd">           - **telemetry_region:**  Type: string </span>
+<span class="sd">           - **tenant_id:**  Type: string </span>
+<span class="sd">           - **tsg_id:**  Type: string </span>
+<span class="sd">           - **tsg_instances:**           </span>
+<span class="sd">               - **app_id:**  Type: string </span>
+<span class="sd">               - **region:**  Type: string </span>
+<span class="sd">               - **tenant_id:**  Type: string </span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2706,7 +2974,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="c1"># /v2.0/permissions API versus what is used in this SDK.</span>
 
     <span class="n">operators_t</span> <span class="o">=</span> <span class="n">tenant_operators</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `operators_t` to `tenant_operators`&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `operators_t` to `tenant_operators`&quot;&quot;&quot;</span>
 </pre></div>
 
   </div>
@@ -2738,7 +3006,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.patch_api.Patch', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.patch_api.Patch" class="source">
     <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Patch</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Prisma SASE API - PATCH requests</span>
 
 <span class="sd">    Object to handle making Patch requests via shared Requests Session.</span>
@@ -2748,8 +3016,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">_parent_class</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">tenant_operators</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Patch a tenant operator (v2.1)</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Patch a tenant operator (v2.2)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
@@ -2759,6 +3027,87 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          **Payload Attributes:** </span>
 
+<span class="sd">           - **addresses:**           </span>
+<span class="sd">               - **city:**  Type: string </span>
+<span class="sd">               - **country:**  Type: string </span>
+<span class="sd">               - **post_code:**  Type: string </span>
+<span class="sd">               - **state:**  Type: string </span>
+<span class="sd">               - **street:**  Type: string </span>
+<span class="sd">               - **street2:**  Type: string </span>
+<span class="sd">           - **custom_roles:**           </span>
+<span class="sd">               - **custom_permissions:**           </span>
+<span class="sd">                   - **allowed_after_ms:**  Type: integer </span>
+<span class="sd">                   - **allowed_before_ms:**  Type: integer </span>
+<span class="sd">                   - **disabled:**  Type: boolean </span>
+<span class="sd">                   - **disabled_reason:**  Type: string </span>
+<span class="sd">                   - **disallow_permission:**  Type: boolean </span>
+<span class="sd">                   - **id:**  Type: string </span>
+<span class="sd">                   - **inactive:**  Type: boolean </span>
+<span class="sd">                   - **inactive_reason:**  Type: string </span>
+<span class="sd">                   - **region:**  Type: string </span>
+<span class="sd">                   - **tenant_id:**  Type: string </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">               - **description:**  Type: string </span>
+<span class="sd">               - **disabled:**  Type: boolean </span>
+<span class="sd">               - **disabled_reason:**  Type: string </span>
+<span class="sd">               - **disallow_permissions:**           </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">               - **id:**  Type: string </span>
+<span class="sd">               - **inactive:**  Type: boolean </span>
+<span class="sd">               - **inactive_reason:**  Type: string </span>
+<span class="sd">               - **is_system_owned:**  Type: boolean </span>
+<span class="sd">               - **name:**  Type: string </span>
+<span class="sd">               - **permissions:**           </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">               - **region:**  Type: string </span>
+<span class="sd">               - **roles:**           </span>
+<span class="sd">                   - **name:**  Type: string </span>
+<span class="sd">               - **tenant_id:**  Type: string </span>
+<span class="sd">           - **disable_idp_login:**  Type: boolean </span>
+<span class="sd">           - **disabled:**  Type: boolean </span>
+<span class="sd">           - **disabled_reason:**  Type: string </span>
+<span class="sd">           - **email:**  Type: string </span>
+<span class="sd">           - **email_iam:**  Type: string </span>
+<span class="sd">           - **email_validated:**  Type: boolean </span>
+<span class="sd">           - **enable_session_ip_lock:**  Type: boolean </span>
+<span class="sd">           - **first_name:**  Type: string </span>
+<span class="sd">           - **from_esp:**  Type: boolean </span>
+<span class="sd">           - **from_esp_name:**  Type: string </span>
+<span class="sd">           - **from_esp_tenant_id:**  Type: string </span>
+<span class="sd">           - **inactive:**  Type: boolean </span>
+<span class="sd">           - **inactive_reason:**  Type: string </span>
+<span class="sd">           - **ipv4_list:**           </span>
+<span class="sd">               - **ipv4:**  Type: string </span>
+<span class="sd">           - **is_locked:**  Type: boolean </span>
+<span class="sd">           - **is_system_owned:**  Type: boolean </span>
+<span class="sd">           - **last_login:**  Type: string </span>
+<span class="sd">           - **last_name:**  Type: string </span>
+<span class="sd">           - **linked_accounts:**           </span>
+<span class="sd">               - **disabled:**  Type: boolean </span>
+<span class="sd">               - **disabled_reason:**  Type: string </span>
+<span class="sd">               - **failed_login_attempts:**  Type: integer </span>
+<span class="sd">               - **id:**  Type: string </span>
+<span class="sd">               - **inactive:**  Type: boolean </span>
+<span class="sd">               - **inactive_reason:**  Type: string </span>
+<span class="sd">               - **provider_key:**  Type: string </span>
+<span class="sd">               - **provider_value:**  Type: string </span>
+<span class="sd">               - **provider_value_updated_on:**  Type: integer </span>
+<span class="sd">               - **region:**  Type: string </span>
+<span class="sd">               - **tenant_id:**  Type: string </span>
+<span class="sd">           - **migration_state:**           </span>
+<span class="sd">           - **phone_numbers:**           </span>
+<span class="sd">               - **country_code:**  Type: integer </span>
+<span class="sd">               - **local_extension:**  Type: integer </span>
+<span class="sd">               - **number:**  Type: integer </span>
+<span class="sd">               - **types:**           </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">           - **region:**  Type: string </span>
+<span class="sd">           - **roles:**           </span>
+<span class="sd">               - **name:**  Type: string </span>
+<span class="sd">           - **secondary_emails:**           </span>
+<span class="sd">               - **email:**  Type: string </span>
+<span class="sd">           - **settings:**  Type: string </span>
+<span class="sd">           - **tenant_id:**  Type: string </span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2771,17 +3120,206 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;patch&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.9&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Patch tenant (v2.3)</span>
+    <span class="k">def</span> <span class="nf">tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.10&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Patch tenant (v2.10)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
 <span class="sd">          - **data**: Dictionary containing data to PATCH as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.9)</span>
+<span class="sd">          - **api_version**: API version to use (default v2.10)</span>
 
 <span class="sd">          **Payload Attributes:** </span>
 
+<span class="sd">           - **:**  Type: string </span>
+<span class="sd">           - **address:**           </span>
+<span class="sd">               - **city:**  Type: string </span>
+<span class="sd">               - **country:**  Type: string </span>
+<span class="sd">               - **post_code:**  Type: string </span>
+<span class="sd">               - **state:**  Type: string </span>
+<span class="sd">               - **street:**  Type: string </span>
+<span class="sd">               - **street2:**  Type: string </span>
+<span class="sd">           - **adem_enabled:**  Type: boolean </span>
+<span class="sd">           - **app_acceleration_enabled:**  Type: boolean </span>
+<span class="sd">           - **canonical_name:**  Type: string </span>
+<span class="sd">           - **clients:**  [Type: string] </span>
+<span class="sd">           - **csp_tenant_id:**  Type: string </span>
+<span class="sd">           - **description:**  Type: string </span>
+<span class="sd">           - **disabled:**  Type: string </span>
+<span class="sd">           - **disabled_reason:**  Type: string </span>
+<span class="sd">           - **inactive:**  Type: string </span>
+<span class="sd">           - **inactive_reason:**  Type: string </span>
+<span class="sd">           - **ipv4_list:**           </span>
+<span class="sd">               - **ipv4:**  Type: string </span>
+<span class="sd">           - **is_esp:**  Type: boolean </span>
+<span class="sd">           - **is_oneapp_ready:**  Type: boolean </span>
+<span class="sd">           - **is_pa_iot_security_license:**  Type: boolean </span>
+<span class="sd">           - **is_sase_edge:**  Type: boolean </span>
+<span class="sd">           - **is_support:**  Type: boolean </span>
+<span class="sd">           - **name:**  Type: string </span>
+<span class="sd">           - **operator:**           </span>
+<span class="sd">               - **addresses:**           </span>
+<span class="sd">                   - **city:**  Type: string </span>
+<span class="sd">                   - **country:**  Type: string </span>
+<span class="sd">                   - **post_code:**  Type: string </span>
+<span class="sd">                   - **state:**  Type: string </span>
+<span class="sd">                   - **street:**  Type: string </span>
+<span class="sd">                   - **street2:**  Type: string </span>
+<span class="sd">               - **custom_roles:**           </span>
+<span class="sd">                   - **custom_permissions:**           </span>
+<span class="sd">                       - **allowed_after_ms:**  Type: integer </span>
+<span class="sd">                       - **allowed_before_ms:**  Type: integer </span>
+<span class="sd">                       - **disabled:**  Type: boolean </span>
+<span class="sd">                       - **disabled_reason:**  Type: string </span>
+<span class="sd">                       - **disallow_permission:**  Type: boolean </span>
+<span class="sd">                       - **id:**  Type: string </span>
+<span class="sd">                       - **inactive:**  Type: boolean </span>
+<span class="sd">                       - **inactive_reason:**  Type: string </span>
+<span class="sd">                       - **region:**  Type: string </span>
+<span class="sd">                       - **tenant_id:**  Type: string </span>
+<span class="sd">                       - **value:**  Type: string </span>
+<span class="sd">                   - **disabled:**  Type: boolean </span>
+<span class="sd">                   - **disallow_permissions:**           </span>
+<span class="sd">                       - **value:**  Type: string </span>
+<span class="sd">                   - **id:**  Type: string </span>
+<span class="sd">                   - **inactive:**  Type: boolean </span>
+<span class="sd">                   - **name:**  Type: string </span>
+<span class="sd">                   - **permissions:**           </span>
+<span class="sd">                       - **value:**  Type: string </span>
+<span class="sd">                   - **roles:**           </span>
+<span class="sd">                       - **name:**  Type: string </span>
+<span class="sd">               - **disable_idp_login:**  Type: boolean </span>
+<span class="sd">               - **disabled:**  Type: boolean </span>
+<span class="sd">               - **disabled_reason:**  Type: string </span>
+<span class="sd">               - **email:**  Type: string </span>
+<span class="sd">               - **email_iam:**  Type: string </span>
+<span class="sd">               - **email_validated:**  Type: boolean </span>
+<span class="sd">               - **enable_session_ip_lock:**  Type: boolean </span>
+<span class="sd">               - **first_name:**  Type: string </span>
+<span class="sd">               - **from_esp:**  Type: boolean </span>
+<span class="sd">               - **from_esp_name:**  Type: string </span>
+<span class="sd">               - **from_esp_tenant_id:**  Type: string </span>
+<span class="sd">               - **id:**  Type: string </span>
+<span class="sd">               - **inactive:**  Type: boolean </span>
+<span class="sd">               - **inactive_reason:**  Type: string </span>
+<span class="sd">               - **ipv4_list:**           </span>
+<span class="sd">                   - **ipv4:**  Type: string </span>
+<span class="sd">               - **is_locked:**  Type: boolean </span>
+<span class="sd">               - **is_system_owned:**  Type: boolean </span>
+<span class="sd">               - **last_login:**  Type: string </span>
+<span class="sd">               - **last_name:**  Type: string </span>
+<span class="sd">               - **linked_accounts:**           </span>
+<span class="sd">                   - **disabled:**  Type: boolean </span>
+<span class="sd">                   - **disabled_reason:**  Type: string </span>
+<span class="sd">                   - **failed_login_attempts:**  Type: integer </span>
+<span class="sd">                   - **id:**  Type: string </span>
+<span class="sd">                   - **inactive:**  Type: boolean </span>
+<span class="sd">                   - **inactive_reason:**  Type: string </span>
+<span class="sd">                   - **provider_key:**  Type: string </span>
+<span class="sd">                   - **provider_value:**  Type: string </span>
+<span class="sd">                   - **provider_value_updated_on:**  Type: integer </span>
+<span class="sd">                   - **region:**  Type: string </span>
+<span class="sd">                   - **tenant_id:**  Type: string </span>
+<span class="sd">               - **migration_state:**           </span>
+<span class="sd">               - **name:**  Type: string </span>
+<span class="sd">               - **phone_numbers:**           </span>
+<span class="sd">                   - **country_code:**  Type: integer </span>
+<span class="sd">                   - **local_extension:**  Type: integer </span>
+<span class="sd">                   - **number:**  Type: integer </span>
+<span class="sd">                   - **types:**           </span>
+<span class="sd">                       - **value:**  Type: string </span>
+<span class="sd">               - **region:**  Type: string </span>
+<span class="sd">               - **roles:**           </span>
+<span class="sd">                   - **name:**  Type: string </span>
+<span class="sd">               - **secondary_emails:**           </span>
+<span class="sd">                   - **email:**  Type: string </span>
+<span class="sd">               - **settings:**  Type: string </span>
+<span class="sd">               - **tenant_id:**  Type: string </span>
+<span class="sd">           - **pan_account_id:**  Type: string </span>
+<span class="sd">           - **pan_tenant_id:**  Type: string </span>
+<span class="sd">           - **password_policy:**           </span>
+<span class="sd">               - **enable_failed_login_attempts:**  Type: boolean </span>
+<span class="sd">               - **enable_failed_login_time_delay:**  Type: boolean </span>
+<span class="sd">               - **enable_maximum_password_length:**  Type: boolean </span>
+<span class="sd">               - **enable_minimum_password_length:**  Type: boolean </span>
+<span class="sd">               - **enable_password_aging:**  Type: boolean </span>
+<span class="sd">               - **enable_password_identity_difference:**  Type: boolean </span>
+<span class="sd">               - **enable_password_no_reuse_count:**  Type: boolean </span>
+<span class="sd">               - **enable_session_ip_lock:**  Type: boolean </span>
+<span class="sd">               - **enable_two_lower_case_letters:**  Type: boolean </span>
+<span class="sd">               - **enable_two_numbers:**  Type: boolean </span>
+<span class="sd">               - **enable_two_special_characters:**  Type: boolean </span>
+<span class="sd">               - **enable_two_upper_case_letters:**  Type: boolean </span>
+<span class="sd">               - **failed_login_attempts:**  Type: integer </span>
+<span class="sd">               - **maximum_password_length:**  Type: integer </span>
+<span class="sd">               - **minimum_password_length:**  Type: integer </span>
+<span class="sd">               - **password_aging_days:**  Type: integer </span>
+<span class="sd">               - **password_aging_notification:**  Type: integer </span>
+<span class="sd">               - **password_no_reuse_count:**  Type: integer </span>
+<span class="sd">               - **special_characters:**  Type: string </span>
+<span class="sd">               - **special_characters_regex:**  Type: string </span>
+<span class="sd">           - **phone_numbers:**           </span>
+<span class="sd">               - **country_code:**  Type: integer </span>
+<span class="sd">               - **local_extension:**  Type: integer </span>
+<span class="sd">               - **number:**  Type: integer </span>
+<span class="sd">               - **types:**           </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">           - **prisma_access_tenant_id:**  Type: string </span>
+<span class="sd">           - **provider_data:**           </span>
+<span class="sd">               - **certificate:**           </span>
+<span class="sd">                   - **certificate:**  Type: string </span>
+<span class="sd">                   - **certificate_expiry_utc:**  Type: integer </span>
+<span class="sd">                   - **certificate_type:**  Type: string </span>
+<span class="sd">                   - **disabled:**  Type: boolean </span>
+<span class="sd">                   - **disabled_reason:**  Type: string </span>
+<span class="sd">                   - **id:**  Type: string </span>
+<span class="sd">                   - **inactive:**  Type: boolean </span>
+<span class="sd">                   - **inactive_reason:**  Type: string </span>
+<span class="sd">                   - **issued_by:**           </span>
+<span class="sd">                       - **common_name:**  Type: string </span>
+<span class="sd">                       - **country:**  Type: string </span>
+<span class="sd">                       - **location:**  Type: string </span>
+<span class="sd">                       - **organization:**  Type: string </span>
+<span class="sd">                       - **organization_unit:**  Type: string </span>
+<span class="sd">                       - **state:**  Type: string </span>
+<span class="sd">                   - **issued_to:**           </span>
+<span class="sd">                       - **common_name:**  Type: string </span>
+<span class="sd">                       - **country:**  Type: string </span>
+<span class="sd">                       - **location:**  Type: string </span>
+<span class="sd">                       - **organization:**  Type: string </span>
+<span class="sd">                       - **organization_unit:**  Type: string </span>
+<span class="sd">                       - **state:**  Type: string </span>
+<span class="sd">                   - **parent_id:** </span>
+<span class="sd">                   - **region:**  Type: string </span>
+<span class="sd">                   - **serial_number:**  Type: string </span>
+<span class="sd">                   - **tenant_id:**  Type: string </span>
+<span class="sd">                   - **version:**  Type: string </span>
+<span class="sd">               - **password_hash:**  Type: string </span>
+<span class="sd">               - **provider:**           </span>
+<span class="sd">                   - **canonical_name:**  Type: string </span>
+<span class="sd">                   - **description:**  Type: string </span>
+<span class="sd">                   - **disabled:**  Type: boolean </span>
+<span class="sd">                   - **disabled_reason:**  Type: string </span>
+<span class="sd">                   - **id:**  Type: string </span>
+<span class="sd">                   - **inactive:**  Type: boolean </span>
+<span class="sd">                   - **inactive_reason:**  Type: string </span>
+<span class="sd">                   - **map_external_group:**  Type: object </span>
+<span class="sd">                   - **name:**  Type: string </span>
+<span class="sd">                   - **protocol:**           </span>
+<span class="sd">                   - **region:**  Type: string </span>
+<span class="sd">                   - **template:**  Type: string </span>
+<span class="sd">                   - **tenant_id:**  Type: string </span>
+<span class="sd">               - **salt:**  Type: string </span>
+<span class="sd">               - **security:**  Type: string </span>
+<span class="sd">           - **region:**  Type: string </span>
+<span class="sd">           - **sase_at:**  Type: string </span>
+<span class="sd">           - **telemetry_region:**  Type: string </span>
+<span class="sd">           - **tenant_id:**  Type: string </span>
+<span class="sd">           - **tsg_id:**  Type: string </span>
+<span class="sd">           - **tsg_instances:**           </span>
+<span class="sd">               - **app_id:**  Type: string </span>
+<span class="sd">               - **region:**  Type: string </span>
+<span class="sd">               - **tenant_id:**  Type: string </span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2797,7 +3335,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="c1"># /v2.0/permissions API versus what is used in this SDK.</span>
 
     <span class="n">operators_t</span> <span class="o">=</span> <span class="n">tenant_operators</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `operators_t` to `tenant_operators`&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `operators_t` to `tenant_operators`&quot;&quot;&quot;</span>
 </pre></div>
 
   </div>
@@ -2832,7 +3370,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     
   
-    <div class="desc"><p>Patch a tenant operator (v2.1)</p>
+    <div class="desc"><p>Patch a tenant operator (v2.2)</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
 <li><strong>operator_id</strong>: Operator ID</li>
@@ -2840,18 +3378,206 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>api_version</strong>: API version to use (default v2.2)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
+<ul>
+<li><strong>addresses:</strong>           <ul>
+<li><strong>city:</strong>  Type: string </li>
+<li><strong>country:</strong>  Type: string </li>
+<li><strong>post_code:</strong>  Type: string </li>
+<li><strong>state:</strong>  Type: string </li>
+<li><strong>street:</strong>  Type: string </li>
+<li><strong>street2:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>custom_roles:</strong>           <ul>
+<li><strong>custom_permissions:</strong>           <ul>
+<li><strong>allowed_after_ms:</strong>  Type: integer </li>
+<li><strong>allowed_before_ms:</strong>  Type: integer </li>
+<li><strong>disabled:</strong>  Type: boolean </li>
+<li><strong>disabled_reason:</strong>  Type: string </li>
+<li><strong>disallow_permission:</strong>  Type: boolean </li>
+<li><strong>id:</strong>  Type: string </li>
+<li><strong>inactive:</strong>  Type: boolean </li>
+<li><strong>inactive_reason:</strong>  Type: string </li>
+<li><strong>region:</strong>  Type: string </li>
+<li><strong>tenant_id:</strong>  Type: string </li>
+<li><strong>value:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>description:</strong>  Type: string </li>
+<li><strong>disabled:</strong>  Type: boolean </li>
+<li><strong>disabled_reason:</strong>  Type: string </li>
+<li><strong>disallow_permissions:</strong>           <ul>
+<li><strong>value:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>id:</strong>  Type: string </li>
+<li><strong>inactive:</strong>  Type: boolean </li>
+<li><strong>inactive_reason:</strong>  Type: string </li>
+<li><strong>is_system_owned:</strong>  Type: boolean </li>
+<li><strong>name:</strong>  Type: string </li>
+<li><strong>permissions:</strong>           <ul>
+<li><strong>value:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>region:</strong>  Type: string </li>
+<li><strong>roles:</strong>           <ul>
+<li><strong>name:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>tenant_id:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>disable_idp_login:</strong>  Type: boolean </li>
+<li><strong>disabled:</strong>  Type: boolean </li>
+<li><strong>disabled_reason:</strong>  Type: string </li>
+<li><strong>email:</strong>  Type: string </li>
+<li><strong>email_iam:</strong>  Type: string </li>
+<li><strong>email_validated:</strong>  Type: boolean </li>
+<li><strong>enable_session_ip_lock:</strong>  Type: boolean </li>
+<li><strong>first_name:</strong>  Type: string </li>
+<li><strong>from_esp:</strong>  Type: boolean </li>
+<li><strong>from_esp_name:</strong>  Type: string </li>
+<li><strong>from_esp_tenant_id:</strong>  Type: string </li>
+<li><strong>inactive:</strong>  Type: boolean </li>
+<li><strong>inactive_reason:</strong>  Type: string </li>
+<li><strong>ipv4_list:</strong>           <ul>
+<li><strong>ipv4:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>is_locked:</strong>  Type: boolean </li>
+<li><strong>is_system_owned:</strong>  Type: boolean </li>
+<li><strong>last_login:</strong>  Type: string </li>
+<li><strong>last_name:</strong>  Type: string </li>
+<li><strong>linked_accounts:</strong>           <ul>
+<li><strong>disabled:</strong>  Type: boolean </li>
+<li><strong>disabled_reason:</strong>  Type: string </li>
+<li><strong>failed_login_attempts:</strong>  Type: integer </li>
+<li><strong>id:</strong>  Type: string </li>
+<li><strong>inactive:</strong>  Type: boolean </li>
+<li><strong>inactive_reason:</strong>  Type: string </li>
+<li><strong>provider_key:</strong>  Type: string </li>
+<li><strong>provider_value:</strong>  Type: string </li>
+<li><strong>provider_value_updated_on:</strong>  Type: integer </li>
+<li><strong>region:</strong>  Type: string </li>
+<li><strong>tenant_id:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>migration_state:</strong>           </li>
+<li><strong>phone_numbers:</strong>           <ul>
+<li><strong>country_code:</strong>  Type: integer </li>
+<li><strong>local_extension:</strong>  Type: integer </li>
+<li><strong>number:</strong>  Type: integer </li>
+<li><strong>types:</strong>           <ul>
+<li><strong>value:</strong>  Type: string </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>region:</strong>  Type: string </li>
+<li><strong>roles:</strong>           <ul>
+<li><strong>name:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>secondary_emails:</strong>           <ul>
+<li><strong>email:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>settings:</strong>  Type: string </li>
+<li><strong>tenant_id:</strong>  Type: string </li>
+</ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.patch_api.Patch.tenant_operators', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.patch_api.Patch.tenant_operators" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">tenant_operators</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Patch a tenant operator (v2.1)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Patch a tenant operator (v2.2)</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **operator_id**: Operator ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PATCH as JSON</span>
 <span class="sd">      - **api_version**: API version to use (default v2.2)</span>
 <span class="sd">      **Payload Attributes:** </span>
+<span class="sd">       - **addresses:**           </span>
+<span class="sd">           - **city:**  Type: string </span>
+<span class="sd">           - **country:**  Type: string </span>
+<span class="sd">           - **post_code:**  Type: string </span>
+<span class="sd">           - **state:**  Type: string </span>
+<span class="sd">           - **street:**  Type: string </span>
+<span class="sd">           - **street2:**  Type: string </span>
+<span class="sd">       - **custom_roles:**           </span>
+<span class="sd">           - **custom_permissions:**           </span>
+<span class="sd">               - **allowed_after_ms:**  Type: integer </span>
+<span class="sd">               - **allowed_before_ms:**  Type: integer </span>
+<span class="sd">               - **disabled:**  Type: boolean </span>
+<span class="sd">               - **disabled_reason:**  Type: string </span>
+<span class="sd">               - **disallow_permission:**  Type: boolean </span>
+<span class="sd">               - **id:**  Type: string </span>
+<span class="sd">               - **inactive:**  Type: boolean </span>
+<span class="sd">               - **inactive_reason:**  Type: string </span>
+<span class="sd">               - **region:**  Type: string </span>
+<span class="sd">               - **tenant_id:**  Type: string </span>
+<span class="sd">               - **value:**  Type: string </span>
+<span class="sd">           - **description:**  Type: string </span>
+<span class="sd">           - **disabled:**  Type: boolean </span>
+<span class="sd">           - **disabled_reason:**  Type: string </span>
+<span class="sd">           - **disallow_permissions:**           </span>
+<span class="sd">               - **value:**  Type: string </span>
+<span class="sd">           - **id:**  Type: string </span>
+<span class="sd">           - **inactive:**  Type: boolean </span>
+<span class="sd">           - **inactive_reason:**  Type: string </span>
+<span class="sd">           - **is_system_owned:**  Type: boolean </span>
+<span class="sd">           - **name:**  Type: string </span>
+<span class="sd">           - **permissions:**           </span>
+<span class="sd">               - **value:**  Type: string </span>
+<span class="sd">           - **region:**  Type: string </span>
+<span class="sd">           - **roles:**           </span>
+<span class="sd">               - **name:**  Type: string </span>
+<span class="sd">           - **tenant_id:**  Type: string </span>
+<span class="sd">       - **disable_idp_login:**  Type: boolean </span>
+<span class="sd">       - **disabled:**  Type: boolean </span>
+<span class="sd">       - **disabled_reason:**  Type: string </span>
+<span class="sd">       - **email:**  Type: string </span>
+<span class="sd">       - **email_iam:**  Type: string </span>
+<span class="sd">       - **email_validated:**  Type: boolean </span>
+<span class="sd">       - **enable_session_ip_lock:**  Type: boolean </span>
+<span class="sd">       - **first_name:**  Type: string </span>
+<span class="sd">       - **from_esp:**  Type: boolean </span>
+<span class="sd">       - **from_esp_name:**  Type: string </span>
+<span class="sd">       - **from_esp_tenant_id:**  Type: string </span>
+<span class="sd">       - **inactive:**  Type: boolean </span>
+<span class="sd">       - **inactive_reason:**  Type: string </span>
+<span class="sd">       - **ipv4_list:**           </span>
+<span class="sd">           - **ipv4:**  Type: string </span>
+<span class="sd">       - **is_locked:**  Type: boolean </span>
+<span class="sd">       - **is_system_owned:**  Type: boolean </span>
+<span class="sd">       - **last_login:**  Type: string </span>
+<span class="sd">       - **last_name:**  Type: string </span>
+<span class="sd">       - **linked_accounts:**           </span>
+<span class="sd">           - **disabled:**  Type: boolean </span>
+<span class="sd">           - **disabled_reason:**  Type: string </span>
+<span class="sd">           - **failed_login_attempts:**  Type: integer </span>
+<span class="sd">           - **id:**  Type: string </span>
+<span class="sd">           - **inactive:**  Type: boolean </span>
+<span class="sd">           - **inactive_reason:**  Type: string </span>
+<span class="sd">           - **provider_key:**  Type: string </span>
+<span class="sd">           - **provider_value:**  Type: string </span>
+<span class="sd">           - **provider_value_updated_on:**  Type: integer </span>
+<span class="sd">           - **region:**  Type: string </span>
+<span class="sd">           - **tenant_id:**  Type: string </span>
+<span class="sd">       - **migration_state:**           </span>
+<span class="sd">       - **phone_numbers:**           </span>
+<span class="sd">           - **country_code:**  Type: integer </span>
+<span class="sd">           - **local_extension:**  Type: integer </span>
+<span class="sd">           - **number:**  Type: integer </span>
+<span class="sd">           - **types:**           </span>
+<span class="sd">               - **value:**  Type: string </span>
+<span class="sd">       - **region:**  Type: string </span>
+<span class="sd">       - **roles:**           </span>
+<span class="sd">           - **name:**  Type: string </span>
+<span class="sd">       - **secondary_emails:**           </span>
+<span class="sd">           - **email:**  Type: string </span>
+<span class="sd">       - **settings:**  Type: string </span>
+<span class="sd">       - **tenant_id:**  Type: string </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
@@ -2869,30 +3595,458 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   <div class="item" id="prisma_sase.patch_api.Patch.tenants">
     <div class="name def">
-    <p>def <span class="ident">tenants</span>(</p><p>self, data, api_version=&#39;v2.9&#39;)</p>
+    <p>def <span class="ident">tenants</span>(</p><p>self, data, api_version=&#39;v2.10&#39;)</p>
     </div>
     
 
     
   
-    <div class="desc"><p>Patch tenant (v2.3)</p>
+    <div class="desc"><p>Patch tenant (v2.10)</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
 <li><strong>data</strong>: Dictionary containing data to PATCH as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.9)</li>
+<li><strong>api_version</strong>: API version to use (default v2.10)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
+<ul>
+<li><strong>:</strong>  Type: string </li>
+<li><strong>address:</strong>           <ul>
+<li><strong>city:</strong>  Type: string </li>
+<li><strong>country:</strong>  Type: string </li>
+<li><strong>post_code:</strong>  Type: string </li>
+<li><strong>state:</strong>  Type: string </li>
+<li><strong>street:</strong>  Type: string </li>
+<li><strong>street2:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>adem_enabled:</strong>  Type: boolean </li>
+<li><strong>app_acceleration_enabled:</strong>  Type: boolean </li>
+<li><strong>canonical_name:</strong>  Type: string </li>
+<li><strong>clients:</strong>  [Type: string] </li>
+<li><strong>csp_tenant_id:</strong>  Type: string </li>
+<li><strong>description:</strong>  Type: string </li>
+<li><strong>disabled:</strong>  Type: string </li>
+<li><strong>disabled_reason:</strong>  Type: string </li>
+<li><strong>inactive:</strong>  Type: string </li>
+<li><strong>inactive_reason:</strong>  Type: string </li>
+<li><strong>ipv4_list:</strong>           <ul>
+<li><strong>ipv4:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>is_esp:</strong>  Type: boolean </li>
+<li><strong>is_oneapp_ready:</strong>  Type: boolean </li>
+<li><strong>is_pa_iot_security_license:</strong>  Type: boolean </li>
+<li><strong>is_sase_edge:</strong>  Type: boolean </li>
+<li><strong>is_support:</strong>  Type: boolean </li>
+<li><strong>name:</strong>  Type: string </li>
+<li><strong>operator:</strong>           <ul>
+<li><strong>addresses:</strong>           <ul>
+<li><strong>city:</strong>  Type: string </li>
+<li><strong>country:</strong>  Type: string </li>
+<li><strong>post_code:</strong>  Type: string </li>
+<li><strong>state:</strong>  Type: string </li>
+<li><strong>street:</strong>  Type: string </li>
+<li><strong>street2:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>custom_roles:</strong>           <ul>
+<li><strong>custom_permissions:</strong>           <ul>
+<li><strong>allowed_after_ms:</strong>  Type: integer </li>
+<li><strong>allowed_before_ms:</strong>  Type: integer </li>
+<li><strong>disabled:</strong>  Type: boolean </li>
+<li><strong>disabled_reason:</strong>  Type: string </li>
+<li><strong>disallow_permission:</strong>  Type: boolean </li>
+<li><strong>id:</strong>  Type: string </li>
+<li><strong>inactive:</strong>  Type: boolean </li>
+<li><strong>inactive_reason:</strong>  Type: string </li>
+<li><strong>region:</strong>  Type: string </li>
+<li><strong>tenant_id:</strong>  Type: string </li>
+<li><strong>value:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>disabled:</strong>  Type: boolean </li>
+<li><strong>disallow_permissions:</strong>           <ul>
+<li><strong>value:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>id:</strong>  Type: string </li>
+<li><strong>inactive:</strong>  Type: boolean </li>
+<li><strong>name:</strong>  Type: string </li>
+<li><strong>permissions:</strong>           <ul>
+<li><strong>value:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>roles:</strong>           <ul>
+<li><strong>name:</strong>  Type: string </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>disable_idp_login:</strong>  Type: boolean </li>
+<li><strong>disabled:</strong>  Type: boolean </li>
+<li><strong>disabled_reason:</strong>  Type: string </li>
+<li><strong>email:</strong>  Type: string </li>
+<li><strong>email_iam:</strong>  Type: string </li>
+<li><strong>email_validated:</strong>  Type: boolean </li>
+<li><strong>enable_session_ip_lock:</strong>  Type: boolean </li>
+<li><strong>first_name:</strong>  Type: string </li>
+<li><strong>from_esp:</strong>  Type: boolean </li>
+<li><strong>from_esp_name:</strong>  Type: string </li>
+<li><strong>from_esp_tenant_id:</strong>  Type: string </li>
+<li><strong>id:</strong>  Type: string </li>
+<li><strong>inactive:</strong>  Type: boolean </li>
+<li><strong>inactive_reason:</strong>  Type: string </li>
+<li><strong>ipv4_list:</strong>           <ul>
+<li><strong>ipv4:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>is_locked:</strong>  Type: boolean </li>
+<li><strong>is_system_owned:</strong>  Type: boolean </li>
+<li><strong>last_login:</strong>  Type: string </li>
+<li><strong>last_name:</strong>  Type: string </li>
+<li><strong>linked_accounts:</strong>           <ul>
+<li><strong>disabled:</strong>  Type: boolean </li>
+<li><strong>disabled_reason:</strong>  Type: string </li>
+<li><strong>failed_login_attempts:</strong>  Type: integer </li>
+<li><strong>id:</strong>  Type: string </li>
+<li><strong>inactive:</strong>  Type: boolean </li>
+<li><strong>inactive_reason:</strong>  Type: string </li>
+<li><strong>provider_key:</strong>  Type: string </li>
+<li><strong>provider_value:</strong>  Type: string </li>
+<li><strong>provider_value_updated_on:</strong>  Type: integer </li>
+<li><strong>region:</strong>  Type: string </li>
+<li><strong>tenant_id:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>migration_state:</strong>           </li>
+<li><strong>name:</strong>  Type: string </li>
+<li><strong>phone_numbers:</strong>           <ul>
+<li><strong>country_code:</strong>  Type: integer </li>
+<li><strong>local_extension:</strong>  Type: integer </li>
+<li><strong>number:</strong>  Type: integer </li>
+<li><strong>types:</strong>           <ul>
+<li><strong>value:</strong>  Type: string </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>region:</strong>  Type: string </li>
+<li><strong>roles:</strong>           <ul>
+<li><strong>name:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>secondary_emails:</strong>           <ul>
+<li><strong>email:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>settings:</strong>  Type: string </li>
+<li><strong>tenant_id:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>pan_account_id:</strong>  Type: string </li>
+<li><strong>pan_tenant_id:</strong>  Type: string </li>
+<li><strong>password_policy:</strong>           <ul>
+<li><strong>enable_failed_login_attempts:</strong>  Type: boolean </li>
+<li><strong>enable_failed_login_time_delay:</strong>  Type: boolean </li>
+<li><strong>enable_maximum_password_length:</strong>  Type: boolean </li>
+<li><strong>enable_minimum_password_length:</strong>  Type: boolean </li>
+<li><strong>enable_password_aging:</strong>  Type: boolean </li>
+<li><strong>enable_password_identity_difference:</strong>  Type: boolean </li>
+<li><strong>enable_password_no_reuse_count:</strong>  Type: boolean </li>
+<li><strong>enable_session_ip_lock:</strong>  Type: boolean </li>
+<li><strong>enable_two_lower_case_letters:</strong>  Type: boolean </li>
+<li><strong>enable_two_numbers:</strong>  Type: boolean </li>
+<li><strong>enable_two_special_characters:</strong>  Type: boolean </li>
+<li><strong>enable_two_upper_case_letters:</strong>  Type: boolean </li>
+<li><strong>failed_login_attempts:</strong>  Type: integer </li>
+<li><strong>maximum_password_length:</strong>  Type: integer </li>
+<li><strong>minimum_password_length:</strong>  Type: integer </li>
+<li><strong>password_aging_days:</strong>  Type: integer </li>
+<li><strong>password_aging_notification:</strong>  Type: integer </li>
+<li><strong>password_no_reuse_count:</strong>  Type: integer </li>
+<li><strong>special_characters:</strong>  Type: string </li>
+<li><strong>special_characters_regex:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>phone_numbers:</strong>           <ul>
+<li><strong>country_code:</strong>  Type: integer </li>
+<li><strong>local_extension:</strong>  Type: integer </li>
+<li><strong>number:</strong>  Type: integer </li>
+<li><strong>types:</strong>           <ul>
+<li><strong>value:</strong>  Type: string </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>prisma_access_tenant_id:</strong>  Type: string </li>
+<li><strong>provider_data:</strong>           <ul>
+<li><strong>certificate:</strong>           <ul>
+<li><strong>certificate:</strong>  Type: string </li>
+<li><strong>certificate_expiry_utc:</strong>  Type: integer </li>
+<li><strong>certificate_type:</strong>  Type: string </li>
+<li><strong>disabled:</strong>  Type: boolean </li>
+<li><strong>disabled_reason:</strong>  Type: string </li>
+<li><strong>id:</strong>  Type: string </li>
+<li><strong>inactive:</strong>  Type: boolean </li>
+<li><strong>inactive_reason:</strong>  Type: string </li>
+<li><strong>issued_by:</strong>           <ul>
+<li><strong>common_name:</strong>  Type: string </li>
+<li><strong>country:</strong>  Type: string </li>
+<li><strong>location:</strong>  Type: string </li>
+<li><strong>organization:</strong>  Type: string </li>
+<li><strong>organization_unit:</strong>  Type: string </li>
+<li><strong>state:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>issued_to:</strong>           <ul>
+<li><strong>common_name:</strong>  Type: string </li>
+<li><strong>country:</strong>  Type: string </li>
+<li><strong>location:</strong>  Type: string </li>
+<li><strong>organization:</strong>  Type: string </li>
+<li><strong>organization_unit:</strong>  Type: string </li>
+<li><strong>state:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>parent_id:</strong> </li>
+<li><strong>region:</strong>  Type: string </li>
+<li><strong>serial_number:</strong>  Type: string </li>
+<li><strong>tenant_id:</strong>  Type: string </li>
+<li><strong>version:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>password_hash:</strong>  Type: string </li>
+<li><strong>provider:</strong>           <ul>
+<li><strong>canonical_name:</strong>  Type: string </li>
+<li><strong>description:</strong>  Type: string </li>
+<li><strong>disabled:</strong>  Type: boolean </li>
+<li><strong>disabled_reason:</strong>  Type: string </li>
+<li><strong>id:</strong>  Type: string </li>
+<li><strong>inactive:</strong>  Type: boolean </li>
+<li><strong>inactive_reason:</strong>  Type: string </li>
+<li><strong>map_external_group:</strong>  Type: object </li>
+<li><strong>name:</strong>  Type: string </li>
+<li><strong>protocol:</strong>           </li>
+<li><strong>region:</strong>  Type: string </li>
+<li><strong>template:</strong>  Type: string </li>
+<li><strong>tenant_id:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>salt:</strong>  Type: string </li>
+<li><strong>security:</strong>  Type: string </li>
+</ul>
+</li>
+<li><strong>region:</strong>  Type: string </li>
+<li><strong>sase_at:</strong>  Type: string </li>
+<li><strong>telemetry_region:</strong>  Type: string </li>
+<li><strong>tenant_id:</strong>  Type: string </li>
+<li><strong>tsg_id:</strong>  Type: string </li>
+<li><strong>tsg_instances:</strong>           <ul>
+<li><strong>app_id:</strong>  Type: string </li>
+<li><strong>region:</strong>  Type: string </li>
+<li><strong>tenant_id:</strong>  Type: string </li>
+</ul>
+</li>
+</ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.patch_api.Patch.tenants', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.patch_api.Patch.tenants" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.9&quot;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Patch tenant (v2.3)</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.10&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Patch tenant (v2.10)</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **data**: Dictionary containing data to PATCH as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.9)</span>
+<span class="sd">      - **api_version**: API version to use (default v2.10)</span>
 <span class="sd">      **Payload Attributes:** </span>
+<span class="sd">       - **:**  Type: string </span>
+<span class="sd">       - **address:**           </span>
+<span class="sd">           - **city:**  Type: string </span>
+<span class="sd">           - **country:**  Type: string </span>
+<span class="sd">           - **post_code:**  Type: string </span>
+<span class="sd">           - **state:**  Type: string </span>
+<span class="sd">           - **street:**  Type: string </span>
+<span class="sd">           - **street2:**  Type: string </span>
+<span class="sd">       - **adem_enabled:**  Type: boolean </span>
+<span class="sd">       - **app_acceleration_enabled:**  Type: boolean </span>
+<span class="sd">       - **canonical_name:**  Type: string </span>
+<span class="sd">       - **clients:**  [Type: string] </span>
+<span class="sd">       - **csp_tenant_id:**  Type: string </span>
+<span class="sd">       - **description:**  Type: string </span>
+<span class="sd">       - **disabled:**  Type: string </span>
+<span class="sd">       - **disabled_reason:**  Type: string </span>
+<span class="sd">       - **inactive:**  Type: string </span>
+<span class="sd">       - **inactive_reason:**  Type: string </span>
+<span class="sd">       - **ipv4_list:**           </span>
+<span class="sd">           - **ipv4:**  Type: string </span>
+<span class="sd">       - **is_esp:**  Type: boolean </span>
+<span class="sd">       - **is_oneapp_ready:**  Type: boolean </span>
+<span class="sd">       - **is_pa_iot_security_license:**  Type: boolean </span>
+<span class="sd">       - **is_sase_edge:**  Type: boolean </span>
+<span class="sd">       - **is_support:**  Type: boolean </span>
+<span class="sd">       - **name:**  Type: string </span>
+<span class="sd">       - **operator:**           </span>
+<span class="sd">           - **addresses:**           </span>
+<span class="sd">               - **city:**  Type: string </span>
+<span class="sd">               - **country:**  Type: string </span>
+<span class="sd">               - **post_code:**  Type: string </span>
+<span class="sd">               - **state:**  Type: string </span>
+<span class="sd">               - **street:**  Type: string </span>
+<span class="sd">               - **street2:**  Type: string </span>
+<span class="sd">           - **custom_roles:**           </span>
+<span class="sd">               - **custom_permissions:**           </span>
+<span class="sd">                   - **allowed_after_ms:**  Type: integer </span>
+<span class="sd">                   - **allowed_before_ms:**  Type: integer </span>
+<span class="sd">                   - **disabled:**  Type: boolean </span>
+<span class="sd">                   - **disabled_reason:**  Type: string </span>
+<span class="sd">                   - **disallow_permission:**  Type: boolean </span>
+<span class="sd">                   - **id:**  Type: string </span>
+<span class="sd">                   - **inactive:**  Type: boolean </span>
+<span class="sd">                   - **inactive_reason:**  Type: string </span>
+<span class="sd">                   - **region:**  Type: string </span>
+<span class="sd">                   - **tenant_id:**  Type: string </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">               - **disabled:**  Type: boolean </span>
+<span class="sd">               - **disallow_permissions:**           </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">               - **id:**  Type: string </span>
+<span class="sd">               - **inactive:**  Type: boolean </span>
+<span class="sd">               - **name:**  Type: string </span>
+<span class="sd">               - **permissions:**           </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">               - **roles:**           </span>
+<span class="sd">                   - **name:**  Type: string </span>
+<span class="sd">           - **disable_idp_login:**  Type: boolean </span>
+<span class="sd">           - **disabled:**  Type: boolean </span>
+<span class="sd">           - **disabled_reason:**  Type: string </span>
+<span class="sd">           - **email:**  Type: string </span>
+<span class="sd">           - **email_iam:**  Type: string </span>
+<span class="sd">           - **email_validated:**  Type: boolean </span>
+<span class="sd">           - **enable_session_ip_lock:**  Type: boolean </span>
+<span class="sd">           - **first_name:**  Type: string </span>
+<span class="sd">           - **from_esp:**  Type: boolean </span>
+<span class="sd">           - **from_esp_name:**  Type: string </span>
+<span class="sd">           - **from_esp_tenant_id:**  Type: string </span>
+<span class="sd">           - **id:**  Type: string </span>
+<span class="sd">           - **inactive:**  Type: boolean </span>
+<span class="sd">           - **inactive_reason:**  Type: string </span>
+<span class="sd">           - **ipv4_list:**           </span>
+<span class="sd">               - **ipv4:**  Type: string </span>
+<span class="sd">           - **is_locked:**  Type: boolean </span>
+<span class="sd">           - **is_system_owned:**  Type: boolean </span>
+<span class="sd">           - **last_login:**  Type: string </span>
+<span class="sd">           - **last_name:**  Type: string </span>
+<span class="sd">           - **linked_accounts:**           </span>
+<span class="sd">               - **disabled:**  Type: boolean </span>
+<span class="sd">               - **disabled_reason:**  Type: string </span>
+<span class="sd">               - **failed_login_attempts:**  Type: integer </span>
+<span class="sd">               - **id:**  Type: string </span>
+<span class="sd">               - **inactive:**  Type: boolean </span>
+<span class="sd">               - **inactive_reason:**  Type: string </span>
+<span class="sd">               - **provider_key:**  Type: string </span>
+<span class="sd">               - **provider_value:**  Type: string </span>
+<span class="sd">               - **provider_value_updated_on:**  Type: integer </span>
+<span class="sd">               - **region:**  Type: string </span>
+<span class="sd">               - **tenant_id:**  Type: string </span>
+<span class="sd">           - **migration_state:**           </span>
+<span class="sd">           - **name:**  Type: string </span>
+<span class="sd">           - **phone_numbers:**           </span>
+<span class="sd">               - **country_code:**  Type: integer </span>
+<span class="sd">               - **local_extension:**  Type: integer </span>
+<span class="sd">               - **number:**  Type: integer </span>
+<span class="sd">               - **types:**           </span>
+<span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">           - **region:**  Type: string </span>
+<span class="sd">           - **roles:**           </span>
+<span class="sd">               - **name:**  Type: string </span>
+<span class="sd">           - **secondary_emails:**           </span>
+<span class="sd">               - **email:**  Type: string </span>
+<span class="sd">           - **settings:**  Type: string </span>
+<span class="sd">           - **tenant_id:**  Type: string </span>
+<span class="sd">       - **pan_account_id:**  Type: string </span>
+<span class="sd">       - **pan_tenant_id:**  Type: string </span>
+<span class="sd">       - **password_policy:**           </span>
+<span class="sd">           - **enable_failed_login_attempts:**  Type: boolean </span>
+<span class="sd">           - **enable_failed_login_time_delay:**  Type: boolean </span>
+<span class="sd">           - **enable_maximum_password_length:**  Type: boolean </span>
+<span class="sd">           - **enable_minimum_password_length:**  Type: boolean </span>
+<span class="sd">           - **enable_password_aging:**  Type: boolean </span>
+<span class="sd">           - **enable_password_identity_difference:**  Type: boolean </span>
+<span class="sd">           - **enable_password_no_reuse_count:**  Type: boolean </span>
+<span class="sd">           - **enable_session_ip_lock:**  Type: boolean </span>
+<span class="sd">           - **enable_two_lower_case_letters:**  Type: boolean </span>
+<span class="sd">           - **enable_two_numbers:**  Type: boolean </span>
+<span class="sd">           - **enable_two_special_characters:**  Type: boolean </span>
+<span class="sd">           - **enable_two_upper_case_letters:**  Type: boolean </span>
+<span class="sd">           - **failed_login_attempts:**  Type: integer </span>
+<span class="sd">           - **maximum_password_length:**  Type: integer </span>
+<span class="sd">           - **minimum_password_length:**  Type: integer </span>
+<span class="sd">           - **password_aging_days:**  Type: integer </span>
+<span class="sd">           - **password_aging_notification:**  Type: integer </span>
+<span class="sd">           - **password_no_reuse_count:**  Type: integer </span>
+<span class="sd">           - **special_characters:**  Type: string </span>
+<span class="sd">           - **special_characters_regex:**  Type: string </span>
+<span class="sd">       - **phone_numbers:**           </span>
+<span class="sd">           - **country_code:**  Type: integer </span>
+<span class="sd">           - **local_extension:**  Type: integer </span>
+<span class="sd">           - **number:**  Type: integer </span>
+<span class="sd">           - **types:**           </span>
+<span class="sd">               - **value:**  Type: string </span>
+<span class="sd">       - **prisma_access_tenant_id:**  Type: string </span>
+<span class="sd">       - **provider_data:**           </span>
+<span class="sd">           - **certificate:**           </span>
+<span class="sd">               - **certificate:**  Type: string </span>
+<span class="sd">               - **certificate_expiry_utc:**  Type: integer </span>
+<span class="sd">               - **certificate_type:**  Type: string </span>
+<span class="sd">               - **disabled:**  Type: boolean </span>
+<span class="sd">               - **disabled_reason:**  Type: string </span>
+<span class="sd">               - **id:**  Type: string </span>
+<span class="sd">               - **inactive:**  Type: boolean </span>
+<span class="sd">               - **inactive_reason:**  Type: string </span>
+<span class="sd">               - **issued_by:**           </span>
+<span class="sd">                   - **common_name:**  Type: string </span>
+<span class="sd">                   - **country:**  Type: string </span>
+<span class="sd">                   - **location:**  Type: string </span>
+<span class="sd">                   - **organization:**  Type: string </span>
+<span class="sd">                   - **organization_unit:**  Type: string </span>
+<span class="sd">                   - **state:**  Type: string </span>
+<span class="sd">               - **issued_to:**           </span>
+<span class="sd">                   - **common_name:**  Type: string </span>
+<span class="sd">                   - **country:**  Type: string </span>
+<span class="sd">                   - **location:**  Type: string </span>
+<span class="sd">                   - **organization:**  Type: string </span>
+<span class="sd">                   - **organization_unit:**  Type: string </span>
+<span class="sd">                   - **state:**  Type: string </span>
+<span class="sd">               - **parent_id:** </span>
+<span class="sd">               - **region:**  Type: string </span>
+<span class="sd">               - **serial_number:**  Type: string </span>
+<span class="sd">               - **tenant_id:**  Type: string </span>
+<span class="sd">               - **version:**  Type: string </span>
+<span class="sd">           - **password_hash:**  Type: string </span>
+<span class="sd">           - **provider:**           </span>
+<span class="sd">               - **canonical_name:**  Type: string </span>
+<span class="sd">               - **description:**  Type: string </span>
+<span class="sd">               - **disabled:**  Type: boolean </span>
+<span class="sd">               - **disabled_reason:**  Type: string </span>
+<span class="sd">               - **id:**  Type: string </span>
+<span class="sd">               - **inactive:**  Type: boolean </span>
+<span class="sd">               - **inactive_reason:**  Type: string </span>
+<span class="sd">               - **map_external_group:**  Type: object </span>
+<span class="sd">               - **name:**  Type: string </span>
+<span class="sd">               - **protocol:**           </span>
+<span class="sd">               - **region:**  Type: string </span>
+<span class="sd">               - **template:**  Type: string </span>
+<span class="sd">               - **tenant_id:**  Type: string </span>
+<span class="sd">           - **salt:**  Type: string </span>
+<span class="sd">           - **security:**  Type: string </span>
+<span class="sd">       - **region:**  Type: string </span>
+<span class="sd">       - **sase_at:**  Type: string </span>
+<span class="sd">       - **telemetry_region:**  Type: string </span>
+<span class="sd">       - **tenant_id:**  Type: string </span>
+<span class="sd">       - **tsg_id:**  Type: string </span>
+<span class="sd">       - **tsg_instances:**           </span>
+<span class="sd">           - **app_id:**  Type: string </span>
+<span class="sd">           - **region:**  Type: string </span>
+<span class="sd">           - **tenant_id:**  Type: string </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>

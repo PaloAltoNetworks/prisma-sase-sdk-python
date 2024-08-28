@@ -3210,6 +3210,34 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
+    def interfaces_operations(self, site_id, element_id, interface_id, data, api_version="v2.0"):
+        """
+        POST Interfaces_Operations API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **interface_id**: Interface ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:**
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/interfaces/{}/operations".format(api_version,
+                                                                                                   site_id,
+                                                                                                   element_id,
+                                                                                                   interface_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def interfaces_query(self, data, api_version="v4.19"):
         """
         Queries db for limit number of interfaces that match query params. (v4.19)

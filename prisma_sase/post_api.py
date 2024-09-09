@@ -10108,7 +10108,7 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def spokeclusters_ops(self, site_id, spokecluster_id, data, api_version="v2.0"):
+    def spokeclusters_operations(self, site_id, spokecluster_id, data, api_version="v2.0"):
         """
         Handle operations on spokecluster. (v2.0)
 
@@ -11708,8 +11708,8 @@ class Post(object):
     ops_interfaces = events_operations
     """ Backwards-compatibility alias of `ops_interfaces` to `events_operations`"""
 
-    ops_spokeclusters = spokeclusters_ops
-    """ Backwards-compatibility alias of `ops_spokeclusters` to `spokeclusters_ops`"""
+    ops_spokeclusters = spokeclusters_operations
+    """ Backwards-compatibility alias of `ops_spokeclusters` to `spokeclusters_operations`"""
 
     ops_vfflicenses = vfflicenses_operations
     """ Backwards-compatibility alias of `ops_vfflicenses` to `vfflicenses_operations`"""

@@ -2858,7 +2858,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.post_api.Post.software_status_query">software_status_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.softwarehistory_query">softwarehistory_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.spokeclusters">spokeclusters</a></li>
-    <li class="mono"><a href="#prisma_sase.post_api.Post.spokeclusters_ops">spokeclusters_ops</a></li>
+    <li class="mono"><a href="#prisma_sase.post_api.Post.spokeclusters_operations">spokeclusters_operations</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.spokeclusters_query">spokeclusters_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.staticroutes">staticroutes</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.status_query">status_query</a></li>
@@ -13039,7 +13039,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">spokeclusters_ops</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">spokecluster_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">spokeclusters_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">spokecluster_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Handle operations on spokecluster. (v2.0)</span>
 
@@ -14639,8 +14639,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">ops_interfaces</span> <span class="o">=</span> <span class="n">events_operations</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `ops_interfaces` to `events_operations`&quot;&quot;&quot;</span>
 
-    <span class="n">ops_spokeclusters</span> <span class="o">=</span> <span class="n">spokeclusters_ops</span>
-    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `ops_spokeclusters` to `spokeclusters_ops`&quot;&quot;&quot;</span>
+    <span class="n">ops_spokeclusters</span> <span class="o">=</span> <span class="n">spokeclusters_operations</span>
+    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `ops_spokeclusters` to `spokeclusters_operations`&quot;&quot;&quot;</span>
 
     <span class="n">ops_vfflicenses</span> <span class="o">=</span> <span class="n">vfflicenses_operations</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `ops_vfflicenses` to `vfflicenses_operations`&quot;&quot;&quot;</span>
@@ -25250,7 +25250,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">spokeclusters_ops</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">spokecluster_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">spokeclusters_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">spokecluster_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Handle operations on spokecluster. (v2.0)</span>
 
@@ -26850,8 +26850,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">ops_interfaces</span> <span class="o">=</span> <span class="n">events_operations</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `ops_interfaces` to `events_operations`&quot;&quot;&quot;</span>
 
-    <span class="n">ops_spokeclusters</span> <span class="o">=</span> <span class="n">spokeclusters_ops</span>
-    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `ops_spokeclusters` to `spokeclusters_ops`&quot;&quot;&quot;</span>
+    <span class="n">ops_spokeclusters</span> <span class="o">=</span> <span class="n">spokeclusters_operations</span>
+    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `ops_spokeclusters` to `spokeclusters_operations`&quot;&quot;&quot;</span>
 
     <span class="n">ops_vfflicenses</span> <span class="o">=</span> <span class="n">vfflicenses_operations</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `ops_vfflicenses` to `vfflicenses_operations`&quot;&quot;&quot;</span>
@@ -28033,7 +28033,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
             
   
-    <div class="desc"><p>Backwards-compatibility alias of <code>ops_spokeclusters</code> to <code>spokeclusters_ops</code></p></div>
+    <div class="desc"><p>Backwards-compatibility alias of <code>ops_spokeclusters</code> to <code>spokeclusters_operations</code></p></div>
   <div class="source_cont">
 </div>
 
@@ -50145,9 +50145,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   </div>
   
             
-  <div class="item" id="prisma_sase.post_api.Post.spokeclusters_ops">
+  <div class="item" id="prisma_sase.post_api.Post.spokeclusters_operations">
     <div class="name def">
-    <p>def <span class="ident">spokeclusters_ops</span>(</p><p>self, site_id, spokecluster_id, data, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">spokeclusters_operations</span>(</p><p>self, site_id, spokecluster_id, data, api_version=&#39;v2.0&#39;)</p>
     </div>
     
 
@@ -50167,9 +50167,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.post_api.Post.spokeclusters_ops', this);">Show source &equiv;</a></p>
-  <div id="source-prisma_sase.post_api.Post.spokeclusters_ops" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">spokeclusters_ops</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">spokecluster_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.post_api.Post.spokeclusters_operations', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.post_api.Post.spokeclusters_operations" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">spokeclusters_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">spokecluster_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Handle operations on spokecluster. (v2.0)</span>
 <span class="sd">      **Parameters:**:</span>

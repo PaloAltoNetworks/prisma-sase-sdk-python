@@ -87,30 +87,6 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def allocate_to_shell(self, machine_id, data, api_version="v2.0"):
-        """
-        POST Allocate_To_Shell API Function
-
-          **Parameters:**:
-
-          - **machine_id**: Machine ID
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/machines/{}/allocate_to_shell".format(api_version,
-                                                                                   machine_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
     def anynetlinks_correlationevents_query(self, data, api_version="v2.1"):
         """
         POST Anynetlinks_Correlationevents_Query API Function
@@ -4081,6 +4057,30 @@ class Post(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api/machine_upgrade/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def machines_allocate_to_shell(self, machine_id, data, api_version="v2.0"):
+        """
+        POST Machines_Allocate_To_Shell API Function
+
+          **Parameters:**:
+
+          - **machine_id**: Machine ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:**
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/machines/{}/allocate_to_shell".format(api_version,
+                                                                                   machine_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -11555,6 +11555,9 @@ class Post(object):
     aggregates_monitor = monitor_aggregates
     """ Backwards-compatibility alias of `aggregates_monitor` to `monitor_aggregates`"""
 
+    allocate_to_shell = machines_allocate_to_shell
+    """ Backwards-compatibility alias of `allocate_to_shell` to `machines_allocate_to_shell`"""
+
     anomaly_aiops_monitor = monitor_aiops_anomaly
     """ Backwards-compatibility alias of `anomaly_aiops_monitor` to `monitor_aiops_anomaly`"""
 
@@ -11705,8 +11708,8 @@ class Post(object):
     ops_events = events_operations
     """ Backwards-compatibility alias of `ops_events` to `events_operations`"""
 
-    ops_interfaces = events_operations
-    """ Backwards-compatibility alias of `ops_interfaces` to `events_operations`"""
+    ops_interfaces = interfaces_operations
+    """ Backwards-compatibility alias of `ops_interfaces` to `interfaces_operations`"""
 
     ops_spokeclusters = spokeclusters_operations
     """ Backwards-compatibility alias of `ops_spokeclusters` to `spokeclusters_operations`"""

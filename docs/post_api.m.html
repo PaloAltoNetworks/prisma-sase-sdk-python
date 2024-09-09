@@ -2573,7 +2573,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
           
   <ul>
     <li class="mono"><a href="#prisma_sase.post_api.Post.activeuserips_query">activeuserips_query</a></li>
-    <li class="mono"><a href="#prisma_sase.post_api.Post.allocate_to_shell">allocate_to_shell</a></li>
+    <li class="mono"><a href="#prisma_sase.post_api.Post.machines_allocate_to_shell">machines_allocate_to_shell</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.anynetlinks_correlationevents_query">anynetlinks_correlationevents_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.apnprofiles">apnprofiles</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.apnprofiles_query">apnprofiles_query</a></li>
@@ -3018,9 +3018,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">allocate_to_shell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">machine_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">machines_allocate_to_shell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">machine_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        POST Allocate_To_Shell API Function</span>
+<span class="sd">        POST Machines_Allocate_To_Shell API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
@@ -3036,7 +3036,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/machines/</span><span class="si">{}</span><span class="s2">/allocate_to_shell&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/machines/</span><span class="si">{}</span><span class="s2">/machines_allocate_to_shell&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
                                                                                    <span class="n">machine_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
@@ -15231,7 +15231,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="k">def</span> <span class="nf">allocate_to_shell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">machine_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        POST Allocate_To_Shell API Function</span>
+<span class="sd">        POST Machines_Allocate_To_Shell API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
@@ -15247,7 +15247,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/machines/</span><span class="si">{}</span><span class="s2">/allocate_to_shell&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/machines/</span><span class="si">{}</span><span class="s2">/machines_allocate_to_shell&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
                                                                                    <span class="n">machine_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
@@ -29967,15 +29967,15 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   </div>
   
             
-  <div class="item" id="prisma_sase.post_api.Post.allocate_to_shell">
+  <div class="item" id="prisma_sase.post_api.Post.machines_allocate_to_shell">
     <div class="name def">
-    <p>def <span class="ident">allocate_to_shell</span>(</p><p>self, machine_id, data, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">machines_allocate_to_shell</span>(</p><p>self, machine_id, data, api_version=&#39;v2.0&#39;)</p>
     </div>
     
 
     
   
-    <div class="desc"><p>POST Allocate_To_Shell API Function</p>
+    <div class="desc"><p>POST Machines_Allocate_To_Shell API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
 <li><strong>machine_id</strong>: Machine ID</li>
@@ -29985,11 +29985,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <p><strong>Payload Attributes:</strong> </p>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.post_api.Post.allocate_to_shell', this);">Show source &equiv;</a></p>
-  <div id="source-prisma_sase.post_api.Post.allocate_to_shell" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">allocate_to_shell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">machine_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.post_api.Post.machines_allocate_to_shell', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.post_api.Post.machines_allocate_to_shell" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">machines_allocate_to_shell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">machine_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    POST Allocate_To_Shell API Function</span>
+<span class="sd">    POST Machines_Allocate_To_Shell API Function</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **machine_id**: Machine ID</span>
 <span class="sd">      - **data**: Dictionary containing data to POST as JSON</span>
@@ -29998,7 +29998,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/machines/</span><span class="si">{}</span><span class="s2">/allocate_to_shell&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/machines/</span><span class="si">{}</span><span class="s2">/machines_allocate_to_shell&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
                                                                                <span class="n">machine_id</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>

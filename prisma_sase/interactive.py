@@ -773,6 +773,8 @@ class Interactive(object):
             self._parent_class._user_id = self._parent_class.operator_id
             self._parent_class.roles = profile.sdk_content.get('roles', [])
             self._parent_class.token_session = profile.sdk_content.get('token_session')
+            if self._parent_class.controller_region is None:
+                self._parent_class.controller_region = profile.sdk_content.get('region')
 
             return True
 

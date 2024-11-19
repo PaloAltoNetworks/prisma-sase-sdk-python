@@ -136,16 +136,16 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def bgppeers(self, site_id, element_id, bgppeer_id, api_version="v2.5"):
+    def bgppeers(self, site_id, element_id, bgppeer_id, api_version="v2.6"):
         """
-        Delete BGP Peer config (v2.5)
+        Delete BGP Peer config (v2.6)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **bgppeer_id**: BGP Peer ID
-          - **api_version**: API version to use (default v2.5)
+          - **api_version**: API version to use (default v2.6)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -209,7 +209,7 @@ class Delete(object):
           **Parameters:**:
 
           - **site_id**: Site ID
-          - **demsiteconfig_id**: DEM site configuration ID
+          - **demsiteconfig_id**: DEM Site Config ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -358,7 +358,7 @@ class Delete(object):
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
-          - **dnsservice_id**: DNS Service ID
+          - **dnsservice_id**: DNS Service ID 
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -512,15 +512,15 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def elementshells(self, site_id, elementshell_id, api_version="v2.0"):
+    def elementshells(self, site_id, elementshell_id, api_version="v2.1"):
         """
-        Delete an element shell (v2.0)
+        Delete an element shell (v2.1)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **elementshell_id**: Element Shell ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -534,16 +534,16 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def elementshells_interfaces(self, site_id, elementshell_id, interface_id, api_version="v2.1"):
+    def elementshells_interfaces(self, site_id, elementshell_id, interface_id, api_version="v2.3"):
         """
-        Delete an element shell interface (v2.1)
+        Delete an element shell interface (v2.3)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **elementshell_id**: Element Shell ID
           - **interface_id**: Interface ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.3)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -770,16 +770,16 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def interfaces(self, site_id, element_id, interface_id, api_version="v4.19"):
+    def interfaces(self, site_id, element_id, interface_id, api_version="v4.20"):
         """
-        Delete a Interface (v4.19)
+        Delete a Interface (v4.20)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
-          - **api_version**: API version to use (default v4.19)
+          - **api_version**: API version to use (default v4.20)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -918,14 +918,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def ipsecprofiles(self, ipsecprofile_id, api_version="v2.1"):
+    def ipsecprofiles(self, ipsecprofile_id, api_version="v2.2"):
         """
-        Delete a IPSEC Profile (v2.1)
+        Delete a IPSEC Profile (v2.2)
 
           **Parameters:**:
 
           - **ipsecprofile_id**: IPSEC Profile ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1252,15 +1252,15 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id, api_version="v2.3"):
+    def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id, api_version="v2.4"):
         """
-        Delete network policy rule of tenant. (v2.3)
+        Delete network policy rule of tenant. (v2.4)
 
           **Parameters:**:
 
           - **networkpolicyset_id**: Network Policy Set ID
           - **networkpolicyrule_id**: Network Policy Rule ID
-          - **api_version**: API version to use (default v2.3)
+          - **api_version**: API version to use (default v2.4)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1354,15 +1354,15 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, api_version="v2.1"):
+    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, api_version="v2.2"):
         """
-        Delete an existing Security Policy V2 Rule under a policy set (v2.1)
+        Delete an existing Security Policy V2 Rule under a policy set (v2.2)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
           - **ngfwsecuritypolicyrule_id**: NGFW Security Policy Rule ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1446,7 +1446,7 @@ class Delete(object):
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
-          - **ospfconfig_id**: OSPF configuration ID
+          - **ospfconfig_id**: OSPF Config ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -1482,6 +1482,50 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def pathprefixdistributionfilterassociation(self, site_id, pathprefixdistributionfilterassociation_id, api_version="v2.0"):
+        """
+        DELETE Pathprefixdistributionfilterassociation API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **pathprefixdistributionfilterassociation_id**: Path Prefix Distribution Filter Association ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/pathprefixdistributionfilterassociation/{}".format(api_version,
+                                                                                                         site_id,
+                                                                                                         pathprefixdistributionfilterassociation_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def pathprefixdistributionfilters(self, site_id, pathprefixdistributionfilter_id, api_version="v2.0"):
+        """
+        DELETE Pathprefixdistributionfilters API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **pathprefixdistributionfilter_id**: Path Prefix Distribution Filter ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/pathprefixdistributionfilters/{}".format(api_version,
+                                                                                               site_id,
+                                                                                               pathprefixdistributionfilter_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def perfmgmtpolicysets(self, perfmgmtpolicyset_id, api_version="v2.0"):
         """
         Delete a PERFMGMT Policy Set (v2.0)
@@ -1502,15 +1546,15 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, api_version="v2.1"):
+    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, api_version="v2.2"):
         """
-        Delete PERFMGMT policy rule of tenant V2.1. (v2.1)
+        Delete PERFMGMT policy rule of tenant V2.2 (v2.2)
 
           **Parameters:**:
 
           - **perfmgmtpolicyset_id**: Performance Management Policy Set ID
           - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1550,7 +1594,7 @@ class Delete(object):
 
           **Parameters:**:
 
-          - **perfmgmtthresholdprofile_id**: Performance Management Policy Threshold Profile ID
+          - **perfmgmtthresholdprofile_id**: Performance Management Threshold Profile ID
           - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -1606,6 +1650,28 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def prefixdistributionspokelists(self, site_id, prefixdistributionspokelist_id, api_version="v2.0"):
+        """
+        DELETE Prefixdistributionspokelists API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **prefixdistributionspokelist_id**: Prefix Distribution Spoke List ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prefixdistributionspokelists/{}".format(api_version,
+                                                                                              site_id,
+                                                                                              prefixdistributionspokelist_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def prefixfilters(self, site_id, prefixfilter_id, api_version="v2.0"):
         """
         Delete an existing security prefix filter (v2.0)
@@ -1648,15 +1714,15 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id, api_version="v2.1"):
+    def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id, api_version="v2.2"):
         """
-        Delete priority policy rule of tenant. (v2.1)
+        Delete priority policy rule of tenant. (v2.2)
 
           **Parameters:**:
 
           - **prioritypolicyset_id**: Priority Policy Set ID
           - **prioritypolicyrule_id**: Priority Policy Rule ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1754,13 +1820,13 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def prismasase_connections_configs(self, api_version="v3.0"):
+    def prismasase_connections_configs(self, api_version="v3.1"):
         """
         DELETE Prismasase_Connections_Configs API Function
 
           **Parameters:**:
 
-          - **api_version**: API version to use (default v3.0)
+          - **api_version**: API version to use (default v3.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1778,7 +1844,7 @@ class Delete(object):
 
           **Parameters:**:
 
-          - **probeconfig_id**: Probe configuration ID
+          - **probeconfig_id**: Probe Config ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -1798,7 +1864,7 @@ class Delete(object):
 
           **Parameters:**:
 
-          - **probeprofile_id**: Probe profile ID
+          - **probeprofile_id**: Probe Profile ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2014,14 +2080,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def securityzones(self, securityzone_id, api_version="v2.0"):
+    def securityzones(self, securityzone_id, api_version="v2.1"):
         """
-        Delete an existing security zone (v2.0)
+        Delete an existing security zone (v2.1)
 
           **Parameters:**:
 
           - **securityzone_id**: Security Zone (ZBFW) ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2226,14 +2292,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def sites(self, site_id, api_version="v4.11"):
+    def sites(self, site_id, api_version="v4.12"):
         """
-        Delete a site (v4.11)
+        Delete a site (v4.12)
 
           **Parameters:**:
 
           - **site_id**: Site ID
-          - **api_version**: API version to use (default v4.11)
+          - **api_version**: API version to use (default v4.12)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2406,6 +2472,50 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def tacacs_plus_profiles(self, tacacs_plus_profile_id, api_version="v2.0"):
+        """
+        DELETE Tacacs_Plus_Profiles API Function
+
+          **Parameters:**:
+
+          - **tacacs_plus_profile_id**: Tacacs Plus Profile ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/tacacs_plus_profiles/{}".format(api_version,
+                                                                             tacacs_plus_profile_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def tacacs_plus_servers(self, site_id, element_id, tacacs_plus_server_id, api_version="v2.0"):
+        """
+        DELETE Tacacs_Plus_Servers API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **tacacs_plus_server_id**: Tacacs Plus Server_id
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/tacacs_plus_servers/{}".format(api_version,
+                                                                                                 site_id,
+                                                                                                 element_id,
+                                                                                                 tacacs_plus_server_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def templates_ntp(self, ntp_id, api_version="v2.0"):
         """
         Delete an existing NTP Template (v2.0)
@@ -2426,14 +2536,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def tenant_anynetlinks(self, anynetlink_id, api_version="v3.4"):
+    def tenant_anynetlinks(self, anynetlink_id, api_version="v4.0"):
         """
         DELETE Tenant_Anynetlinks API Function
 
           **Parameters:**:
 
           - **anynetlink_id**: Anynet (Secure Fabric) Link ID
-          - **api_version**: API version to use (default v3.4)
+          - **api_version**: API version to use (default v4.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2562,6 +2672,26 @@ class Delete(object):
 
         url = str(cur_ctlr) + "/sdwan/{}/api/tenantpassageconfigs/{}".format(api_version,
                                                                              tenantpassageconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def tenants_certificates(self, certificate_id, api_version="v2.0"):
+        """
+        DELETE Tenants_Certificates API Function
+
+          **Parameters:**:
+
+          - **certificate_id**: Certificate ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/certificates/{}".format(api_version,
+                                                                     certificate_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
@@ -2736,6 +2866,9 @@ class Delete(object):
 
     anynetlinks_t = tenant_anynetlinks
     """ Backwards-compatibility alias of `anynetlinks_t` to `tenant_anynetlinks`"""
+
+    certificates_tenants = tenants_certificates
+    """ Backwards-compatibility alias of `certificates_tenants` to `tenants_certificates`"""
 
     configs_prismasase_connections = prismasase_connections_configs
     """ Backwards-compatibility alias of `configs_prismasase_connections` to `prismasase_connections_configs`"""

@@ -343,16 +343,16 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def bgppeers(self, site_id, element_id, bgppeer_id=None, api_version="v2.5"):
+    def bgppeers(self, site_id, element_id, bgppeer_id=None, api_version="v2.6"):
         """
-        Get all BGP Peer configs (v2.5)
+        Get all BGP Peer configs (v2.6)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **bgppeer_id**: (optional) BGP Peer ID
-          - **api_version**: API version to use (default v2.5)
+          - **api_version**: API version to use (default v2.6)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -719,7 +719,7 @@ class Get(object):
           **Parameters:**:
 
           - **site_id**: Site ID
-          - **demsiteconfig_id**: (optional) DEM site configuration ID
+          - **demsiteconfig_id**: (optional) DEM Site Config ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -760,32 +760,6 @@ class Get(object):
             url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/demstatus/{}".format(api_version,
                                                                                site_id,
                                                                                demstatus_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "get")
-
-    def deviceidconfigs(self, site_id, deviceidconfig_id=None, api_version="v2.1"):
-        """
-        Get device id site configs (v2.1)
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **deviceidconfig_id**: (optional) Device Id Config ID
-          - **api_version**: API version to use (default v2.1)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        if not deviceidconfig_id:
-            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs".format(api_version,
-                                                                                  site_id)
-        else:
-            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}".format(api_version,
-                                                                                     site_id,
-                                                                                     deviceidconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
@@ -932,7 +906,7 @@ class Get(object):
 
           **Parameters:**:
 
-          - **directoryusergroup_id**: (optional) Directory User Group ID
+          - **directoryusergroup_id**: (optional) Directory User Group Id
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -1026,7 +1000,7 @@ class Get(object):
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
-          - **dnsservice_id**: (optional) DNS Service ID
+          - **dnsservice_id**: (optional) DNS Service ID 
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -1312,14 +1286,14 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def element_status(self, element_id, api_version="v2.4"):
+    def element_status(self, element_id, api_version="v2.5"):
         """
-        Get specific element status for a tenant (v2.4)
+        Get specific element status for a tenant (v2.5)
 
           **Parameters:**:
 
           - **element_id**: Element (Device) ID
-          - **api_version**: API version to use (default v2.4)
+          - **api_version**: API version to use (default v2.5)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1422,14 +1396,14 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def elements(self, element_id=None, api_version="v3.1"):
+    def elements(self, element_id=None, api_version="v3.2"):
         """
-        Get Elements of a tenant (v3.1)
+        Get Elements of a tenant (v3.2)
 
           **Parameters:**:
 
           - **element_id**: (optional) Element (Device) ID
-          - **api_version**: API version to use (default v3.1)
+          - **api_version**: API version to use (default v3.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1474,15 +1448,15 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def elementshells(self, site_id, elementshell_id=None, api_version="v2.0"):
+    def elementshells(self, site_id, elementshell_id=None, api_version="v2.1"):
         """
-        Get All Element Shells (v2.0)
+        Get All Element Shells (v2.1)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **elementshell_id**: (optional) Element Shell ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1522,16 +1496,16 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def elementshells_interfaces(self, site_id, elementshell_id, interface_id=None, api_version="v2.1"):
+    def elementshells_interfaces(self, site_id, elementshell_id, interface_id=None, api_version="v2.3"):
         """
-        Get all Element Shell Interfaces (v2.1)
+        Get all Element Shell Interfaces (v2.3)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **elementshell_id**: Element Shell ID
           - **interface_id**: (optional) Interface ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.3)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2047,16 +2021,16 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def interfaces(self, site_id, element_id, interface_id=None, api_version="v4.19"):
+    def interfaces(self, site_id, element_id, interface_id=None, api_version="v4.20"):
         """
-        Get all Interfaces (v4.19)
+        Get all Interfaces (v4.20)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **interface_id**: (optional) Interface ID
-          - **api_version**: API version to use (default v4.19)
+          - **api_version**: API version to use (default v4.20)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2124,16 +2098,16 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def interfaces_status(self, site_id, element_id, interface_id, api_version="v3.7"):
+    def interfaces_status(self, site_id, element_id, interface_id, api_version="v3.8"):
         """
-        Get interface status (v3.7)
+        Get interface status (v3.8)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
-          - **api_version**: API version to use (default v3.7)
+          - **api_version**: API version to use (default v3.8)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2144,6 +2118,67 @@ class Get(object):
                                                                                                site_id,
                                                                                                element_id,
                                                                                                interface_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def iotdevicemappings(self, iotdevicemapping_id, api_version="v2.0"):
+        """
+        GET Iotdevicemappings API Function
+
+          **Parameters:**:
+
+          - **iotdevicemapping_id**: IOT Device Mapping ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/iotdevicemappings/{}".format(api_version,
+                                                                          iotdevicemapping_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def iotdictionary(self, iotdictionary_id=None, api_version="v2.0"):
+        """
+        GET Iotdictionary API Function
+
+          **Parameters:**:
+
+          - **iotdictionary_id**: (optional) IOT Dictionary ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not iotdictionary_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/iotdictionary".format(api_version)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/iotdictionary/{}".format(api_version,
+                                                                          iotdictionary_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def iotservices(self, api_version="v2.0"):
+        """
+        GET Iotservices API Function
+
+          **Parameters:**:
+
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/iotservices".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
@@ -2292,14 +2327,14 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def ipsecprofiles(self, ipsecprofile_id=None, api_version="v2.1"):
+    def ipsecprofiles(self, ipsecprofile_id=None, api_version="v2.2"):
         """
-        Get IPSECProfileList (v2.1)
+        Get IPSECProfileList (v2.2)
 
           **Parameters:**:
 
           - **ipsecprofile_id**: (optional) IPSEC Profile ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2846,14 +2881,14 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_metrics(self, metric_id, api_version="v2.5"):
+    def monitor_metrics(self, metric_id, api_version="v2.6"):
         """
         GET Monitor_Metrics API Function
 
           **Parameters:**:
 
           - **metric_id**: Metric ID
-          - **api_version**: API version to use (default v2.5)
+          - **api_version**: API version to use (default v2.6)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2886,13 +2921,13 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_object_stats(self, api_version="v2.6"):
+    def monitor_object_stats(self, api_version="v2.7"):
         """
         GET Monitor_Object_Stats API Function
 
           **Parameters:**:
 
-          - **api_version**: API version to use (default v2.6)
+          - **api_version**: API version to use (default v2.7)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -3458,15 +3493,15 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id=None, api_version="v2.3"):
+    def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id=None, api_version="v2.4"):
         """
-        Get network policy rules of tenant (v2.3)
+        Get network policy rules of tenant (v2.4)
 
           **Parameters:**:
 
           - **networkpolicyset_id**: Network Policy Set ID
           - **networkpolicyrule_id**: (optional) Network Policy Rule ID
-          - **api_version**: API version to use (default v2.3)
+          - **api_version**: API version to use (default v2.4)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -3596,15 +3631,15 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id=None, api_version="v2.1"):
+    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id=None, api_version="v2.2"):
         """
-        Get all Security Policy V2 Rules under a policy set (v2.1)
+        Get all Security Policy V2 Rules under a policy set (v2.2)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
           - **ngfwsecuritypolicyrule_id**: (optional) NGFW Security Policy Rule ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -3668,15 +3703,15 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def ntp(self, element_id, ntp_id=None, api_version="v2.0"):
+    def ntp(self, element_id, ntp_id=None, api_version="v2.1"):
         """
-        Get all element NTP (v2.0)
+        Get all element NTP (v2.1)
 
           **Parameters:**:
 
           - **element_id**: Element (Device) ID
           - **ntp_id**: (optional) NTP Configuration ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -3778,6 +3813,54 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def ospfconfig_ospfdiscoveredneighbors(self, site_id, element_id, ospfconfig_id, api_version="v2.0"):
+        """
+        GET Ospfconfig_Ospfdiscoveredneighbors API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **ospfconfig_id**: OSPF Config ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/ospfconfigs/{}/ospfdiscoveredneighbors".format(api_version,
+                                                                                                                 site_id,
+                                                                                                                 element_id,
+                                                                                                                 ospfconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def ospfconfig_ospfreachableprefixes(self, site_id, element_id, ospfconfig_id, api_version="v2.0"):
+        """
+        GET Ospfconfig_Ospfreachableprefixes API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **ospfconfig_id**: OSPF Config ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/ospfconfigs/{}/ospfreachableprefixes".format(api_version,
+                                                                                                               site_id,
+                                                                                                               element_id,
+                                                                                                               ospfconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def ospfconfigs(self, site_id, element_id, ospfconfig_id=None, api_version="v2.0"):
         """
         Get all OSPF configs (v2.0)
@@ -3786,7 +3869,7 @@ class Get(object):
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
-          - **ospfconfig_id**: (optional) OSPF configuration ID
+          - **ospfconfig_id**: (optional) OSPF Config ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -3807,54 +3890,6 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def ospfconfigs_ospfdiscoveredneighbors(self, site_id, element_id, ospfconfig_id, api_version="v2.0"):
-        """
-        GET Ospfconfigs_Ospfdiscoveredneighbors API Function
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **element_id**: Element (Device) ID
-          - **ospfconfig_id**: OSPF configuration ID
-          - **api_version**: API version to use (default v2.0)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/ospfconfigs/{}/ospfdiscoveredneighbors".format(api_version,
-                                                                                                                 site_id,
-                                                                                                                 element_id,
-                                                                                                                 ospfconfig_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "get")
-
-    def ospfconfigs_ospfreachableprefixes(self, site_id, element_id, ospfconfig_id, api_version="v2.0"):
-        """
-        GET Ospfconfigs_Ospfreachableprefixes API Function
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **element_id**: Element (Device) ID
-          - **ospfconfig_id**: OSPF configuration ID
-          - **api_version**: API version to use (default v2.0)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/ospfconfigs/{}/ospfreachableprefixes".format(api_version,
-                                                                                                               site_id,
-                                                                                                               element_id,
-                                                                                                               ospfconfig_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "get")
-
     def ospfglobalconfigs(self, site_id, element_id, ospfglobalconfig_id=None, api_version="v2.0"):
         """
         Get all OSPF configs from NB (v2.0)
@@ -3863,7 +3898,7 @@ class Get(object):
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
-          - **ospfglobalconfig_id**: (optional) OSPF global configuration ID
+          - **ospfglobalconfig_id**: (optional) OSPF Global Config ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -3943,6 +3978,80 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def pathprefixdistributionfilterassociation(self, site_id, pathprefixdistributionfilterassociation_id=None, api_version="v2.0"):
+        """
+        GET Pathprefixdistributionfilterassociation API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **pathprefixdistributionfilterassociation_id**: (optional) Path Prefix Distribution Filter Association ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not pathprefixdistributionfilterassociation_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/pathprefixdistributionfilterassociation".format(api_version,
+                                                                                                          site_id)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/pathprefixdistributionfilterassociation/{}".format(api_version,
+                                                                                                             site_id,
+                                                                                                             pathprefixdistributionfilterassociation_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def pathprefixdistributionfilters(self, site_id, pathprefixdistributionfilter_id=None, api_version="v2.0"):
+        """
+        GET Pathprefixdistributionfilters API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **pathprefixdistributionfilter_id**: (optional) Path Prefix Distribution Filter ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not pathprefixdistributionfilter_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/pathprefixdistributionfilters".format(api_version,
+                                                                                                site_id)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/pathprefixdistributionfilters/{}".format(api_version,
+                                                                                                   site_id,
+                                                                                                   pathprefixdistributionfilter_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def peersite_pathprefixes(self, site_id, peersite_id, api_version="v2.0"):
+        """
+        GET Peersite_Pathprefixes API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **peersite_id**: Peer Site ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/peersites/{}/pathprefixes".format(api_version,
+                                                                                        site_id,
+                                                                                        peersite_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def perfmgmtpolicysets(self, perfmgmtpolicyset_id=None, api_version="v2.0"):
         """
         Get PERFMGMT Policy Sets (v2.0)
@@ -3966,15 +4075,15 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id=None, api_version="v2.1"):
+    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id=None, api_version="v2.2"):
         """
-        Get policy rules of policy set V2.1 (v2.1)
+        Get policy rules of policy set V2.2 (v2.2)
 
           **Parameters:**:
 
           - **perfmgmtpolicyset_id**: Performance Management Policy Set ID
           - **perfmgmtpolicyrule_id**: (optional) Performance Management Policy Rule ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -4041,7 +4150,7 @@ class Get(object):
 
           **Parameters:**:
 
-          - **perfmgmtthresholdprofile_id**: (optional) Performance Management Policy Threshold Profile ID
+          - **perfmgmtthresholdprofile_id**: (optional) Performance Management Threshold Profile ID
           - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -4172,6 +4281,32 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def prefixdistributionspokelists(self, site_id, prefixdistributionspokelist_id=None, api_version="v2.0"):
+        """
+        GET Prefixdistributionspokelists API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **prefixdistributionspokelist_id**: (optional) Prefix Distribution Spoke List ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not prefixdistributionspokelist_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prefixdistributionspokelists".format(api_version,
+                                                                                               site_id)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prefixdistributionspokelists/{}".format(api_version,
+                                                                                                  site_id,
+                                                                                                  prefixdistributionspokelist_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def prefixfilters(self, site_id, prefixfilter_id=None, api_version="v2.0"):
         """
         Get site security filters (v2.0)
@@ -4221,15 +4356,15 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id=None, api_version="v2.1"):
+    def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id=None, api_version="v2.2"):
         """
-        Get priority policy rules of tenant (v2.1)
+        Get priority policy rules of tenant (v2.2)
 
           **Parameters:**:
 
           - **prioritypolicyset_id**: Priority Policy Set ID
           - **prioritypolicyrule_id**: (optional) Priority Policy Rule ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -4341,7 +4476,7 @@ class Get(object):
 
     def prismasase_connections(self, site_id, prismasase_connection_id=None, api_version="v2.1"):
         """
-        Get SASE connections for sites (v2.1)
+        GET Prismasase_Connections API Function
 
           **Parameters:**:
 
@@ -4365,13 +4500,13 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def prismasase_connections_configs(self, api_version="v3.0"):
+    def prismasase_connections_configs(self, api_version="v3.1"):
         """
-        Get a specific SASE connection config (v3.0)
+        GET Prismasase_Connections_Configs API Function
 
           **Parameters:**:
 
-          - **api_version**: API version to use (default v3.0)
+          - **api_version**: API version to use (default v3.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -4411,7 +4546,7 @@ class Get(object):
 
           **Parameters:**:
 
-          - **probeconfig_id**: (optional) Probe configuration ID
+          - **probeconfig_id**: (optional) Probe Config ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -4434,7 +4569,7 @@ class Get(object):
 
           **Parameters:**:
 
-          - **probeprofile_id**: (optional) Probe profile ID
+          - **probeprofile_id**: (optional) Probe Profile ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -4912,14 +5047,14 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def securityzones(self, securityzone_id=None, api_version="v2.0"):
+    def securityzones(self, securityzone_id=None, api_version="v2.1"):
         """
-        Get security zones (v2.0)
+        getSecurityZones (v2.1)
 
           **Parameters:**:
 
           - **securityzone_id**: (optional) Security Zone (ZBFW) ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -5042,6 +5177,32 @@ class Get(object):
 
         url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/correlationevents".format(api_version,
                                                                                 site_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def site_deviceidconfigs(self, site_id, deviceidconfig_id=None, api_version="v2.1"):
+        """
+        Get device id site configs (v2.1)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **deviceidconfig_id**: (optional) Device Id Config ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not deviceidconfig_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs".format(api_version,
+                                                                                  site_id)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}".format(api_version,
+                                                                                     site_id,
+                                                                                     deviceidconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
@@ -5282,14 +5443,14 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def sites(self, site_id=None, api_version="v4.11"):
+    def sites(self, site_id=None, api_version="v4.12"):
         """
-        Get all sites of a tenant (v4.11)
+        Get all sites of a tenant (v4.12)
 
           **Parameters:**:
 
           - **site_id**: (optional) Site ID
-          - **api_version**: API version to use (default v4.11)
+          - **api_version**: API version to use (default v4.12)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -5608,6 +5769,58 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def tacacs_plus_profiles(self, tacacs_plus_profile_id=None, api_version="v2.0"):
+        """
+        GET Tacacs_Plus_Profiles API Function
+
+          **Parameters:**:
+
+          - **tacacs_plus_profile_id**: (optional) Tacacs Plus Profile ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not tacacs_plus_profile_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/tacacs_plus_profiles".format(api_version)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/tacacs_plus_profiles/{}".format(api_version,
+                                                                                 tacacs_plus_profile_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def tacacs_plus_servers(self, site_id, element_id, tacacs_plus_server_id=None, api_version="v2.0"):
+        """
+        GET Tacacs_Plus_Servers API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **tacacs_plus_server_id**: (optional) Tacacs Plus Server_id
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not tacacs_plus_server_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/tacacs_plus_servers".format(api_version,
+                                                                                                  site_id,
+                                                                                                  element_id)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/tacacs_plus_servers/{}".format(api_version,
+                                                                                                     site_id,
+                                                                                                     element_id,
+                                                                                                     tacacs_plus_server_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def templates_ntp(self, ntp_id=None, api_version="v2.0"):
         """
         Get all existing NTP Template of tenant. (v2.0)
@@ -5631,14 +5844,14 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def tenant_anynetlinks(self, anynetlink_id, api_version="v3.4"):
+    def tenant_anynetlinks(self, anynetlink_id, api_version="v4.0"):
         """
         GET Tenant_Anynetlinks API Function
 
           **Parameters:**:
 
           - **anynetlink_id**: Anynet (Secure Fabric) Link ID
-          - **api_version**: API version to use (default v3.4)
+          - **api_version**: API version to use (default v4.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -5915,13 +6128,13 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def tenants(self, api_version="v2.10"):
+    def tenants(self, api_version="v2.11"):
         """
-        Get tenant details for tenant id (v2.10)
+        Get tenant details for tenant id (v2.11)
 
           **Parameters:**:
 
-          - **api_version**: API version to use (default v2.10)
+          - **api_version**: API version to use (default v2.11)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -5929,6 +6142,29 @@ class Get(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
+    def tenants_certificates(self, certificate_id=None, api_version="v2.0"):
+        """
+        GET Tenants_Certificates API Function
+
+          **Parameters:**:
+
+          - **certificate_id**: (optional) Certificate ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not certificate_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/certificates".format(api_version)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/certificates/{}".format(api_version,
+                                                                         certificate_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
@@ -6108,14 +6344,14 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def vpnlinks_status(self, vpnlink_id, api_version="v2.1"):
+    def vpnlinks_status(self, vpnlink_id, api_version="v2.2"):
         """
-        Get the VPNLink status (v2.1)
+        Get the VPNLink status (v2.2)
 
           **Parameters:**:
 
           - **vpnlink_id**: VPN Link ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -6430,6 +6666,9 @@ class Get(object):
     cellular_modules_m = machine_cellular_modules
     """ Backwards-compatibility alias of `cellular_modules_m` to `machine_cellular_modules`"""
 
+    certificates_tenants = tenants_certificates
+    """ Backwards-compatibility alias of `certificates_tenants` to `tenants_certificates`"""
+
     clients_t = tenant_clients
     """ Backwards-compatibility alias of `clients_t` to `tenant_clients`"""
 
@@ -6459,6 +6698,9 @@ class Get(object):
 
     deployments_sitetemplates_bulkconfigurations = bulkconfigurations_sitetemplates_deployments
     """ Backwards-compatibility alias of `deployments_sitetemplates_bulkconfigurations` to `bulkconfigurations_sitetemplates_deployments`"""
+
+    deviceidconfigs = site_deviceidconfigs
+    """ Backwards-compatibility alias of `deviceidconfigs` to `site_deviceidconfigs`"""
 
     deviceidconfigs_i = element_deviceidconfigs
     """ Backwards-compatibility alias of `deviceidconfigs_i` to `element_deviceidconfigs`"""
@@ -6562,11 +6804,11 @@ class Get(object):
     operators_t = tenant_operators
     """ Backwards-compatibility alias of `operators_t` to `tenant_operators`"""
 
-    ospfdiscoveredneighbors_ospfconfigs = ospfconfigs_ospfdiscoveredneighbors
-    """ Backwards-compatibility alias of `ospfdiscoveredneighbors_ospfconfigs` to `ospfconfigs_ospfdiscoveredneighbors`"""
+    ospfdiscoveredneighbors_ospfconfigs = ospfconfig_ospfdiscoveredneighbors
+    """ Backwards-compatibility alias of `ospfdiscoveredneighbors_ospfconfigs` to `ospfconfig_ospfdiscoveredneighbors`"""
 
-    ospfreachableprefixes_ospfconfigs = ospfconfigs_ospfreachableprefixes
-    """ Backwards-compatibility alias of `ospfreachableprefixes_ospfconfigs` to `ospfconfigs_ospfreachableprefixes`"""
+    ospfreachableprefixes_ospfconfigs = ospfconfig_ospfreachableprefixes
+    """ Backwards-compatibility alias of `ospfreachableprefixes_ospfconfigs` to `ospfconfig_ospfreachableprefixes`"""
 
     overrides_appdefs = appdefs_overrides
     """ Backwards-compatibility alias of `overrides_appdefs` to `appdefs_overrides`"""
@@ -6579,6 +6821,9 @@ class Get(object):
 
     password_elementusers = elementusers_password
     """ Backwards-compatibility alias of `password_elementusers` to `elementusers_password`"""
+
+    pathprefixes_peersites = peersite_pathprefixes
+    """ Backwards-compatibility alias of `pathprefixes_peersites` to `peersite_pathprefixes`"""
 
     perfmgmtpolicyrules_perfmgmtpolicysets = perfmgmtpolicysets_perfmgmtpolicyrules
     """ Backwards-compatibility alias of `perfmgmtpolicyrules_perfmgmtpolicysets` to `perfmgmtpolicysets_perfmgmtpolicyrules`"""

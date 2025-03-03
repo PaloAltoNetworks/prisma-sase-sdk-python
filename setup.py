@@ -3,7 +3,7 @@ from setuptools import setup
 with open('README.md') as f:
     long_description = f.read()
 
-setup(name='prisma-sase',
+setup(name='prisma_sase',
       version='6.5.2b1',
       description='Python3 SDK for the Prisma SASE AppFabric',
       long_description=long_description,

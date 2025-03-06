@@ -1822,7 +1822,7 @@ class Delete(object):
 
     def prismasase_connections_configs(self, api_version="v3.1"):
         """
-        DELETE Prismasase_Connections_Configs API Function
+        Delete existing SASE connection config (v3.1)
 
           **Parameters:**:
 

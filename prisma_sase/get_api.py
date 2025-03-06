@@ -764,32 +764,6 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def deviceidconfigs(self, site_id, deviceidconfig_id=None, api_version="v2.1"):
-        """
-        Get device id site configs (v2.1)
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **deviceidconfig_id**: (optional) Device Id Config ID
-          - **api_version**: API version to use (default v2.1)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        if not deviceidconfig_id:
-            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs".format(api_version,
-                                                                                  site_id)
-        else:
-            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}".format(api_version,
-                                                                                     site_id,
-                                                                                     deviceidconfig_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "get")
-
     def deviceidconfigs_snmpdiscoverystartnodes(self, site_id, deviceidconfig_id, snmpdiscoverystartnode_id=None, api_version="v2.0"):
         """
         Get all Start Network Node config (v2.0)
@@ -4502,7 +4476,7 @@ class Get(object):
 
     def prismasase_connections(self, site_id, prismasase_connection_id=None, api_version="v2.1"):
         """
-        GET Prismasase_Connections API Function
+        Get SASE connections for sites (v2.1)
 
           **Parameters:**:
 
@@ -4528,7 +4502,7 @@ class Get(object):
 
     def prismasase_connections_configs(self, api_version="v3.1"):
         """
-        GET Prismasase_Connections_Configs API Function
+        Get a specific SASE connection config (v3.1)
 
           **Parameters:**:
 
@@ -4546,7 +4520,7 @@ class Get(object):
 
     def prismasase_connections_status(self, site_id, prismasase_connection_id, api_version="v2.0"):
         """
-        GET Prismasase_Connections_Status API Function
+        Get a specific SASE connection status (v2.0)
 
           **Parameters:**:
 
@@ -5207,6 +5181,32 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
+    def site_deviceidconfigs(self, site_id, deviceidconfig_id=None, api_version="v2.1"):
+        """
+        Get device id site configs (v2.1)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **deviceidconfig_id**: (optional) Device Id Config ID
+          - **api_version**: API version to use (default v2.1)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        if not deviceidconfig_id:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs".format(api_version,
+                                                                                  site_id)
+        else:
+            url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}".format(api_version,
+                                                                                     site_id,
+                                                                                     deviceidconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "get")
+
     def site_extensions(self, site_id, extension_id=None, api_version="v2.0"):
         """
         Get all site level extensions (v2.0)
@@ -5385,7 +5385,7 @@ class Get(object):
 
     def site_serviceconnections(self, site_id, api_version="v2.0"):
         """
-        GET Site_Serviceconnections API Function
+        Get ServiceConnections for a given tenant and hub site (v2.0)
 
           **Parameters:**:
 
@@ -6094,7 +6094,7 @@ class Get(object):
 
     def tenant_serviceconnections(self, api_version="v2.0"):
         """
-        GET Tenant_Serviceconnections API Function
+        Get All ServiceConnections for a given tenant (v2.0)
 
           **Parameters:**:
 
@@ -6698,6 +6698,9 @@ class Get(object):
 
     deployments_sitetemplates_bulkconfigurations = bulkconfigurations_sitetemplates_deployments
     """ Backwards-compatibility alias of `deployments_sitetemplates_bulkconfigurations` to `bulkconfigurations_sitetemplates_deployments`"""
+
+    deviceidconfigs = site_deviceidconfigs
+    """ Backwards-compatibility alias of `deviceidconfigs` to `site_deviceidconfigs`"""
 
     deviceidconfigs_i = element_deviceidconfigs
     """ Backwards-compatibility alias of `deviceidconfigs_i` to `element_deviceidconfigs`"""

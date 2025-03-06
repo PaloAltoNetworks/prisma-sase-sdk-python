@@ -1222,30 +1222,6 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def deviceidconfigs(self, site_id, data, api_version="v2.1"):
-        """
-        POST Deviceidconfigs API Function
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.1)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs".format(api_version,
-                                                                              site_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
     def deviceidconfigs_bulkdelete_snmpdiscoverystartnodes(self, site_id, deviceidconfig_id, data, api_version="v2.0"):
         """
         Bulk delete Start Network Node config (v2.0)
@@ -4007,10 +3983,10 @@ class Post(object):
                - **lifesize:**           
                    - **units:**  Type: string 
                    - **value:**  Type: integer 
-               - **lifetime:**  Type: integer 
+               - **lifetime:**  Type: integer
                - **lifetime_units:**  Type: string 
                - **mode:**  Type: string 
-               - **proposals:**           
+               - **proposals:**
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
@@ -4019,20 +3995,20 @@ class Post(object):
                    - **dh_group:**  [Type: string] 
                    - **encryption:**  [Type: string] 
                    - **hash:**  [Type: string] 
-           - **ike_group:**           
+           - **ike_group:**
                - **aggressive:**  Type: boolean 
                - **authentication_multiple:**  Type: integer 
                - **key_exchange:**  Type: string 
-               - **lifetime:**  Type: integer 
+               - **lifetime:**  Type: integer
                - **lifetime_units:**  Type: string 
                - **port:**  Type: integer 
-               - **proposals:**           
+               - **proposals:**
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
                    - **prf:**  Type: string 
                - **reauth:**  Type: boolean 
-           - **name:**  Type: string 
+           - **name:**  Type: string
            - **tags:**  [Type: string] 
            - **used_for:**  Type: string 
 
@@ -4108,10 +4084,10 @@ class Post(object):
                - **lifesize:**           
                    - **units:**  Type: string 
                    - **value:**  Type: integer 
-               - **lifetime:**  Type: integer 
+               - **lifetime:**  Type: integer
                - **lifetime_units:**  Type: string 
                - **mode:**  Type: string 
-               - **proposals:**           
+               - **proposals:**
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
@@ -4120,20 +4096,20 @@ class Post(object):
                    - **dh_group:**  [Type: string] 
                    - **encryption:**  [Type: string] 
                    - **hash:**  [Type: string] 
-           - **ike_group:**           
+           - **ike_group:**
                - **aggressive:**  Type: boolean 
                - **authentication_multiple:**  Type: integer 
                - **key_exchange:**  Type: string 
-               - **lifetime:**  Type: integer 
+               - **lifetime:**  Type: integer
                - **lifetime_units:**  Type: string 
                - **port:**  Type: integer 
-               - **proposals:**           
+               - **proposals:**
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
                    - **prf:**  Type: string 
                - **reauth:**  Type: boolean 
-           - **name:**  Type: string 
+           - **name:**  Type: string
            - **tags:**  [Type: string] 
            - **used_for:**  Type: string 
 
@@ -7078,30 +7054,6 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def operations_s(self, site_id, data, api_version="v2.0"):
-        """
-        POST Operations_S API Function
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/operations".format(api_version,
-                                                                         site_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
     def ospfconfigs(self, site_id, element_id, data, api_version="v2.0"):
         """
         Creates OSPF config (v2.0)
@@ -8613,7 +8565,7 @@ class Post(object):
 
     def prismasase_connections(self, site_id, data, api_version="v2.1"):
         """
-        POST Prismasase_Connections API Function
+        Create a new SASE connection (v2.1)
 
           **Parameters:**:
 
@@ -8623,6 +8575,46 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **enabled_wan_interface_ids:**  [Type: string] 
+           - **ipsec_tunnel_configs:**           
+               - **anti_replay:**  Type: boolean 
+               - **copy_tos:**  Type: boolean 
+               - **enable_gre_encapsulation:**  Type: boolean 
+               - **ike_key_exchange:**  Type: string 
+               - **prismaaccess_ike_crypto_profile_id:**  Type: string 
+               - **prismaaccess_ipsec_profile_id:**  Type: string 
+               - **tunnel_monitoring:**  Type: boolean 
+           - **is_active:**  Type: boolean 
+           - **is_enabled:**  Type: boolean 
+           - **prismaaccess_edge_location:**  [Type: string] 
+           - **prismaaccess_qos_cir_mbps:**  Type: integer 
+           - **prismaaccess_qos_profile_id:**  Type: string 
+           - **remote_network_groups:**           
+               - **ipsec_tunnels:**           
+                   - **authentication:**           
+                       - **branch_ike_identification:**  Type: string 
+                       - **prismaaccess_ike_identification:**  Type: string 
+                       - **psk:**  Type: string 
+                   - **name:**  Type: string 
+                   - **routing:**           
+                       - **branch_as_number:**  Type: string 
+                       - **branch_ip_address:**  Type: string 
+                       - **prismaaccess_ip_address:**  Type: string 
+                   - **routing_configs:**           
+                       - **advertise_default_route:**  Type: boolean 
+                       - **bgp_secret:**  Type: string 
+                       - **export_routes:**  Type: boolean 
+                       - **summarize_mobile_routes_before_advertise:**  Type: boolean 
+                   - **wan_interface_id:**  Type: string 
+               - **name:**  Type: string 
+               - **spn_name:**  [Type: string] 
+           - **routing_configs:**           
+               - **advertise_default_route:**  Type: boolean 
+               - **bgp_secret:**  Type: string 
+               - **export_routes:**  Type: boolean 
+               - **summarize_mobile_routes_before_advertise:**  Type: boolean 
+           - **site_id:**  Type: string 
+           - **tenant_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -8637,7 +8629,7 @@ class Post(object):
 
     def prismasase_connections_configs(self, data, api_version="v3.1"):
         """
-        POST Prismasase_Connections_Configs API Function
+        Create a new SASE connection config (v3.1)
 
           **Parameters:**:
 
@@ -8646,6 +8638,29 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **deployment_mode:**  Type: string 
+           - **extended_tunnel_cidrs:**           
+               - **extended_tunnel_cidr:**  Type: string 
+               - **priority:**  Type: integer 
+           - **ipsec_profile:**           
+               - **dpd_delay:**  Type: integer 
+               - **dpd_enable:**  Type: boolean 
+               - **esp_group:**           
+                   - **lifetime:**  Type: integer 
+                   - **proposals:**           
+                       - **dh_groups:**  Type: string 
+                       - **encryption:**  Type: string 
+                       - **hash:**  Type: string 
+               - **ike_group:**           
+                   - **lifetime:**  Type: integer 
+                   - **proposals:**           
+                       - **dh_groups:**  Type: string 
+                       - **encryption:**  Type: string 
+                       - **hash:**  Type: string 
+           - **panorama_sub_tenant_name:**  Type: string 
+           - **prisma_sdwan_bgp_as_number:**  Type: string 
+           - **security_zone_id:**  Type: string 
+           - **tunnel_cidr:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -8659,7 +8674,7 @@ class Post(object):
 
     def prismasase_connections_status_query(self, data, api_version="v2.0"):
         """
-        POST Prismasase_Connections_Status_Query API Function
+        Get a list of SASE connection statuses (v2.0)
 
           **Parameters:**:
 
@@ -8668,6 +8683,26 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **common_messages:**  Type: string 
+           - **connection_status:**           
+               - **value:**  Type: string 
+           - **ipsec_tunnel_status:**           
+               - **attempts:**  Type: integer 
+               - **branch_tunnel_connection_status:**  Type: string 
+               - **branch_tunnel_provisioning_status:**  Type: string 
+               - **completed_steps:**  [Type: string] 
+               - **element_id:**  Type: string 
+               - **error_messages:**  Type: object 
+               - **info_messages:**  Type: object 
+               - **interface_id:**  Type: string 
+               - **name:**  Type: string 
+               - **prismaaccess_tunnel_connection_status:**  Type: string 
+               - **prismaaccess_tunnel_provisioning_status:**  Type: string 
+               - **remoteNetworkGroupName:**  Type: string 
+               - **uncompleted_steps:**  [Type: string] 
+           - **is_active:**  Type: boolean 
+           - **prismasase_connection_id:**  Type: string 
+           - **site_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -9891,6 +9926,30 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
+    def site_deviceidconfigs(self, site_id, data, api_version="v2.1"):
+        """
+        POST Deviceidconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.1)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs".format(api_version,
+                                                                              site_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def site_extensions(self, site_id, data, api_version="v2.0"):
         """
         Create site level extension configuration (v2.0)
@@ -10132,6 +10191,30 @@ class Post(object):
 
         url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/ngfwsecuritypolicylocalprefixes".format(api_version,
                                                                                               site_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def site_operations(self, site_id, data, api_version="v2.0"):
+        """
+        POST Site_Operations API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/operations".format(api_version,
+                                                                         site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -12304,6 +12387,9 @@ class Post(object):
     deployments_sitetemplates_bulkconfigurations = bulkconfigurations_sitetemplates_deployments
     """ Backwards-compatibility alias of `deployments_sitetemplates_bulkconfigurations` to `bulkconfigurations_sitetemplates_deployments`"""
 
+    deviceidconfigs = site_deviceidconfigs
+    """ Backwards-compatibility alias of `deviceidconfigs` to `site_deviceidconfigs`"""
+
     deviceidconfigs_i = element_deviceidconfigs
     """ Backwards-compatibility alias of `deviceidconfigs_i` to `element_deviceidconfigs`"""
 
@@ -12402,6 +12488,9 @@ class Post(object):
 
     operations_h = hubclusters_operations
     """ Backwards-compatibility alias of `operations_h` to `hubclusters_operations`"""
+
+    operations_s = site_operations
+    """ Backwards-compatibility alias of `operations_s` to `site_operations`"""
 
     operations_t = tenant_machine_operations
     """ Backwards-compatibility alias of `operations_t` to `tenant_machine_operations`"""

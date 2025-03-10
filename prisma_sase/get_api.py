@@ -2901,9 +2901,9 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def monitor_metrics_probe(self, probe_id, api_version="v2.0"):
+    def monitor_metrics_probes(self, probe_id, api_version="v2.0"):
         """
-        GET Monitor_Metrics_Probe API Function
+        GET Monitor_Metrics_Probes API Function
 
           **Parameters:**:
 
@@ -6840,8 +6840,8 @@ class Get(object):
     prioritypolicylocalprefixes_t = tenant_prioritypolicylocalprefixes
     """ Backwards-compatibility alias of `prioritypolicylocalprefixes_t` to `tenant_prioritypolicylocalprefixes`"""
 
-    probes_metrics_monitor = monitor_metrics_probe
-    """ Backwards-compatibility alias of `probes_metrics_monitor` to `monitor_metrics_probe`"""
+    probes_metrics_monitor = monitor_metrics_probes
+    """ Backwards-compatibility alias of `probes_metrics_monitor` to `monitor_metrics_probes`"""
 
     qos_metrics_application_monitor = monitor_application_qos_metrics
     """ Backwards-compatibility alias of `qos_metrics_application_monitor` to `monitor_application_qos_metrics`"""

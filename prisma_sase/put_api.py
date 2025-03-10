@@ -2309,36 +2309,18 @@ class Put(object):
            - **dpd_enable:**  Type: boolean 
            - **dpd_timeout:**  Type: integer 
            - **esp_group:**           
-               - **force_encapsulation:**  Type: boolean 
-               - **lifesize:**           
-                   - **units:**  Type: string 
-                   - **value:**  Type: integer 
-               - **lifetime:**  Type: integer
-               - **lifetime_units:**  Type: string 
-               - **mode:**  Type: string 
-               - **proposals:**
+               - **lifetime:**  Type: integer 
+               - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string 
-               - **responder_sase_proposals:**           
-                   - **dh_group:**  [Type: string] 
-                   - **encryption:**  [Type: string] 
-                   - **hash:**  [Type: string] 
-           - **ike_group:**
-               - **aggressive:**  Type: boolean 
-               - **authentication_multiple:**  Type: integer 
-               - **key_exchange:**  Type: string 
-               - **lifetime:**  Type: integer
-               - **lifetime_units:**  Type: string 
-               - **port:**  Type: integer 
-               - **proposals:**
+           - **ike_group:**           
+               - **lifetime:**  Type: integer 
+               - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string 
-               - **reauth:**  Type: boolean 
-           - **name:**  Type: string
+           - **name:**  Type: string 
            - **tags:**  [Type: string] 
            - **used_for:**  Type: string 
 

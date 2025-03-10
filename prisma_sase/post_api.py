@@ -684,6 +684,30 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
+    def bulkconfigurations_sitetemplates_clone(self, sitetemplate_id, data, api_version="v2.0"):
+        """
+        POST Bulkconfigurations_Sitetemplates_Clone API Function
+
+          **Parameters:**:
+
+          - **sitetemplate_id**: Site Template ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/bulkconfigurations/sitetemplates/{}/clone".format(api_version,
+                                                                                               sitetemplate_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def bulkconfigurations_sitetemplates_deployments(self, sitetemplate_id, data, api_version="v2.0"):
         """
         Deploy site (v2.0)
@@ -1117,30 +1141,6 @@ class Post(object):
         url = str(cur_ctlr) + "/sdwan/{}/api/clients/{}/machines/{}/reallocate".format(api_version,
                                                                                        client_id,
                                                                                        machine_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def clone_sitetemplates_bulkconfigurations(self, sitetemplate_id, data, api_version="v2.0"):
-        """
-        POST Clone_Sitetemplates_Bulkconfigurations API Function
-
-          **Parameters:**:
-
-          - **sitetemplate_id**: Site Template ID
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/bulkconfigurations/sitetemplates/{}/clone".format(api_version,
-                                                                                               sitetemplate_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -3979,36 +3979,18 @@ class Post(object):
            - **dpd_enable:**  Type: boolean 
            - **dpd_timeout:**  Type: integer 
            - **esp_group:**           
-               - **force_encapsulation:**  Type: boolean 
-               - **lifesize:**           
-                   - **units:**  Type: string 
-                   - **value:**  Type: integer 
-               - **lifetime:**  Type: integer
-               - **lifetime_units:**  Type: string 
-               - **mode:**  Type: string 
-               - **proposals:**
+               - **lifetime:**  Type: integer 
+               - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string 
-               - **responder_sase_proposals:**           
-                   - **dh_group:**  [Type: string] 
-                   - **encryption:**  [Type: string] 
-                   - **hash:**  [Type: string] 
-           - **ike_group:**
-               - **aggressive:**  Type: boolean 
-               - **authentication_multiple:**  Type: integer 
-               - **key_exchange:**  Type: string 
-               - **lifetime:**  Type: integer
-               - **lifetime_units:**  Type: string 
-               - **port:**  Type: integer 
-               - **proposals:**
+           - **ike_group:**           
+               - **lifetime:**  Type: integer 
+               - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string 
-               - **reauth:**  Type: boolean 
-           - **name:**  Type: string
+           - **name:**  Type: string 
            - **tags:**  [Type: string] 
            - **used_for:**  Type: string 
 
@@ -4080,36 +4062,18 @@ class Post(object):
            - **dpd_enable:**  Type: boolean 
            - **dpd_timeout:**  Type: integer 
            - **esp_group:**           
-               - **force_encapsulation:**  Type: boolean 
-               - **lifesize:**           
-                   - **units:**  Type: string 
-                   - **value:**  Type: integer 
-               - **lifetime:**  Type: integer
-               - **lifetime_units:**  Type: string 
-               - **mode:**  Type: string 
-               - **proposals:**
+               - **lifetime:**  Type: integer 
+               - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string 
-               - **responder_sase_proposals:**           
-                   - **dh_group:**  [Type: string] 
-                   - **encryption:**  [Type: string] 
-                   - **hash:**  [Type: string] 
-           - **ike_group:**
-               - **aggressive:**  Type: boolean 
-               - **authentication_multiple:**  Type: integer 
-               - **key_exchange:**  Type: string 
-               - **lifetime:**  Type: integer
-               - **lifetime_units:**  Type: string 
-               - **port:**  Type: integer 
-               - **proposals:**
+           - **ike_group:**           
+               - **lifetime:**  Type: integer 
+               - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string 
-               - **reauth:**  Type: boolean 
-           - **name:**  Type: string
+           - **name:**  Type: string 
            - **tags:**  [Type: string] 
            - **used_for:**  Type: string 
 
@@ -5093,9 +5057,9 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_metrics_probe(self, data, api_version="v2.0"):
+    def monitor_metrics_probes(self, data, api_version="v2.0"):
         """
-        POST Monitor_Metrics_Probe API Function
+        POST Monitor_Metrics_Probes API Function
 
           **Parameters:**:
 
@@ -5313,28 +5277,6 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_top_traffic_vol_query(self, data, api_version="v2.0"):
-        """
-        POST Monitor_Top_Traffic_Vol_Query API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/topn_traffic_vol/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
     def monitor_topn(self, data, api_version="v3.1"):
         """
         POST Monitor_Topn API Function
@@ -5353,6 +5295,28 @@ class Post(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/topn".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def monitor_topn_traffic_vol_query(self, data, api_version="v2.0"):
+        """
+        POST Monitor_Topn_Traffic_Vol_Query API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/topn_traffic_vol/query".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -12372,6 +12336,9 @@ class Post(object):
     change_password = password_change
     """ Backwards-compatibility alias of `change_password` to `password_change`"""
 
+    clone_sitetemplates_bulkconfigurations = bulkconfigurations_sitetemplates_clone
+    """ Backwards-compatibility alias of `clone_sitetemplates_bulkconfigurations` to `bulkconfigurations_sitetemplates_clone`"""
+
     configs_prismasase_connections = prismasase_connections_configs
     """ Backwards-compatibility alias of `configs_prismasase_connections` to `prismasase_connections_configs`"""
 
@@ -12534,8 +12501,8 @@ class Post(object):
     probe_point_metrics_monitor = monitor_probe_point_metrics
     """ Backwards-compatibility alias of `probe_point_metrics_monitor` to `monitor_probe_point_metrics`"""
 
-    probes_metrics_monitor = monitor_metrics_probe
-    """ Backwards-compatibility alias of `probes_metrics_monitor` to `monitor_metrics_probe`"""
+    probes_metrics_monitor = monitor_metrics_probes
+    """ Backwards-compatibility alias of `probes_metrics_monitor` to `monitor_metrics_probes`"""
 
     qos_application_aggregates_monitor = monitor_aggregates_application_qos
     """ Backwards-compatibility alias of `qos_application_aggregates_monitor` to `monitor_aggregates_application_qos`"""
@@ -12969,8 +12936,8 @@ class Post(object):
     query_toolkitsessions = toolkitsessions_query
     """ Backwards-compatibility alias of `query_toolkitsessions` to `toolkitsessions_query`"""
 
-    query_topn_traffic_vol_monitor = monitor_top_traffic_vol_query
-    """ Backwards-compatibility alias of `query_topn_traffic_vol_monitor` to `monitor_top_traffic_vol_query`"""
+    query_topn_traffic_vol_monitor = monitor_topn_traffic_vol_query
+    """ Backwards-compatibility alias of `query_topn_traffic_vol_monitor` to `monitor_topn_traffic_vol_query`"""
 
     query_upgrade_status = upgrade_status_query
     """ Backwards-compatibility alias of `query_upgrade_status` to `upgrade_status_query`"""

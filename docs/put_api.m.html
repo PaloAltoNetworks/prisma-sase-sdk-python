@@ -2965,7 +2965,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="k">def</span> <span class="nf">appdefs_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdefs_version_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Change standard apps version (v2.0)</span>
+<span class="sd">        Change standard apps version (v2.2)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
@@ -2975,6 +2975,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          **Payload Attributes:** </span>
 
+<span class="sd">           - **app_version:**  Type: string</span>
+<span class="sd">           - **ml7_sigfile_url:**  Type: string</span>
+<span class="sd">           - **reqState:**  Type: string</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -5064,18 +5067,36 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">           - **dpd_enable:**  Type: boolean </span>
 <span class="sd">           - **dpd_timeout:**  Type: integer </span>
 <span class="sd">           - **esp_group:**           </span>
-<span class="sd">               - **lifetime:**  Type: integer </span>
-<span class="sd">               - **proposals:**           </span>
+<span class="sd">               - **force_encapsulation:**  Type: boolean</span>
+<span class="sd">               - **lifesize:**</span>
+<span class="sd">                   - **units:**  Type: string</span>
+<span class="sd">                   - **value:**  Type: integer</span>
+<span class="sd">               - **lifetime:**  Type: integer</span>
+<span class="sd">               - **lifetime_units:**  Type: string</span>
+<span class="sd">               - **mode:**  Type: string</span>
+<span class="sd">               - **proposals:**</span>
 <span class="sd">                   - **dh_groups:**  Type: string </span>
 <span class="sd">                   - **encryption:**  Type: string </span>
 <span class="sd">                   - **hash:**  Type: string </span>
-<span class="sd">           - **ike_group:**           </span>
-<span class="sd">               - **lifetime:**  Type: integer </span>
-<span class="sd">               - **proposals:**           </span>
+<span class="sd">                   - **prf:**  Type: string</span>
+<span class="sd">               - **responder_sase_proposals:**</span>
+<span class="sd">                   - **dh_group:**  [Type: string]</span>
+<span class="sd">                   - **encryption:**  [Type: string]</span>
+<span class="sd">                   - **hash:**  [Type: string]</span>
+<span class="sd">           - **ike_group:**</span>
+<span class="sd">               - **aggressive:**  Type: boolean</span>
+<span class="sd">               - **authentication_multiple:**  Type: integer</span>
+<span class="sd">               - **key_exchange:**  Type: string</span>
+<span class="sd">               - **lifetime:**  Type: integer</span>
+<span class="sd">               - **lifetime_units:**  Type: string</span>
+<span class="sd">               - **port:**  Type: integer</span>
+<span class="sd">               - **proposals:**</span>
 <span class="sd">                   - **dh_groups:**  Type: string </span>
 <span class="sd">                   - **encryption:**  Type: string </span>
 <span class="sd">                   - **hash:**  Type: string </span>
-<span class="sd">           - **name:**  Type: string </span>
+<span class="sd">                   - **prf:**  Type: string</span>
+<span class="sd">               - **reauth:**  Type: boolean</span>
+<span class="sd">           - **name:**  Type: string</span>
 <span class="sd">           - **tags:**  [Type: string] </span>
 <span class="sd">           - **used_for:**  Type: string </span>
 
@@ -9636,7 +9657,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="k">def</span> <span class="nf">appdefs_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdefs_version_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Change standard apps version (v2.0)</span>
+<span class="sd">        Change standard apps version (v2.2)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
@@ -9646,6 +9667,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          **Payload Attributes:** </span>
 
+<span class="sd">           - **app_version:**  Type: string</span>
+<span class="sd">           - **ml7_sigfile_url:**  Type: string</span>
+<span class="sd">           - **reqState:**  Type: string</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -11735,18 +11759,36 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">           - **dpd_enable:**  Type: boolean </span>
 <span class="sd">           - **dpd_timeout:**  Type: integer </span>
 <span class="sd">           - **esp_group:**           </span>
-<span class="sd">               - **lifetime:**  Type: integer </span>
-<span class="sd">               - **proposals:**           </span>
+<span class="sd">               - **force_encapsulation:**  Type: boolean</span>
+<span class="sd">               - **lifesize:**</span>
+<span class="sd">                   - **units:**  Type: string</span>
+<span class="sd">                   - **value:**  Type: integer</span>
+<span class="sd">               - **lifetime:**  Type: integer</span>
+<span class="sd">               - **lifetime_units:**  Type: string</span>
+<span class="sd">               - **mode:**  Type: string</span>
+<span class="sd">               - **proposals:**</span>
 <span class="sd">                   - **dh_groups:**  Type: string </span>
 <span class="sd">                   - **encryption:**  Type: string </span>
 <span class="sd">                   - **hash:**  Type: string </span>
-<span class="sd">           - **ike_group:**           </span>
-<span class="sd">               - **lifetime:**  Type: integer </span>
-<span class="sd">               - **proposals:**           </span>
+<span class="sd">                   - **prf:**  Type: string</span>
+<span class="sd">               - **responder_sase_proposals:**</span>
+<span class="sd">                   - **dh_group:**  [Type: string]</span>
+<span class="sd">                   - **encryption:**  [Type: string]</span>
+<span class="sd">                   - **hash:**  [Type: string]</span>
+<span class="sd">           - **ike_group:**</span>
+<span class="sd">               - **aggressive:**  Type: boolean</span>
+<span class="sd">               - **authentication_multiple:**  Type: integer</span>
+<span class="sd">               - **key_exchange:**  Type: string</span>
+<span class="sd">               - **lifetime:**  Type: integer</span>
+<span class="sd">               - **lifetime_units:**  Type: string</span>
+<span class="sd">               - **port:**  Type: integer</span>
+<span class="sd">               - **proposals:**</span>
 <span class="sd">                   - **dh_groups:**  Type: string </span>
 <span class="sd">                   - **encryption:**  Type: string </span>
 <span class="sd">                   - **hash:**  Type: string </span>
-<span class="sd">           - **name:**  Type: string </span>
+<span class="sd">                   - **prf:**  Type: string</span>
+<span class="sd">               - **reauth:**  Type: boolean</span>
+<span class="sd">           - **name:**  Type: string</span>
 <span class="sd">           - **tags:**  [Type: string] </span>
 <span class="sd">           - **used_for:**  Type: string </span>
 
@@ -16881,7 +16923,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     
   
-    <div class="desc"><p>Change standard apps version (v2.0)</p>
+    <div class="desc"><p>Change standard apps version (v2.2)</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
 <li><strong>appdefs_version_id</strong>: Application Definition Version ID</li>
@@ -16889,18 +16931,26 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>api_version</strong>: API version to use (default v2.2)</li>
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
+<ul>
+<li><strong>app_version:</strong>  Type: string</li>
+<li><strong>ml7_sigfile_url:</strong>  Type: string</li>
+<li><strong>reqState:</strong>  Type: string</li>
+</ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.put_api.Put.appdefs_version', this);">Show source &equiv;</a></p>
   <div id="source-prisma_sase.put_api.Put.appdefs_version" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">appdefs_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appdefs_version_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Change standard apps version (v2.0)</span>
+<span class="sd">    Change standard apps version (v2.2)</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **appdefs_version_id**: Application Definition Version ID</span>
 <span class="sd">      - **data**: Dictionary containing data to PUT as JSON</span>
 <span class="sd">      - **api_version**: API version to use (default v2.2)</span>
 <span class="sd">      **Payload Attributes:** </span>
+<span class="sd">       - **app_version:**  Type: string</span>
+<span class="sd">       - **ml7_sigfile_url:**  Type: string</span>
+<span class="sd">       - **reqState:**  Type: string</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
@@ -21107,26 +21157,48 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>dpd_enable:</strong>  Type: boolean </li>
 <li><strong>dpd_timeout:</strong>  Type: integer </li>
 <li><strong>esp_group:</strong>           <ul>
-<li><strong>lifetime:</strong>  Type: integer </li>
-<li><strong>proposals:</strong>           <ul>
+<li><strong>force_encapsulation:</strong>  Type: boolean</li>
+<li><strong>lifesize:</strong><ul>
+<li><strong>units:</strong>  Type: string</li>
+<li><strong>value:</strong>  Type: integer</li>
+</ul>
+</li>
+<li><strong>lifetime:</strong>  Type: integer</li>
+<li><strong>lifetime_units:</strong>  Type: string</li>
+<li><strong>mode:</strong>  Type: string</li>
+<li><strong>proposals:</strong><ul>
 <li><strong>dh_groups:</strong>  Type: string </li>
 <li><strong>encryption:</strong>  Type: string </li>
 <li><strong>hash:</strong>  Type: string </li>
+<li><strong>prf:</strong>  Type: string</li>
+</ul>
+</li>
+<li><strong>responder_sase_proposals:</strong><ul>
+<li><strong>dh_group:</strong>  [Type: string]</li>
+<li><strong>encryption:</strong>  [Type: string]</li>
+<li><strong>hash:</strong>  [Type: string]</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><strong>ike_group:</strong>           <ul>
-<li><strong>lifetime:</strong>  Type: integer </li>
-<li><strong>proposals:</strong>           <ul>
+<li><strong>ike_group:</strong><ul>
+<li><strong>aggressive:</strong>  Type: boolean</li>
+<li><strong>authentication_multiple:</strong>  Type: integer</li>
+<li><strong>key_exchange:</strong>  Type: string</li>
+<li><strong>lifetime:</strong>  Type: integer</li>
+<li><strong>lifetime_units:</strong>  Type: string</li>
+<li><strong>port:</strong>  Type: integer</li>
+<li><strong>proposals:</strong><ul>
 <li><strong>dh_groups:</strong>  Type: string </li>
 <li><strong>encryption:</strong>  Type: string </li>
 <li><strong>hash:</strong>  Type: string </li>
+<li><strong>prf:</strong>  Type: string</li>
 </ul>
 </li>
+<li><strong>reauth:</strong>  Type: boolean</li>
 </ul>
 </li>
-<li><strong>name:</strong>  Type: string </li>
+<li><strong>name:</strong>  Type: string</li>
 <li><strong>tags:</strong>  [Type: string] </li>
 <li><strong>used_for:</strong>  Type: string </li>
 </ul>
@@ -21189,18 +21261,36 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">       - **dpd_enable:**  Type: boolean </span>
 <span class="sd">       - **dpd_timeout:**  Type: integer </span>
 <span class="sd">       - **esp_group:**           </span>
-<span class="sd">           - **lifetime:**  Type: integer </span>
-<span class="sd">           - **proposals:**           </span>
+<span class="sd">           - **force_encapsulation:**  Type: boolean</span>
+<span class="sd">           - **lifesize:**</span>
+<span class="sd">               - **units:**  Type: string</span>
+<span class="sd">               - **value:**  Type: integer</span>
+<span class="sd">           - **lifetime:**  Type: integer</span>
+<span class="sd">           - **lifetime_units:**  Type: string</span>
+<span class="sd">           - **mode:**  Type: string</span>
+<span class="sd">           - **proposals:**</span>
 <span class="sd">               - **dh_groups:**  Type: string </span>
 <span class="sd">               - **encryption:**  Type: string </span>
 <span class="sd">               - **hash:**  Type: string </span>
-<span class="sd">       - **ike_group:**           </span>
-<span class="sd">           - **lifetime:**  Type: integer </span>
-<span class="sd">           - **proposals:**           </span>
+<span class="sd">               - **prf:**  Type: string</span>
+<span class="sd">           - **responder_sase_proposals:**</span>
+<span class="sd">               - **dh_group:**  [Type: string]</span>
+<span class="sd">               - **encryption:**  [Type: string]</span>
+<span class="sd">               - **hash:**  [Type: string]</span>
+<span class="sd">       - **ike_group:**</span>
+<span class="sd">           - **aggressive:**  Type: boolean</span>
+<span class="sd">           - **authentication_multiple:**  Type: integer</span>
+<span class="sd">           - **key_exchange:**  Type: string</span>
+<span class="sd">           - **lifetime:**  Type: integer</span>
+<span class="sd">           - **lifetime_units:**  Type: string</span>
+<span class="sd">           - **port:**  Type: integer</span>
+<span class="sd">           - **proposals:**</span>
 <span class="sd">               - **dh_groups:**  Type: string </span>
 <span class="sd">               - **encryption:**  Type: string </span>
 <span class="sd">               - **hash:**  Type: string </span>
-<span class="sd">       - **name:**  Type: string </span>
+<span class="sd">               - **prf:**  Type: string</span>
+<span class="sd">           - **reauth:**  Type: boolean</span>
+<span class="sd">       - **name:**  Type: string</span>
 <span class="sd">       - **tags:**  [Type: string] </span>
 <span class="sd">       - **used_for:**  Type: string </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>

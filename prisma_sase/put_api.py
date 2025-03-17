@@ -4,7 +4,7 @@ PRISMA SASE Python SDK - PUT
 
 **Author:** Palo Alto Networks
 
-**Copyright:** (c) 2024 Palo Alto Networks, Inc
+**Copyright:** (c) 2025 Palo Alto Networks, Inc
 
 **License:** MIT
 """
@@ -12,11 +12,11 @@ import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright (c) 2024 Palo Alto Networks, Inc"
+__copyright__ = "Copyright (c) 2025 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright (c) 2024 Palo Alto Networks, Inc
+    Copyright (c) 2025 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -117,6 +117,7 @@ class Put(object):
            - **parent_id:**  Type: string 
            - **path_affinity:**  Type: string 
            - **session_timeout:**  Type: integer 
+           - **supported_base_software_version:**  Type: string 
            - **supported_engines:**  Type: string 
            - **system_app_overridden:**  Type: boolean 
            - **tags:**  [Type: string] 
@@ -207,21 +208,21 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def appdefs_version(self, appdefs_version_id, data, api_version="v2.1"):
+    def appdefs_version(self, appdefs_version_id, data, api_version="v2.2"):
         """
-        Change standard apps version (v2.1)
+        Change standard apps version (v2.2)
 
           **Parameters:**:
 
           - **appdefs_version_id**: Application Definition Version ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
-           - **app_version:**  Type: string 
-           - **ml7_sigfile_url:**  Type: string 
-           - **reqState:**  Type: string 
+           - **app_version:**  Type: string
+           - **ml7_sigfile_url:**  Type: string
+           - **reqState:**  Type: string
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1315,9 +1316,9 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def elementshells_interfaces(self, site_id, elementshell_id, interface_id, data, api_version="v2.3"):
+    def elementshells_interfaces(self, site_id, elementshell_id, interface_id, data, api_version="v2.4"):
         """
-        Update a Element Shell Interface (v2.3)
+        Update a Element Shell Interface (v2.4)
 
           **Parameters:**:
 
@@ -1325,7 +1326,7 @@ class Put(object):
           - **elementshell_id**: Element Shell ID
           - **interface_id**: Interface ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.3)
+          - **api_version**: API version to use (default v2.4)
 
           **Payload Attributes:** 
 
@@ -1753,9 +1754,9 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def interfaces(self, site_id, element_id, interface_id, data, api_version="v4.20"):
+    def interfaces(self, site_id, element_id, interface_id, data, api_version="v4.21"):
         """
-        Update an Interface (v4.20)
+        Update an Interface (v4.21)
 
           **Parameters:**:
 
@@ -1763,7 +1764,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v4.20)
+          - **api_version**: API version to use (default v4.21)
 
           **Payload Attributes:** 
 
@@ -1825,6 +1826,7 @@ class Put(object):
                    - **tenant_id:**  Type: string 
                - **port_name:**  Type: string 
                - **speed:**  Type: integer 
+           - **fec_mode:**  Type: string 
            - **interface_profile_id:**  Type: string 
            - **ipfixcollectorcontext_id:**  Type: string 
            - **ipfixfiltercontext_id:**  Type: string 
@@ -1860,6 +1862,8 @@ class Put(object):
                    - **enable_prefix_distribution:**  Type: boolean 
                - **type:**  Type: string 
            - **lldp_enabled:**  Type: boolean 
+           - **loopback_config:**           
+               - **binding_interface_id:**  Type: string 
            - **mac_address:**  Type: string 
            - **mtu:**  Type: integer 
            - **multicast_config:**           
@@ -2308,36 +2312,36 @@ class Put(object):
            - **dpd_enable:**  Type: boolean 
            - **dpd_timeout:**  Type: integer 
            - **esp_group:**           
-               - **force_encapsulation:**  Type: boolean 
-               - **lifesize:**           
-                   - **units:**  Type: string 
-                   - **value:**  Type: integer 
-               - **lifetime:**  Type: integer 
-               - **lifetime_units:**  Type: string 
-               - **mode:**  Type: string 
-               - **proposals:**           
+               - **force_encapsulation:**  Type: boolean
+               - **lifesize:**
+                   - **units:**  Type: string
+                   - **value:**  Type: integer
+               - **lifetime:**  Type: integer
+               - **lifetime_units:**  Type: string
+               - **mode:**  Type: string
+               - **proposals:**
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string 
-               - **responder_sase_proposals:**           
-                   - **dh_group:**  [Type: string] 
-                   - **encryption:**  [Type: string] 
-                   - **hash:**  [Type: string] 
-           - **ike_group:**           
-               - **aggressive:**  Type: boolean 
-               - **authentication_multiple:**  Type: integer 
-               - **key_exchange:**  Type: string 
-               - **lifetime:**  Type: integer 
-               - **lifetime_units:**  Type: string 
-               - **port:**  Type: integer 
-               - **proposals:**           
+                   - **prf:**  Type: string
+               - **responder_sase_proposals:**
+                   - **dh_group:**  [Type: string]
+                   - **encryption:**  [Type: string]
+                   - **hash:**  [Type: string]
+           - **ike_group:**
+               - **aggressive:**  Type: boolean
+               - **authentication_multiple:**  Type: integer
+               - **key_exchange:**  Type: string
+               - **lifetime:**  Type: integer
+               - **lifetime_units:**  Type: string
+               - **port:**  Type: integer
+               - **proposals:**
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string 
-               - **reauth:**  Type: boolean 
-           - **name:**  Type: string 
+                   - **prf:**  Type: string
+               - **reauth:**  Type: boolean
+           - **name:**  Type: string
            - **tags:**  [Type: string] 
            - **used_for:**  Type: string 
 
@@ -4275,7 +4279,7 @@ class Put(object):
 
     def prismasase_connections(self, site_id, prismasase_connection_id, data, api_version="v2.1"):
         """
-        PUT Prismasase_Connections API Function
+        Update the SASE connection (v2.1)
 
           **Parameters:**:
 
@@ -4286,46 +4290,46 @@ class Put(object):
 
           **Payload Attributes:** 
 
-           - **enabled_wan_interface_ids:**  [Type: string]
-           - **ipsec_tunnel_configs:**
-               - **anti_replay:**  Type: boolean
-               - **copy_tos:**  Type: boolean
-               - **enable_gre_encapsulation:**  Type: boolean
-               - **ike_key_exchange:**  Type: string
-               - **prismaaccess_ike_crypto_profile_id:**  Type: string
-               - **prismaaccess_ipsec_profile_id:**  Type: string
-               - **tunnel_monitoring:**  Type: boolean
-           - **is_active:**  Type: boolean
-           - **is_enabled:**  Type: boolean
-           - **prismaaccess_edge_location:**  [Type: string]
-           - **prismaaccess_qos_cir_mbps:**  Type: integer
-           - **prismaaccess_qos_profile_id:**  Type: string
-           - **remote_network_groups:**
-               - **ipsec_tunnels:**
-                   - **authentication:**
-                       - **branch_ike_identification:**  Type: string
-                       - **prismaaccess_ike_identification:**  Type: string
-                       - **psk:**  Type: string
-                   - **name:**  Type: string
-                   - **routing:**
-                       - **branch_as_number:**  Type: string
-                       - **branch_ip_address:**  Type: string
-                       - **prismaaccess_ip_address:**  Type: string
-                   - **routing_configs:**
-                       - **advertise_default_route:**  Type: boolean
-                       - **bgp_secret:**  Type: string
-                       - **export_routes:**  Type: boolean
-                       - **summarize_mobile_routes_before_advertise:**  Type: boolean
-                   - **wan_interface_id:**  Type: string
-               - **name:**  Type: string
-               - **spn_name:**  [Type: string]
-           - **routing_configs:**
-               - **advertise_default_route:**  Type: boolean
-               - **bgp_secret:**  Type: string
-               - **export_routes:**  Type: boolean
-               - **summarize_mobile_routes_before_advertise:**  Type: boolean
-           - **site_id:**  Type: string
-           - **tenant_id:**  Type: string
+           - **enabled_wan_interface_ids:**  [Type: string] 
+           - **ipsec_tunnel_configs:**           
+               - **anti_replay:**  Type: boolean 
+               - **copy_tos:**  Type: boolean 
+               - **enable_gre_encapsulation:**  Type: boolean 
+               - **ike_key_exchange:**  Type: string 
+               - **prismaaccess_ike_crypto_profile_id:**  Type: string 
+               - **prismaaccess_ipsec_profile_id:**  Type: string 
+               - **tunnel_monitoring:**  Type: boolean 
+           - **is_active:**  Type: boolean 
+           - **is_enabled:**  Type: boolean 
+           - **prismaaccess_edge_location:**  [Type: string] 
+           - **prismaaccess_qos_cir_mbps:**  Type: integer 
+           - **prismaaccess_qos_profile_id:**  Type: string 
+           - **remote_network_groups:**           
+               - **ipsec_tunnels:**           
+                   - **authentication:**           
+                       - **branch_ike_identification:**  Type: string 
+                       - **prismaaccess_ike_identification:**  Type: string 
+                       - **psk:**  Type: string 
+                   - **name:**  Type: string 
+                   - **routing:**           
+                       - **branch_as_number:**  Type: string 
+                       - **branch_ip_address:**  Type: string 
+                       - **prismaaccess_ip_address:**  Type: string 
+                   - **routing_configs:**           
+                       - **advertise_default_route:**  Type: boolean 
+                       - **bgp_secret:**  Type: string 
+                       - **export_routes:**  Type: boolean 
+                       - **summarize_mobile_routes_before_advertise:**  Type: boolean 
+                   - **wan_interface_id:**  Type: string 
+               - **name:**  Type: string 
+               - **spn_name:**  [Type: string] 
+           - **routing_configs:**           
+               - **advertise_default_route:**  Type: boolean 
+               - **bgp_secret:**  Type: string 
+               - **export_routes:**  Type: boolean 
+               - **summarize_mobile_routes_before_advertise:**  Type: boolean 
+           - **site_id:**  Type: string 
+           - **tenant_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -4341,7 +4345,7 @@ class Put(object):
 
     def prismasase_connections_configs(self, data, api_version="v3.1"):
         """
-        PUT Prismasase_Connections_Configs API Function
+        Update the SASE connection config (v3.1)
 
           **Parameters:**:
 
@@ -4350,25 +4354,29 @@ class Put(object):
 
           **Payload Attributes:** 
 
-           - **deployment_mode:**  Type: string
-           - **ipsec_profile:**
-               - **dpd_delay:**  Type: integer
-               - **dpd_enable:**  Type: boolean
-               - **esp_group:**
-                   - **lifetime:**  Type: integer
-                   - **proposals:**
-                       - **dh_groups:**  Type: string
-                       - **encryption:**  Type: string
-                       - **hash:**  Type: string
-               - **ike_group:**
-                   - **lifetime:**  Type: integer
-                   - **proposals:**
-                       - **dh_groups:**  Type: string
-                       - **encryption:**  Type: string
-                       - **hash:**  Type: string
-           - **prisma_sdwan_bgp_as_number:**  Type: string
-           - **security_zone_id:**  Type: string
-           - **tunnel_cidr:**  Type: string
+           - **deployment_mode:**  Type: string 
+           - **extended_tunnel_cidrs:**           
+               - **extended_tunnel_cidr:**  Type: string 
+               - **priority:**  Type: integer 
+           - **ipsec_profile:**           
+               - **dpd_delay:**  Type: integer 
+               - **dpd_enable:**  Type: boolean 
+               - **esp_group:**           
+                   - **lifetime:**  Type: integer 
+                   - **proposals:**           
+                       - **dh_groups:**  Type: string 
+                       - **encryption:**  Type: string 
+                       - **hash:**  Type: string 
+               - **ike_group:**           
+                   - **lifetime:**  Type: integer 
+                   - **proposals:**           
+                       - **dh_groups:**  Type: string 
+                       - **encryption:**  Type: string 
+                       - **hash:**  Type: string 
+           - **panorama_sub_tenant_name:**  Type: string 
+           - **prisma_sdwan_bgp_as_number:**  Type: string 
+           - **security_zone_id:**  Type: string 
+           - **tunnel_cidr:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -4882,15 +4890,15 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def serviceendpoints(self, serviceendpoint_id, data, api_version="v3.0"):
+    def serviceendpoints(self, serviceendpoint_id, data, api_version="v3.1"):
         """
-        Update a ServiceEndpoint (v3.0)
+        Update a ServiceEndpoint (v3.1)
 
           **Parameters:**:
 
           - **serviceendpoint_id**: Service Endpoint ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v3.0)
+          - **api_version**: API version to use (default v3.1)
 
           **Payload Attributes:** 
 
@@ -4916,6 +4924,7 @@ class Put(object):
                    - **failure_count:**  Type: integer 
                    - **interval:**  Type: integer 
                    - **ip_addresses:**  [Type: string] 
+               - **use_tunnel_for_url_dns_resolution:**  Type: boolean 
            - **location:**           
                - **description:**  Type: string 
                - **latitude:**  Type: number 
@@ -5665,7 +5674,7 @@ class Put(object):
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
-          - **tacacs_plus_server_id**: Tacacs Plus Server_id
+          - **tacacs_plus_server_id**: Tacacs Plus Server ID
           - **data**: Dictionary containing data to PUT as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -6401,18 +6410,19 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def waninterfacelabels(self, waninterfacelabel_id, data, api_version="v2.5"):
+    def waninterfacelabels(self, waninterfacelabel_id, data, api_version="v2.6"):
         """
-        Update specific WAN interface label (v2.5)
+        Update specific WAN interface label (v2.6)
 
           **Parameters:**:
 
           - **waninterfacelabel_id**: WAN Interface Label ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.5)
+          - **api_version**: API version to use (default v2.6)
 
           **Payload Attributes:** 
 
+           - **app_acceleration_enabled:**  Type: boolean 
            - **bwc_enabled:**  Type: boolean 
            - **description:**  Type: string 
            - **l3_reachability:**           
@@ -6441,19 +6451,20 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def waninterfaces(self, site_id, waninterface_id, data, api_version="v2.9"):
+    def waninterfaces(self, site_id, waninterface_id, data, api_version="v2.10"):
         """
-        Update the Site WAN interface (v2.9)
+        Update the Site WAN interface (v2.10)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **waninterface_id**: WAN Interface ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.9)
+          - **api_version**: API version to use (default v2.10)
 
           **Payload Attributes:** 
 
+           - **app_acceleration_enabled:**  Type: boolean 
            - **bfd_mode:**  Type: string 
            - **bw_config_mode:**  Type: string 
            - **bwc_enabled:**  Type: boolean 

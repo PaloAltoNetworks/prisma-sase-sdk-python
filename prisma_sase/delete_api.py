@@ -4,7 +4,7 @@ PRISMA SASE Python SDK - DELETE
 
 **Author:** Palo Alto Networks
 
-**Copyright:** (c) 2024 Palo Alto Networks, Inc
+**Copyright:** (c) 2025 Palo Alto Networks, Inc
 
 **License:** MIT
 """
@@ -12,11 +12,11 @@ import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright (c) 2024 Palo Alto Networks, Inc"
+__copyright__ = "Copyright (c) 2025 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright (c) 2024 Palo Alto Networks, Inc
+    Copyright (c) 2025 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -534,16 +534,16 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def elementshells_interfaces(self, site_id, elementshell_id, interface_id, api_version="v2.3"):
+    def elementshells_interfaces(self, site_id, elementshell_id, interface_id, api_version="v2.4"):
         """
-        Delete an element shell interface (v2.3)
+        Delete an element shell interface (v2.4)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **elementshell_id**: Element Shell ID
           - **interface_id**: Interface ID
-          - **api_version**: API version to use (default v2.3)
+          - **api_version**: API version to use (default v2.4)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -770,16 +770,16 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def interfaces(self, site_id, element_id, interface_id, api_version="v4.20"):
+    def interfaces(self, site_id, element_id, interface_id, api_version="v4.21"):
         """
-        Delete a Interface (v4.20)
+        Delete a Interface (v4.21)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
-          - **api_version**: API version to use (default v4.20)
+          - **api_version**: API version to use (default v4.21)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1822,7 +1822,7 @@ class Delete(object):
 
     def prismasase_connections_configs(self, api_version="v3.1"):
         """
-        DELETE Prismasase_Connections_Configs API Function
+        Delete existing SASE connection config (v3.1)
 
           **Parameters:**:
 
@@ -2120,14 +2120,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def serviceendpoints(self, serviceendpoint_id, api_version="v3.0"):
+    def serviceendpoints(self, serviceendpoint_id, api_version="v3.1"):
         """
-        Delete a Service Endpoint (v3.0)
+        Delete a Service Endpoint (v3.1)
 
           **Parameters:**:
 
           - **serviceendpoint_id**: Service Endpoint ID
-          - **api_version**: API version to use (default v3.0)
+          - **api_version**: API version to use (default v3.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2500,7 +2500,7 @@ class Delete(object):
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
-          - **tacacs_plus_server_id**: Tacacs Plus Server_id
+          - **tacacs_plus_server_id**: Tacacs Plus Server ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2776,15 +2776,15 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def waninterfaces(self, site_id, waninterface_id, api_version="v2.9"):
+    def waninterfaces(self, site_id, waninterface_id, api_version="v2.10"):
         """
-        Delete existing WAN interface (v2.9)
+        Delete existing WAN interface (v2.10)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **waninterface_id**: WAN Interface ID
-          - **api_version**: API version to use (default v2.9)
+          - **api_version**: API version to use (default v2.10)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """

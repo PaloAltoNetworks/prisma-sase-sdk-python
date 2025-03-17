@@ -4,7 +4,7 @@ Prisma SASE Python Interactive SDK Helper functions
 
 **Author:** Palo Alto Networks
 
-**Copyright:** © 2024 Palo Alto Networks. All rights reserved
+**Copyright:** © 2025 Palo Alto Networks. All rights reserved
 
 **License:** MIT
 """
@@ -17,11 +17,11 @@ import sys
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright © 2024 Palo Alto Networks. All rights reserved"
+__copyright__ = "Copyright © 2025 Palo Alto Networks. All rights reserved"
 __license__ = """
     MIT License
 
-    **Copyright:** © 2024 Palo Alto Networks. All rights reserved
+    **Copyright:** © 2025 Palo Alto Networks. All rights reserved
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal

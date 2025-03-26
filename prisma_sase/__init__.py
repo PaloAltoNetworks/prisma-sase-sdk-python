@@ -1178,6 +1178,8 @@ class API(object):
             if url in API.stats_api_list:
                 del headers["X-PANW-Region"]
 
+            print(json.dumps(headers))
+
             # Actual request
             response = self._session.request(method, url, data=data, stream=True, timeout=timeout,
                                              headers=headers, allow_redirects=False)

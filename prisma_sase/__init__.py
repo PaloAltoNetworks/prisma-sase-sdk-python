@@ -1175,7 +1175,7 @@ class API(object):
                 api_logger.debug('\n\tREQUEST: %s %s\n\tHEADERS: %s\n\tCOOKIES: %s\n\tDATA: %s\n',
                                  method.upper(), url, headers, cookie, data)
 
-            print(json.dumps(headers))
+            print(json.dumps(cookie))
 
             if url not in API.stats_api_list and 'X-PANW-Region' in headers:
                 del headers['X-PANW-Region']

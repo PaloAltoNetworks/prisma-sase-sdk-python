@@ -529,6 +529,9 @@ class API(object):
 
     tsg_id = None
     """ needed for login_secret func """
+
+    panw_region = None
+    """ needed for stats func calls """
     
     def __init__(self, controller=controller, ssl_verify=verify, update_check=True):
         """
@@ -539,7 +542,6 @@ class API(object):
           - **update_check:** Bool to Enable/Disable SDK update check and new release notifications.
         """
         # set version and update url from outer scope.
-        self.panw_region = None
         self.version = version
         """Version string for use once Constructor created."""
 

@@ -1176,7 +1176,7 @@ class API(object):
                                  method.upper(), url, headers, cookie, data)
 
             if url not in API.stats_api_list:
-                del headers["X-PANW-Region"]
+                headers.pop('X-PANW-Region', None)
 
             print(json.dumps(headers))
 

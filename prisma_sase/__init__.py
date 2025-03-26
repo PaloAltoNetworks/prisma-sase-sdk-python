@@ -481,6 +481,49 @@ class API(object):
                               "eu": "europe"}
     """ static mapping of telemetry region to x_panw_region """
 
+    stats_api_list = [
+        '/monitor/topn',
+        '/monitor/cellular_metrics/topn',
+        '/monitor/aaa_metrics/topn',
+        '/monitor/sys_metrics/topn',
+        '/monitor/aaa_metrics/topn',
+        '/monitor/metrics',
+        '/monitor/sys_metrics',
+        '/monitor/aaa_metrics',
+        '/monitor/aaa_client_metrics',
+        '/monitor/cellular_metrics',
+        '/monitor/qos_metrics',
+        '/monitor/application/qos_metrics',
+        '/monitor/aggregates/application/qos',
+        '/monitor/object_stats',
+        '/monitor/aiops/aggregates',
+        '/monitor/aggregates',
+        '/monitor/flows',
+        '/monitor/lqm_point_metrics',
+        '/monitor/sys_point_metrics',
+        '/monitor/network_point_metrics',
+        '/monitor/app_acceleration',
+        '/monitor/aggregates/healthscore',
+        '/monitor/aggregates/multicast/wan_neighbor',
+        '/monitor/aggregates/multicast/mroute',
+        '/monitor/network_point_metrics_bw',
+        '/monitor/network_point_metrics_hs',
+        '/monitor/aiops/health'
+        '/monitor/aiops/health',
+        '/monitor/aiops/topn',
+        '/monitor/aiops/forecast',
+        '/monitor/aiops/object_stats',
+        'monitor/application/users',
+        '/monitor/aiops/anomaly',
+        '/monitor/interface_stats',
+        '/monitor/probe_point_metrics',
+        '/monitor/metrics/probes',
+        '/monitor/agg_bw_stats',
+        '/monitor/applicationstats/query',
+        '/monitor/applicationsummary/query',
+        '/monitor/topn_traffic_vol/query',
+    ]
+
     client_secret = None
     """ needed for login_secret func """
 
@@ -1131,6 +1174,9 @@ class API(object):
             if not sensitive:
                 api_logger.debug('\n\tREQUEST: %s %s\n\tHEADERS: %s\n\tCOOKIES: %s\n\tDATA: %s\n',
                                  method.upper(), url, headers, cookie, data)
+
+            if url in API.stats_api_list:
+                del headers["X-PANW-Region"]
 
             # Actual request
             response = self._session.request(method, url, data=data, stream=True, timeout=timeout,

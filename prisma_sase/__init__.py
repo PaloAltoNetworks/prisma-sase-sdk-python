@@ -1163,12 +1163,14 @@ class API(object):
                 return False
 
         # add session headers
-        if url not in API.stats_api_list:
+        if url.startswith('/sdwan/monitor'):
             print(json.dumps(headers))
             if 'X-PANW-Region' in self.view_headers():
                 self.remove_header('X-PANW-Region')
         else:
+            print(json.dumps(self.panw_region))
             self.add_headers('X-PANW-Region', self.panw_region)
+            print(json.dumps(headers))
 
         headers.update(self._session.headers)
         cookie = self._session.cookies.get_dict()

@@ -539,6 +539,7 @@ class API(object):
           - **update_check:** Bool to Enable/Disable SDK update check and new release notifications.
         """
         # set version and update url from outer scope.
+        self.panw_region = None
         self.version = version
         """Version string for use once Constructor created."""
 
@@ -1160,6 +1161,13 @@ class API(object):
                 return False
 
         # add session headers
+        if url not in API.stats_api_list:
+            print(json.dumps(headers))
+            if 'X-PANW-Region' in self.view_headers():
+                self.remove_header('X-PANW-Region')
+        else:
+            self.add_headers('X-PANW-Region', self.panw_region)
+
         headers.update(self._session.headers)
         cookie = self._session.cookies.get_dict()
 
@@ -1174,10 +1182,6 @@ class API(object):
             if not sensitive:
                 api_logger.debug('\n\tREQUEST: %s %s\n\tHEADERS: %s\n\tCOOKIES: %s\n\tDATA: %s\n',
                                  method.upper(), url, headers, cookie, data)
-
-            if url not in API.stats_api_list and headers.get("X-PANW-Region") is not None:
-                print(json.dumps(headers))
-                del headers["X-PANW-Region"]
 
             print(json.dumps(headers))
 

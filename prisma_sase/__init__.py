@@ -1169,7 +1169,7 @@ class API(object):
                 self.remove_header('X-PANW-Region')
         else:
             print(json.dumps(self.panw_region))
-            self.add_headers('X-PANW-Region', self.panw_region)
+            self.add_headers({'X-PANW-Region', self.panw_region})
             print(json.dumps(headers))
 
         headers.update(self._session.headers)

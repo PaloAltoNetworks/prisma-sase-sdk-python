@@ -1180,6 +1180,7 @@ class API(object):
                 del headers["X-PANW-Region"]
 
             print(json.dumps(headers))
+            print(json.dumps(self._session))
 
             # Actual request
             response = self._session.request(method, url, data=data, stream=True, timeout=timeout,

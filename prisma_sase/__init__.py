@@ -486,6 +486,9 @@ class API(object):
 
     tsg_id = None
     """ needed for login_secret func """
+
+    panw_region = None
+    """ needed for stats func calls """
     
     def __init__(self, controller=controller, ssl_verify=verify, update_check=True):
         """
@@ -1117,6 +1120,12 @@ class API(object):
                 return False
 
         # add session headers
+        if '/sdwan/monitor/' in url:
+            self.add_headers({'X-PANW-Region': self.panw_region})
+        else:
+            if 'X-PANW-Region' in self.view_headers():
+                self.remove_header('X-PANW-Region')
+
         headers.update(self._session.headers)
         cookie = self._session.cookies.get_dict()
 

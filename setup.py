@@ -4,7 +4,7 @@ with open('README.md') as f:
     long_description = f.read()
 
 setup(name='prisma_sase',
-      version='6.5.2b1',
+      version='6.5.2b2',
       description='Python3 SDK for the Prisma SASE AppFabric',
       long_description=long_description,
       long_description_content_type='text/markdown',

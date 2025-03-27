@@ -161,7 +161,7 @@ ws_logger = logging.getLogger('websockets')
 """websocket logger is handled slightly differently, so we will have a seperate handle."""
 
 # Version of SDK
-version = "6.5.2b1"
+version = "6.5.2b2"
 """SDK Version string"""
 __version__ = version
 

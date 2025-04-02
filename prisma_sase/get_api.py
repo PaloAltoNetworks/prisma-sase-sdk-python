@@ -2470,7 +2470,7 @@ class Get(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/logout".format(api_version)
+        url = str(cur_ctlr) + "/saml/logout".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")

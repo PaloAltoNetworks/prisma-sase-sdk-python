@@ -47,6 +47,7 @@ MIT
 #### Version
 | Version   | Build | Changes                                       |
 |-----------| ----- |-----------------------------------------------|
+| **6.6.1** | **b1** | Support for November 2025 Controller release. |
 | **6.5.2** | **b2** | Support for Febuary 2025 Controller release with bugfixes.  |
 | **6.5.2** | **b1** | Support for Febuary 2025 Controller release.  |
 | **6.5.1** | **b1** | Support for November 2024 Controller release. |

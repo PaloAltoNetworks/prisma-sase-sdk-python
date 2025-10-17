@@ -52,6 +52,32 @@ class Patch(object):
     # placeholder for parent class namespace
     _parent_class = None
 
+    def bgppeers(self, site_id, element_id, data, api_version="v2.6"):
+        """
+        PATCH Bgppeers API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **data**: Dictionary containing data to PATCH as JSON
+          - **api_version**: API version to use (default v2.6)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/bgppeers".format(api_version,
+                                                                                   site_id,
+                                                                                   element_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "patch", data=data)
+
     def tenant_operators(self, operator_id, data, api_version="v2.2"):
         """
         Patch a tenant operator (v2.2)
@@ -157,14 +183,14 @@ class Patch(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "patch", data=data)
 
-    def tenants(self, data, api_version="v2.11"):
+    def tenants(self, data, api_version="v2.12"):
         """
-        Patch tenant (v2.11)
+        Patch tenant (v2.12)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to PATCH as JSON
-          - **api_version**: API version to use (default v2.11)
+          - **api_version**: API version to use (default v2.12)
 
           **Payload Attributes:** 
 
@@ -189,10 +215,12 @@ class Patch(object):
            - **inactive_reason:**  Type: string 
            - **ipv4_list:**           
                - **ipv4:**  Type: string 
+           - **is_branch_security_enabled:**  Type: boolean 
            - **is_esp:**  Type: boolean 
            - **is_oneapp_ready:**  Type: boolean 
            - **is_pa_iot_security_license:**  Type: boolean 
            - **is_sase_edge:**  Type: boolean 
+           - **is_sls_enabled:**  Type: boolean 
            - **is_support:**  Type: boolean 
            - **name:**  Type: string 
            - **operator:**           

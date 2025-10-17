@@ -52,27 +52,22 @@ class Post(object):
     # placeholder for parent class namespace
     _parent_class = None
 
-    def activeuserips_query(self, data, api_version="v2.0"):
+    def activeuserips_query(self, data, api_version="v2.1"):
         """
-        Query active user mappings of tenant (v2.0)
+        Query active user mappings of tenant (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **add:**  Type: boolean 
-           - **disabled:**  Type: boolean 
-           - **disabled_reason:**  Type: string 
-           - **inactive:**  Type: boolean 
-           - **inactive_reason:**  Type: string 
            - **ip:**  Type: string 
-           - **last_login_time:**  Type: integer 
-           - **region:**  Type: string 
            - **site_id:**  Type: string 
            - **tenant_id:**  Type: string 
+           - **timeout_secs:**  Type: integer 
+           - **timestamp:**  Type: integer 
            - **user_id:**  Type: string 
            - **username:**  Type: string 
            - **valid_until:**  Type: integer 
@@ -1222,6 +1217,30 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
+    def deviceidconfigs(self, site_id, data, api_version="v2.1"):
+        """
+        POST Deviceidconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.1)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs".format(api_version,
+                                                                              site_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def deviceidconfigs_bulkdelete_snmpdiscoverystartnodes(self, site_id, deviceidconfig_id, data, api_version="v2.0"):
         """
         Bulk delete Start Network Node config (v2.0)
@@ -1443,14 +1462,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def directoryservices(self, data, api_version="v2.0"):
+    def directoryservices(self, data, api_version="v2.1"):
         """
-        Create Directory Service (v2.0)
+        Create Directory Service (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -1549,18 +1568,19 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def directoryusers_query(self, data, api_version="v2.0"):
+    def directoryusers_query(self, data, api_version="v2.1"):
         """
-        Query users. (v2.0)
+        Query users. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
            - **description:**  Type: string 
+           - **display_name:**  Type: string 
            - **name:**  Type: string 
            - **stale:**  Type: boolean 
            - **tags:**  [Type: string] 
@@ -1760,6 +1780,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -1822,6 +1843,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -1923,6 +1945,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -2070,6 +2093,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -2112,9 +2136,8 @@ class Post(object):
            - **fips_mode_change_start_time:**  Type: integer 
            - **hub_cluster_config:**           
                - **intra_cluster_tunnel:**           
-                   - **destination_ip:**  Type: string 
-                   - **source_ip:**  Type: string 
-                   - **status:**  Type: string 
+                   - **disabled:**  Type: boolean 
+                   - **source_interfaces:**  [Type: string] 
                - **track:**           
                    - **hosts:**           
                        - **address_v4:**  Type: string 
@@ -2172,33 +2195,9 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def elementaccessconfigs(self, element_id, data, api_version="v2.2"):
+    def element_rquery(self, data, api_version="v3.0"):
         """
-        POST Elementaccessconfigs API Function
-
-          **Parameters:**:
-
-          - **element_id**: Element (Device) ID
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.2)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/elementaccessconfigs".format(api_version,
-                                                                                      element_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def elements_rquery(self, data, api_version="v3.0"):
-        """
-        Query and get client elements across regions (v3.0)
+        POST Element_Rquery API Function
 
           **Parameters:**:
 
@@ -2269,6 +2268,30 @@ class Post(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api/elements/rquery".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def elementaccessconfigs(self, element_id, data, api_version="v2.2"):
+        """
+        POST Elementaccessconfigs API Function
+
+          **Parameters:**:
+
+          - **element_id**: Element (Device) ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.2)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/elementaccessconfigs".format(api_version,
+                                                                                      element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -2358,9 +2381,8 @@ class Post(object):
            - **element_id:**  Type: string 
            - **hub_cluster_config:**           
                - **intra_cluster_tunnel:**           
-                   - **destination_ip:**  Type: string 
-                   - **source_ip:**  Type: string 
-                   - **status:**  Type: string 
+                   - **disabled:**  Type: boolean 
+                   - **source_interfaces:**  [Type: string] 
                - **track:**           
                    - **hosts:**           
                        - **address_v4:**  Type: string 
@@ -2490,9 +2512,8 @@ class Post(object):
            - **element_id:**  Type: string 
            - **hub_cluster_config:**           
                - **intra_cluster_tunnel:**           
-                   - **destination_ip:**  Type: string 
-                   - **source_ip:**  Type: string 
-                   - **status:**  Type: string 
+                   - **disabled:**  Type: boolean 
+                   - **source_interfaces:**  [Type: string] 
                - **track:**           
                    - **hosts:**           
                        - **address_v4:**  Type: string 
@@ -3406,6 +3427,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -3979,36 +4001,18 @@ class Post(object):
            - **dpd_enable:**  Type: boolean 
            - **dpd_timeout:**  Type: integer 
            - **esp_group:**           
-               - **force_encapsulation:**  Type: boolean
-               - **lifesize:**
-                   - **units:**  Type: string
-                   - **value:**  Type: integer
-               - **lifetime:**  Type: integer
-               - **lifetime_units:**  Type: string
-               - **mode:**  Type: string
-               - **proposals:**
+               - **lifetime:**  Type: integer 
+               - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string
-               - **responder_sase_proposals:**
-                   - **dh_group:**  [Type: string]
-                   - **encryption:**  [Type: string]
-                   - **hash:**  [Type: string]
-           - **ike_group:**
-               - **aggressive:**  Type: boolean
-               - **authentication_multiple:**  Type: integer
-               - **key_exchange:**  Type: string
-               - **lifetime:**  Type: integer
-               - **lifetime_units:**  Type: string
-               - **port:**  Type: integer
-               - **proposals:**
+           - **ike_group:**           
+               - **lifetime:**  Type: integer 
+               - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string
-               - **reauth:**  Type: boolean
-           - **name:**  Type: string
+           - **name:**  Type: string 
            - **tags:**  [Type: string] 
            - **used_for:**  Type: string 
 
@@ -4080,36 +4084,18 @@ class Post(object):
            - **dpd_enable:**  Type: boolean 
            - **dpd_timeout:**  Type: integer 
            - **esp_group:**           
-               - **force_encapsulation:**  Type: boolean
-               - **lifesize:**
-                   - **units:**  Type: string
-                   - **value:**  Type: integer
-               - **lifetime:**  Type: integer
-               - **lifetime_units:**  Type: string
-               - **mode:**  Type: string
-               - **proposals:**
+               - **lifetime:**  Type: integer 
+               - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string
-               - **responder_sase_proposals:**
-                   - **dh_group:**  [Type: string]
-                   - **encryption:**  [Type: string]
-                   - **hash:**  [Type: string]
-           - **ike_group:**
-               - **aggressive:**  Type: boolean
-               - **authentication_multiple:**  Type: integer
-               - **key_exchange:**  Type: string
-               - **lifetime:**  Type: integer
-               - **lifetime_units:**  Type: string
-               - **port:**  Type: integer
-               - **proposals:**
+           - **ike_group:**           
+               - **lifetime:**  Type: integer 
+               - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string
-               - **reauth:**  Type: boolean
-           - **name:**  Type: string
+           - **name:**  Type: string 
            - **tags:**  [Type: string] 
            - **used_for:**  Type: string 
 
@@ -4348,6 +4334,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -4983,14 +4970,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_flows(self, data, api_version="v3.10"):
+    def monitor_flows(self, data, api_version="v3.11"):
         """
         POST Monitor_Flows API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v3.10)
+          - **api_version**: API version to use (default v3.11)
 
           **Payload Attributes:** 
 
@@ -5815,6 +5802,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -6853,15 +6841,15 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, data, api_version="v2.2"):
+    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, data, api_version="v2.3"):
         """
-        Create a Security Policy V2 Rule under a policy set (v2.2)
+        Create a Security Policy V2 Rule under a policy set (v2.3)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
@@ -6873,6 +6861,7 @@ class Post(object):
            - **destination_zone_ids:**  [Type: string] 
            - **enabled:**  Type: boolean 
            - **name:**  Type: string 
+           - **security_profile_group_id:**  Type: string 
            - **services:**           
                - **destination_ports:**           
                    - **from:**  Type: integer 
@@ -6900,25 +6889,27 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicyrules_query(self, data, api_version="v2.2"):
+    def ngfwsecuritypolicyrules_query(self, data, api_version="v2.3"):
         """
-        Query security policy v2 rules of a tenant (v2.2)
+        Query security policy v2 rules of a tenant (v2.3)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
            - **action:**  Type: string 
            - **app_def_ids:**  [Type: string] 
            - **description:**  Type: string 
+           - **dest_device_ids:**  [Type: string] 
            - **destination_prefix_ids:**  [Type: string] 
            - **destination_zone_ids:**  [Type: string] 
            - **enabled:**  Type: boolean 
            - **name:**  Type: string 
            - **policyset_id:**  Type: string 
+           - **security_profile_group_id:**  Type: string 
            - **services:**           
                - **destination_ports:**           
                    - **from:**  Type: integer 
@@ -6929,6 +6920,7 @@ class Post(object):
                    - **to:**  Type: integer 
            - **source_prefix_ids:**  [Type: string] 
            - **source_zone_ids:**  [Type: string] 
+           - **src_device_ids:**  [Type: string] 
            - **tags:**  [Type: string] 
            - **user_or_group:**           
                - **user_group_ids:**  [Type: string] 
@@ -8586,6 +8578,7 @@ class Post(object):
                - **tunnel_monitoring:**  Type: boolean 
            - **is_active:**  Type: boolean 
            - **is_enabled:**  Type: boolean 
+           - **license_type:**  Type: string 
            - **prismaaccess_edge_location:**  [Type: string] 
            - **prismaaccess_qos_cir_mbps:**  Type: integer 
            - **prismaaccess_qos_profile_id:**  Type: string 
@@ -8836,6 +8829,116 @@ class Post(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api/probeprofiles/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def query_prismasase_connections(self, data, api_version="v2.0"):
+        """
+        POST Query_Prismasase_Connections API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/prismasase_connections/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def query_remotenetworks_spnnpnsitemigration(self, data, api_version="v2.0"):
+        """
+        POST Query_Remotenetworks_Spnnpnsitemigration API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/spnnpnsitemigration/remotenetworks/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def query_securityprofilegroups(self, data, api_version="v2.0"):
+        """
+        POST Query_Securityprofilegroups API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/securityprofilegroups/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def query_threatmetadata(self, data, api_version="v2.0"):
+        """
+        POST Query_Threatmetadata API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/threatmetadata/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def query_urlcategories(self, data, api_version="v2.0"):
+        """
+        POST Query_Urlcategories API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/urlcategories/query".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -9340,6 +9443,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -9515,6 +9619,28 @@ class Post(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api/securitypolicysets/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def securityprofilegroups(self, data, api_version="v2.0"):
+        """
+        POST Securityprofilegroups API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/securityprofilegroups".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -9792,6 +9918,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -9926,30 +10053,6 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_deviceidconfigs(self, site_id, data, api_version="v2.1"):
-        """
-        POST Deviceidconfigs API Function
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.1)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs".format(api_version,
-                                                                              site_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
     def site_extensions(self, site_id, data, api_version="v2.0"):
         """
         Create site level extension configuration (v2.0)
@@ -10003,6 +10106,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -10542,6 +10646,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -10717,6 +10822,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -10759,7 +10865,7 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def spokeclusters_operations(self, site_id, spokecluster_id, data, api_version="v2.0"):
+    def spokeclusters_ops(self, site_id, spokecluster_id, data, api_version="v2.0"):
         """
         Handle operations on spokecluster. (v2.0)
 
@@ -10876,14 +10982,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def status_query(self, data, api_version="v2.5"):
+    def status_query(self, data, api_version="v2.6"):
         """
-        Query and get element status objects for a tenant (v2.5)
+        Query and get element status objects for a tenant (v2.6)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.5)
+          - **api_version**: API version to use (default v2.6)
 
           **Payload Attributes:** 
 
@@ -10900,6 +11006,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -10937,19 +11044,22 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def syslogserverprofiles(self, data, api_version="v2.0"):
+    def syslogserverprofiles(self, data, api_version="v2.1"):
         """
-        Create Syslog Server Profile (v2.0)
+        Create Syslog Server Profile (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
            - **description:**  Type: string 
+           - **enable_dns_logging:**  Type: boolean 
            - **enable_flow_logging:**  Type: boolean 
+           - **enable_threat_logging:**  Type: boolean 
+           - **enable_url_logging:**  Type: boolean 
            - **name:**  Type: string 
            - **protocol:**  Type: string 
            - **remote_ca_certificate:**  Type: string 
@@ -10969,21 +11079,24 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def syslogservers(self, site_id, element_id, data, api_version="v2.2"):
+    def syslogservers(self, site_id, element_id, data, api_version="v2.3"):
         """
-        Create Syslog Server (v2.2)
+        Create Syslog Server (v2.3)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
            - **description:**  Type: string 
+           - **enable_dns_logging:**  Type: boolean 
            - **enable_flow_logging:**  Type: boolean 
+           - **enable_threat_logging:**  Type: boolean 
+           - **enable_url_logging:**  Type: boolean 
            - **enabled:**  Type: boolean 
            - **name:**  Type: string 
            - **protocol:**  Type: string 
@@ -11475,28 +11588,6 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def tenants_certificates(self, data, api_version="v2.0"):
-        """
-        POST Tenants_Certificates API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/certificates".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
     def toolkitsessions_query(self, data, api_version="v2.0"):
         """
         POST Toolkitsessions_Query API Function
@@ -11565,6 +11656,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -11806,6 +11898,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -11843,6 +11936,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -11905,6 +11999,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -12174,6 +12269,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -12239,6 +12335,7 @@ class Post(object):
            - **query_params:**  Type: object 
            - **retrieved_fields:**  [Type: string] 
            - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
            - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
@@ -12366,9 +12463,6 @@ class Post(object):
     cellular_metrics_monitor = monitor_cellular_metrics
     """ Backwards-compatibility alias of `cellular_metrics_monitor` to `monitor_cellular_metrics`"""
 
-    certificates_tenants = tenants_certificates
-    """ Backwards-compatibility alias of `certificates_tenants` to `tenants_certificates`"""
-
     change_password = password_change
     """ Backwards-compatibility alias of `change_password` to `password_change`"""
 
@@ -12389,9 +12483,6 @@ class Post(object):
 
     deployments_sitetemplates_bulkconfigurations = bulkconfigurations_sitetemplates_deployments
     """ Backwards-compatibility alias of `deployments_sitetemplates_bulkconfigurations` to `bulkconfigurations_sitetemplates_deployments`"""
-
-    deviceidconfigs = site_deviceidconfigs
-    """ Backwards-compatibility alias of `deviceidconfigs` to `site_deviceidconfigs`"""
 
     deviceidconfigs_i = element_deviceidconfigs
     """ Backwards-compatibility alias of `deviceidconfigs_i` to `element_deviceidconfigs`"""
@@ -12510,8 +12601,8 @@ class Post(object):
     ops_interfaces = interfaces_operations
     """ Backwards-compatibility alias of `ops_interfaces` to `interfaces_operations`"""
 
-    ops_spokeclusters = spokeclusters_operations
-    """ Backwards-compatibility alias of `ops_spokeclusters` to `spokeclusters_operations`"""
+    ops_spokeclusters = spokeclusters_ops
+    """ Backwards-compatibility alias of `ops_spokeclusters` to `spokeclusters_ops`"""
 
     ops_vfflicenses = vfflicenses_operations
     """ Backwards-compatibility alias of `ops_vfflicenses` to `vfflicenses_operations`"""
@@ -13005,8 +13096,8 @@ class Post(object):
     reallocate_clients = clients_reallocate
     """ Backwards-compatibility alias of `reallocate_clients` to `clients_reallocate`"""
 
-    rquery_e = elements_rquery
-    """ Backwards-compatibility alias of `rquery_e` to `elements_rquery`"""
+    rquery_e = element_rquery
+    """ Backwards-compatibility alias of `rquery_e` to `element_rquery`"""
 
     rquery_vfflicenses = vfflicenses_rquery
     """ Backwards-compatibility alias of `rquery_vfflicenses` to `vfflicenses_rquery`"""

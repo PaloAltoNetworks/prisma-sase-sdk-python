@@ -442,6 +442,30 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
+    def certificates(self, entitie_id, data, api_version="v2.0"):
+        """
+        PUT Certificates API Function
+
+          **Parameters:**:
+
+          - **entitie_id**: Entitie ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/entities/{}/certificates".format(api_version,
+                                                                              entitie_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
     def demsiteconfigs(self, site_id, demsiteconfig_id, data, api_version="v2.0"):
         """
         Update dem site config (v2.0)
@@ -467,6 +491,35 @@ class Put(object):
         url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/demsiteconfigs/{}".format(api_version,
                                                                                 site_id,
                                                                                 demsiteconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def deviceidconfigs(self, site_id, deviceidconfig_id, data, api_version="v2.1"):
+        """
+        Update device Id site config (v2.1)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **deviceidconfig_id**: Device Id Config ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.1)
+
+          **Payload Attributes:** 
+
+           - **cfg_device_id_enabled:**  Type: boolean 
+           - **deviceid_profile_id:**  Type: string 
+           - **site_id:**  Type: string 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}".format(api_version,
+                                                                                 site_id,
+                                                                                 deviceidconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
@@ -606,15 +659,15 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def directoryservices(self, directoryservice_id, data, api_version="v2.0"):
+    def directoryservices(self, directoryservice_id, data, api_version="v2.1"):
         """
-        Update Directory Service (v2.0)
+        Update Directory Service (v2.1)
 
           **Parameters:**:
 
           - **directoryservice_id**: Directory Service ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -1141,9 +1194,8 @@ class Put(object):
            - **device_profile_id:**  Type: string 
            - **hub_cluster_config:**           
                - **intra_cluster_tunnel:**           
-                   - **destination_ip:**  Type: string 
-                   - **source_ip:**  Type: string 
-                   - **status:**  Type: string 
+                   - **disabled:**  Type: boolean 
+                   - **source_interfaces:**  [Type: string] 
                - **track:**           
                    - **hosts:**           
                        - **address_v4:**  Type: string 
@@ -1256,9 +1308,8 @@ class Put(object):
            - **element_id:**  Type: string 
            - **hub_cluster_config:**           
                - **intra_cluster_tunnel:**           
-                   - **destination_ip:**  Type: string 
-                   - **source_ip:**  Type: string 
-                   - **status:**  Type: string 
+                   - **disabled:**  Type: boolean 
+                   - **source_interfaces:**  [Type: string] 
                - **track:**           
                    - **hosts:**           
                        - **address_v4:**  Type: string 
@@ -2312,36 +2363,18 @@ class Put(object):
            - **dpd_enable:**  Type: boolean 
            - **dpd_timeout:**  Type: integer 
            - **esp_group:**           
-               - **force_encapsulation:**  Type: boolean
-               - **lifesize:**
-                   - **units:**  Type: string
-                   - **value:**  Type: integer
-               - **lifetime:**  Type: integer
-               - **lifetime_units:**  Type: string
-               - **mode:**  Type: string
-               - **proposals:**
+               - **lifetime:**  Type: integer 
+               - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string
-               - **responder_sase_proposals:**
-                   - **dh_group:**  [Type: string]
-                   - **encryption:**  [Type: string]
-                   - **hash:**  [Type: string]
-           - **ike_group:**
-               - **aggressive:**  Type: boolean
-               - **authentication_multiple:**  Type: integer
-               - **key_exchange:**  Type: string
-               - **lifetime:**  Type: integer
-               - **lifetime_units:**  Type: string
-               - **port:**  Type: integer
-               - **proposals:**
+           - **ike_group:**           
+               - **lifetime:**  Type: integer 
+               - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
-                   - **prf:**  Type: string
-               - **reauth:**  Type: boolean
-           - **name:**  Type: string
+           - **name:**  Type: string 
            - **tags:**  [Type: string] 
            - **used_for:**  Type: string 
 
@@ -3338,16 +3371,16 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, data, api_version="v2.2"):
+    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, data, api_version="v2.3"):
         """
-        Update an existing Security Policy V2 Rule under a policy set (v2.2)
+        Update an existing Security Policy V2 Rule under a policy set (v2.3)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
           - **ngfwsecuritypolicyrule_id**: NGFW Security Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
@@ -3359,6 +3392,7 @@ class Put(object):
            - **destination_zone_ids:**  [Type: string] 
            - **enabled:**  Type: boolean 
            - **name:**  Type: string 
+           - **security_profile_group_id:**  Type: string 
            - **services:**           
                - **destination_ports:**           
                    - **from:**  Type: integer 
@@ -4301,6 +4335,7 @@ class Put(object):
                - **tunnel_monitoring:**  Type: boolean 
            - **is_active:**  Type: boolean 
            - **is_enabled:**  Type: boolean 
+           - **license_type:**  Type: string 
            - **prismaaccess_edge_location:**  [Type: string] 
            - **prismaaccess_qos_cir_mbps:**  Type: integer 
            - **prismaaccess_qos_profile_id:**  Type: string 
@@ -4832,6 +4867,30 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
+    def securityprofilegroups(self, securityprofilegroup_id, data, api_version="v2.0"):
+        """
+        PUT Securityprofilegroups API Function
+
+          **Parameters:**:
+
+          - **securityprofilegroup_id**: NO DESCRIPTION
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/securityprofilegroups/{}".format(api_version,
+                                                                              securityprofilegroup_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
     def securityzones(self, securityzone_id, data, api_version="v2.1"):
         """
         Update an existing security zone (v2.1)
@@ -5018,32 +5077,6 @@ class Put(object):
 
         url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/admin_state".format(api_version,
                                                                           site_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "put", data=data)
-
-    def site_deviceidconfigs(self, site_id, deviceidconfig_id, data, api_version="v2.1"):
-        """
-        Update device Id site config (v2.1)
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **deviceidconfig_id**: Device Id Config ID
-          - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.1)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}".format(api_version,
-                                                                                 site_id,
-                                                                                 deviceidconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
@@ -5567,20 +5600,23 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def syslogserverprofiles(self, syslogserverprofile_id, data, api_version="v2.0"):
+    def syslogserverprofiles(self, syslogserverprofile_id, data, api_version="v2.1"):
         """
-        Update Syslog Server Profile (v2.0)
+        Update Syslog Server Profile (v2.1)
 
           **Parameters:**:
 
           - **syslogserverprofile_id**: Sys Log Server Profile ID 
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
            - **description:**  Type: string 
+           - **enable_dns_logging:**  Type: boolean 
            - **enable_flow_logging:**  Type: boolean 
+           - **enable_threat_logging:**  Type: boolean 
+           - **enable_url_logging:**  Type: boolean 
            - **name:**  Type: string 
            - **protocol:**  Type: string 
            - **remote_ca_certificate:**  Type: string 
@@ -5601,9 +5637,9 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def syslogservers(self, site_id, element_id, syslogserver_id, data, api_version="v2.2"):
+    def syslogservers(self, site_id, element_id, syslogserver_id, data, api_version="v2.3"):
         """
-        Update Syslog Server (v2.2)
+        Update Syslog Server (v2.3)
 
           **Parameters:**:
 
@@ -5611,12 +5647,15 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **syslogserver_id**: SYSLOG server ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
            - **description:**  Type: string 
+           - **enable_dns_logging:**  Type: boolean 
            - **enable_flow_logging:**  Type: boolean 
+           - **enable_threat_logging:**  Type: boolean 
+           - **enable_url_logging:**  Type: boolean 
            - **enabled:**  Type: boolean 
            - **name:**  Type: string 
            - **protocol:**  Type: string 
@@ -5974,14 +6013,14 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tenants(self, data, api_version="v2.11"):
+    def tenants(self, data, api_version="v2.12"):
         """
-        Update tenant (v2.11)
+        Update tenant (v2.12)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.11)
+          - **api_version**: API version to use (default v2.12)
 
           **Payload Attributes:** 
 
@@ -6006,10 +6045,12 @@ class Put(object):
            - **inactive_reason:**  Type: string 
            - **ipv4_list:**           
                - **ipv4:**  Type: string 
+           - **is_branch_security_enabled:**  Type: boolean 
            - **is_esp:**  Type: boolean 
            - **is_oneapp_ready:**  Type: boolean 
            - **is_pa_iot_security_license:**  Type: boolean 
            - **is_sase_edge:**  Type: boolean 
+           - **is_sls_enabled:**  Type: boolean 
            - **is_support:**  Type: boolean 
            - **name:**  Type: string 
            - **operator:**           
@@ -6182,30 +6223,6 @@ class Put(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "put", data=data)
-
-    def tenants_certificates(self, certificate_id, data, api_version="v2.0"):
-        """
-        PUT Tenants_Certificates API Function
-
-          **Parameters:**:
-
-          - **certificate_id**: Certificate ID
-          - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/certificates/{}".format(api_version,
-                                                                     certificate_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
@@ -6603,17 +6620,14 @@ class Put(object):
     cellular_modules_e = element_cellular_modules
     """ Backwards-compatibility alias of `cellular_modules_e` to `element_cellular_modules`"""
 
-    certificates_tenants = tenants_certificates
-    """ Backwards-compatibility alias of `certificates_tenants` to `tenants_certificates`"""
+    certificates_tenants = certificates
+    """ Backwards-compatibility alias of `certificates_tenants` to `certificates`"""
 
     configs_prismasase_connections = prismasase_connections_configs
     """ Backwards-compatibility alias of `configs_prismasase_connections` to `prismasase_connections_configs`"""
 
     configs_sdwanapps = sdwanapps_configs
     """ Backwards-compatibility alias of `configs_sdwanapps` to `sdwanapps_configs`"""
-
-    deviceidconfigs = site_deviceidconfigs
-    """ Backwards-compatibility alias of `deviceidconfigs` to `site_deviceidconfigs`"""
 
     deviceidconfigs_i = element_deviceidconfigs
     """ Backwards-compatibility alias of `deviceidconfigs_i` to `element_deviceidconfigs`"""

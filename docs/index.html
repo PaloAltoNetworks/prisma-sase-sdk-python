@@ -3210,6 +3210,9 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
 
     <span class="n">tsg_id</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; needed for login_secret func &quot;&quot;&quot;</span>
+
+    <span class="n">panw_region</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; needed for stats func calls &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="o">=</span><span class="n">controller</span><span class="p">,</span> <span class="n">ssl_verify</span><span class="o">=</span><span class="n">verify</span><span class="p">,</span> <span class="n">update_check</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -3841,6 +3844,12 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
                 <span class="k">return</span> <span class="kc">False</span>
 
         <span class="c1"># add session headers</span>
+        <span class="k">if</span> <span class="s1">&#39;/sdwan/monitor/&#39;</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_headers</span><span class="p">({</span><span class="s1">&#39;X-PANW-Region&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">panw_region</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;X-PANW-Region&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">view_headers</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">remove_header</span><span class="p">(</span><span class="s1">&#39;X-PANW-Region&#39;</span><span class="p">)</span>
+
         <span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
         <span class="n">cookie</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get_dict</span><span class="p">()</span>
 
@@ -3986,7 +3995,8 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
 
         <span class="c1"># create cookie header from the cookies in Requests</span>
         <span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Cookie&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">=</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">cookies</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
-
+        <span class="c1"># use same header used for profile call to match the User-Agent and avoid 401 error.</span>
+        <span class="n">headers</span><span class="p">[</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">text_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">))</span>
         <span class="c1"># check for host header</span>
         <span class="n">host_header</span> <span class="o">=</span> <span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Host&quot;</span><span class="p">)</span>
         <span class="n">force_host_arg</span> <span class="o">=</span> <span class="kc">None</span>
@@ -5071,6 +5081,9 @@ and Response Body.</p></div>
 
     <span class="n">tsg_id</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; needed for login_secret func &quot;&quot;&quot;</span>
+
+    <span class="n">panw_region</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; needed for stats func calls &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">controller</span><span class="o">=</span><span class="n">controller</span><span class="p">,</span> <span class="n">ssl_verify</span><span class="o">=</span><span class="n">verify</span><span class="p">,</span> <span class="n">update_check</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -5702,6 +5715,12 @@ and Response Body.</p></div>
                 <span class="k">return</span> <span class="kc">False</span>
 
         <span class="c1"># add session headers</span>
+        <span class="k">if</span> <span class="s1">&#39;/sdwan/monitor/&#39;</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_headers</span><span class="p">({</span><span class="s1">&#39;X-PANW-Region&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">panw_region</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;X-PANW-Region&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">view_headers</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">remove_header</span><span class="p">(</span><span class="s1">&#39;X-PANW-Region&#39;</span><span class="p">)</span>
+
         <span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
         <span class="n">cookie</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get_dict</span><span class="p">()</span>
 
@@ -5847,7 +5866,8 @@ and Response Body.</p></div>
 
         <span class="c1"># create cookie header from the cookies in Requests</span>
         <span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Cookie&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">=</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">cookies</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
-
+        <span class="c1"># use same header used for profile call to match the User-Agent and avoid 401 error.</span>
+        <span class="n">headers</span><span class="p">[</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">text_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">))</span>
         <span class="c1"># check for host header</span>
         <span class="n">host_header</span> <span class="o">=</span> <span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Host&quot;</span><span class="p">)</span>
         <span class="n">force_host_arg</span> <span class="o">=</span> <span class="kc">None</span>
@@ -6629,6 +6649,17 @@ filename in event of local file.</p></div>
 </div>
 
             </div>
+            <div class="item" id="prisma_sase.API.panw_region">
+            <p class="name">var <span class="ident">panw_region</span></p>
+            
+
+            
+  
+    <div class="desc"><p>needed for stats func calls</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
             <div class="item" id="prisma_sase.API.rest_call_max_retry">
             <p class="name">var <span class="ident">rest_call_max_retry</span></p>
             
@@ -7115,7 +7146,7 @@ filename in event of local file.</p></div>
             
   <div class="item" id="prisma_sase.API.modify_rest_retry">
     <div class="name def">
-    <p>def <span class="ident">modify_rest_retry</span>(</p><p>self, total=8, connect=None, read=None, redirect=None, status=None, other=0, allowed_methods=frozenset({&#39;TRACE&#39;, &#39;GET&#39;, &#39;PUT&#39;, &#39;DELETE&#39;, &#39;HEAD&#39;, &#39;OPTIONS&#39;}), status_forcelist=None, backoff_factor=0.705883, raise_on_redirect=True, raise_on_status=True, respect_retry_after_header=True, update_adapter=True)</p>
+    <p>def <span class="ident">modify_rest_retry</span>(</p><p>self, total=8, connect=None, read=None, redirect=None, status=None, other=0, allowed_methods=frozenset({&#39;TRACE&#39;, &#39;GET&#39;, &#39;OPTIONS&#39;, &#39;PUT&#39;, &#39;DELETE&#39;, &#39;HEAD&#39;}), status_forcelist=None, backoff_factor=0.705883, raise_on_redirect=True, raise_on_status=True, respect_retry_after_header=True, update_adapter=True)</p>
     </div>
     
 
@@ -7705,6 +7736,11 @@ re-parses the original login request and applies cookies to the session if they 
             <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Re-generation of JWT failed..&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
     <span class="c1"># add session headers</span>
+    <span class="k">if</span> <span class="s1">&#39;/sdwan/monitor/&#39;</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_headers</span><span class="p">({</span><span class="s1">&#39;X-PANW-Region&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">panw_region</span><span class="p">})</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;X-PANW-Region&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">view_headers</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">remove_header</span><span class="p">(</span><span class="s1">&#39;X-PANW-Region&#39;</span><span class="p">)</span>
     <span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
     <span class="n">cookie</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get_dict</span><span class="p">()</span>
     <span class="c1"># make sure data is populated if present.</span>
@@ -8431,6 +8467,8 @@ auto-generated cookies/headers and SSL contexts used for authentication.</strong
     <span class="n">cookies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">get_dict</span><span class="p">()</span>
     <span class="c1"># create cookie header from the cookies in Requests</span>
     <span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Cookie&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">=</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">cookies</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+    <span class="c1"># use same header used for profile call to match the User-Agent and avoid 401 error.</span>
+    <span class="n">headers</span><span class="p">[</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">text_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">))</span>
     <span class="c1"># check for host header</span>
     <span class="n">host_header</span> <span class="o">=</span> <span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Host&quot;</span><span class="p">)</span>
     <span class="n">force_host_arg</span> <span class="o">=</span> <span class="kc">None</span>

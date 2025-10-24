@@ -1,7 +1,7 @@
 """
 Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.5.2b1
+**Version:** v6.6.1b1
 
 **Author:** Palo Alto Networks
 
@@ -161,7 +161,7 @@ ws_logger = logging.getLogger('websockets')
 """websocket logger is handled slightly differently, so we will have a seperate handle."""
 
 # Version of SDK
-version = "6.5.2b2"
+version = "6.6.1b1"
 """SDK Version string"""
 __version__ = version
 
@@ -1271,7 +1271,8 @@ class API(object):
 
         # create cookie header from the cookies in Requests
         headers["Cookie"] = "; ".join(["{0}={1}".format(key, value) for key, value in cookies.items()])
-
+        # use same header used for profile call to match the User-Agent and avoid 401 error.
+        headers['User-Agent'] = text_type(self._session.headers.get('User-Agent'))
         # check for host header
         host_header = headers.get("Host")
         force_host_arg = None

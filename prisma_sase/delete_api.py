@@ -202,6 +202,26 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def certificates(self, entitie_id, api_version="v2.0"):
+        """
+        DELETE Certificates API Function
+
+          **Parameters:**:
+
+          - **entitie_id**: Entitie ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/entities/{}/certificates".format(api_version,
+                                                                              entitie_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def demsiteconfigs(self, site_id, demsiteconfig_id, api_version="v2.0"):
         """
         Delete Start Network Node config (v2.0)
@@ -290,14 +310,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def directoryservices(self, directoryservice_id, api_version="v2.0"):
+    def directoryservices(self, directoryservice_id, api_version="v2.1"):
         """
-        Delete Directory Service (v2.0)
+        Delete Directory Service (v2.1)
 
           **Parameters:**:
 
           - **directoryservice_id**: Directory Service ID
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1354,15 +1374,15 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, api_version="v2.2"):
+    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, api_version="v2.3"):
         """
-        Delete an existing Security Policy V2 Rule under a policy set (v2.2)
+        Delete an existing Security Policy V2 Rule under a policy set (v2.3)
 
           **Parameters:**:
 
           - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
           - **ngfwsecuritypolicyrule_id**: NGFW Security Policy Rule ID
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2080,6 +2100,26 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def securityprofilegroups(self, securityprofilegroup_id, api_version="v2.0"):
+        """
+        DELETE Securityprofilegroups API Function
+
+          **Parameters:**:
+
+          - **securityprofilegroup_id**: NO DESCRIPTION
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/securityprofilegroups/{}".format(api_version,
+                                                                              securityprofilegroup_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def securityzones(self, securityzone_id, api_version="v2.1"):
         """
         Delete an existing security zone (v2.1)
@@ -2428,14 +2468,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def syslogserverprofiles(self, syslogserverprofile_id, api_version="v2.0"):
+    def syslogserverprofiles(self, syslogserverprofile_id, api_version="v2.1"):
         """
-        Delete Syslog Server Profile (v2.0)
+        Delete Syslog Server Profile (v2.1)
 
           **Parameters:**:
 
           - **syslogserverprofile_id**: Sys Log Server Profile ID 
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2448,16 +2488,16 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def syslogservers(self, site_id, element_id, syslogserver_id, api_version="v2.2"):
+    def syslogservers(self, site_id, element_id, syslogserver_id, api_version="v2.3"):
         """
-        Delete Syslog Server (v2.2)
+        Delete Syslog Server (v2.3)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **syslogserver_id**: SYSLOG server ID
-          - **api_version**: API version to use (default v2.2)
+          - **api_version**: API version to use (default v2.3)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2676,26 +2716,6 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def tenants_certificates(self, certificate_id, api_version="v2.0"):
-        """
-        DELETE Tenants_Certificates API Function
-
-          **Parameters:**:
-
-          - **certificate_id**: Certificate ID
-          - **api_version**: API version to use (default v2.0)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/certificates/{}".format(api_version,
-                                                                     certificate_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "delete")
-
     def useridagents(self, useridagent_id, api_version="v2.0"):
         """
         Delete User ID Agent (v2.0)
@@ -2867,8 +2887,8 @@ class Delete(object):
     anynetlinks_t = tenant_anynetlinks
     """ Backwards-compatibility alias of `anynetlinks_t` to `tenant_anynetlinks`"""
 
-    certificates_tenants = tenants_certificates
-    """ Backwards-compatibility alias of `certificates_tenants` to `tenants_certificates`"""
+    certificates_tenants = certificates
+    """ Backwards-compatibility alias of `certificates_tenants` to `certificates`"""
 
     configs_prismasase_connections = prismasase_connections_configs
     """ Backwards-compatibility alias of `configs_prismasase_connections` to `prismasase_connections_configs`"""

@@ -45,22 +45,22 @@ jd(sdk.get.sites())
 MIT
 
 #### Version
-| Version   | Build | Changes                                       |
-|-----------| ----- |-----------------------------------------------|
-| **6.6.1** | **b1** | Support for November 2025 Controller release. |
-| **6.5.2** | **b2** | Support for Febuary 2025 Controller release with bugfixes.  |
-| **6.5.2** | **b1** | Support for Febuary 2025 Controller release.  |
-| **6.5.1** | **b1** | Support for November 2024 Controller release. |
-| **6.4.2** | **b1** | Support for August 2024 Controller release.   |
-| **6.4.1** | **b1** | Support for March 2024 Controller release.    |
-| **6.3.2** | **b1** | Support for Febuary 2024 Controller release.  |
-| **6.3.1** | **b1** | Support for November 2023 Controller release. |
-| **6.2.3** | **b1** | Support for August 2023 Controller release.   |
-| **6.2.2** | **b1** | Support for June 2023 Controller release.     |
-| **6.2.1** | **b1** | Support for April 2023 Controller release.    |
-| **6.1.2** | **b1** | Support for January 2023 Controller release.  |
-| **6.1.1** | **b1** | Support for November 2022 Controller release. |
-| **6.0.1** | **b1** | Support for May 2022 Controller release.      |
+| Version   | Build | Changes                                                    |
+|-----------| ----- |------------------------------------------------------------|
+| **6.6.1** | **b1** | Support for October 2025 Controller release.               |
+| **6.5.2** | **b2** | Support for Febuary 2025 Controller release with bugfixes. |
+| **6.5.2** | **b1** | Support for Febuary 2025 Controller release.               |
+| **6.5.1** | **b1** | Support for November 2024 Controller release.              |
+| **6.4.2** | **b1** | Support for August 2024 Controller release.                |
+| **6.4.1** | **b1** | Support for March 2024 Controller release.                 |
+| **6.3.2** | **b1** | Support for Febuary 2024 Controller release.               |
+| **6.3.1** | **b1** | Support for November 2023 Controller release.              |
+| **6.2.3** | **b1** | Support for August 2023 Controller release.                |
+| **6.2.2** | **b1** | Support for June 2023 Controller release.                  |
+| **6.2.1** | **b1** | Support for April 2023 Controller release.                 |
+| **6.1.2** | **b1** | Support for January 2023 Controller release.               |
+| **6.1.1** | **b1** | Support for November 2022 Controller release.              |
+| **6.0.1** | **b1** | Support for May 2022 Controller release.                   |
 
 ## For more info
  * Get help and additional Prisma SASE Documentation at <https://pan.dev/sase/docs>

@@ -2612,7 +2612,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <h1 class="title"><span class="name">prisma_sase.interactive</span> module</h1>
   <p>Prisma SASE Python Interactive SDK Helper functions</p>
 <p><strong>Author:</strong> Palo Alto Networks</p>
-<p><strong>Copyright:</strong> © 2025 Palo Alto Networks. All rights reserved</p>
+<p><strong>Copyright:</strong> © 2026 Palo Alto Networks. All rights reserved</p>
 <p><strong>License:</strong> MIT</p>
   
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.interactive', this);">Show source &equiv;</a></p>
@@ -2623,7 +2623,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">**Author:** Palo Alto Networks</span>
 
-<span class="sd">**Copyright:** © 2025 Palo Alto Networks. All rights reserved</span>
+<span class="sd">**Copyright:** © 2026 Palo Alto Networks. All rights reserved</span>
 
 <span class="sd">**License:** MIT</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -2636,11 +2636,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Prisma SASE Developer Support &lt;prisma-sase-developers@paloaltonetworks.com&gt;&quot;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;prisma-sase-developers@paloaltonetworks.com&quot;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright © 2025 Palo Alto Networks. All rights reserved&quot;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright © 2026 Palo Alto Networks. All rights reserved&quot;</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    MIT License</span>
 
-<span class="s2">    **Copyright:** © 2025 Palo Alto Networks. All rights reserved</span>
+<span class="s2">    **Copyright:** © 2026 Palo Alto Networks. All rights reserved</span>
 
 <span class="s2">    Permission is hereby granted, free of charge, to any person obtaining a copy</span>
 <span class="s2">    of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
@@ -2979,6 +2979,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             <span class="c1"># if tsg_id not given on function, or if first login fails, prompt.</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span><span class="p">:</span>
                 <span class="n">tsg_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tsg_id</span> <span class="o">=</span> <span class="n">compat_input</span><span class="p">(</span><span class="n">tsg_id_prompt</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">grant_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># if grant_type not given.</span>
@@ -2986,10 +2988,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="k">if</span> <span class="n">scope</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># if grant_type not given.</span>
-            <span class="k">if</span> <span class="n">tsg_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">tsg_id</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-                <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;email profile&#39;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;tsg_id:</span><span class="si">{0}</span><span class="s1"> email profile&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tsg_id</span><span class="p">)</span>
+            <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;tsg_id:</span><span class="si">{0}</span><span class="s1"> email profile&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tsg_id</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_id</span> <span class="o">=</span> <span class="n">client_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_secret</span> <span class="o">=</span> <span class="n">client_secret</span>
@@ -3392,8 +3391,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">_user_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">operator_id</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">roles</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;roles&#39;</span><span class="p">,</span> <span class="p">[])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">token_session</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token_session&#39;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller_region</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller_region</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;region&#39;</span><span class="p">)</span>
 
             <span class="k">return</span> <span class="kc">True</span>
 
@@ -4153,6 +4150,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             <span class="c1"># if tsg_id not given on function, or if first login fails, prompt.</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span><span class="p">:</span>
                 <span class="n">tsg_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tsg_id</span> <span class="o">=</span> <span class="n">compat_input</span><span class="p">(</span><span class="n">tsg_id_prompt</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">grant_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># if grant_type not given.</span>
@@ -4160,10 +4159,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="k">if</span> <span class="n">scope</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># if grant_type not given.</span>
-            <span class="k">if</span> <span class="n">tsg_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">tsg_id</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-                <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;email profile&#39;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;tsg_id:</span><span class="si">{0}</span><span class="s1"> email profile&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tsg_id</span><span class="p">)</span>
+            <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;tsg_id:</span><span class="si">{0}</span><span class="s1"> email profile&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tsg_id</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_id</span> <span class="o">=</span> <span class="n">client_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_secret</span> <span class="o">=</span> <span class="n">client_secret</span>
@@ -4566,8 +4562,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">_user_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">operator_id</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">roles</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;roles&#39;</span><span class="p">,</span> <span class="p">[])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">token_session</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token_session&#39;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller_region</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller_region</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;region&#39;</span><span class="p">)</span>
 
             <span class="k">return</span> <span class="kc">True</span>
 
@@ -5753,15 +5747,14 @@ Expects interactive capability. if this is not available, use <code>prisma_sase.
         <span class="c1"># if tsg_id not given on function, or if first login fails, prompt.</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span><span class="p">:</span>
             <span class="n">tsg_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tsg_id</span> <span class="o">=</span> <span class="n">compat_input</span><span class="p">(</span><span class="n">tsg_id_prompt</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">grant_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># if grant_type not given.</span>
         <span class="n">grant_type</span> <span class="o">=</span> <span class="s1">&#39;client_credentials&#39;</span>
     <span class="k">if</span> <span class="n">scope</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># if grant_type not given.</span>
-        <span class="k">if</span> <span class="n">tsg_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">tsg_id</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-            <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;email profile&#39;</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;tsg_id:</span><span class="si">{0}</span><span class="s1"> email profile&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tsg_id</span><span class="p">)</span>
+        <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;tsg_id:</span><span class="si">{0}</span><span class="s1"> email profile&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tsg_id</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_id</span> <span class="o">=</span> <span class="n">client_id</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">client_secret</span> <span class="o">=</span> <span class="n">client_secret</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">tsg_id</span> <span class="o">=</span> <span class="n">tsg_id</span>
@@ -6393,8 +6386,6 @@ Expects interactive capability. if this is not available, use <code>prisma_sase.
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">_user_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">operator_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">roles</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;roles&#39;</span><span class="p">,</span> <span class="p">[])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">token_session</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token_session&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller_region</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller_region</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;region&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">api_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Profile retrieval failed.&#39;</span><span class="p">)</span>
@@ -6417,7 +6408,7 @@ Expects interactive capability. if this is not available, use <code>prisma_sase.
       <footer id="footer">
         <p>
           Documentation generated by
-          <a href="https://github.com/BurntSushi/pdoc">pdoc 0.3.2</a>
+          <a href="https://github.com/BurntSushi/pdoc">pdoc 0.3.13</a>
         </p>
       </footer>
     </article>

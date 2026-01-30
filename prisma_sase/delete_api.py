@@ -4,7 +4,7 @@ PRISMA SASE Python SDK - DELETE
 
 **Author:** Palo Alto Networks
 
-**Copyright:** (c) 2025 Palo Alto Networks, Inc
+**Copyright:** (c) 2026 Palo Alto Networks, Inc
 
 **License:** MIT
 """
@@ -12,11 +12,11 @@ import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright (c) 2025 Palo Alto Networks, Inc"
+__copyright__ = "Copyright (c) 2026 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright (c) 2025 Palo Alto Networks, Inc
+    Copyright (c) 2026 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -136,16 +136,16 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def bgppeers(self, site_id, element_id, bgppeer_id, api_version="v2.6"):
+    def bgppeers(self, site_id, element_id, bgppeer_id, api_version="v3.0"):
         """
-        Delete BGP Peer config (v2.6)
+        Delete BGP Peer config (v3.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **bgppeer_id**: BGP Peer ID
-          - **api_version**: API version to use (default v2.6)
+          - **api_version**: API version to use (default v3.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -198,26 +198,6 @@ class Delete(object):
         url = str(cur_ctlr) + "/sdwan/{}/api/bulkconfigurations/sitetemplates/{}/deployments/{}".format(api_version,
                                                                                                         sitetemplate_id,
                                                                                                         deployment_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "delete")
-
-    def certificates(self, entitie_id, api_version="v2.0"):
-        """
-        DELETE Certificates API Function
-
-          **Parameters:**:
-
-          - **entitie_id**: Entitie ID
-          - **api_version**: API version to use (default v2.0)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/entities/{}/certificates".format(api_version,
-                                                                              entitie_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
@@ -574,6 +554,26 @@ class Delete(object):
                                                                                              site_id,
                                                                                              elementshell_id,
                                                                                              interface_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def elementsystemlimitprofiles(self, elementsystemlimitprofile_id, api_version="v2.0"):
+        """
+        DELETE Elementsystemlimitprofiles API Function
+
+          **Parameters:**:
+
+          - **elementsystemlimitprofile_id**: NO DESCRIPTION
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elementsystemlimitprofiles/{}".format(api_version,
+                                                                                   elementsystemlimitprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
@@ -2332,14 +2332,14 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def sites(self, site_id, api_version="v4.12"):
+    def sites(self, site_id, api_version="v4.13"):
         """
-        Delete a site (v4.12)
+        Delete a site (v4.13)
 
           **Parameters:**:
 
           - **site_id**: Site ID
-          - **api_version**: API version to use (default v4.12)
+          - **api_version**: API version to use (default v4.13)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2716,6 +2716,26 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def tenants_certificates(self, certificate_id, api_version="v2.0"):
+        """
+        DELETE Tenants_Certificates API Function
+
+          **Parameters:**:
+
+          - **certificate_id**: Certificate ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/certificates/{}".format(api_version,
+                                                                     certificate_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def useridagents(self, useridagent_id, api_version="v2.0"):
         """
         Delete User ID Agent (v2.0)
@@ -2887,8 +2907,8 @@ class Delete(object):
     anynetlinks_t = tenant_anynetlinks
     """ Backwards-compatibility alias of `anynetlinks_t` to `tenant_anynetlinks`"""
 
-    certificates_tenants = certificates
-    """ Backwards-compatibility alias of `certificates_tenants` to `certificates`"""
+    certificates_tenants = tenants_certificates
+    """ Backwards-compatibility alias of `certificates_tenants` to `tenants_certificates`"""
 
     configs_prismasase_connections = prismasase_connections_configs
     """ Backwards-compatibility alias of `configs_prismasase_connections` to `prismasase_connections_configs`"""

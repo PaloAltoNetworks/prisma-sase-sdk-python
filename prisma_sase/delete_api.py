@@ -160,6 +160,28 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def bulkconfigurations_deployments_sitetemplates(self, sitetemplate_id, deployment_id, api_version="v2.0"):
+        """
+        DELETE Bulkconfigurations_Deployments_Sitetemplates API Function
+
+          **Parameters:**:
+
+          - **sitetemplate_id**: Site Template ID
+          - **deployment_id**: Deployment ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/bulkconfigurations/sitetemplates/{}/deployments/{}".format(api_version,
+                                                                                                        sitetemplate_id,
+                                                                                                        deployment_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def bulkconfigurations_sitetemplates(self, sitetemplate_id, api_version="v2.0"):
         """
         delete site profile (v2.0)
@@ -180,14 +202,13 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def bulkconfigurations_sitetemplates_deployments(self, sitetemplate_id, deployment_id, api_version="v2.0"):
+    def certificates_tenants(self, certificate_id, api_version="v2.0"):
         """
-        Delete a deployment (v2.0)
+        DELETE Certificates_Tenants API Function
 
           **Parameters:**:
 
-          - **sitetemplate_id**: Site Template ID
-          - **deployment_id**: Deployment ID
+          - **certificate_id**: Certificate ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -195,9 +216,8 @@ class Delete(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/bulkconfigurations/sitetemplates/{}/deployments/{}".format(api_version,
-                                                                                                        sitetemplate_id,
-                                                                                                        deployment_id)
+        url = str(cur_ctlr) + "/sdwan/{}/api/certificates/{}".format(api_version,
+                                                                     certificate_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
@@ -220,6 +240,30 @@ class Delete(object):
         url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/demsiteconfigs/{}".format(api_version,
                                                                                 site_id,
                                                                                 demsiteconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def deviceidconfigs(self, site_id, element_id, deviceidconfig_id, api_version="v2.0"):
+        """
+        DELETE Deviceidconfigs API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **deviceidconfig_id**: Device Id Config ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/deviceidconfigs/{}".format(api_version,
+                                                                                             site_id,
+                                                                                             element_id,
+                                                                                             deviceidconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
@@ -374,30 +418,6 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def element_deviceidconfigs(self, site_id, element_id, deviceidconfig_id, api_version="v2.0"):
-        """
-        Delete device id element level (source interface) config (v2.0)
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **element_id**: Element (Device) ID
-          - **deviceidconfig_id**: Device Id Config ID
-          - **api_version**: API version to use (default v2.0)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/deviceidconfigs/{}".format(api_version,
-                                                                                             site_id,
-                                                                                             element_id,
-                                                                                             deviceidconfig_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "delete")
-
     def element_extensions(self, site_id, element_id, extension_id, api_version="v2.0"):
         """
         Delete a specific extension associated with an element (v2.0)
@@ -534,37 +554,13 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def elementshells_interfaces(self, site_id, elementshell_id, interface_id, api_version="v2.4"):
-        """
-        Delete an element shell interface (v2.4)
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **elementshell_id**: Element Shell ID
-          - **interface_id**: Interface ID
-          - **api_version**: API version to use (default v2.4)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elementshells/{}/interfaces/{}".format(api_version,
-                                                                                             site_id,
-                                                                                             elementshell_id,
-                                                                                             interface_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "delete")
-
     def elementsystemlimitprofiles(self, elementsystemlimitprofile_id, api_version="v2.0"):
         """
-        DELETE Elementsystemlimitprofiles API Function
+        Delete Element System Limit Profile (v2.0)
 
           **Parameters:**:
 
-          - **elementsystemlimitprofile_id**: 
+          - **elementsystemlimitprofile_id**: Element System Limit Profile ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -810,6 +806,30 @@ class Delete(object):
                                                                                         site_id,
                                                                                         element_id,
                                                                                         interface_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def interfaces_elementshells(self, site_id, elementshell_id, interface_id, api_version="v2.4"):
+        """
+        DELETE Interfaces_Elementshells API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **elementshell_id**: Element Shell ID
+          - **interface_id**: Interface ID
+          - **api_version**: API version to use (default v2.4)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elementshells/{}/interfaces/{}".format(api_version,
+                                                                                             site_id,
+                                                                                             elementshell_id,
+                                                                                             interface_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
@@ -1546,6 +1566,28 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
+    def perfmgmtpolicyrules_perfmgmtpolicysets(self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, api_version="v2.2"):
+        """
+        DELETE Perfmgmtpolicyrules_Perfmgmtpolicysets API Function
+
+          **Parameters:**:
+
+          - **perfmgmtpolicyset_id**: Performance Management Policy Set ID
+          - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID
+          - **api_version**: API version to use (default v2.2)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysets/{}/perfmgmtpolicyrules/{}".format(api_version,
+                                                                                                  perfmgmtpolicyset_id,
+                                                                                                  perfmgmtpolicyrule_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
     def perfmgmtpolicysets(self, perfmgmtpolicyset_id, api_version="v2.0"):
         """
         Delete a PERFMGMT Policy Set (v2.0)
@@ -1562,28 +1604,6 @@ class Delete(object):
 
         url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysets/{}".format(api_version,
                                                                            perfmgmtpolicyset_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "delete")
-
-    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, api_version="v2.2"):
-        """
-        Delete PERFMGMT policy rule of tenant V2.2 (v2.2)
-
-          **Parameters:**:
-
-          - **perfmgmtpolicyset_id**: Performance Management Policy Set ID
-          - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID
-          - **api_version**: API version to use (default v2.2)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysets/{}/perfmgmtpolicyrules/{}".format(api_version,
-                                                                                                  perfmgmtpolicyset_id,
-                                                                                                  perfmgmtpolicyrule_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
@@ -2102,11 +2122,11 @@ class Delete(object):
 
     def securityprofilegroups(self, securityprofilegroup_id, api_version="v2.0"):
         """
-        DELETE Securityprofilegroups API Function
+        Delete an existing Security Profile Group by tenant ID and its ID (v2.0)
 
           **Parameters:**:
 
-          - **securityprofilegroup_id**: 
+          - **securityprofilegroup_id**: Security Profile Group ID
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2514,7 +2534,7 @@ class Delete(object):
 
     def tacacs_plus_profiles(self, tacacs_plus_profile_id, api_version="v2.0"):
         """
-        DELETE Tacacs_Plus_Profiles API Function
+        Delete TACACS+ Profile (v2.0)
 
           **Parameters:**:
 
@@ -2534,7 +2554,7 @@ class Delete(object):
 
     def tacacs_plus_servers(self, site_id, element_id, tacacs_plus_server_id, api_version="v2.0"):
         """
-        DELETE Tacacs_Plus_Servers API Function
+        Delete TACACS+ Server (v2.0)
 
           **Parameters:**:
 
@@ -2716,26 +2736,6 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def tenants_certificates(self, certificate_id, api_version="v2.0"):
-        """
-        DELETE Tenants_Certificates API Function
-
-          **Parameters:**:
-
-          - **certificate_id**: Certificate ID
-          - **api_version**: API version to use (default v2.0)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/certificates/{}".format(api_version,
-                                                                     certificate_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "delete")
-
     def useridagents(self, useridagent_id, api_version="v2.0"):
         """
         Delete User ID Agent (v2.0)
@@ -2907,20 +2907,17 @@ class Delete(object):
     anynetlinks_t = tenant_anynetlinks
     """ Backwards-compatibility alias of `anynetlinks_t` to `tenant_anynetlinks`"""
 
-    certificates_tenants = tenants_certificates
-    """ Backwards-compatibility alias of `certificates_tenants` to `tenants_certificates`"""
-
     configs_prismasase_connections = prismasase_connections_configs
     """ Backwards-compatibility alias of `configs_prismasase_connections` to `prismasase_connections_configs`"""
 
     configs_sdwanapps = sdwanapps_configs
     """ Backwards-compatibility alias of `configs_sdwanapps` to `sdwanapps_configs`"""
 
-    deployments_sitetemplates_bulkconfigurations = bulkconfigurations_sitetemplates_deployments
-    """ Backwards-compatibility alias of `deployments_sitetemplates_bulkconfigurations` to `bulkconfigurations_sitetemplates_deployments`"""
+    deployments_sitetemplates_bulkconfigurations = bulkconfigurations_deployments_sitetemplates
+    """ Backwards-compatibility alias of `deployments_sitetemplates_bulkconfigurations` to `bulkconfigurations_deployments_sitetemplates`"""
 
-    deviceidconfigs_i = element_deviceidconfigs
-    """ Backwards-compatibility alias of `deviceidconfigs_i` to `element_deviceidconfigs`"""
+    deviceidconfigs_i = deviceidconfigs
+    """ Backwards-compatibility alias of `deviceidconfigs_i` to `deviceidconfigs`"""
 
     elementpassageconfigs_e = elementpassageconfigs
     """ Backwards-compatibility alias of `elementpassageconfigs_e` to `elementpassageconfigs`"""
@@ -2933,9 +2930,6 @@ class Delete(object):
 
     extensions_ws = ws_extensions
     """ Backwards-compatibility alias of `extensions_ws` to `ws_extensions`"""
-
-    interfaces_elementshells = elementshells_interfaces
-    """ Backwards-compatibility alias of `interfaces_elementshells` to `elementshells_interfaces`"""
 
     ipfixlocalprefixes_s = site_ipfixlocalprefixes
     """ Backwards-compatibility alias of `ipfixlocalprefixes_s` to `site_ipfixlocalprefixes`"""
@@ -2972,9 +2966,6 @@ class Delete(object):
 
     passages_e = element_passages
     """ Backwards-compatibility alias of `passages_e` to `element_passages`"""
-
-    perfmgmtpolicyrules_perfmgmtpolicysets = perfmgmtpolicysets_perfmgmtpolicyrules
-    """ Backwards-compatibility alias of `perfmgmtpolicyrules_perfmgmtpolicysets` to `perfmgmtpolicysets_perfmgmtpolicyrules`"""
 
     permissions_clients_o = esp_operator_permissions_client
     """ Backwards-compatibility alias of `permissions_clients_o` to `esp_operator_permissions_client`"""

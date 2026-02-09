@@ -2578,9 +2578,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.appdefs_overrides">appdefs_overrides</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.authtokens">authtokens</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.bgppeers">bgppeers</a></li>
+    <li class="mono"><a href="#prisma_sase.delete_api.Delete.bulkconfigurations_deployments_sitetemplates">bulkconfigurations_deployments_sitetemplates</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.bulkconfigurations_sitetemplates">bulkconfigurations_sitetemplates</a></li>
-    <li class="mono"><a href="#prisma_sase.delete_api.Delete.bulkconfigurations_sitetemplates_deployments">bulkconfigurations_sitetemplates_deployments</a></li>
+    <li class="mono"><a href="#prisma_sase.delete_api.Delete.certificates_tenants">certificates_tenants</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.demsiteconfigs">demsiteconfigs</a></li>
+    <li class="mono"><a href="#prisma_sase.delete_api.Delete.deviceidconfigs">deviceidconfigs</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.deviceidconfigs_snmpdiscoverystartnodes">deviceidconfigs_snmpdiscoverystartnodes</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.deviceidprofiles">deviceidprofiles</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.dhcpservers">dhcpservers</a></li>
@@ -2588,14 +2590,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.dnsserviceprofiles">dnsserviceprofiles</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.dnsserviceroles">dnsserviceroles</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.dnsservices">dnsservices</a></li>
-    <li class="mono"><a href="#prisma_sase.delete_api.Delete.element_deviceidconfigs">element_deviceidconfigs</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.element_extensions">element_extensions</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.element_passages">element_passages</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.element_toolkitsessions">element_toolkitsessions</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.elementpassageconfigs">elementpassageconfigs</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.elementsecurityzones">elementsecurityzones</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.elementshells">elementshells</a></li>
-    <li class="mono"><a href="#prisma_sase.delete_api.Delete.elementshells_interfaces">elementshells_interfaces</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.elementsystemlimitprofiles">elementsystemlimitprofiles</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.elementusers">elementusers</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.elementusers_access">elementusers_access</a></li>
@@ -2608,6 +2608,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.hubclusters">hubclusters</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.idps">idps</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.interfaces">interfaces</a></li>
+    <li class="mono"><a href="#prisma_sase.delete_api.Delete.interfaces_elementshells">interfaces_elementshells</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.ipfix">ipfix</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.ipfixcollectorcontexts">ipfixcollectorcontexts</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.ipfixfiltercontexts">ipfixfiltercontexts</a></li>
@@ -2643,8 +2644,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.pathgroups">pathgroups</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.pathprefixdistributionfilterassociation">pathprefixdistributionfilterassociation</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.pathprefixdistributionfilters">pathprefixdistributionfilters</a></li>
+    <li class="mono"><a href="#prisma_sase.delete_api.Delete.perfmgmtpolicyrules_perfmgmtpolicysets">perfmgmtpolicyrules_perfmgmtpolicysets</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.perfmgmtpolicysets">perfmgmtpolicysets</a></li>
-    <li class="mono"><a href="#prisma_sase.delete_api.Delete.perfmgmtpolicysets_perfmgmtpolicyrules">perfmgmtpolicysets_perfmgmtpolicyrules</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.perfmgmtpolicysetstacks">perfmgmtpolicysetstacks</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.perfmgmtthresholdprofiles">perfmgmtthresholdprofiles</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.policyrules">policyrules</a></li>
@@ -2698,7 +2699,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.tenant_permissions">tenant_permissions</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.tenant_prioritypolicylocalprefixes">tenant_prioritypolicylocalprefixes</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.tenantpassageconfigs">tenantpassageconfigs</a></li>
-    <li class="mono"><a href="#prisma_sase.delete_api.Delete.tenants_certificates">tenants_certificates</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.useridagents">useridagents</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.users">users</a></li>
     <li class="mono"><a href="#prisma_sase.delete_api.Delete.vrfcontextprofiles">vrfcontextprofiles</a></li>
@@ -2895,6 +2895,28 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">bulkconfigurations_deployments_sitetemplates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sitetemplate_id</span><span class="p">,</span> <span class="n">deployment_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DELETE Bulkconfigurations_Deployments_Sitetemplates API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **sitetemplate_id**: Site Template ID</span>
+<span class="sd">          - **deployment_id**: Deployment ID</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/bulkconfigurations/sitetemplates/</span><span class="si">{}</span><span class="s2">/deployments/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                                        <span class="n">sitetemplate_id</span><span class="p">,</span>
+                                                                                                        <span class="n">deployment_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">bulkconfigurations_sitetemplates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sitetemplate_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        delete site profile (v2.0)</span>
@@ -2915,14 +2937,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">bulkconfigurations_sitetemplates_deployments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sitetemplate_id</span><span class="p">,</span> <span class="n">deployment_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">certificates_tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">certificate_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Delete a deployment (v2.0)</span>
+<span class="sd">        DELETE Certificates_Tenants API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **sitetemplate_id**: Site Template ID</span>
-<span class="sd">          - **deployment_id**: Deployment ID</span>
+<span class="sd">          - **certificate_id**: Certificate ID</span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -2930,9 +2951,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/bulkconfigurations/sitetemplates/</span><span class="si">{}</span><span class="s2">/deployments/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                                        <span class="n">sitetemplate_id</span><span class="p">,</span>
-                                                                                                        <span class="n">deployment_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/certificates/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                     <span class="n">certificate_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
@@ -2955,6 +2975,30 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/demsiteconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
                                                                                 <span class="n">site_id</span><span class="p">,</span>
                                                                                 <span class="n">demsiteconfig_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">deviceidconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">deviceidconfig_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DELETE Deviceidconfigs API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **site_id**: Site ID</span>
+<span class="sd">          - **element_id**: Element (Device) ID</span>
+<span class="sd">          - **deviceidconfig_id**: Device Id Config ID</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elements/</span><span class="si">{}</span><span class="s2">/deviceidconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                             <span class="n">site_id</span><span class="p">,</span>
+                                                                                             <span class="n">element_id</span><span class="p">,</span>
+                                                                                             <span class="n">deviceidconfig_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
@@ -3109,30 +3153,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">element_deviceidconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">deviceidconfig_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Delete device id element level (source interface) config (v2.0)</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **site_id**: Site ID</span>
-<span class="sd">          - **element_id**: Element (Device) ID</span>
-<span class="sd">          - **deviceidconfig_id**: Device Id Config ID</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elements/</span><span class="si">{}</span><span class="s2">/deviceidconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                             <span class="n">site_id</span><span class="p">,</span>
-                                                                                             <span class="n">element_id</span><span class="p">,</span>
-                                                                                             <span class="n">deviceidconfig_id</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
-
     <span class="k">def</span> <span class="nf">element_extensions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">extension_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Delete a specific extension associated with an element (v2.0)</span>
@@ -3269,37 +3289,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">elementshells_interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">elementshell_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Delete an element shell interface (v2.4)</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **site_id**: Site ID</span>
-<span class="sd">          - **elementshell_id**: Element Shell ID</span>
-<span class="sd">          - **interface_id**: Interface ID</span>
-<span class="sd">          - **api_version**: API version to use (default v2.4)</span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elementshells/</span><span class="si">{}</span><span class="s2">/interfaces/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                             <span class="n">site_id</span><span class="p">,</span>
-                                                                                             <span class="n">elementshell_id</span><span class="p">,</span>
-                                                                                             <span class="n">interface_id</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
-
     <span class="k">def</span> <span class="nf">elementsystemlimitprofiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elementsystemlimitprofile_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DELETE Elementsystemlimitprofiles API Function</span>
+<span class="sd">        Delete Element System Limit Profile (v2.0)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **elementsystemlimitprofile_id**: </span>
+<span class="sd">          - **elementsystemlimitprofile_id**: Element System Limit Profile ID</span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -3545,6 +3541,30 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                                                                                         <span class="n">site_id</span><span class="p">,</span>
                                                                                         <span class="n">element_id</span><span class="p">,</span>
                                                                                         <span class="n">interface_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">interfaces_elementshells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">elementshell_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DELETE Interfaces_Elementshells API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **site_id**: Site ID</span>
+<span class="sd">          - **elementshell_id**: Element Shell ID</span>
+<span class="sd">          - **interface_id**: Interface ID</span>
+<span class="sd">          - **api_version**: API version to use (default v2.4)</span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elementshells/</span><span class="si">{}</span><span class="s2">/interfaces/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                             <span class="n">site_id</span><span class="p">,</span>
+                                                                                             <span class="n">elementshell_id</span><span class="p">,</span>
+                                                                                             <span class="n">interface_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
@@ -4281,6 +4301,28 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">perfmgmtpolicyrules_perfmgmtpolicysets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">perfmgmtpolicyrule_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DELETE Perfmgmtpolicyrules_Perfmgmtpolicysets API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **perfmgmtpolicyset_id**: Performance Management Policy Set ID</span>
+<span class="sd">          - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID</span>
+<span class="sd">          - **api_version**: API version to use (default v2.2)</span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/perfmgmtpolicysets/</span><span class="si">{}</span><span class="s2">/perfmgmtpolicyrules/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                                  <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span>
+                                                                                                  <span class="n">perfmgmtpolicyrule_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">perfmgmtpolicysets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Delete a PERFMGMT Policy Set (v2.0)</span>
@@ -4297,28 +4339,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/perfmgmtpolicysets/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
                                                                            <span class="n">perfmgmtpolicyset_id</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">perfmgmtpolicysets_perfmgmtpolicyrules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">perfmgmtpolicyrule_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Delete PERFMGMT policy rule of tenant V2.2 (v2.2)</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **perfmgmtpolicyset_id**: Performance Management Policy Set ID</span>
-<span class="sd">          - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID</span>
-<span class="sd">          - **api_version**: API version to use (default v2.2)</span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/perfmgmtpolicysets/</span><span class="si">{}</span><span class="s2">/perfmgmtpolicyrules/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                                  <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span>
-                                                                                                  <span class="n">perfmgmtpolicyrule_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
@@ -4837,11 +4857,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="k">def</span> <span class="nf">securityprofilegroups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">securityprofilegroup_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DELETE Securityprofilegroups API Function</span>
+<span class="sd">        Delete an existing Security Profile Group by tenant ID and its ID (v2.0)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **securityprofilegroup_id**: </span>
+<span class="sd">          - **securityprofilegroup_id**: Security Profile Group ID</span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -5249,7 +5269,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="k">def</span> <span class="nf">tacacs_plus_profiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tacacs_plus_profile_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DELETE Tacacs_Plus_Profiles API Function</span>
+<span class="sd">        Delete TACACS+ Profile (v2.0)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
@@ -5269,7 +5289,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="k">def</span> <span class="nf">tacacs_plus_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">tacacs_plus_server_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DELETE Tacacs_Plus_Servers API Function</span>
+<span class="sd">        Delete TACACS+ Server (v2.0)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
@@ -5451,26 +5471,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">tenants_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">certificate_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DELETE Tenants_Certificates API Function</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **certificate_id**: Certificate ID</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/certificates/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                     <span class="n">certificate_id</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
-
     <span class="k">def</span> <span class="nf">useridagents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">useridagent_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Delete User ID Agent (v2.0)</span>
@@ -5642,20 +5642,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">anynetlinks_t</span> <span class="o">=</span> <span class="n">tenant_anynetlinks</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `anynetlinks_t` to `tenant_anynetlinks`&quot;&quot;&quot;</span>
 
-    <span class="n">certificates_tenants</span> <span class="o">=</span> <span class="n">tenants_certificates</span>
-    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `certificates_tenants` to `tenants_certificates`&quot;&quot;&quot;</span>
-
     <span class="n">configs_prismasase_connections</span> <span class="o">=</span> <span class="n">prismasase_connections_configs</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `configs_prismasase_connections` to `prismasase_connections_configs`&quot;&quot;&quot;</span>
 
     <span class="n">configs_sdwanapps</span> <span class="o">=</span> <span class="n">sdwanapps_configs</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `configs_sdwanapps` to `sdwanapps_configs`&quot;&quot;&quot;</span>
 
-    <span class="n">deployments_sitetemplates_bulkconfigurations</span> <span class="o">=</span> <span class="n">bulkconfigurations_sitetemplates_deployments</span>
-    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `deployments_sitetemplates_bulkconfigurations` to `bulkconfigurations_sitetemplates_deployments`&quot;&quot;&quot;</span>
+    <span class="n">deployments_sitetemplates_bulkconfigurations</span> <span class="o">=</span> <span class="n">bulkconfigurations_deployments_sitetemplates</span>
+    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `deployments_sitetemplates_bulkconfigurations` to `bulkconfigurations_deployments_sitetemplates`&quot;&quot;&quot;</span>
 
-    <span class="n">deviceidconfigs_i</span> <span class="o">=</span> <span class="n">element_deviceidconfigs</span>
-    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `deviceidconfigs_i` to `element_deviceidconfigs`&quot;&quot;&quot;</span>
+    <span class="n">deviceidconfigs_i</span> <span class="o">=</span> <span class="n">deviceidconfigs</span>
+    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `deviceidconfigs_i` to `deviceidconfigs`&quot;&quot;&quot;</span>
 
     <span class="n">elementpassageconfigs_e</span> <span class="o">=</span> <span class="n">elementpassageconfigs</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `elementpassageconfigs_e` to `elementpassageconfigs`&quot;&quot;&quot;</span>
@@ -5668,9 +5665,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="n">extensions_ws</span> <span class="o">=</span> <span class="n">ws_extensions</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `extensions_ws` to `ws_extensions`&quot;&quot;&quot;</span>
-
-    <span class="n">interfaces_elementshells</span> <span class="o">=</span> <span class="n">elementshells_interfaces</span>
-    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `interfaces_elementshells` to `elementshells_interfaces`&quot;&quot;&quot;</span>
 
     <span class="n">ipfixlocalprefixes_s</span> <span class="o">=</span> <span class="n">site_ipfixlocalprefixes</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `ipfixlocalprefixes_s` to `site_ipfixlocalprefixes`&quot;&quot;&quot;</span>
@@ -5707,9 +5701,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="n">passages_e</span> <span class="o">=</span> <span class="n">element_passages</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `passages_e` to `element_passages`&quot;&quot;&quot;</span>
-
-    <span class="n">perfmgmtpolicyrules_perfmgmtpolicysets</span> <span class="o">=</span> <span class="n">perfmgmtpolicysets_perfmgmtpolicyrules</span>
-    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `perfmgmtpolicyrules_perfmgmtpolicysets` to `perfmgmtpolicysets_perfmgmtpolicyrules`&quot;&quot;&quot;</span>
 
     <span class="n">permissions_clients_o</span> <span class="o">=</span> <span class="n">esp_operator_permissions_client</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `permissions_clients_o` to `esp_operator_permissions_client`&quot;&quot;&quot;</span>
@@ -5882,6 +5873,28 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">bulkconfigurations_deployments_sitetemplates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sitetemplate_id</span><span class="p">,</span> <span class="n">deployment_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DELETE Bulkconfigurations_Deployments_Sitetemplates API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **sitetemplate_id**: Site Template ID</span>
+<span class="sd">          - **deployment_id**: Deployment ID</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/bulkconfigurations/sitetemplates/</span><span class="si">{}</span><span class="s2">/deployments/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                                        <span class="n">sitetemplate_id</span><span class="p">,</span>
+                                                                                                        <span class="n">deployment_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">bulkconfigurations_sitetemplates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sitetemplate_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        delete site profile (v2.0)</span>
@@ -5902,14 +5915,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">bulkconfigurations_sitetemplates_deployments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sitetemplate_id</span><span class="p">,</span> <span class="n">deployment_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">certificates_tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">certificate_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Delete a deployment (v2.0)</span>
+<span class="sd">        DELETE Certificates_Tenants API Function</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **sitetemplate_id**: Site Template ID</span>
-<span class="sd">          - **deployment_id**: Deployment ID</span>
+<span class="sd">          - **certificate_id**: Certificate ID</span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -5917,9 +5929,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/bulkconfigurations/sitetemplates/</span><span class="si">{}</span><span class="s2">/deployments/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                                        <span class="n">sitetemplate_id</span><span class="p">,</span>
-                                                                                                        <span class="n">deployment_id</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/certificates/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                     <span class="n">certificate_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
@@ -5942,6 +5953,30 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/demsiteconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
                                                                                 <span class="n">site_id</span><span class="p">,</span>
                                                                                 <span class="n">demsiteconfig_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">deviceidconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">deviceidconfig_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DELETE Deviceidconfigs API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **site_id**: Site ID</span>
+<span class="sd">          - **element_id**: Element (Device) ID</span>
+<span class="sd">          - **deviceidconfig_id**: Device Id Config ID</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elements/</span><span class="si">{}</span><span class="s2">/deviceidconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                             <span class="n">site_id</span><span class="p">,</span>
+                                                                                             <span class="n">element_id</span><span class="p">,</span>
+                                                                                             <span class="n">deviceidconfig_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
@@ -6096,30 +6131,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">element_deviceidconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">deviceidconfig_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Delete device id element level (source interface) config (v2.0)</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **site_id**: Site ID</span>
-<span class="sd">          - **element_id**: Element (Device) ID</span>
-<span class="sd">          - **deviceidconfig_id**: Device Id Config ID</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elements/</span><span class="si">{}</span><span class="s2">/deviceidconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                             <span class="n">site_id</span><span class="p">,</span>
-                                                                                             <span class="n">element_id</span><span class="p">,</span>
-                                                                                             <span class="n">deviceidconfig_id</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
-
     <span class="k">def</span> <span class="nf">element_extensions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">extension_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Delete a specific extension associated with an element (v2.0)</span>
@@ -6256,37 +6267,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">elementshells_interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">elementshell_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Delete an element shell interface (v2.4)</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **site_id**: Site ID</span>
-<span class="sd">          - **elementshell_id**: Element Shell ID</span>
-<span class="sd">          - **interface_id**: Interface ID</span>
-<span class="sd">          - **api_version**: API version to use (default v2.4)</span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elementshells/</span><span class="si">{}</span><span class="s2">/interfaces/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                             <span class="n">site_id</span><span class="p">,</span>
-                                                                                             <span class="n">elementshell_id</span><span class="p">,</span>
-                                                                                             <span class="n">interface_id</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
-
     <span class="k">def</span> <span class="nf">elementsystemlimitprofiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elementsystemlimitprofile_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DELETE Elementsystemlimitprofiles API Function</span>
+<span class="sd">        Delete Element System Limit Profile (v2.0)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **elementsystemlimitprofile_id**: </span>
+<span class="sd">          - **elementsystemlimitprofile_id**: Element System Limit Profile ID</span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -6532,6 +6519,30 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                                                                                         <span class="n">site_id</span><span class="p">,</span>
                                                                                         <span class="n">element_id</span><span class="p">,</span>
                                                                                         <span class="n">interface_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">interfaces_elementshells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">elementshell_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DELETE Interfaces_Elementshells API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **site_id**: Site ID</span>
+<span class="sd">          - **elementshell_id**: Element Shell ID</span>
+<span class="sd">          - **interface_id**: Interface ID</span>
+<span class="sd">          - **api_version**: API version to use (default v2.4)</span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elementshells/</span><span class="si">{}</span><span class="s2">/interfaces/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                             <span class="n">site_id</span><span class="p">,</span>
+                                                                                             <span class="n">elementshell_id</span><span class="p">,</span>
+                                                                                             <span class="n">interface_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
@@ -7268,6 +7279,28 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">perfmgmtpolicyrules_perfmgmtpolicysets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">perfmgmtpolicyrule_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DELETE Perfmgmtpolicyrules_Perfmgmtpolicysets API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **perfmgmtpolicyset_id**: Performance Management Policy Set ID</span>
+<span class="sd">          - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID</span>
+<span class="sd">          - **api_version**: API version to use (default v2.2)</span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/perfmgmtpolicysets/</span><span class="si">{}</span><span class="s2">/perfmgmtpolicyrules/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                                  <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span>
+                                                                                                  <span class="n">perfmgmtpolicyrule_id</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">perfmgmtpolicysets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Delete a PERFMGMT Policy Set (v2.0)</span>
@@ -7284,28 +7317,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
         <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/perfmgmtpolicysets/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
                                                                            <span class="n">perfmgmtpolicyset_id</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">perfmgmtpolicysets_perfmgmtpolicyrules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">perfmgmtpolicyrule_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Delete PERFMGMT policy rule of tenant V2.2 (v2.2)</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **perfmgmtpolicyset_id**: Performance Management Policy Set ID</span>
-<span class="sd">          - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID</span>
-<span class="sd">          - **api_version**: API version to use (default v2.2)</span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/perfmgmtpolicysets/</span><span class="si">{}</span><span class="s2">/perfmgmtpolicyrules/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                                  <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span>
-                                                                                                  <span class="n">perfmgmtpolicyrule_id</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
@@ -7824,11 +7835,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="k">def</span> <span class="nf">securityprofilegroups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">securityprofilegroup_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DELETE Securityprofilegroups API Function</span>
+<span class="sd">        Delete an existing Security Profile Group by tenant ID and its ID (v2.0)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
-<span class="sd">          - **securityprofilegroup_id**: </span>
+<span class="sd">          - **securityprofilegroup_id**: Security Profile Group ID</span>
 <span class="sd">          - **api_version**: API version to use (default v2.0)</span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
@@ -8236,7 +8247,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="k">def</span> <span class="nf">tacacs_plus_profiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tacacs_plus_profile_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DELETE Tacacs_Plus_Profiles API Function</span>
+<span class="sd">        Delete TACACS+ Profile (v2.0)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
@@ -8256,7 +8267,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="k">def</span> <span class="nf">tacacs_plus_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">tacacs_plus_server_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DELETE Tacacs_Plus_Servers API Function</span>
+<span class="sd">        Delete TACACS+ Server (v2.0)</span>
 
 <span class="sd">          **Parameters:**:</span>
 
@@ -8438,26 +8449,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">tenants_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">certificate_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DELETE Tenants_Certificates API Function</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **certificate_id**: Certificate ID</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/certificates/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                     <span class="n">certificate_id</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
-
     <span class="k">def</span> <span class="nf">useridagents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">useridagent_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Delete User ID Agent (v2.0)</span>
@@ -8629,20 +8620,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">anynetlinks_t</span> <span class="o">=</span> <span class="n">tenant_anynetlinks</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `anynetlinks_t` to `tenant_anynetlinks`&quot;&quot;&quot;</span>
 
-    <span class="n">certificates_tenants</span> <span class="o">=</span> <span class="n">tenants_certificates</span>
-    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `certificates_tenants` to `tenants_certificates`&quot;&quot;&quot;</span>
-
     <span class="n">configs_prismasase_connections</span> <span class="o">=</span> <span class="n">prismasase_connections_configs</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `configs_prismasase_connections` to `prismasase_connections_configs`&quot;&quot;&quot;</span>
 
     <span class="n">configs_sdwanapps</span> <span class="o">=</span> <span class="n">sdwanapps_configs</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `configs_sdwanapps` to `sdwanapps_configs`&quot;&quot;&quot;</span>
 
-    <span class="n">deployments_sitetemplates_bulkconfigurations</span> <span class="o">=</span> <span class="n">bulkconfigurations_sitetemplates_deployments</span>
-    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `deployments_sitetemplates_bulkconfigurations` to `bulkconfigurations_sitetemplates_deployments`&quot;&quot;&quot;</span>
+    <span class="n">deployments_sitetemplates_bulkconfigurations</span> <span class="o">=</span> <span class="n">bulkconfigurations_deployments_sitetemplates</span>
+    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `deployments_sitetemplates_bulkconfigurations` to `bulkconfigurations_deployments_sitetemplates`&quot;&quot;&quot;</span>
 
-    <span class="n">deviceidconfigs_i</span> <span class="o">=</span> <span class="n">element_deviceidconfigs</span>
-    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `deviceidconfigs_i` to `element_deviceidconfigs`&quot;&quot;&quot;</span>
+    <span class="n">deviceidconfigs_i</span> <span class="o">=</span> <span class="n">deviceidconfigs</span>
+    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `deviceidconfigs_i` to `deviceidconfigs`&quot;&quot;&quot;</span>
 
     <span class="n">elementpassageconfigs_e</span> <span class="o">=</span> <span class="n">elementpassageconfigs</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `elementpassageconfigs_e` to `elementpassageconfigs`&quot;&quot;&quot;</span>
@@ -8655,9 +8643,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="n">extensions_ws</span> <span class="o">=</span> <span class="n">ws_extensions</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `extensions_ws` to `ws_extensions`&quot;&quot;&quot;</span>
-
-    <span class="n">interfaces_elementshells</span> <span class="o">=</span> <span class="n">elementshells_interfaces</span>
-    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `interfaces_elementshells` to `elementshells_interfaces`&quot;&quot;&quot;</span>
 
     <span class="n">ipfixlocalprefixes_s</span> <span class="o">=</span> <span class="n">site_ipfixlocalprefixes</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `ipfixlocalprefixes_s` to `site_ipfixlocalprefixes`&quot;&quot;&quot;</span>
@@ -8694,9 +8679,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="n">passages_e</span> <span class="o">=</span> <span class="n">element_passages</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `passages_e` to `element_passages`&quot;&quot;&quot;</span>
-
-    <span class="n">perfmgmtpolicyrules_perfmgmtpolicysets</span> <span class="o">=</span> <span class="n">perfmgmtpolicysets_perfmgmtpolicyrules</span>
-    <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `perfmgmtpolicyrules_perfmgmtpolicysets` to `perfmgmtpolicysets_perfmgmtpolicyrules`&quot;&quot;&quot;</span>
 
     <span class="n">permissions_clients_o</span> <span class="o">=</span> <span class="n">esp_operator_permissions_client</span>
     <span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `permissions_clients_o` to `esp_operator_permissions_client`&quot;&quot;&quot;</span>
@@ -8756,17 +8738,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 
             </div>
-            <div class="item" id="prisma_sase.delete_api.Delete.certificates_tenants">
-            <p class="name">var <span class="ident">certificates_tenants</span></p>
-            
-
-            
-  
-    <div class="desc"><p>Backwards-compatibility alias of <code>certificates_tenants</code> to <code>tenants_certificates</code></p></div>
-  <div class="source_cont">
-</div>
-
-            </div>
             <div class="item" id="prisma_sase.delete_api.Delete.configs_prismasase_connections">
             <p class="name">var <span class="ident">configs_prismasase_connections</span></p>
             
@@ -8795,7 +8766,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
             
   
-    <div class="desc"><p>Backwards-compatibility alias of <code>deployments_sitetemplates_bulkconfigurations</code> to <code>bulkconfigurations_sitetemplates_deployments</code></p></div>
+    <div class="desc"><p>Backwards-compatibility alias of <code>deployments_sitetemplates_bulkconfigurations</code> to <code>bulkconfigurations_deployments_sitetemplates</code></p></div>
   <div class="source_cont">
 </div>
 
@@ -8806,7 +8777,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
             
   
-    <div class="desc"><p>Backwards-compatibility alias of <code>deviceidconfigs_i</code> to <code>element_deviceidconfigs</code></p></div>
+    <div class="desc"><p>Backwards-compatibility alias of <code>deviceidconfigs_i</code> to <code>deviceidconfigs</code></p></div>
   <div class="source_cont">
 </div>
 
@@ -8851,17 +8822,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   
     <div class="desc"><p>Backwards-compatibility alias of <code>extensions_ws</code> to <code>ws_extensions</code></p></div>
-  <div class="source_cont">
-</div>
-
-            </div>
-            <div class="item" id="prisma_sase.delete_api.Delete.interfaces_elementshells">
-            <p class="name">var <span class="ident">interfaces_elementshells</span></p>
-            
-
-            
-  
-    <div class="desc"><p>Backwards-compatibility alias of <code>interfaces_elementshells</code> to <code>elementshells_interfaces</code></p></div>
   <div class="source_cont">
 </div>
 
@@ -8994,17 +8954,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   
     <div class="desc"><p>Backwards-compatibility alias of <code>passages_e</code> to <code>element_passages</code></p></div>
-  <div class="source_cont">
-</div>
-
-            </div>
-            <div class="item" id="prisma_sase.delete_api.Delete.perfmgmtpolicyrules_perfmgmtpolicysets">
-            <p class="name">var <span class="ident">perfmgmtpolicyrules_perfmgmtpolicysets</span></p>
-            
-
-            
-  
-    <div class="desc"><p>Backwards-compatibility alias of <code>perfmgmtpolicyrules_perfmgmtpolicysets</code> to <code>perfmgmtpolicysets_perfmgmtpolicyrules</code></p></div>
   <div class="source_cont">
 </div>
 
@@ -9306,6 +9255,48 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   </div>
   
             
+  <div class="item" id="prisma_sase.delete_api.Delete.bulkconfigurations_deployments_sitetemplates">
+    <div class="name def">
+    <p>def <span class="ident">bulkconfigurations_deployments_sitetemplates</span>(</p><p>self, sitetemplate_id, deployment_id, api_version=&#39;v2.0&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>DELETE Bulkconfigurations_Deployments_Sitetemplates API Function</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>sitetemplate_id</strong>: Site Template ID</li>
+<li><strong>deployment_id</strong>: Deployment ID</li>
+<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+</ul>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.delete_api.Delete.bulkconfigurations_deployments_sitetemplates', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.delete_api.Delete.bulkconfigurations_deployments_sitetemplates" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">bulkconfigurations_deployments_sitetemplates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sitetemplate_id</span><span class="p">,</span> <span class="n">deployment_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DELETE Bulkconfigurations_Deployments_Sitetemplates API Function</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **sitetemplate_id**: Site Template ID</span>
+<span class="sd">      - **deployment_id**: Deployment ID</span>
+<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/bulkconfigurations/sitetemplates/</span><span class="si">{}</span><span class="s2">/deployments/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                                    <span class="n">sitetemplate_id</span><span class="p">,</span>
+                                                                                                    <span class="n">deployment_id</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
   <div class="item" id="prisma_sase.delete_api.Delete.bulkconfigurations_sitetemplates">
     <div class="name def">
     <p>def <span class="ident">bulkconfigurations_sitetemplates</span>(</p><p>self, sitetemplate_id, api_version=&#39;v2.0&#39;)</p>
@@ -9345,38 +9336,35 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   </div>
   
             
-  <div class="item" id="prisma_sase.delete_api.Delete.bulkconfigurations_sitetemplates_deployments">
+  <div class="item" id="prisma_sase.delete_api.Delete.certificates_tenants">
     <div class="name def">
-    <p>def <span class="ident">bulkconfigurations_sitetemplates_deployments</span>(</p><p>self, sitetemplate_id, deployment_id, api_version=&#39;v2.0&#39;)</p>
+    <p>def <span class="ident">certificates_tenants</span>(</p><p>self, certificate_id, api_version=&#39;v2.0&#39;)</p>
     </div>
     
 
     
   
-    <div class="desc"><p>Delete a deployment (v2.0)</p>
+    <div class="desc"><p>DELETE Certificates_Tenants API Function</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>sitetemplate_id</strong>: Site Template ID</li>
-<li><strong>deployment_id</strong>: Deployment ID</li>
+<li><strong>certificate_id</strong>: Certificate ID</li>
 <li><strong>api_version</strong>: API version to use (default v2.0)</li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.delete_api.Delete.bulkconfigurations_sitetemplates_deployments', this);">Show source &equiv;</a></p>
-  <div id="source-prisma_sase.delete_api.Delete.bulkconfigurations_sitetemplates_deployments" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">bulkconfigurations_sitetemplates_deployments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sitetemplate_id</span><span class="p">,</span> <span class="n">deployment_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.delete_api.Delete.certificates_tenants', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.delete_api.Delete.certificates_tenants" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">certificates_tenants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">certificate_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Delete a deployment (v2.0)</span>
+<span class="sd">    DELETE Certificates_Tenants API Function</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **sitetemplate_id**: Site Template ID</span>
-<span class="sd">      - **deployment_id**: Deployment ID</span>
+<span class="sd">      - **certificate_id**: Certificate ID</span>
 <span class="sd">      - **api_version**: API version to use (default v2.0)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/bulkconfigurations/sitetemplates/</span><span class="si">{}</span><span class="s2">/deployments/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                                    <span class="n">sitetemplate_id</span><span class="p">,</span>
-                                                                                                    <span class="n">deployment_id</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/certificates/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                 <span class="n">certificate_id</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 </pre></div>
@@ -9419,6 +9407,51 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/demsiteconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
                                                                             <span class="n">site_id</span><span class="p">,</span>
                                                                             <span class="n">demsiteconfig_id</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item" id="prisma_sase.delete_api.Delete.deviceidconfigs">
+    <div class="name def">
+    <p>def <span class="ident">deviceidconfigs</span>(</p><p>self, site_id, element_id, deviceidconfig_id, api_version=&#39;v2.0&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>DELETE Deviceidconfigs API Function</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>site_id</strong>: Site ID</li>
+<li><strong>element_id</strong>: Element (Device) ID</li>
+<li><strong>deviceidconfig_id</strong>: Device Id Config ID</li>
+<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+</ul>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.delete_api.Delete.deviceidconfigs', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.delete_api.Delete.deviceidconfigs" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">deviceidconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">deviceidconfig_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DELETE Deviceidconfigs API Function</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **site_id**: Site ID</span>
+<span class="sd">      - **element_id**: Element (Device) ID</span>
+<span class="sd">      - **deviceidconfig_id**: Device Id Config ID</span>
+<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elements/</span><span class="si">{}</span><span class="s2">/deviceidconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                         <span class="n">site_id</span><span class="p">,</span>
+                                                                                         <span class="n">element_id</span><span class="p">,</span>
+                                                                                         <span class="n">deviceidconfig_id</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 </pre></div>
@@ -9717,51 +9750,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   </div>
   
             
-  <div class="item" id="prisma_sase.delete_api.Delete.element_deviceidconfigs">
-    <div class="name def">
-    <p>def <span class="ident">element_deviceidconfigs</span>(</p><p>self, site_id, element_id, deviceidconfig_id, api_version=&#39;v2.0&#39;)</p>
-    </div>
-    
-
-    
-  
-    <div class="desc"><p>Delete device id element level (source interface) config (v2.0)</p>
-<p><strong>Parameters:</strong>:</p>
-<ul>
-<li><strong>site_id</strong>: Site ID</li>
-<li><strong>element_id</strong>: Element (Device) ID</li>
-<li><strong>deviceidconfig_id</strong>: Device Id Config ID</li>
-<li><strong>api_version</strong>: API version to use (default v2.0)</li>
-</ul>
-<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
-  <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.delete_api.Delete.element_deviceidconfigs', this);">Show source &equiv;</a></p>
-  <div id="source-prisma_sase.delete_api.Delete.element_deviceidconfigs" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">element_deviceidconfigs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">deviceidconfig_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Delete device id element level (source interface) config (v2.0)</span>
-<span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **site_id**: Site ID</span>
-<span class="sd">      - **element_id**: Element (Device) ID</span>
-<span class="sd">      - **deviceidconfig_id**: Device Id Config ID</span>
-<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
-<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elements/</span><span class="si">{}</span><span class="s2">/deviceidconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                         <span class="n">site_id</span><span class="p">,</span>
-                                                                                         <span class="n">element_id</span><span class="p">,</span>
-                                                                                         <span class="n">deviceidconfig_id</span><span class="p">)</span>
-    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
-</pre></div>
-
-  </div>
-</div>
-
-  </div>
-  
-            
   <div class="item" id="prisma_sase.delete_api.Delete.element_extensions">
     <div class="name def">
     <p>def <span class="ident">element_extensions</span>(</p><p>self, site_id, element_id, extension_id, api_version=&#39;v2.0&#39;)</p>
@@ -10020,51 +10008,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   </div>
   
             
-  <div class="item" id="prisma_sase.delete_api.Delete.elementshells_interfaces">
-    <div class="name def">
-    <p>def <span class="ident">elementshells_interfaces</span>(</p><p>self, site_id, elementshell_id, interface_id, api_version=&#39;v2.4&#39;)</p>
-    </div>
-    
-
-    
-  
-    <div class="desc"><p>Delete an element shell interface (v2.4)</p>
-<p><strong>Parameters:</strong>:</p>
-<ul>
-<li><strong>site_id</strong>: Site ID</li>
-<li><strong>elementshell_id</strong>: Element Shell ID</li>
-<li><strong>interface_id</strong>: Interface ID</li>
-<li><strong>api_version</strong>: API version to use (default v2.4)</li>
-</ul>
-<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
-  <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.delete_api.Delete.elementshells_interfaces', this);">Show source &equiv;</a></p>
-  <div id="source-prisma_sase.delete_api.Delete.elementshells_interfaces" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">elementshells_interfaces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">elementshell_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Delete an element shell interface (v2.4)</span>
-<span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **site_id**: Site ID</span>
-<span class="sd">      - **elementshell_id**: Element Shell ID</span>
-<span class="sd">      - **interface_id**: Interface ID</span>
-<span class="sd">      - **api_version**: API version to use (default v2.4)</span>
-<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elementshells/</span><span class="si">{}</span><span class="s2">/interfaces/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                         <span class="n">site_id</span><span class="p">,</span>
-                                                                                         <span class="n">elementshell_id</span><span class="p">,</span>
-                                                                                         <span class="n">interface_id</span><span class="p">)</span>
-    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
-</pre></div>
-
-  </div>
-</div>
-
-  </div>
-  
-            
   <div class="item" id="prisma_sase.delete_api.Delete.elementsystemlimitprofiles">
     <div class="name def">
     <p>def <span class="ident">elementsystemlimitprofiles</span>(</p><p>self, elementsystemlimitprofile_id, api_version=&#39;v2.0&#39;)</p>
@@ -10073,10 +10016,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     
   
-    <div class="desc"><p>DELETE Elementsystemlimitprofiles API Function</p>
+    <div class="desc"><p>Delete Element System Limit Profile (v2.0)</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>elementsystemlimitprofile_id</strong>: </li>
+<li><strong>elementsystemlimitprofile_id</strong>: Element System Limit Profile ID</li>
 <li><strong>api_version</strong>: API version to use (default v2.0)</li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
@@ -10085,9 +10028,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <div id="source-prisma_sase.delete_api.Delete.elementsystemlimitprofiles" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">elementsystemlimitprofiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elementsystemlimitprofile_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    DELETE Elementsystemlimitprofiles API Function</span>
+<span class="sd">    Delete Element System Limit Profile (v2.0)</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **elementsystemlimitprofile_id**: </span>
+<span class="sd">      - **elementsystemlimitprofile_id**: Element System Limit Profile ID</span>
 <span class="sd">      - **api_version**: API version to use (default v2.0)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -10547,6 +10490,51 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                                                                                     <span class="n">site_id</span><span class="p">,</span>
                                                                                     <span class="n">element_id</span><span class="p">,</span>
                                                                                     <span class="n">interface_id</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item" id="prisma_sase.delete_api.Delete.interfaces_elementshells">
+    <div class="name def">
+    <p>def <span class="ident">interfaces_elementshells</span>(</p><p>self, site_id, elementshell_id, interface_id, api_version=&#39;v2.4&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>DELETE Interfaces_Elementshells API Function</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>site_id</strong>: Site ID</li>
+<li><strong>elementshell_id</strong>: Element Shell ID</li>
+<li><strong>interface_id</strong>: Interface ID</li>
+<li><strong>api_version</strong>: API version to use (default v2.4)</li>
+</ul>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.delete_api.Delete.interfaces_elementshells', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.delete_api.Delete.interfaces_elementshells" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">interfaces_elementshells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">elementshell_id</span><span class="p">,</span> <span class="n">interface_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.4&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DELETE Interfaces_Elementshells API Function</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **site_id**: Site ID</span>
+<span class="sd">      - **elementshell_id**: Element Shell ID</span>
+<span class="sd">      - **interface_id**: Interface ID</span>
+<span class="sd">      - **api_version**: API version to use (default v2.4)</span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/sites/</span><span class="si">{}</span><span class="s2">/elementshells/</span><span class="si">{}</span><span class="s2">/interfaces/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                         <span class="n">site_id</span><span class="p">,</span>
+                                                                                         <span class="n">elementshell_id</span><span class="p">,</span>
+                                                                                         <span class="n">interface_id</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 </pre></div>
@@ -11970,6 +11958,48 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   </div>
   
             
+  <div class="item" id="prisma_sase.delete_api.Delete.perfmgmtpolicyrules_perfmgmtpolicysets">
+    <div class="name def">
+    <p>def <span class="ident">perfmgmtpolicyrules_perfmgmtpolicysets</span>(</p><p>self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, api_version=&#39;v2.2&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>DELETE Perfmgmtpolicyrules_Perfmgmtpolicysets API Function</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>perfmgmtpolicyset_id</strong>: Performance Management Policy Set ID</li>
+<li><strong>perfmgmtpolicyrule_id</strong>: Performance Management Policy Rule ID</li>
+<li><strong>api_version</strong>: API version to use (default v2.2)</li>
+</ul>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.delete_api.Delete.perfmgmtpolicyrules_perfmgmtpolicysets', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.delete_api.Delete.perfmgmtpolicyrules_perfmgmtpolicysets" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">perfmgmtpolicyrules_perfmgmtpolicysets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">perfmgmtpolicyrule_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DELETE Perfmgmtpolicyrules_Perfmgmtpolicysets API Function</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **perfmgmtpolicyset_id**: Performance Management Policy Set ID</span>
+<span class="sd">      - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID</span>
+<span class="sd">      - **api_version**: API version to use (default v2.2)</span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/perfmgmtpolicysets/</span><span class="si">{}</span><span class="s2">/perfmgmtpolicyrules/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
+                                                                                              <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span>
+                                                                                              <span class="n">perfmgmtpolicyrule_id</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
   <div class="item" id="prisma_sase.delete_api.Delete.perfmgmtpolicysets">
     <div class="name def">
     <p>def <span class="ident">perfmgmtpolicysets</span>(</p><p>self, perfmgmtpolicyset_id, api_version=&#39;v2.0&#39;)</p>
@@ -11999,48 +12029,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
     <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/perfmgmtpolicysets/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
                                                                        <span class="n">perfmgmtpolicyset_id</span><span class="p">)</span>
-    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
-</pre></div>
-
-  </div>
-</div>
-
-  </div>
-  
-            
-  <div class="item" id="prisma_sase.delete_api.Delete.perfmgmtpolicysets_perfmgmtpolicyrules">
-    <div class="name def">
-    <p>def <span class="ident">perfmgmtpolicysets_perfmgmtpolicyrules</span>(</p><p>self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, api_version=&#39;v2.2&#39;)</p>
-    </div>
-    
-
-    
-  
-    <div class="desc"><p>Delete PERFMGMT policy rule of tenant V2.2 (v2.2)</p>
-<p><strong>Parameters:</strong>:</p>
-<ul>
-<li><strong>perfmgmtpolicyset_id</strong>: Performance Management Policy Set ID</li>
-<li><strong>perfmgmtpolicyrule_id</strong>: Performance Management Policy Rule ID</li>
-<li><strong>api_version</strong>: API version to use (default v2.2)</li>
-</ul>
-<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
-  <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.delete_api.Delete.perfmgmtpolicysets_perfmgmtpolicyrules', this);">Show source &equiv;</a></p>
-  <div id="source-prisma_sase.delete_api.Delete.perfmgmtpolicysets_perfmgmtpolicyrules" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">perfmgmtpolicysets_perfmgmtpolicyrules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span> <span class="n">perfmgmtpolicyrule_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Delete PERFMGMT policy rule of tenant V2.2 (v2.2)</span>
-<span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **perfmgmtpolicyset_id**: Performance Management Policy Set ID</span>
-<span class="sd">      - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID</span>
-<span class="sd">      - **api_version**: API version to use (default v2.2)</span>
-<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/perfmgmtpolicysets/</span><span class="si">{}</span><span class="s2">/perfmgmtpolicyrules/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                                              <span class="n">perfmgmtpolicyset_id</span><span class="p">,</span>
-                                                                                              <span class="n">perfmgmtpolicyrule_id</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 </pre></div>
@@ -13043,10 +13031,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     
   
-    <div class="desc"><p>DELETE Securityprofilegroups API Function</p>
+    <div class="desc"><p>Delete an existing Security Profile Group by tenant ID and its ID (v2.0)</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
-<li><strong>securityprofilegroup_id</strong>: </li>
+<li><strong>securityprofilegroup_id</strong>: Security Profile Group ID</li>
 <li><strong>api_version</strong>: API version to use (default v2.0)</li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
@@ -13055,9 +13043,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <div id="source-prisma_sase.delete_api.Delete.securityprofilegroups" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">securityprofilegroups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">securityprofilegroup_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    DELETE Securityprofilegroups API Function</span>
+<span class="sd">    Delete an existing Security Profile Group by tenant ID and its ID (v2.0)</span>
 <span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **securityprofilegroup_id**: </span>
+<span class="sd">      - **securityprofilegroup_id**: Security Profile Group ID</span>
 <span class="sd">      - **api_version**: API version to use (default v2.0)</span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -13832,7 +13820,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     
   
-    <div class="desc"><p>DELETE Tacacs_Plus_Profiles API Function</p>
+    <div class="desc"><p>Delete TACACS+ Profile (v2.0)</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
 <li><strong>tacacs_plus_profile_id</strong>: Tacacs Plus Profile ID</li>
@@ -13844,7 +13832,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <div id="source-prisma_sase.delete_api.Delete.tacacs_plus_profiles" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">tacacs_plus_profiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tacacs_plus_profile_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    DELETE Tacacs_Plus_Profiles API Function</span>
+<span class="sd">    Delete TACACS+ Profile (v2.0)</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **tacacs_plus_profile_id**: Tacacs Plus Profile ID</span>
 <span class="sd">      - **api_version**: API version to use (default v2.0)</span>
@@ -13871,7 +13859,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     
   
-    <div class="desc"><p>DELETE Tacacs_Plus_Servers API Function</p>
+    <div class="desc"><p>Delete TACACS+ Server (v2.0)</p>
 <p><strong>Parameters:</strong>:</p>
 <ul>
 <li><strong>site_id</strong>: Site ID</li>
@@ -13885,7 +13873,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <div id="source-prisma_sase.delete_api.Delete.tacacs_plus_servers" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">tacacs_plus_servers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">element_id</span><span class="p">,</span> <span class="n">tacacs_plus_server_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    DELETE Tacacs_Plus_Servers API Function</span>
+<span class="sd">    Delete TACACS+ Server (v2.0)</span>
 <span class="sd">      **Parameters:**:</span>
 <span class="sd">      - **site_id**: Site ID</span>
 <span class="sd">      - **element_id**: Element (Device) ID</span>
@@ -14210,45 +14198,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
     <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/tenantpassageconfigs/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
                                                                          <span class="n">tenantpassageconfig_id</span><span class="p">)</span>
-    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
-</pre></div>
-
-  </div>
-</div>
-
-  </div>
-  
-            
-  <div class="item" id="prisma_sase.delete_api.Delete.tenants_certificates">
-    <div class="name def">
-    <p>def <span class="ident">tenants_certificates</span>(</p><p>self, certificate_id, api_version=&#39;v2.0&#39;)</p>
-    </div>
-    
-
-    
-  
-    <div class="desc"><p>DELETE Tenants_Certificates API Function</p>
-<p><strong>Parameters:</strong>:</p>
-<ul>
-<li><strong>certificate_id</strong>: Certificate ID</li>
-<li><strong>api_version</strong>: API version to use (default v2.0)</li>
-</ul>
-<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
-  <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.delete_api.Delete.tenants_certificates', this);">Show source &equiv;</a></p>
-  <div id="source-prisma_sase.delete_api.Delete.tenants_certificates" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">tenants_certificates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">certificate_id</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    DELETE Tenants_Certificates API Function</span>
-<span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **certificate_id**: Certificate ID</span>
-<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
-<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/certificates/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">,</span>
-                                                                 <span class="n">certificate_id</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">)</span>
 </pre></div>

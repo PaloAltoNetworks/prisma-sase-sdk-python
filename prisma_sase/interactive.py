@@ -360,6 +360,8 @@ class Interactive(object):
             # if tsg_id not given on function, or if first login fails, prompt.
             if self._parent_class.tsg_id:
                 tsg_id = self._parent_class.tsg_id
+            else:
+                tsg_id = compat_input(tsg_id_prompt)
 
         if grant_type is None:
             # if grant_type not given.
@@ -367,10 +369,7 @@ class Interactive(object):
 
         if scope is None:
             # if grant_type not given.
-            if tsg_id is None or tsg_id == '':
-                scope = 'email profile'
-            else:
-                scope = 'tsg_id:{0} email profile'.format(tsg_id)
+            scope = 'tsg_id:{0} email profile'.format(tsg_id)
 
         self._parent_class.client_id = client_id
         self._parent_class.client_secret = client_secret
@@ -773,8 +772,6 @@ class Interactive(object):
             self._parent_class._user_id = self._parent_class.operator_id
             self._parent_class.roles = profile.sdk_content.get('roles', [])
             self._parent_class.token_session = profile.sdk_content.get('token_session')
-            if self._parent_class.controller_region is None:
-                self._parent_class.controller_region = profile.sdk_content.get('region')
 
             return True
 

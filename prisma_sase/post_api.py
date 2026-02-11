@@ -2291,8 +2291,63 @@ class Post(object):
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v3.0)
 
-          **Payload Attributes:** 
+          **Payload Attributes:**
 
+           - **admin_action:**  Type: string
+           - **admin_renew_state:**  Type: string
+           - **admin_suspend_state:**  Type: string
+           - **allowed_roles:**  [Type: string]
+           - **cluster_id:**  Type: string
+           - **connected:**  Type: boolean
+           - **deployment_op:**  Type: string
+           - **description:**  Type: string
+           - **device_change_mode_start_time:**  Type: integer
+           - **device_change_mode_state:**  Type: string
+           - **device_mode:**  Type: string
+           - **device_profile_id:**  Type: string
+           - **fips_mode:**  Type: string
+           - **fips_mode_change_start_time:**  Type: integer
+           - **hw_id:**  Type: string
+           - **l3_direct_private_wan_forwarding:**  Type: boolean
+           - **l3_lan_forwarding:**  Type: boolean
+           - **led_config:**
+               - **service_led_on:**  Type: boolean
+           - **main_power_usage_threshold:**  Type: integer
+           - **model_name:**  Type: string
+           - **name:**  Type: string
+           - **nat_policysetstack_id:**  Type: string
+           - **network_policysetstack_id:**  Type: string
+           - **override_indicator:**  [Type: string]
+           - **priority_policysetstack_id:**  Type: string
+           - **role:**  Type: string
+           - **serial_number:**  Type: string
+           - **site_id:**  Type: string
+           - **software_version:**  Type: string
+           - **spoke_ha_config:**
+               - **cluster_id:**  Type: string
+               - **enable:**  Type: boolean
+               - **priority:**  Type: integer
+               - **source_interface:**  Type: string
+               - **track:**
+                   - **interfaces:**
+                       - **interface_id:**  Type: string
+                       - **reduce_priority:**  Type: integer
+                   - **waninterfaces:**
+                       - **reduce_priority:**  Type: integer
+                       - **wan_interface_id:**  Type: string
+           - **state:**  Type: string
+           - **switch_config:**
+               - **default_vlan_id:**  Type: integer
+               - **mstp_enabled:**  Type: boolean
+               - **stp_aging_timer:**  Type: integer
+               - **stp_forward_delay:**  Type: integer
+               - **stp_hello_time:**  Type: integer
+               - **stp_max_age:**  Type: integer
+               - **stp_mode:**  Type: string
+               - **stp_priority:**  Type: integer
+           - **tags:**  [Type: string]
+           - **tenant_id:**  Type: string
+           - **vpn_to_vpn_forwarding:**  Type: boolean
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -7723,15 +7778,40 @@ class Post(object):
 
     def ospfconfigs_query(self, data, api_version="v2.0"):
         """
-        POST Ospfconfigs_Query API Function
+        Query OSPF config (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
-          **Payload Attributes:** 
+          **Payload Attributes:**
 
+           - **areas:**
+               - **area_id:**  Type: integer
+               - **area_type:**  Type: string
+           - **description:**  Type: string
+           - **interfaces:**
+               - **area_id:**  Type: integer
+               - **interface_id:**  Type: string
+               - **ospf_config_override:**
+                   - **cost:**  Type: integer
+                   - **dead_interval:**  Type: integer
+                   - **hello_interval:**  Type: integer
+                   - **md5_key_id:**  Type: integer
+                   - **md5_secret:**  Type: string
+                   - **retransmit_interval:**  Type: integer
+                   - **transmit_delay:**  Type: integer
+           - **name:**  Type: string
+           - **prefix_adv_route_map_id:**  Type: string
+           - **prefix_adv_type_to_lan:**  Type: string
+           - **redistribute_bgp:**  Type: boolean
+           - **redistribute_route_map_id:**  Type: string
+           - **router_id:**  Type: string
+           - **scope:**  Type: string
+           - **shutdown:**  Type: boolean
+           - **tags:**  [Type: string]
+           - **vrf_context_id:**  Type: string
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """

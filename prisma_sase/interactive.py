@@ -368,8 +368,11 @@ class Interactive(object):
             grant_type = 'client_credentials'
 
         if scope is None:
-            # if grant_type not given.
-            scope = 'tsg_id:{0} email profile'.format(tsg_id)
+            # Build scope based on whether tsg_id is provided
+            if tsg_id:
+                scope = 'tsg_id:{0} email profile'.format(tsg_id)
+            else:
+                scope = 'email profile'
 
         self._parent_class.client_id = client_id
         self._parent_class.client_secret = client_secret

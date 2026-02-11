@@ -442,13 +442,13 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def certificates_tenants(self, certificate_id, data, api_version="v2.0"):
+    def certificates(self, entitie_id, data, api_version="v2.0"):
         """
-        PUT Certificates_Tenants API Function
+        PUT Certificates API Function
 
           **Parameters:**:
 
-          - **certificate_id**: Certificate ID
+          - **entitie_id**: Entitie ID
           - **data**: Dictionary containing data to PUT as JSON
           - **api_version**: API version to use (default v2.0)
 
@@ -460,8 +460,8 @@ class Put(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/certificates/{}".format(api_version,
-                                                                     certificate_id)
+        url = str(cur_ctlr) + "/sdwan/{}/api/entities/{}/certificates".format(api_version,
+                                                                              entitie_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
@@ -6942,6 +6942,9 @@ class Put(object):
 
     cellular_modules_e = element_cellular_modules
     """ Backwards-compatibility alias of `cellular_modules_e` to `element_cellular_modules`"""
+
+    certificates_tenants = certificates
+    """ Backwards-compatibility alias of `certificates_tenants` to `certificates`"""
 
     configs_prismasase_connections = prismasase_connections_configs
     """ Backwards-compatibility alias of `configs_prismasase_connections` to `prismasase_connections_configs`"""

@@ -5,7 +5,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/PaloAltoNetworks/prisma-sase-sdk-python.svg)](https://github.com/PaloAltoNetworks/prisma-sase-sdk-python/issues)
 
 
-# Palo Alto Networks Prisma SASE Python SDK v6.5.2b2
+# Palo Alto Networks Prisma SASE Python SDK v6.6.2b1
 
 Python3 SDK for the Prisma SASE AppFabric
 
@@ -47,20 +47,21 @@ MIT
 #### Version
 | Version   | Build | Changes                                                    |
 |-----------| ----- |------------------------------------------------------------|
-| **6.6.1** | **b1** | Support for October 2025 Controller release.               |
-| **6.5.2** | **b2** | Support for Febuary 2025 Controller release with bugfixes. |
-| **6.5.2** | **b1** | Support for Febuary 2025 Controller release.               |
-| **6.5.1** | **b1** | Support for November 2024 Controller release.              |
-| **6.4.2** | **b1** | Support for August 2024 Controller release.                |
-| **6.4.1** | **b1** | Support for March 2024 Controller release.                 |
-| **6.3.2** | **b1** | Support for Febuary 2024 Controller release.               |
-| **6.3.1** | **b1** | Support for November 2023 Controller release.              |
-| **6.2.3** | **b1** | Support for August 2023 Controller release.                |
-| **6.2.2** | **b1** | Support for June 2023 Controller release.                  |
-| **6.2.1** | **b1** | Support for April 2023 Controller release.                 |
-| **6.1.2** | **b1** | Support for January 2023 Controller release.               |
-| **6.1.1** | **b1** | Support for November 2022 Controller release.              |
-| **6.0.1** | **b1** | Support for May 2022 Controller release.                   |
+| **6.6.2** | **b1** | Support for February 2026 Controller release.               |
+| **6.6.1** | **b1** | Support for October 2025 Controller release.                |
+| **6.5.2** | **b2** | Support for February 2025 Controller release with bugfixes. |
+| **6.5.2** | **b1** | Support for February 2025 Controller release.               |
+| **6.5.1** | **b1** | Support for November 2024 Controller release.               |
+| **6.4.2** | **b1** | Support for August 2024 Controller release.                 |
+| **6.4.1** | **b1** | Support for March 2024 Controller release.                  |
+| **6.3.2** | **b1** | Support for February 2024 Controller release.               |
+| **6.3.1** | **b1** | Support for November 2023 Controller release.               |
+| **6.2.3** | **b1** | Support for August 2023 Controller release.                 |
+| **6.2.2** | **b1** | Support for June 2023 Controller release.                   |
+| **6.2.1** | **b1** | Support for April 2023 Controller release.                  |
+| **6.1.2** | **b1** | Support for January 2023 Controller release.                |
+| **6.1.1** | **b1** | Support for November 2022 Controller release.               |
+| **6.0.1** | **b1** | Support for May 2022 Controller release.                    |
 
 ## For more info
  * Get help and additional Prisma SASE Documentation at <https://pan.dev/sase/docs>

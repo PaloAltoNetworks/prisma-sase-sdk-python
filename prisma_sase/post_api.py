@@ -4,7 +4,7 @@ PRISMA SASE Python SDK - POST
 
 **Author:** Palo Alto Networks
 
-**Copyright:** (c) 2025 Palo Alto Networks, Inc
+**Copyright:** (c) 2026 Palo Alto Networks, Inc
 
 **License:** MIT
 """
@@ -12,11 +12,11 @@ import logging
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright (c) 2025 Palo Alto Networks, Inc"
+__copyright__ = "Copyright (c) 2026 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright (c) 2025 Palo Alto Networks, Inc
+    Copyright (c) 2026 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -106,14 +106,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def anynetlinks_correlationevents_query(self, data, api_version="v2.1"):
+    def anynetlinks_correlationevents_query(self, data, api_version="v2.2"):
         """
         POST Anynetlinks_Correlationevents_Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
@@ -212,7 +212,7 @@ class Post(object):
 
     def appacceleration_query(self, data, api_version="v2.0"):
         """
-        POST Appacceleration_Query API Function
+        Query App Acceleration status V2.0. (v2.0)
 
           **Parameters:**:
 
@@ -221,6 +221,12 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **enabled:**  Type: boolean 
+           - **primary_pa_compute_region_oid:**  Type: string 
+           - **secondary_pa_compute_region_oid:**  Type: string 
+           - **secondary_state:**  Type: string 
+           - **site_id:**  Type: string 
+           - **state:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -478,16 +484,16 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bgppeers(self, site_id, element_id, data, api_version="v2.6"):
+    def bgppeers(self, site_id, element_id, data, api_version="v3.0"):
         """
-        Create BGP peer config (v2.6)
+        Create BGP peer config (v3.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.6)
+          - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
 
@@ -567,16 +573,16 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bgppeers_query(self, site_id, element_id, data, api_version="v2.6"):
+    def bgppeers_query(self, site_id, element_id, data, api_version="v3.0"):
         """
-        Queries db for limit number of BGP peers that match query params. (v2.6)
+        Queries db for limit number of BGP peers that match query params. (v3.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.6)
+          - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
 
@@ -627,14 +633,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bgppeers_status_query(self, data, api_version="v2.0"):
+    def bgppeers_status_query(self, data, api_version="v2.1"):
         """
         POST Bgppeers_Status_Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -681,7 +687,7 @@ class Post(object):
 
     def bulkconfigurations_sitetemplates_clone(self, sitetemplate_id, data, api_version="v2.0"):
         """
-        POST Bulkconfigurations_Sitetemplates_Clone API Function
+        Clone Site Profile (v2.0)
 
           **Parameters:**:
 
@@ -691,6 +697,14 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **data:**  Type: string 
+           - **site_id:**  Type: string 
+           - **site_type:**  Type: string 
+           - **template_description:**  Type: string 
+           - **template_id:**  Type: string 
+           - **template_name:**  Type: string 
+           - **tenant_id:**  Type: string 
+           - **variable_map:**  Type: object 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -742,6 +756,34 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **created_by:**  Type: string 
+           - **deployment_id:**  Type: string 
+           - **elements:**           
+               - **admin_action:**  Type: string 
+               - **allowed_roles:**  [Type: string] 
+               - **cluster_insertion_mode:**  Type: string 
+               - **cluster_member_id:**  Type: string 
+               - **connected:**  Type: boolean 
+               - **deployment_op:**  Type: string 
+               - **description:**  Type: string 
+               - **hw_id:**  Type: string 
+               - **id:**  Type: string 
+               - **model_name:**  Type: string 
+               - **name:**  Type: string 
+               - **role:**  Type: string 
+               - **serial_number:**  Type: string 
+               - **site_id:**  Type: string 
+               - **software_version:**  Type: string 
+               - **state:**  Type: string 
+           - **isSiteDeleted:**  Type: boolean 
+           - **site_id:**  Type: string 
+           - **site_name:**  Type: string 
+           - **status:**  Type: string 
+           - **status_description:**  Type: string 
+           - **template_id:**  Type: string 
+           - **template_name:**  Type: string 
+           - **updated_by:**  Type: string 
+           - **variable_map:**  Type: object 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -786,17 +828,18 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bulkoperations(self, data, api_version="v2.0"):
+    def bulkoperations(self, data, api_version="v2.1"):
         """
-        Bulk site update API (v2.0)
+        Bulk site update API (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **element_system_limit_profile_id:**  Type: string 
            - **site_ids:**  [Type: string] 
            - **type:**  Type: string 
            - **vrf_context_profile_id:**  Type: string 
@@ -848,7 +891,7 @@ class Post(object):
 
     def cellular_module_revoked_images(self, data, api_version="v2.0"):
         """
-        POST Cellular_Module_Revoked_Images API Function
+        Create a Revoked Cellular Image (v2.0)
 
           **Parameters:**:
 
@@ -857,6 +900,9 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **carrier:**  Type: string 
+           - **fw_version:**  Type: string 
+           - **pri_version:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -899,7 +945,7 @@ class Post(object):
 
     def cellular_modules_status_query(self, data, api_version="v2.1"):
         """
-        POST Cellular_Modules_Status_Query API Function
+        Queries db for limit number of cellular module status that match query params. (v2.1)
 
           **Parameters:**:
 
@@ -908,6 +954,47 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **activation_state:**  Type: string 
+           - **active_sim:**  Type: integer 
+           - **carrier:**  Type: string 
+           - **cellular_module_id:**  Type: string 
+           - **element_id:**  Type: string 
+           - **firmware:**           
+               - **active:**  Type: boolean 
+               - **carrier:**  Type: string 
+               - **fw_version:**  Type: string 
+               - **pri_version:**  Type: string 
+               - **storage_location:**  Type: string 
+           - **gps:**           
+               - **latitude:**  Type: number 
+               - **longitude:**  Type: number 
+               - **state:**  Type: string 
+           - **imei:**  Type: string 
+           - **last_state_change:**  Type: integer 
+           - **manufacturer:**  Type: string 
+           - **model_name:**  Type: string 
+           - **modem_error_reason:**  Type: string 
+           - **modem_state:**  Type: string 
+           - **network_registration_state:**  Type: string 
+           - **network_state:**           
+               - **cell_id:**  Type: integer 
+               - **frequency_band:**  Type: string 
+               - **mcc:**  Type: integer 
+               - **mnc:**  Type: integer 
+               - **roaming:**  Type: boolean 
+           - **packet_service_state:**  Type: string 
+           - **serial_number:**  Type: string 
+           - **signal_strength_indicator:**  Type: string 
+           - **sim:**           
+               - **carrier:**  Type: string 
+               - **iccid:**  Type: string 
+               - **imsi:**  Type: string 
+               - **pin_state:**  Type: string 
+               - **present:**  Type: boolean 
+               - **remaining_attempts_pin_verify:**  Type: integer 
+               - **remaining_attempts_puk_unblock:**  Type: integer 
+               - **slot_number:**  Type: integer 
+           - **technology:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1985,14 +2072,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def element_correlationevents_query(self, data, api_version="v2.0"):
+    def element_correlationevents_query(self, data, api_version="v2.1"):
         """
         POST Element_Correlationevents_Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -2204,63 +2291,63 @@ class Post(object):
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v3.0)
 
-          **Payload Attributes:** 
+          **Payload Attributes:**
 
-           - **admin_action:**  Type: string 
-           - **admin_renew_state:**  Type: string 
-           - **admin_suspend_state:**  Type: string 
-           - **allowed_roles:**  [Type: string] 
-           - **cluster_id:**  Type: string 
-           - **connected:**  Type: boolean 
-           - **deployment_op:**  Type: string 
-           - **description:**  Type: string 
-           - **device_change_mode_start_time:**  Type: integer 
-           - **device_change_mode_state:**  Type: string 
-           - **device_mode:**  Type: string 
-           - **device_profile_id:**  Type: string 
-           - **fips_mode:**  Type: string 
-           - **fips_mode_change_start_time:**  Type: integer 
-           - **hw_id:**  Type: string 
-           - **l3_direct_private_wan_forwarding:**  Type: boolean 
-           - **l3_lan_forwarding:**  Type: boolean 
-           - **led_config:**           
-               - **service_led_on:**  Type: boolean 
-           - **main_power_usage_threshold:**  Type: integer 
-           - **model_name:**  Type: string 
-           - **name:**  Type: string 
-           - **nat_policysetstack_id:**  Type: string 
-           - **network_policysetstack_id:**  Type: string 
-           - **override_indicator:**  [Type: string] 
-           - **priority_policysetstack_id:**  Type: string 
-           - **role:**  Type: string 
-           - **serial_number:**  Type: string 
-           - **site_id:**  Type: string 
-           - **software_version:**  Type: string 
-           - **spoke_ha_config:**           
-               - **cluster_id:**  Type: string 
-               - **enable:**  Type: boolean 
-               - **priority:**  Type: integer 
-               - **source_interface:**  Type: string 
-               - **track:**           
-                   - **interfaces:**           
-                       - **interface_id:**  Type: string 
-                       - **reduce_priority:**  Type: integer 
-                   - **waninterfaces:**           
-                       - **reduce_priority:**  Type: integer 
-                       - **wan_interface_id:**  Type: string 
-           - **state:**  Type: string 
-           - **switch_config:**           
-               - **default_vlan_id:**  Type: integer 
-               - **mstp_enabled:**  Type: boolean 
-               - **stp_aging_timer:**  Type: integer 
-               - **stp_forward_delay:**  Type: integer 
-               - **stp_hello_time:**  Type: integer 
-               - **stp_max_age:**  Type: integer 
-               - **stp_mode:**  Type: string 
-               - **stp_priority:**  Type: integer 
-           - **tags:**  [Type: string] 
-           - **tenant_id:**  Type: string 
-           - **vpn_to_vpn_forwarding:**  Type: boolean 
+           - **admin_action:**  Type: string
+           - **admin_renew_state:**  Type: string
+           - **admin_suspend_state:**  Type: string
+           - **allowed_roles:**  [Type: string]
+           - **cluster_id:**  Type: string
+           - **connected:**  Type: boolean
+           - **deployment_op:**  Type: string
+           - **description:**  Type: string
+           - **device_change_mode_start_time:**  Type: integer
+           - **device_change_mode_state:**  Type: string
+           - **device_mode:**  Type: string
+           - **device_profile_id:**  Type: string
+           - **fips_mode:**  Type: string
+           - **fips_mode_change_start_time:**  Type: integer
+           - **hw_id:**  Type: string
+           - **l3_direct_private_wan_forwarding:**  Type: boolean
+           - **l3_lan_forwarding:**  Type: boolean
+           - **led_config:**
+               - **service_led_on:**  Type: boolean
+           - **main_power_usage_threshold:**  Type: integer
+           - **model_name:**  Type: string
+           - **name:**  Type: string
+           - **nat_policysetstack_id:**  Type: string
+           - **network_policysetstack_id:**  Type: string
+           - **override_indicator:**  [Type: string]
+           - **priority_policysetstack_id:**  Type: string
+           - **role:**  Type: string
+           - **serial_number:**  Type: string
+           - **site_id:**  Type: string
+           - **software_version:**  Type: string
+           - **spoke_ha_config:**
+               - **cluster_id:**  Type: string
+               - **enable:**  Type: boolean
+               - **priority:**  Type: integer
+               - **source_interface:**  Type: string
+               - **track:**
+                   - **interfaces:**
+                       - **interface_id:**  Type: string
+                       - **reduce_priority:**  Type: integer
+                   - **waninterfaces:**
+                       - **reduce_priority:**  Type: integer
+                       - **wan_interface_id:**  Type: string
+           - **state:**  Type: string
+           - **switch_config:**
+               - **default_vlan_id:**  Type: integer
+               - **mstp_enabled:**  Type: boolean
+               - **stp_aging_timer:**  Type: integer
+               - **stp_forward_delay:**  Type: integer
+               - **stp_hello_time:**  Type: integer
+               - **stp_max_age:**  Type: integer
+               - **stp_mode:**  Type: string
+               - **stp_priority:**  Type: integer
+           - **tags:**  [Type: string]
+           - **tenant_id:**  Type: string
+           - **vpn_to_vpn_forwarding:**  Type: boolean
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2292,6 +2379,28 @@ class Post(object):
 
         url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/elementaccessconfigs".format(api_version,
                                                                                       element_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def elementaccessconfigs_query(self, data, api_version="v2.2"):
+        """
+        Query Element Access Config based on parameters (v2.2)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.2)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elementaccessconfigs/query".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -2452,6 +2561,22 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **copyconfig_progress:**  Type: string 
+           - **description:**  Type: string 
+           - **element_error_message:**  Type: string 
+           - **element_status:**  Type: string 
+           - **input_data:**  Type: string 
+           - **interface_configurations:**           
+               - **element_interface_id:**  Type: string 
+               - **element_shell_interface_id:**  Type: string 
+               - **interface_error_message:**  Type: string 
+               - **interface_status:**  Type: string 
+               - **operation:**  Type: string 
+           - **name:**  Type: string 
+           - **site_id:**  Type: string 
+           - **source_element_id:**  Type: string 
+           - **tags:**  [Type: string] 
+           - **tenant_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2478,6 +2603,228 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **admin_up:**  Type: boolean 
+           - **attached_lan_networks:**           
+               - **lan_network_id:**  Type: string 
+               - **vlan_id:**  Type: integer 
+           - **authentication_config:**           
+               - **fallback_retry_count:**  Type: integer 
+               - **mode:**  Type: string 
+               - **reauthentication_timeout:**  Type: integer 
+           - **bound_interfaces:**  [Type: string] 
+           - **bypass_pair:**           
+               - **lan:**  Type: string 
+               - **lan_state_propagation:**  Type: boolean 
+               - **use_relay:**  Type: boolean 
+               - **wan:**  Type: string 
+           - **cellular_config:**           
+               - **apn_config:**           
+                   - **apn:**  Type: string 
+                   - **authentication:**  Type: string 
+                   - **clear_password:**  Type: boolean 
+                   - **password:**  Type: string 
+                   - **password_encrypted:**  Type: string 
+                   - **user_name:**  Type: string 
+               - **apnprofile_id:**  Type: string 
+               - **auto_apn:**  Type: boolean 
+               - **parent_module_id:**  Type: string 
+               - **parent_sim_slot_number:**  Type: integer 
+           - **description:**  Type: string 
+           - **devicemgmt_policysetstack_id:**  Type: string 
+           - **dhcp_relay:**           
+               - **enabled:**  Type: boolean 
+               - **option_82:**           
+                   - **circuit_id:**  Type: string 
+                   - **enabled:**  Type: boolean 
+                   - **reforwarding_policy:**  Type: string 
+                   - **remote_id:**  Type: string 
+               - **server_ips:**  [Type: string] 
+               - **source_interface:**  Type: string 
+           - **directed_broadcast:**  Type: boolean 
+           - **ethernet_port:**           
+               - **full_duplex:**  Type: boolean 
+               - **port_id:**           
+                   - **connector:**  Type: string 
+                   - **device:**  Type: string 
+                   - **disabled:**  Type: boolean 
+                   - **disabled_reason:**  Type: string 
+                   - **element_id:**  Type: string 
+                   - **id:**  Type: string 
+                   - **inactive:**  Type: boolean 
+                   - **inactive_reason:**  Type: string 
+                   - **max_mtu:**  Type: integer 
+                   - **max_speed:**  Type: integer 
+                   - **name:**  Type: string 
+                   - **original_mac_address:**  Type: string 
+                   - **region:**  Type: string 
+                   - **site_id:**  Type: string 
+                   - **tenant_id:**  Type: string 
+               - **port_name:**  Type: string 
+               - **speed:**  Type: integer 
+           - **fec_mode:**  Type: string 
+           - **interface_profile_id:**  Type: string 
+           - **ipfixcollectorcontext_id:**  Type: string 
+           - **ipfixfiltercontext_id:**  Type: string 
+           - **ipv4_config:**           
+               - **dhcp_config:**           
+                   - **client_id:**  Type: string 
+                   - **hostname:**  Type: string 
+               - **dns_v4_config:**           
+                   - **name_servers:**  [Type: string] 
+                   - **search:**  [Type: string] 
+               - **pppoe_config:**           
+                   - **chap_passwd:**  Type: string 
+                   - **chap_user:**  Type: string 
+                   - **set_route:**  Type: boolean 
+               - **routes:**           
+                   - **destination:**  Type: string 
+                   - **via:**  Type: string 
+               - **static_config:**           
+                   - **address:**  Type: string 
+               - **type:**  Type: string 
+           - **ipv6_config:**           
+               - **dhcp_config:**           
+                   - **client_id:**  Type: string 
+                   - **hostname:**  Type: string 
+               - **dns_v6_config:**           
+                   - **name_servers:**  [Type: string] 
+                   - **search:**  [Type: string] 
+               - **routes:**           
+                   - **destination:**  Type: string 
+                   - **via:**  Type: string 
+               - **static_config:**           
+                   - **address:**  Type: string 
+                   - **enable_prefix_distribution:**  Type: boolean 
+               - **type:**  Type: string 
+           - **lldp_enabled:**  Type: boolean 
+           - **loopback_config:**           
+               - **binding_interface_id:**  Type: string 
+           - **mac_address:**  Type: string 
+           - **mtu:**  Type: integer 
+           - **multicast_config:**           
+               - **igmp_version:**  Type: string 
+               - **multicast_enabled:**  Type: boolean 
+           - **name:**  Type: string 
+           - **nat_address:**  Type: string 
+           - **nat_address_v6:**  Type: string 
+           - **nat_pools:**           
+               - **ipv4_ranges:**           
+                   - **end:**  Type: string 
+                   - **start:**  Type: string 
+               - **nat_pool_id:**  Type: string 
+           - **nat_port:**  Type: integer 
+           - **nat_port_v6:**  Type: integer 
+           - **nat_zone_id:**  Type: string 
+           - **network_context_id:**  Type: string 
+           - **parent:**  Type: string 
+           - **peer_bypasspair_wan_port_type:**  Type: string 
+           - **poe_enabled:**  Type: boolean 
+           - **port_channel_config:**           
+               - **lacp_enabled:**  Type: boolean 
+               - **transmission_mode:**  Type: string 
+           - **power_usage_threshold:**  Type: integer 
+           - **pppoe_config:**           
+               - **host_uniq:**  Type: string 
+               - **ip_address_type:**  Type: string 
+               - **password:**  Type: string 
+               - **reconnection_delay:**  Type: integer 
+               - **service_name:**  Type: string 
+               - **username:**  Type: string 
+           - **scope:**  Type: string 
+           - **secondary_ip_configs:**           
+               - **ipv4_address:**  Type: string 
+               - **scope:**  Type: string 
+           - **service_link_config:**           
+               - **gre_config:**           
+                   - **csum:**  Type: boolean 
+                   - **keepalive_enable:**  Type: boolean 
+                   - **keepalive_fail_count:**  Type: integer 
+                   - **keepalive_interval:**  Type: integer 
+               - **ipsec_config:**           
+                   - **authentication:**           
+                       - **certificate:**  Type: string 
+                       - **certificate_profile_id:**  Type: string 
+                       - **comment:**  Type: string 
+                       - **ikev1_params:**           
+                           - **xauth_id:**  Type: string 
+                           - **xauth_secret:**  Type: string 
+                           - **xauth_secret_encrypted:**  Type: string 
+                           - **xauth_secret_hash:**  Type: string 
+                           - **xauth_type:**  Type: string 
+                       - **local_ca_certificate:**  Type: string 
+                       - **local_id:**  Type: string 
+                       - **local_id_custom:**  Type: string 
+                       - **local_pa_certificate_id:**  Type: string 
+                       - **pa_master_key_id:**  Type: string 
+                       - **passphrase:**  Type: string 
+                       - **passphrase_encrypted:**  Type: string 
+                       - **peer_id_check:**  Type: string 
+                       - **permit_peer_id_mismatch:**  Type: boolean 
+                       - **private_key:**  Type: string 
+                       - **private_key_encrypted:**  Type: string 
+                       - **remote_ca_certificate:**  Type: string 
+                       - **remote_id:**  Type: string 
+                       - **secret:**  Type: string 
+                       - **secret_encrypted:**  Type: string 
+                       - **secret_hash:**  Type: string 
+                       - **strict_validation_peer_extended_key_use:**  Type: boolean 
+                       - **type:**  Type: string 
+                       - **x509Objects:**           
+                           - **certHolder:**  Type: object 
+                           - **certificate:**  Type: string 
+                           - **is_local_ca_cert_set:**  Type: boolean 
+                           - **is_remote_ca_cert_set:**  Type: boolean 
+                           - **keyPair:**  Type: object 
+                           - **local_ca_certificate:**  Type: string 
+                           - **local_ca_certs_set:**  [Type: object] 
+                           - **passphrase:**  Type: string 
+                           - **pkcs12_certificate:**  Type: string 
+                           - **privateKey:**  Type: java.security.privatekey 
+                           - **private_key:**  Type: string 
+                           - **remote_ca_certificate:**  Type: string 
+                           - **remote_ca_certs_set:**  [Type: object] 
+                   - **ipsec_profile_id:**  Type: string 
+               - **last_parent:**  Type: string 
+               - **parent:**  Type: string 
+               - **passive_mode:**           
+                   - **enable:**  Type: boolean 
+                   - **peer_ip_dynamic:**  Type: boolean 
+               - **peer:**           
+                   - **hostname:**  Type: string 
+                   - **ip_addresses:**  [Type: string] 
+               - **service_endpoint_id:**  Type: string 
+               - **type:**  Type: string 
+           - **sgi_apply_static_tag:**  Type: boolean 
+           - **site_wan_interface_ids:**  [Type: string] 
+           - **static_arp_configs:**           
+               - **ipv4_address:**  Type: string 
+               - **mac_address:**  Type: string 
+           - **sub_interface:**           
+               - **vlan_id:**  Type: integer 
+           - **switch_port_config:**           
+               - **access_vlan_id:**  Type: integer 
+               - **bpdu_guard_enabled:**  Type: boolean 
+               - **forward_fast_enabled:**  Type: boolean 
+               - **native_vlan_id:**  Type: integer 
+               - **root_guard_enabled:**  Type: boolean 
+               - **storm_control_config:**           
+                   - **broadcast_threshold:**  Type: integer 
+                   - **multicast_threshold:**  Type: integer 
+                   - **unicast_threshold:**  Type: integer 
+               - **stp_port_cost:**  Type: integer 
+               - **stp_port_enabled:**  Type: boolean 
+               - **stp_port_priority:**  Type: integer 
+               - **trunk_vlans:**  [Type: string] 
+               - **vlan_mode:**  Type: string 
+               - **voice_vlan_id:**  Type: integer 
+           - **tags:**  [Type: string] 
+           - **type:**  Type: string 
+           - **used_for:**  Type: string 
+           - **vlan_config:**           
+               - **mstp_instance:**  Type: integer 
+               - **vlan_id:**  Type: integer 
+               - **voice_enabled:**  Type: boolean 
+           - **vrf_context_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2565,6 +2912,55 @@ class Post(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api/elementshells/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def elementsystemlimitprofiles(self, data, api_version="v2.0"):
+        """
+        Create a new Element System Limit Profile (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **description:**  Type: string 
+           - **flow_acceptance_criteria:**           
+               - **flow_limit_percentage_per_source:**  Type: integer 
+           - **name:**  Type: string 
+           - **tags:**  [Type: string] 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elementsystemlimitprofiles".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def elementsystemlimitprofiles_query(self, data, api_version="v2.0"):
+        """
+        Query Element System Limit Profiles (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/elementsystemlimitprofiles/query".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -2821,14 +3217,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def events_query(self, data, api_version="v3.6"):
+    def events_query(self, data, api_version="v3.7"):
         """
         POST Events_Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v3.6)
+          - **api_version**: API version to use (default v3.7)
 
           **Payload Attributes:** 
 
@@ -2926,6 +3322,7 @@ class Post(object):
 
            - **description:**  Type: string 
            - **filters:**           
+               - **ip_prefixes:**  [Type: string] 
                - **type:**  Type: string 
            - **name:**  Type: string 
 
@@ -3352,14 +3749,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def interfaces_correlationevents_query(self, data, api_version="v2.0"):
+    def interfaces_correlationevents_query(self, data, api_version="v2.1"):
         """
         POST Interfaces_Correlationevents_Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -3443,7 +3840,7 @@ class Post(object):
 
     def interfaces_status_query(self, data, api_version="v2.0"):
         """
-        POST Interfaces_Status_Query API Function
+        Query interface status (v2.0)
 
           **Parameters:**:
 
@@ -3452,6 +3849,198 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **cellular_state:**           
+               - **active:**  Type: boolean 
+               - **apn_info:**           
+                   - **apn:**  Type: string 
+                   - **authentication:**  Type: string 
+               - **ip_address_type:**  Type: string 
+               - **network_sel:**  Type: string 
+           - **device:**  Type: string 
+           - **dns_v4_config:**           
+               - **name_servers:**  [Type: string] 
+               - **search:**  [Type: string] 
+           - **dns_v6_config:**           
+               - **name_servers:**  [Type: string] 
+               - **search:**  [Type: string] 
+           - **effective_vlans:**  [Type: integer] 
+           - **element_id:**  Type: string 
+           - **extended_state:**  Type: string 
+           - **ipv4_addresses:**  [Type: string] 
+           - **ipv6_addresses:**  [Type: string] 
+           - **lacp_state:**           
+               - **key:**  Type: integer 
+               - **mac_address:**  Type: string 
+               - **partner_key:**  Type: integer 
+               - **partner_mac_address:**  Type: string 
+               - **partner_system_priority:**  Type: integer 
+               - **system_priority:**  Type: integer 
+           - **last_state_change:**  Type: integer 
+           - **link_local_address:**  Type: string 
+           - **lldp_enabled:**  Type: boolean 
+           - **mac_address:**  Type: string 
+           - **name:**  Type: string 
+           - **negotiated_mtu:**  Type: integer 
+           - **operational_state:**  Type: string 
+           - **poe_state:**           
+               - **detection_status:**  Type: string 
+               - **device_type:**  Type: string 
+               - **operational_state:**  Type: string 
+               - **poe_enabled:**  Type: boolean 
+               - **power_classification:**  Type: string 
+               - **power_consumed:**  Type: number 
+               - **power_pairs_control_ability:**  Type: boolean 
+               - **power_pairs_state:**  Type: string 
+               - **power_priority:**  Type: string 
+               - **power_usage_threshold:**  Type: integer 
+           - **port:**           
+               - **end:**  Type: string 
+               - **start:**  Type: string 
+           - **port_channel_member_state:**           
+               - **interface_id:**  Type: string 
+               - **partner_key:**  Type: integer 
+               - **partner_mode:**  Type: string 
+               - **partner_priority:**  Type: integer 
+               - **partner_rate:**  Type: string 
+               - **partner_state:**  Type: string 
+               - **port_key:**  Type: integer 
+               - **port_mode:**  Type: string 
+               - **port_priority:**  Type: integer 
+               - **port_rate:**  Type: string 
+               - **port_state:**  Type: string 
+           - **remote_host_name:**  Type: string 
+           - **remote_v4_addr:**  Type: string 
+           - **routes:**           
+               - **destination:**  Type: string 
+               - **via:**  Type: string 
+           - **routes_v6:**           
+               - **destination:**  Type: string 
+               - **via:**  Type: string 
+           - **secondary_ipv4_addresses:**  [Type: string] 
+           - **service_link:**           
+               - **anti_replay:**  Type: boolean 
+               - **anti_replay_window:**  Type: integer 
+               - **classic_site_id:**  Type: string 
+               - **copy_tos:**  Type: boolean 
+               - **enable_gre_encapsulation:**  Type: boolean 
+               - **geneve_config:**           
+                   - **keepalive_enable:**  Type: boolean 
+                   - **keepalive_fail_count:**  Type: integer 
+                   - **keepalive_interval:**  Type: integer 
+                   - **keepalive_local_ipv4:**  Type: string 
+                   - **keepalive_remote_ipv4:**  Type: string 
+                   - **tenant_vni_label:**  Type: string 
+               - **gre_config:**           
+                   - **csum:**  Type: boolean 
+                   - **keepalive_enable:**  Type: boolean 
+                   - **keepalive_fail_count:**  Type: integer 
+                   - **keepalive_interval:**  Type: integer 
+               - **ike_admin_up:**  Type: boolean 
+               - **ipsec_admin_up:**  Type: boolean 
+               - **ipsec_config:**           
+                   - **authentication:**           
+                       - **certificate:**  Type: string 
+                       - **certificate_profile_id:**  Type: string 
+                       - **comment:**  Type: string 
+                       - **ikev1_params:**           
+                           - **xauth_id:**  Type: string 
+                           - **xauth_secret:**  Type: string 
+                           - **xauth_secret_encrypted:**  Type: string 
+                           - **xauth_secret_hash:**  Type: string 
+                           - **xauth_type:**  Type: string 
+                       - **local_ca_certificate:**  Type: string 
+                       - **local_id:**  Type: string 
+                       - **local_id_custom:**  Type: string 
+                       - **local_pa_certificate_id:**  Type: string 
+                       - **pa_master_key_id:**  Type: string 
+                       - **passphrase:**  Type: string 
+                       - **passphrase_encrypted:**  Type: string 
+                       - **peer_id_check:**  Type: string 
+                       - **permit_peer_id_mismatch:**  Type: boolean 
+                       - **private_key:**  Type: string 
+                       - **private_key_encrypted:**  Type: string 
+                       - **remote_ca_certificate:**  Type: string 
+                       - **remote_id:**  Type: string 
+                       - **secret:**  Type: string 
+                       - **secret_encrypted:**  Type: string 
+                       - **secret_hash:**  Type: string 
+                       - **strict_validation_peer_extended_key_use:**  Type: boolean 
+                       - **type:**  Type: string 
+                       - **x509Objects:**           
+                           - **certHolder:**  Type: object 
+                           - **certificate:**  Type: string 
+                           - **is_local_ca_cert_set:**  Type: boolean 
+                           - **is_remote_ca_cert_set:**  Type: boolean 
+                           - **keyPair:**  Type: object 
+                           - **local_ca_certificate:**  Type: string 
+                           - **local_ca_certs_set:**  [Type: object] 
+                           - **passphrase:**  Type: string 
+                           - **pkcs12_certificate:**  Type: string 
+                           - **privateKey:**  Type: java.security.privatekey 
+                           - **private_key:**  Type: string 
+                           - **remote_ca_certificate:**  Type: string 
+                           - **remote_ca_certs_set:**  [Type: object] 
+                   - **ipsec_profile_id:**  Type: string 
+               - **last_parent:**  Type: string 
+               - **line_conditioning_enabled:**  Type: boolean 
+               - **liveliness_probe:**           
+                   - **failure_count:**  Type: integer 
+                   - **interval:**  Type: integer 
+                   - **ip_address:**  Type: string 
+                   - **local_ip_address:**  Type: string 
+                   - **proxy_id:**  Type: string 
+               - **nat_traversal:**  Type: boolean 
+               - **pa_location_oid:**  Type: string 
+               - **pa_tunnel_oid:**  Type: string 
+               - **parent:**  Type: string 
+               - **passive_mode:**           
+                   - **enable:**  Type: boolean 
+                   - **peer_ip_dynamic:**  Type: boolean 
+               - **peer:**           
+                   - **hostname:**  Type: string 
+                   - **ip_addresses:**  [Type: string] 
+               - **peer_admin_up:**  Type: boolean 
+               - **peer_inner_ips:**  [Type: string] 
+               - **proxy_ids:**           
+                   - **local:**  Type: string 
+                   - **local_port:**  Type: integer 
+                   - **protocol:**  Type: string 
+                   - **protocol_number:**  Type: integer 
+                   - **proxy_id:**  Type: string 
+                   - **remote:**  Type: string 
+                   - **remote_port:**  Type: integer 
+               - **sase_ike_gw_config:**           
+                   - **ike_gw_name:**  Type: string 
+                   - **ikev1_dpd_delay:**  Type: integer 
+                   - **ikev1_dpd_enable:**  Type: boolean 
+                   - **ikev1_dpd_timeout:**  Type: integer 
+                   - **ikev1_enable_fragmentation:**  Type: boolean 
+                   - **ikev1_exchange_mode:**  Type: string 
+                   - **ikev2_liveness_check_enable:**  Type: boolean 
+                   - **ikev2_liveness_interval:**  Type: integer 
+                   - **ikev2_require_cookie:**  Type: boolean 
+               - **security_service_endpoint_id:**  Type: string 
+               - **service_endpoint_id:**  Type: string 
+               - **tunnel_role:**  Type: string 
+               - **type:**  Type: string 
+               - **used_for:**  Type: string 
+           - **stp_state:**           
+               - **bpdu_guard_enabled:**  Type: boolean 
+               - **forward_fast_enabled:**  Type: boolean 
+               - **mstp_instance_id:**  Type: integer 
+               - **port_cost:**  Type: integer 
+               - **port_priority:**  Type: integer 
+               - **port_state:**  Type: string 
+               - **root_guard_enabled:**  Type: boolean 
+               - **stp_enabled:**  Type: boolean 
+           - **svi_state:**           
+               - **stp_designated_cost:**  Type: integer 
+               - **stp_designated_mac_address:**  Type: string 
+               - **stp_designated_port:**  Type: integer 
+               - **stp_designated_root_mac_address:**  Type: string 
+           - **vrf:**           
+               - **vrf_context_id:**  Type: string 
+               - **vrf_context_name:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -3465,7 +4054,7 @@ class Post(object):
 
     def iotdevicemappings_query(self, data, api_version="v2.0"):
         """
-        POST Iotdevicemappings_Query API Function
+        Query the Active Device Profiles (v2.0)
 
           **Parameters:**:
 
@@ -3474,6 +4063,25 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **category:**  Type: string 
+           - **confidence_score:**  Type: integer 
+           - **firewallids:**  [Type: string] 
+           - **first_seen_date:**  Type: string 
+           - **hostname:**  Type: string 
+           - **ip_address:**  Type: string 
+           - **mac_address:**  Type: string 
+           - **model:**  Type: string 
+           - **os_combined:**  Type: string 
+           - **os_group:**  Type: string 
+           - **primaryDeviceid:**  Type: string 
+           - **profile:**  Type: string 
+           - **profile_type:**  Type: string 
+           - **risk_level:**  Type: string 
+           - **risk_score:**  Type: integer 
+           - **secondaryDevicesList:**  [Type: string] 
+           - **trafficRestricted:**  Type: string 
+           - **vendor:**  Type: string 
+           - **verdictUpdateTime:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -3487,7 +4095,7 @@ class Post(object):
 
     def iotdictionary_query(self, data, api_version="v2.0"):
         """
-        POST Iotdictionary_Query API Function
+        Query the Device Dictionary (v2.0)
 
           **Parameters:**:
 
@@ -3496,6 +4104,10 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **add:**  Type: boolean 
+           - **name:**  Type: string 
+           - **stale:**  Type: boolean 
+           - **type:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -3509,7 +4121,7 @@ class Post(object):
 
     def iotservices(self, data, api_version="v2.0"):
         """
-        POST Iotservices API Function
+        POST the confidence score of the mappings stored in the IOT portal (v2.0)
 
           **Parameters:**:
 
@@ -3518,6 +4130,7 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **device_confidence_score:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -4438,6 +5051,72 @@ class Post(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api/machines/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def migratecbtoezb(self, data, api_version="v2.0"):
+        """
+        Trigger migration API (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **compatible_sites:**           
+               - **site_id:**  Type: string 
+               - **site_name:**  Type: string 
+           - **current_step:**  Type: string 
+           - **failed_sites:**           
+               - **site_id:**  Type: string 
+               - **site_name:**  Type: string 
+           - **incompatible_sites:**           
+               - **errors:**           
+                   - **error:**  Type: string 
+                   - **error_message:**  Type: string 
+               - **site_id:**  Type: string 
+               - **site_name:**  Type: string 
+               - **tunnels:**           
+                   - **errors:**           
+                       - **error:**  Type: string 
+                       - **error_message:**  Type: string 
+                   - **ipsec_tunnel_id:**  Type: string 
+                   - **ipsec_tunnel_name:**  Type: string 
+                   - **servicelinks:**           
+                       - **bgppeer_id:**  Type: string 
+                       - **element_id:**  Type: string 
+                       - **error:**           
+                           - **error:**  Type: string 
+                           - **error_message:**  Type: string 
+                       - **ike_gateway_id:**  Type: string 
+                       - **ipsec_tunnel_id:**  Type: string 
+                       - **remote_network_id:**  Type: string 
+                       - **servicelink_id:**  Type: string 
+                       - **servicelink_name:**  Type: string 
+                       - **waninterface_id:**  Type: string 
+                   - **waninterface_id:**  Type: string 
+           - **is_fawkes:**  Type: boolean 
+           - **job_id:**  Type: string 
+           - **migrated_sites:**           
+               - **site_id:**  Type: string 
+               - **site_name:**  Type: string 
+           - **status:**  Type: string 
+           - **steps:**           
+               - **attempts:**  Type: integer 
+               - **error:**  Type: string 
+               - **name:**  Type: string 
+               - **started_at:**  Type: integer 
+               - **status:**  Type: string 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/migratecbtoezb".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -7097,7 +7776,7 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ospfconfigs_query (self, data, api_version="v2.0"):
+    def ospfconfigs_query(self, data, api_version="v2.0"):
         """
         Query OSPF config (v2.0)
 
@@ -7106,33 +7785,33 @@ class Post(object):
           - **data**: Dictionary containing data to POST as JSON
           - **api_version**: API version to use (default v2.0)
 
-          **Payload Attributes:** 
+          **Payload Attributes:**
 
-           - **areas:**           
-               - **area_id:**  Type: integer 
-               - **area_type:**  Type: string 
-           - **description:**  Type: string 
-           - **interfaces:**           
-               - **area_id:**  Type: integer 
-               - **interface_id:**  Type: string 
-               - **ospf_config_override:**           
-                   - **cost:**  Type: integer 
-                   - **dead_interval:**  Type: integer 
-                   - **hello_interval:**  Type: integer 
-                   - **md5_key_id:**  Type: integer 
-                   - **md5_secret:**  Type: string 
-                   - **retransmit_interval:**  Type: integer 
-                   - **transmit_delay:**  Type: integer 
-           - **name:**  Type: string 
-           - **prefix_adv_route_map_id:**  Type: string 
-           - **prefix_adv_type_to_lan:**  Type: string 
-           - **redistribute_bgp:**  Type: boolean 
-           - **redistribute_route_map_id:**  Type: string 
-           - **router_id:**  Type: string 
-           - **scope:**  Type: string 
-           - **shutdown:**  Type: boolean 
-           - **tags:**  [Type: string] 
-           - **vrf_context_id:**  Type: string 
+           - **areas:**
+               - **area_id:**  Type: integer
+               - **area_type:**  Type: string
+           - **description:**  Type: string
+           - **interfaces:**
+               - **area_id:**  Type: integer
+               - **interface_id:**  Type: string
+               - **ospf_config_override:**
+                   - **cost:**  Type: integer
+                   - **dead_interval:**  Type: integer
+                   - **hello_interval:**  Type: integer
+                   - **md5_key_id:**  Type: integer
+                   - **md5_secret:**  Type: string
+                   - **retransmit_interval:**  Type: integer
+                   - **transmit_delay:**  Type: integer
+           - **name:**  Type: string
+           - **prefix_adv_route_map_id:**  Type: string
+           - **prefix_adv_type_to_lan:**  Type: string
+           - **redistribute_bgp:**  Type: boolean
+           - **redistribute_route_map_id:**  Type: string
+           - **router_id:**  Type: string
+           - **scope:**  Type: string
+           - **shutdown:**  Type: boolean
+           - **tags:**  [Type: string]
+           - **vrf_context_id:**  Type: string
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -8142,6 +8821,7 @@ class Post(object):
           **Payload Attributes:** 
 
            - **filters:**           
+               - **ip_prefixes:**  [Type: string] 
                - **type:**  Type: string 
            - **prefix_filter_id:**  Type: string 
 
@@ -8665,6 +9345,28 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
+    def prismasase_connections_query(self, data, api_version="v2.0"):
+        """
+        Get a list of SASE connections (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/prismasase_connections/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def prismasase_connections_status_query(self, data, api_version="v2.0"):
         """
         Get a list of SASE connection statuses (v2.0)
@@ -8695,6 +9397,7 @@ class Post(object):
                - **uncompleted_steps:**  [Type: string] 
            - **is_active:**  Type: boolean 
            - **prismasase_connection_id:**  Type: string 
+           - **push_job_id:**  Type: string 
            - **site_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -8829,116 +9532,6 @@ class Post(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api/probeprofiles/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def query_prismasase_connections(self, data, api_version="v2.0"):
-        """
-        POST Query_Prismasase_Connections API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/prismasase_connections/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def query_remotenetworks_spnnpnsitemigration(self, data, api_version="v2.0"):
-        """
-        POST Query_Remotenetworks_Spnnpnsitemigration API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/spnnpnsitemigration/remotenetworks/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def query_securityprofilegroups(self, data, api_version="v2.0"):
-        """
-        POST Query_Securityprofilegroups API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/securityprofilegroups/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def query_threatmetadata(self, data, api_version="v2.0"):
-        """
-        POST Query_Threatmetadata API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/threatmetadata/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def query_urlcategories(self, data, api_version="v2.0"):
-        """
-        POST Query_Urlcategories API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/urlcategories/query".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -9625,7 +10218,51 @@ class Post(object):
 
     def securityprofilegroups(self, data, api_version="v2.0"):
         """
-        POST Securityprofilegroups API Function
+        Create a Security Profile Group (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **dns_security_profile:**           
+               - **cm_version:**  Type: string 
+               - **etag:**  Type: integer 
+               - **name:**  Type: string 
+               - **profile_id:**  Type: string 
+           - **name:**  Type: string 
+           - **predefined:**  Type: boolean 
+           - **spyware_profile:**           
+               - **cm_version:**  Type: string 
+               - **etag:**  Type: integer 
+               - **name:**  Type: string 
+               - **profile_id:**  Type: string 
+           - **url_filtering_profile:**           
+               - **cm_version:**  Type: string 
+               - **etag:**  Type: integer 
+               - **name:**  Type: string 
+               - **profile_id:**  Type: string 
+           - **vulnerability_profile:**           
+               - **cm_version:**  Type: string 
+               - **etag:**  Type: integer 
+               - **name:**  Type: string 
+               - **profile_id:**  Type: string 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/securityprofilegroups".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def securityprofilegroups_query(self, data, api_version="v2.0"):
+        """
+        Query Security profile groups of a tenant (v2.0)
 
           **Parameters:**:
 
@@ -9640,7 +10277,7 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securityprofilegroups".format(api_version)
+        url = str(cur_ctlr) + "/sdwan/{}/api/securityprofilegroups/query".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -10031,14 +10668,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_correlationevents_query(self, data, api_version="v2.0"):
+    def site_correlationevents_query(self, data, api_version="v2.1"):
         """
         POST Site_Correlationevents_Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -10301,7 +10938,7 @@ class Post(object):
 
     def site_operations(self, site_id, data, api_version="v2.0"):
         """
-        POST Site_Operations API Function
+        Handle operations on site. (v2.0)
 
           **Parameters:**:
 
@@ -10311,6 +10948,11 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **action:**  Type: string 
+           - **enable_start_utc:**  Type: integer 
+           - **flow_status:**  Type: boolean 
+           - **parameters:**  Type: string 
+           - **time_remaining:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -10351,14 +10993,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_query(self, data, api_version="v4.12"):
+    def site_query(self, data, api_version="v4.13"):
         """
-        Queries db for limit number of sites that match query params. (v4.12)
+        Queries db for limit number of sites that match query params. (v4.13)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v4.12)
+          - **api_version**: API version to use (default v4.13)
 
           **Payload Attributes:** 
 
@@ -10374,6 +11016,7 @@ class Post(object):
            - **branch_gateway:**  Type: boolean 
            - **description:**  Type: string 
            - **element_cluster_role:**  Type: string 
+           - **element_system_limit_profile_id:**  Type: string 
            - **extended_tags:**           
                - **key:**  Type: string 
                - **value:**  Type: string 
@@ -10466,14 +11109,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def sites(self, data, api_version="v4.12"):
+    def sites(self, data, api_version="v4.13"):
         """
-        Create a site (v4.12)
+        Create a site (v4.13)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v4.12)
+          - **api_version**: API version to use (default v4.13)
 
           **Payload Attributes:** 
 
@@ -10489,6 +11132,7 @@ class Post(object):
            - **branch_gateway:**  Type: boolean 
            - **description:**  Type: string 
            - **element_cluster_role:**  Type: string 
+           - **element_system_limit_profile_id:**  Type: string 
            - **extended_tags:**           
                - **key:**  Type: string 
                - **value:**  Type: string 
@@ -10575,6 +11219,104 @@ class Post(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api/sitesecurityzones/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def sitesnapshots(self, data, api_version="v2.0"):
+        """
+        Create or retry a site deployment (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **status:**  Type: string 
+           - **status_description:**  Type: string 
+           - **yaml_configuration:**  Type: string 
+           - **yaml_name:**  Type: string 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sitesnapshots".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def sitesnapshots_query(self, data, api_version="v2.0"):
+        """
+        Query import jobs with filters (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sitesnapshots/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def snapshots(self, site_id, data, api_version="v2.0"):
+        """
+        Generate a snapshot of a particular site (v2.0)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **site_id:**  Type: string 
+           - **snapshot_name:**  Type: string 
+           - **status:**  Type: string 
+           - **status_description:**  Type: string 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/snapshots".format(api_version,
+                                                                        site_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def snapshots_query(self, data, api_version="v2.0"):
+        """
+        Query export jobs (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/snapshots/query".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -10836,6 +11578,28 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
+    def spnnpnsitemigration_remotenetworks_query(self, data, api_version="v2.0"):
+        """
+        Get all easy onboarding created remote networks for a tenant (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/spnnpnsitemigration/remotenetworks/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def spokeclusters(self, site_id, data, api_version="v2.0"):
         """
         Create Spoke Cluster (v2.0)
@@ -10865,9 +11629,9 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def spokeclusters_ops(self, site_id, spokecluster_id, data, api_version="v2.0"):
+    def spokeclusters_operations(self, site_id, spokecluster_id, data, api_version="v2.0"):
         """
-        Handle operations on spokecluster. (v2.0)
+        POST Spokeclusters_Operations API Function
 
           **Parameters:**:
 
@@ -10878,7 +11642,6 @@ class Post(object):
 
           **Payload Attributes:** 
 
-           - **action:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -10922,7 +11685,7 @@ class Post(object):
 
     def spokeclusters_status_query(self, data, api_version="v2.0"):
         """
-        POST Spokeclusters_Status_Query API Function
+        Query Spoke Clusters Status (v2.0)
 
           **Parameters:**:
 
@@ -10931,6 +11694,12 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **element_id:**  Type: string 
+           - **last_status_update_ts:**  Type: integer 
+           - **priority:**  Type: integer 
+           - **site_id:**  Type: string 
+           - **spoke_cluster_id:**  Type: string 
+           - **status:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -11123,7 +11892,7 @@ class Post(object):
 
     def tacacs_plus_profiles(self, data, api_version="v2.0"):
         """
-        POST Tacacs_Plus_Profiles API Function
+        Create TACACS+ Profile (v2.0)
 
           **Parameters:**:
 
@@ -11132,6 +11901,17 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **authentication_protocol:**  Type: string 
+           - **description:**  Type: string 
+           - **name:**  Type: string 
+           - **tacacs_plus_servers:**           
+               - **secret:**  Type: string 
+               - **server_fqdn:**  Type: string 
+               - **server_ip:**  Type: string 
+               - **server_ipv6:**  Type: string 
+               - **server_port:**  Type: integer 
+               - **timeout:**  Type: integer 
+           - **tags:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -11145,7 +11925,7 @@ class Post(object):
 
     def tacacs_plus_servers(self, site_id, element_id, data, api_version="v2.0"):
         """
-        POST Tacacs_Plus_Servers API Function
+        Create TACACS+ Servers (v2.0)
 
           **Parameters:**:
 
@@ -11156,6 +11936,20 @@ class Post(object):
 
           **Payload Attributes:** 
 
+           - **authentication_protocol:**  Type: string 
+           - **description:**  Type: string 
+           - **enabled:**  Type: boolean 
+           - **name:**  Type: string 
+           - **source_interface_id:**  Type: string 
+           - **tacacs_plus_profile_id:**  Type: string 
+           - **tacacs_plus_servers:**           
+               - **secret:**  Type: string 
+               - **server_fqdn:**  Type: string 
+               - **server_ip:**  Type: string 
+               - **server_ipv6:**  Type: string 
+               - **server_port:**  Type: integer 
+               - **timeout:**  Type: integer 
+           - **tags:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -11225,14 +12019,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def tenant_bgppeers_query(self, data, api_version="v2.6"):
+    def tenant_bgppeers_query(self, data, api_version="v3.0"):
         """
-        Queries db for BGP peers that match query params. (v2.6)
+        Queries db for BGP peers that match query params. (v3.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.6)
+          - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
 
@@ -11498,6 +12292,7 @@ class Post(object):
           **Payload Attributes:** 
 
            - **filters:**           
+               - **ip_prefixes:**  [Type: string] 
                - **type:**  Type: string 
            - **prefix_filter_id:**  Type: string 
            - **site_id:**  Type: string 
@@ -11588,6 +12383,28 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
+    def threatmetadata_query(self, data, api_version="v2.0"):
+        """
+        Query Threat Metadata. (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/threatmetadata/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def toolkitsessions_query(self, data, api_version="v2.0"):
         """
         POST Toolkitsessions_Query API Function
@@ -11666,6 +12483,28 @@ class Post(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api/upgrade_status/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def urlcategories_query(self, data, api_version="v2.0"):
+        """
+        Query URL Categories. (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/urlcategories/query".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -12222,14 +13061,14 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def waninterfaces_correlationevents_query(self, data, api_version="v2.0"):
+    def waninterfaces_correlationevents_query(self, data, api_version="v2.1"):
         """
         POST Waninterfaces_Correlationevents_Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -12601,8 +13440,8 @@ class Post(object):
     ops_interfaces = interfaces_operations
     """ Backwards-compatibility alias of `ops_interfaces` to `interfaces_operations`"""
 
-    ops_spokeclusters = spokeclusters_ops
-    """ Backwards-compatibility alias of `ops_spokeclusters` to `spokeclusters_ops`"""
+    ops_spokeclusters = spokeclusters_operations
+    """ Backwards-compatibility alias of `ops_spokeclusters` to `spokeclusters_operations`"""
 
     ops_vfflicenses = vfflicenses_operations
     """ Backwards-compatibility alias of `ops_vfflicenses` to `vfflicenses_operations`"""
@@ -12739,11 +13578,17 @@ class Post(object):
     query_e = element_query
     """ Backwards-compatibility alias of `query_e` to `element_query`"""
 
+    query_elementaccessconfigs = elementaccessconfigs_query
+    """ Backwards-compatibility alias of `query_elementaccessconfigs` to `elementaccessconfigs_query`"""
+
     query_elementsecurityzones = elementsecurityzones_query
     """ Backwards-compatibility alias of `query_elementsecurityzones` to `elementsecurityzones_query`"""
 
     query_elementshells = elementshells_query
     """ Backwards-compatibility alias of `query_elementshells` to `elementshells_query`"""
+
+    query_elementsystemlimitprofiles = elementsystemlimitprofiles_query
+    """ Backwards-compatibility alias of `query_elementsystemlimitprofiles` to `elementsystemlimitprofiles_query`"""
 
     query_eventcorrelationpolicyrules = eventcorrelationpolicyrules_query
     """ Backwards-compatibility alias of `query_eventcorrelationpolicyrules` to `eventcorrelationpolicyrules_query`"""
@@ -12901,8 +13746,8 @@ class Post(object):
     query_ngfwsecuritypolicysetstacks = ngfwsecuritypolicysetstacks_query
     """ Backwards-compatibility alias of `query_ngfwsecuritypolicysetstacks` to `ngfwsecuritypolicysetstacks_query`"""
 
-    query_ospfconfigs = ospfconfigs_query 
-    """ Backwards-compatibility alias of `query_ospfconfigs` to `ospfconfigs_query `"""
+    query_ospfconfigs = ospfconfigs_query
+    """ Backwards-compatibility alias of `query_ospfconfigs` to `ospfconfigs_query`"""
 
     query_ospfdiscoveredneighbors = ospfdiscoveredneighbors_query
     """ Backwards-compatibility alias of `query_ospfdiscoveredneighbors` to `ospfdiscoveredneighbors_query`"""
@@ -12964,11 +13809,17 @@ class Post(object):
     query_prismaaccess_configs = prismaaccess_configs_query
     """ Backwards-compatibility alias of `query_prismaaccess_configs` to `prismaaccess_configs_query`"""
 
+    query_prismasase_connections = prismasase_connections_query
+    """ Backwards-compatibility alias of `query_prismasase_connections` to `prismasase_connections_query`"""
+
     query_probeconfigs = probeconfigs_query
     """ Backwards-compatibility alias of `query_probeconfigs` to `probeconfigs_query`"""
 
     query_probeprofiles = probeprofiles_query
     """ Backwards-compatibility alias of `query_probeprofiles` to `probeprofiles_query`"""
+
+    query_remotenetworks_spnnpnsitemigration = spnnpnsitemigration_remotenetworks_query
+    """ Backwards-compatibility alias of `query_remotenetworks_spnnpnsitemigration` to `spnnpnsitemigration_remotenetworks_query`"""
 
     query_reports = reports_query
     """ Backwards-compatibility alias of `query_reports` to `reports_query`"""
@@ -12997,6 +13848,9 @@ class Post(object):
     query_securitypolicysets = securitypolicysets_query
     """ Backwards-compatibility alias of `query_securitypolicysets` to `securitypolicysets_query`"""
 
+    query_securityprofilegroups = securityprofilegroups_query
+    """ Backwards-compatibility alias of `query_securityprofilegroups` to `securityprofilegroups_query`"""
+
     query_securityzones = securityzones_query
     """ Backwards-compatibility alias of `query_securityzones` to `securityzones_query`"""
 
@@ -13015,8 +13869,14 @@ class Post(object):
     query_sitesecurityzones_t = sitesecurityzones_query
     """ Backwards-compatibility alias of `query_sitesecurityzones_t` to `sitesecurityzones_query`"""
 
+    query_sitesnapshots = sitesnapshots_query
+    """ Backwards-compatibility alias of `query_sitesnapshots` to `sitesnapshots_query`"""
+
     query_sitetemplates_bulkconfigurations = bulkconfigurations_sitetemplates_query
     """ Backwards-compatibility alias of `query_sitetemplates_bulkconfigurations` to `bulkconfigurations_sitetemplates_query`"""
+
+    query_snapshots = snapshots_query
+    """ Backwards-compatibility alias of `query_snapshots` to `snapshots_query`"""
 
     query_snmpdiscoverystartnodes = snmpdiscoverystartnodes_query
     """ Backwards-compatibility alias of `query_snmpdiscoverystartnodes` to `snmpdiscoverystartnodes_query`"""
@@ -13057,6 +13917,9 @@ class Post(object):
     query_status_spokeclusters = spokeclusters_status_query
     """ Backwards-compatibility alias of `query_status_spokeclusters` to `spokeclusters_status_query`"""
 
+    query_threatmetadata = threatmetadata_query
+    """ Backwards-compatibility alias of `query_threatmetadata` to `threatmetadata_query`"""
+
     query_tokens_vfflicenses = vff_token_query
     """ Backwards-compatibility alias of `query_tokens_vfflicenses` to `vff_token_query`"""
 
@@ -13068,6 +13931,9 @@ class Post(object):
 
     query_upgrade_status = upgrade_status_query
     """ Backwards-compatibility alias of `query_upgrade_status` to `upgrade_status_query`"""
+
+    query_urlcategories = urlcategories_query
+    """ Backwards-compatibility alias of `query_urlcategories` to `urlcategories_query`"""
 
     query_useridagents = useridagents_query
     """ Backwards-compatibility alias of `query_useridagents` to `useridagents_query`"""

@@ -2,21 +2,21 @@
 """
 Prisma SASE Python SDK - WebSocket Functions
 
-**Author:** Palo Alto Networks
+**Author:** CloudGenix
 
-**Copyright:** © 2026 Palo Alto Networks. All rights reserved
+**Copyright:** (c) 2017-2026 CloudGenix, Inc
 
 **License:** MIT
 """
 import logging
 
-__author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
-__email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright © 2026 Palo Alto Networks. All rights reserved"
+__author__ = "Palo Alto Networks Developer Support"
+__email__ = "developers@paloaltonetworks.com"
+__copyright__ = "Copyright (c) 2017-2026, 2019 CloudGenix, Inc"
 __license__ = """
     MIT License
 
-    Copyright © 2026 Palo Alto Networks. All rights reserved
+    Copyright (c) 2017-2026 CloudGenix, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -77,8 +77,8 @@ class WebSockets(object):
         # set controller, converting protocol to wss
         wss_ctlr = self._parent_class.controller.replace('https://', 'wss://', 1)
 
-        url = str(wss_ctlr) + "/sdwan/{}/api/elements/{}/ws/toolkitsessions?cols={}&rows={}" \
-                              "".format(api_version, element_id, cols, rows)
+        url = str(wss_ctlr) + "/{}/api/tenants/{}/elements/{}/ws/toolkitsessions?cols={}&rows={}" \
+                              "".format(api_version, tenant_id, element_id, cols, rows)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.websocket_call(url, **kwargs)
@@ -105,8 +105,8 @@ class WebSockets(object):
         # set controller, converting protocol to wss
         wss_ctlr = self._parent_class.controller.replace('https://', 'wss://', 1)
 
-        url = str(wss_ctlr) + "/sdwan/{}/api/ws" \
+        url = str(wss_ctlr) + "/{}/api/tenants/{}/ws" \
                               "".format(api_version, tenant_id)
 
         api_logger.debug("URL = %s", url)
-        return self._parent_class.websocket_call(url)
+        return self._parent_class.websocket_call(url, **kwargs)

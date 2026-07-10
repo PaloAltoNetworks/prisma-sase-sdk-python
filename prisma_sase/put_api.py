@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 """
-PRISMA SASE Python SDK - PUT
+Prisma SASE Python SDK - PUT
 
-**Author:** Palo Alto Networks
+**Author:** CloudGenix
 
-**Copyright:** (c) 2026 Palo Alto Networks, Inc
+**Copyright:** (c) 2017-2026 CloudGenix, Inc
 
 **License:** MIT
 """
 import logging
 
-__author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
-__email__ = "prisma-sase-developers@paloaltonetworks.com"
+__author__ = "Palo Alto Networks Developer Support"
+__email__ = "developers@paloaltonetworks.com"
 __copyright__ = "Copyright (c) 2026 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
@@ -52,7 +52,7 @@ class Put(object):
     # placeholder for parent class namespace
     _parent_class = None
 
-    def apnprofiles(self, apnprofile_id, data, api_version="v2.0"):
+    def apnprofiles(self, apnprofile_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update an APN Profile (v2.0)
 
@@ -60,6 +60,7 @@ class Put(object):
 
           - **apnprofile_id**: APN Profile ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -76,15 +77,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/apnprofiles/{}".format(api_version,
-                                                                    apnprofile_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/apnprofiles/{}".format(api_version,
+                                                                         tenant_id,
+                                                                         apnprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def appdefs(self, appdef_id, data, api_version="v2.6"):
+    def appdefs(self, appdef_id, data, tenant_id=None, api_version="v2.6"):
         """
         Update an application definition (v2.6)
 
@@ -92,6 +100,7 @@ class Put(object):
 
           - **appdef_id**: Application Definition ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.6)
 
           **Payload Attributes:** 
@@ -129,15 +138,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/appdefs/{}".format(api_version,
-                                                                appdef_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/appdefs/{}".format(api_version,
+                                                                     tenant_id,
+                                                                     appdef_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def appdefs_overrides(self, appdef_id, override_id, data, api_version="v2.3"):
+    def appdefs_overrides(self, appdef_id, override_id, data, tenant_id=None, api_version="v2.3"):
         """
         Update a application definition overrides for system appdef (v2.3)
 
@@ -146,6 +162,7 @@ class Put(object):
           - **appdef_id**: Application Definition ID
           - **override_id**: AppDef Override ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
@@ -199,23 +216,31 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/appdefs/{}/overrides/{}".format(api_version,
-                                                                             appdef_id,
-                                                                             override_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/appdefs/{}/overrides/{}".format(api_version,
+                                                                                  tenant_id,
+                                                                                  appdef_id,
+                                                                                  override_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def appdefs_version(self, appdefs_version_id, data, api_version="v2.2"):
+    def appdefs_version(self, appdefs_version_id, data, tenant_id=None, api_version="v2.2"):
         """
-        Change standard apps version (v2.0)
+        Change standard apps version
 
           **Parameters:**:
 
           - **appdefs_version_id**: Application Definition Version ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
@@ -224,15 +249,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/appdefs_version/{}".format(api_version,
-                                                                        appdefs_version_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/appdefs_version/{}".format(api_version,
+                                                                             tenant_id,
+                                                                             appdefs_version_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def application_probe(self, site_id, element_id, data, api_version="v2.0"):
+    def application_probe(self, site_id, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update application probe configuration (v2.0)
 
@@ -241,6 +273,7 @@ class Put(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -254,16 +287,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/application_probe".format(api_version,
-                                                                                            site_id,
-                                                                                            element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/application_probe".format(api_version,
+                                                                                                 tenant_id,
+                                                                                                 site_id,
+                                                                                                 element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def bgpconfigs(self, site_id, element_id, bgpconfig_id, data, api_version="v2.5"):
+    def bgpconfigs(self, site_id, element_id, bgpconfig_id, data, tenant_id=None, api_version="v2.5"):
         """
         Updates BGP config (v2.5)
 
@@ -273,6 +313,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **bgpconfig_id**: BGP Configuration ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
@@ -304,17 +345,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/bgpconfigs/{}".format(api_version,
-                                                                                        site_id,
-                                                                                        element_id,
-                                                                                        bgpconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/bgpconfigs/{}".format(api_version,
+                                                                                             tenant_id,
+                                                                                             site_id,
+                                                                                             element_id,
+                                                                                             bgpconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def bgppeers(self, site_id, element_id, bgppeer_id, data, api_version="v3.0"):
+    def bgppeers(self, site_id, element_id, bgppeer_id, data, tenant_id=None, api_version="v3.0"):
         """
         Update BGP Peer config (v3.0)
 
@@ -324,6 +372,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **bgppeer_id**: BGP Peer ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
@@ -366,17 +415,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/bgppeers/{}".format(api_version,
-                                                                                      site_id,
-                                                                                      element_id,
-                                                                                      bgppeer_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/bgppeers/{}".format(api_version,
+                                                                                           tenant_id,
+                                                                                           site_id,
+                                                                                           element_id,
+                                                                                           bgppeer_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def bulkconfigurations_sitetemplates(self, sitetemplate_id, data, api_version="v2.0"):
+    def bulkconfigurations_sitetemplates(self, sitetemplate_id, data, tenant_id=None, api_version="v2.0"):
         """
         update site profile (v2.0)
 
@@ -384,31 +440,36 @@ class Put(object):
 
           - **sitetemplate_id**: Site Template ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
            - **data:**  Type: string 
-           - **site_id:**  Type: string 
            - **site_type:**  Type: string 
            - **template_description:**  Type: string 
-           - **template_id:**  Type: string 
            - **template_name:**  Type: string 
-           - **tenant_id:**  Type: string 
            - **variable_map:**  Type: object 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/bulkconfigurations/sitetemplates/{}".format(api_version,
-                                                                                         sitetemplate_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/bulkconfigurations/sitetemplates/{}".format(api_version,
+                                                                                              tenant_id,
+                                                                                              sitetemplate_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def cellular_modules_sim_security(self, element_id, cellular_module_id, sim_security_id, data, api_version="v2.0"):
+    def cellular_modules_sim_security(self, element_id, cellular_module_id, sim_security_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update cellular module (v2.0)
 
@@ -418,6 +479,7 @@ class Put(object):
           - **cellular_module_id**: Cellular Module ID
           - **sim_security_id**: SIM Security ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -432,17 +494,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/cellular_modules/{}/sim_security/{}".format(api_version,
-                                                                                                     element_id,
-                                                                                                     cellular_module_id,
-                                                                                                     sim_security_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/cellular_modules/{}/sim_security/{}".format(api_version,
+                                                                                                          tenant_id,
+                                                                                                          element_id,
+                                                                                                          cellular_module_id,
+                                                                                                          sim_security_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def certificates(self, entitie_id, data, api_version="v2.0"):
+    def certificates(self, entitie_id, data, tenant_id=None, api_version="v2.0"):
         """
         PUT Certificates API Function
 
@@ -450,6 +519,7 @@ class Put(object):
 
           - **entitie_id**: Entitie ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -458,15 +528,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/entities/{}/certificates".format(api_version,
-                                                                              entitie_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/entities/{}/certificates".format(api_version,
+                                                                                   tenant_id,
+                                                                                   entitie_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def demsiteconfigs(self, site_id, demsiteconfig_id, data, api_version="v2.0"):
+    def demsiteconfigs(self, site_id, demsiteconfig_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update dem site config (v2.0)
 
@@ -475,6 +552,7 @@ class Put(object):
           - **site_id**: Site ID
           - **demsiteconfig_id**: DEM Site Configuration ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -486,42 +564,58 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/demsiteconfigs/{}".format(api_version,
-                                                                                site_id,
-                                                                                demsiteconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/demsiteconfigs/{}".format(api_version,
+                                                                                     tenant_id,
+                                                                                     site_id,
+                                                                                     demsiteconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def deviceidconfigs(self, site_id, deviceidconfig_id, data, api_version="v2.1"):
+    def deviceidconfigs(self, site_id, deviceidconfig_id, data, tenant_id=None, api_version="v2.1"):
         """
-        PUT Deviceidconfigs API Function
+        Update device Id site config (v2.1)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **deviceidconfig_id**: Device Id Config ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **cfg_device_id_enabled:**  Type: boolean 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}".format(api_version,
-                                                                                 site_id,
-                                                                                 deviceidconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/deviceidconfigs/{}".format(api_version,
+                                                                                      tenant_id,
+                                                                                      site_id,
+                                                                                      deviceidconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def deviceidconfigs_snmpdiscoverystartnodes(self, site_id, deviceidconfig_id, snmpdiscoverystartnode_id, data, api_version="v2.0"):
+    def deviceidconfigs_snmpdiscoverystartnodes(self, site_id, deviceidconfig_id, snmpdiscoverystartnode_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update Start Network Node config (v2.0)
 
@@ -531,6 +625,7 @@ class Put(object):
           - **deviceidconfig_id**: Device Id Config ID
           - **snmpdiscoverystartnode_id**: SNMP Discovery Start Node ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -545,17 +640,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}/snmpdiscoverystartnodes/{}".format(api_version,
-                                                                                                            site_id,
-                                                                                                            deviceidconfig_id,
-                                                                                                            snmpdiscoverystartnode_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/deviceidconfigs/{}/snmpdiscoverystartnodes/{}".format(api_version,
+                                                                                                                 tenant_id,
+                                                                                                                 site_id,
+                                                                                                                 deviceidconfig_id,
+                                                                                                                 snmpdiscoverystartnode_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def deviceidprofiles(self, deviceidprofile_id, data, api_version="v2.0"):
+    def deviceidprofiles(self, deviceidprofile_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update device Id profile configurations (v2.0)
 
@@ -563,6 +665,7 @@ class Put(object):
 
           - **deviceidprofile_id**: Device Id Profile ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -597,15 +700,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/deviceidprofiles/{}".format(api_version,
-                                                                         deviceidprofile_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/deviceidprofiles/{}".format(api_version,
+                                                                              tenant_id,
+                                                                              deviceidprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def dhcpservers(self, site_id, dhcpserver_id, data, api_version="v2.3"):
+    def dhcpservers(self, site_id, dhcpserver_id, data, tenant_id=None, api_version="v2.3"):
         """
         Update an existing dhcp server configuration for a subnet (v2.3)
 
@@ -614,6 +724,7 @@ class Put(object):
           - **site_id**: Site ID
           - **dhcpserver_id**: DHCP Server ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
@@ -647,16 +758,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/dhcpservers/{}".format(api_version,
-                                                                             site_id,
-                                                                             dhcpserver_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/dhcpservers/{}".format(api_version,
+                                                                                  tenant_id,
+                                                                                  site_id,
+                                                                                  dhcpserver_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def directoryservices(self, directoryservice_id, data, api_version="v2.1"):
+    def directoryservices(self, directoryservice_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update Directory Service (v2.1)
 
@@ -664,6 +782,7 @@ class Put(object):
 
           - **directoryservice_id**: Directory Service ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -685,15 +804,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/directoryservices/{}".format(api_version,
-                                                                          directoryservice_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/directoryservices/{}".format(api_version,
+                                                                               tenant_id,
+                                                                               directoryservice_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def dnsserviceprofiles(self, dnsserviceprofile_id, data, api_version="v2.1"):
+    def dnsserviceprofiles(self, dnsserviceprofile_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update a DNS service profile (v2.1)
 
@@ -701,6 +827,7 @@ class Put(object):
 
           - **dnsserviceprofile_id**: DNS Service Profile ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -846,15 +973,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/dnsserviceprofiles/{}".format(api_version,
-                                                                           dnsserviceprofile_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/dnsserviceprofiles/{}".format(api_version,
+                                                                                tenant_id,
+                                                                                dnsserviceprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def dnsserviceroles(self, dnsservicerole_id, data, api_version="v2.0"):
+    def dnsserviceroles(self, dnsservicerole_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a DNS service role (v2.0)
 
@@ -862,6 +996,7 @@ class Put(object):
 
           - **dnsservicerole_id**: DNS Service Role ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -873,15 +1008,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/dnsserviceroles/{}".format(api_version,
-                                                                        dnsservicerole_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/dnsserviceroles/{}".format(api_version,
+                                                                             tenant_id,
+                                                                             dnsservicerole_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def dnsservices(self, site_id, element_id, dnsservice_id, data, api_version="v2.0"):
+    def dnsservices(self, site_id, element_id, dnsservice_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a DNS service config (v2.0)
 
@@ -891,6 +1033,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **dnsservice_id**: DNS Service ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -937,17 +1080,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/dnsservices/{}".format(api_version,
-                                                                                         site_id,
-                                                                                         element_id,
-                                                                                         dnsservice_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/dnsservices/{}".format(api_version,
+                                                                                              tenant_id,
+                                                                                              site_id,
+                                                                                              element_id,
+                                                                                              dnsservice_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def element_admin_state(self, site_id, element_id, data, api_version="v2.0"):
+    def element_admin_state(self, site_id, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update admin state Northbound (v2.0)
 
@@ -956,6 +1106,7 @@ class Put(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -979,16 +1130,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/admin_state".format(api_version,
-                                                                                      site_id,
-                                                                                      element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/admin_state".format(api_version,
+                                                                                           tenant_id,
+                                                                                           site_id,
+                                                                                           element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def element_cellular_modules(self, element_id, cellular_module_id, data, api_version="v2.0"):
+    def element_cellular_modules(self, element_id, cellular_module_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update cellular module (v2.0)
 
@@ -997,6 +1155,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **cellular_module_id**: Cellular Module ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1011,16 +1170,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/cellular_modules/{}".format(api_version,
-                                                                                     element_id,
-                                                                                     cellular_module_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/cellular_modules/{}".format(api_version,
+                                                                                          tenant_id,
+                                                                                          element_id,
+                                                                                          cellular_module_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def element_cellular_modules_firmware(self, element_id, cellular_module_id, data, api_version="v2.0"):
+    def element_cellular_modules_firmware(self, element_id, cellular_module_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update cellular module firmware configuration (v2.0)
 
@@ -1029,6 +1195,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **cellular_module_id**: Cellular Module ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1043,16 +1210,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/cellular_modules/{}/firmware".format(api_version,
-                                                                                              element_id,
-                                                                                              cellular_module_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/cellular_modules/{}/firmware".format(api_version,
+                                                                                                   tenant_id,
+                                                                                                   element_id,
+                                                                                                   cellular_module_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def element_deviceidconfigs(self, site_id, element_id, deviceidconfig_id, data, api_version="v2.0"):
+    def element_deviceidconfigs(self, site_id, element_id, deviceidconfig_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update device id element level (source interface) config (v2.0)
 
@@ -1062,6 +1236,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **deviceidconfig_id**: Device Id Config ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1074,17 +1249,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/deviceidconfigs/{}".format(api_version,
-                                                                                             site_id,
-                                                                                             element_id,
-                                                                                             deviceidconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/deviceidconfigs/{}".format(api_version,
+                                                                                                  tenant_id,
+                                                                                                  site_id,
+                                                                                                  element_id,
+                                                                                                  deviceidconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def element_extensions(self, site_id, element_id, extension_id, data, api_version="v2.0"):
+    def element_extensions(self, site_id, element_id, extension_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update element level extension configuration (v2.0)
 
@@ -1094,29 +1276,38 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **extension_id**: Extension ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
            - **conf:**  Type: object 
            - **disabled:**  Type: boolean 
+           - **entity_id:**  Type: string 
            - **name:**  Type: string 
            - **namespace:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/extensions/{}".format(api_version,
-                                                                                        site_id,
-                                                                                        element_id,
-                                                                                        extension_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/extensions/{}".format(api_version,
+                                                                                             tenant_id,
+                                                                                             site_id,
+                                                                                             element_id,
+                                                                                             extension_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def element_state(self, element_id, data, api_version="v2.0"):
+    def element_state(self, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update element state (v2.0)
 
@@ -1124,6 +1315,7 @@ class Put(object):
 
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1134,15 +1326,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/state".format(api_version,
-                                                                       element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/state".format(api_version,
+                                                                            tenant_id,
+                                                                            element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def elementaccessconfigs(self, element_id, elementaccessconfig_id, data, api_version="v2.2"):
+    def elementaccessconfigs(self, element_id, elementaccessconfig_id, data, tenant_id=None, api_version="v2.3"):
         """
         Update an Access Config on particular element. (v2.2)
 
@@ -1151,30 +1350,32 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **elementaccessconfig_id**: Element Access Config ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
-           - **account_disable_interval:**  Type: integer 
-           - **inactive_interval:**  Type: integer 
-           - **otpkey_version:**  Type: integer 
-           - **retry_login_count:**  Type: integer 
-           - **ssh_enabled:**  Type: boolean 
-           - **ssh_outbound_enabled:**  Type: boolean 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/elementaccessconfigs/{}".format(api_version,
-                                                                                         element_id,
-                                                                                         elementaccessconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/elementaccessconfigs/{}".format(api_version,
+                                                                                              tenant_id,
+                                                                                              element_id,
+                                                                                              elementaccessconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def elements(self, element_id, data, api_version="v3.2"):
+    def elements(self, element_id, data, tenant_id=None, api_version="v3.2"):
         """
         Used for associations and element updates (v3.2)
 
@@ -1182,6 +1383,7 @@ class Put(object):
 
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.2)
 
           **Payload Attributes:** 
@@ -1239,17 +1441,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}".format(api_version,
-                                                                 element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}".format(api_version,
+                                                                      tenant_id,
+                                                                      element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def elementsecurityzones(self, site_id, element_id, securityzone_id, data, api_version="v2.0"):
+    def elementsecurityzones(self, site_id, element_id, securityzone_id, data, tenant_id=None, api_version="v2.1"):
         """
-        Update an existing element security zone (v2.0)
+        Update an existing element security zone (v2.1)
 
           **Parameters:**:
 
@@ -1257,12 +1466,14 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **securityzone_id**: Security Zone (ZBFW) ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
            - **interface_ids:**  [Type: string] 
            - **lannetwork_ids:**  [Type: string] 
+           - **pa_network_id:**  Type: string 
            - **site_id:**  Type: string 
            - **tenant_id:**  Type: string 
            - **waninterface_ids:**  [Type: string] 
@@ -1272,17 +1483,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/securityzones/{}".format(api_version,
-                                                                                           site_id,
-                                                                                           element_id,
-                                                                                           securityzone_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/securityzones/{}".format(api_version,
+                                                                                                tenant_id,
+                                                                                                site_id,
+                                                                                                element_id,
+                                                                                                securityzone_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def elementshells(self, site_id, elementshell_id, data, api_version="v2.1"):
+    def elementshells(self, site_id, elementshell_id, data, tenant_id=None, api_version="v2.1"):
         """
         Used for associations and element shell updates (v2.1)
 
@@ -1291,6 +1509,7 @@ class Put(object):
           - **site_id**: Site ID
           - **elementshell_id**: Element Shell ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -1355,16 +1574,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elementshells/{}".format(api_version,
-                                                                               site_id,
-                                                                               elementshell_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elementshells/{}".format(api_version,
+                                                                                    tenant_id,
+                                                                                    site_id,
+                                                                                    elementshell_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def elementshells_interfaces(self, site_id, elementshell_id, interface_id, data, api_version="v2.4"):
+    def elementshells_interfaces(self, site_id, elementshell_id, interface_id, data, tenant_id=None, api_version="v2.4"):
         """
         Update a Element Shell Interface (v2.4)
 
@@ -1374,6 +1600,7 @@ class Put(object):
           - **elementshell_id**: Element Shell ID
           - **interface_id**: Interface ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.4)
 
           **Payload Attributes:** 
@@ -1535,6 +1762,14 @@ class Put(object):
                        - **passphrase_encrypted:**  Type: string 
                        - **peer_id_check:**  Type: string 
                        - **permit_peer_id_mismatch:**  Type: boolean 
+                       - **ppk_config:**           
+                           - **enabled:**  Type: boolean 
+                           - **mode:**  Type: string 
+                           - **ppk_key_id:**  Type: string 
+                           - **ppk_secret:**  Type: string 
+                           - **ppk_secret_configured:**  Type: boolean 
+                           - **ppk_secret_encrypted:**  Type: string 
+                           - **ppk_secret_hash:**  Type: string 
                        - **private_key:**  Type: string 
                        - **private_key_encrypted:**  Type: string 
                        - **remote_ca_certificate:**  Type: string 
@@ -1604,17 +1839,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elementshells/{}/interfaces/{}".format(api_version,
-                                                                                             site_id,
-                                                                                             elementshell_id,
-                                                                                             interface_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elementshells/{}/interfaces/{}".format(api_version,
+                                                                                                  tenant_id,
+                                                                                                  site_id,
+                                                                                                  elementshell_id,
+                                                                                                  interface_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def elementsystemlimitprofiles(self, elementsystemlimitprofile_id, data, api_version="v2.0"):
+    def elementsystemlimitprofiles(self, elementsystemlimitprofile_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update Element System Limit Profile (v2.0)
 
@@ -1622,6 +1864,7 @@ class Put(object):
 
           - **elementsystemlimitprofile_id**: Element System Limit Profile ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1635,15 +1878,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elementsystemlimitprofiles/{}".format(api_version,
-                                                                                   elementsystemlimitprofile_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elementsystemlimitprofiles/{}".format(api_version,
+                                                                                        tenant_id,
+                                                                                        elementsystemlimitprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def elementusers(self, elementuser_id, data, api_version="v2.1"):
+    def elementusers(self, elementuser_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update an existing element user. (v2.1)
 
@@ -1651,12 +1901,14 @@ class Put(object):
 
           - **elementuser_id**: Element User ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
            - **is_tenant_level:**  Type: boolean 
            - **login_id:**  Type: string 
+           - **password:**  Type: string 
            - **role:**  Type: string 
            - **tenant_id:**  Type: string 
            - **username:**  Type: string 
@@ -1664,15 +1916,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}".format(api_version,
-                                                                     elementuser_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elementusers/{}".format(api_version,
+                                                                          tenant_id,
+                                                                          elementuser_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def elementusers_access(self, elementuser_id, access_id, data, api_version="v2.1"):
+    def elementusers_access(self, elementuser_id, access_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update an existing element user access. (v2.1)
 
@@ -1681,6 +1940,7 @@ class Put(object):
           - **elementuser_id**: Element User ID
           - **access_id**: Access ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -1693,38 +1953,56 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}/access/{}".format(api_version,
-                                                                               elementuser_id,
-                                                                               access_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elementusers/{}/access/{}".format(api_version,
+                                                                                    tenant_id,
+                                                                                    elementuser_id,
+                                                                                    access_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def enterpriseprefixset(self, data, api_version="v2.1"):
+    def enterpriseprefixset(self, data, tenant_id=None, api_version="v2.1"):
         """
-        PUT Enterpriseprefixset API Function
+        Update the tenant enterprise prefix set (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **ipv4_enterprise_prefixes:**  [Type: string] 
+           - **ipv6_enterprise_prefixes:**  [Type: string] 
+           - **tenant_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/enterpriseprefixset".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/enterpriseprefixset".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def esp_operator_permissions_client(self, operator_id, client_id, data, api_version="v2.1"):
+    def esp_operator_permissions_client(self, operator_id, client_id, data, tenant_id=None, api_version="v2.1"):
         """
         Create or update esp operator permissions assigned under a client (v2.1)
 
@@ -1733,6 +2011,7 @@ class Put(object):
           - **operator_id**: Operator ID
           - **client_id**: ESP/MSP Client ID (typically their tenant_id)
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -1780,16 +2059,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/operators/{}/clients/{}/permissions".format(api_version,
-                                                                                         operator_id,
-                                                                                         client_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/operators/{}/clients/{}/permissions".format(api_version,
+                                                                                              tenant_id,
+                                                                                              operator_id,
+                                                                                              client_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def eventcorrelationpolicyrules(self, eventcorrelationpolicyset_id, eventcorrelationpolicyrule_id, data, api_version="v2.1"):
+    def eventcorrelationpolicyrules(self, eventcorrelationpolicyset_id, eventcorrelationpolicyrule_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update event correlation policyrule configuration (v2.1)
 
@@ -1798,6 +2084,7 @@ class Put(object):
           - **eventcorrelationpolicyset_id**: Event Correlation Policy Set ID
           - **eventcorrelationpolicyrule_id**: Event Correlation Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -1826,16 +2113,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/eventcorrelationpolicysets/{}/eventcorrelationpolicyrules/{}".format(api_version,
-                                                                                                                  eventcorrelationpolicyset_id,
-                                                                                                                  eventcorrelationpolicyrule_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/eventcorrelationpolicysets/{}/eventcorrelationpolicyrules/{}".format(api_version,
+                                                                                                                       tenant_id,
+                                                                                                                       eventcorrelationpolicyset_id,
+                                                                                                                       eventcorrelationpolicyrule_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def eventcorrelationpolicysets(self, eventcorrelationpolicyset_id, data, api_version="v2.0"):
+    def eventcorrelationpolicysets(self, eventcorrelationpolicyset_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update event correlation policyset configuration (v2.0)
 
@@ -1843,6 +2137,7 @@ class Put(object):
 
           - **eventcorrelationpolicyset_id**: Event Correlation Policy Set ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1860,63 +2155,118 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/eventcorrelationpolicysets/{}".format(api_version,
-                                                                                   eventcorrelationpolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/eventcorrelationpolicysets/{}".format(api_version,
+                                                                                        tenant_id,
+                                                                                        eventcorrelationpolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def events(self, event_id, data, api_version="v2.4"):
+    def events(self, event_id, data, tenant_id=None, api_version="v2.4"):
         """
-        PUT Events API Function
+        Put Events API (v2.4)
 
           **Parameters:**:
 
           - **event_id**: Event ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.4)
 
           **Payload Attributes:** 
 
+           - **acknowledged:**  Type: boolean 
+           - **acknowledgement_info:**  Type: string 
+           - **cleared:**  Type: boolean 
+           - **code:**  Type: string 
+           - **correlation_id:**  Type: string 
+           - **element_id:**  Type: string 
+           - **entity_ref:**  Type: string 
+           - **flap_event_details:**  Type: object 
+           - **info:**  Type: object 
+           - **notes:**  Type: string 
+           - **policy_info:**  Type: object 
+           - **priority:**  Type: string 
+           - **severity:**  Type: string 
+           - **site_id:**  Type: string 
+           - **suppressed:**  Type: string 
+           - **suppressed_info:**  Type: object 
+           - **time:**  Type: string 
+           - **type:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/events/{}".format(api_version,
-                                                               event_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/events/{}".format(api_version,
+                                                                    tenant_id,
+                                                                    event_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def externalcaconfigs(self, externalcaconfig_id, data, api_version="v2.0"):
+    def externalcaconfigs(self, externalcaconfig_id, data, tenant_id=None, api_version="v2.0"):
         """
-        PUT Externalcaconfigs API Function
+        Update an existing certificate authority configuration (v2.0)
 
           **Parameters:**:
 
           - **externalcaconfig_id**: External CA Config ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **ca_sign_timeout:**  Type: integer 
+           - **manual_renew_trigger_threshold:**  Type: integer 
+           - **renewal_window_from_expiry:**  Type: integer 
+           - **scep_config:**           
+               - **challenge_uri:**  Type: string 
+               - **enrollment_uri:**  Type: string 
+               - **https:**  Type: boolean 
+               - **num_challenge_passwords:**  Type: integer 
+               - **server_certificate:**  Type: string 
+               - **server_password:**  Type: string 
+               - **server_primary_address:**  Type: string 
+               - **server_username:**  Type: string 
+           - **tenant_id:**  Type: string 
+           - **type:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/externalcaconfigs/{}".format(api_version,
-                                                                          externalcaconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/externalcaconfigs/{}".format(api_version,
+                                                                               tenant_id,
+                                                                               externalcaconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def globalprefixfilters(self, globalprefixfilter_id, data, api_version="v2.0"):
+    def globalprefixfilters(self, globalprefixfilter_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a new global prefix filter. (v2.0)
 
@@ -1924,6 +2274,7 @@ class Put(object):
 
           - **globalprefixfilter_id**: Global Prefix Filter ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1937,15 +2288,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/globalprefixfilters/{}".format(api_version,
-                                                                            globalprefixfilter_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/globalprefixfilters/{}".format(api_version,
+                                                                                 tenant_id,
+                                                                                 globalprefixfilter_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def hubclustermembers(self, site_id, hubcluster_id, hubclustermember_id, data, api_version="v3.0"):
+    def hubclustermembers(self, site_id, hubcluster_id, hubclustermember_id, data, tenant_id=None, api_version="v3.0"):
         """
         Update specific hub cluster member. (v3.0)
 
@@ -1955,25 +2313,45 @@ class Put(object):
           - **hubcluster_id**: Hub (DC) Cluster ID
           - **hubclustermember_id**: Hub Cluster Member ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
 
+           - **headend1_site_ids:**  [Type: string] 
+           - **headend2_site_ids:**  [Type: string] 
+           - **hub_element_id:**  Type: string 
+           - **load_factors:**           
+               - **alarm_threshold:**  Type: integer 
+               - **allocated:**  Type: integer 
+               - **subscription_factor:**  Type: number 
+               - **threshold:**           
+                   - **critical_alarm:**  Type: integer 
+                   - **major_alarm:**  Type: integer 
+                   - **subscription_factor:**  Type: number 
+               - **type:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/hubclusters/{}/hubclustermembers/{}".format(api_version,
-                                                                                                  site_id,
-                                                                                                  hubcluster_id,
-                                                                                                  hubclustermember_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/hubclusters/{}/hubclustermembers/{}".format(api_version,
+                                                                                                       tenant_id,
+                                                                                                       site_id,
+                                                                                                       hubcluster_id,
+                                                                                                       hubclustermember_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def hubclusters(self, site_id, hubcluster_id, data, api_version="v4.0"):
+    def hubclusters(self, site_id, hubcluster_id, data, tenant_id=None, api_version="v4.0"):
         """
         Update hub cluster (v4.0)
 
@@ -1982,6 +2360,7 @@ class Put(object):
           - **site_id**: Site ID
           - **hubcluster_id**: Hub (DC) Cluster ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.0)
 
           **Payload Attributes:** 
@@ -2000,16 +2379,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/hubclusters/{}".format(api_version,
-                                                                             site_id,
-                                                                             hubcluster_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/hubclusters/{}".format(api_version,
+                                                                                  tenant_id,
+                                                                                  site_id,
+                                                                                  hubcluster_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def idps(self, idp_id, data, api_version="v3.3"):
+    def idps(self, idp_id, data, tenant_id=None, api_version="v3.3"):
         """
         Update sso (v3.3)
 
@@ -2017,6 +2403,7 @@ class Put(object):
 
           - **idp_id**: SAML IDentity provider configuration ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.3)
 
           **Payload Attributes:** 
@@ -2046,15 +2433,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/idps/{}".format(api_version,
-                                                             idp_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/idps/{}".format(api_version,
+                                                                  tenant_id,
+                                                                  idp_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def interfaces(self, site_id, element_id, interface_id, data, api_version="v4.21"):
+    def interfaces(self, site_id, element_id, interface_id, data, tenant_id=None, api_version="v4.21"):
         """
         Update an Interface (v4.21)
 
@@ -2064,6 +2458,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.21)
 
           **Payload Attributes:** 
@@ -2225,6 +2620,14 @@ class Put(object):
                        - **passphrase_encrypted:**  Type: string 
                        - **peer_id_check:**  Type: string 
                        - **permit_peer_id_mismatch:**  Type: boolean 
+                       - **ppk_config:**           
+                           - **enabled:**  Type: boolean 
+                           - **mode:**  Type: string 
+                           - **ppk_key_id:**  Type: string 
+                           - **ppk_secret:**  Type: string 
+                           - **ppk_secret_configured:**  Type: boolean 
+                           - **ppk_secret_encrypted:**  Type: string 
+                           - **ppk_secret_hash:**  Type: string 
                        - **private_key:**  Type: string 
                        - **private_key_encrypted:**  Type: string 
                        - **remote_ca_certificate:**  Type: string 
@@ -2294,17 +2697,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/interfaces/{}".format(api_version,
-                                                                                        site_id,
-                                                                                        element_id,
-                                                                                        interface_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/interfaces/{}".format(api_version,
+                                                                                             tenant_id,
+                                                                                             site_id,
+                                                                                             element_id,
+                                                                                             interface_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def iotservices(self, iotservice_id, data, api_version="v2.0"):
+    def iotservices(self, iotservice_id, data, tenant_id=None, api_version="v2.0"):
         """
         PUT the confidence score of the mappings stored in the IOT portal (v2.0)
 
@@ -2312,6 +2722,7 @@ class Put(object):
 
           - **iotservice_id**: IoT Service ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2321,15 +2732,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/iotservices/{}".format(api_version,
-                                                                    iotservice_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/iotservices/{}".format(api_version,
+                                                                         tenant_id,
+                                                                         iotservice_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ipfix(self, site_id, element_id, ipfix_id, data, api_version="v2.0"):
+    def ipfix(self, site_id, element_id, ipfix_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a IPFix Config (v2.0)
 
@@ -2339,6 +2757,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **ipfix_id**: IPFix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2378,17 +2797,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/ipfix/{}".format(api_version,
-                                                                                   site_id,
-                                                                                   element_id,
-                                                                                   ipfix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/ipfix/{}".format(api_version,
+                                                                                        tenant_id,
+                                                                                        site_id,
+                                                                                        element_id,
+                                                                                        ipfix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ipfixcollectorcontexts(self, ipfixcollectorcontext_id, data, api_version="v2.0"):
+    def ipfixcollectorcontexts(self, ipfixcollectorcontext_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a IPFix Collector context (v2.0)
 
@@ -2396,6 +2822,7 @@ class Put(object):
 
           - **ipfixcollectorcontext_id**: IPFix Collector Context ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2406,15 +2833,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixcollectorcontexts/{}".format(api_version,
-                                                                               ipfixcollectorcontext_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixcollectorcontexts/{}".format(api_version,
+                                                                                    tenant_id,
+                                                                                    ipfixcollectorcontext_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ipfixfiltercontexts(self, ipfixfiltercontext_id, data, api_version="v2.0"):
+    def ipfixfiltercontexts(self, ipfixfiltercontext_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a IPFix Filter context (v2.0)
 
@@ -2422,6 +2856,7 @@ class Put(object):
 
           - **ipfixfiltercontext_id**: IPFix Filter Context ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2432,15 +2867,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixfiltercontexts/{}".format(api_version,
-                                                                            ipfixfiltercontext_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixfiltercontexts/{}".format(api_version,
+                                                                                 tenant_id,
+                                                                                 ipfixfiltercontext_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ipfixglobalprefixes(self, ipfixglobalprefix_id, data, api_version="v2.0"):
+    def ipfixglobalprefixes(self, ipfixglobalprefix_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a IPFix Global prefix (v2.0)
 
@@ -2448,6 +2890,7 @@ class Put(object):
 
           - **ipfixglobalprefix_id**: IPFix Global Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2460,15 +2903,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixglobalprefixes/{}".format(api_version,
-                                                                            ipfixglobalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixglobalprefixes/{}".format(api_version,
+                                                                                 tenant_id,
+                                                                                 ipfixglobalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ipfixprofiles(self, ipfixprofile_id, data, api_version="v2.0"):
+    def ipfixprofiles(self, ipfixprofile_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a IPFix Profile (v2.0)
 
@@ -2476,6 +2926,7 @@ class Put(object):
 
           - **ipfixprofile_id**: IPFix Profile ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2514,15 +2965,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixprofiles/{}".format(api_version,
-                                                                      ipfixprofile_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixprofiles/{}".format(api_version,
+                                                                           tenant_id,
+                                                                           ipfixprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ipfixtemplates(self, ipfixtemplate_id, data, api_version="v2.0"):
+    def ipfixtemplates(self, ipfixtemplate_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a IPFix template (v2.0)
 
@@ -2530,6 +2988,7 @@ class Put(object):
 
           - **ipfixtemplate_id**: IPFix Template ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2546,23 +3005,31 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixtemplates/{}".format(api_version,
-                                                                       ipfixtemplate_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixtemplates/{}".format(api_version,
+                                                                            tenant_id,
+                                                                            ipfixtemplate_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ipsecprofiles(self, ipsecprofile_id, data, api_version="v2.2"):
+    def ipsecprofiles(self, ipsecprofile_id, data, tenant_id=None, api_version="v2.3"):
         """
-        Update a IPSECProfile (v2.2)
+        Update a IPSECProfile (v2.3) (v2.3)
 
           **Parameters:**:
 
           - **ipsecprofile_id**: IPSEC Profile ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
@@ -2585,6 +3052,14 @@ class Put(object):
                - **passphrase_encrypted:**  Type: string 
                - **peer_id_check:**  Type: string 
                - **permit_peer_id_mismatch:**  Type: boolean 
+               - **ppk_config:**           
+                   - **enabled:**  Type: boolean 
+                   - **mode:**  Type: string 
+                   - **ppk_key_id:**  Type: string 
+                   - **ppk_secret:**  Type: string 
+                   - **ppk_secret_configured:**  Type: boolean 
+                   - **ppk_secret_encrypted:**  Type: string 
+                   - **ppk_secret_hash:**  Type: string 
                - **private_key:**  Type: string 
                - **private_key_encrypted:**  Type: string 
                - **remote_ca_certificate:**  Type: string 
@@ -2613,17 +3088,53 @@ class Put(object):
            - **dpd_enable:**  Type: boolean 
            - **dpd_timeout:**  Type: integer 
            - **esp_group:**           
+               - **force_encapsulation:**  Type: boolean 
+               - **lifesize:**           
+                   - **units:**  Type: string 
+                   - **value:**  Type: integer 
                - **lifetime:**  Type: integer 
+               - **lifetime_units:**  Type: string 
+               - **mode:**  Type: string 
+               - **pqc_kem_config:**           
+                   - **enabled:**  Type: boolean 
+                   - **round_1_algorithms:**  [Type: string] 
+                   - **round_2_algorithms:**  [Type: string] 
+                   - **round_3_algorithms:**  [Type: string] 
+                   - **round_4_algorithms:**  [Type: string] 
+                   - **round_5_algorithms:**  [Type: string] 
+                   - **round_6_algorithms:**  [Type: string] 
+                   - **round_7_algorithms:**  [Type: string] 
                - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
+                   - **prf:**  Type: string 
+               - **responder_sase_proposals:**           
+                   - **dh_group:**  [Type: string] 
+                   - **encryption:**  [Type: string] 
+                   - **hash:**  [Type: string] 
            - **ike_group:**           
+               - **aggressive:**  Type: boolean 
+               - **authentication_multiple:**  Type: integer 
+               - **key_exchange:**  Type: string 
                - **lifetime:**  Type: integer 
+               - **lifetime_units:**  Type: string 
+               - **port:**  Type: integer 
+               - **pqc_kem_config:**           
+                   - **enabled:**  Type: boolean 
+                   - **round_1_algorithms:**  [Type: string] 
+                   - **round_2_algorithms:**  [Type: string] 
+                   - **round_3_algorithms:**  [Type: string] 
+                   - **round_4_algorithms:**  [Type: string] 
+                   - **round_5_algorithms:**  [Type: string] 
+                   - **round_6_algorithms:**  [Type: string] 
+                   - **round_7_algorithms:**  [Type: string] 
                - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
+                   - **prf:**  Type: string 
+               - **reauth:**  Type: boolean 
            - **name:**  Type: string 
            - **tags:**  [Type: string] 
            - **used_for:**  Type: string 
@@ -2631,15 +3142,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipsecprofiles/{}".format(api_version,
-                                                                      ipsecprofile_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipsecprofiles/{}".format(api_version,
+                                                                           tenant_id,
+                                                                           ipsecprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def lannetworks(self, site_id, lannetwork_id, data, api_version="v3.3"):
+    def lannetworks(self, site_id, lannetwork_id, data, tenant_id=None, api_version="v3.3"):
         """
         Update an existing LAN (v3.3)
 
@@ -2648,6 +3166,7 @@ class Put(object):
           - **site_id**: Site ID
           - **lannetwork_id**: LAN Network ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.3)
 
           **Payload Attributes:** 
@@ -2700,16 +3219,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/lannetworks/{}".format(api_version,
-                                                                             site_id,
-                                                                             lannetwork_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/lannetworks/{}".format(api_version,
+                                                                                  tenant_id,
+                                                                                  site_id,
+                                                                                  lannetwork_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def localprefixfilters(self, localprefixfilter_id, data, api_version="v2.0"):
+    def localprefixfilters(self, localprefixfilter_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a new local prefix filter. (v2.0)
 
@@ -2717,6 +3243,7 @@ class Put(object):
 
           - **localprefixfilter_id**: Local Prefix Filter ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2727,15 +3254,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/localprefixfilters/{}".format(api_version,
-                                                                           localprefixfilter_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/localprefixfilters/{}".format(api_version,
+                                                                                tenant_id,
+                                                                                localprefixfilter_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def machine_cellular_modules_firmware(self, machine_id, cellular_module_id, data, api_version="v2.0"):
+    def machine_cellular_modules_firmware(self, machine_id, cellular_module_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update cellular module firmware configuration (v2.0)
 
@@ -2744,6 +3278,7 @@ class Put(object):
           - **machine_id**: Machine ID
           - **cellular_module_id**: Cellular Module ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2753,16 +3288,60 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/machines/{}/cellular_modules/{}/firmware".format(api_version,
-                                                                                              machine_id,
-                                                                                              cellular_module_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/machines/{}/cellular_modules/{}/firmware".format(api_version,
+                                                                                                   tenant_id,
+                                                                                                   machine_id,
+                                                                                                   cellular_module_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def mstp_instances(self, site_id, element_id, mstp_instance_id, data, api_version="v2.0"):
+    def microsegments(self, site_id, microsegment_id, data, tenant_id=None, api_version="v2.0"):
+        """
+        Update microsegment (v2.0)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **microsegment_id**: Microsegment ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **microsegmentation_enabled:**  Type: boolean 
+           - **site_id:**  Type: string 
+           - **vlan_ids:**  [Type: integer] 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/microsegments/{}".format(api_version,
+                                                                                    tenant_id,
+                                                                                    site_id,
+                                                                                    microsegment_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def mstp_instances(self, site_id, element_id, mstp_instance_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a MSTP Instance (v2.0)
 
@@ -2772,6 +3351,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **mstp_instance_id**: MSTP Instance ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2785,17 +3365,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/mstp_instances/{}".format(api_version,
-                                                                                            site_id,
-                                                                                            element_id,
-                                                                                            mstp_instance_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/mstp_instances/{}".format(api_version,
+                                                                                                 tenant_id,
+                                                                                                 site_id,
+                                                                                                 element_id,
+                                                                                                 mstp_instance_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def multicastglobalconfigs(self, site_id, element_id, multicastglobalconfig_id, data, api_version="v2.1"):
+    def multicastglobalconfigs(self, site_id, element_id, multicastglobalconfig_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update Multicast config (v2.1)
 
@@ -2805,6 +3392,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **multicastglobalconfig_id**: Multicast Global Config ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -2825,17 +3413,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/multicastglobalconfigs/{}".format(api_version,
-                                                                                                    site_id,
-                                                                                                    element_id,
-                                                                                                    multicastglobalconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/multicastglobalconfigs/{}".format(api_version,
+                                                                                                         tenant_id,
+                                                                                                         site_id,
+                                                                                                         element_id,
+                                                                                                         multicastglobalconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def multicastpeergroups(self, multicastpeergroup_id, data, api_version="v2.1"):
+    def multicastpeergroups(self, multicastpeergroup_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update multicast peer group (v2.1)
 
@@ -2843,6 +3438,7 @@ class Put(object):
 
           - **multicastpeergroup_id**: Multicast Peer Group ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -2857,15 +3453,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/multicastpeergroups/{}".format(api_version,
-                                                                            multicastpeergroup_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/multicastpeergroups/{}".format(api_version,
+                                                                                 tenant_id,
+                                                                                 multicastpeergroup_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def multicastrps(self, site_id, element_id, multicastrp_id, data, api_version="v2.0"):
+    def multicastrps(self, site_id, element_id, multicastrp_id, data, tenant_id=None, api_version="v2.0"):
         """
         Updates Multicast RP config (v2.0)
 
@@ -2875,6 +3478,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **multicastrp_id**: Multicast RP ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2890,17 +3494,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/multicastrps/{}".format(api_version,
-                                                                                          site_id,
-                                                                                          element_id,
-                                                                                          multicastrp_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/multicastrps/{}".format(api_version,
+                                                                                               tenant_id,
+                                                                                               site_id,
+                                                                                               element_id,
+                                                                                               multicastrp_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def multicastsourcesiteconfigs(self, site_id, multicastsourcesiteconfig_id, data, api_version="v2.0"):
+    def multicastsourcesiteconfigs(self, site_id, multicastsourcesiteconfig_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update multicast source site config (v2.0)
 
@@ -2909,6 +3520,7 @@ class Put(object):
           - **site_id**: Site ID
           - **multicastsourcesiteconfig_id**: Multicast Source Site Config ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2920,16 +3532,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/multicastsourcesiteconfigs/{}".format(api_version,
-                                                                                            site_id,
-                                                                                            multicastsourcesiteconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/multicastsourcesiteconfigs/{}".format(api_version,
+                                                                                                 tenant_id,
+                                                                                                 site_id,
+                                                                                                 multicastsourcesiteconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def natglobalprefixes(self, natglobalprefix_id, data, api_version="v2.0"):
+    def natglobalprefixes(self, natglobalprefix_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update an existing NAT prefix. (v2.0)
 
@@ -2937,6 +3556,7 @@ class Put(object):
 
           - **natglobalprefix_id**: NAT Global Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2949,15 +3569,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natglobalprefixes/{}".format(api_version,
-                                                                          natglobalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natglobalprefixes/{}".format(api_version,
+                                                                               tenant_id,
+                                                                               natglobalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def natlocalprefixes(self, natlocalprefix_id, data, api_version="v2.0"):
+    def natlocalprefixes(self, natlocalprefix_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a  NAT local prefix. (v2.0)
 
@@ -2965,6 +3592,7 @@ class Put(object):
 
           - **natlocalprefix_id**: NAT Local Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2976,15 +3604,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natlocalprefixes/{}".format(api_version,
-                                                                         natlocalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natlocalprefixes/{}".format(api_version,
+                                                                              tenant_id,
+                                                                              natlocalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def natpolicypools(self, natpolicypool_id, data, api_version="v2.0"):
+    def natpolicypools(self, natpolicypool_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a  NAT Policy Pool. (v2.0)
 
@@ -2992,6 +3627,7 @@ class Put(object):
 
           - **natpolicypool_id**: NAT Policy Pool ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3003,15 +3639,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicypools/{}".format(api_version,
-                                                                       natpolicypool_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natpolicypools/{}".format(api_version,
+                                                                            tenant_id,
+                                                                            natpolicypool_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def natpolicyrules(self, natpolicyset_id, natpolicyrule_id, data, api_version="v2.0"):
+    def natpolicyrules(self, natpolicyset_id, natpolicyrule_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update policy rule of tenant. (v2.0)
 
@@ -3020,6 +3663,7 @@ class Put(object):
           - **natpolicyset_id**: NAT Policy Set ID
           - **natpolicyrule_id**: NAT Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3098,16 +3742,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicysets/{}/natpolicyrules/{}".format(api_version,
-                                                                                        natpolicyset_id,
-                                                                                        natpolicyrule_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natpolicysets/{}/natpolicyrules/{}".format(api_version,
+                                                                                             tenant_id,
+                                                                                             natpolicyset_id,
+                                                                                             natpolicyrule_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def natpolicysets(self, natpolicyset_id, data, api_version="v2.0"):
+    def natpolicysets(self, natpolicyset_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update NAT policy set. (v2.0)
 
@@ -3115,6 +3766,7 @@ class Put(object):
 
           - **natpolicyset_id**: NAT Policy Set ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3210,15 +3862,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicysets/{}".format(api_version,
-                                                                      natpolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natpolicysets/{}".format(api_version,
+                                                                           tenant_id,
+                                                                           natpolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def natpolicysetstacks(self, natpolicysetstack_id, data, api_version="v2.0"):
+    def natpolicysetstacks(self, natpolicysetstack_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update NAT Policy Set Stack. (v2.0)
 
@@ -3226,6 +3885,7 @@ class Put(object):
 
           - **natpolicysetstack_id**: NAT Policy Set Stack ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3239,15 +3899,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicysetstacks/{}".format(api_version,
-                                                                           natpolicysetstack_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natpolicysetstacks/{}".format(api_version,
+                                                                                tenant_id,
+                                                                                natpolicysetstack_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def natzones(self, natzone_id, data, api_version="v2.0"):
+    def natzones(self, natzone_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a Nat Policy Zone. (v2.0)
 
@@ -3255,6 +3922,7 @@ class Put(object):
 
           - **natzone_id**: NAT Zone ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3273,15 +3941,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natzones/{}".format(api_version,
-                                                                 natzone_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natzones/{}".format(api_version,
+                                                                      tenant_id,
+                                                                      natzone_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def networkcontexts(self, networkcontext_id, data, api_version="v2.0"):
+    def networkcontexts(self, networkcontext_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update LAN segment (v2.0)
 
@@ -3289,6 +3964,7 @@ class Put(object):
 
           - **networkcontext_id**: Network Context ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3299,15 +3975,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkcontexts/{}".format(api_version,
-                                                                        networkcontext_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkcontexts/{}".format(api_version,
+                                                                             tenant_id,
+                                                                             networkcontext_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def networkpolicyglobalprefixes(self, networkpolicyglobalprefix_id, data, api_version="v2.1"):
+    def networkpolicyglobalprefixes(self, networkpolicyglobalprefix_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update a Network global prefix. (v2.1)
 
@@ -3315,6 +3998,7 @@ class Put(object):
 
           - **networkpolicyglobalprefix_id**: Network Policy Global Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -3328,24 +4012,32 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicyglobalprefixes/{}".format(api_version,
-                                                                                    networkpolicyglobalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicyglobalprefixes/{}".format(api_version,
+                                                                                         tenant_id,
+                                                                                         networkpolicyglobalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id, data, api_version="v2.4"):
+    def networkpolicyrules(self, networkpolicyset_id, networkpolicyrule_id, data, tenant_id=None, api_version="v2.5"):
         """
-        Update network policy rule of tenant. (v2.4)
+        Update network policy rule of tenant. (v2.5)
 
           **Parameters:**:
 
           - **networkpolicyset_id**: Network Policy Set ID
           - **networkpolicyrule_id**: Network Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.4)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
@@ -3387,16 +4079,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicysets/{}/networkpolicyrules/{}".format(api_version,
-                                                                                                networkpolicyset_id,
-                                                                                                networkpolicyrule_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicysets/{}/networkpolicyrules/{}".format(api_version,
+                                                                                                     tenant_id,
+                                                                                                     networkpolicyset_id,
+                                                                                                     networkpolicyrule_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def networkpolicysets(self, networkpolicyset_id, data, api_version="v2.0"):
+    def networkpolicysets(self, networkpolicyset_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update Network Policy Set. (v2.0)
 
@@ -3404,6 +4103,7 @@ class Put(object):
 
           - **networkpolicyset_id**: Network Policy Set ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3452,15 +4152,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicysets/{}".format(api_version,
-                                                                          networkpolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicysets/{}".format(api_version,
+                                                                               tenant_id,
+                                                                               networkpolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def networkpolicysetstacks(self, networkpolicysetstack_id, data, api_version="v2.0"):
+    def networkpolicysetstacks(self, networkpolicysetstack_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a NetworkPolicySetStack (v2.0)
 
@@ -3468,6 +4175,7 @@ class Put(object):
 
           - **networkpolicysetstack_id**: Network Policy Set Stack ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3557,15 +4265,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicysetstacks/{}".format(api_version,
-                                                                               networkpolicysetstack_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicysetstacks/{}".format(api_version,
+                                                                                    tenant_id,
+                                                                                    networkpolicysetstack_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ngfwsecuritypolicyglobalprefixes(self, ngfwsecuritypolicyglobalprefix_id, data, api_version="v2.1"):
+    def ngfwsecuritypolicyglobalprefixes(self, ngfwsecuritypolicyglobalprefix_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update an existing Security Policy V2 Global Prefix (v2.1)
 
@@ -3573,6 +4288,7 @@ class Put(object):
 
           - **ngfwsecuritypolicyglobalprefix_id**: NGFW Security Policy Global Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -3586,15 +4302,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicyglobalprefixes/{}".format(api_version,
-                                                                                         ngfwsecuritypolicyglobalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicyglobalprefixes/{}".format(api_version,
+                                                                                              tenant_id,
+                                                                                              ngfwsecuritypolicyglobalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ngfwsecuritypolicylocalprefixes(self, ngfwsecuritypolicylocalprefix_id, data, api_version="v2.0"):
+    def ngfwsecuritypolicylocalprefixes(self, ngfwsecuritypolicylocalprefix_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update an existing Security Policy V2 Local Prefix (v2.0)
 
@@ -3602,6 +4325,7 @@ class Put(object):
 
           - **ngfwsecuritypolicylocalprefix_id**: NGFW Security Policy Local Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3613,15 +4337,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicylocalprefixes/{}".format(api_version,
-                                                                                        ngfwsecuritypolicylocalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicylocalprefixes/{}".format(api_version,
+                                                                                             tenant_id,
+                                                                                             ngfwsecuritypolicylocalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, data, api_version="v2.3"):
+    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, ngfwsecuritypolicyrule_id, data, tenant_id=None, api_version="v2.3"):
         """
         Update an existing Security Policy V2 Rule under a policy set (v2.3)
 
@@ -3630,6 +4361,7 @@ class Put(object):
           - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
           - **ngfwsecuritypolicyrule_id**: NGFW Security Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
@@ -3662,16 +4394,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicysets/{}/ngfwsecuritypolicyrules/{}".format(api_version,
-                                                                                                          ngfwsecuritypolicyset_id,
-                                                                                                          ngfwsecuritypolicyrule_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicysets/{}/ngfwsecuritypolicyrules/{}".format(api_version,
+                                                                                                               tenant_id,
+                                                                                                               ngfwsecuritypolicyset_id,
+                                                                                                               ngfwsecuritypolicyrule_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ngfwsecuritypolicysets(self, ngfwsecuritypolicyset_id, data, api_version="v2.0"):
+    def ngfwsecuritypolicysets(self, ngfwsecuritypolicyset_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update an existing Security Policy V2 Set (v2.0)
 
@@ -3679,6 +4418,7 @@ class Put(object):
 
           - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3693,15 +4433,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicysets/{}".format(api_version,
-                                                                               ngfwsecuritypolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicysets/{}".format(api_version,
+                                                                                    tenant_id,
+                                                                                    ngfwsecuritypolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ngfwsecuritypolicysetstacks(self, ngfwsecuritypolicysetstack_id, data, api_version="v2.0"):
+    def ngfwsecuritypolicysetstacks(self, ngfwsecuritypolicysetstack_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update an existing Security Policy V2 Set Stack (v2.0)
 
@@ -3709,6 +4456,7 @@ class Put(object):
 
           - **ngfwsecuritypolicysetstack_id**: NGFW Security Policy Set Stack ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3722,15 +4470,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicysetstacks/{}".format(api_version,
-                                                                                    ngfwsecuritypolicysetstack_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicysetstacks/{}".format(api_version,
+                                                                                         tenant_id,
+                                                                                         ngfwsecuritypolicysetstack_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ntp(self, element_id, ntp_id, data, api_version="v2.1"):
+    def ntp(self, element_id, ntp_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update an existing element NTP. (v2.1)
 
@@ -3739,6 +4494,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **ntp_id**: NTP Configuration ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -3759,16 +4515,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/ntp/{}".format(api_version,
-                                                                        element_id,
-                                                                        ntp_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/ntp/{}".format(api_version,
+                                                                             tenant_id,
+                                                                             element_id,
+                                                                             ntp_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ntp_templates_operations(self, template_id, data, api_version="v2.0"):
+    def ntp_templates_operations(self, template_id, data, tenant_id=None, api_version="v2.0"):
         """
         Sync NTP Templates (v2.0)
 
@@ -3776,25 +4539,34 @@ class Put(object):
 
           - **template_id**: Template ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **ntp_template_sync_type:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ntp/templates/{}/operations".format(api_version,
-                                                                                 template_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ntp/templates/{}/operations".format(api_version,
+                                                                                      tenant_id,
+                                                                                      template_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ospfconfigs(self, site_id, element_id, ospfconfig_id, data, api_version="v2.0"):
+    def ospfconfigs(self, site_id, element_id, ospfconfig_id, data, tenant_id=None, api_version="v2.1"):
         """
-        Updates OSPF config (v2.0)
+        Updates OSPF config (v2.1)
 
           **Parameters:**:
 
@@ -3802,13 +4574,16 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **ospfconfig_id**: OSPF Configuration ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **advertise_fabric_default_route:**  Type: boolean 
            - **areas:**           
                - **area_id:**  Type: integer 
                - **area_type:**  Type: string 
+           - **cost_for_default_route:**  Type: integer 
            - **description:**  Type: string 
            - **interfaces:**           
                - **area_id:**  Type: integer 
@@ -3835,17 +4610,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/ospfconfigs/{}".format(api_version,
-                                                                                         site_id,
-                                                                                         element_id,
-                                                                                         ospfconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/ospfconfigs/{}".format(api_version,
+                                                                                              tenant_id,
+                                                                                              site_id,
+                                                                                              element_id,
+                                                                                              ospfconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ospfglobalconfigs(self, site_id, element_id, ospfglobalconfig_id, data, api_version="v2.0"):
+    def ospfglobalconfigs(self, site_id, element_id, ospfglobalconfig_id, data, tenant_id=None, api_version="v2.0"):
         """
         Updates OSPF config (v2.0)
 
@@ -3855,6 +4637,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **ospfglobalconfig_id**: OSPF Global Configuration ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3872,17 +4655,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/ospfglobalconfigs/{}".format(api_version,
-                                                                                               site_id,
-                                                                                               element_id,
-                                                                                               ospfglobalconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/ospfglobalconfigs/{}".format(api_version,
+                                                                                                    tenant_id,
+                                                                                                    site_id,
+                                                                                                    element_id,
+                                                                                                    ospfglobalconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def otpaccessconfigs(self, otpaccessconfig_id, data, api_version="v2.0"):
+    def otpaccessconfigs(self, otpaccessconfig_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update an OTP Access for all elements under an Tenant. (v2.0)
 
@@ -3890,6 +4680,7 @@ class Put(object):
 
           - **otpaccessconfig_id**: OTP Access configuration ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3900,15 +4691,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/otpaccessconfigs/{}".format(api_version,
-                                                                         otpaccessconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/otpaccessconfigs/{}".format(api_version,
+                                                                              tenant_id,
+                                                                              otpaccessconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def pathgroups(self, pathgroup_id, data, api_version="v2.1"):
+    def pathgroups(self, pathgroup_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update A Path Group of a tenant. (v2.1)
 
@@ -3916,6 +4714,7 @@ class Put(object):
 
           - **pathgroup_id**: Path Group ID (for network service/DC routing)
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -3929,67 +4728,105 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/pathgroups/{}".format(api_version,
-                                                                   pathgroup_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/pathgroups/{}".format(api_version,
+                                                                        tenant_id,
+                                                                        pathgroup_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def pathprefixdistributionfilterassociation(self, site_id, pathprefixdistributionfilterassociation_id, data, api_version="v2.0"):
+    def pathprefixdistributionfilterassociation(self, site_id, pathprefixdistributionfilterassociation_id, data, tenant_id=None, api_version="v2.0"):
         """
-        PUT Pathprefixdistributionfilterassociation API Function
+        Update Path Prefix Distribution Filter Association (v2.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **pathprefixdistributionfilterassociation_id**: Path Prefix Distribution Filter Association ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **description:**  Type: string 
+           - **name:**  Type: string 
+           - **path_prefix_distribution_filter_id:**  Type: string 
+           - **peer_site_ids:**  [Type: string] 
+           - **tags:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/pathprefixdistributionfilterassociation/{}".format(api_version,
-                                                                                                         site_id,
-                                                                                                         pathprefixdistributionfilterassociation_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/pathprefixdistributionfilterassociation/{}".format(api_version,
+                                                                                                              tenant_id,
+                                                                                                              site_id,
+                                                                                                              pathprefixdistributionfilterassociation_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def pathprefixdistributionfilters(self, site_id, pathprefixdistributionfilter_id, data, api_version="v2.0"):
+    def pathprefixdistributionfilters(self, site_id, pathprefixdistributionfilter_id, data, tenant_id=None, api_version="v2.0"):
         """
-        PUT Pathprefixdistributionfilters API Function
+        Update Path Prefix Distribution Filters List (v2.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **pathprefixdistributionfilter_id**: Path Prefix Distribution Filter ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **description:**  Type: string 
+           - **name:**  Type: string 
+           - **path_prefix_filter_list:**           
+               - **path_prefix_filters:**           
+                   - **ipv4_prefix:**  Type: string 
+                   - **ipv6_prefix:**  Type: string 
+                   - **order:**  Type: integer 
+                   - **permit:**  Type: boolean 
+               - **vrf_context_id:**  Type: string 
+           - **tags:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/pathprefixdistributionfilters/{}".format(api_version,
-                                                                                               site_id,
-                                                                                               pathprefixdistributionfilter_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/pathprefixdistributionfilters/{}".format(api_version,
+                                                                                                    tenant_id,
+                                                                                                    site_id,
+                                                                                                    pathprefixdistributionfilter_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def perfmgmtpolicysets(self, perfmgmtpolicyset_id, data, api_version="v2.0"):
+    def perfmgmtpolicysets(self, perfmgmtpolicyset_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a PERFMGMT Policy Set (v2.0)
 
@@ -3997,6 +4834,7 @@ class Put(object):
 
           - **perfmgmtpolicyset_id**: Performance Management Policy Set ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4073,24 +4911,32 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysets/{}".format(api_version,
-                                                                           perfmgmtpolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/perfmgmtpolicysets/{}".format(api_version,
+                                                                                tenant_id,
+                                                                                perfmgmtpolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, data, api_version="v2.2"):
+    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, perfmgmtpolicyrule_id, data, tenant_id=None, api_version="v2.3"):
         """
-        Update policy rule of tenant V2.1. (v2.2)
+        Update policy rule of tenant V2.3. (v2.3)
 
           **Parameters:**:
 
           - **perfmgmtpolicyset_id**: Performance Management Policy Set ID
           - **perfmgmtpolicyrule_id**: Performance Management Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
@@ -4140,16 +4986,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysets/{}/perfmgmtpolicyrules/{}".format(api_version,
-                                                                                                  perfmgmtpolicyset_id,
-                                                                                                  perfmgmtpolicyrule_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/perfmgmtpolicysets/{}/perfmgmtpolicyrules/{}".format(api_version,
+                                                                                                       tenant_id,
+                                                                                                       perfmgmtpolicyset_id,
+                                                                                                       perfmgmtpolicyrule_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def perfmgmtpolicysetstacks(self, perfmgmtpolicysetstack_id, data, api_version="v2.0"):
+    def perfmgmtpolicysetstacks(self, perfmgmtpolicysetstack_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a PERFMGMT Policy Set Stack (v2.0)
 
@@ -4157,6 +5010,7 @@ class Put(object):
 
           - **perfmgmtpolicysetstack_id**: Performance Management Policy Set Stack ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4171,15 +5025,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysetstacks/{}".format(api_version,
-                                                                                perfmgmtpolicysetstack_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/perfmgmtpolicysetstacks/{}".format(api_version,
+                                                                                     tenant_id,
+                                                                                     perfmgmtpolicysetstack_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def perfmgmtthresholdprofiles(self, perfmgmtthresholdprofile_id, data, api_version="v2.1"):
+    def perfmgmtthresholdprofiles(self, perfmgmtthresholdprofile_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update a Threshold Profile (v2.1)
 
@@ -4187,6 +5048,7 @@ class Put(object):
 
           - **perfmgmtthresholdprofile_id**: Performance Management Policy Threshold Profile ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -4235,15 +5097,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtthresholdprofiles/{}".format(api_version,
-                                                                                  perfmgmtthresholdprofile_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/perfmgmtthresholdprofiles/{}".format(api_version,
+                                                                                       tenant_id,
+                                                                                       perfmgmtthresholdprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def policyrules(self, policyset_id, policyrule_id, data, api_version="v3.1"):
+    def policyrules(self, policyset_id, policyrule_id, data, tenant_id=None, api_version="v3.1"):
         """
         Update policy rule of tenant. (v3.1)
 
@@ -4252,19 +5121,13 @@ class Put(object):
           - **policyset_id**: Policy Set ID
           - **policyrule_id**: Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.1)
 
           **Payload Attributes:** 
 
            - **app_def_id:**  Type: string 
-           - **app_def_name:**  Type: string 
-           - **default_rule:**  Type: boolean 
            - **description:**  Type: string 
-           - **disabled:**  Type: boolean 
-           - **disabled_reason:**  Type: string 
-           - **inactive:**  Type: boolean 
-           - **inactive_reason:**  Type: string 
-           - **lan_network_ids:**  [Type: string] 
            - **name:**  Type: string 
            - **network_context_id:**  Type: string 
            - **paths_allowed:**           
@@ -4277,33 +5140,34 @@ class Put(object):
                - **l3_failure_paths:**           
                    - **label:**  Type: string 
                    - **path_type:**  Type: string 
-           - **policy_set_id:**  Type: string 
            - **priority_num:**  Type: integer 
-           - **region:**  Type: string 
            - **service_context:**           
                - **active_service_label_id:**  Type: string 
                - **active_service_label_type:**  Type: string 
                - **backup_service_label_id:**  Type: string 
                - **backup_service_label_type:**  Type: string 
                - **type:**  Type: string 
-           - **site_paths_allowed:**           
-               - **wn_name:**  Type: string 
-               - **wp_type:**  Type: string 
-           - **tenant_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/policysets/{}/policyrules/{}".format(api_version,
-                                                                                  policyset_id,
-                                                                                  policyrule_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/policysets/{}/policyrules/{}".format(api_version,
+                                                                                       tenant_id,
+                                                                                       policyset_id,
+                                                                                       policyrule_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def policysets(self, policyset_id, data, api_version="v3.0"):
+    def policysets(self, policyset_id, data, tenant_id=None, api_version="v3.0"):
         """
         Update policy set. (v3.0)
 
@@ -4311,6 +5175,7 @@ class Put(object):
 
           - **policyset_id**: Policy Set ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
@@ -4337,41 +5202,60 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/policysets/{}".format(api_version,
-                                                                   policyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/policysets/{}".format(api_version,
+                                                                        tenant_id,
+                                                                        policyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prefixdistributionspokelists(self, site_id, prefixdistributionspokelist_id, data, api_version="v2.0"):
+    def prefixdistributionspokelists(self, site_id, prefixdistributionspokelist_id, data, tenant_id=None, api_version="v2.0"):
         """
-        PUT Prefixdistributionspokelists API Function
+        Update Prefix Distribution Spoke List (v2.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **prefixdistributionspokelist_id**: Prefix Distribution Spoke List ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **description:**  Type: string 
+           - **name:**  Type: string 
+           - **spoke_site_ids:**  [Type: string] 
+           - **tags:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prefixdistributionspokelists/{}".format(api_version,
-                                                                                              site_id,
-                                                                                              prefixdistributionspokelist_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/prefixdistributionspokelists/{}".format(api_version,
+                                                                                                   tenant_id,
+                                                                                                   site_id,
+                                                                                                   prefixdistributionspokelist_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prefixfilters(self, site_id, prefixfilter_id, data, api_version="v2.0"):
+    def prefixfilters(self, site_id, prefixfilter_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update an existing security prefix filter (v2.0)
 
@@ -4380,6 +5264,7 @@ class Put(object):
           - **site_id**: Site ID
           - **prefixfilter_id**: Prefix Filter ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4392,16 +5277,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prefixfilters/{}".format(api_version,
-                                                                               site_id,
-                                                                               prefixfilter_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/prefixfilters/{}".format(api_version,
+                                                                                    tenant_id,
+                                                                                    site_id,
+                                                                                    prefixfilter_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prioritypolicyglobalprefixes(self, prioritypolicyglobalprefix_id, data, api_version="v2.1"):
+    def prioritypolicyglobalprefixes(self, prioritypolicyglobalprefix_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update a  Priority global prefix. (v2.1)
 
@@ -4409,6 +5301,7 @@ class Put(object):
 
           - **prioritypolicyglobalprefix_id**: Priority Policy Global Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -4422,15 +5315,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicyglobalprefixes/{}".format(api_version,
-                                                                                     prioritypolicyglobalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicyglobalprefixes/{}".format(api_version,
+                                                                                          tenant_id,
+                                                                                          prioritypolicyglobalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id, data, api_version="v2.2"):
+    def prioritypolicyrules(self, prioritypolicyset_id, prioritypolicyrule_id, data, tenant_id=None, api_version="v2.2"):
         """
         Update priority policy rule of tenant. (v2.2)
 
@@ -4439,6 +5339,7 @@ class Put(object):
           - **prioritypolicyset_id**: Priority Policy Set ID
           - **prioritypolicyrule_id**: Priority Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
@@ -4464,16 +5365,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicysets/{}/prioritypolicyrules/{}".format(api_version,
-                                                                                                  prioritypolicyset_id,
-                                                                                                  prioritypolicyrule_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicysets/{}/prioritypolicyrules/{}".format(api_version,
+                                                                                                       tenant_id,
+                                                                                                       prioritypolicyset_id,
+                                                                                                       prioritypolicyrule_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prioritypolicysets(self, prioritypolicyset_id, data, api_version="v2.0"):
+    def prioritypolicysets(self, prioritypolicyset_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update Priority Policy Set. (v2.0)
 
@@ -4481,6 +5389,7 @@ class Put(object):
 
           - **prioritypolicyset_id**: Priority Policy Set ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4514,15 +5423,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicysets/{}".format(api_version,
-                                                                           prioritypolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicysets/{}".format(api_version,
+                                                                                tenant_id,
+                                                                                prioritypolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prioritypolicysetstacks(self, prioritypolicysetstack_id, data, api_version="v2.0"):
+    def prioritypolicysetstacks(self, prioritypolicysetstack_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a PriorityPolicySetStack (v2.0)
 
@@ -4530,6 +5446,7 @@ class Put(object):
 
           - **prioritypolicysetstack_id**: Priority Policy Stack ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4544,15 +5461,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicysetstacks/{}".format(api_version,
-                                                                                prioritypolicysetstack_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicysetstacks/{}".format(api_version,
+                                                                                     tenant_id,
+                                                                                     prioritypolicysetstack_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prismaaccess_configs(self, site_id, prismaaccess_config_id, data, api_version="v2.0"):
+    def prismaaccess_configs(self, site_id, prismaaccess_config_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a Prisma Access Config with remote networks and security processing node (v2.0)
 
@@ -4561,6 +5485,7 @@ class Put(object):
           - **site_id**: Site ID
           - **prismaaccess_config_id**: Prisma Acceess Config ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4577,25 +5502,33 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prismaaccess_configs/{}".format(api_version,
-                                                                                      site_id,
-                                                                                      prismaaccess_config_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/prismaaccess_configs/{}".format(api_version,
+                                                                                           tenant_id,
+                                                                                           site_id,
+                                                                                           prismaaccess_config_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prismasase_connections(self, site_id, prismasase_connection_id, data, api_version="v2.1"):
+    def prismasase_connections(self, site_id, prismasase_connection_id, data, tenant_id=None, api_version="v3.0"):
         """
-        Update the SASE connection (v2.1)
+        Update the SASE connection (v3.0) (v3.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **prismasase_connection_id**: Prisma SASE Connection ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
 
@@ -4611,9 +5544,10 @@ class Put(object):
            - **is_active:**  Type: boolean 
            - **is_enabled:**  Type: boolean 
            - **license_type:**  Type: string 
-           - **prismaaccess_edge_location:**  [Type: string] 
+           - **prismaaccess_edge_location_config:**  [Type: string] 
            - **prismaaccess_qos_cir_mbps:**  Type: integer 
            - **prismaaccess_qos_profile_id:**  Type: string 
+           - **prismasase_connection_id:**  Type: string 
            - **remote_network_groups:**           
                - **ipsec_tunnels:**           
                    - **authentication:**           
@@ -4636,6 +5570,8 @@ class Put(object):
            - **routing_configs:**           
                - **advertise_default_route:**  Type: boolean 
                - **bgp_secret:**  Type: string 
+               - **branch_as_number:**  Type: string 
+               - **deployment_mode:**  Type: string 
                - **export_routes:**  Type: boolean 
                - **summarize_mobile_routes_before_advertise:**  Type: boolean 
            - **site_id:**  Type: string 
@@ -4644,22 +5580,30 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prismasase_connections/{}".format(api_version,
-                                                                                        site_id,
-                                                                                        prismasase_connection_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/prismasase_connections/{}".format(api_version,
+                                                                                             tenant_id,
+                                                                                             site_id,
+                                                                                             prismasase_connection_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prismasase_connections_configs(self, data, api_version="v3.1"):
+    def prismasase_connections_configs(self, data, tenant_id=None, api_version="v3.1"):
         """
         Update the SASE connection config (v3.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.1)
 
           **Payload Attributes:** 
@@ -4672,17 +5616,53 @@ class Put(object):
                - **dpd_delay:**  Type: integer 
                - **dpd_enable:**  Type: boolean 
                - **esp_group:**           
+                   - **force_encapsulation:**  Type: boolean 
+                   - **lifesize:**           
+                       - **units:**  Type: string 
+                       - **value:**  Type: integer 
                    - **lifetime:**  Type: integer 
+                   - **lifetime_units:**  Type: string 
+                   - **mode:**  Type: string 
+                   - **pqc_kem_config:**           
+                       - **enabled:**  Type: boolean 
+                       - **round_1_algorithms:**  [Type: string] 
+                       - **round_2_algorithms:**  [Type: string] 
+                       - **round_3_algorithms:**  [Type: string] 
+                       - **round_4_algorithms:**  [Type: string] 
+                       - **round_5_algorithms:**  [Type: string] 
+                       - **round_6_algorithms:**  [Type: string] 
+                       - **round_7_algorithms:**  [Type: string] 
                    - **proposals:**           
                        - **dh_groups:**  Type: string 
                        - **encryption:**  Type: string 
                        - **hash:**  Type: string 
+                       - **prf:**  Type: string 
+                   - **responder_sase_proposals:**           
+                       - **dh_group:**  [Type: string] 
+                       - **encryption:**  [Type: string] 
+                       - **hash:**  [Type: string] 
                - **ike_group:**           
+                   - **aggressive:**  Type: boolean 
+                   - **authentication_multiple:**  Type: integer 
+                   - **key_exchange:**  Type: string 
                    - **lifetime:**  Type: integer 
+                   - **lifetime_units:**  Type: string 
+                   - **port:**  Type: integer 
+                   - **pqc_kem_config:**           
+                       - **enabled:**  Type: boolean 
+                       - **round_1_algorithms:**  [Type: string] 
+                       - **round_2_algorithms:**  [Type: string] 
+                       - **round_3_algorithms:**  [Type: string] 
+                       - **round_4_algorithms:**  [Type: string] 
+                       - **round_5_algorithms:**  [Type: string] 
+                       - **round_6_algorithms:**  [Type: string] 
+                       - **round_7_algorithms:**  [Type: string] 
                    - **proposals:**           
                        - **dh_groups:**  Type: string 
                        - **encryption:**  Type: string 
                        - **hash:**  Type: string 
+                       - **prf:**  Type: string 
+                   - **reauth:**  Type: boolean 
            - **panorama_sub_tenant_name:**  Type: string 
            - **prisma_sdwan_bgp_as_number:**  Type: string 
            - **security_zone_id:**  Type: string 
@@ -4691,22 +5671,30 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prismasase_connections/configs".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prismasase_connections/configs".format(api_version,
+                                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def probeconfigs(self, probeconfig_id, data, api_version="v2.0"):
+    def probeconfigs(self, probeconfig_id, data, tenant_id=None, api_version="v2.1"):
         """
-        Update a ProbeConfig (v2.0)
+        Update a ProbeConfig (v2.1)
 
           **Parameters:**:
 
           - **probeconfig_id**: Probe Configuration ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -4729,15 +5717,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/probeconfigs/{}".format(api_version,
-                                                                     probeconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/probeconfigs/{}".format(api_version,
+                                                                          tenant_id,
+                                                                          probeconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def probeprofiles(self, probeprofile_id, data, api_version="v2.0"):
+    def probeprofiles(self, probeprofile_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a ProbeProfile (v2.0)
 
@@ -4745,6 +5740,7 @@ class Put(object):
 
           - **probeprofile_id**: Probe Profile ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4757,15 +5753,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/probeprofiles/{}".format(api_version,
-                                                                      probeprofile_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/probeprofiles/{}".format(api_version,
+                                                                           tenant_id,
+                                                                           probeprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def radii(self, element_id, radii_id, data, api_version="v2.0"):
+    def radii(self, element_id, radii_id, data, tenant_id=None, api_version="v2.0"):
         """
         Used for element radius configuration updates (v2.0)
 
@@ -4774,6 +5777,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **radii_id**: Radii ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4797,16 +5801,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/radii/{}".format(api_version,
-                                                                          element_id,
-                                                                          radii_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/radii/{}".format(api_version,
+                                                                               tenant_id,
+                                                                               element_id,
+                                                                               radii_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def recovery_tokens(self, machine_id, recovery_token_id, data, api_version="v2.1"):
+    def recovery_tokens(self, machine_id, recovery_token_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update Recovery Token for Fips change mode (v2.1)
 
@@ -4815,30 +5826,33 @@ class Put(object):
           - **machine_id**: Machine ID
           - **recovery_token_id**: Recovery Token ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **hardware_id:**  Type: string 
-           - **ion_token:**  Type: string 
-           - **is_used:**  Type: boolean 
-           - **secret_token:**  Type: string 
            - **token_validity_in_hour:**  Type: integer 
-           - **valid_till_secs:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/machines/{}/recovery_tokens/{}".format(api_version,
-                                                                                    machine_id,
-                                                                                    recovery_token_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/machines/{}/recovery_tokens/{}".format(api_version,
+                                                                                         tenant_id,
+                                                                                         machine_id,
+                                                                                         recovery_token_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def roles(self, role_id, data, api_version="v2.1"):
+    def roles(self, role_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update a custom role (v2.1)
 
@@ -4846,6 +5860,7 @@ class Put(object):
 
           - **role_id**: Role ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -4881,15 +5896,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/roles/{}".format(api_version,
-                                                              role_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/roles/{}".format(api_version,
+                                                                   tenant_id,
+                                                                   role_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def routing_aspathaccesslists(self, site_id, element_id, routing_aspathaccesslist_id, data, api_version="v2.1"):
+    def routing_aspathaccesslists(self, site_id, element_id, routing_aspathaccesslist_id, data, tenant_id=None, api_version="v2.1"):
         """
         Updates Access List (v2.1)
 
@@ -4899,6 +5921,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **routing_aspathaccesslist_id**: Routing AS-PATH Access List ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -4915,17 +5938,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_aspathaccesslists/{}".format(api_version,
-                                                                                                       site_id,
-                                                                                                       element_id,
-                                                                                                       routing_aspathaccesslist_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/routing_aspathaccesslists/{}".format(api_version,
+                                                                                                            tenant_id,
+                                                                                                            site_id,
+                                                                                                            element_id,
+                                                                                                            routing_aspathaccesslist_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def routing_ipcommunitylists(self, site_id, element_id, routing_ipcommunitylist_id, data, api_version="v2.0"):
+    def routing_ipcommunitylists(self, site_id, element_id, routing_ipcommunitylist_id, data, tenant_id=None, api_version="v2.0"):
         """
         Updates Community List (v2.0)
 
@@ -4935,6 +5965,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **routing_ipcommunitylist_id**: Routing IP Community List ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4950,17 +5981,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_ipcommunitylists/{}".format(api_version,
-                                                                                                      site_id,
-                                                                                                      element_id,
-                                                                                                      routing_ipcommunitylist_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/routing_ipcommunitylists/{}".format(api_version,
+                                                                                                           tenant_id,
+                                                                                                           site_id,
+                                                                                                           element_id,
+                                                                                                           routing_ipcommunitylist_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def routing_prefixlists(self, site_id, element_id, routing_prefixlist_id, data, api_version="v2.1"):
+    def routing_prefixlists(self, site_id, element_id, routing_prefixlist_id, data, tenant_id=None, api_version="v2.1"):
         """
         Updates Prefix List (v2.1)
 
@@ -4970,6 +6008,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **routing_prefixlist_id**: Routing IP Prefix List ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -4989,17 +6028,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_prefixlists/{}".format(api_version,
-                                                                                                 site_id,
-                                                                                                 element_id,
-                                                                                                 routing_prefixlist_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/routing_prefixlists/{}".format(api_version,
+                                                                                                      tenant_id,
+                                                                                                      site_id,
+                                                                                                      element_id,
+                                                                                                      routing_prefixlist_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def routing_routemaps(self, site_id, element_id, routing_routemap_id, data, api_version="v2.3"):
+    def routing_routemaps(self, site_id, element_id, routing_routemap_id, data, tenant_id=None, api_version="v2.3"):
         """
         Updates Route Map (v2.3)
 
@@ -5009,6 +6055,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **routing_routemap_id**: Routing Route Map ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
@@ -5044,43 +6091,61 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_routemaps/{}".format(api_version,
-                                                                                               site_id,
-                                                                                               element_id,
-                                                                                               routing_routemap_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/routing_routemaps/{}".format(api_version,
+                                                                                                    tenant_id,
+                                                                                                    site_id,
+                                                                                                    element_id,
+                                                                                                    routing_routemap_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def sdwanapps_configs(self, sdwanapp_id, config_id, data, api_version="v2.0"):
+    def sdwanapps_configs(self, sdwanapp_id, config_id, data, tenant_id=None, api_version="v2.0"):
         """
-        PUT Sdwanapps_Configs API Function
+        Update SD-WAN application configuration (v2.0)
 
           **Parameters:**:
 
           - **sdwanapp_id**: SDWAN Application ID
           - **config_id**: SDWAN App Config ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **state:**  Type: string 
+           - **user_config:**  Type: object 
+           - **version:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sdwanapps/{}/configs/{}".format(api_version,
-                                                                             sdwanapp_id,
-                                                                             config_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sdwanapps/{}/configs/{}".format(api_version,
+                                                                                  tenant_id,
+                                                                                  sdwanapp_id,
+                                                                                  config_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def securitypolicyrules(self, securitypolicyset_id, securitypolicyrule_id, data, api_version="v2.0"):
+    def securitypolicyrules(self, securitypolicyset_id, securitypolicyrule_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a tenant security policy rule. (v2.0)
 
@@ -5089,6 +6154,7 @@ class Put(object):
           - **securitypolicyset_id**: Security Policy Set ID
           - **securitypolicyrule_id**: Security Policy Rule ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5106,16 +6172,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securitypolicysets/{}/securitypolicyrules/{}".format(api_version,
-                                                                                                  securitypolicyset_id,
-                                                                                                  securitypolicyrule_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/securitypolicysets/{}/securitypolicyrules/{}".format(api_version,
+                                                                                                       tenant_id,
+                                                                                                       securitypolicyset_id,
+                                                                                                       securitypolicyrule_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def securitypolicysets(self, securitypolicyset_id, data, api_version="v2.0"):
+    def securitypolicysets(self, securitypolicyset_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a tenant security policy set. (v2.0)
 
@@ -5123,6 +6196,7 @@ class Put(object):
 
           - **securitypolicyset_id**: Security Policy Set ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5134,15 +6208,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securitypolicysets/{}".format(api_version,
-                                                                           securitypolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/securitypolicysets/{}".format(api_version,
+                                                                                tenant_id,
+                                                                                securitypolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def securityprofilegroups(self, securityprofilegroup_id, data, api_version="v2.0"):
+    def securityprofilegroups(self, securityprofilegroup_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update an existing Security Profile Group (v2.0)
 
@@ -5150,6 +6231,7 @@ class Put(object):
 
           - **securityprofilegroup_id**: Security Profile Group ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5180,42 +6262,58 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securityprofilegroups/{}".format(api_version,
-                                                                              securityprofilegroup_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/securityprofilegroups/{}".format(api_version,
+                                                                                   tenant_id,
+                                                                                   securityprofilegroup_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def securityzones(self, securityzone_id, data, api_version="v2.1"):
+    def securityzones(self, securityzone_id, data, tenant_id=None, api_version="v2.2"):
         """
-        Update an existing security zone (v2.1)
+        Update security zone (v2.2) (v2.2)
 
           **Parameters:**:
 
           - **securityzone_id**: Security Zone (ZBFW) ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
            - **description:**  Type: string 
+           - **is_l2:**  Type: boolean 
            - **name:**  Type: string 
            - **tcp_allow_non_syn:**  Type: boolean 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securityzones/{}".format(api_version,
-                                                                      securityzone_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/securityzones/{}".format(api_version,
+                                                                           tenant_id,
+                                                                           securityzone_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def servicebindingmaps(self, servicebindingmap_id, data, api_version="v2.1"):
+    def servicebindingmaps(self, servicebindingmap_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update a ServiceBindingMap (v2.1)
 
@@ -5223,6 +6321,7 @@ class Put(object):
 
           - **servicebindingmap_id**: Service Binding Map ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -5238,15 +6337,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/servicebindingmaps/{}".format(api_version,
-                                                                           servicebindingmap_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/servicebindingmaps/{}".format(api_version,
+                                                                                tenant_id,
+                                                                                servicebindingmap_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def serviceendpoints(self, serviceendpoint_id, data, api_version="v3.1"):
+    def serviceendpoints(self, serviceendpoint_id, data, tenant_id=None, api_version="v3.1"):
         """
         Update a ServiceEndpoint (v3.1)
 
@@ -5254,6 +6360,7 @@ class Put(object):
 
           - **serviceendpoint_id**: Service Endpoint ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.1)
 
           **Payload Attributes:** 
@@ -5287,7 +6394,17 @@ class Put(object):
                - **longitude:**  Type: number 
            - **name:**  Type: string 
            - **sase_properties:**           
+               - **active:**  Type: boolean 
+               - **allocated_bandwidth_mbps:**  Type: integer 
+               - **allocated_sc_count:**  Type: integer 
+               - **compute_region_id:**  Type: string 
+               - **compute_region_provider:**  Type: string 
+               - **line_conditioning_enabled:**  Type: boolean 
                - **lqm_enabled:**  Type: boolean 
+               - **pa_compute_region_oid:**  Type: string 
+               - **pa_we_br_site_id:**  Type: string 
+               - **pa_we_dc_site_id:**  Type: string 
+               - **total_sc_bandwidth_mbps:**  Type: integer 
            - **service_link_peers:**           
                - **hostnames:**  [Type: string] 
                - **ip_addresses:**  [Type: string] 
@@ -5298,15 +6415,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/serviceendpoints/{}".format(api_version,
-                                                                         serviceendpoint_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/serviceendpoints/{}".format(api_version,
+                                                                              tenant_id,
+                                                                              serviceendpoint_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def servicelabels(self, servicelabel_id, data, api_version="v2.1"):
+    def servicelabels(self, servicelabel_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update a ServiceLabel (v2.1)
 
@@ -5314,6 +6438,7 @@ class Put(object):
 
           - **servicelabel_id**: Service Label ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -5328,15 +6453,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/servicelabels/{}".format(api_version,
-                                                                      servicelabel_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/servicelabels/{}".format(api_version,
+                                                                           tenant_id,
+                                                                           servicelabel_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def site_admin_state(self, site_id, data, api_version="v3.0"):
+    def site_admin_state(self, site_id, data, tenant_id=None, api_version="v3.0"):
         """
         Update an existing site (v3.0)
 
@@ -5344,6 +6476,7 @@ class Put(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
@@ -5370,15 +6503,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/admin_state".format(api_version,
-                                                                          site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/admin_state".format(api_version,
+                                                                               tenant_id,
+                                                                               site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def site_extensions(self, site_id, extension_id, data, api_version="v2.0"):
+    def site_extensions(self, site_id, extension_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update site level extension configuration (v2.0)
 
@@ -5387,28 +6527,37 @@ class Put(object):
           - **site_id**: Site ID
           - **extension_id**: Extension ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
            - **conf:**  Type: object 
            - **disabled:**  Type: boolean 
+           - **entity_id:**  Type: string 
            - **name:**  Type: string 
            - **namespace:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/extensions/{}".format(api_version,
-                                                                            site_id,
-                                                                            extension_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/extensions/{}".format(api_version,
+                                                                                 tenant_id,
+                                                                                 site_id,
+                                                                                 extension_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def site_ipfixlocalprefixes(self, site_id, ipfixlocalprefix_id, data, api_version="v2.0"):
+    def site_ipfixlocalprefixes(self, site_id, ipfixlocalprefix_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a IPFix site prefix association (v2.0)
 
@@ -5417,6 +6566,7 @@ class Put(object):
           - **site_id**: Site ID
           - **ipfixlocalprefix_id**: IPFix Local Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5428,16 +6578,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/ipfixlocalprefixes/{}".format(api_version,
-                                                                                    site_id,
-                                                                                    ipfixlocalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/ipfixlocalprefixes/{}".format(api_version,
+                                                                                         tenant_id,
+                                                                                         site_id,
+                                                                                         ipfixlocalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def site_natlocalprefixes(self, site_id, natlocalprefix_id, data, api_version="v2.0"):
+    def site_natlocalprefixes(self, site_id, natlocalprefix_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update an existing Site NAT Local prefix Association (v2.0)
 
@@ -5446,6 +6603,7 @@ class Put(object):
           - **site_id**: Site ID
           - **natlocalprefix_id**: NAT Local Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5457,16 +6615,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/natlocalprefixes/{}".format(api_version,
-                                                                                  site_id,
-                                                                                  natlocalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/natlocalprefixes/{}".format(api_version,
+                                                                                       tenant_id,
+                                                                                       site_id,
+                                                                                       natlocalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def site_networkpolicylocalprefixes(self, site_id, networkpolicylocalprefix_id, data, api_version="v2.1"):
+    def site_networkpolicylocalprefixes(self, site_id, networkpolicylocalprefix_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update an existing Site Network policy local prefix (v2.1)
 
@@ -5475,6 +6640,7 @@ class Put(object):
           - **site_id**: Site ID
           - **networkpolicylocalprefix_id**: Network Policy Local Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -5487,16 +6653,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/networkpolicylocalprefixes/{}".format(api_version,
-                                                                                            site_id,
-                                                                                            networkpolicylocalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/networkpolicylocalprefixes/{}".format(api_version,
+                                                                                                 tenant_id,
+                                                                                                 site_id,
+                                                                                                 networkpolicylocalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def site_ngfwsecuritypolicylocalprefixes(self, site_id, ngfwsecuritypolicylocalprefix_id, data, api_version="v2.1"):
+    def site_ngfwsecuritypolicylocalprefixes(self, site_id, ngfwsecuritypolicylocalprefix_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update an existing security policy V2 local prefix site association (v2.1)
 
@@ -5505,6 +6678,7 @@ class Put(object):
           - **site_id**: Site ID
           - **ngfwsecuritypolicylocalprefix_id**: NGFW Security Policy Local Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -5517,16 +6691,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/ngfwsecuritypolicylocalprefixes/{}".format(api_version,
-                                                                                                 site_id,
-                                                                                                 ngfwsecuritypolicylocalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/ngfwsecuritypolicylocalprefixes/{}".format(api_version,
+                                                                                                      tenant_id,
+                                                                                                      site_id,
+                                                                                                      ngfwsecuritypolicylocalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def site_prioritypolicylocalprefixes(self, site_id, prioritypolicylocalprefix_id, data, api_version="v2.1"):
+    def site_prioritypolicylocalprefixes(self, site_id, prioritypolicylocalprefix_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update an existing Site Priority policy local prefix (v2.1)
 
@@ -5535,6 +6716,7 @@ class Put(object):
           - **site_id**: Site ID
           - **prioritypolicylocalprefix_id**: Priority Policy Local Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -5547,44 +6729,61 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prioritypolicylocalprefixes/{}".format(api_version,
-                                                                                             site_id,
-                                                                                             prioritypolicylocalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/prioritypolicylocalprefixes/{}".format(api_version,
+                                                                                                  tenant_id,
+                                                                                                  site_id,
+                                                                                                  prioritypolicylocalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def siteciphers(self, site_id, data, api_version="v2.0"):
+    def siteciphers(self, site_id, data, tenant_id=None, api_version="v2.1"):
         """
-        Update site cipher (v2.0)
+        Update site cipher (v2.1) (v2.1)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
            - **controller_connection_cipher:**  Type: string 
            - **site_id:**  Type: string 
            - **tenant_id:**  Type: string 
+           - **tls13_controller_connection_cipher:**  Type: string 
+           - **tls13_enabled:**  Type: boolean 
            - **vpn_ciphers:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/siteciphers".format(api_version,
-                                                                          site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/siteciphers".format(api_version,
+                                                                               tenant_id,
+                                                                               site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def sites(self, site_id, data, api_version="v4.13"):
+    def sites(self, site_id, data, tenant_id=None, api_version="v4.13"):
         """
         Update an existing site (v4.13)
 
@@ -5592,6 +6791,7 @@ class Put(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.13)
 
           **Payload Attributes:** 
@@ -5637,27 +6837,38 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}".format(api_version,
-                                                              site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}".format(api_version,
+                                                                   tenant_id,
+                                                                   site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def sitesecurityzones(self, site_id, sitesecurityzone_id, data, api_version="v2.0"):
+    def sitesecurityzones(self, site_id, sitesecurityzone_id, data, tenant_id=None, api_version="v2.1"):
         """
-        Update an existing security zone (v2.0)
+        Update site security zone (v2.1) (v2.1)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **sitesecurityzone_id**: Site Security Zone ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **element_interfaces:**           
+               - **element_id:**  Type: string 
+               - **interfaces:**  [Type: string] 
            - **networks:**           
                - **network_id:**  Type: string 
                - **network_type:**  Type: string 
@@ -5666,16 +6877,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/sitesecurityzones/{}".format(api_version,
-                                                                                   site_id,
-                                                                                   sitesecurityzone_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/sitesecurityzones/{}".format(api_version,
+                                                                                        tenant_id,
+                                                                                        site_id,
+                                                                                        sitesecurityzone_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def snmpagents(self, site_id, element_id, snmpagent_id, data, api_version="v2.1"):
+    def snmpagents(self, site_id, element_id, snmpagent_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update SNMP Agent (v2.1)
 
@@ -5685,6 +6903,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **snmpagent_id**: SNMP Agent ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -5710,17 +6929,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/snmpagents/{}".format(api_version,
-                                                                                        site_id,
-                                                                                        element_id,
-                                                                                        snmpagent_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/snmpagents/{}".format(api_version,
+                                                                                             tenant_id,
+                                                                                             site_id,
+                                                                                             element_id,
+                                                                                             snmpagent_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def snmptraps(self, site_id, element_id, snmptrap_id, data, api_version="v2.0"):
+    def snmptraps(self, site_id, element_id, snmptrap_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update SNMP Trap (v2.0)
 
@@ -5730,6 +6956,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **snmptrap_id**: SNMP Trap ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5755,17 +6982,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/snmptraps/{}".format(api_version,
-                                                                                       site_id,
-                                                                                       element_id,
-                                                                                       snmptrap_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/snmptraps/{}".format(api_version,
+                                                                                            tenant_id,
+                                                                                            site_id,
+                                                                                            element_id,
+                                                                                            snmptrap_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def software(self, machine_id, software_id, data, api_version="v2.0"):
+    def software(self, machine_id, software_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update Machine Software (v2.0)
 
@@ -5774,6 +7008,7 @@ class Put(object):
           - **machine_id**: Machine ID
           - **software_id**: Software ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5786,16 +7021,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/machines/{}/software/{}".format(api_version,
-                                                                             machine_id,
-                                                                             software_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/machines/{}/software/{}".format(api_version,
+                                                                                  tenant_id,
+                                                                                  machine_id,
+                                                                                  software_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def software_state(self, element_id, data, api_version="v2.0"):
+    def software_state(self, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Upgrade an element (v2.0)
 
@@ -5803,6 +7045,7 @@ class Put(object):
 
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5817,15 +7060,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/software/state".format(api_version,
-                                                                                element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/software/state".format(api_version,
+                                                                                     tenant_id,
+                                                                                     element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def spokeclusters(self, site_id, spokecluster_id, data, api_version="v2.0"):
+    def spokeclusters(self, site_id, spokecluster_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update Spoke Cluster (v2.0)
 
@@ -5834,6 +7084,7 @@ class Put(object):
           - **site_id**: Site ID
           - **spokecluster_id**: Spoke Cluster ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5847,16 +7098,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/spokeclusters/{}".format(api_version,
-                                                                               site_id,
-                                                                               spokecluster_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/spokeclusters/{}".format(api_version,
+                                                                                    tenant_id,
+                                                                                    site_id,
+                                                                                    spokecluster_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def staticroutes(self, site_id, element_id, staticroute_id, data, api_version="v2.3"):
+    def staticroutes(self, site_id, element_id, staticroute_id, data, tenant_id=None, api_version="v2.3"):
         """
         Update static route (v2.3)
 
@@ -5866,6 +7124,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **staticroute_id**: Static Route ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
@@ -5888,24 +7147,32 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/staticroutes/{}".format(api_version,
-                                                                                          site_id,
-                                                                                          element_id,
-                                                                                          staticroute_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/staticroutes/{}".format(api_version,
+                                                                                               tenant_id,
+                                                                                               site_id,
+                                                                                               element_id,
+                                                                                               staticroute_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def syslogserverprofiles(self, syslogserverprofile_id, data, api_version="v2.1"):
+    def syslogserverprofiles(self, syslogserverprofile_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update Syslog Server Profile (v2.1)
 
           **Parameters:**:
 
-          - **syslogserverprofile_id**: Sys Log Server Profile ID 
+          - **syslogserverprofile_id**: Sys Log Server Profile ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -5927,15 +7194,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/syslogserverprofiles/{}".format(api_version,
-                                                                             syslogserverprofile_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/syslogserverprofiles/{}".format(api_version,
+                                                                                  tenant_id,
+                                                                                  syslogserverprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def syslogservers(self, site_id, element_id, syslogserver_id, data, api_version="v2.3"):
+    def syslogservers(self, site_id, element_id, syslogserver_id, data, tenant_id=None, api_version="v2.3"):
         """
         Update Syslog Server (v2.3)
 
@@ -5945,6 +7219,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **syslogserver_id**: SYSLOG server ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
@@ -5969,17 +7244,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/syslogservers/{}".format(api_version,
-                                                                                           site_id,
-                                                                                           element_id,
-                                                                                           syslogserver_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/syslogservers/{}".format(api_version,
+                                                                                                tenant_id,
+                                                                                                site_id,
+                                                                                                element_id,
+                                                                                                syslogserver_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tacacs_plus_profiles(self, tacacs_plus_profile_id, data, api_version="v2.0"):
+    def tacacs_plus_profiles(self, tacacs_plus_profile_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update TACACS+ Profile (v2.0)
 
@@ -5987,6 +7269,7 @@ class Put(object):
 
           - **tacacs_plus_profile_id**: TACACS+ Profile ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6006,15 +7289,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/tacacs_plus_profiles/{}".format(api_version,
-                                                                             tacacs_plus_profile_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/tacacs_plus_profiles/{}".format(api_version,
+                                                                                  tenant_id,
+                                                                                  tacacs_plus_profile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tacacs_plus_servers(self, site_id, element_id, tacacs_plus_server_id, data, api_version="v2.0"):
+    def tacacs_plus_servers(self, site_id, element_id, tacacs_plus_server_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update TACACS+ Server (v2.0)
 
@@ -6024,6 +7314,7 @@ class Put(object):
           - **element_id**: Element (Device) ID
           - **tacacs_plus_server_id**: TACACS+ Server ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6046,17 +7337,24 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/tacacs_plus_servers/{}".format(api_version,
-                                                                                                 site_id,
-                                                                                                 element_id,
-                                                                                                 tacacs_plus_server_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/tacacs_plus_servers/{}".format(api_version,
+                                                                                                      tenant_id,
+                                                                                                      site_id,
+                                                                                                      element_id,
+                                                                                                      tacacs_plus_server_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def templates_ntp(self, ntp_id, data, api_version="v2.0"):
+    def templates_ntp(self, ntp_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update an existing NTP Template (v2.0)
 
@@ -6064,6 +7362,7 @@ class Put(object):
 
           - **ntp_id**: NTP Configuration ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6084,39 +7383,70 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/templates/ntp/{}".format(api_version,
-                                                                      ntp_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/templates/ntp/{}".format(api_version,
+                                                                           tenant_id,
+                                                                           ntp_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tenant_anynetlinks(self, anynetlink_id, data, api_version="v4.0"):
+    def tenant_anynetlinks(self, anynetlink_id, data, tenant_id=None, api_version="v4.0"):
         """
-        PUT Tenant_Anynetlinks API Function
+        Update anynet link (v4.0)
 
           **Parameters:**:
 
           - **anynetlink_id**: Anynet (Secure Fabric) Link ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.0)
 
           **Payload Attributes:** 
 
+           - **admin_up:**  Type: boolean 
+           - **description:**  Type: string 
+           - **ep1_hub_cluster_id:**  Type: string 
+           - **ep1_site_id:**  Type: string 
+           - **ep1_wan_interface_id:**  Type: string 
+           - **ep2_hub_cluster_id:**  Type: string 
+           - **ep2_site_id:**  Type: string 
+           - **ep2_wan_interface_id:**  Type: string 
+           - **forced:**  Type: boolean 
+           - **name:**  Type: string 
+           - **tags:**  [Type: string] 
+           - **tenant_id:**  Type: string 
+           - **type:**  Type: string 
+           - **vpnlink_configuration:**           
+               - **keep_alive_failure_count:**  Type: integer 
+               - **keep_alive_interval:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/anynetlinks/{}".format(api_version,
-                                                                    anynetlink_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/anynetlinks/{}".format(api_version,
+                                                                         tenant_id,
+                                                                         anynetlink_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tenant_ipfixlocalprefixes(self, ipfixlocalprefix_id, data, api_version="v2.0"):
+    def tenant_ipfixlocalprefixes(self, ipfixlocalprefix_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a IPFix local prefix (v2.0)
 
@@ -6124,6 +7454,7 @@ class Put(object):
 
           - **ipfixlocalprefix_id**: IPFix Local Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6135,15 +7466,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixlocalprefixes/{}".format(api_version,
-                                                                           ipfixlocalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixlocalprefixes/{}".format(api_version,
+                                                                                tenant_id,
+                                                                                ipfixlocalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tenant_networkpolicylocalprefixes(self, networkpolicylocalprefix_id, data, api_version="v2.0"):
+    def tenant_networkpolicylocalprefixes(self, networkpolicylocalprefix_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a  Network Policy local prefix. (v2.0)
 
@@ -6151,6 +7489,7 @@ class Put(object):
 
           - **networkpolicylocalprefix_id**: Network Policy Local Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6162,15 +7501,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicylocalprefixes/{}".format(api_version,
-                                                                                   networkpolicylocalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicylocalprefixes/{}".format(api_version,
+                                                                                        tenant_id,
+                                                                                        networkpolicylocalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tenant_operators(self, operator_id, data, api_version="v2.2"):
+    def tenant_operators(self, operator_id, data, tenant_id=None, api_version="v2.2"):
         """
         Update a tenant operator (v2.2)
 
@@ -6178,6 +7524,7 @@ class Put(object):
 
           - **operator_id**: Operator ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
@@ -6267,15 +7614,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/operators/{}".format(api_version,
-                                                                  operator_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/operators/{}".format(api_version,
+                                                                       tenant_id,
+                                                                       operator_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tenant_permissions(self, permission_id, data, api_version="v2.0"):
+    def tenant_permissions(self, permission_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a custom permission (v2.0)
 
@@ -6283,6 +7637,7 @@ class Put(object):
 
           - **permission_id**: Permission ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6301,15 +7656,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/permissions/{}".format(api_version,
-                                                                    permission_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/permissions/{}".format(api_version,
+                                                                         tenant_id,
+                                                                         permission_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tenant_prioritypolicylocalprefixes(self, prioritypolicylocalprefix_id, data, api_version="v2.0"):
+    def tenant_prioritypolicylocalprefixes(self, prioritypolicylocalprefix_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a  Priority Policy local prefix. (v2.0)
 
@@ -6317,6 +7679,7 @@ class Put(object):
 
           - **prioritypolicylocalprefix_id**: Priority Policy Local Prefix ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6328,22 +7691,30 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicylocalprefixes/{}".format(api_version,
-                                                                                    prioritypolicylocalprefix_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicylocalprefixes/{}".format(api_version,
+                                                                                         tenant_id,
+                                                                                         prioritypolicylocalprefix_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def tenants(self, data, api_version="v2.12"):
+    def tenants(self, data, tenant_id=None, api_version="v2.13"):
         """
-        Update tenant (v2.12)
+        Update tenant (v2.13)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.12)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.13)
 
           **Payload Attributes:** 
 
@@ -6370,6 +7741,7 @@ class Put(object):
                - **ipv4:**  Type: string 
            - **is_branch_security_enabled:**  Type: boolean 
            - **is_esp:**  Type: boolean 
+           - **is_native_prisma_enabled:**  Type: boolean 
            - **is_oneapp_ready:**  Type: boolean 
            - **is_pa_iot_security_license:**  Type: boolean 
            - **is_sase_edge:**  Type: boolean 
@@ -6414,6 +7786,7 @@ class Put(object):
                - **email_iam:**  Type: string 
                - **email_validated:**  Type: boolean 
                - **enable_session_ip_lock:**  Type: boolean 
+               - **esp_tenant_id:**  Type: string 
                - **first_name:**  Type: string 
                - **from_esp:**  Type: boolean 
                - **from_esp_name:**  Type: string 
@@ -6543,14 +7916,21 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}".format(api_version,
+                                                          tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def useridagents(self, useridagent_id, data, api_version="v2.0"):
+    def useridagents(self, useridagent_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update User ID Agent (v2.0)
 
@@ -6558,6 +7938,7 @@ class Put(object):
 
           - **useridagent_id**: User Id Agent ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6584,15 +7965,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/useridagents/{}".format(api_version,
-                                                                     useridagent_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/useridagents/{}".format(api_version,
+                                                                          tenant_id,
+                                                                          useridagent_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def users(self, user_id, data, api_version="v2.0"):
+    def users(self, user_id, data, tenant_id=None, api_version="v2.0"):
         """
         Put an user identity. (v2.0)
 
@@ -6600,6 +7988,7 @@ class Put(object):
 
           - **user_id**: User ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6619,15 +8008,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/users/{}".format(api_version,
-                                                              user_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/users/{}".format(api_version,
+                                                                   tenant_id,
+                                                                   user_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def vfflicense_tokens(self, vfflicense_id, token_id, data, api_version="v2.0"):
+    def vfflicense_tokens(self, vfflicense_id, token_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update Tenant Vff License Token (v2.0)
 
@@ -6636,6 +8032,7 @@ class Put(object):
           - **vfflicense_id**: Virtual Form Factor License ID
           - **token_id**: Token ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6652,16 +8049,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vfflicenses/{}/tokens/{}".format(api_version,
-                                                                              vfflicense_id,
-                                                                              token_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vfflicenses/{}/tokens/{}".format(api_version,
+                                                                                   tenant_id,
+                                                                                   vfflicense_id,
+                                                                                   token_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def vpnlinks_state(self, vpnlink_id, data, api_version="v2.0"):
+    def vpnlinks_state(self, vpnlink_id, data, tenant_id=None, api_version="v2.0"):
         """
         Change the VPNLink admin state (v2.0)
 
@@ -6669,6 +8073,7 @@ class Put(object):
 
           - **vpnlink_id**: VPN Link ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6679,15 +8084,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vpnlinks/{}/state".format(api_version,
-                                                                       vpnlink_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vpnlinks/{}/state".format(api_version,
+                                                                            tenant_id,
+                                                                            vpnlink_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def vrfcontextprofiles(self, vrfcontextprofile_id, data, api_version="v2.0"):
+    def vrfcontextprofiles(self, vrfcontextprofile_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update VRF Context Profile (v2.0)
 
@@ -6695,6 +8107,7 @@ class Put(object):
 
           - **vrfcontextprofile_id**: VRF Context Profile ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6714,15 +8127,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vrfcontextprofiles/{}".format(api_version,
-                                                                           vrfcontextprofile_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vrfcontextprofiles/{}".format(api_version,
+                                                                                tenant_id,
+                                                                                vrfcontextprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def vrfcontexts(self, vrfcontext_id, data, api_version="v2.0"):
+    def vrfcontexts(self, vrfcontext_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update VRF Context (v2.0)
 
@@ -6730,11 +8150,11 @@ class Put(object):
 
           - **vrfcontext_id**: VRF Context ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **default_vrf_context:**  Type: boolean 
            - **description:**  Type: string 
            - **name:**  Type: string 
            - **tags:**  [Type: string] 
@@ -6742,15 +8162,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vrfcontexts/{}".format(api_version,
-                                                                    vrfcontext_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vrfcontexts/{}".format(api_version,
+                                                                         tenant_id,
+                                                                         vrfcontext_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def waninterfacelabels(self, waninterfacelabel_id, data, api_version="v2.6"):
+    def waninterfacelabels(self, waninterfacelabel_id, data, tenant_id=None, api_version="v2.6"):
         """
         Update specific WAN interface label (v2.6)
 
@@ -6758,6 +8185,7 @@ class Put(object):
 
           - **waninterfacelabel_id**: WAN Interface Label ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.6)
 
           **Payload Attributes:** 
@@ -6783,15 +8211,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/waninterfacelabels/{}".format(api_version,
-                                                                           waninterfacelabel_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/waninterfacelabels/{}".format(api_version,
+                                                                                tenant_id,
+                                                                                waninterfacelabel_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def waninterfaces(self, site_id, waninterface_id, data, api_version="v2.10"):
+    def waninterfaces(self, site_id, waninterface_id, data, tenant_id=None, api_version="v2.10"):
         """
         Update the Site WAN interface (v2.10)
 
@@ -6800,6 +8235,7 @@ class Put(object):
           - **site_id**: Site ID
           - **waninterface_id**: WAN Interface ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.10)
 
           **Payload Attributes:** 
@@ -6836,16 +8272,23 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/waninterfaces/{}".format(api_version,
-                                                                               site_id,
-                                                                               waninterface_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/waninterfaces/{}".format(api_version,
+                                                                                    tenant_id,
+                                                                                    site_id,
+                                                                                    waninterface_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def wannetworks(self, wannetwork_id, data, api_version="v2.1"):
+    def wannetworks(self, wannetwork_id, data, tenant_id=None, api_version="v2.1"):
         """
         Update an existing WAN (v2.1)
 
@@ -6853,6 +8296,7 @@ class Put(object):
 
           - **wannetwork_id**: WAN Network ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -6866,15 +8310,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/wannetworks/{}".format(api_version,
-                                                                    wannetwork_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/wannetworks/{}".format(api_version,
+                                                                         tenant_id,
+                                                                         wannetwork_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def wanoverlays(self, wanoverlay_id, data, api_version="v2.0"):
+    def wanoverlays(self, wanoverlay_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update app/wan context (v2.0)
 
@@ -6882,6 +8333,7 @@ class Put(object):
 
           - **wanoverlay_id**: WAN Overlay ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6893,15 +8345,22 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/wanoverlays/{}".format(api_version,
-                                                                    wanoverlay_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/wanoverlays/{}".format(api_version,
+                                                                         tenant_id,
+                                                                         wanoverlay_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def ws_extensions(self, extension_id, data, api_version="v2.0"):
+    def ws_extensions(self, extension_id, data, tenant_id=None, api_version="v2.0"):
         """
         PUT Ws_Extensions API Function
 
@@ -6909,6 +8368,7 @@ class Put(object):
 
           - **extension_id**: Extension ID
           - **data**: Dictionary containing data to PUT as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6917,10 +8377,17 @@ class Put(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ws/extensions/{}".format(api_version,
-                                                                      extension_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ws/extensions/{}".format(api_version,
+                                                                           tenant_id,
+                                                                           extension_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)

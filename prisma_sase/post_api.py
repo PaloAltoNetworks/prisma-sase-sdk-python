@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 """
-PRISMA SASE Python SDK - POST
+Prisma SASE Python SDK - POST
 
-**Author:** Palo Alto Networks
+**Author:** CloudGenix
 
-**Copyright:** (c) 2026 Palo Alto Networks, Inc
+**Copyright:** (c) 2017-2026 CloudGenix, Inc
 
 **License:** MIT
 """
 import logging
 
-__author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
-__email__ = "prisma-sase-developers@paloaltonetworks.com"
+__author__ = "Palo Alto Networks Developer Support"
+__email__ = "developers@paloaltonetworks.com"
 __copyright__ = "Copyright (c) 2026 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
@@ -52,111 +52,205 @@ class Post(object):
     # placeholder for parent class namespace
     _parent_class = None
 
-    def activeuserips_query(self, data, api_version="v2.1"):
+    def activeuserips_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Query active user mappings of tenant (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **ip:**  Type: string 
-           - **site_id:**  Type: string 
-           - **tenant_id:**  Type: string 
-           - **timeout_secs:**  Type: integer 
-           - **timestamp:**  Type: integer 
-           - **user_id:**  Type: string 
-           - **username:**  Type: string 
-           - **valid_until:**  Type: integer 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/activeuserips/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/activeuserips/query".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def anynetlinks_bulkoperations(self, site_id, data, api_version="v4.0"):
+    def anynetlinks_bulkoperations(self, site_id, data, tenant_id=None, api_version="v4.0"):
         """
-        POST Anynetlinks_Bulkoperations API Function
+        Create anynet link in Bulk (v4.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.0)
 
           **Payload Attributes:** 
 
+           - **description:**  Type: string 
+           - **items:**           
+               - **admin_up:**  Type: boolean 
+               - **description:**  Type: string 
+               - **ep1_hub_cluster_id:**  Type: string 
+               - **ep1_wan_interface_id:**  Type: string 
+               - **ep2_hub_cluster_id:**  Type: string 
+               - **ep2_site_id:**  Type: string 
+               - **ep2_wan_interface_id:**  Type: string 
+               - **forced:**  Type: boolean 
+               - **id:**  Type: string 
+               - **name:**  Type: string 
+               - **tags:**  [Type: string] 
+               - **tenant_id:**  Type: string 
+               - **type:**  Type: string 
+               - **vpnlink_configuration:**           
+                   - **keep_alive_failure_count:**  Type: integer 
+                   - **keep_alive_interval:**  Type: integer 
+           - **name:**  Type: string 
+           - **tags:**  [Type: string] 
+           - **tenant_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/anynetlinks/bulkoperations".format(api_version,
-                                                                                         site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/anynetlinks/bulkoperations".format(api_version,
+                                                                                              tenant_id,
+                                                                                              site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def anynetlinks_correlationevents_query(self, data, api_version="v2.2"):
+    def anynetlinks_correlationevents_query(self, data, tenant_id=None, api_version="v2.2"):
         """
-        POST Anynetlinks_Correlationevents_Query API Function
+        Query AnynetLink correlation events. (v2.2)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/anynetlinks/correlationevents/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/anynetlinks/correlationevents/query".format(api_version,
+                                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def anynetlinks_query(self, data, api_version="v4.0"):
+    def anynetlinks_query(self, data, tenant_id=None, api_version="v4.0"):
         """
-        POST Anynetlinks_Query API Function
+        Query Anynet Links (v4.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.0)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/anynetlinks/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/anynetlinks/query".format(api_version,
+                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def apnprofiles(self, data, api_version="v2.0"):
+    def apnprofiles(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create an APN Profile (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -173,78 +267,120 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/apnprofiles".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/apnprofiles".format(api_version,
+                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def apnprofiles_query(self, data, api_version="v2.0"):
+    def apnprofiles_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of apn profiles that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **apn:**  Type: string 
-           - **authentication:**  Type: string 
-           - **clear_password:**  Type: boolean 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **password:**  Type: string 
-           - **tags:**  [Type: string] 
-           - **user_name:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/apnprofiles/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/apnprofiles/query".format(api_version,
+                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def appacceleration_query(self, data, api_version="v2.0"):
+    def appacceleration_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query App Acceleration status V2.0. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **enabled:**  Type: boolean 
-           - **primary_pa_compute_region_oid:**  Type: string 
-           - **secondary_pa_compute_region_oid:**  Type: string 
-           - **secondary_state:**  Type: string 
-           - **site_id:**  Type: string 
-           - **state:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/appacceleration/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/appacceleration/query".format(api_version,
+                                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def appdefs(self, data, api_version="v2.6"):
+    def appdefs(self, data, tenant_id=None, api_version="v2.6"):
         """
         Create an application definition (v2.6)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.6)
 
           **Payload Attributes:** 
@@ -282,14 +418,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/appdefs".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/appdefs".format(api_version,
+                                                                  tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def appdefs_overrides(self, appdef_id, data, api_version="v2.3"):
+    def appdefs_overrides(self, appdef_id, data, tenant_id=None, api_version="v2.3"):
         """
         Create a application definition overrides for system appdef (v2.3)
 
@@ -297,6 +440,7 @@ class Post(object):
 
           - **appdef_id**: Application Definition ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
@@ -350,88 +494,113 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/appdefs/{}/overrides".format(api_version,
-                                                                          appdef_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/appdefs/{}/overrides".format(api_version,
+                                                                               tenant_id,
+                                                                               appdef_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def appdefs_query(self, data, api_version="v2.6"):
+    def appdefs_query(self, data, tenant_id=None, api_version="v2.6"):
         """
         Queries db for limit number of app defs that match query params. (v2.6)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.6)
 
           **Payload Attributes:** 
 
-           - **abbreviation:**  Type: string 
-           - **aggregate_flows:**  Type: boolean 
-           - **app_type:**  Type: string 
-           - **app_unreachability_detection:**  Type: boolean 
-           - **category:**  Type: string 
-           - **conn_idle_timeout:**  Type: integer 
-           - **description:**  Type: string 
-           - **display_name:**  Type: string 
-           - **domains:**  [Type: string] 
-           - **ingress_traffic_pct:**  Type: integer 
-           - **ip_rules:**  [Type: object] 
-           - **is_deprecated:**  Type: boolean 
-           - **network_scan_application:**  Type: boolean 
-           - **order_number:**  Type: integer 
-           - **overrides_allowed:**  Type: boolean 
-           - **p_category:**  Type: string 
-           - **p_parent_id:**  Type: string 
-           - **p_sub_category:**  Type: string 
-           - **parent_id:**  Type: string 
-           - **path_affinity:**  Type: string 
-           - **session_timeout:**  Type: integer 
-           - **supported_base_software_version:**  Type: string 
-           - **supported_engines:**  Type: string 
-           - **system_app_overridden:**  Type: boolean 
-           - **tags:**  [Type: string] 
-           - **tcp_rules:**  [Type: string] 
-           - **transfer_type:**  Type: string 
-           - **udp_rules:**  [Type: object] 
-           - **use_parentapp_network_policy:**  Type: boolean 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/appdefs/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/appdefs/query".format(api_version,
+                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def auditlog_query(self, data, api_version="v2.1"):
+    def auditlog_query(self, data, tenant_id=None, api_version="v2.1"):
         """
-        POST Auditlog_Query API Function
+        Get audit logs for given tenant as per specified query filters (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**           
+               - **<field_name>|comparator:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/auditlog/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/auditlog/query".format(api_version,
+                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def authtokens(self, operator_id, data, api_version="v2.1"):
+    def authtokens(self, operator_id, data, tenant_id=None, api_version="v2.1"):
         """
         Create an auth token (v2.1)
 
@@ -439,6 +608,7 @@ class Post(object):
 
           - **operator_id**: Operator ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -476,15 +646,52 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/operators/{}/authtokens".format(api_version,
-                                                                             operator_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/operators/{}/authtokens".format(api_version,
+                                                                                  tenant_id,
+                                                                                  operator_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bgppeers(self, site_id, element_id, data, api_version="v3.0"):
+    def bandwidth_aggregates_monitor(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        POST Bandwidth Aggregates Monitor API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aggregates/bandwidth".format(api_version,
+                                                                                       tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def bgppeers(self, site_id, element_id, data, tenant_id=None, api_version="v3.0"):
         """
         Create BGP peer config (v3.0)
 
@@ -493,6 +700,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
@@ -535,16 +743,23 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/bgppeers".format(api_version,
-                                                                                   site_id,
-                                                                                   element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/bgppeers".format(api_version,
+                                                                                        tenant_id,
+                                                                                        site_id,
+                                                                                        element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bgppeers_operations(self, site_id, element_id, bgppeer_id, data, api_version="v2.0"):
+    def bgppeers_operations(self, site_id, element_id, bgppeer_id, data, tenant_id=None, api_version="v2.0"):
         """
         Reset BGP peer config (v2.0)
 
@@ -554,6 +769,7 @@ class Post(object):
           - **element_id**: Element (Device) ID
           - **bgppeer_id**: BGP Peer ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -563,17 +779,24 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/bgppeers/{}/operations".format(api_version,
-                                                                                                 site_id,
-                                                                                                 element_id,
-                                                                                                 bgppeer_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/bgppeers/{}/operations".format(api_version,
+                                                                                                      tenant_id,
+                                                                                                      site_id,
+                                                                                                      element_id,
+                                                                                                      bgppeer_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bgppeers_query(self, site_id, element_id, data, api_version="v3.0"):
+    def bgppeers_query(self, site_id, element_id, data, tenant_id=None, api_version="v3.0"):
         """
         Queries db for limit number of BGP peers that match query params. (v3.0)
 
@@ -582,86 +805,101 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
 
-           - **advertise_default_route:**  Type: boolean 
-           - **allow_v4_prefixes:**  Type: boolean 
-           - **allow_v6_prefixes:**  Type: boolean 
-           - **bgp_config:**           
-               - **adv_interval:**  Type: integer 
-               - **hold_time:**  Type: integer 
-               - **keepalive_time:**  Type: integer 
-               - **local_as_num:**  Type: string 
-               - **md5_secret:**  Type: string 
-               - **multi_hop_limit:**  Type: integer 
-               - **peer_auth_type:**  Type: string 
-               - **peer_retry_time:**  Type: integer 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **peer_ip:**  Type: string 
-           - **peer_ip_v6:**  Type: string 
-           - **peer_type:**  Type: string 
-           - **remote_as_num:**  Type: string 
-           - **route_aggregation:**           
-               - **aggregate_prefixes:**           
-                   - **ip_prefixes:**  [Type: string] 
-                   - **type:**  Type: string 
-               - **aggregate_type:**  Type: string 
-               - **ipv4_prefix_list_id:**  Type: string 
-               - **ipv6_prefix_list_id:**  Type: string 
-           - **route_map_in_id:**  Type: string 
-           - **route_map_out_id:**  Type: string 
-           - **router_id:**  Type: string 
-           - **scope:**  Type: string 
-           - **shutdown:**  Type: boolean 
-           - **tags:**  [Type: string] 
-           - **update_source:**  Type: string 
-           - **update_source_v6:**  Type: string 
-           - **vrf_context_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/bgppeers/query".format(api_version,
-                                                                                         site_id,
-                                                                                         element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/bgppeers/query".format(api_version,
+                                                                                              tenant_id,
+                                                                                              site_id,
+                                                                                              element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bgppeers_status_query(self, data, api_version="v2.1"):
+    def bgppeers_status_query(self, data, tenant_id=None, api_version="v2.1"):
         """
-        POST Bgppeers_Status_Query API Function
+        Queries the BGP Peers Status (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/bgppeers/status/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/bgppeers/status/query".format(api_version,
+                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bulkconfigurations_sitetemplates(self, data, api_version="v2.0"):
+    def bulkconfigurations_sitetemplates(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create site profile (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -670,22 +908,27 @@ class Post(object):
            - **site_id:**  Type: string 
            - **site_type:**  Type: string 
            - **template_description:**  Type: string 
-           - **template_id:**  Type: string 
            - **template_name:**  Type: string 
-           - **tenant_id:**  Type: string 
            - **variable_map:**  Type: object 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/bulkconfigurations/sitetemplates".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/bulkconfigurations/sitetemplates".format(api_version,
+                                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bulkconfigurations_sitetemplates_clone(self, sitetemplate_id, data, api_version="v2.0"):
+    def bulkconfigurations_sitetemplates_clone(self, sitetemplate_id, data, tenant_id=None, api_version="v2.0"):
         """
         Clone Site Profile (v2.0)
 
@@ -693,31 +936,33 @@ class Post(object):
 
           - **sitetemplate_id**: Site Template ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **data:**  Type: string 
-           - **site_id:**  Type: string 
-           - **site_type:**  Type: string 
            - **template_description:**  Type: string 
-           - **template_id:**  Type: string 
            - **template_name:**  Type: string 
-           - **tenant_id:**  Type: string 
-           - **variable_map:**  Type: object 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/bulkconfigurations/sitetemplates/{}/clone".format(api_version,
-                                                                                               sitetemplate_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/bulkconfigurations/sitetemplates/{}/clone".format(api_version,
+                                                                                                    tenant_id,
+                                                                                                    sitetemplate_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bulkconfigurations_sitetemplates_deployments(self, sitetemplate_id, data, api_version="v2.0"):
+    def bulkconfigurations_sitetemplates_deployments(self, sitetemplate_id, data, tenant_id=None, api_version="v2.0"):
         """
         Deploy site (v2.0)
 
@@ -725,116 +970,131 @@ class Post(object):
 
           - **sitetemplate_id**: Site Template ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **deployment_id:**  Type: string 
-           - **site_id:**  Type: string 
-           - **template_id:**  Type: string 
-           - **variable_map:**  Type: object 
+           - **variable_map:**  [Type: object] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/bulkconfigurations/sitetemplates/{}/deployments".format(api_version,
-                                                                                                     sitetemplate_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/bulkconfigurations/sitetemplates/{}/deployments".format(api_version,
+                                                                                                          tenant_id,
+                                                                                                          sitetemplate_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bulkconfigurations_sitetemplates_deployments_query(self, data, api_version="v2.0"):
+    def bulkconfigurations_sitetemplates_deployments_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Get all site profile (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **created_by:**  Type: string 
-           - **deployment_id:**  Type: string 
-           - **elements:**           
-               - **admin_action:**  Type: string 
-               - **allowed_roles:**  [Type: string] 
-               - **cluster_insertion_mode:**  Type: string 
-               - **cluster_member_id:**  Type: string 
-               - **connected:**  Type: boolean 
-               - **deployment_op:**  Type: string 
-               - **description:**  Type: string 
-               - **hw_id:**  Type: string 
-               - **id:**  Type: string 
-               - **model_name:**  Type: string 
-               - **name:**  Type: string 
-               - **role:**  Type: string 
-               - **serial_number:**  Type: string 
-               - **site_id:**  Type: string 
-               - **software_version:**  Type: string 
-               - **state:**  Type: string 
-           - **isSiteDeleted:**  Type: boolean 
-           - **site_id:**  Type: string 
-           - **site_name:**  Type: string 
-           - **status:**  Type: string 
-           - **status_description:**  Type: string 
-           - **template_id:**  Type: string 
-           - **template_name:**  Type: string 
-           - **updated_by:**  Type: string 
-           - **variable_map:**  Type: object 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/bulkconfigurations/sitetemplates/deployments/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/bulkconfigurations/sitetemplates/deployments/query".format(api_version,
+                                                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bulkconfigurations_sitetemplates_query(self, data, api_version="v2.0"):
+    def bulkconfigurations_sitetemplates_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Get all site profile (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **data:**  Type: string 
-           - **deployment_count:**  Type: integer 
-           - **site_id:**  Type: string 
-           - **site_type:**  Type: string 
-           - **status:**  Type: string 
-           - **status_description:**  Type: string 
-           - **template_description:**  Type: string 
-           - **template_id:**  Type: string 
-           - **template_name:**  Type: string 
-           - **tenant_id:**  Type: string 
-           - **variable_map:**  Type: object 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/bulkconfigurations/sitetemplates/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/bulkconfigurations/sitetemplates/query".format(api_version,
+                                                                                                 tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def bulkoperations(self, data, api_version="v2.1"):
+    def bulkoperations(self, data, tenant_id=None, api_version="v2.1"):
         """
         Bulk site update API (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -847,55 +1107,74 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/bulkoperations".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/bulkoperations".format(api_version,
+                                                                               tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def cellular_module_firmware_status_query(self, data, api_version="v2.0"):
+    def cellular_module_firmware_status_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query the cellular module firmware upgrade status of all tenant elements (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **active_image_id:**  Type: string 
-           - **active_version:**  Type: string 
-           - **download_interval:**  Type: integer 
-           - **download_percent:**  Type: integer 
-           - **element_id:**  Type: string 
-           - **failure_info:**  Type: string 
-           - **previous_image_id:**  Type: string 
-           - **rollback_version:**  Type: string 
-           - **scheduled_download:**  Type: string 
-           - **scheduled_upgrade:**  Type: string 
-           - **upgrade_image_id:**  Type: string 
-           - **upgrade_interval:**  Type: integer 
-           - **upgrade_state:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/cellular_module_firmware/status/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/cellular_module_firmware/status/query".format(api_version,
+                                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def cellular_module_revoked_images(self, data, api_version="v2.0"):
+    def cellular_module_revoked_images(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a Revoked Cellular Image (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -907,106 +1186,113 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/cellular_module_revoked_images".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/cellular_module_revoked_images".format(api_version,
+                                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def cellular_modules_query(self, data, api_version="v2.0"):
+    def cellular_modules_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of cellular modules that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **element_id:**  Type: string 
-           - **gps_enable:**  Type: boolean 
-           - **name:**  Type: string 
-           - **primary_sim:**  Type: integer 
-           - **radio_on:**  Type: boolean 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/cellular_modules/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/cellular_modules/query".format(api_version,
+                                                                                 tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def cellular_modules_status_query(self, data, api_version="v2.1"):
+    def cellular_modules_status_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Queries db for limit number of cellular module status that match query params. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **activation_state:**  Type: string 
-           - **active_sim:**  Type: integer 
-           - **carrier:**  Type: string 
-           - **cellular_module_id:**  Type: string 
-           - **element_id:**  Type: string 
-           - **firmware:**           
-               - **active:**  Type: boolean 
-               - **carrier:**  Type: string 
-               - **fw_version:**  Type: string 
-               - **pri_version:**  Type: string 
-               - **storage_location:**  Type: string 
-           - **gps:**           
-               - **latitude:**  Type: number 
-               - **longitude:**  Type: number 
-               - **state:**  Type: string 
-           - **imei:**  Type: string 
-           - **last_state_change:**  Type: integer 
-           - **manufacturer:**  Type: string 
-           - **model_name:**  Type: string 
-           - **modem_error_reason:**  Type: string 
-           - **modem_state:**  Type: string 
-           - **network_registration_state:**  Type: string 
-           - **network_state:**           
-               - **cell_id:**  Type: integer 
-               - **frequency_band:**  Type: string 
-               - **mcc:**  Type: integer 
-               - **mnc:**  Type: integer 
-               - **roaming:**  Type: boolean 
-           - **packet_service_state:**  Type: string 
-           - **serial_number:**  Type: string 
-           - **signal_strength_indicator:**  Type: string 
-           - **sim:**           
-               - **carrier:**  Type: string 
-               - **iccid:**  Type: string 
-               - **imsi:**  Type: string 
-               - **pin_state:**  Type: string 
-               - **present:**  Type: boolean 
-               - **remaining_attempts_pin_verify:**  Type: integer 
-               - **remaining_attempts_puk_unblock:**  Type: integer 
-               - **slot_number:**  Type: integer 
-           - **technology:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/cellular_modules/status/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/cellular_modules/status/query".format(api_version,
+                                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def certificate_operations(self, element_id, data, api_version="v2.0"):
+    def certificate_operations(self, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Start CIC renewal process for an element device (v2.0)
 
@@ -1014,6 +1300,7 @@ class Post(object):
 
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1024,15 +1311,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/certificate_operations".format(api_version,
-                                                                                        element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/certificate_operations".format(api_version,
+                                                                                             tenant_id,
+                                                                                             element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def clients_login(self, client_id, data, api_version="v2.0"):
+    def clients_login(self, client_id, data, tenant_id=None, api_version="v2.0"):
         """
         Login api for esp client (v2.0)
 
@@ -1040,6 +1334,7 @@ class Post(object):
 
           - **client_id**: ESP/MSP Client ID (typically their tenant_id)
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1052,21 +1347,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/clients/{}/login".format(api_version,
-                                                                      client_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/clients/{}/login".format(api_version,
+                                                                           tenant_id,
+                                                                           client_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data, sensitive=True)
 
-    def clients_logout(self, data, api_version="v2.0"):
+    def clients_logout(self, data, tenant_id=None, api_version="v2.0"):
         """
         Logout api for esp client. Reverts back to esp session (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1110,14 +1413,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/logout".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/logout".format(api_version,
+                                                                 tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def clients_machines_query(self, client_id, data, api_version="v2.5"):
+    def clients_machines_query(self, client_id, data, tenant_id=None, api_version="v2.5"):
         """
         Query and get all machines allocated by ESP to a client tenant (v2.5)
 
@@ -1125,59 +1435,250 @@ class Post(object):
 
           - **client_id**: ESP/MSP Client ID (typically their tenant_id)
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
-           - **count:**  Type: integer 
-           - **deleted_count:**  Type: integer 
-           - **deleted_ids:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
            - **next_query:**  Type: object 
-           - **tenant_id:**  Type: string 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/clients/{}/machines/query".format(api_version,
-                                                                               client_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/clients/{}/machines/query".format(api_version,
+                                                                                    tenant_id,
+                                                                                    client_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def clients_query(self, data, api_version="v2.0"):
+    def clients_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Get esp tenant clients details for tenant id (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **address:**           
+               - **city:**  Type: string 
+               - **country:**  Type: string 
+               - **post_code:**  Type: string 
+               - **state:**  Type: string 
+               - **street:**  Type: string 
+               - **street2:**  Type: string 
            - **canonical_name:**  Type: string 
            - **clients:**  [Type: string] 
+           - **description:**  Type: string 
+           - **disabled:**  Type: string 
+           - **disabled_reason:**  Type: string 
+           - **inactive:**  Type: string 
+           - **inactive_reason:**  Type: string 
+           - **ipv4_list:**           
+               - **ipv4:**  Type: string 
            - **is_esp:**  Type: boolean 
+           - **is_support:**  Type: boolean 
            - **name:**  Type: string 
+           - **operator:**           
+               - **addresses:**           
+                   - **city:**  Type: string 
+                   - **country:**  Type: string 
+                   - **post_code:**  Type: string 
+                   - **state:**  Type: string 
+                   - **street:**  Type: string 
+                   - **street2:**  Type: string 
+               - **custom_roles:**           
+                   - **custom_permissions:**           
+                       - **allowed_after_ms:**  Type: integer 
+                       - **allowed_before_ms:**  Type: integer 
+                       - **disabled:**  Type: boolean 
+                       - **disabled_reason:**  Type: string 
+                       - **disallow_permission:**  Type: boolean 
+                       - **id:**  Type: string 
+                       - **inactive:**  Type: boolean 
+                       - **inactive_reason:**  Type: string 
+                       - **region:**  Type: string 
+                       - **tenant_id:**  Type: string 
+                       - **value:**  Type: string 
+                   - **disabled:**  Type: boolean 
+                   - **disallow_permissions:**           
+                       - **value:**  Type: string 
+                   - **id:**  Type: string 
+                   - **inactive:**  Type: boolean 
+                   - **name:**  Type: string 
+                   - **permissions:**           
+                       - **value:**  Type: string 
+                   - **roles:**           
+                       - **name:**  Type: string 
+               - **disable_idp_login:**  Type: boolean 
+               - **disabled:**  Type: boolean 
+               - **disabled_reason:**  Type: string 
+               - **email:**  Type: string 
+               - **email_iam:**  Type: string 
+               - **email_validated:**  Type: boolean 
+               - **enable_session_ip_lock:**  Type: boolean 
+               - **esp_tenant_id:**  Type: string 
+               - **first_name:**  Type: string 
+               - **from_esp:**  Type: boolean 
+               - **from_esp_name:**  Type: string 
+               - **from_esp_tenant_id:**  Type: string 
+               - **id:**  Type: string 
+               - **inactive:**  Type: boolean 
+               - **inactive_reason:**  Type: string 
+               - **ipv4_list:**           
+                   - **ipv4:**  Type: string 
+               - **is_locked:**  Type: boolean 
+               - **is_system_owned:**  Type: boolean 
+               - **last_login:**  Type: string 
+               - **last_name:**  Type: string 
+               - **linked_accounts:**           
+                   - **disabled:**  Type: boolean 
+                   - **disabled_reason:**  Type: string 
+                   - **failed_login_attempts:**  Type: integer 
+                   - **id:**  Type: string 
+                   - **inactive:**  Type: boolean 
+                   - **inactive_reason:**  Type: string 
+                   - **provider_key:**  Type: string 
+                   - **provider_value:**  Type: string 
+                   - **provider_value_updated_on:**  Type: integer 
+                   - **region:**  Type: string 
+                   - **tenant_id:**  Type: string 
+               - **migration_state:**           
+               - **name:**  Type: string 
+               - **phone_numbers:**           
+                   - **country_code:**  Type: integer 
+                   - **local_extension:**  Type: integer 
+                   - **number:**  Type: integer 
+                   - **types:**           
+                       - **value:**  Type: string 
+               - **region:**  Type: string 
+               - **roles:**           
+                   - **name:**  Type: string 
+               - **secondary_emails:**           
+                   - **email:**  Type: string 
+               - **settings:**  Type: string 
+               - **tenant_id:**  Type: string 
+           - **password_policy:**           
+               - **enable_failed_login_attempts:**  Type: boolean 
+               - **enable_failed_login_time_delay:**  Type: boolean 
+               - **enable_maximum_password_length:**  Type: boolean 
+               - **enable_minimum_password_length:**  Type: boolean 
+               - **enable_password_aging:**  Type: boolean 
+               - **enable_password_identity_difference:**  Type: boolean 
+               - **enable_password_no_reuse_count:**  Type: boolean 
+               - **enable_session_ip_lock:**  Type: boolean 
+               - **enable_two_lower_case_letters:**  Type: boolean 
+               - **enable_two_numbers:**  Type: boolean 
+               - **enable_two_special_characters:**  Type: boolean 
+               - **enable_two_upper_case_letters:**  Type: boolean 
+               - **failed_login_attempts:**  Type: integer 
+               - **maximum_password_length:**  Type: integer 
+               - **minimum_password_length:**  Type: integer 
+               - **password_aging_days:**  Type: integer 
+               - **password_aging_notification:**  Type: integer 
+               - **password_no_reuse_count:**  Type: integer 
+               - **special_characters:**  Type: string 
+               - **special_characters_regex:**  Type: string 
+           - **phone_numbers:**           
+               - **country_code:**  Type: integer 
+               - **local_extension:**  Type: integer 
+               - **number:**  Type: integer 
+               - **types:**           
+                   - **value:**  Type: string 
+           - **provider_data:**           
+               - **certificate:**           
+                   - **certificate:**  Type: string 
+                   - **certificate_expiry_utc:**  Type: integer 
+                   - **certificate_type:**  Type: string 
+                   - **disabled:**  Type: boolean 
+                   - **disabled_reason:**  Type: string 
+                   - **id:**  Type: string 
+                   - **inactive:**  Type: boolean 
+                   - **inactive_reason:**  Type: string 
+                   - **issued_by:**           
+                       - **common_name:**  Type: string 
+                       - **country:**  Type: string 
+                       - **location:**  Type: string 
+                       - **organization:**  Type: string 
+                       - **organization_unit:**  Type: string 
+                       - **state:**  Type: string 
+                   - **issued_to:**           
+                       - **common_name:**  Type: string 
+                       - **country:**  Type: string 
+                       - **location:**  Type: string 
+                       - **organization:**  Type: string 
+                       - **organization_unit:**  Type: string 
+                       - **state:**  Type: string 
+                   - **parent_id:** 
+                   - **region:**  Type: string 
+                   - **serial_number:**  Type: string 
+                   - **tenant_id:**  Type: string 
+                   - **version:**  Type: string 
+               - **password_hash:**  Type: string 
+               - **provider:**           
+                   - **canonical_name:**  Type: string 
+                   - **description:**  Type: string 
+                   - **disabled:**  Type: boolean 
+                   - **disabled_reason:**  Type: string 
+                   - **id:**  Type: string 
+                   - **inactive:**  Type: boolean 
+                   - **inactive_reason:**  Type: string 
+                   - **map_external_group:**  Type: object 
+                   - **name:**  Type: string 
+                   - **protocol:**           
+                   - **region:**  Type: string 
+                   - **template:**  Type: string 
+                   - **tenant_id:**  Type: string 
+               - **salt:**  Type: string 
+               - **security:**  Type: string 
            - **region:**  Type: string 
-           - **telemetry_region:**  Type: string 
            - **tenant_id:**  Type: string 
-           - **tsg_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/clients/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/clients/query".format(api_version,
+                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def clients_reallocate(self, client_id, machine_id, data, api_version="v2.5"):
+    def clients_reallocate(self, client_id, machine_id, data, tenant_id=None, api_version="v2.5"):
         """
         Reallocate a specific machine from one client tenant to another, both client tenants are clients of the same ESP. (v2.5)
 
@@ -1186,20 +1687,19 @@ class Post(object):
           - **client_id**: ESP/MSP Client ID (typically their tenant_id)
           - **machine_id**: Machine ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
            - **connected:**  Type: boolean 
            - **console_conf_passphrase:**  Type: string 
-           - **element_shell_id:**  Type: string 
            - **em_element_id:**  Type: string 
            - **esp_tenant_id:**  Type: string 
            - **hw_id:**  Type: string 
            - **image_version:**  Type: string 
-           - **inventory_op:**  Type: string 
-           - **is_eval:**  Type: string 
-           - **machine_state:**  Type: string 
+           - **inventory_op:**           
+           - **machine_state:**           
            - **manufacture_id:**  Type: string 
            - **model_name:**  Type: string 
            - **ordering_info:**  Type: string 
@@ -1207,27 +1707,33 @@ class Post(object):
            - **pki_op:**           
                - **ca_list:**  [Type: string] 
                - **operation:**  Type: string 
-           - **renew_state:**  Type: string 
+           - **renew_state:**           
            - **sales_order_number:**  Type: string 
-           - **ship_state:**  Type: string 
+           - **ship_state:**           
            - **sl_no:**  Type: string 
-           - **suspend_state:**  Type: string 
            - **tenant_id:**  Type: string 
            - **token:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/clients/{}/machines/{}/reallocate".format(api_version,
-                                                                                       client_id,
-                                                                                       machine_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/clients/{}/machines/{}/reallocate".format(api_version,
+                                                                                            tenant_id,
+                                                                                            client_id,
+                                                                                            machine_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def demsiteconfigs(self, site_id, data, api_version="v2.0"):
+    def demsiteconfigs(self, site_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create dem site config (v2.0)
 
@@ -1235,6 +1741,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1246,46 +1753,75 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/demsiteconfigs".format(api_version,
-                                                                             site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/demsiteconfigs".format(api_version,
+                                                                                  tenant_id,
+                                                                                  site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def demsiteconfigs_query(self, data, api_version="v2.0"):
+    def demsiteconfigs_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for Dem site config that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **adem_enabled:**  Type: boolean 
-           - **site_id:**  Type: string 
-           - **tenant_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/demsiteconfigs/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/demsiteconfigs/query".format(api_version,
+                                                                               tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def demstatus_query(self, data, api_version="v2.0"):
+    def demstatus_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query ADEM status (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1297,14 +1833,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/demstatus/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/demstatus/query".format(api_version,
+                                                                          tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def deviceidconfigs(self, site_id, data, api_version="v2.1"):
+    def deviceidconfigs(self, site_id, data, tenant_id=None, api_version="v2.1"):
         """
         POST Deviceidconfigs API Function
 
@@ -1312,6 +1855,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -1320,15 +1864,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs".format(api_version,
-                                                                              site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/deviceidconfigs".format(api_version,
+                                                                                   tenant_id,
+                                                                                   site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def deviceidconfigs_bulkdelete_snmpdiscoverystartnodes(self, site_id, deviceidconfig_id, data, api_version="v2.0"):
+    def deviceidconfigs_bulkdelete_snmpdiscoverystartnodes(self, site_id, deviceidconfig_id, data, tenant_id=None, api_version="v2.0"):
         """
         Bulk delete Start Network Node config (v2.0)
 
@@ -1337,56 +1888,87 @@ class Post(object):
           - **site_id**: Site ID
           - **deviceidconfig_id**: Device Id Config ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **error_message:**  Type: string 
-           - **ipv4_address:**  Type: string 
-           - **name:**  Type: string 
-           - **scope:**           
-               - **ipv4_prefix:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **start_nodes:**           
+               - **description:**  Type: string 
+               - **error_message:**  Type: string 
+               - **id:**  Type: string 
+               - **ipv4_address:**  Type: string 
+               - **name:**  Type: string 
+               - **scope:**           
+                   - **ipv4_prefix:**  Type: string 
+               - **tags:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}/bulkdelete_snmpdiscoverystartnodes".format(api_version,
-                                                                                                                    site_id,
-                                                                                                                    deviceidconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/deviceidconfigs/{}/bulkdelete_snmpdiscoverystartnodes".format(api_version,
+                                                                                                                         tenant_id,
+                                                                                                                         site_id,
+                                                                                                                         deviceidconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def deviceidconfigs_query(self, data, api_version="v2.0"):
+    def deviceidconfigs_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Get device id profiles (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **cfg_device_id_enabled:**  Type: boolean 
-           - **deviceid_profile_id:**  Type: string 
-           - **site_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/deviceidconfigs/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/deviceidconfigs/query".format(api_version,
+                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def deviceidconfigs_snmpdiscoverystartnodes(self, site_id, deviceidconfig_id, data, api_version="v2.0"):
+    def deviceidconfigs_snmpdiscoverystartnodes(self, site_id, deviceidconfig_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create Start Network Node config (v2.0)
 
@@ -1395,6 +1977,7 @@ class Post(object):
           - **site_id**: Site ID
           - **deviceidconfig_id**: Device Id Config ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1409,22 +1992,30 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}/snmpdiscoverystartnodes".format(api_version,
-                                                                                                         site_id,
-                                                                                                         deviceidconfig_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/deviceidconfigs/{}/snmpdiscoverystartnodes".format(api_version,
+                                                                                                              tenant_id,
+                                                                                                              site_id,
+                                                                                                              deviceidconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def deviceidprofiles(self, data, api_version="v2.0"):
+    def deviceidprofiles(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create device id profile (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1459,14 +2050,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/deviceidprofiles".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/deviceidprofiles".format(api_version,
+                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def deviceidprofiles_operations(self, deviceidprofile_id, data, api_version="v2.0"):
+    def deviceidprofiles_operations(self, deviceidprofile_id, data, tenant_id=None, api_version="v2.0"):
         """
         Associate device id profile in bulk (v2.0)
 
@@ -1474,6 +2072,7 @@ class Post(object):
 
           - **deviceidprofile_id**: Device Id Profile ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1492,15 +2091,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/deviceidprofiles/{}/operations".format(api_version,
-                                                                                    deviceidprofile_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/deviceidprofiles/{}/operations".format(api_version,
+                                                                                         tenant_id,
+                                                                                         deviceidprofile_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def dhcpservers(self, site_id, data, api_version="v2.3"):
+    def dhcpservers(self, site_id, data, tenant_id=None, api_version="v2.3"):
         """
         Create a new dhcp server configuration for a subnet (v2.3)
 
@@ -1508,6 +2114,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
@@ -1541,21 +2148,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/dhcpservers".format(api_version,
-                                                                          site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/dhcpservers".format(api_version,
+                                                                               tenant_id,
+                                                                               site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def directoryservices(self, data, api_version="v2.1"):
+    def directoryservices(self, data, tenant_id=None, api_version="v2.1"):
         """
         Create Directory Service (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -1577,20 +2192,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/directoryservices".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/directoryservices".format(api_version,
+                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def directoryservices_deltasync(self, data, api_version="v2.0"):
+    def directoryservices_deltasync(self, data, tenant_id=None, api_version="v2.0"):
         """
         Force delta sync. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1599,20 +2222,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/directoryservices/deltasync".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/directoryservices/deltasync".format(api_version,
+                                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def directoryservices_sync(self, data, api_version="v2.0"):
+    def directoryservices_sync(self, data, tenant_id=None, api_version="v2.0"):
         """
         Force full sync. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1621,76 +2252,120 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/directoryservices/sync".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/directoryservices/sync".format(api_version,
+                                                                                 tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def directoryusergroups_query(self, data, api_version="v2.0"):
+    def directoryusergroups_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query users or groups. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **stale:**  Type: boolean 
-           - **tags:**  [Type: string] 
-           - **tenant_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/directoryusergroups/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/directoryusergroups/query".format(api_version,
+                                                                                    tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def directoryusers_query(self, data, api_version="v2.1"):
+    def directoryusers_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Query users. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **display_name:**  Type: string 
-           - **name:**  Type: string 
-           - **stale:**  Type: boolean 
-           - **tags:**  [Type: string] 
-           - **tenant_id:**  Type: string 
-           - **user_group_ids:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/directoryusers/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/directoryusers/query".format(api_version,
+                                                                               tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def dnsserviceprofiles(self, data, api_version="v2.1"):
+    def dnsserviceprofiles(self, data, tenant_id=None, api_version="v2.1"):
         """
         Create a new DNS service profile (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -1836,20 +2511,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/dnsserviceprofiles".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/dnsserviceprofiles".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def dnsserviceprofiles_query(self, data, api_version="v2.1"):
+    def dnsserviceprofiles_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Query DNS service profile based on parameters (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -1874,20 +2557,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/dnsserviceprofiles/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/dnsserviceprofiles/query".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def dnsserviceroles(self, data, api_version="v2.0"):
+    def dnsserviceroles(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new DNS service role (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1899,20 +2590,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/dnsserviceroles".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/dnsserviceroles".format(api_version,
+                                                                          tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def dnsserviceroles_query(self, data, api_version="v2.0"):
+    def dnsserviceroles_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query DNS service role based on parameters (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1937,14 +2636,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/dnsserviceroles/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/dnsserviceroles/query".format(api_version,
+                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def dnsservices(self, site_id, element_id, data, api_version="v2.0"):
+    def dnsservices(self, site_id, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new DNS service config (v2.0)
 
@@ -1953,6 +2659,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -1999,22 +2706,30 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/dnsservices".format(api_version,
-                                                                                      site_id,
-                                                                                      element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/dnsservices".format(api_version,
+                                                                                           tenant_id,
+                                                                                           site_id,
+                                                                                           element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def dnsservices_query(self, data, api_version="v2.0"):
+    def dnsservices_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query DNS service config based on parameters (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2039,62 +2754,112 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/dnsservices/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/dnsservices/query".format(api_version,
+                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def element_bulk_config_state_query(self, data, api_version="v2.0"):
+    def element_bulk_config_state_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Get element config/state info for queried elements from NB (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **count:**  Type: integer 
-           - **items:**  [Type: object] 
-           - **tenant_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**           
+               - **<field_name>|comparator:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/bulk_config_state/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/bulk_config_state/query".format(api_version,
+                                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def element_correlationevents_query(self, data, api_version="v2.1"):
+    def element_correlationevents_query(self, data, tenant_id=None, api_version="v2.1"):
         """
-        POST Element_Correlationevents_Query API Function
+        Query Element correlation events. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/correlationevents/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/correlationevents/query".format(api_version,
+                                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def element_deviceidconfigs(self, site_id, element_id, data, api_version="v2.0"):
+    def element_deviceidconfigs(self, site_id, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create device id element level (source interface) config (v2.0)
 
@@ -2103,6 +2868,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2115,16 +2881,23 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/deviceidconfigs".format(api_version,
-                                                                                          site_id,
-                                                                                          element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/deviceidconfigs".format(api_version,
+                                                                                               tenant_id,
+                                                                                               site_id,
+                                                                                               element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def element_extensions(self, site_id, element_id, data, api_version="v2.0"):
+    def element_extensions(self, site_id, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create element level extension configuration (v2.0)
 
@@ -2133,28 +2906,37 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
            - **conf:**  Type: object 
            - **disabled:**  Type: boolean 
+           - **entity_id:**  Type: string 
            - **name:**  Type: string 
            - **namespace:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/extensions".format(api_version,
-                                                                                     site_id,
-                                                                                     element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/extensions".format(api_version,
+                                                                                          tenant_id,
+                                                                                          site_id,
+                                                                                          element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def element_extensions_query(self, site_id, element_id, data, api_version="v2.0"):
+    def element_extensions_query(self, site_id, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Query element level extensions that match query params (v2.0)
 
@@ -2163,6 +2945,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2187,179 +2970,118 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/extensions/query".format(api_version,
-                                                                                           site_id,
-                                                                                           element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/extensions/query".format(api_version,
+                                                                                                tenant_id,
+                                                                                                site_id,
+                                                                                                element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def element_query(self, data, api_version="v3.2"):
+    def element_query(self, data, tenant_id=None, api_version="v3.2"):
         """
         Queries db for limit number of elements that match query params. (v3.2)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.2)
 
           **Payload Attributes:** 
 
-           - **admin_action:**  Type: string 
-           - **admin_renew_state:**  Type: string 
-           - **admin_suspend_state:**  Type: string 
-           - **allowed_roles:**  [Type: string] 
-           - **cluster_id:**  Type: string 
-           - **connected:**  Type: boolean 
-           - **deployment_op:**  Type: string 
-           - **description:**  Type: string 
-           - **device_change_mode_start_time:**  Type: integer 
-           - **device_change_mode_state:**  Type: string 
-           - **device_mode:**  Type: string 
-           - **device_profile_id:**  Type: string 
-           - **fips_mode:**  Type: string 
-           - **fips_mode_change_start_time:**  Type: integer 
-           - **hub_cluster_config:**           
-               - **intra_cluster_tunnel:**           
-                   - **disabled:**  Type: boolean 
-                   - **source_interfaces:**  [Type: string] 
-               - **track:**           
-                   - **hosts:**           
-                       - **address_v4:**  Type: string 
-                       - **address_v6:**  Type: string 
-                       - **vrf_context_id:**  Type: string 
-           - **hw_id:**  Type: string 
-           - **l3_direct_private_wan_forwarding:**  Type: boolean 
-           - **l3_lan_forwarding:**  Type: boolean 
-           - **led_config:**           
-               - **service_led_on:**  Type: boolean 
-           - **main_power_usage_threshold:**  Type: integer 
-           - **model_name:**  Type: string 
-           - **name:**  Type: string 
-           - **nat_policysetstack_id:**  Type: string 
-           - **network_policysetstack_id:**  Type: string 
-           - **override_indicator:**  [Type: string] 
-           - **priority_policysetstack_id:**  Type: string 
-           - **role:**  Type: string 
-           - **serial_number:**  Type: string 
-           - **site_id:**  Type: string 
-           - **software_version:**  Type: string 
-           - **spoke_ha_config:**           
-               - **cluster_id:**  Type: string 
-               - **enable:**  Type: boolean 
-               - **priority:**  Type: integer 
-               - **source_interface:**  Type: string 
-               - **track:**           
-                   - **interfaces:**           
-                       - **interface_id:**  Type: string 
-                       - **reduce_priority:**  Type: integer 
-                   - **waninterfaces:**           
-                       - **reduce_priority:**  Type: integer 
-                       - **wan_interface_id:**  Type: string 
-           - **state:**  Type: string 
-           - **switch_config:**           
-               - **default_vlan_id:**  Type: integer 
-               - **mstp_enabled:**  Type: boolean 
-               - **stp_aging_timer:**  Type: integer 
-               - **stp_forward_delay:**  Type: integer 
-               - **stp_hello_time:**  Type: integer 
-               - **stp_max_age:**  Type: integer 
-               - **stp_mode:**  Type: string 
-               - **stp_priority:**  Type: integer 
-           - **tags:**  [Type: string] 
-           - **tenant_id:**  Type: string 
-           - **vpn_to_vpn_forwarding:**  Type: boolean 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/query".format(api_version,
+                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def element_rquery(self, data, api_version="v3.0"):
+    def element_rquery(self, data, tenant_id=None, api_version="v3.1"):
         """
-        POST Element_Rquery API Function
+        Query elements across client tenants with region grouping and summary view (v3.1) (v3.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v3.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v3.1)
 
-          **Payload Attributes:**
+          **Payload Attributes:** 
 
-           - **admin_action:**  Type: string
-           - **admin_renew_state:**  Type: string
-           - **admin_suspend_state:**  Type: string
-           - **allowed_roles:**  [Type: string]
-           - **cluster_id:**  Type: string
-           - **connected:**  Type: boolean
-           - **deployment_op:**  Type: string
-           - **description:**  Type: string
-           - **device_change_mode_start_time:**  Type: integer
-           - **device_change_mode_state:**  Type: string
-           - **device_mode:**  Type: string
-           - **device_profile_id:**  Type: string
-           - **fips_mode:**  Type: string
-           - **fips_mode_change_start_time:**  Type: integer
-           - **hw_id:**  Type: string
-           - **l3_direct_private_wan_forwarding:**  Type: boolean
-           - **l3_lan_forwarding:**  Type: boolean
-           - **led_config:**
-               - **service_led_on:**  Type: boolean
-           - **main_power_usage_threshold:**  Type: integer
-           - **model_name:**  Type: string
-           - **name:**  Type: string
-           - **nat_policysetstack_id:**  Type: string
-           - **network_policysetstack_id:**  Type: string
-           - **override_indicator:**  [Type: string]
-           - **priority_policysetstack_id:**  Type: string
-           - **role:**  Type: string
-           - **serial_number:**  Type: string
-           - **site_id:**  Type: string
-           - **software_version:**  Type: string
-           - **spoke_ha_config:**
-               - **cluster_id:**  Type: string
-               - **enable:**  Type: boolean
-               - **priority:**  Type: integer
-               - **source_interface:**  Type: string
-               - **track:**
-                   - **interfaces:**
-                       - **interface_id:**  Type: string
-                       - **reduce_priority:**  Type: integer
-                   - **waninterfaces:**
-                       - **reduce_priority:**  Type: integer
-                       - **wan_interface_id:**  Type: string
-           - **state:**  Type: string
-           - **switch_config:**
-               - **default_vlan_id:**  Type: integer
-               - **mstp_enabled:**  Type: boolean
-               - **stp_aging_timer:**  Type: integer
-               - **stp_forward_delay:**  Type: integer
-               - **stp_hello_time:**  Type: integer
-               - **stp_max_age:**  Type: integer
-               - **stp_mode:**  Type: string
-               - **stp_priority:**  Type: integer
-           - **tags:**  [Type: string]
-           - **tenant_id:**  Type: string
-           - **vpn_to_vpn_forwarding:**  Type: boolean
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **region_group_by:**  Type: string 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+           - **view:**           
+               - **summary:**  Type: boolean 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/rquery".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/rquery".format(api_version,
+                                                                          tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def elementaccessconfigs(self, element_id, data, api_version="v2.2"):
+    def elementaccessconfigs(self, element_id, data, tenant_id=None, api_version="v2.3"):
         """
         POST Elementaccessconfigs API Function
 
@@ -2367,7 +3089,8 @@ class Post(object):
 
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
@@ -2375,51 +3098,84 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/elementaccessconfigs".format(api_version,
-                                                                                      element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/elementaccessconfigs".format(api_version,
+                                                                                           tenant_id,
+                                                                                           element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def elementaccessconfigs_query(self, data, api_version="v2.2"):
+    def elementaccessconfigs_query(self, data, tenant_id=None, api_version="v2.3"):
         """
-        Query Element Access Config based on parameters (v2.2)
+        Query Element Access Config v2.3 with element_id (v2.3)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elementaccessconfigs/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elementaccessconfigs/query".format(api_version,
+                                                                                     tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def elementsecurityzones(self, site_id, element_id, data, api_version="v2.0"):
+    def elementsecurityzones(self, site_id, element_id, data, tenant_id=None, api_version="v2.1"):
         """
-        Create an association between element and security zone. (v2.0)
+        Create an association between element and security zone. (v2.1)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
            - **interface_ids:**  [Type: string] 
            - **lannetwork_ids:**  [Type: string] 
+           - **pa_network_id:**  Type: string 
            - **site_id:**  Type: string 
            - **tenant_id:**  Type: string 
            - **waninterface_ids:**  [Type: string] 
@@ -2429,46 +3185,69 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/securityzones".format(api_version,
-                                                                                        site_id,
-                                                                                        element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/securityzones".format(api_version,
+                                                                                             tenant_id,
+                                                                                             site_id,
+                                                                                             element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def elementsecurityzones_query(self, data, api_version="v2.0"):
+    def elementsecurityzones_query(self, data, tenant_id=None, api_version="v2.1"):
         """
-        Query element security zones. (v2.0)
+        Query element security zones. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **element_id:**  Type: string 
-           - **interface_ids:**  [Type: string] 
-           - **lannetwork_ids:**  [Type: string] 
-           - **site_id:**  Type: string 
-           - **tenant_id:**  Type: string 
-           - **waninterface_ids:**  [Type: string] 
-           - **wanoverlay_ids:**  [Type: string] 
-           - **zone_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elementsecurityzones/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elementsecurityzones/query".format(api_version,
+                                                                                     tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def elementshells(self, site_id, data, api_version="v2.1"):
+    def elementshells(self, site_id, data, tenant_id=None, api_version="v2.1"):
         """
         Create an element shell (v2.1)
 
@@ -2476,6 +3255,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -2540,15 +3320,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elementshells".format(api_version,
-                                                                            site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elementshells".format(api_version,
+                                                                                 tenant_id,
+                                                                                 site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def elementshells_copy_element_configurations(self, site_id, elementshell_id, data, api_version="v2.0"):
+    def elementshells_copy_element_configurations(self, site_id, elementshell_id, data, tenant_id=None, api_version="v2.0"):
         """
         Asynchronization call to Copy Interface Configurations from element to element shell (v2.0)
 
@@ -2557,40 +3344,308 @@ class Post(object):
           - **site_id**: Site ID
           - **elementshell_id**: Element Shell ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **copyconfig_progress:**  Type: string 
-           - **description:**  Type: string 
-           - **element_error_message:**  Type: string 
-           - **element_status:**  Type: string 
-           - **input_data:**  Type: string 
+           - **element_configurations:**           
+               - **allowed_roles:**  [Type: string] 
+               - **cluster_id:**  Type: string 
+               - **cluster_insertion_mode:**  Type: string 
+               - **cluster_member_id:**  Type: string 
+               - **description:**  Type: string 
+               - **device_mode:**  Type: string 
+               - **device_profile_id:**  Type: string 
+               - **element_id:**  Type: string 
+               - **hw_id:**  Type: string 
+               - **id:**  Type: string 
+               - **l3_direct_private_wan_forwarding:**  Type: boolean 
+               - **l3_lan_forwarding:**  Type: boolean 
+               - **led_config:**           
+                   - **service_led_on:**  Type: boolean 
+               - **main_power_usage_threshold:**  Type: integer 
+               - **model_name:**  Type: string 
+               - **name:**  Type: string 
+               - **nat_policysetstack_id:**  Type: string 
+               - **network_policysetstack_id:**  Type: string 
+               - **priority_policysetstack_id:**  Type: string 
+               - **role:**  Type: string 
+               - **site_id:**  Type: string 
+               - **software_version:**  Type: string 
+               - **spoke_ha_config:**           
+                   - **cluster_id:**  Type: string 
+                   - **enable:**  Type: boolean 
+                   - **priority:**  Type: integer 
+                   - **source_interface:**  Type: string 
+                   - **track:**           
+                       - **interfaces:**           
+                           - **interface_id:**  Type: string 
+                           - **reduce_priority:**  Type: integer 
+                       - **waninterfaces:**           
+                           - **reduce_priority:**  Type: integer 
+                           - **wan_interface_id:**  Type: string 
+               - **state:**  Type: string 
+               - **switch_config:**           
+                   - **default_vlan_id:**  Type: integer 
+                   - **mstp_enabled:**  Type: boolean 
+                   - **stp_aging_timer:**  Type: integer 
+                   - **stp_forward_delay:**  Type: integer 
+                   - **stp_hello_time:**  Type: integer 
+                   - **stp_max_age:**  Type: integer 
+                   - **stp_mode:**  Type: string 
+                   - **stp_priority:**  Type: integer 
+               - **tags:**  [Type: string] 
+               - **tenant_id:**  Type: string 
+               - **vpn_to_vpn_forwarding:**  Type: boolean 
            - **interface_configurations:**           
                - **element_interface_id:**  Type: string 
                - **element_shell_interface_id:**  Type: string 
-               - **interface_error_message:**  Type: string 
-               - **interface_status:**  Type: string 
+               - **interface_configuration:**           
+                   - **admin_up:**  Type: boolean 
+                   - **attached_lan_networks:**           
+                       - **lan_network_id:**  Type: string 
+                       - **vlan_id:**  Type: integer 
+                   - **authentication_config:**           
+                       - **fallback_retry_count:**  Type: integer 
+                       - **mode:**  Type: string 
+                       - **reauthentication_timeout:**  Type: integer 
+                   - **bound_interfaces:**  [Type: string] 
+                   - **bypass_pair:**           
+                       - **lan:**  Type: string 
+                       - **lan_state_propagation:**  Type: boolean 
+                       - **use_relay:**  Type: boolean 
+                       - **wan:**  Type: string 
+                   - **cellular_config:**           
+                       - **apn_config:**           
+                           - **apn:**  Type: string 
+                           - **authentication:**  Type: string 
+                           - **clear_password:**  Type: boolean 
+                           - **password:**  Type: string 
+                           - **password_encrypted:**  Type: string 
+                           - **user_name:**  Type: string 
+                       - **apnprofile_id:**  Type: string 
+                       - **auto_apn:**  Type: boolean 
+                       - **parent_module_id:**  Type: string 
+                       - **parent_sim_slot_number:**  Type: integer 
+                   - **description:**  Type: string 
+                   - **devicemgmt_policysetstack_id:**  Type: string 
+                   - **dhcp_relay:**           
+                       - **enabled:**  Type: boolean 
+                       - **option_82:**           
+                           - **circuit_id:**  Type: string 
+                           - **enabled:**  Type: boolean 
+                           - **reforwarding_policy:**  Type: string 
+                           - **remote_id:**  Type: string 
+                       - **server_ips:**  [Type: string] 
+                       - **source_interface:**  Type: string 
+                   - **directed_broadcast:**  Type: boolean 
+                   - **ethernet_port:**           
+                       - **full_duplex:**  Type: boolean 
+                       - **port_id:**           
+                           - **connector:**  Type: string 
+                           - **device:**  Type: string 
+                           - **disabled:**  Type: boolean 
+                           - **disabled_reason:**  Type: string 
+                           - **element_id:**  Type: string 
+                           - **id:**  Type: string 
+                           - **inactive:**  Type: boolean 
+                           - **inactive_reason:**  Type: string 
+                           - **max_mtu:**  Type: integer 
+                           - **max_speed:**  Type: integer 
+                           - **name:**  Type: string 
+                           - **original_mac_address:**  Type: string 
+                           - **region:**  Type: string 
+                           - **site_id:**  Type: string 
+                           - **tenant_id:**  Type: string 
+                       - **port_name:**  Type: string 
+                       - **speed:**  Type: integer 
+                   - **id:**  Type: string 
+                   - **interface_profile_id:**  Type: string 
+                   - **ipfixcollectorcontext_id:**  Type: string 
+                   - **ipfixfiltercontext_id:**  Type: string 
+                   - **ipv4_config:**           
+                       - **dhcp_config:**           
+                           - **client_id:**  Type: string 
+                           - **hostname:**  Type: string 
+                       - **dns_v4_config:**           
+                           - **name_servers:**  [Type: string] 
+                           - **search:**  [Type: string] 
+                       - **pppoe_config:**           
+                           - **chap_passwd:**  Type: string 
+                           - **chap_user:**  Type: string 
+                           - **set_route:**  Type: boolean 
+                       - **routes:**           
+                           - **destination:**  Type: string 
+                           - **via:**  Type: string 
+                       - **static_config:**           
+                           - **address:**  Type: string 
+                       - **type:**  Type: string 
+                   - **ipv6_config:**           
+                       - **dhcp_config:**           
+                           - **client_id:**  Type: string 
+                           - **hostname:**  Type: string 
+                       - **dns_v6_config:**           
+                           - **name_servers:**  [Type: string] 
+                           - **search:**  [Type: string] 
+                       - **routes:**           
+                           - **destination:**  Type: string 
+                           - **via:**  Type: string 
+                       - **static_config:**           
+                           - **address:**  Type: string 
+                           - **enable_prefix_distribution:**  Type: boolean 
+                       - **type:**  Type: string 
+                   - **lldp_enabled:**  Type: boolean 
+                   - **mac_address:**  Type: string 
+                   - **mtu:**  Type: integer 
+                   - **multicast_config:**           
+                       - **igmp_version:**  Type: string 
+                       - **multicast_enabled:**  Type: boolean 
+                   - **name:**  Type: string 
+                   - **nat_address:**  Type: string 
+                   - **nat_address_v6:**  Type: string 
+                   - **nat_pools:**           
+                       - **ipv4_ranges:**           
+                           - **end:**  Type: string 
+                           - **start:**  Type: string 
+                       - **nat_pool_id:**  Type: string 
+                   - **nat_port:**  Type: integer 
+                   - **nat_port_v6:**  Type: integer 
+                   - **nat_zone_id:**  Type: string 
+                   - **network_context_id:**  Type: string 
+                   - **parent:**  Type: string 
+                   - **peer_bypasspair_wan_port_type:**  Type: string 
+                   - **poe_enabled:**  Type: boolean 
+                   - **power_usage_threshold:**  Type: integer 
+                   - **pppoe_config:**           
+                       - **host_uniq:**  Type: string 
+                       - **ip_address_type:**  Type: string 
+                       - **password:**  Type: string 
+                       - **reconnection_delay:**  Type: integer 
+                       - **service_name:**  Type: string 
+                       - **username:**  Type: string 
+                   - **scope:**  Type: string 
+                   - **secondary_ip_configs:**           
+                       - **ipv4_address:**  Type: string 
+                       - **scope:**  Type: string 
+                   - **service_link_config:**           
+                       - **gre_config:**           
+                           - **csum:**  Type: boolean 
+                           - **keepalive_enable:**  Type: boolean 
+                           - **keepalive_fail_count:**  Type: integer 
+                           - **keepalive_interval:**  Type: integer 
+                       - **ipsec_config:**           
+                           - **authentication:**           
+                               - **certificate:**  Type: string 
+                               - **certificate_profile_id:**  Type: string 
+                               - **comment:**  Type: string 
+                               - **ikev1_params:**           
+                                   - **xauth_id:**  Type: string 
+                                   - **xauth_secret:**  Type: string 
+                                   - **xauth_secret_encrypted:**  Type: string 
+                                   - **xauth_secret_hash:**  Type: string 
+                                   - **xauth_type:**  Type: string 
+                               - **local_ca_certificate:**  Type: string 
+                               - **local_id:**  Type: string 
+                               - **local_id_custom:**  Type: string 
+                               - **local_pa_certificate_id:**  Type: string 
+                               - **pa_master_key_id:**  Type: string 
+                               - **passphrase:**  Type: string 
+                               - **passphrase_encrypted:**  Type: string 
+                               - **peer_id_check:**  Type: string 
+                               - **permit_peer_id_mismatch:**  Type: boolean 
+                               - **ppk_config:**           
+                                   - **enabled:**  Type: boolean 
+                                   - **mode:**  Type: string 
+                                   - **ppk_key_id:**  Type: string 
+                                   - **ppk_secret:**  Type: string 
+                                   - **ppk_secret_configured:**  Type: boolean 
+                                   - **ppk_secret_encrypted:**  Type: string 
+                                   - **ppk_secret_hash:**  Type: string 
+                               - **private_key:**  Type: string 
+                               - **private_key_encrypted:**  Type: string 
+                               - **remote_ca_certificate:**  Type: string 
+                               - **remote_id:**  Type: string 
+                               - **secret:**  Type: string 
+                               - **secret_encrypted:**  Type: string 
+                               - **secret_hash:**  Type: string 
+                               - **strict_validation_peer_extended_key_use:**  Type: boolean 
+                               - **type:**  Type: string 
+                               - **x509Objects:**           
+                                   - **certHolder:**  Type: object 
+                                   - **certificate:**  Type: string 
+                                   - **is_local_ca_cert_set:**  Type: boolean 
+                                   - **is_remote_ca_cert_set:**  Type: boolean 
+                                   - **keyPair:**  Type: object 
+                                   - **local_ca_certificate:**  Type: string 
+                                   - **local_ca_certs_set:**  [Type: object] 
+                                   - **passphrase:**  Type: string 
+                                   - **pkcs12_certificate:**  Type: string 
+                                   - **privateKey:**  Type: java.security.privatekey 
+                                   - **private_key:**  Type: string 
+                                   - **remote_ca_certificate:**  Type: string 
+                                   - **remote_ca_certs_set:**  [Type: object] 
+                           - **ipsec_profile_id:**  Type: string 
+                       - **last_parent:**  Type: string 
+                       - **parent:**  Type: string 
+                       - **peer:**           
+                           - **hostname:**  Type: string 
+                           - **ip_addresses:**  [Type: string] 
+                       - **service_endpoint_id:**  Type: string 
+                       - **type:**  Type: string 
+                   - **site_wan_interface_ids:**  [Type: string] 
+                   - **static_arp_configs:**           
+                       - **ipv4_address:**  Type: string 
+                       - **mac_address:**  Type: string 
+                   - **sub_interface:**           
+                       - **vlan_id:**  Type: integer 
+                   - **switch_port_config:**           
+                       - **access_vlan_id:**  Type: integer 
+                       - **bpdu_guard_enabled:**  Type: boolean 
+                       - **forward_fast_enabled:**  Type: boolean 
+                       - **native_vlan_id:**  Type: integer 
+                       - **root_guard_enabled:**  Type: boolean 
+                       - **storm_control_config:**           
+                           - **broadcast_threshold:**  Type: integer 
+                           - **multicast_threshold:**  Type: integer 
+                           - **unicast_threshold:**  Type: integer 
+                       - **stp_port_cost:**  Type: integer 
+                       - **stp_port_enabled:**  Type: boolean 
+                       - **stp_port_priority:**  Type: integer 
+                       - **trunk_vlans:**  [Type: string] 
+                       - **vlan_mode:**  Type: string 
+                       - **voice_vlan_id:**  Type: integer 
+                   - **tags:**  [Type: string] 
+                   - **type:**  Type: string 
+                   - **used_for:**  Type: string 
+                   - **vlan_config:**           
+                       - **mstp_instance:**  Type: integer 
+                       - **vlan_id:**  Type: integer 
+                       - **voice_enabled:**  Type: boolean 
+                   - **vrf_context_id:**  Type: string 
                - **operation:**  Type: string 
-           - **name:**  Type: string 
-           - **site_id:**  Type: string 
            - **source_element_id:**  Type: string 
-           - **tags:**  [Type: string] 
-           - **tenant_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elementshells/{}/copy_element_configurations".format(api_version,
-                                                                                                           site_id,
-                                                                                                           elementshell_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elementshells/{}/copy_element_configurations".format(api_version,
+                                                                                                                tenant_id,
+                                                                                                                site_id,
+                                                                                                                elementshell_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def elementshells_interfaces(self, site_id, elementshell_id, data, api_version="v2.4"):
+    def elementshells_interfaces(self, site_id, elementshell_id, data, tenant_id=None, api_version="v2.4"):
         """
         Create a Interface (v2.4)
 
@@ -2599,6 +3654,7 @@ class Post(object):
           - **site_id**: Site ID
           - **elementshell_id**: Element Shell ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.4)
 
           **Payload Attributes:** 
@@ -2760,6 +3816,14 @@ class Post(object):
                        - **passphrase_encrypted:**  Type: string 
                        - **peer_id_check:**  Type: string 
                        - **permit_peer_id_mismatch:**  Type: boolean 
+                       - **ppk_config:**           
+                           - **enabled:**  Type: boolean 
+                           - **mode:**  Type: string 
+                           - **ppk_key_id:**  Type: string 
+                           - **ppk_secret:**  Type: string 
+                           - **ppk_secret_configured:**  Type: boolean 
+                           - **ppk_secret_encrypted:**  Type: string 
+                           - **ppk_secret_hash:**  Type: string 
                        - **private_key:**  Type: string 
                        - **private_key_encrypted:**  Type: string 
                        - **remote_ca_certificate:**  Type: string 
@@ -2829,100 +3893,76 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elementshells/{}/interfaces".format(api_version,
-                                                                                          site_id,
-                                                                                          elementshell_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elementshells/{}/interfaces".format(api_version,
+                                                                                               tenant_id,
+                                                                                               site_id,
+                                                                                               elementshell_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def elementshells_query(self, data, api_version="v2.1"):
+    def elementshells_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Queries db for limit number of element shells that match query params. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **allowed_roles:**  [Type: string] 
-           - **cluster_id:**  Type: string 
-           - **cluster_insertion_mode:**  Type: string 
-           - **cluster_member_id:**  Type: string 
-           - **description:**  Type: string 
-           - **device_mode:**  Type: string 
-           - **device_profile_id:**  Type: string 
-           - **element_id:**  Type: string 
-           - **hub_cluster_config:**           
-               - **intra_cluster_tunnel:**           
-                   - **disabled:**  Type: boolean 
-                   - **source_interfaces:**  [Type: string] 
-               - **track:**           
-                   - **hosts:**           
-                       - **address_v4:**  Type: string 
-                       - **address_v6:**  Type: string 
-                       - **vrf_context_id:**  Type: string 
-           - **hw_id:**  Type: string 
-           - **l3_direct_private_wan_forwarding:**  Type: boolean 
-           - **l3_lan_forwarding:**  Type: boolean 
-           - **led_config:**           
-               - **service_led_on:**  Type: boolean 
-           - **main_power_usage_threshold:**  Type: integer 
-           - **model_name:**  Type: string 
-           - **name:**  Type: string 
-           - **nat_policysetstack_id:**  Type: string 
-           - **network_policysetstack_id:**  Type: string 
-           - **priority_policysetstack_id:**  Type: string 
-           - **role:**  Type: string 
-           - **site_id:**  Type: string 
-           - **software_version:**  Type: string 
-           - **spoke_ha_config:**           
-               - **cluster_id:**  Type: string 
-               - **enable:**  Type: boolean 
-               - **priority:**  Type: integer 
-               - **source_interface:**  Type: string 
-               - **track:**           
-                   - **interfaces:**           
-                       - **interface_id:**  Type: string 
-                       - **reduce_priority:**  Type: integer 
-                   - **waninterfaces:**           
-                       - **reduce_priority:**  Type: integer 
-                       - **wan_interface_id:**  Type: string 
-           - **state:**  Type: string 
-           - **switch_config:**           
-               - **default_vlan_id:**  Type: integer 
-               - **mstp_enabled:**  Type: boolean 
-               - **stp_aging_timer:**  Type: integer 
-               - **stp_forward_delay:**  Type: integer 
-               - **stp_hello_time:**  Type: integer 
-               - **stp_max_age:**  Type: integer 
-               - **stp_mode:**  Type: string 
-               - **stp_priority:**  Type: integer 
-           - **tags:**  [Type: string] 
-           - **tenant_id:**  Type: string 
-           - **vpn_to_vpn_forwarding:**  Type: boolean 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elementshells/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elementshells/query".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def elementsystemlimitprofiles(self, data, api_version="v2.0"):
+    def elementsystemlimitprofiles(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new Element System Limit Profile (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -2936,48 +3976,81 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elementsystemlimitprofiles".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elementsystemlimitprofiles".format(api_version,
+                                                                                     tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def elementsystemlimitprofiles_query(self, data, api_version="v2.0"):
+    def elementsystemlimitprofiles_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Element System Limit Profiles (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elementsystemlimitprofiles/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elementsystemlimitprofiles/query".format(api_version,
+                                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def elementusers(self, data, api_version="v2.1"):
+    def elementusers(self, data, tenant_id=None, api_version="v2.1"):
         """
         Create Element User (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
            - **is_tenant_level:**  Type: boolean 
            - **login_id:**  Type: string 
+           - **password:**  Type: string 
            - **role:**  Type: string 
            - **tenant_id:**  Type: string 
            - **username:**  Type: string 
@@ -2985,14 +4058,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elementusers".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elementusers".format(api_version,
+                                                                       tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def elementusers_access(self, elementuser_id, data, api_version="v2.1"):
+    def elementusers_access(self, elementuser_id, data, tenant_id=None, api_version="v2.1"):
         """
         Grant Specific role to Element user on specific element (v2.1)
 
@@ -3000,6 +4080,7 @@ class Post(object):
 
           - **elementuser_id**: Element User ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -3012,15 +4093,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elementusers/{}/access".format(api_version,
-                                                                            elementuser_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elementusers/{}/access".format(api_version,
+                                                                                 tenant_id,
+                                                                                 elementuser_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def entitlements(self, operator_id, session_id, data, api_version="v2.0"):
+    def entitlements(self, operator_id, session_id, data, tenant_id=None, api_version="v2.0"):
         """
         POST Entitlements API Function
 
@@ -3029,6 +4117,7 @@ class Post(object):
           - **operator_id**: Operator ID
           - **session_id**: User Session ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3037,16 +4126,23 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/operators/{}/sessions/{}/actionservice/appportal/api/v1/entitlements".format(api_version,
-                                                                                                                          operator_id,
-                                                                                                                          session_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/operators/{}/sessions/{}/actionservice/appportal/api/v1/entitlements".format(api_version,
+                                                                                                                               tenant_id,
+                                                                                                                               operator_id,
+                                                                                                                               session_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def eventcorrelationpolicyrules(self, eventcorrelationpolicyset_id, data, api_version="v2.1"):
+    def eventcorrelationpolicyrules(self, eventcorrelationpolicyset_id, data, tenant_id=None, api_version="v2.1"):
         """
         Create event correlation policyrule configuration (v2.1)
 
@@ -3054,6 +4150,7 @@ class Post(object):
 
           - **eventcorrelationpolicyset_id**: Event Correlation Policy Set ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -3082,208 +4179,316 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/eventcorrelationpolicysets/{}/eventcorrelationpolicyrules".format(api_version,
-                                                                                                               eventcorrelationpolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/eventcorrelationpolicysets/{}/eventcorrelationpolicyrules".format(api_version,
+                                                                                                                    tenant_id,
+                                                                                                                    eventcorrelationpolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def eventcorrelationpolicyrules_query(self, data, api_version="v2.1"):
+    def eventcorrelationpolicyrules_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Queries db for limit number of event correlation policyrules that match query params. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **dampening_duration:**  Type: integer 
-           - **description:**  Type: string 
-           - **enabled:**  Type: boolean 
-           - **end_time:**  Type: integer 
-           - **escalation_rules:**           
-               - **flap_rule:**           
-                   - **flap_duration:**  Type: integer 
-                   - **flap_rate:**  Type: integer 
-               - **standing_rule:**           
-                   - **priority:**  Type: string 
-                   - **standing_for:**  Type: integer 
-           - **event_codes:**  [Type: string] 
-           - **name:**  Type: string 
-           - **policyset_id:**  Type: string 
-           - **priority:**  Type: string 
-           - **resource_ids:**  [Type: string] 
-           - **resource_type:**  Type: string 
-           - **start_time:**  Type: integer 
-           - **sub_resource_type:**  Type: string 
-           - **suppress:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/eventcorrelationpolicyrules/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/eventcorrelationpolicyrules/query".format(api_version,
+                                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def eventcorrelationpolicysets(self, data, api_version="v2.0"):
+    def eventcorrelationpolicysets(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of event correlation policysets that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **active_policyset:**  Type: boolean 
-           - **clone_from:**  Type: string 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **policyrule_order:**  [Type: string] 
-           - **severity_priority_mapping:**           
-               - **priority:**  Type: string 
-               - **severity:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/eventcorrelationpolicysets".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/eventcorrelationpolicysets".format(api_version,
+                                                                                     tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def eventcorrelationpolicysets_query(self, data, api_version="v2.0"):
+    def eventcorrelationpolicysets_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of event correlation policysets that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **active_policyset:**  Type: boolean 
-           - **clone_from:**  Type: string 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **policyrule_order:**  [Type: string] 
-           - **severity_priority_mapping:**           
-               - **priority:**  Type: string 
-               - **severity:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/eventcorrelationpolicysets/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/eventcorrelationpolicysets/query".format(api_version,
+                                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def events_operations(self, data, api_version="v2.0"):
+    def events_operations(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Events_Operations API Function
+        EventOperationsAPI (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **bulk_acknowledge:**  Type: object 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/events/operations".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/events/operations".format(api_version,
+                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def events_query(self, data, api_version="v3.7"):
+    def events_query(self, data, tenant_id=None, api_version="v3.7"):
         """
-        POST Events_Query API Function
+        EventsQueryAPI (v3.7)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.7)
 
           **Payload Attributes:** 
 
+           - **_offset:**  Type: string 
+           - **acknowledged:**  Type: boolean 
+           - **dest_page:**  Type: integer 
+           - **element_cluster_roles:**  [Type: string] 
+           - **end_time:**  Type: string 
+           - **limit:**  Type: object 
+           - **priority:**  [Type: string] 
+           - **query:**  Type: object 
+           - **severity:**  [Type: string] 
+           - **start_time:**  Type: string 
+           - **suppressed:**  Type: boolean 
+           - **suppressed_info:**  Type: object 
+           - **temporal_scope:**  Type: string 
+           - **time_type:**  Type: string 
+           - **view:**  Type: object 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/events/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/events/query".format(api_version,
+                                                                       tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def events_summary(self, data, api_version="v2.1"):
+    def events_summary(self, data, tenant_id=None, api_version="v2.1"):
         """
-        POST Events_Summary API Function
+        EventSummaryAPI (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **clients:**  [Type: string] 
+           - **element_cluster_role:**  Type: string 
+           - **end_time:**  Type: string 
+           - **group_by:**  [Type: string] 
+           - **query:**  Type: object 
+           - **start_time:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/events/summary".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/events/summary".format(api_version,
+                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def externalcaconfigs(self, data, api_version="v2.0"):
+    def externalcaconfigs(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Externalcaconfigs API Function
+        Create a new certificate authority configuration (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **ca_sign_timeout:**  Type: integer 
+           - **manual_renew_trigger_threshold:**  Type: integer 
+           - **renewal_window_from_expiry:**  Type: integer 
+           - **scep_config:**           
+               - **challenge_uri:**  Type: string 
+               - **enrollment_uri:**  Type: string 
+               - **https:**  Type: boolean 
+               - **num_challenge_passwords:**  Type: integer 
+               - **server_certificate:**  Type: string 
+               - **server_password:**  Type: string 
+               - **server_primary_address:**  Type: string 
+               - **server_username:**  Type: string 
+           - **tenant_id:**  Type: string 
+           - **type:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/externalcaconfigs".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/externalcaconfigs".format(api_version,
+                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def fips_mode_change_operations(self, element_id, data, api_version="v2.1"):
+    def fips_mode_change_operations(self, element_id, data, tenant_id=None, api_version="v2.1"):
         """
         Change Mode of an element from FIPS to Non-FIPS or vice-versa. (v2.1)
 
@@ -3291,6 +4496,7 @@ class Post(object):
 
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -3301,21 +4507,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/fips_mode_change_operations".format(api_version,
-                                                                                             element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/fips_mode_change_operations".format(api_version,
+                                                                                                  tenant_id,
+                                                                                                  element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def globalprefixfilters(self, data, api_version="v2.0"):
+    def globalprefixfilters(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new global prefix filter. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3329,40 +4543,67 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/globalprefixfilters".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/globalprefixfilters".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def globalprefixfilters_query(self, data, api_version="v2.0"):
+    def globalprefixfilters_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query DB for the list of params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **ipv4_prefixes:**  [Type: string] 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/globalprefixfilters/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/globalprefixfilters/query".format(api_version,
+                                                                                    tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def hubclustermembers(self, site_id, hubcluster_id, data, api_version="v3.0"):
+    def hubclustermembers(self, site_id, hubcluster_id, data, tenant_id=None, api_version="v3.0"):
         """
         Creates a new hub cluster member. (v3.0)
 
@@ -3371,6 +4612,7 @@ class Post(object):
           - **site_id**: Site ID
           - **hubcluster_id**: Hub (DC) Cluster ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
@@ -3391,16 +4633,23 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/hubclusters/{}/hubclustermembers".format(api_version,
-                                                                                               site_id,
-                                                                                               hubcluster_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/hubclusters/{}/hubclustermembers".format(api_version,
+                                                                                                    tenant_id,
+                                                                                                    site_id,
+                                                                                                    hubcluster_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def hubclusters(self, site_id, data, api_version="v4.0"):
+    def hubclusters(self, site_id, data, tenant_id=None, api_version="v4.0"):
         """
         Creates a new hub cluster (v4.0)
 
@@ -3408,6 +4657,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.0)
 
           **Payload Attributes:** 
@@ -3426,15 +4676,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/hubclusters".format(api_version,
-                                                                          site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/hubclusters".format(api_version,
+                                                                               tenant_id,
+                                                                               site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def hubclusters_operations(self, site_id, hubcluster_id, data, api_version="v4.0"):
+    def hubclusters_operations(self, site_id, hubcluster_id, data, tenant_id=None, api_version="v4.0"):
         """
         Operations hub cluster api (v4.0)
 
@@ -3443,65 +4700,81 @@ class Post(object):
           - **site_id**: Site ID
           - **hubcluster_id**: Hub (DC) Cluster ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.0)
 
           **Payload Attributes:** 
 
-           - **cluster_state:**  Type: string 
-           - **elements:**           
-               - **hubClusterElementNumber:**  Type: string 
-               - **hub_element_id:**  Type: string 
-               - **locked:**  Type: boolean 
-               - **peer_sites:**  [Type: string] 
-           - **vpns_added:**  Type: integer 
-           - **vpns_deleted:**  Type: integer 
+           - **hub_element_id:**  Type: string 
+           - **operation:**  Type: string 
+           - **peer_sites:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/hubclusters/{}/operations".format(api_version,
-                                                                                        site_id,
-                                                                                        hubcluster_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/hubclusters/{}/operations".format(api_version,
+                                                                                             tenant_id,
+                                                                                             site_id,
+                                                                                             hubcluster_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def hubclusters_query(self, data, api_version="v4.0"):
+    def hubclusters_query(self, data, tenant_id=None, api_version="v4.0"):
         """
         Query hub clusters (v4.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.0)
 
           **Payload Attributes:** 
 
-           - **default_cluster:**  Type: boolean 
-           - **description:**  Type: string 
-           - **elements:**           
-               - **hubClusterElementNumber:**  Type: string 
-               - **hub_element_id:**  Type: string 
-               - **locked:**  Type: boolean 
-           - **name:**  Type: string 
-           - **peer_sites:**  [Type: string] 
-           - **site_count_alarm_threshold:**  Type: integer 
-           - **site_id:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/hubclusters/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/hubclusters/query".format(api_version,
+                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def interfaces(self, site_id, element_id, data, api_version="v4.21"):
+    def interfaces(self, site_id, element_id, data, tenant_id=None, api_version="v4.21"):
         """
         Create a Interface (v4.21)
 
@@ -3510,6 +4783,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.21)
 
           **Payload Attributes:** 
@@ -3671,6 +4945,14 @@ class Post(object):
                        - **passphrase_encrypted:**  Type: string 
                        - **peer_id_check:**  Type: string 
                        - **permit_peer_id_mismatch:**  Type: boolean 
+                       - **ppk_config:**           
+                           - **enabled:**  Type: boolean 
+                           - **mode:**  Type: string 
+                           - **ppk_key_id:**  Type: string 
+                           - **ppk_secret:**  Type: string 
+                           - **ppk_secret_configured:**  Type: boolean 
+                           - **ppk_secret_encrypted:**  Type: string 
+                           - **ppk_secret_hash:**  Type: string 
                        - **private_key:**  Type: string 
                        - **private_key_encrypted:**  Type: string 
                        - **remote_ca_certificate:**  Type: string 
@@ -3740,38 +5022,69 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/interfaces".format(api_version,
-                                                                                     site_id,
-                                                                                     element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/interfaces".format(api_version,
+                                                                                          tenant_id,
+                                                                                          site_id,
+                                                                                          element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def interfaces_correlationevents_query(self, data, api_version="v2.1"):
+    def interfaces_correlationevents_query(self, data, tenant_id=None, api_version="v2.1"):
         """
-        POST Interfaces_Correlationevents_Query API Function
+        Query Interface correlation events. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/interfaces/correlationevents/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/interfaces/correlationevents/query".format(api_version,
+                                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def interfaces_operations(self, site_id, element_id, interface_id, data, api_version="v2.0"):
+    def interfaces_operations(self, site_id, element_id, interface_id, data, tenant_id=None, api_version="v2.0"):
         """
         Reset action on interface (v2.0)
 
@@ -3781,6 +5094,7 @@ class Post(object):
           - **element_id**: Element (Device) ID
           - **interface_id**: Interface ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -3790,23 +5104,31 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/interfaces/{}/operations".format(api_version,
-                                                                                                   site_id,
-                                                                                                   element_id,
-                                                                                                   interface_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/interfaces/{}/operations".format(api_version,
+                                                                                                        tenant_id,
+                                                                                                        site_id,
+                                                                                                        element_id,
+                                                                                                        interface_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def interfaces_query(self, data, api_version="v4.21"):
+    def interfaces_query(self, data, tenant_id=None, api_version="v4.21"):
         """
         Queries db for limit number of interfaces that match query params. (v4.21)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.21)
 
           **Payload Attributes:** 
@@ -3831,301 +5153,166 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/interfaces/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/interfaces/query".format(api_version,
+                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def interfaces_status_query(self, data, api_version="v2.0"):
+    def interfaces_status_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query interface status (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **cellular_state:**           
-               - **active:**  Type: boolean 
-               - **apn_info:**           
-                   - **apn:**  Type: string 
-                   - **authentication:**  Type: string 
-               - **ip_address_type:**  Type: string 
-               - **network_sel:**  Type: string 
-           - **device:**  Type: string 
-           - **dns_v4_config:**           
-               - **name_servers:**  [Type: string] 
-               - **search:**  [Type: string] 
-           - **dns_v6_config:**           
-               - **name_servers:**  [Type: string] 
-               - **search:**  [Type: string] 
-           - **effective_vlans:**  [Type: integer] 
-           - **element_id:**  Type: string 
-           - **extended_state:**  Type: string 
-           - **ipv4_addresses:**  [Type: string] 
-           - **ipv6_addresses:**  [Type: string] 
-           - **lacp_state:**           
-               - **key:**  Type: integer 
-               - **mac_address:**  Type: string 
-               - **partner_key:**  Type: integer 
-               - **partner_mac_address:**  Type: string 
-               - **partner_system_priority:**  Type: integer 
-               - **system_priority:**  Type: integer 
-           - **last_state_change:**  Type: integer 
-           - **link_local_address:**  Type: string 
-           - **lldp_enabled:**  Type: boolean 
-           - **mac_address:**  Type: string 
-           - **name:**  Type: string 
-           - **negotiated_mtu:**  Type: integer 
-           - **operational_state:**  Type: string 
-           - **poe_state:**           
-               - **detection_status:**  Type: string 
-               - **device_type:**  Type: string 
-               - **operational_state:**  Type: string 
-               - **poe_enabled:**  Type: boolean 
-               - **power_classification:**  Type: string 
-               - **power_consumed:**  Type: number 
-               - **power_pairs_control_ability:**  Type: boolean 
-               - **power_pairs_state:**  Type: string 
-               - **power_priority:**  Type: string 
-               - **power_usage_threshold:**  Type: integer 
-           - **port:**           
-               - **end:**  Type: string 
-               - **start:**  Type: string 
-           - **port_channel_member_state:**           
-               - **interface_id:**  Type: string 
-               - **partner_key:**  Type: integer 
-               - **partner_mode:**  Type: string 
-               - **partner_priority:**  Type: integer 
-               - **partner_rate:**  Type: string 
-               - **partner_state:**  Type: string 
-               - **port_key:**  Type: integer 
-               - **port_mode:**  Type: string 
-               - **port_priority:**  Type: integer 
-               - **port_rate:**  Type: string 
-               - **port_state:**  Type: string 
-           - **remote_host_name:**  Type: string 
-           - **remote_v4_addr:**  Type: string 
-           - **routes:**           
-               - **destination:**  Type: string 
-               - **via:**  Type: string 
-           - **routes_v6:**           
-               - **destination:**  Type: string 
-               - **via:**  Type: string 
-           - **secondary_ipv4_addresses:**  [Type: string] 
-           - **service_link:**           
-               - **anti_replay:**  Type: boolean 
-               - **anti_replay_window:**  Type: integer 
-               - **classic_site_id:**  Type: string 
-               - **copy_tos:**  Type: boolean 
-               - **enable_gre_encapsulation:**  Type: boolean 
-               - **geneve_config:**           
-                   - **keepalive_enable:**  Type: boolean 
-                   - **keepalive_fail_count:**  Type: integer 
-                   - **keepalive_interval:**  Type: integer 
-                   - **keepalive_local_ipv4:**  Type: string 
-                   - **keepalive_remote_ipv4:**  Type: string 
-                   - **tenant_vni_label:**  Type: string 
-               - **gre_config:**           
-                   - **csum:**  Type: boolean 
-                   - **keepalive_enable:**  Type: boolean 
-                   - **keepalive_fail_count:**  Type: integer 
-                   - **keepalive_interval:**  Type: integer 
-               - **ike_admin_up:**  Type: boolean 
-               - **ipsec_admin_up:**  Type: boolean 
-               - **ipsec_config:**           
-                   - **authentication:**           
-                       - **certificate:**  Type: string 
-                       - **certificate_profile_id:**  Type: string 
-                       - **comment:**  Type: string 
-                       - **ikev1_params:**           
-                           - **xauth_id:**  Type: string 
-                           - **xauth_secret:**  Type: string 
-                           - **xauth_secret_encrypted:**  Type: string 
-                           - **xauth_secret_hash:**  Type: string 
-                           - **xauth_type:**  Type: string 
-                       - **local_ca_certificate:**  Type: string 
-                       - **local_id:**  Type: string 
-                       - **local_id_custom:**  Type: string 
-                       - **local_pa_certificate_id:**  Type: string 
-                       - **pa_master_key_id:**  Type: string 
-                       - **passphrase:**  Type: string 
-                       - **passphrase_encrypted:**  Type: string 
-                       - **peer_id_check:**  Type: string 
-                       - **permit_peer_id_mismatch:**  Type: boolean 
-                       - **private_key:**  Type: string 
-                       - **private_key_encrypted:**  Type: string 
-                       - **remote_ca_certificate:**  Type: string 
-                       - **remote_id:**  Type: string 
-                       - **secret:**  Type: string 
-                       - **secret_encrypted:**  Type: string 
-                       - **secret_hash:**  Type: string 
-                       - **strict_validation_peer_extended_key_use:**  Type: boolean 
-                       - **type:**  Type: string 
-                       - **x509Objects:**           
-                           - **certHolder:**  Type: object 
-                           - **certificate:**  Type: string 
-                           - **is_local_ca_cert_set:**  Type: boolean 
-                           - **is_remote_ca_cert_set:**  Type: boolean 
-                           - **keyPair:**  Type: object 
-                           - **local_ca_certificate:**  Type: string 
-                           - **local_ca_certs_set:**  [Type: object] 
-                           - **passphrase:**  Type: string 
-                           - **pkcs12_certificate:**  Type: string 
-                           - **privateKey:**  Type: java.security.privatekey 
-                           - **private_key:**  Type: string 
-                           - **remote_ca_certificate:**  Type: string 
-                           - **remote_ca_certs_set:**  [Type: object] 
-                   - **ipsec_profile_id:**  Type: string 
-               - **last_parent:**  Type: string 
-               - **line_conditioning_enabled:**  Type: boolean 
-               - **liveliness_probe:**           
-                   - **failure_count:**  Type: integer 
-                   - **interval:**  Type: integer 
-                   - **ip_address:**  Type: string 
-                   - **local_ip_address:**  Type: string 
-                   - **proxy_id:**  Type: string 
-               - **nat_traversal:**  Type: boolean 
-               - **pa_location_oid:**  Type: string 
-               - **pa_tunnel_oid:**  Type: string 
-               - **parent:**  Type: string 
-               - **passive_mode:**           
-                   - **enable:**  Type: boolean 
-                   - **peer_ip_dynamic:**  Type: boolean 
-               - **peer:**           
-                   - **hostname:**  Type: string 
-                   - **ip_addresses:**  [Type: string] 
-               - **peer_admin_up:**  Type: boolean 
-               - **peer_inner_ips:**  [Type: string] 
-               - **proxy_ids:**           
-                   - **local:**  Type: string 
-                   - **local_port:**  Type: integer 
-                   - **protocol:**  Type: string 
-                   - **protocol_number:**  Type: integer 
-                   - **proxy_id:**  Type: string 
-                   - **remote:**  Type: string 
-                   - **remote_port:**  Type: integer 
-               - **sase_ike_gw_config:**           
-                   - **ike_gw_name:**  Type: string 
-                   - **ikev1_dpd_delay:**  Type: integer 
-                   - **ikev1_dpd_enable:**  Type: boolean 
-                   - **ikev1_dpd_timeout:**  Type: integer 
-                   - **ikev1_enable_fragmentation:**  Type: boolean 
-                   - **ikev1_exchange_mode:**  Type: string 
-                   - **ikev2_liveness_check_enable:**  Type: boolean 
-                   - **ikev2_liveness_interval:**  Type: integer 
-                   - **ikev2_require_cookie:**  Type: boolean 
-               - **security_service_endpoint_id:**  Type: string 
-               - **service_endpoint_id:**  Type: string 
-               - **tunnel_role:**  Type: string 
-               - **type:**  Type: string 
-               - **used_for:**  Type: string 
-           - **stp_state:**           
-               - **bpdu_guard_enabled:**  Type: boolean 
-               - **forward_fast_enabled:**  Type: boolean 
-               - **mstp_instance_id:**  Type: integer 
-               - **port_cost:**  Type: integer 
-               - **port_priority:**  Type: integer 
-               - **port_state:**  Type: string 
-               - **root_guard_enabled:**  Type: boolean 
-               - **stp_enabled:**  Type: boolean 
-           - **svi_state:**           
-               - **stp_designated_cost:**  Type: integer 
-               - **stp_designated_mac_address:**  Type: string 
-               - **stp_designated_port:**  Type: integer 
-               - **stp_designated_root_mac_address:**  Type: string 
-           - **vrf:**           
-               - **vrf_context_id:**  Type: string 
-               - **vrf_context_name:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/interfaces/status/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/interfaces/status/query".format(api_version,
+                                                                                  tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def iotdevicemappings_query(self, data, api_version="v2.0"):
+    def iotdevicemappings_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query the Active Device Profiles (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **category:**  Type: string 
-           - **confidence_score:**  Type: integer 
-           - **firewallids:**  [Type: string] 
-           - **first_seen_date:**  Type: string 
-           - **hostname:**  Type: string 
-           - **ip_address:**  Type: string 
-           - **mac_address:**  Type: string 
-           - **model:**  Type: string 
-           - **os_combined:**  Type: string 
-           - **os_group:**  Type: string 
-           - **primaryDeviceid:**  Type: string 
-           - **profile:**  Type: string 
-           - **profile_type:**  Type: string 
-           - **risk_level:**  Type: string 
-           - **risk_score:**  Type: integer 
-           - **secondaryDevicesList:**  [Type: string] 
-           - **trafficRestricted:**  Type: string 
-           - **vendor:**  Type: string 
-           - **verdictUpdateTime:**  Type: integer 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/iotdevicemappings/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/iotdevicemappings/query".format(api_version,
+                                                                                  tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def iotdictionary_query(self, data, api_version="v2.0"):
+    def iotdictionary_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query the Device Dictionary (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **add:**  Type: boolean 
-           - **name:**  Type: string 
-           - **stale:**  Type: boolean 
-           - **type:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/iotdictionary/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/iotdictionary/query".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def iotservices(self, data, api_version="v2.0"):
+    def iotservices(self, data, tenant_id=None, api_version="v2.0"):
         """
         POST the confidence score of the mappings stored in the IOT portal (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4135,14 +5322,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/iotservices".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/iotservices".format(api_version,
+                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipfix(self, site_id, element_id, data, api_version="v2.0"):
+    def ipfix(self, site_id, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create a IPFix Config (v2.0)
 
@@ -4151,6 +5345,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4190,77 +5385,76 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/ipfix".format(api_version,
-                                                                                site_id,
-                                                                                element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/ipfix".format(api_version,
+                                                                                     tenant_id,
+                                                                                     site_id,
+                                                                                     element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipfix_query(self, data, api_version="v2.0"):
+    def ipfix_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of ipfix configs that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **collector_config:**           
-               - **host:**  Type: string 
-               - **host_port:**  Type: integer 
-               - **ipfixcollectorcontext_id:**  Type: string 
-               - **max_message_size:**  Type: integer 
-               - **protocol:**  Type: string 
-           - **description:**  Type: string 
-           - **element_id:**  Type: string 
-           - **export_cache_timeout:**  Type: integer 
-           - **filters:**           
-               - **app_def_ids:**  [Type: string] 
-               - **dst_ports:**           
-                   - **end:**  Type: string 
-                   - **start:**  Type: string 
-               - **dst_prefixes_id:**  Type: string 
-               - **ipfixfiltercontext_ids:**  [Type: string] 
-               - **priority_traffic_types:**  [Type: string] 
-               - **protocols:**  [Type: string] 
-               - **rtp_transport_type:**  Type: string 
-               - **src_ports:**           
-                   - **end:**  Type: string 
-                   - **start:**  Type: string 
-               - **src_prefixes_id:**  Type: string 
-               - **wan_path_direction:**  Type: string 
-           - **ipfixprofile_id:**  Type: string 
-           - **ipfixtemplate_id:**  Type: string 
-           - **name:**  Type: string 
-           - **sampler:**           
-               - **algorithm:**  Type: string 
-               - **time_interval:**  Type: integer 
-               - **time_spacing:**  Type: integer 
-           - **site_id:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfix/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfix/query".format(api_version,
+                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipfixcollectorcontexts(self, data, api_version="v2.0"):
+    def ipfixcollectorcontexts(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a IPFix Collector context (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4271,44 +5465,74 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixcollectorcontexts".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixcollectorcontexts".format(api_version,
+                                                                                 tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipfixcollectorcontexts_query(self, data, api_version="v2.0"):
+    def ipfixcollectorcontexts_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of ipfix collector context that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixcollectorcontexts/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixcollectorcontexts/query".format(api_version,
+                                                                                       tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipfixfiltercontexts(self, data, api_version="v2.0"):
+    def ipfixfiltercontexts(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a IPFix Filter context (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4319,44 +5543,74 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixfiltercontexts".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixfiltercontexts".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipfixfiltercontexts_query(self, data, api_version="v2.0"):
+    def ipfixfiltercontexts_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of ipfix filter context that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixfiltercontexts/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixfiltercontexts/query".format(api_version,
+                                                                                    tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipfixglobalprefixes(self, data, api_version="v2.0"):
+    def ipfixglobalprefixes(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a IPFix Global prefix (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4369,20 +5623,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixglobalprefixes".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixglobalprefixes".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipfixglobalprefixes_query(self, data, api_version="v2.0"):
+    def ipfixglobalprefixes_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         POST Ipfixglobalprefixes_Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4391,46 +5653,74 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixglobalprefixes/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixglobalprefixes/query".format(api_version,
+                                                                                    tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipfixlocalprefixes_query(self, data, api_version="v2.0"):
+    def ipfixlocalprefixes_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of ipfix site prefix association that match query (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **ipv4_prefixes:**  [Type: string] 
-           - **prefix_id:**  Type: string 
-           - **site_id:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixlocalprefixes/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixlocalprefixes/query".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipfixprofiles(self, data, api_version="v2.0"):
+    def ipfixprofiles(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a IPFix Profile (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4469,45 +5759,74 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixprofiles".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixprofiles".format(api_version,
+                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipfixprofiles_query(self, data, api_version="v2.0"):
+    def ipfixprofiles_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of ipfix profiles that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **ipv4_prefixes:**  [Type: string] 
-           - **prefix_id:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixprofiles/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixprofiles/query".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipfixtemplates(self, data, api_version="v2.0"):
+    def ipfixtemplates(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a IPFix template (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4524,46 +5843,67 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixtemplates".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixtemplates".format(api_version,
+                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipfixtemplates_query(self, data, api_version="v2.0"):
+    def ipfixtemplates_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of ipfix templates that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **ipv4_prefixes:**  [Type: string] 
-           - **prefix_id:**  Type: string 
+           - **description:**  Type: string 
+           - **flow_fields:**  [Type: string] 
+           - **generate_biflow:**  Type: boolean 
+           - **name:**  Type: string 
+           - **option_export_timeout:**  Type: integer 
+           - **options:**  [Type: string] 
            - **tags:**  [Type: string] 
+           - **template_export_timeout:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixtemplates/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixtemplates/query".format(api_version,
+                                                                               tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipsecprofiles(self, data, api_version="v2.2"):
+    def ipsecprofiles(self, data, tenant_id=None, api_version="v2.3"):
         """
-        Create a new IPSEC Profile (v2.2)
+        Create IPSEC Profile (v2.3) (v2.3)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
@@ -4586,6 +5926,14 @@ class Post(object):
                - **passphrase_encrypted:**  Type: string 
                - **peer_id_check:**  Type: string 
                - **permit_peer_id_mismatch:**  Type: boolean 
+               - **ppk_config:**           
+                   - **enabled:**  Type: boolean 
+                   - **mode:**  Type: string 
+                   - **ppk_key_id:**  Type: string 
+                   - **ppk_secret:**  Type: string 
+                   - **ppk_secret_configured:**  Type: boolean 
+                   - **ppk_secret_encrypted:**  Type: string 
+                   - **ppk_secret_hash:**  Type: string 
                - **private_key:**  Type: string 
                - **private_key_encrypted:**  Type: string 
                - **remote_ca_certificate:**  Type: string 
@@ -4614,17 +5962,53 @@ class Post(object):
            - **dpd_enable:**  Type: boolean 
            - **dpd_timeout:**  Type: integer 
            - **esp_group:**           
+               - **force_encapsulation:**  Type: boolean 
+               - **lifesize:**           
+                   - **units:**  Type: string 
+                   - **value:**  Type: integer 
                - **lifetime:**  Type: integer 
+               - **lifetime_units:**  Type: string 
+               - **mode:**  Type: string 
+               - **pqc_kem_config:**           
+                   - **enabled:**  Type: boolean 
+                   - **round_1_algorithms:**  [Type: string] 
+                   - **round_2_algorithms:**  [Type: string] 
+                   - **round_3_algorithms:**  [Type: string] 
+                   - **round_4_algorithms:**  [Type: string] 
+                   - **round_5_algorithms:**  [Type: string] 
+                   - **round_6_algorithms:**  [Type: string] 
+                   - **round_7_algorithms:**  [Type: string] 
                - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
+                   - **prf:**  Type: string 
+               - **responder_sase_proposals:**           
+                   - **dh_group:**  [Type: string] 
+                   - **encryption:**  [Type: string] 
+                   - **hash:**  [Type: string] 
            - **ike_group:**           
+               - **aggressive:**  Type: boolean 
+               - **authentication_multiple:**  Type: integer 
+               - **key_exchange:**  Type: string 
                - **lifetime:**  Type: integer 
+               - **lifetime_units:**  Type: string 
+               - **port:**  Type: integer 
+               - **pqc_kem_config:**           
+                   - **enabled:**  Type: boolean 
+                   - **round_1_algorithms:**  [Type: string] 
+                   - **round_2_algorithms:**  [Type: string] 
+                   - **round_3_algorithms:**  [Type: string] 
+                   - **round_4_algorithms:**  [Type: string] 
+                   - **round_5_algorithms:**  [Type: string] 
+                   - **round_6_algorithms:**  [Type: string] 
+                   - **round_7_algorithms:**  [Type: string] 
                - **proposals:**           
                    - **dh_groups:**  Type: string 
                    - **encryption:**  Type: string 
                    - **hash:**  Type: string 
+                   - **prf:**  Type: string 
+               - **reauth:**  Type: boolean 
            - **name:**  Type: string 
            - **tags:**  [Type: string] 
            - **used_for:**  Type: string 
@@ -4632,97 +6016,67 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipsecprofiles".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipsecprofiles".format(api_version,
+                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ipsecprofiles_query(self, data, api_version="v2.2"):
+    def ipsecprofiles_query(self, data, tenant_id=None, api_version="v2.3"):
         """
-        Queries db for limit number of tenant level ipsec profiles that match query params. (v2.2)
+        Queries db for limit number of tenant level ipsec profiles that match query params. (v2.3)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
-           - **authentication:**           
-               - **certificate:**  Type: string 
-               - **certificate_profile_id:**  Type: string 
-               - **comment:**  Type: string 
-               - **ikev1_params:**           
-                   - **xauth_id:**  Type: string 
-                   - **xauth_secret:**  Type: string 
-                   - **xauth_secret_encrypted:**  Type: string 
-                   - **xauth_secret_hash:**  Type: string 
-                   - **xauth_type:**  Type: string 
-               - **local_ca_certificate:**  Type: string 
-               - **local_id:**  Type: string 
-               - **local_id_custom:**  Type: string 
-               - **local_pa_certificate_id:**  Type: string 
-               - **pa_master_key_id:**  Type: string 
-               - **passphrase:**  Type: string 
-               - **passphrase_encrypted:**  Type: string 
-               - **peer_id_check:**  Type: string 
-               - **permit_peer_id_mismatch:**  Type: boolean 
-               - **private_key:**  Type: string 
-               - **private_key_encrypted:**  Type: string 
-               - **remote_ca_certificate:**  Type: string 
-               - **remote_id:**  Type: string 
-               - **secret:**  Type: string 
-               - **secret_encrypted:**  Type: string 
-               - **secret_hash:**  Type: string 
-               - **strict_validation_peer_extended_key_use:**  Type: boolean 
-               - **type:**  Type: string 
-               - **x509Objects:**           
-                   - **certHolder:**  Type: object 
-                   - **certificate:**  Type: string 
-                   - **is_local_ca_cert_set:**  Type: boolean 
-                   - **is_remote_ca_cert_set:**  Type: boolean 
-                   - **keyPair:**  Type: object 
-                   - **local_ca_certificate:**  Type: string 
-                   - **local_ca_certs_set:**  [Type: object] 
-                   - **passphrase:**  Type: string 
-                   - **pkcs12_certificate:**  Type: string 
-                   - **privateKey:**  Type: java.security.privatekey 
-                   - **private_key:**  Type: string 
-                   - **remote_ca_certificate:**  Type: string 
-                   - **remote_ca_certs_set:**  [Type: object] 
-           - **description:**  Type: string 
-           - **dpd_delay:**  Type: integer 
-           - **dpd_enable:**  Type: boolean 
-           - **dpd_timeout:**  Type: integer 
-           - **esp_group:**           
-               - **lifetime:**  Type: integer 
-               - **proposals:**           
-                   - **dh_groups:**  Type: string 
-                   - **encryption:**  Type: string 
-                   - **hash:**  Type: string 
-           - **ike_group:**           
-               - **lifetime:**  Type: integer 
-               - **proposals:**           
-                   - **dh_groups:**  Type: string 
-                   - **encryption:**  Type: string 
-                   - **hash:**  Type: string 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
-           - **used_for:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipsecprofiles/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipsecprofiles/query".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def lannetworks(self, site_id, data, api_version="v3.3"):
+    def lannetworks(self, site_id, data, tenant_id=None, api_version="v3.3"):
         """
         Create a new LAN (v3.3)
 
@@ -4730,6 +6084,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.3)
 
           **Payload Attributes:** 
@@ -4782,84 +6137,75 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/lannetworks".format(api_version,
-                                                                          site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/lannetworks".format(api_version,
+                                                                               tenant_id,
+                                                                               site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def lannetworks_query(self, data, api_version="v3.3"):
+    def lannetworks_query(self, data, tenant_id=None, api_version="v3.3"):
         """
         Query db for Site LAN networks that match query parameters (v3.3)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.3)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **ipv4_config:**           
-               - **default_routers:**  [Type: string] 
-               - **dhcp_relay:**           
-                   - **enabled:**  Type: boolean 
-                   - **option_82:**           
-                       - **circuit_id:**  Type: string 
-                       - **enabled:**  Type: boolean 
-                       - **reforwarding_policy:**  Type: string 
-                       - **remote_id:**  Type: string 
-                   - **server_ips:**  [Type: string] 
-                   - **source_interface:**  Type: string 
-               - **dhcp_server:**           
-                   - **broadcast_address:**  Type: string 
-                   - **custom_options:**           
-                       - **option_definition:**  Type: string 
-                       - **option_value:**  Type: string 
-                   - **default_lease_time:**  Type: integer 
-                   - **description:**  Type: string 
-                   - **disabled:**  Type: boolean 
-                   - **dns_servers:**  [Type: string] 
-                   - **domain_name:**  Type: string 
-                   - **gateway:**  Type: string 
-                   - **id:**  Type: string 
-                   - **ip_ranges:**           
-                       - **end_ip:**  Type: string 
-                       - **start_ip:**  Type: string 
-                   - **max_lease_time:**  Type: integer 
-                   - **network_context_id:**  Type: string 
-                   - **static_mappings:**           
-                       - **ip_address:**  Type: string 
-                       - **mac:**  Type: string 
-                       - **name:**  Type: string 
-                   - **subnet:**  Type: string 
-                   - **tags:**  [Type: string] 
-               - **prefixes:**  [Type: string] 
-           - **name:**  Type: string 
-           - **network_context_id:**  Type: string 
-           - **scope:**  Type: string 
-           - **site_id:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/lannetworks/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/lannetworks/query".format(api_version,
+                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def localprefixfilters(self, data, api_version="v2.0"):
+    def localprefixfilters(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new local prefix filter. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4870,33 +6216,62 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/localprefixfilters".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/localprefixfilters".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def localprefixfilters_query(self, data, api_version="v2.0"):
+    def localprefixfilters_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query DB for the list of params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/localprefixfilters/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/localprefixfilters/query".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -4918,18 +6293,19 @@ class Post(object):
 
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/login".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/login".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data, sensitive=True)
 
-    def machine_upgrade_query(self, data, api_version="v2.0"):
+    def machine_upgrade_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Machine Upgrade Config (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -4954,14 +6330,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/machine_upgrade/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/machine_upgrade/query".format(api_version,
+                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def machines_allocate_to_shell(self, machine_id, data, api_version="v2.0"):
+    def machines_allocate_to_shell(self, machine_id, data, tenant_id=None, api_version="v2.0"):
         """
         Allocate Element Shell to Machine (v2.0)
 
@@ -4969,6 +6352,7 @@ class Post(object):
 
           - **machine_id**: Machine ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5001,133 +6385,145 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/machines/{}/allocate_to_shell".format(api_version,
-                                                                                   machine_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/machines/{}/allocate_to_shell".format(api_version,
+                                                                                        tenant_id,
+                                                                                        machine_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def machines_query(self, data, api_version="v2.5"):
+    def machines_query(self, data, tenant_id=None, api_version="v2.5"):
         """
         Query and get machines of a tenant (v2.5)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
-           - **connected:**  Type: boolean 
-           - **console_conf_passphrase:**  Type: string 
-           - **element_shell_id:**  Type: string 
-           - **em_element_id:**  Type: string 
-           - **esp_tenant_id:**  Type: string 
-           - **hw_id:**  Type: string 
-           - **image_version:**  Type: string 
-           - **inventory_op:**  Type: string 
-           - **is_eval:**  Type: string 
-           - **machine_state:**  Type: string 
-           - **manufacture_id:**  Type: string 
-           - **model_name:**  Type: string 
-           - **ordering_info:**  Type: string 
-           - **owner_tenant_id:**  Type: string 
-           - **pki_op:**           
-               - **ca_list:**  [Type: string] 
-               - **operation:**  Type: string 
-           - **renew_state:**  Type: string 
-           - **sales_order_number:**  Type: string 
-           - **ship_state:**  Type: string 
-           - **sl_no:**  Type: string 
-           - **suspend_state:**  Type: string 
-           - **tenant_id:**  Type: string 
-           - **token:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/machines/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/machines/query".format(api_version,
+                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def migratecbtoezb(self, data, api_version="v2.0"):
+    def microsegments(self, site_id, data, tenant_id=None, api_version="v2.0"):
+        """
+        Create microsegment (v2.0)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **microsegmentation_enabled:**  Type: boolean 
+           - **site_id:**  Type: string 
+           - **vlan_ids:**  [Type: integer] 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/microsegments".format(api_version,
+                                                                                 tenant_id,
+                                                                                 site_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def migratecbtoezb(self, data, tenant_id=None, api_version="v2.0"):
         """
         Trigger migration API (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **compatible_sites:**           
-               - **site_id:**  Type: string 
-               - **site_name:**  Type: string 
-           - **current_step:**  Type: string 
-           - **failed_sites:**           
-               - **site_id:**  Type: string 
-               - **site_name:**  Type: string 
-           - **incompatible_sites:**           
-               - **errors:**           
-                   - **error:**  Type: string 
-                   - **error_message:**  Type: string 
-               - **site_id:**  Type: string 
-               - **site_name:**  Type: string 
-               - **tunnels:**           
-                   - **errors:**           
-                       - **error:**  Type: string 
-                       - **error_message:**  Type: string 
-                   - **ipsec_tunnel_id:**  Type: string 
-                   - **ipsec_tunnel_name:**  Type: string 
-                   - **servicelinks:**           
-                       - **bgppeer_id:**  Type: string 
-                       - **element_id:**  Type: string 
-                       - **error:**           
-                           - **error:**  Type: string 
-                           - **error_message:**  Type: string 
-                       - **ike_gateway_id:**  Type: string 
-                       - **ipsec_tunnel_id:**  Type: string 
-                       - **remote_network_id:**  Type: string 
-                       - **servicelink_id:**  Type: string 
-                       - **servicelink_name:**  Type: string 
-                       - **waninterface_id:**  Type: string 
-                   - **waninterface_id:**  Type: string 
+           - **dry_run:**  Type: boolean 
+           - **forced:**  Type: boolean 
            - **is_fawkes:**  Type: boolean 
-           - **job_id:**  Type: string 
-           - **migrated_sites:**           
-               - **site_id:**  Type: string 
-               - **site_name:**  Type: string 
-           - **status:**  Type: string 
-           - **steps:**           
-               - **attempts:**  Type: integer 
-               - **error:**  Type: string 
-               - **name:**  Type: string 
-               - **started_at:**  Type: integer 
-               - **status:**  Type: string 
+           - **retry:**  Type: boolean 
+           - **sdwan_only:**  Type: boolean 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/migratecbtoezb".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/migratecbtoezb".format(api_version,
+                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aaa_client_metrics(self, data, api_version="v2.0"):
+    def monitor_aaa_client_metrics(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Aaa_Client_Metrics API Function
+        POST Monitor Aaa Client Metrics API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5136,20 +6532,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aaa_client_metrics".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aaa_client_metrics".format(api_version,
+                                                                                     tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aaa_metrics(self, data, api_version="v2.0"):
+    def monitor_aaa_metrics(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Aaa_Metrics API Function
+        POST Monitor Aaa Metrics API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5158,20 +6562,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aaa_metrics".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aaa_metrics".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aaa_metrics_topn(self, data, api_version="v2.0"):
+    def monitor_aaa_metrics_topn(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Aaa_Metrics_Topn API Function
+        POST Monitor Aaa Metrics Topn API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5180,20 +6592,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aaa_metrics/topn".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aaa_metrics/topn".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_agg_bw_stats(self, data, api_version="v2.0"):
+    def monitor_agg_bw_stats(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Agg_Bw_Stats API Function
+        POST Monitor Agg Bw Stats API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5202,20 +6622,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/agg_bw_stats".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/agg_bw_stats".format(api_version,
+                                                                               tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aggregatebandwidth_query(self, data, api_version="v2.0"):
+    def monitor_aggregatebandwidth_query(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Aggregatebandwidth_Query API Function
+        POST Monitor Aggregatebandwidth Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5224,20 +6652,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregatebandwidth/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aggregatebandwidth/query".format(api_version,
+                                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aggregates(self, data, api_version="v3.0"):
+    def monitor_aggregates(self, data, tenant_id=None, api_version="v3.0"):
         """
         POST Monitor_Aggregates API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
@@ -5246,20 +6682,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aggregates".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aggregates_application_qos(self, data, api_version="v2.0"):
+    def monitor_aggregates_application_qos(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Aggregates_Application_Qos API Function
+        POST Monitor Aggregates Application Qos API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5268,20 +6712,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates/application/qos".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aggregates/application/qos".format(api_version,
+                                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aggregates_healthscore(self, data, api_version="v2.1"):
+    def monitor_aggregates_healthscore(self, data, tenant_id=None, api_version="v2.1"):
         """
-        POST Monitor_Aggregates_Healthscore API Function
+        POST Monitor Aggregates Healthscore API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -5290,20 +6742,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates/healthscore".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aggregates/healthscore".format(api_version,
+                                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aggregates_multicast_mroute(self, data, api_version="v2.0"):
+    def monitor_aggregates_multicast_mroute(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Aggregates_Multicast_Mroute API Function
+        POST Monitor Aggregates Multicast Mroute API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5312,20 +6772,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates/multicast/mroute".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aggregates/multicast/mroute".format(api_version,
+                                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aggregates_multicast_wan_neighbor(self, data, api_version="v2.0"):
+    def monitor_aggregates_multicast_wan_neighbor(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Aggregates_Multicast_Wan_Neighbor API Function
+        POST Monitor Aggregates Multicast Wan Neighbor API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5334,20 +6802,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aggregates/multicast/wan_neighbor".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aggregates/multicast/wan_neighbor".format(api_version,
+                                                                                                    tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aiops_aggregates(self, data, api_version="v2.1"):
+    def monitor_aiops_aggregates(self, data, tenant_id=None, api_version="v2.1"):
         """
-        POST Monitor_Aiops_Aggregates API Function
+        POST Monitor Aiops Aggregates API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -5356,20 +6832,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/aggregates".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aiops/aggregates".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aiops_anomaly(self, data, api_version="v2.0"):
+    def monitor_aiops_anomaly(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Aiops_Anomaly API Function
+        POST Monitor Aiops Anomaly API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5378,20 +6862,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/anomaly".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aiops/anomaly".format(api_version,
+                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aiops_forecast(self, data, api_version="v2.1"):
+    def monitor_aiops_forecast(self, data, tenant_id=None, api_version="v2.1"):
         """
-        POST Monitor_Aiops_Forecast API Function
+        POST Monitor Aiops Forecast API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -5400,20 +6892,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/forecast".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aiops/forecast".format(api_version,
+                                                                                 tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aiops_health(self, data, api_version="v2.0"):
+    def monitor_aiops_health(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Aiops_Health API Function
+        POST Monitor Aiops Health API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5422,20 +6922,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/health".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aiops/health".format(api_version,
+                                                                               tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aiops_object_stats(self, data, api_version="v2.1"):
+    def monitor_aiops_object_stats(self, data, tenant_id=None, api_version="v2.1"):
         """
-        POST Monitor_Aiops_Object_Stats API Function
+        POST Monitor Aiops Object Stats API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -5444,20 +6952,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/object_stats".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aiops/object_stats".format(api_version,
+                                                                                     tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_aiops_topn(self, data, api_version="v2.0"):
+    def monitor_aiops_topn(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Aiops_Topn API Function
+        POST Monitor Aiops Topn API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5466,20 +6982,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/aiops/topn".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/aiops/topn".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_app_acceleration(self, data, api_version="v2.0"):
+    def monitor_app_acceleration(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_App_Acceleration API Function
+        POST Monitor App Acceleration API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5488,20 +7012,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/app_acceleration".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/app_acceleration".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_application_qos_metrics(self, data, api_version="v2.0"):
+    def monitor_application_qos_metrics(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Application_Qos_Metrics API Function
+        POST Monitor Application Qos Metrics API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5510,20 +7042,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/application/qos_metrics".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/application/qos_metrics".format(api_version,
+                                                                                          tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_application_users(self, data, api_version="v2.0"):
+    def monitor_application_users(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Application_Users API Function
+        POST Monitor Application Users API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5532,20 +7072,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/application/users".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/application/users".format(api_version,
+                                                                                    tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_applicationstats_query(self, data, api_version="v2.0"):
+    def monitor_applicationstats_query(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Applicationstats_Query API Function
+        POST Monitor Applicationstats Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5554,20 +7102,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/applicationstats/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/applicationstats/query".format(api_version,
+                                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_applicationsummary_query(self, data, api_version="v2.0"):
+    def monitor_applicationsummary_query(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Applicationsummary_Query API Function
+        POST Monitor Applicationsummary Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5576,20 +7132,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/applicationsummary/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/applicationsummary/query".format(api_version,
+                                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_bulk_metrics(self, data, api_version="v2.0"):
+    def monitor_bulk_metrics(self, data, tenant_id=None, api_version="v2.0"):
         """
         POST Monitor_Bulk_Metrics API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5598,21 +7162,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/bulk_metrics".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/bulk_metrics".format(api_version,
+                                                                               tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_cellular_metrics(self, data, api_version="v2.0"):
+    def monitor_cellular_metrics(self, data, tenant_id=None, api_version="v2.1"):
         """
         POST Monitor_Cellular_Metrics API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -5620,20 +7192,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/cellular_metrics".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/cellular_metrics".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_cellular_metrics_topn(self, data, api_version="v2.0"):
+    def monitor_cellular_metrics_topn(self, data, tenant_id=None, api_version="v2.0"):
         """
         POST Monitor_Cellular_Metrics_Topn API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5642,21 +7222,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/cellular_metrics/topn".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/cellular_metrics/topn".format(api_version,
+                                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_flows(self, data, api_version="v3.11"):
+    def monitor_flows(self, data, tenant_id=None, api_version="v3.13"):
         """
         POST Monitor_Flows API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v3.11)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v3.13)
 
           **Payload Attributes:** 
 
@@ -5664,20 +7252,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/flows".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/flows".format(api_version,
+                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_insights(self, data, api_version="v2.0"):
+    def monitor_insights(self, data, tenant_id=None, api_version="v2.0"):
         """
         POST Monitor_Insights API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5686,20 +7282,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/monitor/insights".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/insights".format(api_version,
+                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_insightslist(self, data, api_version="v2.0"):
+    def monitor_insightslist(self, data, tenant_id=None, api_version="v2.0"):
         """
         POST Monitor_Insightslist API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5708,20 +7312,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/monitor/insightslist".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/insightslist".format(api_version,
+                                                                               tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_lqm_point_metrics(self, data, api_version="v2.0"):
+    def monitor_lqm_point_metrics(self, data, tenant_id=None, api_version="v2.0"):
         """
         POST Lqm_Point_Metrics_Monitor API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5730,130 +7342,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/lqm_point_metrics".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/lqm_point_metrics".format(api_version,
+                                                                                    tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_metrics(self, data, api_version="v2.6"):
+    def monitor_metrics(self, data, tenant_id=None, api_version="v2.7"):
         """
         POST Monitor_Metrics API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.6)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/metrics".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def monitor_metrics_probes(self, data, api_version="v2.0"):
-        """
-        POST Monitor_Metrics_Probes API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/metrics/probes".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def monitor_network_point_metrics(self, data, api_version="v2.0"):
-        """
-        POST Monitor_Network_Point_Metrics API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/network_point_metrics".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def monitor_network_point_metrics_bw(self, data, api_version="v2.0"):
-        """
-        POST Monitor_Network_Point_Metrics_Bw API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/network_point_metrics_bw".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def monitor_network_point_metrics_hs(self, data, api_version="v2.0"):
-        """
-        POST Monitor_Network_Point_Metrics_Hs API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/network_point_metrics_hs".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def monitor_object_stats(self, data, api_version="v2.7"):
-        """
-        POST Monitor_Object_Stats API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.7)
 
           **Payload Attributes:** 
@@ -5862,20 +7372,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/object_stats".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/metrics".format(api_version,
+                                                                          tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_probe_point_metrics(self, data, api_version="v2.0"):
+    def monitor_metrics_probes(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Probe_Point_Metrics API Function
+        POST Monitor Metrics Probes API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5884,20 +7402,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/probe_point_metrics".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/metrics/probes".format(api_version,
+                                                                                 tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_qos_metrics(self, data, api_version="v2.0"):
+    def monitor_network_point_metrics(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Qos_Metrics API Function
+        POST Monitor_Network_Point_Metrics API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5906,21 +7432,179 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/qos_metrics".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/network_point_metrics".format(api_version,
+                                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_sys_metrics(self, data, api_version="v2.3"):
+    def monitor_network_point_metrics_bw(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        POST Monitor Network Point Metrics Bw API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/network_point_metrics_bw".format(api_version,
+                                                                                           tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def monitor_network_point_metrics_hs(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        POST Monitor Network Point Metrics Hs API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/network_point_metrics_hs".format(api_version,
+                                                                                           tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def monitor_object_stats(self, data, tenant_id=None, api_version="v2.7"):
+        """
+        POST Monitor_Object_Stats API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.7)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/object_stats".format(api_version,
+                                                                               tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def monitor_probe_point_metrics(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        POST Monitor Probe Point Metrics API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/probe_point_metrics".format(api_version,
+                                                                                      tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def monitor_qos_metrics(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        POST Monitor Qos Metrics API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/qos_metrics".format(api_version,
+                                                                              tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def monitor_sys_metrics(self, data, tenant_id=None, api_version="v2.4"):
         """
         POST Monitor_Sys_Metrics API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.3)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.4)
 
           **Payload Attributes:** 
 
@@ -5928,20 +7612,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/sys_metrics".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/sys_metrics".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_sys_metrics_topn(self, data, api_version="v2.1"):
+    def monitor_sys_metrics_topn(self, data, tenant_id=None, api_version="v2.1"):
         """
         POST Topn_Sys_Metrics_Monitor API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -5950,20 +7642,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/sys_metrics/topn".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/sys_metrics/topn".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_sys_point_metrics(self, data, api_version="v2.0"):
+    def monitor_sys_point_metrics(self, data, tenant_id=None, api_version="v2.0"):
         """
         POST Monitor_Sys_Point_Metrics API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -5972,20 +7672,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/sys_point_metrics".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/sys_point_metrics".format(api_version,
+                                                                                    tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_topn(self, data, api_version="v3.1"):
+    def monitor_topn(self, data, tenant_id=None, api_version="v3.1"):
         """
         POST Monitor_Topn API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.1)
 
           **Payload Attributes:** 
@@ -5994,20 +7702,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/topn".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/topn".format(api_version,
+                                                                       tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def monitor_topn_traffic_vol_query(self, data, api_version="v2.0"):
+    def monitor_topn_traffic_vol_query(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Monitor_Topn_Traffic_Vol_Query API Function
+        POST Monitor Topn Traffic Vol Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6016,14 +7732,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
-        cur_ctlr = self._parent_class.controller
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.cdl_url
 
-        url = str(cur_ctlr) + "/sdwan/monitor/{}/api/monitor/topn_traffic_vol/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/monitor/topn_traffic_vol/query".format(api_version,
+                                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def mstp_instances(self, site_id, element_id, data, api_version="v2.0"):
+    def mstp_instances(self, site_id, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create a MSTP Instance (v2.0)
 
@@ -6032,6 +7755,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6045,109 +7769,168 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/mstp_instances".format(api_version,
-                                                                                         site_id,
-                                                                                         element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/mstp_instances".format(api_version,
+                                                                                              tenant_id,
+                                                                                              site_id,
+                                                                                              element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def mstp_instances_query(self, data, api_version="v2.0"):
+    def mstp_instances_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of MSTP Instances that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **instance_number:**  Type: integer 
-           - **instance_priority:**  Type: integer 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/mstp_instances/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/mstp_instances/query".format(api_version,
+                                                                               tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def multicastdynamicrps_query(self, data, api_version="v2.0"):
+    def multicastdynamicrps_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Multicast Dynamic RPs (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **dynamic_rps:**           
-               - **groups:**           
-                   - **ipv4_prefix:**  Type: string 
-                   - **is_active_rp:**  Type: boolean 
-               - **ipv4_address:**  Type: string 
-               - **type:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/multicastdynamicrps/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/multicastdynamicrps/query".format(api_version,
+                                                                                    tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def multicastigmpmemberships_query(self, data, api_version="v2.0"):
+    def multicastigmpmemberships_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Multicast IGMP group membership information (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **element_id:**  Type: string 
-           - **igmp_group_members:**           
-               - **fwd:**  Type: string 
-               - **group:**  Type: string 
-               - **source:**  Type: string 
-               - **timeout:**  Type: string 
-               - **uptime:**  Type: string 
-           - **interface_id:**  Type: string 
-           - **name:**  Type: string 
-           - **site_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/multicastigmpmemberships/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/multicastigmpmemberships/query".format(api_version,
+                                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def multicastpeergroups(self, data, api_version="v2.1"):
+    def multicastpeergroups(self, data, tenant_id=None, api_version="v2.1"):
         """
         Create multicast peer group (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -6162,308 +7945,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/multicastpeergroups".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/multicastpeergroups".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def multicastroutes_query(self, data, api_version="v2.0"):
+    def multicastroutes_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Multicast route table (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **element_id:**  Type: string 
-           - **mroutes:**           
-               - **element_rp:**  Type: boolean 
-               - **flags:**  Type: string 
-               - **group:**  Type: string 
-               - **incoming_interface:**  Type: string 
-               - **outgoing_interfaces:**  [Type: string] 
-               - **rp_address:**  Type: string 
-               - **source:**  Type: string 
-           - **site_id:**  Type: string 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/multicastroutes/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def multicastrps(self, site_id, element_id, data, api_version="v2.0"):
-        """
-        Creates Multicast RP config (v2.0)
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **element_id**: Element (Device) ID
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **description:**  Type: string 
-           - **groups:**           
-               - **ipv4_prefix:**  Type: string 
-               - **is_active_rp:**  Type: boolean 
-           - **ipv4_address:**  Type: string 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/multicastrps".format(api_version,
-                                                                                       site_id,
-                                                                                       element_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def multicastrps_query(self, data, api_version="v2.0"):
-        """
-        Query Multicast RP config (v2.0)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **description:**  Type: string 
-           - **groups:**           
-               - **ipv4_prefix:**  Type: string 
-               - **is_active_rp:**  Type: boolean 
-           - **ipv4_address:**  Type: string 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/multicastrps/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def multicastsourcesiderps_query(self, site_id, data, api_version="v2.0"):
-        """
-        Query multicast source side RPs (v2.0)
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **source_side_rps:**           
-               - **groups:**           
-                   - **ipv4_prefix:**  Type: string 
-                   - **source_ipv4_address:**  Type: string 
-               - **ipv4_address:**  Type: string 
-           - **source_site_id:**  Type: string 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/multicastsourcesiderps/query".format(api_version,
-                                                                                           site_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def multicastsourcesiteconfigs(self, site_id, data, api_version="v2.0"):
-        """
-        Create multicast source site config (v2.0)
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **site_configs:**           
-               - **group_ipv4_prefix:**  Type: string 
-               - **source_ipv4_address:**  Type: string 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/multicastsourcesiteconfigs".format(api_version,
-                                                                                         site_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def multicaststatus_query(self, data, api_version="v2.0"):
-        """
-        Query Multicast status information (v2.0)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **address:**  Type: string 
-           - **element_id:**  Type: string 
-           - **interface_id:**  Type: string 
-           - **name:**  Type: string 
-           - **pim_neighbors:**           
-               - **address:**  Type: string 
-               - **dr:**  Type: boolean 
-               - **dr_prio:**  Type: string 
-               - **expires:**  Type: string 
-               - **uptime:**  Type: string 
-           - **site_id:**  Type: string 
-           - **state:**  Type: string 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/multicaststatus/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def multicastwanstatus_query(self, data, api_version="v2.0"):
-        """
-        Query Multicast WAN status (v2.0)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **pim_neighbors:**           
-               - **remote_site_id:**  Type: string 
-               - **state:**  Type: string 
-               - **uptime:**  Type: string 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/multicastwanstatus/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def natglobalprefixes(self, data, api_version="v2.0"):
-        """
-        Create a new NAT global prefix. (v2.0)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **description:**  Type: string 
-           - **ipv4_prefixes:**  [Type: string] 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/natglobalprefixes".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def natglobalprefixes_query(self, data, api_version="v2.0"):
-        """
-        Query Global Prefixes. (v2.0)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **description:**  Type: string 
-           - **ipv4_prefixes:**  [Type: string] 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/natglobalprefixes/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def natlocalprefixes(self, data, api_version="v2.0"):
-        """
-        Create a new NAT local prefix. (v2.0)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/natlocalprefixes".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def natlocalprefixes_query(self, data, api_version="v2.0"):
-        """
-        Query site local prefixes. (v2.0)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6488,20 +7991,437 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natlocalprefixes/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/multicastroutes/query".format(api_version,
+                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def natpolicypools(self, data, api_version="v2.0"):
+    def multicastrps(self, site_id, element_id, data, tenant_id=None, api_version="v2.0"):
+        """
+        Creates Multicast RP config (v2.0)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **description:**  Type: string 
+           - **groups:**           
+               - **ipv4_prefix:**  Type: string 
+               - **is_active_rp:**  Type: boolean 
+           - **ipv4_address:**  Type: string 
+           - **name:**  Type: string 
+           - **tags:**  [Type: string] 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/multicastrps".format(api_version,
+                                                                                            tenant_id,
+                                                                                            site_id,
+                                                                                            element_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def multicastrps_query(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query Multicast RP config (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/multicastrps/query".format(api_version,
+                                                                             tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def multicastsourcesiderps_query(self, site_id, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query multicast source side RPs (v2.0)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/multicastsourcesiderps/query".format(api_version,
+                                                                                                tenant_id,
+                                                                                                site_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def multicastsourcesiteconfigs(self, site_id, data, tenant_id=None, api_version="v2.0"):
+        """
+        Create multicast source site config (v2.0)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **site_configs:**           
+               - **group_ipv4_prefix:**  Type: string 
+               - **source_ipv4_address:**  Type: string 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/multicastsourcesiteconfigs".format(api_version,
+                                                                                              tenant_id,
+                                                                                              site_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def multicaststatus_query(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query Multicast status information (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/multicaststatus/query".format(api_version,
+                                                                                tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def multicastwanstatus_query(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query Multicast WAN status (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/multicastwanstatus/query".format(api_version,
+                                                                                   tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def natglobalprefixes(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Create a new NAT global prefix. (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **description:**  Type: string 
+           - **ipv4_prefixes:**  [Type: string] 
+           - **name:**  Type: string 
+           - **tags:**  [Type: string] 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natglobalprefixes".format(api_version,
+                                                                            tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def natglobalprefixes_query(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query Global Prefixes. (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natglobalprefixes/query".format(api_version,
+                                                                                  tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def natlocalprefixes(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Create a new NAT local prefix. (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **description:**  Type: string 
+           - **name:**  Type: string 
+           - **tags:**  [Type: string] 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natlocalprefixes".format(api_version,
+                                                                           tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def natlocalprefixes_query(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query site local prefixes. (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **ipv4_prefixes:**  [Type: string] 
+           - **prefix_id:**  Type: string 
+           - **site_id:**  Type: string 
+           - **tags:**  [Type: string] 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natlocalprefixes/query".format(api_version,
+                                                                                 tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def natpolicypools(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new NATPolicy Pool. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6513,20 +8433,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicypools".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natpolicypools".format(api_version,
+                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def natpolicypools_query(self, data, api_version="v2.0"):
+    def natpolicypools_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query NAT policy pools. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6538,14 +8466,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicypools/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natpolicypools/query".format(api_version,
+                                                                               tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def natpolicyrules(self, natpolicyset_id, data, api_version="v2.0"):
+    def natpolicyrules(self, natpolicyset_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new NAT Policy Rule (v2.0)
 
@@ -6553,6 +8488,7 @@ class Post(object):
 
           - **natpolicyset_id**: NAT Policy Set ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6631,64 +8567,75 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicysets/{}/natpolicyrules".format(api_version,
-                                                                                     natpolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natpolicysets/{}/natpolicyrules".format(api_version,
+                                                                                          tenant_id,
+                                                                                          natpolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def natpolicyrules_query(self, data, api_version="v2.0"):
+    def natpolicyrules_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query NAT policy rules. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **actions:**           
-               - **nat_pool_id:**  Type: string 
-               - **port:**  Type: integer 
-               - **protocols:**  [Type: string] 
-               - **type:**  Type: string 
-           - **description:**  Type: string 
-           - **destination_ports:**           
-               - **from:**  Type: integer 
-               - **to:**  Type: integer 
-           - **destination_prefixes_id:**  Type: string 
-           - **destination_zone_id:**  Type: string 
-           - **enabled:**  Type: boolean 
-           - **name:**  Type: string 
-           - **policyset_id:**  Type: string 
-           - **protocol:**  Type: integer 
-           - **source_ports:**           
-               - **from:**  Type: integer 
-               - **to:**  Type: integer 
-           - **source_prefixes_id:**  Type: string 
-           - **source_zone_id:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicyrules/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natpolicyrules/query".format(api_version,
+                                                                               tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def natpolicysets(self, data, api_version="v2.0"):
+    def natpolicysets(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new NAT Policy Set (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6784,20 +8731,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicysets".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natpolicysets".format(api_version,
+                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def natpolicysets_query(self, data, api_version="v2.0"):
+    def natpolicysets_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query policy sets. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6812,20 +8767,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicysets/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natpolicysets/query".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def natpolicysetstacks(self, data, api_version="v2.0"):
+    def natpolicysetstacks(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new NATPolicySet Stack (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6839,47 +8802,74 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicysetstacks".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natpolicysetstacks".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def natpolicysetstacks_query(self, data, api_version="v2.0"):
+    def natpolicysetstacks_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query policyset stacks. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **default_policysetstack:**  Type: boolean 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **policyset_ids:**  [Type: string] 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natpolicysetstacks/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natpolicysetstacks/query".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def natzones(self, data, api_version="v2.0"):
+    def natzones(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a Nat Policy Zone. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6898,46 +8888,73 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natzones".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natzones".format(api_version,
+                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def natzones_query(self, data, api_version="v2.0"):
+    def natzones_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query NAT policy zones. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **default_for_public_interfaces:**  Type: boolean 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**           
+               - **<field_name>|comparator:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/natzones/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/natzones/query".format(api_version,
+                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkcontexts(self, data, api_version="v2.0"):
+    def networkcontexts(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new LAN segment (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6948,20 +8965,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkcontexts".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkcontexts".format(api_version,
+                                                                          tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkcontexts_query(self, data, api_version="v2.0"):
+    def networkcontexts_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of network contexts that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -6972,20 +8997,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkcontexts/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkcontexts/query".format(api_version,
+                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicyglobalprefixes(self, data, api_version="v2.1"):
+    def networkpolicyglobalprefixes(self, data, tenant_id=None, api_version="v2.1"):
         """
         Create a new global prefix. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -6999,75 +9032,122 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicyglobalprefixes".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicyglobalprefixes".format(api_version,
+                                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicyglobalprefixes_query(self, data, api_version="v2.1"):
+    def networkpolicyglobalprefixes_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Query Network Global Prefixes. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **ipv4_prefixes:**  [Type: string] 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicyglobalprefixes/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicyglobalprefixes/query".format(api_version,
+                                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicylocalprefixes_query(self, data, api_version="v2.1"):
+    def networkpolicylocalprefixes_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Query site network prefix association. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **ipv4_prefixes:**  [Type: string] 
-           - **ipv6_prefixes:**  [Type: string] 
-           - **prefix_id:**  Type: string 
-           - **site_id:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicylocalprefixes/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicylocalprefixes/query".format(api_version,
+                                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicyrules(self, networkpolicyset_id, data, api_version="v2.4"):
+    def networkpolicyrules(self, networkpolicyset_id, data, tenant_id=None, api_version="v2.5"):
         """
-        Create a new NetworkPolicyRule (v2.4)
+        Create a new NetworkPolicyRule (v2.5)
 
           **Parameters:**:
 
           - **networkpolicyset_id**: Network Policy Set ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.4)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
@@ -7109,22 +9189,30 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicysets/{}/networkpolicyrules".format(api_version,
-                                                                                             networkpolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicysets/{}/networkpolicyrules".format(api_version,
+                                                                                                  tenant_id,
+                                                                                                  networkpolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicyrules_query(self, data, api_version="v2.4"):
+    def networkpolicyrules_query(self, data, tenant_id=None, api_version="v2.5"):
         """
-        Query Network policy rules. (v2.4)
+        Query Network policy rules. (v2.5)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.4)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
@@ -7150,6 +9238,7 @@ class Post(object):
                - **l3_failure_paths:**           
                    - **label:**  Type: string 
                    - **path_type:**  Type: string 
+           - **policyset_id:**  Type: string 
            - **service_context:**           
                - **active_service_label_id:**  Type: string 
                - **active_service_label_type:**  Type: string 
@@ -7166,20 +9255,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicyrules/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicyrules/query".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicysets(self, data, api_version="v2.0"):
+    def networkpolicysets(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new NetworkPolicySet (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -7228,20 +9325,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicysets".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicysets".format(api_version,
+                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicysets_query(self, data, api_version="v2.0"):
+    def networkpolicysets_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Network policy sets. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -7255,20 +9360,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicysets/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicysets/query".format(api_version,
+                                                                                  tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicysetstacks(self, data, api_version="v2.0"):
+    def networkpolicysetstacks(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new NetworkPolicySetStack (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -7358,70 +9471,119 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicysetstacks".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicysetstacks".format(api_version,
+                                                                                 tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networkpolicysetstacks_query(self, data, api_version="v2.0"):
+    def networkpolicysetstacks_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query network policyset stacks. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **default_policysetstack:**  Type: boolean 
-           - **defaultrule_policyset_id:**  Type: string 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **policyset_ids:**  [Type: string] 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicysetstacks/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicysetstacks/query".format(api_version,
+                                                                                       tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def networks_bulk_config_state_query(self, data, api_version="v2.0"):
+    def networks_bulk_config_state_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Get all config/state info for given network from NB (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**           
+               - **<field_name>|comparator:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networks/bulk_config_state/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networks/bulk_config_state/query".format(api_version,
+                                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicyglobalprefixes(self, data, api_version="v2.1"):
+    def ngfwsecuritypolicyglobalprefixes(self, data, tenant_id=None, api_version="v2.1"):
         """
         Create an Security Policy V2 Global Prefix (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -7435,46 +9597,63 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicyglobalprefixes".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicyglobalprefixes".format(api_version,
+                                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicyglobalprefixes_query(self, data, api_version="v2.1"):
+    def ngfwsecuritypolicyglobalprefixes_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Query Security Policy V2 Global Prefixes of a tenant (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
            - **description:**  Type: string 
            - **ipv4_prefixes:**  [Type: string] 
+           - **ipv6_prefixes:**  [Type: string] 
            - **name:**  Type: string 
            - **tags:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicyglobalprefixes/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicyglobalprefixes/query".format(api_version,
+                                                                                                 tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicylocalprefixes(self, data, api_version="v2.0"):
+    def ngfwsecuritypolicylocalprefixes(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create an Security Policy V2 Local Prefix (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -7486,41 +9665,67 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicylocalprefixes".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicylocalprefixes".format(api_version,
+                                                                                          tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicylocalprefixes_query(self, data, api_version="v2.1"):
+    def ngfwsecuritypolicylocalprefixes_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Query security policy v2 local prefix site associations of a tenant (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **ipv4_prefixes:**  [Type: string] 
-           - **ipv6_prefixes:**  [Type: string] 
-           - **prefix_id:**  Type: string 
-           - **site_id:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicylocalprefixes/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicylocalprefixes/query".format(api_version,
+                                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, data, api_version="v2.3"):
+    def ngfwsecuritypolicyrules(self, ngfwsecuritypolicyset_id, data, tenant_id=None, api_version="v2.3"):
         """
         Create a Security Policy V2 Rule under a policy set (v2.3)
 
@@ -7528,6 +9733,7 @@ class Post(object):
 
           - **ngfwsecuritypolicyset_id**: NGFW Security Policy Set ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
@@ -7560,21 +9766,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicysets/{}/ngfwsecuritypolicyrules".format(api_version,
-                                                                                                       ngfwsecuritypolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicysets/{}/ngfwsecuritypolicyrules".format(api_version,
+                                                                                                            tenant_id,
+                                                                                                            ngfwsecuritypolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicyrules_query(self, data, api_version="v2.3"):
+    def ngfwsecuritypolicyrules_query(self, data, tenant_id=None, api_version="v2.3"):
         """
         Query security policy v2 rules of a tenant (v2.3)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
@@ -7608,20 +9822,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicyrules/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicyrules/query".format(api_version,
+                                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicysets(self, data, api_version="v2.0"):
+    def ngfwsecuritypolicysets(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a Security Policy V2 Set (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -7636,48 +9858,74 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicysets".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicysets".format(api_version,
+                                                                                 tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicysets_query(self, data, api_version="v2.0"):
+    def ngfwsecuritypolicysets_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query security policy v2 sets of a tenant (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **clone_from:**  Type: string 
-           - **defaultrule_policyset:**  Type: boolean 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **policyrule_order:**  [Type: string] 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicysets/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicysets/query".format(api_version,
+                                                                                       tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicysetstacks(self, data, api_version="v2.0"):
+    def ngfwsecuritypolicysetstacks(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a Security Policy V2 Set Stack (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -7691,56 +9939,85 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicysetstacks".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicysetstacks".format(api_version,
+                                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ngfwsecuritypolicysetstacks_query(self, data, api_version="v2.0"):
+    def ngfwsecuritypolicysetstacks_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Security Policy V2 Set stacks of a tenant (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **defaultrule_policyset_id:**  Type: string 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **policyset_ids:**  [Type: string] 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ngfwsecuritypolicysetstacks/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ngfwsecuritypolicysetstacks/query".format(api_version,
+                                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ospfconfigs(self, site_id, element_id, data, api_version="v2.0"):
+    def ospfconfigs(self, site_id, element_id, data, tenant_id=None, api_version="v2.1"):
         """
-        Creates OSPF config (v2.0)
+        Creates OSPF config (v2.1)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **advertise_fabric_default_route:**  Type: boolean 
            - **areas:**           
                - **area_id:**  Type: integer 
                - **area_type:**  Type: string 
+           - **cost_for_default_route:**  Type: integer 
            - **description:**  Type: string 
            - **interfaces:**           
                - **area_id:**  Type: integer 
@@ -7767,107 +10044,161 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/ospfconfigs".format(api_version,
-                                                                                      site_id,
-                                                                                      element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/ospfconfigs".format(api_version,
+                                                                                           tenant_id,
+                                                                                           site_id,
+                                                                                           element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ospfconfigs_query(self, data, api_version="v2.0"):
+    def ospfconfigs_query(self, data, tenant_id=None, api_version="v2.1"):
         """
-        Query OSPF config (v2.0)
+        Query OSPF config (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
-          **Payload Attributes:**
+          **Payload Attributes:** 
 
-           - **areas:**
-               - **area_id:**  Type: integer
-               - **area_type:**  Type: string
-           - **description:**  Type: string
-           - **interfaces:**
-               - **area_id:**  Type: integer
-               - **interface_id:**  Type: string
-               - **ospf_config_override:**
-                   - **cost:**  Type: integer
-                   - **dead_interval:**  Type: integer
-                   - **hello_interval:**  Type: integer
-                   - **md5_key_id:**  Type: integer
-                   - **md5_secret:**  Type: string
-                   - **retransmit_interval:**  Type: integer
-                   - **transmit_delay:**  Type: integer
-           - **name:**  Type: string
-           - **prefix_adv_route_map_id:**  Type: string
-           - **prefix_adv_type_to_lan:**  Type: string
-           - **redistribute_bgp:**  Type: boolean
-           - **redistribute_route_map_id:**  Type: string
-           - **router_id:**  Type: string
-           - **scope:**  Type: string
-           - **shutdown:**  Type: boolean
-           - **tags:**  [Type: string]
-           - **vrf_context_id:**  Type: string
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ospfconfigs/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ospfconfigs/query".format(api_version,
+                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ospfdiscoveredneighbors_query(self, data, api_version="v2.0"):
+    def ospfdiscoveredneighbors_query(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Ospfdiscoveredneighbors_Query API Function
+        Queries the OSPF discovered neighbors (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ospfdiscoveredneighbors/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ospfdiscoveredneighbors/query".format(api_version,
+                                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ospfreachableprefixes_query(self, data, api_version="v2.0"):
+    def ospfreachableprefixes_query(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Ospfreachableprefixes_Query API Function
+        Queries the OSPF reachable prefixes (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ospfreachableprefixes/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ospfreachableprefixes/query".format(api_version,
+                                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def otpaccess(self, element_id, data, api_version="v2.0"):
+    def otpaccess(self, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Verify Challenge phrase and generate response phrase (v2.0)
 
@@ -7875,6 +10206,7 @@ class Post(object):
 
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -7885,21 +10217,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/otpaccess".format(api_version,
-                                                                           element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/otpaccess".format(api_version,
+                                                                                tenant_id,
+                                                                                element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def password_change(self, data, api_version="v2.0"):
+    def password_change(self, data, tenant_id=None, api_version="v2.0"):
         """
         Allows one to change password (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -7911,20 +10251,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/accounts/password/change".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/accounts/password/change".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def pathgroups(self, data, api_version="v2.1"):
+    def pathgroups(self, data, tenant_id=None, api_version="v2.1"):
         """
         Create a Path Group for a tenant. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -7938,201 +10286,291 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/pathgroups".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/pathgroups".format(api_version,
+                                                                     tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def pathgroups_query(self, data, api_version="v2.1"):
+    def pathgroups_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Queries db for limit number of network contexts that match query params. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **paths:**           
-               - **label:**  Type: string 
-               - **path_type:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/pathgroups/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/pathgroups/query".format(api_version,
+                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def pathprefixdistributionfilterassociation(self, site_id, data, api_version="v2.0"):
+    def pathprefixdistributionfilterassociation(self, site_id, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Pathprefixdistributionfilterassociation API Function
+        Create Path Prefix Distribution Filter Association  List (v2.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/pathprefixdistributionfilterassociation".format(api_version,
-                                                                                                      site_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def pathprefixdistributionfilterassociation_query(self, data, api_version="v2.0"):
-        """
-        POST Pathprefixdistributionfilterassociation_Query API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/pathprefixdistributionfilterassociation/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def pathprefixdistributionfilters(self, site_id, data, api_version="v2.0"):
-        """
-        POST Pathprefixdistributionfilters API Function
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/pathprefixdistributionfilters".format(api_version,
-                                                                                            site_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def pathprefixdistributionfilters_query(self, data, api_version="v2.0"):
-        """
-        POST Pathprefixdistributionfilters_Query API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/pathprefixdistributionfilters/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def perfmgmtpolicyrules_query(self, data, api_version="v2.2"):
-        """
-        Query PERFMGMT policy rules V2.2. (v2.2)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.2)
-
-          **Payload Attributes:** 
-
-           - **actions:**           
-               - **action_type:**  Type: string 
-               - **app_perf:**           
-                   - **bad_health_thresholds:**           
-                       - **clear_below:**  Type: integer 
-                       - **raise_above:**  Type: integer 
-                   - **monitoring_approach:**  Type: string 
-               - **circuit_utilization_perf:**           
-                   - **bad_health_thresholds:**           
-                       - **clear_below:**  Type: integer 
-                       - **raise_above:**  Type: integer 
-                   - **monitoring_approach:**  Type: string 
-               - **lqm_perf:**           
-                   - **bad_health_thresholds:**           
-                       - **clear_below:**  Type: integer 
-                       - **raise_above:**  Type: integer 
-                   - **monitoring_approach:**  Type: string 
-               - **probe_perf:**           
-                   - **bad_health_thresholds:**           
-                       - **clear_below:**  Type: integer 
-                       - **raise_above:**  Type: integer 
-                   - **monitoring_approach:**  Type: string 
-               - **sys_perf:**           
-                   - **bad_health_thresholds:**           
-                       - **clear_below:**  Type: integer 
-                       - **raise_above:**  Type: integer 
-                   - **monitoring_approach:**  Type: string 
-           - **app_filters:**           
-               - **app_transfer_types:**  [Type: string] 
-               - **application_ids:**  [Type: string] 
            - **description:**  Type: string 
-           - **enabled:**  Type: boolean 
            - **name:**  Type: string 
-           - **path_filters:**           
-               - **label:**  Type: string 
-               - **path_type:**  Type: string 
-           - **service_label_ids:**  [Type: string] 
+           - **path_prefix_distribution_filter_id:**  Type: string 
+           - **peer_site_ids:**  [Type: string] 
            - **tags:**  [Type: string] 
-           - **thresholdprofile_id:**  Type: string 
-           - **type:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicyrules/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/pathprefixdistributionfilterassociation".format(api_version,
+                                                                                                           tenant_id,
+                                                                                                           site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def perfmgmtpolicysets(self, data, api_version="v2.0"):
+    def pathprefixdistributionfilterassociation_query(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Queries the Path Prefix Distribution Filter Association (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/pathprefixdistributionfilterassociation/query".format(api_version,
+                                                                                                        tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def pathprefixdistributionfilters(self, site_id, data, tenant_id=None, api_version="v2.0"):
+        """
+        Create Path Prefix Distribution Filters List (v2.0)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **description:**  Type: string 
+           - **name:**  Type: string 
+           - **path_prefix_filter_list:**           
+               - **path_prefix_filters:**           
+                   - **ipv4_prefix:**  Type: string 
+                   - **ipv6_prefix:**  Type: string 
+                   - **order:**  Type: integer 
+                   - **permit:**  Type: boolean 
+               - **vrf_context_id:**  Type: string 
+           - **tags:**  [Type: string] 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/pathprefixdistributionfilters".format(api_version,
+                                                                                                 tenant_id,
+                                                                                                 site_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def pathprefixdistributionfilters_query(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Queries the Path Prefix Distribution Filter List (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/pathprefixdistributionfilters/query".format(api_version,
+                                                                                              tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def perfmgmtpolicyrules_query(self, data, tenant_id=None, api_version="v2.3"):
+        """
+        Query PERFMGMT policy rules V2.3. (v2.3)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.3)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/perfmgmtpolicyrules/query".format(api_version,
+                                                                                    tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def perfmgmtpolicysets(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new PERFMGMT Policy Set (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -8209,22 +10647,30 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysets".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/perfmgmtpolicysets".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, data, api_version="v2.2"):
+    def perfmgmtpolicysets_perfmgmtpolicyrules(self, perfmgmtpolicyset_id, data, tenant_id=None, api_version="v2.3"):
         """
-        Create a new PERFMGMT Policy Rule V2.2 (v2.2)
+        Create a new PERFMGMT Policy Rule V2.3 (v2.3)
 
           **Parameters:**:
 
           - **perfmgmtpolicyset_id**: Performance Management Policy Set ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.2)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
@@ -8274,21 +10720,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysets/{}/perfmgmtpolicyrules".format(api_version,
-                                                                                               perfmgmtpolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/perfmgmtpolicysets/{}/perfmgmtpolicyrules".format(api_version,
+                                                                                                    tenant_id,
+                                                                                                    perfmgmtpolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def perfmgmtpolicysets_query(self, data, api_version="v2.0"):
+    def perfmgmtpolicysets_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query PERFMGMT Policy Set (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -8365,20 +10819,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysets/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/perfmgmtpolicysets/query".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def perfmgmtpolicysetstacks(self, data, api_version="v2.0"):
+    def perfmgmtpolicysetstacks(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new PERFMGMT Policy Set Stack (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -8393,20 +10855,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysetstacks".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/perfmgmtpolicysetstacks".format(api_version,
+                                                                                  tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def perfmgmtpolicysetstacks_query(self, data, api_version="v2.0"):
+    def perfmgmtpolicysetstacks_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query PERFMGMT Policy Set Stack (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -8421,88 +10891,73 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtpolicysetstacks/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/perfmgmtpolicysetstacks/query".format(api_version,
+                                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def perfmgmtthresholdprofiles(self, data, api_version="v2.1"):
+    def perfmgmtthresholdprofiles(self, data, tenant_id=None, api_version="v2.1"):
         """
         Create a new Threshold Profile (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **circuit_utilization_metrics_thresholds:**           
-               - **percentage_circuit_utilization:**  Type: integer 
            - **description:**  Type: string 
-           - **disabled:**  Type: boolean 
-           - **disabled_reason:**  Type: string 
-           - **flow_metrics_thresholds:**           
-               - **percentage_flow_utilization:**  Type: integer 
            - **hard_limit_app_metrics:**           
                - **max_init_failure_rate:**  Type: integer 
                - **max_rtt:**  Type: integer 
                - **udp_trt:**  Type: integer 
-           - **inactive:**  Type: boolean 
-           - **inactive_reason:**  Type: string 
-           - **is_default:**  Type: boolean 
            - **lqm_thresholds:**           
                - **max_jitter:**  Type: integer 
                - **max_latency:**  Type: integer 
                - **max_packet_loss:**  Type: integer 
            - **name:**  Type: string 
-           - **region:**  Type: string 
            - **soft_limit_app_metrics:**           
                - **max_init_failure_rate:**  Type: integer 
                - **max_rtt:**  Type: integer 
                - **udp_trt:**  Type: integer 
-           - **synthetic_probe_thresholds:**           
-               - **dns_txn_failure_pct:**           
-                   - **probe_config_id:**  Type: string 
-                   - **value:**  Type: integer 
-               - **init_failure_pct:**           
-                   - **probe_config_id:**  Type: string 
-                   - **value:**  Type: integer 
-               - **jitter:**           
-                   - **probe_config_id:**  Type: string 
-                   - **value:**  Type: integer 
-               - **latency:**           
-                   - **probe_config_id:**  Type: string 
-                   - **value:**  Type: integer 
-               - **packet_loss:**           
-                   - **probe_config_id:**  Type: string 
-                   - **value:**  Type: integer 
-           - **system_health_metrics_thresholds:**           
-               - **cpu_utilization:**  Type: integer 
-               - **disk_utilization:**  Type: integer 
-               - **memory_utilization:**  Type: integer 
            - **tags:**  [Type: string] 
-           - **tenant_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtthresholdprofiles".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/perfmgmtthresholdprofiles".format(api_version,
+                                                                                    tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def perfmgmtthresholdprofiles_query(self, data, api_version="v2.1"):
+    def perfmgmtthresholdprofiles_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Queries db for limit number of tenant level threshold profiles that match query params. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -8551,14 +11006,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/perfmgmtthresholdprofiles/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/perfmgmtthresholdprofiles/query".format(api_version,
+                                                                                          tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def policyrules(self, policyset_id, data, api_version="v3.1"):
+    def policyrules(self, policyset_id, data, tenant_id=None, api_version="v3.1"):
         """
         Create a new Policy (v3.1)
 
@@ -8566,19 +11028,13 @@ class Post(object):
 
           - **policyset_id**: Policy Set ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.1)
 
           **Payload Attributes:** 
 
            - **app_def_id:**  Type: string 
-           - **app_def_name:**  Type: string 
-           - **default_rule:**  Type: boolean 
            - **description:**  Type: string 
-           - **disabled:**  Type: boolean 
-           - **disabled_reason:**  Type: string 
-           - **inactive:**  Type: boolean 
-           - **inactive_reason:**  Type: string 
-           - **lan_network_ids:**  [Type: string] 
            - **name:**  Type: string 
            - **network_context_id:**  Type: string 
            - **paths_allowed:**           
@@ -8591,82 +11047,86 @@ class Post(object):
                - **l3_failure_paths:**           
                    - **label:**  Type: string 
                    - **path_type:**  Type: string 
-           - **policy_set_id:**  Type: string 
            - **priority_num:**  Type: integer 
-           - **region:**  Type: string 
            - **service_context:**           
                - **active_service_label_id:**  Type: string 
                - **active_service_label_type:**  Type: string 
                - **backup_service_label_id:**  Type: string 
                - **backup_service_label_type:**  Type: string 
                - **type:**  Type: string 
-           - **site_paths_allowed:**           
-               - **wn_name:**  Type: string 
-               - **wp_type:**  Type: string 
-           - **tenant_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/policysets/{}/policyrules".format(api_version,
-                                                                               policyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/policysets/{}/policyrules".format(api_version,
+                                                                                    tenant_id,
+                                                                                    policyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def policyrules_query(self, data, api_version="v3.1"):
+    def policyrules_query(self, data, tenant_id=None, api_version="v3.1"):
         """
         Queries db for policyrules that match query params. (v3.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.1)
 
           **Payload Attributes:** 
 
-           - **app_def_id:**  Type: string 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **network_context_id:**  Type: string 
-           - **paths_allowed:**           
-               - **active_paths:**           
-                   - **label:**  Type: string 
-                   - **path_type:**  Type: string 
-               - **backup_paths:**           
-                   - **label:**  Type: string 
-                   - **path_type:**  Type: string 
-               - **l3_failure_paths:**           
-                   - **label:**  Type: string 
-                   - **path_type:**  Type: string 
-           - **policy_set_id:**  Type: string 
-           - **priority_num:**  Type: integer 
-           - **service_context:**           
-               - **active_service_label_id:**  Type: string 
-               - **active_service_label_type:**  Type: string 
-               - **backup_service_label_id:**  Type: string 
-               - **backup_service_label_type:**  Type: string 
-               - **type:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/policyrules/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/policyrules/query".format(api_version,
+                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def policysets(self, data, api_version="v3.0"):
+    def policysets(self, data, tenant_id=None, api_version="v3.0"):
         """
         Create a new Policy Set (v3.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
@@ -8686,129 +11146,303 @@ class Post(object):
            - **business_priority_names:**           
                - **priority_name:**  Type: string 
                - **priority_num:**  Type: integer 
+           - **clone_from:**  Type: string 
            - **default_policy:**  Type: boolean 
            - **description:**  Type: string 
            - **name:**  Type: string 
+           - **policy_stance:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/policysets".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/policysets".format(api_version,
+                                                                     tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def policysets_bulk_config_state_query(self, data, api_version="v2.0"):
+    def policysets_bulk_config_state_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Get all config/state info across all policysets from NB (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**           
+               - **<field_name>|comparator:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/policysets/bulk_config_state/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/policysets/bulk_config_state/query".format(api_version,
+                                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def policysets_query(self, data, api_version="v3.0"):
+    def policysets_query(self, data, tenant_id=None, api_version="v3.0"):
         """
         Queries db for policysets that match query params. (v3.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
 
-           - **bandwidth_allocation_schemes:**           
-               - **bandwidth_range:**           
-                   - **high:**  Type: number 
-                   - **low:**  Type: number 
-               - **business_priorities:**           
-                   - **bandwidth_allocation:**  Type: number 
-                   - **bandwidth_split_per_type:**           
-                       - **bulk:**  Type: number 
-                       - **rt_audio:**  Type: number 
-                       - **rt_video:**  Type: number 
-                       - **transactional:**  Type: number 
-                   - **priority_num:**  Type: integer 
-           - **business_priority_names:**           
-               - **priority_name:**  Type: string 
-               - **priority_num:**  Type: integer 
-           - **default_policy:**  Type: boolean 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/policysets/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/policysets/query".format(api_version,
+                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prefixdistributionspokelists(self, site_id, data, api_version="v2.0"):
+    def ppksecret_ipsecprofiles(self, data, tenant_id=None, api_version="v2.3"):
         """
-        POST Prefixdistributionspokelists API Function
+        Generate PPK Secret (v2.3) (v2.3)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.3)
+
+          **Payload Attributes:** 
+
+           - **length_bytes:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipsecprofiles/ppksecret".format(api_version,
+                                                                                  tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def pquery_incidentresources(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query incident objects additional data. (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **object_id:**  Type: string 
+           - **object_type:**  Type: string 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/incidentresources/pquery".format(api_version,
+                                                                                   tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def pquery_incidentsettings(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query incident objects additional data. (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **filter:**           
+               - **ip_prefixes:**  [Type: string] 
+               - **type:**  Type: string 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/incidentsettings/pquery".format(api_version,
+                                                                                  tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def prefixdistributionspokelists(self, site_id, data, tenant_id=None, api_version="v2.0"):
+        """
+        Create Prefix Distribution Spoke List (v2.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **description:**  Type: string 
+           - **name:**  Type: string 
+           - **spoke_site_ids:**  [Type: string] 
+           - **tags:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prefixdistributionspokelists".format(api_version,
-                                                                                           site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/prefixdistributionspokelists".format(api_version,
+                                                                                                tenant_id,
+                                                                                                site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prefixes_query(self, data, api_version="v3.1"):
+    def prefixes_query(self, data, tenant_id=None, api_version="v3.1"):
         """
-        POST Prefixes_Query API Function
+        Queries the prefix set. (v3.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.1)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **ge:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **ipv4_prefix:**  Type: string 
+           - **ipv6_prefix:**  Type: string 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **le:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prefixes/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prefixes/query".format(api_version,
+                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prefixfilters(self, site_id, data, api_version="v2.0"):
+    def prefixfilters(self, site_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create an association between site and security prefix filter. (v2.0)
 
@@ -8816,6 +11450,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -8828,15 +11463,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prefixfilters".format(api_version,
-                                                                            site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/prefixfilters".format(api_version,
+                                                                                 tenant_id,
+                                                                                 site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prefixfilters_query(self, site_id, data, api_version="v2.0"):
+    def prefixfilters_query(self, site_id, data, tenant_id=None, api_version="v2.0"):
         """
         Query security prefix filter for NB API. (v2.0)
 
@@ -8844,6 +11486,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -8854,21 +11497,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prefixfilters/query".format(api_version,
-                                                                                  site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/prefixfilters/query".format(api_version,
+                                                                                       tenant_id,
+                                                                                       site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicyglobalprefixes(self, data, api_version="v2.1"):
+    def prioritypolicyglobalprefixes(self, data, tenant_id=None, api_version="v2.1"):
         """
         Create a new global prefix. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -8882,67 +11533,113 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicyglobalprefixes".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicyglobalprefixes".format(api_version,
+                                                                                       tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicyglobalprefixes_query(self, data, api_version="v2.1"):
+    def prioritypolicyglobalprefixes_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Query Priority Global Prefixes. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **ipv4_prefixes:**  [Type: string] 
-           - **ipv6_prefixes:**  [Type: string] 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicyglobalprefixes/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicyglobalprefixes/query".format(api_version,
+                                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicylocalprefixes_query(self, data, api_version="v2.1"):
+    def prioritypolicylocalprefixes_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Query site priority prefix association. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **ipv4_prefixes:**  [Type: string] 
-           - **prefix_id:**  Type: string 
-           - **site_id:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicylocalprefixes/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicylocalprefixes/query".format(api_version,
+                                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicyrules(self, prioritypolicyset_id, data, api_version="v2.2"):
+    def prioritypolicyrules(self, prioritypolicyset_id, data, tenant_id=None, api_version="v2.2"):
         """
         Create a new PriorityPolicyRule (v2.2)
 
@@ -8950,6 +11647,7 @@ class Post(object):
 
           - **prioritypolicyset_id**: Priority Policy Set ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
@@ -8975,61 +11673,75 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicysets/{}/prioritypolicyrules".format(api_version,
-                                                                                               prioritypolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicysets/{}/prioritypolicyrules".format(api_version,
+                                                                                                    tenant_id,
+                                                                                                    prioritypolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicyrules_query(self, data, api_version="v2.2"):
+    def prioritypolicyrules_query(self, data, tenant_id=None, api_version="v2.2"):
         """
         Query Priority policy rules. (v2.2)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
-           - **app_def_ids:**  [Type: string] 
-           - **description:**  Type: string 
-           - **dest_device_ids:**  [Type: string] 
-           - **destination_prefixes_id:**  Type: string 
-           - **dscp:**           
-               - **value:**  Type: integer 
-           - **enabled:**  Type: boolean 
-           - **name:**  Type: string 
-           - **network_context_id:**  Type: string 
-           - **order_number:**  Type: integer 
-           - **policyset_id:**  Type: string 
-           - **priority_number:**  Type: integer 
-           - **source_prefixes_id:**  Type: string 
-           - **src_device_ids:**  [Type: string] 
-           - **tags:**  [Type: string] 
-           - **user_or_group:**           
-               - **user_group_ids:**  [Type: string] 
-               - **user_ids:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicyrules/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicyrules/query".format(api_version,
+                                                                                    tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicysets(self, data, api_version="v2.0"):
+    def prioritypolicysets(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new PriorityPolicySet (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -9063,67 +11775,74 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicysets".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicysets".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicysets_query(self, data, api_version="v2.0"):
+    def prioritypolicysets_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Priority policy sets. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **bandwidth_allocation_schemes:**           
-               - **bandwidth_range:**           
-                   - **high:**  Type: number 
-                   - **low:**  Type: number 
-               - **business_priorities:**           
-                   - **bandwidth_allocation:**  Type: number 
-                   - **bandwidth_split_per_type:**           
-                       - **bulk:**  Type: number 
-                       - **rt_audio:**  Type: number 
-                       - **rt_video:**  Type: number 
-                       - **transactional:**  Type: number 
-                   - **priority_number:**  Type: integer 
-           - **business_priority_names:**           
-               - **priority_name:**  Type: string 
-               - **priority_num:**  Type: integer 
-           - **clone_from:**  Type: string 
-           - **default_rule_dscp_mappings:**           
-               - **dscp:**  [Type: integer] 
-               - **priority_number:**  Type: integer 
-               - **transfer_type:**  Type: string 
-           - **defaultrule_policyset:**  Type: boolean 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
-           - **template:**  Type: boolean 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicysets/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicysets/query".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicysetstacks(self, data, api_version="v2.0"):
+    def prioritypolicysetstacks(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new PriorityPolicySetStack (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -9138,42 +11857,67 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicysetstacks".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicysetstacks".format(api_version,
+                                                                                  tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prioritypolicysetstacks_query(self, data, api_version="v2.0"):
+    def prioritypolicysetstacks_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query priority policyset stacks. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **default_policysetstack:**  Type: boolean 
-           - **defaultrule_policyset_id:**  Type: string 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **policyset_ids:**  [Type: string] 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicysetstacks/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicysetstacks/query".format(api_version,
+                                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prismaaccess_configs(self, site_id, data, api_version="v2.0"):
+    def prismaaccess_configs(self, site_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create a Prisma Access Config with remote networks and security processing node (v2.0)
 
@@ -9181,6 +11925,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -9197,21 +11942,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prismaaccess_configs".format(api_version,
-                                                                                   site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/prismaaccess_configs".format(api_version,
+                                                                                        tenant_id,
+                                                                                        site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prismaaccess_configs_query(self, data, api_version="v2.0"):
+    def prismaaccess_configs_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Prisma Access config (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -9228,22 +11981,30 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prismaaccess_configs/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prismaaccess_configs/query".format(api_version,
+                                                                                     tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prismasase_connections(self, site_id, data, api_version="v2.1"):
+    def prismasase_connections(self, site_id, data, tenant_id=None, api_version="v3.0"):
         """
-        Create a new SASE connection (v2.1)
+        Create a new SASE connection (v3.0) (v3.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
 
@@ -9259,9 +12020,10 @@ class Post(object):
            - **is_active:**  Type: boolean 
            - **is_enabled:**  Type: boolean 
            - **license_type:**  Type: string 
-           - **prismaaccess_edge_location:**  [Type: string] 
+           - **prismaaccess_edge_location_config:**  [Type: string] 
            - **prismaaccess_qos_cir_mbps:**  Type: integer 
            - **prismaaccess_qos_profile_id:**  Type: string 
+           - **prismasase_connection_id:**  Type: string 
            - **remote_network_groups:**           
                - **ipsec_tunnels:**           
                    - **authentication:**           
@@ -9284,6 +12046,8 @@ class Post(object):
            - **routing_configs:**           
                - **advertise_default_route:**  Type: boolean 
                - **bgp_secret:**  Type: string 
+               - **branch_as_number:**  Type: string 
+               - **deployment_mode:**  Type: string 
                - **export_routes:**  Type: boolean 
                - **summarize_mobile_routes_before_advertise:**  Type: boolean 
            - **site_id:**  Type: string 
@@ -9292,21 +12056,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prismasase_connections".format(api_version,
-                                                                                     site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/prismasase_connections".format(api_version,
+                                                                                          tenant_id,
+                                                                                          site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prismasase_connections_configs(self, data, api_version="v3.1"):
+    def prismasase_connections_configs(self, data, tenant_id=None, api_version="v3.1"):
         """
         Create a new SASE connection config (v3.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.1)
 
           **Payload Attributes:** 
@@ -9319,17 +12091,53 @@ class Post(object):
                - **dpd_delay:**  Type: integer 
                - **dpd_enable:**  Type: boolean 
                - **esp_group:**           
+                   - **force_encapsulation:**  Type: boolean 
+                   - **lifesize:**           
+                       - **units:**  Type: string 
+                       - **value:**  Type: integer 
                    - **lifetime:**  Type: integer 
+                   - **lifetime_units:**  Type: string 
+                   - **mode:**  Type: string 
+                   - **pqc_kem_config:**           
+                       - **enabled:**  Type: boolean 
+                       - **round_1_algorithms:**  [Type: string] 
+                       - **round_2_algorithms:**  [Type: string] 
+                       - **round_3_algorithms:**  [Type: string] 
+                       - **round_4_algorithms:**  [Type: string] 
+                       - **round_5_algorithms:**  [Type: string] 
+                       - **round_6_algorithms:**  [Type: string] 
+                       - **round_7_algorithms:**  [Type: string] 
                    - **proposals:**           
                        - **dh_groups:**  Type: string 
                        - **encryption:**  Type: string 
                        - **hash:**  Type: string 
+                       - **prf:**  Type: string 
+                   - **responder_sase_proposals:**           
+                       - **dh_group:**  [Type: string] 
+                       - **encryption:**  [Type: string] 
+                       - **hash:**  [Type: string] 
                - **ike_group:**           
+                   - **aggressive:**  Type: boolean 
+                   - **authentication_multiple:**  Type: integer 
+                   - **key_exchange:**  Type: string 
                    - **lifetime:**  Type: integer 
+                   - **lifetime_units:**  Type: string 
+                   - **port:**  Type: integer 
+                   - **pqc_kem_config:**           
+                       - **enabled:**  Type: boolean 
+                       - **round_1_algorithms:**  [Type: string] 
+                       - **round_2_algorithms:**  [Type: string] 
+                       - **round_3_algorithms:**  [Type: string] 
+                       - **round_4_algorithms:**  [Type: string] 
+                       - **round_5_algorithms:**  [Type: string] 
+                       - **round_6_algorithms:**  [Type: string] 
+                       - **round_7_algorithms:**  [Type: string] 
                    - **proposals:**           
                        - **dh_groups:**  Type: string 
                        - **encryption:**  Type: string 
                        - **hash:**  Type: string 
+                       - **prf:**  Type: string 
+                   - **reauth:**  Type: boolean 
            - **panorama_sub_tenant_name:**  Type: string 
            - **prisma_sdwan_bgp_as_number:**  Type: string 
            - **security_zone_id:**  Type: string 
@@ -9338,86 +12146,121 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prismasase_connections/configs".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prismasase_connections/configs".format(api_version,
+                                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prismasase_connections_query(self, data, api_version="v2.0"):
+    def prismasase_connections_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Get a list of SASE connections (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prismasase_connections/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prismasase_connections/query".format(api_version,
+                                                                                       tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def prismasase_connections_status_query(self, data, api_version="v2.0"):
+    def prismasase_connections_status_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Get a list of SASE connection statuses (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **common_messages:**  Type: string 
-           - **connection_status:**           
-               - **value:**  Type: string 
-           - **ipsec_tunnel_status:**           
-               - **attempts:**  Type: integer 
-               - **branch_tunnel_connection_status:**  Type: string 
-               - **branch_tunnel_provisioning_status:**  Type: string 
-               - **completed_steps:**  [Type: string] 
-               - **element_id:**  Type: string 
-               - **error_messages:**  Type: object 
-               - **info_messages:**  Type: object 
-               - **interface_id:**  Type: string 
-               - **name:**  Type: string 
-               - **prismaaccess_tunnel_connection_status:**  Type: string 
-               - **prismaaccess_tunnel_provisioning_status:**  Type: string 
-               - **remoteNetworkGroupName:**  Type: string 
-               - **uncompleted_steps:**  [Type: string] 
-           - **is_active:**  Type: boolean 
-           - **prismasase_connection_id:**  Type: string 
-           - **push_job_id:**  Type: string 
-           - **site_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/prismasase_connections/status/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prismasase_connections/status/query".format(api_version,
+                                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def probeconfigs(self, data, api_version="v2.0"):
+    def probeconfigs(self, data, tenant_id=None, api_version="v2.1"):
         """
-        Create a new Probe Config (v2.0)
+        Create a new Probe Config (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -9440,57 +12283,74 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/probeconfigs".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/probeconfigs".format(api_version,
+                                                                       tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def probeconfigs_query(self, data, api_version="v2.0"):
+    def probeconfigs_query(self, data, tenant_id=None, api_version="v2.1"):
         """
-        Queries db for limit number of tenant level probe profiles that match query params. (v2.0)
+        Queries db for limit number of tenant level probe profiles that match query params. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **enabled:**  Type: boolean 
-           - **endpoints:**           
-               - **allow_insecure_https_connection:**  Type: boolean 
-               - **dns_server_ip:**  Type: string 
-               - **fqdn:**  Type: string 
-               - **http_response_codes:**  [Type: integer] 
-               - **http_response_string:**  Type: string 
-               - **ipv4_address:**  Type: string 
-               - **path_types:**  [Type: string] 
-               - **probe_count:**  Type: integer 
-               - **probe_cycle_duration:**  Type: integer 
-               - **protocol:**  Type: string 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/probeconfigs/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/probeconfigs/query".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def probeprofiles(self, data, api_version="v2.0"):
+    def probeprofiles(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new PROBE Profile (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -9503,40 +12363,251 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/probeprofiles".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/probeprofiles".format(api_version,
+                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def probeprofiles_query(self, data, api_version="v2.0"):
+    def probeprofiles_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of tenant level probe profiles that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **probe_config_ids:**  [Type: string] 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/probeprofiles/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/probeprofiles/query".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def radii(self, element_id, data, api_version="v2.0"):
+    def query_links_topology(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query topology links (paginated) (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/topology/links/query".format(api_version,
+                                                                               tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def query_microsegments(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query all microsegments for tenant (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/microsegments/query".format(api_version,
+                                                                              tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def query_nodes_topology(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query topology nodes (paginated) (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/topology/nodes/query".format(api_version,
+                                                                               tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def query_panetworks(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query db for PA networks that match query parameters (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/panetworks/query".format(api_version,
+                                                                           tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def radii(self, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Used to create element radius (v2.0)
 
@@ -9544,6 +12615,7 @@ class Post(object):
 
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -9567,15 +12639,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/radii".format(api_version,
-                                                                       element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/radii".format(api_version,
+                                                                            tenant_id,
+                                                                            element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def recovery_tokens(self, machine_id, data, api_version="v2.1"):
+    def recovery_tokens(self, machine_id, data, tenant_id=None, api_version="v2.1"):
         """
         Create a Recovery Token for Fips change mode (v2.1)
 
@@ -9583,79 +12662,105 @@ class Post(object):
 
           - **machine_id**: Machine ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **hardware_id:**  Type: string 
-           - **ion_token:**  Type: string 
-           - **is_used:**  Type: boolean 
-           - **secret_token:**  Type: string 
            - **token_validity_in_hour:**  Type: integer 
-           - **valid_till_secs:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/machines/{}/recovery_tokens".format(api_version,
-                                                                                 machine_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/machines/{}/recovery_tokens".format(api_version,
+                                                                                      tenant_id,
+                                                                                      machine_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def reports_query(self, data, api_version="v2.0"):
+    def reports_query(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Reports_Query API Function
+        Get report file (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **dest_page:**  Type: integer 
+           - **folder:**  Type: string 
+           - **limit:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/reports/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/reports/query".format(api_version,
+                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def reportsdir_query(self, data, api_version="v2.0"):
+    def reportsdir_query(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Reportsdir_Query API Function
+        Get files and folders in specified folder (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **dest_page:**  Type: integer 
+           - **folder:**  Type: string 
+           - **limit:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/reportsdir/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/reportsdir/query".format(api_version,
+                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def roles(self, data, api_version="v2.1"):
+    def roles(self, data, tenant_id=None, api_version="v2.1"):
         """
         Add a custom role (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -9691,14 +12796,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/roles".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/roles".format(api_version,
+                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def routing_aspathaccesslists(self, site_id, element_id, data, api_version="v2.1"):
+    def routing_aspathaccesslists(self, site_id, element_id, data, tenant_id=None, api_version="v2.1"):
         """
         Create AS-Path Access List (v2.1)
 
@@ -9707,6 +12819,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -9723,16 +12836,23 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_aspathaccesslists".format(api_version,
-                                                                                                    site_id,
-                                                                                                    element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/routing_aspathaccesslists".format(api_version,
+                                                                                                         tenant_id,
+                                                                                                         site_id,
+                                                                                                         element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def routing_aspathaccesslists_query(self, site_id, element_id, data, api_version="v2.1"):
+    def routing_aspathaccesslists_query(self, site_id, element_id, data, tenant_id=None, api_version="v2.1"):
         """
         Queries db for limit number of access lists that match query params. (v2.1)
 
@@ -9741,7 +12861,58 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/routing_aspathaccesslists/query".format(api_version,
+                                                                                                               tenant_id,
+                                                                                                               site_id,
+                                                                                                               element_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def routing_ipcommunitylists(self, site_id, element_id, data, tenant_id=None, api_version="v2.0"):
+        """
+        Create IP Community List (v2.0)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **element_id**: Element (Device) ID
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
@@ -9757,49 +12928,23 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_aspathaccesslists/query".format(api_version,
-                                                                                                          site_id,
-                                                                                                          element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/routing_ipcommunitylists".format(api_version,
+                                                                                                        tenant_id,
+                                                                                                        site_id,
+                                                                                                        element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def routing_ipcommunitylists(self, site_id, element_id, data, api_version="v2.0"):
-        """
-        Create IP Community List (v2.0)
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **element_id**: Element (Device) ID
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **auto_generated:**  Type: boolean 
-           - **community_list:**           
-               - **community_str:**  Type: string 
-               - **permit:**  Type: boolean 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_ipcommunitylists".format(api_version,
-                                                                                                   site_id,
-                                                                                                   element_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def routing_ipcommunitylists_query(self, site_id, element_id, data, api_version="v2.0"):
+    def routing_ipcommunitylists_query(self, site_id, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of community lists that match query params. (v2.0)
 
@@ -9808,31 +12953,48 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **auto_generated:**  Type: boolean 
-           - **community_list:**           
-               - **community_str:**  Type: string 
-               - **permit:**  Type: boolean 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_ipcommunitylists/query".format(api_version,
-                                                                                                         site_id,
-                                                                                                         element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/routing_ipcommunitylists/query".format(api_version,
+                                                                                                              tenant_id,
+                                                                                                              site_id,
+                                                                                                              element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def routing_prefixlists(self, site_id, element_id, data, api_version="v2.1"):
+    def routing_prefixlists(self, site_id, element_id, data, tenant_id=None, api_version="v2.1"):
         """
         Create IP Prefix List (v2.1)
 
@@ -9841,6 +13003,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -9860,16 +13023,23 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_prefixlists".format(api_version,
-                                                                                              site_id,
-                                                                                              element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/routing_prefixlists".format(api_version,
+                                                                                                   tenant_id,
+                                                                                                   site_id,
+                                                                                                   element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def routing_prefixlists_query(self, site_id, element_id, data, api_version="v2.1"):
+    def routing_prefixlists_query(self, site_id, element_id, data, tenant_id=None, api_version="v2.1"):
         """
         Queries db for limit number of prefix lists that match query params. (v2.1)
 
@@ -9878,35 +13048,48 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **auto_generated:**  Type: boolean 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **prefix_filter_list:**           
-               - **ge:**  Type: integer 
-               - **ipv6_prefix:**  Type: string 
-               - **le:**  Type: integer 
-               - **order:**  Type: integer 
-               - **permit:**  Type: boolean 
-               - **prefix:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_prefixlists/query".format(api_version,
-                                                                                                    site_id,
-                                                                                                    element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/routing_prefixlists/query".format(api_version,
+                                                                                                         tenant_id,
+                                                                                                         site_id,
+                                                                                                         element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def routing_routemaps(self, site_id, element_id, data, api_version="v2.3"):
+    def routing_routemaps(self, site_id, element_id, data, tenant_id=None, api_version="v2.3"):
         """
         Create Route Map (v2.3)
 
@@ -9915,6 +13098,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
@@ -9950,16 +13134,23 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_routemaps".format(api_version,
-                                                                                            site_id,
-                                                                                            element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/routing_routemaps".format(api_version,
+                                                                                                 tenant_id,
+                                                                                                 site_id,
+                                                                                                 element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def routing_routemaps_query(self, site_id, element_id, data, api_version="v2.3"):
+    def routing_routemaps_query(self, site_id, element_id, data, tenant_id=None, api_version="v2.3"):
         """
         Queries db for limit number of route maps that match query params. (v2.3)
 
@@ -9968,57 +13159,55 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
 
-           - **auto_generated:**  Type: boolean 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **route_map_entries:**           
-               - **continue_entry:**  Type: string 
-               - **match:**           
-                   - **as_path_id:**  Type: string 
-                   - **community_list_id:**  Type: string 
-                   - **ip_next_hop_id:**  Type: string 
-                   - **ip_prefix_list_id:**  Type: string 
-                   - **metric:**  Type: integer 
-                   - **tag:**  Type: integer 
-               - **order:**  Type: integer 
-               - **permit:**  Type: boolean 
-               - **set:**           
-                   - **additive_community:**  Type: boolean 
-                   - **as_path_prepend:**  Type: string 
-                   - **community:**  Type: string 
-                   - **ip_next_hop:**  Type: string 
-                   - **ip_v6_next_hop:**  Type: string 
-                   - **local_preference:**  Type: integer 
-                   - **metric:**  Type: integer 
-                   - **tag:**  Type: integer 
-                   - **type:**  Type: string 
-                   - **weight:**  Type: integer 
-           - **tags:**  [Type: string] 
-           - **used_for:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/routing_routemaps/query".format(api_version,
-                                                                                                  site_id,
-                                                                                                  element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/routing_routemaps/query".format(api_version,
+                                                                                                       tenant_id,
+                                                                                                       site_id,
+                                                                                                       element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def rquery(self, data, api_version="v3.2"):
+    def rquery(self, data, tenant_id=None, api_version="v3.2"):
         """
         Query and get ESP machines across regions (v3.2)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.2)
 
           **Payload Attributes:** 
@@ -10043,38 +13232,203 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/machines/rquery".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/machines/rquery".format(api_version,
+                                                                          tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def sdwanapps_configs(self, sdwanapp_id, data, api_version="v2.0"):
+    def rquery_licenses_purchase(self, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Sdwanapps_Configs API Function
+        Query license PURCHASE data only across client tenants for MSP (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **region_group_by:**  Type: string 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+           - **view:**           
+               - **summary:**  Type: boolean 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/licenses_purchase/rquery".format(api_version,
+                                                                                   tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def rquery_licenses_usage(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query license USAGE data only across client tenants for MSP (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **region_group_by:**  Type: string 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+           - **view:**           
+               - **summary:**  Type: boolean 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/licenses_usage/rquery".format(api_version,
+                                                                                tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def rquery_s(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query sites across client tenants for MSP (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **region_group_by:**  Type: string 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+           - **view:**           
+               - **summary:**  Type: boolean 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/rquery".format(api_version,
+                                                                       tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def sdwanapps_configs(self, sdwanapp_id, data, tenant_id=None, api_version="v2.0"):
+        """
+        Create SD-WAN application configuration (v2.0)
 
           **Parameters:**:
 
           - **sdwanapp_id**: SDWAN Application ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **state:**  Type: string 
+           - **user_config:**  Type: object 
+           - **version:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sdwanapps/{}/configs".format(api_version,
-                                                                          sdwanapp_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sdwanapps/{}/configs".format(api_version,
+                                                                               tenant_id,
+                                                                               sdwanapp_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def securitypolicyruleorder(self, securitypolicyset_id, data, api_version="v2.0"):
+    def securitypolicyruleorder(self, securitypolicyset_id, data, tenant_id=None, api_version="v2.0"):
         """
         Update a tenant security policy set. (v2.0)
 
@@ -10082,26 +13436,34 @@ class Post(object):
 
           - **securitypolicyset_id**: Security Policy Set ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **policyrule_order:**  [Type: string] 
+           - **operations:**           
+               - **insert_before:**  Type: string 
+               - **policyrule_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securitypolicysets/{}/firewallpolicyruleorder".format(api_version,
-                                                                                                   securitypolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/securitypolicysets/{}/firewallpolicyruleorder".format(api_version,
+                                                                                                        tenant_id,
+                                                                                                        securitypolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def securitypolicyrules(self, securitypolicyset_id, data, api_version="v2.0"):
+    def securitypolicyrules(self, securitypolicyset_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new tenant security policy rule. (v2.0)
 
@@ -10109,6 +13471,7 @@ class Post(object):
 
           - **securitypolicyset_id**: Security Policy Set ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -10126,57 +13489,80 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securitypolicysets/{}/securitypolicyrules".format(api_version,
-                                                                                               securitypolicyset_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/securitypolicysets/{}/securitypolicyrules".format(api_version,
+                                                                                                    tenant_id,
+                                                                                                    securitypolicyset_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def securitypolicyrules_query(self, data, api_version="v2.0"):
+    def securitypolicyrules_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of LAN networks that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **action:**  Type: string 
-           - **application_ids:**  [Type: string] 
-           - **description:**  Type: string 
-           - **destination_filter_ids:**  [Type: string] 
-           - **destination_zone_ids:**  [Type: string] 
-           - **disabled_flag:**  Type: boolean 
-           - **name:**  Type: string 
-           - **security_policyset_id:**  Type: string 
-           - **source_filter_ids:**  [Type: string] 
-           - **source_zone_ids:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securitypolicyrules/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/securitypolicyrules/query".format(api_version,
+                                                                                    tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def securitypolicysets(self, data, api_version="v2.0"):
+    def securitypolicysets(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new tenant security policy set. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **clone_from:**  Type: string 
            - **description:**  Type: string 
            - **name:**  Type: string 
            - **policyrule_order:**  [Type: string] 
@@ -10184,45 +13570,74 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securitypolicysets".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/securitypolicysets".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def securitypolicysets_query(self, data, api_version="v2.0"):
+    def securitypolicysets_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of security policysets that match query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **policyrule_order:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securitypolicysets/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/securitypolicysets/query".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def securityprofilegroups(self, data, api_version="v2.0"):
+    def securityprofilegroups(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a Security Profile Group (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -10253,89 +13668,154 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securityprofilegroups".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/securityprofilegroups".format(api_version,
+                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def securityprofilegroups_query(self, data, api_version="v2.0"):
+    def securityprofilegroups_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Security profile groups of a tenant (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securityprofilegroups/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/securityprofilegroups/query".format(api_version,
+                                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def securityzones(self, data, api_version="v2.1"):
+    def securityzones(self, data, tenant_id=None, api_version="v2.2"):
         """
-        Create a new security zone (v2.1)
+        Create a new security zone (v2.2) (v2.2)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
            - **description:**  Type: string 
+           - **is_l2:**  Type: boolean 
            - **name:**  Type: string 
            - **tcp_allow_non_syn:**  Type: boolean 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securityzones".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/securityzones".format(api_version,
+                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def securityzones_query(self, data, api_version="v2.1"):
+    def securityzones_query(self, data, tenant_id=None, api_version="v2.2"):
         """
-        query (v2.1)
+        Query security zones (v2.2) (v2.2)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.1)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/securityzones/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/securityzones/query".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def servicebindingmaps(self, data, api_version="v2.1"):
+    def servicebindingmaps(self, data, tenant_id=None, api_version="v2.1"):
         """
         Create a new Service Binding Map (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -10351,193 +13831,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/servicebindingmaps".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/servicebindingmaps".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def servicebindingmaps_query(self, data, api_version="v2.1"):
+    def servicebindingmaps_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Queries db for limit number of service bindings that match query params. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.1)
-
-          **Payload Attributes:** 
-
-           - **description:**  Type: string 
-           - **is_default:**  Type: boolean 
-           - **name:**  Type: string 
-           - **service_bindings:**           
-               - **service_endpoint_ids:**  [Type: string] 
-               - **service_label_id:**  Type: string 
-           - **tags:**  [Type: string] 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/servicebindingmaps/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def serviceendpoints(self, data, api_version="v3.1"):
-        """
-        Create a new Service Endpoint (v3.1)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v3.1)
-
-          **Payload Attributes:** 
-
-           - **address:**           
-               - **city:**  Type: string 
-               - **country:**  Type: string 
-               - **post_code:**  Type: string 
-               - **state:**  Type: string 
-               - **street:**  Type: string 
-               - **street2:**  Type: string 
-           - **admin_up:**  Type: boolean 
-           - **allow_enterprise_traffic:**  Type: boolean 
-           - **description:**  Type: string 
-           - **disable_tunnel_reoptimization:**  Type: boolean 
-           - **is_sase:**  Type: boolean 
-           - **liveliness_probe:**           
-               - **http:**           
-                   - **failure_count:**  Type: integer 
-                   - **http_status_codes:**  [Type: integer] 
-                   - **interval:**  Type: integer 
-                   - **url:**  Type: string 
-               - **icmp_ping:**           
-                   - **failure_count:**  Type: integer 
-                   - **interval:**  Type: integer 
-                   - **ip_addresses:**  [Type: string] 
-               - **use_tunnel_for_url_dns_resolution:**  Type: boolean 
-           - **location:**           
-               - **description:**  Type: string 
-               - **latitude:**  Type: number 
-               - **longitude:**  Type: number 
-           - **name:**  Type: string 
-           - **sase_properties:**           
-               - **lqm_enabled:**  Type: boolean 
-           - **service_link_peers:**           
-               - **hostnames:**  [Type: string] 
-               - **ip_addresses:**  [Type: string] 
-           - **site_id:**  Type: string 
-           - **tags:**  [Type: string] 
-           - **type:**  Type: string 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/serviceendpoints".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def serviceendpoints_query(self, data, api_version="v3.1"):
-        """
-        Queries db for limit number of service bindings that match query params. (v3.1)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v3.1)
-
-          **Payload Attributes:** 
-
-           - **address:**           
-               - **city:**  Type: string 
-               - **country:**  Type: string 
-               - **post_code:**  Type: string 
-               - **state:**  Type: string 
-               - **street:**  Type: string 
-               - **street2:**  Type: string 
-           - **admin_up:**  Type: boolean 
-           - **allow_enterprise_traffic:**  Type: boolean 
-           - **description:**  Type: string 
-           - **disable_tunnel_reoptimization:**  Type: boolean 
-           - **is_sase:**  Type: boolean 
-           - **liveliness_probe:**           
-               - **http:**           
-                   - **failure_count:**  Type: integer 
-                   - **http_status_codes:**  [Type: integer] 
-                   - **interval:**  Type: integer 
-                   - **url:**  Type: string 
-               - **icmp_ping:**           
-                   - **failure_count:**  Type: integer 
-                   - **interval:**  Type: integer 
-                   - **ip_addresses:**  [Type: string] 
-               - **use_tunnel_for_url_dns_resolution:**  Type: boolean 
-           - **location:**           
-               - **description:**  Type: string 
-               - **latitude:**  Type: number 
-               - **longitude:**  Type: number 
-           - **name:**  Type: string 
-           - **sase_properties:**           
-               - **lqm_enabled:**  Type: boolean 
-           - **service_link_peers:**           
-               - **hostnames:**  [Type: string] 
-               - **ip_addresses:**  [Type: string] 
-           - **site_id:**  Type: string 
-           - **tags:**  [Type: string] 
-           - **type:**  Type: string 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/serviceendpoints/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def servicelabels(self, data, api_version="v2.1"):
-        """
-        Create a new Service Label (v2.1)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.1)
-
-          **Payload Attributes:** 
-
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **sase_properties:**           
-               - **active_sase_label:**  Type: boolean 
-           - **tags:**  [Type: string] 
-           - **type:**  Type: string 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/servicelabels".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def servicelabels_query(self, data, api_version="v2.1"):
-        """
-        Queries db for limit number of service labels that match query params. (v2.1)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -10562,20 +13877,260 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/servicelabels/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/servicebindingmaps/query".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def signup(self, data, api_version="v2.0"):
+    def serviceendpoints(self, data, tenant_id=None, api_version="v3.1"):
+        """
+        Create a new Service Endpoint (v3.1)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v3.1)
+
+          **Payload Attributes:** 
+
+           - **address:**           
+               - **city:**  Type: string 
+               - **country:**  Type: string 
+               - **post_code:**  Type: string 
+               - **state:**  Type: string 
+               - **street:**  Type: string 
+               - **street2:**  Type: string 
+           - **admin_up:**  Type: boolean 
+           - **allow_enterprise_traffic:**  Type: boolean 
+           - **description:**  Type: string 
+           - **disable_tunnel_reoptimization:**  Type: boolean 
+           - **is_sase:**  Type: boolean 
+           - **liveliness_probe:**           
+               - **http:**           
+                   - **failure_count:**  Type: integer 
+                   - **http_status_codes:**  [Type: integer] 
+                   - **interval:**  Type: integer 
+                   - **url:**  Type: string 
+               - **icmp_ping:**           
+                   - **failure_count:**  Type: integer 
+                   - **interval:**  Type: integer 
+                   - **ip_addresses:**  [Type: string] 
+               - **use_tunnel_for_url_dns_resolution:**  Type: boolean 
+           - **location:**           
+               - **description:**  Type: string 
+               - **latitude:**  Type: number 
+               - **longitude:**  Type: number 
+           - **name:**  Type: string 
+           - **sase_properties:**           
+               - **active:**  Type: boolean 
+               - **allocated_bandwidth_mbps:**  Type: integer 
+               - **allocated_sc_count:**  Type: integer 
+               - **compute_region_id:**  Type: string 
+               - **compute_region_provider:**  Type: string 
+               - **line_conditioning_enabled:**  Type: boolean 
+               - **lqm_enabled:**  Type: boolean 
+               - **pa_compute_region_oid:**  Type: string 
+               - **pa_we_br_site_id:**  Type: string 
+               - **pa_we_dc_site_id:**  Type: string 
+               - **total_sc_bandwidth_mbps:**  Type: integer 
+           - **service_link_peers:**           
+               - **hostnames:**  [Type: string] 
+               - **ip_addresses:**  [Type: string] 
+           - **site_id:**  Type: string 
+           - **tags:**  [Type: string] 
+           - **type:**  Type: string 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/serviceendpoints".format(api_version,
+                                                                           tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def serviceendpoints_query(self, data, tenant_id=None, api_version="v3.1"):
+        """
+        Queries db for limit number of service bindings that match query params. (v3.1)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v3.1)
+
+          **Payload Attributes:** 
+
+           - **address:**           
+               - **city:**  Type: string 
+               - **country:**  Type: string 
+               - **post_code:**  Type: string 
+               - **state:**  Type: string 
+               - **street:**  Type: string 
+               - **street2:**  Type: string 
+           - **admin_up:**  Type: boolean 
+           - **allow_enterprise_traffic:**  Type: boolean 
+           - **description:**  Type: string 
+           - **disable_tunnel_reoptimization:**  Type: boolean 
+           - **liveliness_probe:**           
+               - **http:**           
+                   - **failure_count:**  Type: integer 
+                   - **http_status_codes:**  [Type: integer] 
+                   - **interval:**  Type: integer 
+                   - **url:**  Type: string 
+               - **icmp_ping:**           
+                   - **failure_count:**  Type: integer 
+                   - **interval:**  Type: integer 
+                   - **ip_addresses:**  [Type: string] 
+           - **location:**           
+               - **description:**  Type: string 
+               - **latitude:**  Type: number 
+               - **longitude:**  Type: number 
+           - **name:**  Type: string 
+           - **sase_properties:**           
+               - **active:**  Type: boolean 
+               - **allocated_bandwidth_mbps:**  Type: integer 
+               - **allocated_sc_count:**  Type: integer 
+               - **compute_region_id:**  Type: string 
+               - **compute_region_provider:**  Type: string 
+               - **line_conditioning_enabled:**  Type: boolean 
+               - **lqm_enabled:**  Type: boolean 
+               - **pa_compute_region_oid:**  Type: string 
+               - **pa_we_br_site_id:**  Type: string 
+               - **pa_we_dc_site_id:**  Type: string 
+               - **total_sc_bandwidth_mbps:**  Type: integer 
+           - **service_link_peers:**           
+               - **hostnames:**  [Type: string] 
+               - **ip_addresses:**  [Type: string] 
+           - **site_id:**  Type: string 
+           - **tags:**  [Type: string] 
+           - **type:**  Type: string 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/serviceendpoints/query".format(api_version,
+                                                                                 tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def servicelabels(self, data, tenant_id=None, api_version="v2.1"):
+        """
+        Create a new Service Label (v2.1)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
+
+          **Payload Attributes:** 
+
+           - **description:**  Type: string 
+           - **name:**  Type: string 
+           - **sase_properties:**           
+               - **active_sase_label:**  Type: boolean 
+           - **tags:**  [Type: string] 
+           - **type:**  Type: string 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/servicelabels".format(api_version,
+                                                                        tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def servicelabels_query(self, data, tenant_id=None, api_version="v2.1"):
+        """
+        Queries db for limit number of service labels that match query params. (v2.1)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/servicelabels/query".format(api_version,
+                                                                              tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def signup(self, data, tenant_id=None, api_version="v2.0"):
         """
         Signup new operators (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -10635,62 +14190,112 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/signup".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/signup".format(api_version,
+                                                                 tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_bulk_config_state_query(self, data, api_version="v2.0"):
+    def site_bulk_config_state_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Get site config/state info for queried site from NB (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **count:**  Type: integer 
-           - **items:**  [Type: object] 
-           - **tenant_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**           
+               - **<field_name>|comparator:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_params:**  Type: object 
            - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/bulk_config_state/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/bulk_config_state/query".format(api_version,
+                                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_correlationevents_query(self, data, api_version="v2.1"):
+    def site_correlationevents_query(self, data, tenant_id=None, api_version="v2.1"):
         """
-        POST Site_Correlationevents_Query API Function
+        Query site correlation events. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/correlationevents/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/correlationevents/query".format(api_version,
+                                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_extensions(self, site_id, data, api_version="v2.0"):
+    def site_extensions(self, site_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create site level extension configuration (v2.0)
 
@@ -10698,27 +14303,36 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
            - **conf:**  Type: object 
            - **disabled:**  Type: boolean 
+           - **entity_id:**  Type: string 
            - **name:**  Type: string 
            - **namespace:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/extensions".format(api_version,
-                                                                         site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/extensions".format(api_version,
+                                                                              tenant_id,
+                                                                              site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_extensions_query(self, site_id, data, api_version="v2.0"):
+    def site_extensions_query(self, site_id, data, tenant_id=None, api_version="v2.0"):
         """
         Query site level extensions that match query params (v2.0)
 
@@ -10726,6 +14340,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -10750,15 +14365,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/extensions/query".format(api_version,
-                                                                               site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/extensions/query".format(api_version,
+                                                                                    tenant_id,
+                                                                                    site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_ipfixlocalprefixes(self, site_id, data, api_version="v2.0"):
+    def site_ipfixlocalprefixes(self, site_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create a IPFix site prefix association (v2.0)
 
@@ -10766,6 +14388,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -10777,15 +14400,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/ipfixlocalprefixes".format(api_version,
-                                                                                 site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/ipfixlocalprefixes".format(api_version,
+                                                                                      tenant_id,
+                                                                                      site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_lannetworks_query(self, site_id, data, api_version="v3.3"):
+    def site_lannetworks_query(self, site_id, data, tenant_id=None, api_version="v3.3"):
         """
         Query LAN networks that match query params (v3.3)
 
@@ -10793,67 +14423,47 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.3)
 
           **Payload Attributes:** 
 
-           - **description:**  Type: string 
-           - **ipv4_config:**           
-               - **default_routers:**  [Type: string] 
-               - **dhcp_relay:**           
-                   - **enabled:**  Type: boolean 
-                   - **option_82:**           
-                       - **circuit_id:**  Type: string 
-                       - **enabled:**  Type: boolean 
-                       - **reforwarding_policy:**  Type: string 
-                       - **remote_id:**  Type: string 
-                   - **server_ips:**  [Type: string] 
-                   - **source_interface:**  Type: string 
-               - **dhcp_server:**           
-                   - **broadcast_address:**  Type: string 
-                   - **custom_options:**           
-                       - **option_definition:**  Type: string 
-                       - **option_value:**  Type: string 
-                   - **default_lease_time:**  Type: integer 
-                   - **description:**  Type: string 
-                   - **disabled:**  Type: boolean 
-                   - **dns_servers:**  [Type: string] 
-                   - **domain_name:**  Type: string 
-                   - **gateway:**  Type: string 
-                   - **id:**  Type: string 
-                   - **ip_ranges:**           
-                       - **end_ip:**  Type: string 
-                       - **start_ip:**  Type: string 
-                   - **max_lease_time:**  Type: integer 
-                   - **network_context_id:**  Type: string 
-                   - **static_mappings:**           
-                       - **ip_address:**  Type: string 
-                       - **mac:**  Type: string 
-                       - **name:**  Type: string 
-                   - **subnet:**  Type: string 
-                   - **tags:**  [Type: string] 
-               - **prefixes:**  [Type: string] 
-           - **ipv6_config:**           
-               - **default_routers:**  [Type: string] 
-               - **prefixes:**  [Type: string] 
-           - **name:**  Type: string 
-           - **network_context_id:**  Type: string 
-           - **scope:**  Type: string 
-           - **tags:**  [Type: string] 
-           - **vrf_context_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/lannetworks/query".format(api_version,
-                                                                                site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/lannetworks/query".format(api_version,
+                                                                                     tenant_id,
+                                                                                     site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_natlocalprefixes(self, site_id, data, api_version="v2.0"):
+    def site_natlocalprefixes(self, site_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create an association between site and NAT Prefix. (v2.0)
 
@@ -10861,6 +14471,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -10872,15 +14483,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/natlocalprefixes".format(api_version,
-                                                                               site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/natlocalprefixes".format(api_version,
+                                                                                    tenant_id,
+                                                                                    site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_networkpolicylocalprefixes(self, site_id, data, api_version="v2.1"):
+    def site_networkpolicylocalprefixes(self, site_id, data, tenant_id=None, api_version="v2.1"):
         """
         Create an association between site and Network local Prefix. (v2.1)
 
@@ -10888,6 +14506,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -10900,15 +14519,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/networkpolicylocalprefixes".format(api_version,
-                                                                                         site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/networkpolicylocalprefixes".format(api_version,
+                                                                                              tenant_id,
+                                                                                              site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_ngfwsecuritypolicylocalprefixes(self, site_id, data, api_version="v2.1"):
+    def site_ngfwsecuritypolicylocalprefixes(self, site_id, data, tenant_id=None, api_version="v2.1"):
         """
         Create a security policy V2 local prefix site association (v2.1)
 
@@ -10916,6 +14542,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -10928,15 +14555,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/ngfwsecuritypolicylocalprefixes".format(api_version,
-                                                                                              site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/ngfwsecuritypolicylocalprefixes".format(api_version,
+                                                                                                   tenant_id,
+                                                                                                   site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_operations(self, site_id, data, api_version="v2.0"):
+    def site_operations(self, site_id, data, tenant_id=None, api_version="v2.0"):
         """
         Handle operations on site. (v2.0)
 
@@ -10944,6 +14578,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -10957,15 +14592,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/operations".format(api_version,
-                                                                         site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/operations".format(api_version,
+                                                                              tenant_id,
+                                                                              site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_prioritypolicylocalprefixes(self, site_id, data, api_version="v2.1"):
+    def site_prioritypolicylocalprefixes(self, site_id, data, tenant_id=None, api_version="v2.1"):
         """
         Create an association between site and Priority local Prefix. (v2.1)
 
@@ -10973,6 +14615,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -10985,102 +14628,105 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/prioritypolicylocalprefixes".format(api_version,
-                                                                                          site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/prioritypolicylocalprefixes".format(api_version,
+                                                                                               tenant_id,
+                                                                                               site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_query(self, data, api_version="v4.13"):
+    def site_query(self, data, tenant_id=None, api_version="v4.13"):
         """
         Queries db for limit number of sites that match query params. (v4.13)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.13)
 
           **Payload Attributes:** 
 
-           - **address:**           
-               - **city:**  Type: string 
-               - **country:**  Type: string 
-               - **post_code:**  Type: string 
-               - **state:**  Type: string 
-               - **street:**  Type: string 
-               - **street2:**  Type: string 
-           - **admin_state:**  Type: string 
-           - **app_acceleration_enabled:**  Type: boolean 
-           - **branch_gateway:**  Type: boolean 
-           - **description:**  Type: string 
-           - **element_cluster_role:**  Type: string 
-           - **element_system_limit_profile_id:**  Type: string 
-           - **extended_tags:**           
-               - **key:**  Type: string 
-               - **value:**  Type: string 
-               - **value_type:**  Type: string 
-           - **location:**           
-               - **description:**  Type: string 
-               - **latitude:**  Type: number 
-               - **longitude:**  Type: number 
-           - **multicast_peer_group_id:**  Type: string 
-           - **name:**  Type: string 
-           - **nat_policysetstack_id:**  Type: string 
-           - **network_policysetstack_id:**  Type: string 
-           - **perfmgmt_policysetstack_id:**  Type: string 
-           - **policy_set_id:**  Type: string 
-           - **prefer_lan_default_over_wan_default_route:**  Type: boolean 
-           - **priority_policysetstack_id:**  Type: string 
-           - **security_policyset_id:**  Type: string 
-           - **security_policysetstack_id:**  Type: string 
-           - **service_binding:**  Type: string 
-           - **sgi_config:**           
-               - **sgi_tag:**  Type: integer 
-               - **sgi_vendor_id:**  Type: string 
-           - **tags:**  [Type: string] 
-           - **vrf_context_profile_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **region_group_by:**  Type: string 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+           - **view:**           
+               - **summary:**  Type: boolean 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/query".format(api_version,
+                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_sitesecurityzones_query(self, site_id, data, api_version="v2.0"):
+    def site_sitesecurityzones_query(self, site_id, data, tenant_id=None, api_version="v2.1"):
         """
-        Query security zone for NB API. (v2.0)
+        Query site security zones (v2.1) (v2.1)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **networks:**           
-               - **network_id:**  Type: string 
-               - **network_type:**  Type: string 
-           - **zone_id:**  Type: string 
+           - **query_params:**           
+               - **zone_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/sitesecurityzones/query".format(api_version,
-                                                                                      site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/sitesecurityzones/query".format(api_version,
+                                                                                           tenant_id,
+                                                                                           site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def site_spokeclusters_query(self, site_id, data, api_version="v2.0"):
+    def site_spokeclusters_query(self, site_id, data, tenant_id=None, api_version="v2.0"):
         """
         Query Spoke Clusters. (v2.0)
 
@@ -11088,34 +14734,54 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **advertisement_interval:**  Type: number 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **preempt:**  Type: boolean 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/spokeclusters/query".format(api_version,
-                                                                                  site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/spokeclusters/query".format(api_version,
+                                                                                       tenant_id,
+                                                                                       site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def sites(self, data, api_version="v4.13"):
+    def sites(self, data, tenant_id=None, api_version="v4.13"):
         """
         Create a site (v4.13)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.13)
 
           **Payload Attributes:** 
@@ -11161,25 +14827,36 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites".format(api_version,
+                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def sitesecurityzones(self, site_id, data, api_version="v2.0"):
+    def sitesecurityzones(self, site_id, data, tenant_id=None, api_version="v2.1"):
         """
-        Create an association between site and security zone. (v2.0)
+        Create site security zone (v2.1) (v2.1)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **element_interfaces:**           
+               - **element_id:**  Type: string 
+               - **interfaces:**  [Type: string] 
            - **networks:**           
                - **network_id:**  Type: string 
                - **network_type:**  Type: string 
@@ -11188,90 +14865,131 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/sitesecurityzones".format(api_version,
-                                                                                site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/sitesecurityzones".format(api_version,
+                                                                                     tenant_id,
+                                                                                     site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def sitesecurityzones_query(self, data, api_version="v2.0"):
+    def sitesecurityzones_query(self, data, tenant_id=None, api_version="v2.1"):
         """
-        Query security zone. (v2.0)
+        Query all site security zone associations (v2.1) (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **networks:**           
-               - **network_id:**  Type: string 
-               - **network_type:**  Type: string 
-           - **site_id:**  Type: string 
-           - **zone_id:**  Type: string 
+           - **query_params:**           
+               - **zone_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sitesecurityzones/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sitesecurityzones/query".format(api_version,
+                                                                                  tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def sitesnapshots(self, data, api_version="v2.0"):
+    def sitesnapshots(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create or retry a site deployment (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **status:**  Type: string 
-           - **status_description:**  Type: string 
            - **yaml_configuration:**  Type: string 
-           - **yaml_name:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sitesnapshots".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sitesnapshots".format(api_version,
+                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def sitesnapshots_query(self, data, api_version="v2.0"):
+    def sitesnapshots_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query import jobs with filters (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sitesnapshots/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sitesnapshots/query".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def snapshots(self, site_id, data, api_version="v2.0"):
+    def snapshots(self, site_id, data, tenant_id=None, api_version="v2.0"):
         """
         Generate a snapshot of a particular site (v2.0)
 
@@ -11279,49 +14997,78 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **site_id:**  Type: string 
            - **snapshot_name:**  Type: string 
-           - **status:**  Type: string 
-           - **status_description:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/snapshots".format(api_version,
-                                                                        site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/snapshots".format(api_version,
+                                                                             tenant_id,
+                                                                             site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def snapshots_query(self, data, api_version="v2.0"):
+    def snapshots_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query export jobs (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/snapshots/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/snapshots/query".format(api_version,
+                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def snmpagents(self, site_id, element_id, data, api_version="v2.1"):
+    def snmpagents(self, site_id, element_id, data, tenant_id=None, api_version="v2.1"):
         """
         Create SNMP Agent (v2.1)
 
@@ -11330,6 +15077,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -11355,22 +15103,30 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/snmpagents".format(api_version,
-                                                                                     site_id,
-                                                                                     element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/snmpagents".format(api_version,
+                                                                                          tenant_id,
+                                                                                          site_id,
+                                                                                          element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def snmpdiscoverystartnodes_query(self, data, api_version="v2.0"):
+    def snmpdiscoverystartnodes_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Start Network Node based on parameters (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -11395,14 +15151,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/snmpdiscoverystartnodes/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/snmpdiscoverystartnodes/query".format(api_version,
+                                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def snmptraps(self, site_id, element_id, data, api_version="v2.0"):
+    def snmptraps(self, site_id, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create SNMP Trap (v2.0)
 
@@ -11411,6 +15174,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -11436,117 +15200,76 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/snmptraps".format(api_version,
-                                                                                    site_id,
-                                                                                    element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/snmptraps".format(api_version,
+                                                                                         tenant_id,
+                                                                                         site_id,
+                                                                                         element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def software_current_status_query(self, data, api_version="v2.1"):
+    def software_current_status_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Get the current image status of all the element (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
-           - **active_image_id:**  Type: string 
-           - **active_version:**  Type: string 
-           - **download_interval:**  Type: integer 
-           - **download_percent:**  Type: integer 
-           - **element_id:**  Type: string 
-           - **failure_info:**  Type: string 
-           - **previous_image_id:**  Type: string 
-           - **rollback_version:**  Type: string 
-           - **scheduled_download:**  Type: string 
-           - **scheduled_upgrade:**  Type: string 
-           - **upgrade_image_id:**  Type: string 
-           - **upgrade_interval:**  Type: integer 
-           - **upgrade_state:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/software/current_status/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/software/current_status/query".format(api_version,
+                                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def software_state_query(self, data, api_version="v2.0"):
+    def software_state_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query software state for all tenants elements (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **image_id:**  Type: string 
-           - **scheduled_download:**  Type: string 
-           - **scheduled_upgrade:**  Type: string 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/software/state/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def software_status_query(self, data, api_version="v2.1"):
-        """
-        Query the software upgrade status of all tenant elements (v2.1)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.1)
-
-          **Payload Attributes:** 
-
-           - **active_image_id:**  Type: string 
-           - **active_version:**  Type: string 
-           - **download_interval:**  Type: integer 
-           - **download_percent:**  Type: integer 
-           - **element_id:**  Type: string 
-           - **failure_info:**  Type: string 
-           - **previous_image_id:**  Type: string 
-           - **rollback_version:**  Type: string 
-           - **scheduled_download:**  Type: string 
-           - **scheduled_upgrade:**  Type: string 
-           - **upgrade_image_id:**  Type: string 
-           - **upgrade_interval:**  Type: integer 
-           - **upgrade_state:**  Type: string 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/software/status/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def softwarehistory_query(self, data, api_version="v2.0"):
-        """
-        Queries db for all software download done by a tenant (v2.0)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -11571,36 +15294,159 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/softwarehistory/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/software/state/query".format(api_version,
+                                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def spnnpnsitemigration_remotenetworks_query(self, data, api_version="v2.0"):
+    def software_status_query(self, data, tenant_id=None, api_version="v2.1"):
+        """
+        Query the software upgrade status of all tenant elements (v2.1)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.1)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/software/status/query".format(api_version,
+                                                                                tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def softwarehistory_query(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Queries db for all software download done by a tenant (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/softwarehistory/query".format(api_version,
+                                                                                tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def spnnpnsitemigration_remotenetworks_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Get all easy onboarding created remote networks for a tenant (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/spnnpnsitemigration/remotenetworks/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/spnnpnsitemigration/remotenetworks/query".format(api_version,
+                                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def spokeclusters(self, site_id, data, api_version="v2.0"):
+    def spokeclusters(self, site_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create Spoke Cluster (v2.0)
 
@@ -11608,6 +15454,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -11621,97 +15468,149 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/spokeclusters".format(api_version,
-                                                                            site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/spokeclusters".format(api_version,
+                                                                                 tenant_id,
+                                                                                 site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def spokeclusters_operations(self, site_id, spokecluster_id, data, api_version="v2.0"):
+    def spokeclusters_operations(self, site_id, spokecluster_id, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Spokeclusters_Operations API Function
+        Handle operations on spokecluster. (v2.0)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **spokecluster_id**: Spoke Cluster ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **action:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/spokeclusters/{}/operations".format(api_version,
-                                                                                          site_id,
-                                                                                          spokecluster_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/spokeclusters/{}/operations".format(api_version,
+                                                                                               tenant_id,
+                                                                                               site_id,
+                                                                                               spokecluster_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def spokeclusters_query(self, data, api_version="v2.0"):
+    def spokeclusters_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Spoke Clusters. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **advertisement_interval:**  Type: number 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **preempt:**  Type: boolean 
-           - **site_id:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/spokeclusters/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/spokeclusters/query".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def spokeclusters_status_query(self, data, api_version="v2.0"):
+    def spokeclusters_status_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Spoke Clusters Status (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **element_id:**  Type: string 
-           - **last_status_update_ts:**  Type: integer 
-           - **priority:**  Type: integer 
-           - **site_id:**  Type: string 
-           - **spoke_cluster_id:**  Type: string 
-           - **status:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/spokeclusters/status/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/spokeclusters/status/query".format(api_version,
+                                                                                     tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def staticroutes(self, site_id, element_id, data, api_version="v2.3"):
+    def staticroutes(self, site_id, element_id, data, tenant_id=None, api_version="v2.3"):
         """
         Create static route (v2.3)
 
@@ -11720,6 +15619,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
@@ -11742,22 +15642,30 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/staticroutes".format(api_version,
-                                                                                       site_id,
-                                                                                       element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/staticroutes".format(api_version,
+                                                                                            tenant_id,
+                                                                                            site_id,
+                                                                                            element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def status_query(self, data, api_version="v2.6"):
+    def status_query(self, data, tenant_id=None, api_version="v2.6"):
         """
         Query and get element status objects for a tenant (v2.6)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.6)
 
           **Payload Attributes:** 
@@ -11782,44 +15690,81 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/status/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/status/query".format(api_version,
+                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def support_operations(self, element_id, data, api_version="v2.0"):
+    def support_operations(self, element_id, data, tenant_id=None, api_version="v2.0"):
         """
-        POST Support_Operations API Function
+        Create a new System report using support_operations API (v2.0)
 
           **Parameters:**:
 
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **:**  Type: string 
+           - **action:**  Type: string 
+           - **arguments:**  Type: string 
+           - **chunksize:**  Type: integer 
+           - **cols:**  Type: integer 
+           - **cores:**  Type: boolean 
+           - **count:**  Type: integer 
+           - **ethertype:**  Type: string 
+           - **filesize:**  Type: integer 
+           - **interface:**  Type: string 
+           - **opcode:**  Type: string 
+           - **packetcount:**  Type: integer 
+           - **port:**  Type: integer 
+           - **protocol:**  Type: string 
+           - **reqid:**  Type: string 
+           - **rows:**  Type: integer 
+           - **sessiontimeout:**  Type: integer 
+           - **syslog:**  Type: boolean 
+           - **sysreport:**  Type: boolean 
+           - **target:**  Type: string 
+           - **version:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/support_operations".format(api_version,
-                                                                                    element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/support_operations".format(api_version,
+                                                                                         tenant_id,
+                                                                                         element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def syslogserverprofiles(self, data, api_version="v2.1"):
+    def syslogserverprofiles(self, data, tenant_id=None, api_version="v2.1"):
         """
         Create Syslog Server Profile (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -11841,14 +15786,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/syslogserverprofiles".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/syslogserverprofiles".format(api_version,
+                                                                               tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def syslogservers(self, site_id, element_id, data, api_version="v2.3"):
+    def syslogservers(self, site_id, element_id, data, tenant_id=None, api_version="v2.3"):
         """
         Create Syslog Server (v2.3)
 
@@ -11857,6 +15809,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.3)
 
           **Payload Attributes:** 
@@ -11881,22 +15834,30 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/syslogservers".format(api_version,
-                                                                                        site_id,
-                                                                                        element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/syslogservers".format(api_version,
+                                                                                             tenant_id,
+                                                                                             site_id,
+                                                                                             element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def tacacs_plus_profiles(self, data, api_version="v2.0"):
+    def tacacs_plus_profiles(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create TACACS+ Profile (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -11916,14 +15877,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/tacacs_plus_profiles".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/tacacs_plus_profiles".format(api_version,
+                                                                               tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def tacacs_plus_servers(self, site_id, element_id, data, api_version="v2.0"):
+    def tacacs_plus_servers(self, site_id, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create TACACS+ Servers (v2.0)
 
@@ -11932,6 +15900,7 @@ class Post(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -11954,22 +15923,30 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/tacacs_plus_servers".format(api_version,
-                                                                                              site_id,
-                                                                                              element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/tacacs_plus_servers".format(api_version,
+                                                                                                   tenant_id,
+                                                                                                   site_id,
+                                                                                                   element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def templates_ntp(self, data, api_version="v2.0"):
+    def templates_ntp(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new NTP Template (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -11990,92 +15967,113 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/templates/ntp".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/templates/ntp".format(api_version,
+                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def tenant_anynetlinks(self, data, api_version="v4.0"):
+    def tenant_anynetlinks(self, data, tenant_id=None, api_version="v4.0"):
         """
-        POST Tenant_Anynetlinks API Function
+        Create anynet link (v4.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v4.0)
 
           **Payload Attributes:** 
 
+           - **admin_up:**  Type: boolean 
+           - **description:**  Type: string 
+           - **ep1_hub_cluster_id:**  Type: string 
+           - **ep1_site_id:**  Type: string 
+           - **ep1_wan_interface_id:**  Type: string 
+           - **ep2_hub_cluster_id:**  Type: string 
+           - **ep2_site_id:**  Type: string 
+           - **ep2_wan_interface_id:**  Type: string 
+           - **forced:**  Type: boolean 
+           - **name:**  Type: string 
+           - **tags:**  [Type: string] 
+           - **tenant_id:**  Type: string 
+           - **type:**  Type: string 
+           - **vpnlink_configuration:**           
+               - **keep_alive_failure_count:**  Type: integer 
+               - **keep_alive_interval:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/anynetlinks".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/anynetlinks".format(api_version,
+                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def tenant_bgppeers_query(self, data, api_version="v3.0"):
+    def tenant_bgppeers_query(self, data, tenant_id=None, api_version="v3.0"):
         """
         Queries db for BGP peers that match query params. (v3.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
 
-           - **advertise_default_route:**  Type: boolean 
-           - **allow_v4_prefixes:**  Type: boolean 
-           - **allow_v6_prefixes:**  Type: boolean 
-           - **bgp_config:**           
-               - **adv_interval:**  Type: integer 
-               - **hold_time:**  Type: integer 
-               - **keepalive_time:**  Type: integer 
-               - **local_as_num:**  Type: string 
-               - **md5_secret:**  Type: string 
-               - **multi_hop_limit:**  Type: integer 
-               - **peer_auth_type:**  Type: string 
-               - **peer_retry_time:**  Type: integer 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **peer_ip:**  Type: string 
-           - **peer_ip_v6:**  Type: string 
-           - **peer_type:**  Type: string 
-           - **remote_as_num:**  Type: string 
-           - **route_aggregation:**           
-               - **aggregate_prefixes:**           
-                   - **ip_prefixes:**  [Type: string] 
-                   - **type:**  Type: string 
-               - **aggregate_type:**  Type: string 
-               - **ipv4_prefix_list_id:**  Type: string 
-               - **ipv6_prefix_list_id:**  Type: string 
-           - **route_map_in_id:**  Type: string 
-           - **route_map_out_id:**  Type: string 
-           - **router_id:**  Type: string 
-           - **scope:**  Type: string 
-           - **shutdown:**  Type: boolean 
-           - **tags:**  [Type: string] 
-           - **update_source:**  Type: string 
-           - **update_source_v6:**  Type: string 
-           - **vrf_context_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/bgppeers/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/bgppeers/query".format(api_version,
+                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def tenant_element_operations(self, element_id, data, api_version="v2.0"):
+    def tenant_element_operations(self, element_id, data, tenant_id=None, api_version="v2.0"):
         """
         Handle operations on element. (v2.0)
 
@@ -12083,6 +16081,7 @@ class Post(object):
 
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12093,21 +16092,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/elements/{}/operations".format(api_version,
-                                                                            element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/elements/{}/operations".format(api_version,
+                                                                                 tenant_id,
+                                                                                 element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def tenant_extensions_query(self, data, api_version="v2.0"):
+    def tenant_extensions_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Queries db for limit number of tenant extensions that match the query params. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12116,24 +16123,33 @@ class Post(object):
            - **disabled:**  Type: boolean 
            - **name:**  Type: string 
            - **namespace:**  Type: string 
+           - **tenant_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/extensions/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/extensions/query".format(api_version,
+                                                                           tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def tenant_forgot_password_login(self, data, api_version="v2.0"):
+    def tenant_forgot_password_login(self, data, tenant_id=None, api_version="v2.0"):
         """
         Forgot password API (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12143,20 +16159,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/login/password/forgot".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/login/password/forgot".format(api_version,
+                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data, sensitive=True)
 
-    def tenant_ipfixlocalprefixes(self, data, api_version="v2.0"):
+    def tenant_ipfixlocalprefixes(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a IPFix local prefix (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12168,14 +16192,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ipfixlocalprefixes".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ipfixlocalprefixes".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def tenant_machine_operations(self, machine_id, data, api_version="v2.5"):
+    def tenant_machine_operations(self, machine_id, data, tenant_id=None, api_version="v2.5"):
         """
         Update a specific machine of a tenant using operations (v2.5)
 
@@ -12183,20 +16214,19 @@ class Post(object):
 
           - **machine_id**: Machine ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
 
            - **connected:**  Type: boolean 
            - **console_conf_passphrase:**  Type: string 
-           - **element_shell_id:**  Type: string 
            - **em_element_id:**  Type: string 
            - **esp_tenant_id:**  Type: string 
            - **hw_id:**  Type: string 
            - **image_version:**  Type: string 
-           - **inventory_op:**  Type: string 
-           - **is_eval:**  Type: string 
-           - **machine_state:**  Type: string 
+           - **inventory_op:**           
+           - **machine_state:**           
            - **manufacture_id:**  Type: string 
            - **model_name:**  Type: string 
            - **ordering_info:**  Type: string 
@@ -12204,32 +16234,39 @@ class Post(object):
            - **pki_op:**           
                - **ca_list:**  [Type: string] 
                - **operation:**  Type: string 
-           - **renew_state:**  Type: string 
+           - **renew_state:**           
            - **sales_order_number:**  Type: string 
-           - **ship_state:**  Type: string 
+           - **ship_state:**           
            - **sl_no:**  Type: string 
-           - **suspend_state:**  Type: string 
            - **tenant_id:**  Type: string 
            - **token:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/machines/{}/operations".format(api_version,
-                                                                            machine_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/machines/{}/operations".format(api_version,
+                                                                                 tenant_id,
+                                                                                 machine_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def tenant_networkpolicylocalprefixes(self, data, api_version="v2.0"):
+    def tenant_networkpolicylocalprefixes(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new Network Policy local prefix. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12241,20 +16278,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/networkpolicylocalprefixes".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/networkpolicylocalprefixes".format(api_version,
+                                                                                     tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def tenant_permissions(self, data, api_version="v2.0"):
+    def tenant_permissions(self, data, tenant_id=None, api_version="v2.0"):
         """
         Add a custom permission (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12273,189 +16318,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/permissions".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/permissions".format(api_version,
+                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def tenant_prefixfilters_query(self, data, api_version="v2.0"):
+    def tenant_prefixfilters_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query security prefix filter for NB API. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **filters:**           
-               - **ip_prefixes:**  [Type: string] 
-               - **type:**  Type: string 
-           - **prefix_filter_id:**  Type: string 
-           - **site_id:**  Type: string 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/prefixfilters/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def tenant_prioritypolicylocalprefixes(self, data, api_version="v2.0"):
-        """
-        Create a new Priority Policy local prefix. (v2.0)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/prioritypolicylocalprefixes".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def tenant_waninterfaces_query(self, data, api_version="v2.10"):
-        """
-        Query db for Site WAN interfaces that match query parameters (v2.10)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.10)
-
-          **Payload Attributes:** 
-
-           - **app_acceleration_enabled:**  Type: boolean 
-           - **bfd_mode:**  Type: string 
-           - **bw_config_mode:**  Type: string 
-           - **bwc_enabled:**  Type: boolean 
-           - **cost:**  Type: integer 
-           - **description:**  Type: string 
-           - **l3_reachability:**           
-               - **probe_config_ids:**  [Type: string] 
-               - **use_element_default:**  Type: boolean 
-           - **label_id:**  Type: string 
-           - **link_bw_down:**  Type: number 
-           - **link_bw_up:**  Type: number 
-           - **lqm_config:**           
-               - **hub_site_ids:**  [Type: string] 
-               - **inter_packet_gap:**  Type: integer 
-               - **statistic:**  Type: string 
-           - **lqm_enabled:**  Type: boolean 
-           - **name:**  Type: string 
-           - **network_id:**  Type: string 
-           - **probe_profile_id:**  Type: string 
-           - **site_id:**  Type: string 
-           - **tags:**  [Type: string] 
-           - **type:**  Type: string 
-           - **use_for_application_reachability_probes:**  Type: boolean 
-           - **use_for_controller_connections:**  Type: boolean 
-           - **use_lqm_for_non_hub_paths:**  Type: boolean 
-           - **vpnlink_configuration:**           
-               - **keep_alive_failure_count:**  Type: integer 
-               - **keep_alive_interval:**  Type: integer 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/waninterfaces/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def threatmetadata_query(self, data, api_version="v2.0"):
-        """
-        Query Threat Metadata. (v2.0)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/threatmetadata/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def toolkitsessions_query(self, data, api_version="v2.0"):
-        """
-        POST Toolkitsessions_Query API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/toolkitsessions/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def topology(self, data, api_version="v3.6"):
-        """
-        POST Topology API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v3.6)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/topology".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def upgrade_status_query(self, data, api_version="v2.0"):
-        """
-        Query Machine Upgrade Status (v2.0)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12480,42 +16364,340 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/upgrade_status/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prefixfilters/query".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def urlcategories_query(self, data, api_version="v2.0"):
+    def tenant_prioritypolicylocalprefixes(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Create a new Priority Policy local prefix. (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **description:**  Type: string 
+           - **name:**  Type: string 
+           - **tags:**  [Type: string] 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/prioritypolicylocalprefixes".format(api_version,
+                                                                                      tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def tenant_waninterfaces_query(self, data, tenant_id=None, api_version="v2.10"):
+        """
+        Query db for Site WAN interfaces that match query parameters (v2.10)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.10)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/waninterfaces/query".format(api_version,
+                                                                              tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def threatmetadata_query(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query Threat Metadata. (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/threatmetadata/query".format(api_version,
+                                                                               tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def toolkitsessions_query(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query db for sessions that match query parameters (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/toolkitsessions/query".format(api_version,
+                                                                                tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def topology(self, data, tenant_id=None, api_version="v3.6"):
+        """
+        Query topology (v3.6)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v3.6)
+
+          **Payload Attributes:** 
+
+           - **links:**  [Type: string] 
+           - **links_only:**  Type: boolean 
+           - **location:**           
+               - **end:**           
+                   - **description:**  Type: string 
+                   - **latitude:**  Type: number 
+                   - **longitude:**  Type: number 
+               - **start:**           
+                   - **description:**  Type: string 
+                   - **latitude:**  Type: number 
+                   - **longitude:**  Type: number 
+           - **nodes:**  [Type: string] 
+           - **servicelinks:**  Type: boolean 
+           - **site_id:**  Type: string 
+           - **sites:**           
+               - **ep1_id:**  Type: string 
+               - **ep2_id:**  Type: string 
+           - **stub_links:**  Type: boolean 
+           - **type:**  Type: string 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/topology".format(api_version,
+                                                                   tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def upgrade_status_query(self, data, tenant_id=None, api_version="v2.0"):
+        """
+        Query Machine Upgrade Status (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/upgrade_status/query".format(api_version,
+                                                                               tenant_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def urlcategories_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query URL Categories. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/urlcategories/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/urlcategories/query".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def useridagents(self, data, api_version="v2.0"):
+    def useridagents(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create User ID Agent (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12542,60 +16724,74 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/useridagents".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/useridagents".format(api_version,
+                                                                       tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def useridagents_query(self, data, api_version="v2.0"):
+    def useridagents_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query User ID Agents. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **authentication:**           
-               - **collector_name:**  Type: string 
-               - **collector_secret:**  Type: string 
-               - **collector_secret_encrypted:**  Type: string 
-               - **local_certificate:**  Type: string 
-               - **local_private_key:**  Type: string 
-               - **passphrase:**  Type: string 
-               - **remote_ca_certificate:**  Type: string 
-           - **description:**  Type: string 
-           - **enabled:**  Type: boolean 
-           - **name:**  Type: string 
-           - **port:**  Type: integer 
-           - **server_fqdn:**  Type: string 
-           - **server_ip:**  Type: string 
-           - **site_id:**  Type: string 
-           - **source_interface:**  Type: string 
-           - **tags:**  [Type: string] 
-           - **tenant_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/useridagents/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/useridagents/query".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def users(self, data, api_version="v2.0"):
+    def users(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create an user identity. (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12615,44 +16811,67 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/users".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/users".format(api_version,
+                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def vff_token_query(self, data, api_version="v2.0"):
+    def vff_token_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query Tenant Vff License Tokens (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **ion_key:**  Type: string 
-           - **is_expired:**  Type: boolean 
-           - **is_multiuse:**  Type: boolean 
-           - **is_revoked:**  Type: boolean 
-           - **is_used:**  Type: boolean 
-           - **secret_key:**  Type: string 
-           - **valid_till_secs:**  Type: integer 
-           - **vfflicense_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vfflicenses/tokens/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vfflicenses/tokens/query".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def vfflicense_tokens(self, vfflicense_id, data, api_version="v2.0"):
+    def vfflicense_tokens(self, vfflicense_id, data, tenant_id=None, api_version="v2.0"):
         """
         Create Tenant Vff License Token (v2.0)
 
@@ -12660,6 +16879,7 @@ class Post(object):
 
           - **vfflicense_id**: Virtual Form Factor License ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12676,15 +16896,22 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vfflicenses/{}/tokens".format(api_version,
-                                                                           vfflicense_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vfflicenses/{}/tokens".format(api_version,
+                                                                                tenant_id,
+                                                                                vfflicense_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def vfflicenses_operations(self, vfflicense_id, data, api_version="v2.0"):
+    def vfflicenses_operations(self, vfflicense_id, data, tenant_id=None, api_version="v2.0"):
         """
         Vff operation (v2.0)
 
@@ -12692,34 +16919,41 @@ class Post(object):
 
           - **vfflicense_id**: Virtual Form Factor License ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **allocated_ions:**  Type: integer 
-           - **allowed_ions:**  Type: integer 
-           - **model:**  Type: string 
-           - **source_license_id:**  Type: string 
-           - **source_tenant_id:**  Type: string 
+           - **inventory_op:**           
+           - **ions_count:**  Type: integer 
+           - **tenant_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vfflicenses/{}/operations".format(api_version,
-                                                                               vfflicense_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vfflicenses/{}/operations".format(api_version,
+                                                                                    tenant_id,
+                                                                                    vfflicense_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def vfflicenses_rquery(self, data, api_version="v2.0"):
+    def vfflicenses_rquery(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query and get Vff License (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12744,20 +16978,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vfflicenses/rquery".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vfflicenses/rquery".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def vfflicensesstatus_rquery(self, data, api_version="v2.0"):
+    def vfflicensesstatus_rquery(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query and get Vff License State (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12782,14 +17024,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vfflicensesstatus/rquery".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vfflicensesstatus/rquery".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def vpnlinks_operations(self, vpnlink_id, data, api_version="v2.0"):
+    def vpnlinks_operations(self, vpnlink_id, data, tenant_id=None, api_version="v2.0"):
         """
         Perform an operation on a VPN link (v2.0)
 
@@ -12797,6 +17046,7 @@ class Post(object):
 
           - **vpnlink_id**: VPN Link ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12806,21 +17056,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vpnlinks/{}/operations".format(api_version,
-                                                                            vpnlink_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vpnlinks/{}/operations".format(api_version,
+                                                                                 tenant_id,
+                                                                                 vpnlink_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def vpnlinks_query(self, data, api_version="v2.0"):
+    def vpnlinks_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query db for VPNLinks that match query parameters (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12845,20 +17103,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vpnlinks/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vpnlinks/query".format(api_version,
+                                                                         tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def vrfcontextprofiles(self, data, api_version="v2.0"):
+    def vrfcontextprofiles(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new VRF context profile (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -12878,58 +17144,78 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vrfcontextprofiles".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vrfcontextprofiles".format(api_version,
+                                                                             tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def vrfcontextprofiles_query(self, data, api_version="v2.0"):
+    def vrfcontextprofiles_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query VRF Context Profiles (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **default_vrf_context_profile:**  Type: boolean 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
-           - **vrf_context_ids:**  [Type: string] 
-           - **vrf_context_route_leak_rules:**           
-               - **description:**  Type: string 
-               - **dest_vrf_context_id:**  Type: string 
-               - **ipv4_prefixes:**  [Type: string] 
-               - **name:**  Type: string 
-               - **src_vrf_context_id:**  Type: string 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vrfcontextprofiles/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vrfcontextprofiles/query".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def vrfcontexts(self, data, api_version="v2.0"):
+    def vrfcontexts(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new VRF context (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **default_vrf_context:**  Type: boolean 
            - **description:**  Type: string 
            - **name:**  Type: string 
            - **tags:**  [Type: string] 
@@ -12937,64 +17223,98 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vrfcontexts".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vrfcontexts".format(api_version,
+                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def vrfcontexts_query(self, data, api_version="v2.0"):
+    def vrfcontexts_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         Query VRF Contexts (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
 
-           - **default_vrf_context:**  Type: boolean 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/vrfcontexts/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/vrfcontexts/query".format(api_version,
+                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def waninterfacelabels_query(self, data, api_version="v2.6"):
+    def waninterfacelabels_query(self, data, tenant_id=None, api_version="v2.6"):
         """
         Query db for site WAN interfaces that match query parameters (v2.6)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.6)
 
           **Payload Attributes:** 
 
-           - **app_acceleration_enabled:**  Type: boolean 
+           - **bfd_mode:**  Type: string 
+           - **bw_config_mode:**  Type: string 
            - **bwc_enabled:**  Type: boolean 
+           - **cost:**  Type: integer 
            - **description:**  Type: string 
-           - **l3_reachability:**           
-               - **probe_config_ids:**  [Type: string] 
-               - **use_element_default:**  Type: boolean 
-           - **label:**  Type: string 
+           - **label_id:**  Type: string 
+           - **link_bw_down:**  Type: number 
+           - **link_bw_up:**  Type: number 
+           - **lqm_config:**           
+               - **hub_site_ids:**  [Type: string] 
+               - **inter_packet_gap:**  Type: integer 
+               - **statistic:**  Type: string 
            - **lqm_enabled:**  Type: boolean 
            - **name:**  Type: string 
-           - **probe_profile_id:**  Type: string 
+           - **network_id:**  Type: string 
+           - **site_id:**  Type: string 
            - **tags:**  [Type: string] 
+           - **type:**  Type: string 
            - **use_for_application_reachability_probes:**  Type: boolean 
            - **use_for_controller_connections:**  Type: boolean 
-           - **use_lqm_for_non_hub_paths:**  Type: boolean 
            - **vpnlink_configuration:**           
                - **keep_alive_failure_count:**  Type: integer 
                - **keep_alive_interval:**  Type: integer 
@@ -13002,14 +17322,21 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/waninterfacelabels/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/waninterfacelabels/query".format(api_version,
+                                                                                   tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def waninterfaces(self, site_id, data, api_version="v2.10"):
+    def waninterfaces(self, site_id, data, tenant_id=None, api_version="v2.10"):
         """
         Create a new Site WAN interface (v2.10)
 
@@ -13017,6 +17344,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.10)
 
           **Payload Attributes:** 
@@ -13053,37 +17381,68 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/waninterfaces".format(api_version,
-                                                                            site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/waninterfaces".format(api_version,
+                                                                                 tenant_id,
+                                                                                 site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def waninterfaces_correlationevents_query(self, data, api_version="v2.1"):
+    def waninterfaces_correlationevents_query(self, data, tenant_id=None, api_version="v2.1"):
         """
-        POST Waninterfaces_Correlationevents_Query API Function
+        Query WAN Interface correlation events. (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
+           - **aggregate:**           
+               - **field:**  Type: string 
+               - **operator:**  Type: string 
+           - **dest_page:**  Type: integer 
+           - **getDeleted:**  Type: boolean 
+           - **group_by:**  [Type: string] 
+           - **isReadPreferenceSecondary:**  Type: boolean 
+           - **last_query_ts:**  Type: integer 
+           - **limit:**  Type: integer 
+           - **next_query:**  Type: object 
+           - **query_params:**  Type: object 
+           - **retrieved_fields:**  [Type: string] 
+           - **retrieved_fields_mask:**  Type: boolean 
+           - **sort_case_insensitive:**  Type: boolean 
+           - **sort_params:**  Type: object 
+           - **total_count:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/waninterfaces/correlationevents/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/waninterfaces/correlationevents/query".format(api_version,
+                                                                                                tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def waninterfaces_query(self, site_id, data, api_version="v2.5"):
+    def waninterfaces_query(self, site_id, data, tenant_id=None, api_version="v2.5"):
         """
         Query db for Site WAN interfaces that match query parameters (v2.5)
 
@@ -13091,6 +17450,7 @@ class Post(object):
 
           - **site_id**: Site ID
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.5)
 
           **Payload Attributes:** 
@@ -13115,21 +17475,29 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/waninterfaces/query".format(api_version,
-                                                                                  site_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/waninterfaces/query".format(api_version,
+                                                                                       tenant_id,
+                                                                                       site_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def wannetworks(self, data, api_version="v2.1"):
+    def wannetworks(self, data, tenant_id=None, api_version="v2.1"):
         """
         Create a new WAN (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -13143,20 +17511,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/wannetworks".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/wannetworks".format(api_version,
+                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def wannetworks_query(self, data, api_version="v2.1"):
+    def wannetworks_query(self, data, tenant_id=None, api_version="v2.1"):
         """
         Query db for WAN networks that match query parameters (v2.1)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
@@ -13181,20 +17557,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/wannetworks/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/wannetworks/query".format(api_version,
+                                                                            tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def wanoverlays(self, data, api_version="v2.0"):
+    def wanoverlays(self, data, tenant_id=None, api_version="v2.0"):
         """
         Create a new app/wan context (v2.0)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -13206,20 +17590,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/wanoverlays".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/wanoverlays".format(api_version,
+                                                                      tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ws_extensions(self, data, api_version="v2.0"):
+    def ws_extensions(self, data, tenant_id=None, api_version="v2.0"):
         """
         POST Ws_Extensions API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -13228,20 +17620,28 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ws/extensions".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ws/extensions".format(api_version,
+                                                                        tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
-    def ws_extensions_query(self, data, api_version="v2.0"):
+    def ws_extensions_query(self, data, tenant_id=None, api_version="v2.0"):
         """
         POST Ws_Extensions_Query API Function
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to POST as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.0)
 
           **Payload Attributes:** 
@@ -13250,9 +17650,16 @@ class Post(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/ws/extensions/query".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/ws/extensions/query".format(api_version,
+                                                                              tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)

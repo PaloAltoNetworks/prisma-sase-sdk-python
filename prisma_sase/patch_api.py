@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 """
-PRISMA SASE Python SDK - PATCH
+Prisma SASE Python SDK - PATCH
 
-**Author:** Palo Alto Networks
+**Author:** CloudGenix
 
-**Copyright:** (c) 2026 Palo Alto Networks, Inc
+**Copyright:** (c) 2017-2026 CloudGenix, Inc
 
 **License:** MIT
 """
 import logging
 
-__author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
-__email__ = "prisma-sase-developers@paloaltonetworks.com"
+__author__ = "Palo Alto Networks Developer Support"
+__email__ = "developers@paloaltonetworks.com"
 __copyright__ = "Copyright (c) 2026 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
@@ -52,7 +52,7 @@ class Patch(object):
     # placeholder for parent class namespace
     _parent_class = None
 
-    def bgppeers(self, site_id, element_id, data, api_version="v3.0"):
+    def bgppeers(self, site_id, element_id, data, tenant_id=None, api_version="v3.0"):
         """
         PATCH Bgppeers API Function
 
@@ -61,6 +61,7 @@ class Patch(object):
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **data**: Dictionary containing data to PATCH as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v3.0)
 
           **Payload Attributes:** 
@@ -69,16 +70,23 @@ class Patch(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/elements/{}/bgppeers".format(api_version,
-                                                                                   site_id,
-                                                                                   element_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/sites/{}/elements/{}/bgppeers".format(api_version,
+                                                                                        tenant_id,
+                                                                                        site_id,
+                                                                                        element_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "patch", data=data)
 
-    def tenant_operators(self, operator_id, data, api_version="v2.2"):
+    def tenant_operators(self, operator_id, data, tenant_id=None, api_version="v2.2"):
         """
         Patch a tenant operator (v2.2)
 
@@ -86,6 +94,7 @@ class Patch(object):
 
           - **operator_id**: Operator ID
           - **data**: Dictionary containing data to PATCH as JSON
+          - **tenant_id**: Tenant ID
           - **api_version**: API version to use (default v2.2)
 
           **Payload Attributes:** 
@@ -175,22 +184,30 @@ class Patch(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api/operators/{}".format(api_version,
-                                                                  operator_id)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}/operators/{}".format(api_version,
+                                                                       tenant_id,
+                                                                       operator_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "patch", data=data)
 
-    def tenants(self, data, api_version="v2.12"):
+    def tenants(self, data, tenant_id=None, api_version="v2.13"):
         """
-        Patch tenant (v2.12)
+        Patch tenant (v2.13)
 
           **Parameters:**:
 
           - **data**: Dictionary containing data to PATCH as JSON
-          - **api_version**: API version to use (default v2.12)
+          - **tenant_id**: Tenant ID
+          - **api_version**: API version to use (default v2.13)
 
           **Payload Attributes:** 
 
@@ -217,6 +234,7 @@ class Patch(object):
                - **ipv4:**  Type: string 
            - **is_branch_security_enabled:**  Type: boolean 
            - **is_esp:**  Type: boolean 
+           - **is_native_prisma_enabled:**  Type: boolean 
            - **is_oneapp_ready:**  Type: boolean 
            - **is_pa_iot_security_license:**  Type: boolean 
            - **is_sase_edge:**  Type: boolean 
@@ -261,6 +279,7 @@ class Patch(object):
                - **email_iam:**  Type: string 
                - **email_validated:**  Type: boolean 
                - **enable_session_ip_lock:**  Type: boolean 
+               - **esp_tenant_id:**  Type: string 
                - **first_name:**  Type: string 
                - **from_esp:**  Type: boolean 
                - **from_esp_name:**  Type: string 
@@ -390,9 +409,16 @@ class Patch(object):
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
 
+        if tenant_id is None and self._parent_class.tenant_id:
+            # Pull tenant_id from parent namespace cache.
+            tenant_id = self._parent_class.tenant_id
+        elif not tenant_id:
+            # No value for tenant_id.
+            raise TypeError("tenant_id is required but not set or cached.")
         cur_ctlr = self._parent_class.controller
 
-        url = str(cur_ctlr) + "/sdwan/{}/api".format(api_version)
+        url = str(cur_ctlr) + "/{}/api/tenants/{}".format(api_version,
+                                                          tenant_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "patch", data=data)

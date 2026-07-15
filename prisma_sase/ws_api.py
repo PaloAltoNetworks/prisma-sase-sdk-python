@@ -78,7 +78,7 @@ class WebSockets(object):
         wss_ctlr = self._parent_class.controller.replace('https://', 'wss://', 1)
 
         url = str(wss_ctlr) + "/sdwan/{}/api/elements/{}/ws/toolkitsessions?cols={}&rows={}" \
-                              "".format(api_version, tenant_id, element_id, cols, rows)
+                              "".format(api_version, element_id, cols, rows)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.websocket_call(url, **kwargs)

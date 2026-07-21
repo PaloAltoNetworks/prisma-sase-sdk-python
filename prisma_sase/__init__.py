@@ -1,7 +1,7 @@
 """
 Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.6.2b1
+**Version:** v6.8.1b1
 
 **Author:** Palo Alto Networks
 
@@ -1895,6 +1895,10 @@ class API(object):
         """
         if self.jwt_expires_in <= 60:
             self._session = requests.Session()
+            # restore user's ssl_verify setting
+            self._session.verify = self.verify
+            # re-mount TlsHttpAdapter (ssl_context + retry)
+            self.update_session_adapter()
             if self._generate_jwt():
                 api_logger.debug("Re-generated Token..")
                 self.use_jwt = False

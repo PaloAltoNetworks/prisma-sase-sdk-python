@@ -2828,28 +2828,6 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def microsegments(self, site_id, microsegment_id, api_version="v2.0"):
-        """
-        GET Microsegments API Function
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **microsegment_id**: Microsegment ID
-          - **api_version**: API version to use (default v2.0)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/microsegments/{}".format(api_version,
-                                                                               site_id,
-                                                                               microsegment_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "get")
-
     def migratecbtoezb(self, api_version="v2.0"):
         """
         GET Migratecbtoezb API Function
@@ -4730,15 +4708,15 @@ class Get(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "get")
 
-    def prismasase_connections(self, site_id, prismasase_connection_id=None, api_version="v3.0"):
+    def prismasase_connections(self, site_id, prismasase_connection_id=None, api_version="v2.1"):
         """
-        Get SASE connections for sites (v3.0) (v3.0)
+        Get SASE connections for sites (v2.1)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **prismasase_connection_id**: (optional) Prisma SASE Connection ID
-          - **api_version**: API version to use (default v3.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """

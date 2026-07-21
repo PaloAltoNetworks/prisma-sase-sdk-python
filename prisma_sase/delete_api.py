@@ -1020,28 +1020,6 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def microsegments(self, site_id, microsegment_id, api_version="v2.0"):
-        """
-        DELETE Microsegments API Function
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **microsegment_id**: Microsegment ID
-          - **api_version**: API version to use (default v2.0)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/microsegments/{}".format(api_version,
-                                                                               site_id,
-                                                                               microsegment_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "delete")
-
     def mstp_instances(self, site_id, element_id, mstp_instance_id, api_version="v2.0"):
         """
         Delete MSTP instance for an element (v2.0)
@@ -1860,15 +1838,15 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def prismasase_connections(self, site_id, prismasase_connection_id, api_version="v3.0"):
+    def prismasase_connections(self, site_id, prismasase_connection_id, api_version="v2.1"):
         """
-        Delete a SASE connection (V3.0 Native Prisma Workflow) (v3.0)
+        DELETE Prismasase_Connections API Function
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **prismasase_connection_id**: Prisma SASE Connection ID
-          - **api_version**: API version to use (default v3.0)
+          - **api_version**: API version to use (default v2.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """

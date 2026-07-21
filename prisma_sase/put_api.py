@@ -2856,32 +2856,6 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def microsegments(self, site_id, microsegment_id, data, api_version="v2.0"):
-        """
-        PUT Microsegments API Function
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **microsegment_id**: Microsegment ID
-          - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/microsegments/{}".format(api_version,
-                                                                               site_id,
-                                                                               microsegment_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "put", data=data)
-
     def mstp_instances(self, site_id, element_id, mstp_instance_id, data, api_version="v2.0"):
         """
         Update a MSTP Instance (v2.0)
@@ -4695,16 +4669,16 @@ class Put(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
 
-    def prismasase_connections(self, site_id, prismasase_connection_id, data, api_version="v3.0"):
+    def prismasase_connections(self, site_id, prismasase_connection_id, data, api_version="v2.1"):
         """
-        Update the SASE connection (v3.0) (v3.0)
+        Update the SASE connection (v2.1)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **prismasase_connection_id**: Prisma SASE Connection ID
           - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v3.0)
+          - **api_version**: API version to use (default v2.1)
 
           **Payload Attributes:** 
 
@@ -4720,10 +4694,9 @@ class Put(object):
            - **is_active:**  Type: boolean 
            - **is_enabled:**  Type: boolean 
            - **license_type:**  Type: string 
-           - **prismaaccess_edge_location_config:**  [Type: string] 
+           - **prismaaccess_edge_location:**  [Type: string]
            - **prismaaccess_qos_cir_mbps:**  Type: integer 
-           - **prismaaccess_qos_profile_id:**  Type: string 
-           - **prismasase_connection_id:**  Type: string 
+           - **prismaaccess_qos_profile_id:**  Type: string
            - **remote_network_groups:**           
                - **ipsec_tunnels:**           
                    - **authentication:**           
@@ -4745,9 +4718,7 @@ class Put(object):
                - **spn_name:**  [Type: string] 
            - **routing_configs:**           
                - **advertise_default_route:**  Type: boolean 
-               - **bgp_secret:**  Type: string 
-               - **branch_as_number:**  Type: string 
-               - **deployment_mode:**  Type: string 
+               - **bgp_secret:**  Type: string
                - **export_routes:**  Type: boolean 
                - **summarize_mobile_routes_before_advertise:**  Type: boolean 
            - **site_id:**  Type: string 

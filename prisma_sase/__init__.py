@@ -1,7 +1,7 @@
 """
 Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.6.2b1
+**Version:** v6.8.1b1
 
 **Author:** Palo Alto Networks
 
@@ -161,7 +161,7 @@ ws_logger = logging.getLogger('websockets')
 """websocket logger is handled slightly differently, so we will have a seperate handle."""
 
 # Version of SDK
-version = "6.6.2b1"
+version = "6.8.1b1"
 """SDK Version string"""
 __version__ = version
 
@@ -285,11 +285,25 @@ def jdout_detailed(api_response, sensitive=False):
             output += "REQUEST BODY:\n{0}\n\n".format({})
         else:
             try:
-                # Attempt to load JSON from string to make it look beter.
-                output += "REQUEST BODY:\n{0}\n\n".format(json.dumps(json.loads(api_response.request.body), indent=4))
+                body_obj = json.loads(api_response.request.body)
+                if isinstance(body_obj, dict) and not sensitive:
+                    _SENSITIVE_BODY_KEYS = {
+                        'password', 'client_secret', 'secret', 'psk', 'pre_shared_key',
+                        'community', 'auth_phrase', 'enc_phrase', 'priv_phrase',
+                        'md5_secret', 'private_key', 'token', 'access_token',
+                        'refresh_token', 'passphrase',
+                    }
+                    for bk in list(body_obj.keys()):
+                        if bk.lower() in _SENSITIVE_BODY_KEYS:
+                            body_obj[bk] = '<REDACTED>'
+                output += "REQUEST BODY:\n{0}\n\n".format(json.dumps(body_obj, indent=4))
             except (TypeError, ValueError, AttributeError):
-                # if pretty call above didn't work, just toss it to jdout to best effort it.
-                output += "REQUEST BODY:\n{0}\n\n".format(jdout(api_response.request.body))
+                body_str = text_type(api_response.request.body)
+                if not sensitive:
+                    body_str = re.sub(
+                        r'((?:client_secret|password|secret|psk|token)=)[^&]+',
+                        r'\1<REDACTED>', body_str)
+                output += "REQUEST BODY:\n{0}\n\n".format(body_str)
         output += "RESPONSE: {0} {1}\n".format(api_response.status_code, api_response.reason)
         output += "RESPONSE HEADERS:\n"
         for key, value in api_response.headers.items():
@@ -1138,8 +1152,20 @@ class API(object):
         # make request
         try:
             if not sensitive:
+                masked_headers = {}
+                for k, v in headers.items():
+                    if k.lower() in ('authorization', 'x-auth-token'):
+                        masked_headers[k] = v[:12] + '...<REDACTED>' if len(v) > 12 else '<REDACTED>'
+                    else:
+                        masked_headers[k] = v
+                masked_cookie = {}
+                for k, v in cookie.items():
+                    if k.lower().startswith('auth_token'):
+                        masked_cookie[k] = v[:8] + '...<REDACTED>' if len(v) > 8 else '<REDACTED>'
+                    else:
+                        masked_cookie[k] = v
                 api_logger.debug('\n\tREQUEST: %s %s\n\tHEADERS: %s\n\tCOOKIES: %s\n\tDATA: %s\n',
-                                 method.upper(), url, headers, cookie, data)
+                                 method.upper(), url, masked_headers, masked_cookie, data)
 
             # Actual request
             response = self._session.request(method, url, data=data, stream=True, timeout=timeout,
@@ -1813,7 +1839,8 @@ class API(object):
 
         # call the login API.
         response = self.rest_call(_shared_service_url, "post",
-                                  data=data, jsonify_data=False, content_json=False)
+                                  data=data, jsonify_data=False, content_json=False,
+                                  sensitive=True)
 
         if response.sdk_status:
             if 'access_token' not in response.sdk_content and not response.sdk_content.get('access_token'):
@@ -1830,7 +1857,7 @@ class API(object):
                 seconds=response.sdk_content.get('expires_in'))
 
             # debug info if needed
-            api_logger.debug("ACCESS_TOKEN=%s", response.sdk_content.get('access_token'))
+            api_logger.debug("ACCESS_TOKEN=%s...(redacted)", text_type(access_token)[:16])
 
             # Start setup of constructor.
             session = self.expose_session()
@@ -1868,6 +1895,10 @@ class API(object):
         """
         if self.jwt_expires_in <= 60:
             self._session = requests.Session()
+            # restore user's ssl_verify setting
+            self._session.verify = self.verify
+            # re-mount TlsHttpAdapter (ssl_context + retry)
+            self.update_session_adapter()
             if self._generate_jwt():
                 api_logger.debug("Re-generated Token..")
                 self.use_jwt = False

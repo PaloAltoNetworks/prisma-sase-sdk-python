@@ -1143,7 +1143,7 @@ class Put(object):
 
     def elementaccessconfigs(self, element_id, elementaccessconfig_id, data, api_version="v2.3"):
         """
-        Update an Access Config on particular element. (v2.2)
+        Update an Access Config on particular element. (v2.3)
 
           **Parameters:**:
 

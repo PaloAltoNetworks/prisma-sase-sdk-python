@@ -4,19 +4,21 @@ PRISMA SASE Python SDK - DELETE
 
 **Author:** Palo Alto Networks
 
-**Copyright:** (c) 2026 Palo Alto Networks, Inc
+**Copyright:** (c) 2023 Palo Alto Networks, Inc
 
 **License:** MIT
 """
+import functools
 import logging
+import warnings
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
-__copyright__ = "Copyright (c) 2026 Palo Alto Networks, Inc"
+__copyright__ = "Copyright (c) 2023 Palo Alto Networks, Inc"
 __license__ = """
     MIT License
 
-    Copyright (c) 2026 Palo Alto Networks, Inc
+    Copyright (c) 2023 Palo Alto Networks, Inc
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -40,6 +42,19 @@ __license__ = """
 # Set logging to function name
 api_logger = logging.getLogger(__name__)
 """logging.getlogger object to enable debug printing via `prisma_sase.API.set_debug`"""
+
+def _deprecated_alias(new_func, old_name):
+    """Wrap `new_func` so that calling it under its old name emits a DeprecationWarning."""
+    @functools.wraps(new_func)
+    def wrapper(*args, **kwargs):
+        warnings.warn("`%s` is deprecated and will be removed in the next release; use `%s` instead."
+                      % (old_name, new_func.__name__), DeprecationWarning, stacklevel=2)
+        return new_func(*args, **kwargs)
+    wrapper.__name__ = old_name
+    wrapper.__doc__ = ("**Deprecated:** use `%s` instead; `%s` will be removed in the next release.\n\n%s"
+                       % (new_func.__name__, old_name, new_func.__doc__ or ""))
+    return wrapper
+
 
 
 class Delete(object):
@@ -198,26 +213,6 @@ class Delete(object):
         url = str(cur_ctlr) + "/sdwan/{}/api/bulkconfigurations/sitetemplates/{}/deployments/{}".format(api_version,
                                                                                                         sitetemplate_id,
                                                                                                         deployment_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "delete")
-
-    def certificates(self, entitie_id, api_version="v2.0"):
-        """
-        DELETE Certificates API Function
-
-          **Parameters:**:
-
-          - **entitie_id**: Entitie ID
-          - **api_version**: API version to use (default v2.0)
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/entities/{}/certificates".format(api_version,
-                                                                              entitie_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
@@ -444,7 +439,7 @@ class Delete(object):
 
     def element_passages(self, element_id, passage_id, api_version="v2.0"):
         """
-        Delete passage from NB (v2.0)
+        DELETE Element_Passages API Function
 
           **Parameters:**:
 
@@ -466,7 +461,7 @@ class Delete(object):
 
     def element_toolkitsessions(self, element_id, toolkitsession_id, api_version="v2.0"):
         """
-        Delete Active Passage (v2.0)
+        DELETE Element_Toolkitsessions API Function
 
           **Parameters:**:
 
@@ -488,7 +483,7 @@ class Delete(object):
 
     def elementpassageconfigs(self, element_id, elementpassageconfig_id, api_version="v2.0"):
         """
-        Deletes element passage configuration from NB (v2.0)
+        DELETE Elementpassageconfigs API Function
 
           **Parameters:**:
 
@@ -584,7 +579,7 @@ class Delete(object):
 
           **Parameters:**:
 
-          - **elementsystemlimitprofile_id**: Element System Limit Profile ID
+          - **elementsystemlimitprofile_id**: 
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -706,7 +701,7 @@ class Delete(object):
 
     def externalcaconfigs(self, externalcaconfig_id, api_version="v2.0"):
         """
-        Delete a existing CertificateAuthorityConfigDO object by tenant ID and ID (v2.0)
+        DELETE Externalcaconfigs API Function
 
           **Parameters:**:
 
@@ -1016,6 +1011,28 @@ class Delete(object):
 
         url = str(cur_ctlr) + "/sdwan/{}/api/localprefixfilters/{}".format(api_version,
                                                                            localprefixfilter_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def microsegments(self, site_id, microsegment_id, api_version="v2.0"):
+        """
+        DELETE Microsegments API Function
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **microsegment_id**: 
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/microsegments/{}".format(api_version,
+                                                                               site_id,
+                                                                               microsegment_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
@@ -1838,7 +1855,7 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def prismasase_connections(self, site_id, prismasase_connection_id, api_version="v2.1"):
+    def prismasase_connections(self, site_id, prismasase_connection_id, api_version="v3.1"):
         """
         DELETE Prismasase_Connections API Function
 
@@ -1846,7 +1863,7 @@ class Delete(object):
 
           - **site_id**: Site ID
           - **prismasase_connection_id**: Prisma SASE Connection ID
-          - **api_version**: API version to use (default v2.1)
+          - **api_version**: API version to use (default v3.1)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1860,13 +1877,13 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def prismasase_connections_configs(self, api_version="v3.1"):
+    def prismasase_connections_configs(self, api_version="v3.2"):
         """
-        Delete existing SASE connection config (v3.1)
+        DELETE Prismasase_Connections_Configs API Function
 
           **Parameters:**:
 
-          - **api_version**: API version to use (default v3.1)
+          - **api_version**: API version to use (default v3.2)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2032,16 +2049,16 @@ class Delete(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
 
-    def routing_routemaps(self, site_id, element_id, routing_routemap_id, api_version="v2.3"):
+    def routing_routemaps(self, site_id, element_id, routing_routemap_id, api_version="v2.4"):
         """
-        Delete Route Map (v2.3)
+        Delete Route Map (v2.4)
 
           **Parameters:**:
 
           - **site_id**: Site ID
           - **element_id**: Element (Device) ID
           - **routing_routemap_id**: Routing Route Map ID
-          - **api_version**: API version to use (default v2.3)
+          - **api_version**: API version to use (default v2.4)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2058,7 +2075,7 @@ class Delete(object):
 
     def sdwanapps_configs(self, sdwanapp_id, config_id, api_version="v2.0"):
         """
-        Delete SD-WAN application configuration (v2.0)
+        DELETE Sdwanapps_Configs API Function
 
           **Parameters:**:
 
@@ -2126,7 +2143,7 @@ class Delete(object):
 
           **Parameters:**:
 
-          - **securityprofilegroup_id**: Security Profile Group ID
+          - **securityprofilegroup_id**: 
           - **api_version**: API version to use (default v2.0)
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
@@ -2598,7 +2615,7 @@ class Delete(object):
 
     def tenant_anynetlinks(self, anynetlink_id, api_version="v4.0"):
         """
-        Delete anynet link (v4.0)
+        DELETE Tenant_Anynetlinks API Function
 
           **Parameters:**:
 
@@ -2718,7 +2735,7 @@ class Delete(object):
 
     def tenantpassageconfigs(self, tenantpassageconfig_id, api_version="v2.0"):
         """
-        Deletes tenant passage configuration from NB (v2.0)
+        DELETE Tenantpassageconfigs API Function
 
           **Parameters:**:
 
@@ -2732,6 +2749,26 @@ class Delete(object):
 
         url = str(cur_ctlr) + "/sdwan/{}/api/tenantpassageconfigs/{}".format(api_version,
                                                                              tenantpassageconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "delete")
+
+    def tenants_certificates(self, certificate_id, api_version="v2.0"):
+        """
+        DELETE Tenants_Certificates API Function
+
+          **Parameters:**:
+
+          - **certificate_id**: Certificate ID
+          - **api_version**: API version to use (default v2.0)
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/certificates/{}".format(api_version,
+                                                                     certificate_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "delete")
@@ -2880,7 +2917,7 @@ class Delete(object):
 
     def ws_extensions(self, extension_id, api_version="v2.0"):
         """
-        Delete extension (v2.0)
+        DELETE Ws_Extensions API Function
 
           **Parameters:**:
 
@@ -2907,8 +2944,8 @@ class Delete(object):
     anynetlinks_t = tenant_anynetlinks
     """ Backwards-compatibility alias of `anynetlinks_t` to `tenant_anynetlinks`"""
 
-    certificates_tenants = certificates
-    """ Backwards-compatibility alias of `certificates_tenants` to `certificates`"""
+    certificates_tenants = tenants_certificates
+    """ Backwards-compatibility alias of `certificates_tenants` to `tenants_certificates`"""
 
     configs_prismasase_connections = prismasase_connections_configs
     """ Backwards-compatibility alias of `configs_prismasase_connections` to `prismasase_connections_configs`"""

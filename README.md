@@ -45,10 +45,10 @@ jd(sdk.get.sites())
 MIT
 
 #### Version
-| Version   | Build | Changes                                                    |
-|-----------| ----- |------------------------------------------------------------|
-| **7.0.1** | **b1** | Support for 7.0.1 Controller release.                                                                 |
-| **6.8.1** | **b1** | Support for July 2026 Controller release.                                                             |
+| Version   | Build | Changes                                                     |
+|-----------| ----- |-------------------------------------------------------------|
+| **7.0.1** | **b1** | Support for November 2026 Controller release.               |
+| **6.8.1** | **b1** | Support for July 2026 Controller release.                   |
 | **6.6.2** | **b1** | Support for February 2026 Controller release.               |
 | **6.6.1** | **b1** | Support for October 2025 Controller release.                |
 | **6.5.2** | **b2** | Support for February 2025 Controller release with bugfixes. |

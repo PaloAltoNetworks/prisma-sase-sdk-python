@@ -5373,6 +5373,32 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
+    def microsegments_query(self, data, api_version="v2.0"):
+        """
+        Query all microsegments for tenant (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **_etag:**  Type: integer 
+           - **microsegmentation_enabled:**  Type: boolean 
+           - **site_id:**  Type: string 
+           - **vlan_ids:**  [Type: integer] 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/microsegments/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def migratecbtoezb(self, data, api_version="v2.0"):
         """
         POST Migratecbtoezb API Function
@@ -8195,6 +8221,32 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
+    def panetworks_query(self, data, api_version="v2.0"):
+        """
+        Query db for PA networks that match query parameters (v2.0)
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+           - **_etag:**  Type: integer 
+           - **description:**  Type: string 
+           - **name:**  Type: string 
+           - **tags:**  [Type: string] 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/panetworks/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def password_change(self, data, api_version="v2.0"):
         """
         Allows one to change password (v2.0)
@@ -10329,102 +10381,6 @@ class Post(object):
         cur_ctlr = self._parent_class.controller
 
         url = str(cur_ctlr) + "/sdwan/{}/api/probeprofiles/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def query_links_topology(self, data, api_version="v2.0"):
-        """
-        POST Query_Links_Topology API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/topology/links/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def query_microsegments(self, data, api_version="v2.0"):
-        """
-        Query all microsegments for tenant (v2.0)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **_etag:**  Type: integer 
-           - **microsegmentation_enabled:**  Type: boolean 
-           - **site_id:**  Type: string 
-           - **vlan_ids:**  [Type: integer] 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/microsegments/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def query_nodes_topology(self, data, api_version="v2.0"):
-        """
-        POST Query_Nodes_Topology API Function
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/topology/nodes/query".format(api_version)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "post", data=data)
-
-    def query_panetworks(self, data, api_version="v2.0"):
-        """
-        Query db for PA networks that match query parameters (v2.0)
-
-          **Parameters:**:
-
-          - **data**: Dictionary containing data to POST as JSON
-          - **api_version**: API version to use (default v2.0)
-
-          **Payload Attributes:** 
-
-           - **_etag:**  Type: integer 
-           - **description:**  Type: string 
-           - **name:**  Type: string 
-           - **tags:**  [Type: string] 
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/panetworks/query".format(api_version)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
@@ -13596,6 +13552,50 @@ class Post(object):
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "post", data=data)
 
+    def topology_links_query(self, data, api_version="v2.0"):
+        """
+        POST Topology_Links_Query API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/topology/links/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
+    def topology_nodes_query(self, data, api_version="v2.0"):
+        """
+        POST Topology_Nodes_Query API Function
+
+          **Parameters:**:
+
+          - **data**: Dictionary containing data to POST as JSON
+          - **api_version**: API version to use (default v2.0)
+
+          **Payload Attributes:** 
+
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/topology/nodes/query".format(api_version)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "post", data=data)
+
     def upgrade_status_query(self, data, api_version="v2.0"):
         """
         Query Machine Upgrade Status (v2.0)
@@ -14848,6 +14848,9 @@ class Post(object):
     query_lannetworks_t = lannetworks_query
     """ Backwards-compatibility alias of `query_lannetworks_t` to `lannetworks_query`"""
 
+    query_links_topology = topology_links_query
+    """ Backwards-compatibility alias of `query_links_topology` to `topology_links_query`"""
+
     query_localprefixfilters = localprefixfilters_query
     """ Backwards-compatibility alias of `query_localprefixfilters` to `localprefixfilters_query`"""
 
@@ -14859,6 +14862,9 @@ class Post(object):
 
     query_machines_c = clients_machines_query
     """ Backwards-compatibility alias of `query_machines_c` to `clients_machines_query`"""
+
+    query_microsegments = microsegments_query
+    """ Backwards-compatibility alias of `query_microsegments` to `microsegments_query`"""
 
     query_mstp_instances = mstp_instances_query
     """ Backwards-compatibility alias of `query_mstp_instances` to `mstp_instances_query`"""
@@ -14938,6 +14944,9 @@ class Post(object):
     query_ngfwsecuritypolicysetstacks = ngfwsecuritypolicysetstacks_query
     """ Backwards-compatibility alias of `query_ngfwsecuritypolicysetstacks` to `ngfwsecuritypolicysetstacks_query`"""
 
+    query_nodes_topology = topology_nodes_query
+    """ Backwards-compatibility alias of `query_nodes_topology` to `topology_nodes_query`"""
+
     query_ospfconfigs = ospfconfigs_query 
     """ Backwards-compatibility alias of `query_ospfconfigs` to `ospfconfigs_query `"""
 
@@ -14946,6 +14955,9 @@ class Post(object):
 
     query_ospfreachableprefixes = ospfreachableprefixes_query
     """ Backwards-compatibility alias of `query_ospfreachableprefixes` to `ospfreachableprefixes_query`"""
+
+    query_panetworks = panetworks_query
+    """ Backwards-compatibility alias of `query_panetworks` to `panetworks_query`"""
 
     query_pathgroups = pathgroups_query
     """ Backwards-compatibility alias of `query_pathgroups` to `pathgroups_query`"""

@@ -5,7 +5,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/PaloAltoNetworks/prisma-sase-sdk-python.svg)](https://github.com/PaloAltoNetworks/prisma-sase-sdk-python/issues)
 
 
-# Palo Alto Networks Prisma SASE Python SDK v6.8.1b1
+# Palo Alto Networks Prisma SASE Python SDK v7.0.1b1
 
 Python3 SDK for the Prisma SASE AppFabric
 
@@ -47,6 +47,7 @@ MIT
 #### Version
 | Version   | Build | Changes                                                    |
 |-----------| ----- |------------------------------------------------------------|
+| **7.0.1** | **b1** | Support for 7.0.1 Controller release.                                                                 |
 | **6.8.1** | **b1** | Support for July 2026 Controller release.                                                             |
 | **6.6.2** | **b1** | Support for February 2026 Controller release.               |
 | **6.6.1** | **b1** | Support for October 2025 Controller release.                |

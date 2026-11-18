@@ -8,7 +8,7 @@
     <title>prisma_sase documentation</title>
     <meta name="description" content="Python3 SDK for the Prisma SASE AppFabric
 
-**Version:** v6.8.1b1
+**Version:** v7.0.1b1
 
 **Author:** Palo Alto Networks
 
@@ -2676,7 +2676,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   <header id="section-intro">
   <h1 class="title"><span class="name">prisma_sase</span> module</h1>
   <p>Python3 SDK for the Prisma SASE AppFabric</p>
-<p><strong>Version:</strong> v6.8.1b1</p>
+<p><strong>Version:</strong> v7.0.1b1</p>
 <p><strong>Author:</strong> Palo Alto Networks</p>
 <p><strong>Copyright:</strong> © 2026 Palo Alto Networks. All rights reserved</p>
 <p><strong>License:</strong> MIT</p>
@@ -2725,7 +2725,7 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
     <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Python3 SDK for the Prisma SASE AppFabric</span>
 
-<span class="sd">**Version:** v6.8.1b1</span>
+<span class="sd">**Version:** v7.0.1b1</span>
 
 <span class="sd">**Author:** Palo Alto Networks</span>
 
@@ -2885,7 +2885,7 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
 <span class="sd">&quot;&quot;&quot;websocket logger is handled slightly differently, so we will have a seperate handle.&quot;&quot;&quot;</span>
 
 <span class="c1"># Version of SDK</span>
-<span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;6.8.1b1&quot;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;7.0.1b1&quot;</span>
 <span class="sd">&quot;&quot;&quot;SDK Version string&quot;&quot;&quot;</span>
 <span class="n">__version__</span> <span class="o">=</span> <span class="n">version</span>
 
@@ -3009,11 +3009,25 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
             <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;REQUEST BODY:</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">({})</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="c1"># Attempt to load JSON from string to make it look beter.</span>
-                <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;REQUEST BODY:</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">api_response</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+                <span class="n">body_obj</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">api_response</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">body_obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">sensitive</span><span class="p">:</span>
+                    <span class="n">_SENSITIVE_BODY_KEYS</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;client_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span> <span class="s1">&#39;psk&#39;</span><span class="p">,</span> <span class="s1">&#39;pre_shared_key&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;community&#39;</span><span class="p">,</span> <span class="s1">&#39;auth_phrase&#39;</span><span class="p">,</span> <span class="s1">&#39;enc_phrase&#39;</span><span class="p">,</span> <span class="s1">&#39;priv_phrase&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;md5_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;private_key&#39;</span><span class="p">,</span> <span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;refresh_token&#39;</span><span class="p">,</span> <span class="s1">&#39;passphrase&#39;</span><span class="p">,</span>
+                    <span class="p">}</span>
+                    <span class="k">for</span> <span class="n">bk</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">body_obj</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="k">if</span> <span class="n">bk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">_SENSITIVE_BODY_KEYS</span><span class="p">:</span>
+                            <span class="n">body_obj</span><span class="p">[</span><span class="n">bk</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&lt;REDACTED&gt;&#39;</span>
+                <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;REQUEST BODY:</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">body_obj</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
             <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
-                <span class="c1"># if pretty call above didn&#39;t work, just toss it to jdout to best effort it.</span>
-                <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;REQUEST BODY:</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">jdout</span><span class="p">(</span><span class="n">api_response</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">))</span>
+                <span class="n">body_str</span> <span class="o">=</span> <span class="n">text_type</span><span class="p">(</span><span class="n">api_response</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">sensitive</span><span class="p">:</span>
+                    <span class="n">body_str</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+                        <span class="sa">r</span><span class="s1">&#39;((?:client_secret|password|secret|psk|token)=)[^&amp;]+&#39;</span><span class="p">,</span>
+                        <span class="sa">r</span><span class="s1">&#39;\1&lt;REDACTED&gt;&#39;</span><span class="p">,</span> <span class="n">body_str</span><span class="p">)</span>
+                <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;REQUEST BODY:</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">body_str</span><span class="p">)</span>
         <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;RESPONSE: </span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">api_response</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
         <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;RESPONSE HEADERS:</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">api_response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -3862,8 +3876,20 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
         <span class="c1"># make request</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">sensitive</span><span class="p">:</span>
+                <span class="n">masked_headers</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">headers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;authorization&#39;</span><span class="p">,</span> <span class="s1">&#39;x-auth-token&#39;</span><span class="p">):</span>
+                        <span class="n">masked_headers</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;...&lt;REDACTED&gt;&#39;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">12</span> <span class="k">else</span> <span class="s1">&#39;&lt;REDACTED&gt;&#39;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">masked_headers</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+                <span class="n">masked_cookie</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cookie</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;auth_token&#39;</span><span class="p">):</span>
+                        <span class="n">masked_cookie</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;...&lt;REDACTED&gt;&#39;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="k">else</span> <span class="s1">&#39;&lt;REDACTED&gt;&#39;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">masked_cookie</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
                 <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\t</span><span class="s1">REQUEST: </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="se">\n\t</span><span class="s1">HEADERS: </span><span class="si">%s</span><span class="se">\n\t</span><span class="s1">COOKIES: </span><span class="si">%s</span><span class="se">\n\t</span><span class="s1">DATA: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
-                                 <span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">cookie</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+                                 <span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">url</span><span class="p">,</span> <span class="n">masked_headers</span><span class="p">,</span> <span class="n">masked_cookie</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
             <span class="c1"># Actual request</span>
             <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
@@ -4537,7 +4563,8 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
 
         <span class="c1"># call the login API.</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">_shared_service_url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-                                  <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">jsonify_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">content_json</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                                  <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">jsonify_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">content_json</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                  <span class="n">sensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">sdk_status</span><span class="p">:</span>
             <span class="k">if</span> <span class="s1">&#39;access_token&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">sdk_content</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;access_token&#39;</span><span class="p">):</span>
@@ -4554,7 +4581,7 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
                 <span class="n">seconds</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;expires_in&#39;</span><span class="p">))</span>
 
             <span class="c1"># debug info if needed</span>
-            <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;ACCESS_TOKEN=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;access_token&#39;</span><span class="p">))</span>
+            <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;ACCESS_TOKEN=</span><span class="si">%s</span><span class="s2">...(redacted)&quot;</span><span class="p">,</span> <span class="n">text_type</span><span class="p">(</span><span class="n">access_token</span><span class="p">)[:</span><span class="mi">16</span><span class="p">])</span>
 
             <span class="c1"># Start setup of constructor.</span>
             <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expose_session</span><span class="p">()</span>
@@ -4592,6 +4619,10 @@ Initial version requires knowledge of JSON/Dict objects for POST/PUT/PATCH opera
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">jwt_expires_in</span> <span class="o">&lt;=</span> <span class="mi">60</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+            <span class="c1"># restore user&#39;s ssl_verify setting</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">verify</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify</span>
+            <span class="c1"># re-mount TlsHttpAdapter (ssl_context + retry)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_session_adapter</span><span class="p">()</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_jwt</span><span class="p">():</span>
                 <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Re-generated Token..&quot;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">use_jwt</span> <span class="o">=</span> <span class="kc">False</span>
@@ -4891,11 +4922,25 @@ and Response Body.</p></div>
             <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;REQUEST BODY:</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">({})</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="c1"># Attempt to load JSON from string to make it look beter.</span>
-                <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;REQUEST BODY:</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">api_response</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+                <span class="n">body_obj</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">api_response</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">body_obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">sensitive</span><span class="p">:</span>
+                    <span class="n">_SENSITIVE_BODY_KEYS</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;client_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span> <span class="s1">&#39;psk&#39;</span><span class="p">,</span> <span class="s1">&#39;pre_shared_key&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;community&#39;</span><span class="p">,</span> <span class="s1">&#39;auth_phrase&#39;</span><span class="p">,</span> <span class="s1">&#39;enc_phrase&#39;</span><span class="p">,</span> <span class="s1">&#39;priv_phrase&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;md5_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;private_key&#39;</span><span class="p">,</span> <span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;refresh_token&#39;</span><span class="p">,</span> <span class="s1">&#39;passphrase&#39;</span><span class="p">,</span>
+                    <span class="p">}</span>
+                    <span class="k">for</span> <span class="n">bk</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">body_obj</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="k">if</span> <span class="n">bk</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">_SENSITIVE_BODY_KEYS</span><span class="p">:</span>
+                            <span class="n">body_obj</span><span class="p">[</span><span class="n">bk</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&lt;REDACTED&gt;&#39;</span>
+                <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;REQUEST BODY:</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">body_obj</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
             <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
-                <span class="c1"># if pretty call above didn&#39;t work, just toss it to jdout to best effort it.</span>
-                <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;REQUEST BODY:</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">jdout</span><span class="p">(</span><span class="n">api_response</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">))</span>
+                <span class="n">body_str</span> <span class="o">=</span> <span class="n">text_type</span><span class="p">(</span><span class="n">api_response</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">sensitive</span><span class="p">:</span>
+                    <span class="n">body_str</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+                        <span class="sa">r</span><span class="s1">&#39;((?:client_secret|password|secret|psk|token)=)[^&amp;]+&#39;</span><span class="p">,</span>
+                        <span class="sa">r</span><span class="s1">&#39;\1&lt;REDACTED&gt;&#39;</span><span class="p">,</span> <span class="n">body_str</span><span class="p">)</span>
+                <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;REQUEST BODY:</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">body_str</span><span class="p">)</span>
         <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;RESPONSE: </span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">api_response</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
         <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;RESPONSE HEADERS:</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">api_response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -5733,8 +5778,20 @@ and Response Body.</p></div>
         <span class="c1"># make request</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">sensitive</span><span class="p">:</span>
+                <span class="n">masked_headers</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">headers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;authorization&#39;</span><span class="p">,</span> <span class="s1">&#39;x-auth-token&#39;</span><span class="p">):</span>
+                        <span class="n">masked_headers</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;...&lt;REDACTED&gt;&#39;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">12</span> <span class="k">else</span> <span class="s1">&#39;&lt;REDACTED&gt;&#39;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">masked_headers</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+                <span class="n">masked_cookie</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cookie</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;auth_token&#39;</span><span class="p">):</span>
+                        <span class="n">masked_cookie</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;...&lt;REDACTED&gt;&#39;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="k">else</span> <span class="s1">&#39;&lt;REDACTED&gt;&#39;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">masked_cookie</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
                 <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\t</span><span class="s1">REQUEST: </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="se">\n\t</span><span class="s1">HEADERS: </span><span class="si">%s</span><span class="se">\n\t</span><span class="s1">COOKIES: </span><span class="si">%s</span><span class="se">\n\t</span><span class="s1">DATA: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
-                                 <span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">cookie</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+                                 <span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">url</span><span class="p">,</span> <span class="n">masked_headers</span><span class="p">,</span> <span class="n">masked_cookie</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
             <span class="c1"># Actual request</span>
             <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
@@ -6408,7 +6465,8 @@ and Response Body.</p></div>
 
         <span class="c1"># call the login API.</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">_shared_service_url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span>
-                                  <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">jsonify_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">content_json</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                                  <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">jsonify_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">content_json</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                  <span class="n">sensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">sdk_status</span><span class="p">:</span>
             <span class="k">if</span> <span class="s1">&#39;access_token&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">sdk_content</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;access_token&#39;</span><span class="p">):</span>
@@ -6425,7 +6483,7 @@ and Response Body.</p></div>
                 <span class="n">seconds</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;expires_in&#39;</span><span class="p">))</span>
 
             <span class="c1"># debug info if needed</span>
-            <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;ACCESS_TOKEN=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">sdk_content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;access_token&#39;</span><span class="p">))</span>
+            <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;ACCESS_TOKEN=</span><span class="si">%s</span><span class="s2">...(redacted)&quot;</span><span class="p">,</span> <span class="n">text_type</span><span class="p">(</span><span class="n">access_token</span><span class="p">)[:</span><span class="mi">16</span><span class="p">])</span>
 
             <span class="c1"># Start setup of constructor.</span>
             <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expose_session</span><span class="p">()</span>
@@ -6463,6 +6521,10 @@ and Response Body.</p></div>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">jwt_expires_in</span> <span class="o">&lt;=</span> <span class="mi">60</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+            <span class="c1"># restore user&#39;s ssl_verify setting</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">verify</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify</span>
+            <span class="c1"># re-mount TlsHttpAdapter (ssl_context + retry)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_session_adapter</span><span class="p">()</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_jwt</span><span class="p">():</span>
                 <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Re-generated Token..&quot;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">use_jwt</span> <span class="o">=</span> <span class="kc">False</span>
@@ -7146,7 +7208,7 @@ filename in event of local file.</p></div>
             
   <div class="item" id="prisma_sase.API.modify_rest_retry">
     <div class="name def">
-    <p>def <span class="ident">modify_rest_retry</span>(</p><p>self, total=8, connect=None, read=None, redirect=None, status=None, other=0, allowed_methods=frozenset({&#39;HEAD&#39;, &#39;PUT&#39;, &#39;DELETE&#39;, &#39;GET&#39;, &#39;OPTIONS&#39;, &#39;TRACE&#39;}), status_forcelist=None, backoff_factor=0.705883, raise_on_redirect=True, raise_on_status=True, respect_retry_after_header=True, update_adapter=True)</p>
+    <p>def <span class="ident">modify_rest_retry</span>(</p><p>self, total=8, connect=None, read=None, redirect=None, status=None, other=0, allowed_methods=frozenset({&#39;GET&#39;, &#39;HEAD&#39;, &#39;OPTIONS&#39;, &#39;TRACE&#39;, &#39;PUT&#39;, &#39;DELETE&#39;}), status_forcelist=None, backoff_factor=0.705883, raise_on_redirect=True, raise_on_status=True, respect_retry_after_header=True, update_adapter=True)</p>
     </div>
     
 
@@ -7750,8 +7812,20 @@ re-parses the original login request and applies cookies to the session if they 
     <span class="c1"># make request</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">sensitive</span><span class="p">:</span>
+            <span class="n">masked_headers</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">headers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;authorization&#39;</span><span class="p">,</span> <span class="s1">&#39;x-auth-token&#39;</span><span class="p">):</span>
+                    <span class="n">masked_headers</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;...&lt;REDACTED&gt;&#39;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">12</span> <span class="k">else</span> <span class="s1">&#39;&lt;REDACTED&gt;&#39;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">masked_headers</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+            <span class="n">masked_cookie</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cookie</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;auth_token&#39;</span><span class="p">):</span>
+                    <span class="n">masked_cookie</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;...&lt;REDACTED&gt;&#39;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="k">else</span> <span class="s1">&#39;&lt;REDACTED&gt;&#39;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">masked_cookie</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
             <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\t</span><span class="s1">REQUEST: </span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="se">\n\t</span><span class="s1">HEADERS: </span><span class="si">%s</span><span class="se">\n\t</span><span class="s1">COOKIES: </span><span class="si">%s</span><span class="se">\n\t</span><span class="s1">DATA: </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
-                             <span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">cookie</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+                             <span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">url</span><span class="p">,</span> <span class="n">masked_headers</span><span class="p">,</span> <span class="n">masked_cookie</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="c1"># Actual request</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
                                          <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>

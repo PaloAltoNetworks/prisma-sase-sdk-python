@@ -2694,6 +2694,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.post_api.Post.machines_allocate_to_shell">machines_allocate_to_shell</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.machines_query">machines_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.microsegments">microsegments</a></li>
+    <li class="mono"><a href="#prisma_sase.post_api.Post.microsegments_query">microsegments_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.migratecbtoezb">migratecbtoezb</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.monitor_aaa_client_metrics">monitor_aaa_client_metrics</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.monitor_aaa_metrics">monitor_aaa_metrics</a></li>
@@ -2789,6 +2790,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.post_api.Post.ospfdiscoveredneighbors_query">ospfdiscoveredneighbors_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.ospfreachableprefixes_query">ospfreachableprefixes_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.otpaccess">otpaccess</a></li>
+    <li class="mono"><a href="#prisma_sase.post_api.Post.panetworks_query">panetworks_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.password_change">password_change</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.pathgroups">pathgroups</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.pathgroups_query">pathgroups_query</a></li>
@@ -2834,10 +2836,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.post_api.Post.probeconfigs_query">probeconfigs_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.probeprofiles">probeprofiles</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.probeprofiles_query">probeprofiles_query</a></li>
-    <li class="mono"><a href="#prisma_sase.post_api.Post.query_links_topology">query_links_topology</a></li>
-    <li class="mono"><a href="#prisma_sase.post_api.Post.query_microsegments">query_microsegments</a></li>
-    <li class="mono"><a href="#prisma_sase.post_api.Post.query_nodes_topology">query_nodes_topology</a></li>
-    <li class="mono"><a href="#prisma_sase.post_api.Post.query_panetworks">query_panetworks</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.radii">radii</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.recovery_tokens">recovery_tokens</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.reports_query">reports_query</a></li>
@@ -2929,6 +2927,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <li class="mono"><a href="#prisma_sase.post_api.Post.threatmetadata_query">threatmetadata_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.toolkitsessions_query">toolkitsessions_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.topology">topology</a></li>
+    <li class="mono"><a href="#prisma_sase.post_api.Post.topology_links_query">topology_links_query</a></li>
+    <li class="mono"><a href="#prisma_sase.post_api.Post.topology_nodes_query">topology_nodes_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.upgrade_status_query">upgrade_status_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.urlcategories_query">urlcategories_query</a></li>
     <li class="mono"><a href="#prisma_sase.post_api.Post.useridagents">useridagents</a></li>
@@ -8355,6 +8355,32 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">microsegments_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Query all microsegments for tenant (v2.0)</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+<span class="sd">           - **_etag:**  Type: integer </span>
+<span class="sd">           - **microsegmentation_enabled:**  Type: boolean </span>
+<span class="sd">           - **site_id:**  Type: string </span>
+<span class="sd">           - **vlan_ids:**  [Type: integer] </span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/microsegments/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">migratecbtoezb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        POST Migratecbtoezb API Function</span>
@@ -11177,6 +11203,32 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">panetworks_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Query db for PA networks that match query parameters (v2.0)</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+<span class="sd">           - **_etag:**  Type: integer </span>
+<span class="sd">           - **description:**  Type: string </span>
+<span class="sd">           - **name:**  Type: string </span>
+<span class="sd">           - **tags:**  [Type: string] </span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/panetworks/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">password_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Allows one to change password (v2.0)</span>
@@ -13311,102 +13363,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
         <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/probeprofiles/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">query_links_topology</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        POST Query_Links_Topology API Function</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">          **Payload Attributes:** </span>
-
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/topology/links/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">query_microsegments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Query all microsegments for tenant (v2.0)</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">          **Payload Attributes:** </span>
-
-<span class="sd">           - **_etag:**  Type: integer </span>
-<span class="sd">           - **microsegmentation_enabled:**  Type: boolean </span>
-<span class="sd">           - **site_id:**  Type: string </span>
-<span class="sd">           - **vlan_ids:**  [Type: integer] </span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/microsegments/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">query_nodes_topology</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        POST Query_Nodes_Topology API Function</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">          **Payload Attributes:** </span>
-
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/topology/nodes/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">query_panetworks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Query db for PA networks that match query parameters (v2.0)</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">          **Payload Attributes:** </span>
-
-<span class="sd">           - **_etag:**  Type: integer </span>
-<span class="sd">           - **description:**  Type: string </span>
-<span class="sd">           - **name:**  Type: string </span>
-<span class="sd">           - **tags:**  [Type: string] </span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/panetworks/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
@@ -16578,6 +16534,50 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">topology_links_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        POST Topology_Links_Query API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/topology/links/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">topology_nodes_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        POST Topology_Nodes_Query API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/topology/nodes/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">upgrade_status_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Query Machine Upgrade Status (v2.0)</span>
@@ -17830,6 +17830,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">query_lannetworks_t</span> <span class="o">=</span> <span class="n">lannetworks_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_lannetworks_t` to `lannetworks_query`&quot;&quot;&quot;</span>
 
+    <span class="n">query_links_topology</span> <span class="o">=</span> <span class="n">topology_links_query</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_links_topology` to `topology_links_query`&quot;&quot;&quot;</span>
+
     <span class="n">query_localprefixfilters</span> <span class="o">=</span> <span class="n">localprefixfilters_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_localprefixfilters` to `localprefixfilters_query`&quot;&quot;&quot;</span>
 
@@ -17841,6 +17844,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="n">query_machines_c</span> <span class="o">=</span> <span class="n">clients_machines_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_machines_c` to `clients_machines_query`&quot;&quot;&quot;</span>
+
+    <span class="n">query_microsegments</span> <span class="o">=</span> <span class="n">microsegments_query</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_microsegments` to `microsegments_query`&quot;&quot;&quot;</span>
 
     <span class="n">query_mstp_instances</span> <span class="o">=</span> <span class="n">mstp_instances_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_mstp_instances` to `mstp_instances_query`&quot;&quot;&quot;</span>
@@ -17920,6 +17926,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">query_ngfwsecuritypolicysetstacks</span> <span class="o">=</span> <span class="n">ngfwsecuritypolicysetstacks_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_ngfwsecuritypolicysetstacks` to `ngfwsecuritypolicysetstacks_query`&quot;&quot;&quot;</span>
 
+    <span class="n">query_nodes_topology</span> <span class="o">=</span> <span class="n">topology_nodes_query</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_nodes_topology` to `topology_nodes_query`&quot;&quot;&quot;</span>
+
     <span class="n">query_ospfconfigs</span> <span class="o">=</span> <span class="n">ospfconfigs_query</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_ospfconfigs` to `ospfconfigs_query `&quot;&quot;&quot;</span>
 
@@ -17928,6 +17937,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="n">query_ospfreachableprefixes</span> <span class="o">=</span> <span class="n">ospfreachableprefixes_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_ospfreachableprefixes` to `ospfreachableprefixes_query`&quot;&quot;&quot;</span>
+
+    <span class="n">query_panetworks</span> <span class="o">=</span> <span class="n">panetworks_query</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_panetworks` to `panetworks_query`&quot;&quot;&quot;</span>
 
     <span class="n">query_pathgroups</span> <span class="o">=</span> <span class="n">pathgroups_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_pathgroups` to `pathgroups_query`&quot;&quot;&quot;</span>
@@ -23565,6 +23577,32 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">microsegments_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Query all microsegments for tenant (v2.0)</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+<span class="sd">           - **_etag:**  Type: integer </span>
+<span class="sd">           - **microsegmentation_enabled:**  Type: boolean </span>
+<span class="sd">           - **site_id:**  Type: string </span>
+<span class="sd">           - **vlan_ids:**  [Type: integer] </span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/microsegments/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">migratecbtoezb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        POST Migratecbtoezb API Function</span>
@@ -26387,6 +26425,32 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">panetworks_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Query db for PA networks that match query parameters (v2.0)</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+<span class="sd">           - **_etag:**  Type: integer </span>
+<span class="sd">           - **description:**  Type: string </span>
+<span class="sd">           - **name:**  Type: string </span>
+<span class="sd">           - **tags:**  [Type: string] </span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/panetworks/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">password_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Allows one to change password (v2.0)</span>
@@ -28521,102 +28585,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
 
         <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/probeprofiles/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">query_links_topology</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        POST Query_Links_Topology API Function</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">          **Payload Attributes:** </span>
-
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/topology/links/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">query_microsegments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Query all microsegments for tenant (v2.0)</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">          **Payload Attributes:** </span>
-
-<span class="sd">           - **_etag:**  Type: integer </span>
-<span class="sd">           - **microsegmentation_enabled:**  Type: boolean </span>
-<span class="sd">           - **site_id:**  Type: string </span>
-<span class="sd">           - **vlan_ids:**  [Type: integer] </span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/microsegments/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">query_nodes_topology</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        POST Query_Nodes_Topology API Function</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">          **Payload Attributes:** </span>
-
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/topology/nodes/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
-
-        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">query_panetworks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Query db for PA networks that match query parameters (v2.0)</span>
-
-<span class="sd">          **Parameters:**:</span>
-
-<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
-<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
-
-<span class="sd">          **Payload Attributes:** </span>
-
-<span class="sd">           - **_etag:**  Type: integer </span>
-<span class="sd">           - **description:**  Type: string </span>
-<span class="sd">           - **name:**  Type: string </span>
-<span class="sd">           - **tags:**  [Type: string] </span>
-
-<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-
-        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/panetworks/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
@@ -31788,6 +31756,50 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">topology_links_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        POST Topology_Links_Query API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/topology/links/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">topology_nodes_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        POST Topology_Nodes_Query API Function</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **data**: Dictionary containing data to POST as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/topology/nodes/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">upgrade_status_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Query Machine Upgrade Status (v2.0)</span>
@@ -33040,6 +33052,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">query_lannetworks_t</span> <span class="o">=</span> <span class="n">lannetworks_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_lannetworks_t` to `lannetworks_query`&quot;&quot;&quot;</span>
 
+    <span class="n">query_links_topology</span> <span class="o">=</span> <span class="n">topology_links_query</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_links_topology` to `topology_links_query`&quot;&quot;&quot;</span>
+
     <span class="n">query_localprefixfilters</span> <span class="o">=</span> <span class="n">localprefixfilters_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_localprefixfilters` to `localprefixfilters_query`&quot;&quot;&quot;</span>
 
@@ -33051,6 +33066,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="n">query_machines_c</span> <span class="o">=</span> <span class="n">clients_machines_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_machines_c` to `clients_machines_query`&quot;&quot;&quot;</span>
+
+    <span class="n">query_microsegments</span> <span class="o">=</span> <span class="n">microsegments_query</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_microsegments` to `microsegments_query`&quot;&quot;&quot;</span>
 
     <span class="n">query_mstp_instances</span> <span class="o">=</span> <span class="n">mstp_instances_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_mstp_instances` to `mstp_instances_query`&quot;&quot;&quot;</span>
@@ -33130,6 +33148,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="n">query_ngfwsecuritypolicysetstacks</span> <span class="o">=</span> <span class="n">ngfwsecuritypolicysetstacks_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_ngfwsecuritypolicysetstacks` to `ngfwsecuritypolicysetstacks_query`&quot;&quot;&quot;</span>
 
+    <span class="n">query_nodes_topology</span> <span class="o">=</span> <span class="n">topology_nodes_query</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_nodes_topology` to `topology_nodes_query`&quot;&quot;&quot;</span>
+
     <span class="n">query_ospfconfigs</span> <span class="o">=</span> <span class="n">ospfconfigs_query</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_ospfconfigs` to `ospfconfigs_query `&quot;&quot;&quot;</span>
 
@@ -33138,6 +33159,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="n">query_ospfreachableprefixes</span> <span class="o">=</span> <span class="n">ospfreachableprefixes_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_ospfreachableprefixes` to `ospfreachableprefixes_query`&quot;&quot;&quot;</span>
+
+    <span class="n">query_panetworks</span> <span class="o">=</span> <span class="n">panetworks_query</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_panetworks` to `panetworks_query`&quot;&quot;&quot;</span>
 
     <span class="n">query_pathgroups</span> <span class="o">=</span> <span class="n">pathgroups_query</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `query_pathgroups` to `pathgroups_query`&quot;&quot;&quot;</span>
@@ -34934,6 +34958,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 
             </div>
+            <div class="item" id="prisma_sase.post_api.Post.query_links_topology">
+            <p class="name">var <span class="ident">query_links_topology</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Backwards-compatibility alias of <code>query_links_topology</code> to <code>topology_links_query</code></p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
             <div class="item" id="prisma_sase.post_api.Post.query_localprefixfilters">
             <p class="name">var <span class="ident">query_localprefixfilters</span></p>
             
@@ -34974,6 +35009,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   
     <div class="desc"><p>Backwards-compatibility alias of <code>query_machines_c</code> to <code>clients_machines_query</code></p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item" id="prisma_sase.post_api.Post.query_microsegments">
+            <p class="name">var <span class="ident">query_microsegments</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Backwards-compatibility alias of <code>query_microsegments</code> to <code>microsegments_query</code></p></div>
   <div class="source_cont">
 </div>
 
@@ -35264,6 +35310,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 
             </div>
+            <div class="item" id="prisma_sase.post_api.Post.query_nodes_topology">
+            <p class="name">var <span class="ident">query_nodes_topology</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Backwards-compatibility alias of <code>query_nodes_topology</code> to <code>topology_nodes_query</code></p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
             <div class="item" id="prisma_sase.post_api.Post.query_ospfconfigs">
             <p class="name">var <span class="ident">query_ospfconfigs</span></p>
             
@@ -35293,6 +35350,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             
   
     <div class="desc"><p>Backwards-compatibility alias of <code>query_ospfreachableprefixes</code> to <code>ospfreachableprefixes_query</code></p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item" id="prisma_sase.post_api.Post.query_panetworks">
+            <p class="name">var <span class="ident">query_panetworks</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Backwards-compatibility alias of <code>query_panetworks</code> to <code>panetworks_query</code></p></div>
   <div class="source_cont">
 </div>
 
@@ -47140,6 +47208,56 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   </div>
   
             
+  <div class="item" id="prisma_sase.post_api.Post.microsegments_query">
+    <div class="name def">
+    <p>def <span class="ident">microsegments_query</span>(</p><p>self, data, api_version=&#39;v2.0&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Query all microsegments for tenant (v2.0)</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>data</strong>: Dictionary containing data to POST as JSON</li>
+<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+</ul>
+<p><strong>Payload Attributes:</strong> </p>
+<ul>
+<li><strong>_etag:</strong>  Type: integer </li>
+<li><strong>microsegmentation_enabled:</strong>  Type: boolean </li>
+<li><strong>site_id:</strong>  Type: string </li>
+<li><strong>vlan_ids:</strong>  [Type: integer] </li>
+</ul>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.post_api.Post.microsegments_query', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.post_api.Post.microsegments_query" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">microsegments_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Query all microsegments for tenant (v2.0)</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **data**: Dictionary containing data to POST as JSON</span>
+<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">      **Payload Attributes:** </span>
+<span class="sd">       - **_etag:**  Type: integer </span>
+<span class="sd">       - **microsegmentation_enabled:**  Type: boolean </span>
+<span class="sd">       - **site_id:**  Type: string </span>
+<span class="sd">       - **vlan_ids:**  [Type: integer] </span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/microsegments/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
   <div class="item" id="prisma_sase.post_api.Post.migratecbtoezb">
     <div class="name def">
     <p>def <span class="ident">migratecbtoezb</span>(</p><p>self, data, api_version=&#39;v2.0&#39;)</p>
@@ -52640,6 +52758,56 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   </div>
   
             
+  <div class="item" id="prisma_sase.post_api.Post.panetworks_query">
+    <div class="name def">
+    <p>def <span class="ident">panetworks_query</span>(</p><p>self, data, api_version=&#39;v2.0&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Query db for PA networks that match query parameters (v2.0)</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>data</strong>: Dictionary containing data to POST as JSON</li>
+<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+</ul>
+<p><strong>Payload Attributes:</strong> </p>
+<ul>
+<li><strong>_etag:</strong>  Type: integer </li>
+<li><strong>description:</strong>  Type: string </li>
+<li><strong>name:</strong>  Type: string </li>
+<li><strong>tags:</strong>  [Type: string] </li>
+</ul>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.post_api.Post.panetworks_query', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.post_api.Post.panetworks_query" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">panetworks_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Query db for PA networks that match query parameters (v2.0)</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **data**: Dictionary containing data to POST as JSON</span>
+<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">      **Payload Attributes:** </span>
+<span class="sd">       - **_etag:**  Type: integer </span>
+<span class="sd">       - **description:**  Type: string </span>
+<span class="sd">       - **name:**  Type: string </span>
+<span class="sd">       - **tags:**  [Type: string] </span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/panetworks/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
   <div class="item" id="prisma_sase.post_api.Post.password_change">
     <div class="name def">
     <p>def <span class="ident">password_change</span>(</p><p>self, data, api_version=&#39;v2.0&#39;)</p>
@@ -57160,186 +57328,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
     <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/probeprofiles/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
-    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-
-  </div>
-</div>
-
-  </div>
-  
-            
-  <div class="item" id="prisma_sase.post_api.Post.query_links_topology">
-    <div class="name def">
-    <p>def <span class="ident">query_links_topology</span>(</p><p>self, data, api_version=&#39;v2.0&#39;)</p>
-    </div>
-    
-
-    
-  
-    <div class="desc"><p>POST Query_Links_Topology API Function</p>
-<p><strong>Parameters:</strong>:</p>
-<ul>
-<li><strong>data</strong>: Dictionary containing data to POST as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.0)</li>
-</ul>
-<p><strong>Payload Attributes:</strong> </p>
-<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
-  <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.post_api.Post.query_links_topology', this);">Show source &equiv;</a></p>
-  <div id="source-prisma_sase.post_api.Post.query_links_topology" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">query_links_topology</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    POST Query_Links_Topology API Function</span>
-<span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **data**: Dictionary containing data to POST as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
-<span class="sd">      **Payload Attributes:** </span>
-<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/topology/links/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
-    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-
-  </div>
-</div>
-
-  </div>
-  
-            
-  <div class="item" id="prisma_sase.post_api.Post.query_microsegments">
-    <div class="name def">
-    <p>def <span class="ident">query_microsegments</span>(</p><p>self, data, api_version=&#39;v2.0&#39;)</p>
-    </div>
-    
-
-    
-  
-    <div class="desc"><p>Query all microsegments for tenant (v2.0)</p>
-<p><strong>Parameters:</strong>:</p>
-<ul>
-<li><strong>data</strong>: Dictionary containing data to POST as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.0)</li>
-</ul>
-<p><strong>Payload Attributes:</strong> </p>
-<ul>
-<li><strong>_etag:</strong>  Type: integer </li>
-<li><strong>microsegmentation_enabled:</strong>  Type: boolean </li>
-<li><strong>site_id:</strong>  Type: string </li>
-<li><strong>vlan_ids:</strong>  [Type: integer] </li>
-</ul>
-<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
-  <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.post_api.Post.query_microsegments', this);">Show source &equiv;</a></p>
-  <div id="source-prisma_sase.post_api.Post.query_microsegments" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">query_microsegments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Query all microsegments for tenant (v2.0)</span>
-<span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **data**: Dictionary containing data to POST as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
-<span class="sd">      **Payload Attributes:** </span>
-<span class="sd">       - **_etag:**  Type: integer </span>
-<span class="sd">       - **microsegmentation_enabled:**  Type: boolean </span>
-<span class="sd">       - **site_id:**  Type: string </span>
-<span class="sd">       - **vlan_ids:**  [Type: integer] </span>
-<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/microsegments/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
-    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-
-  </div>
-</div>
-
-  </div>
-  
-            
-  <div class="item" id="prisma_sase.post_api.Post.query_nodes_topology">
-    <div class="name def">
-    <p>def <span class="ident">query_nodes_topology</span>(</p><p>self, data, api_version=&#39;v2.0&#39;)</p>
-    </div>
-    
-
-    
-  
-    <div class="desc"><p>POST Query_Nodes_Topology API Function</p>
-<p><strong>Parameters:</strong>:</p>
-<ul>
-<li><strong>data</strong>: Dictionary containing data to POST as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.0)</li>
-</ul>
-<p><strong>Payload Attributes:</strong> </p>
-<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
-  <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.post_api.Post.query_nodes_topology', this);">Show source &equiv;</a></p>
-  <div id="source-prisma_sase.post_api.Post.query_nodes_topology" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">query_nodes_topology</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    POST Query_Nodes_Topology API Function</span>
-<span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **data**: Dictionary containing data to POST as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
-<span class="sd">      **Payload Attributes:** </span>
-<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/topology/nodes/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
-    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-
-  </div>
-</div>
-
-  </div>
-  
-            
-  <div class="item" id="prisma_sase.post_api.Post.query_panetworks">
-    <div class="name def">
-    <p>def <span class="ident">query_panetworks</span>(</p><p>self, data, api_version=&#39;v2.0&#39;)</p>
-    </div>
-    
-
-    
-  
-    <div class="desc"><p>Query db for PA networks that match query parameters (v2.0)</p>
-<p><strong>Parameters:</strong>:</p>
-<ul>
-<li><strong>data</strong>: Dictionary containing data to POST as JSON</li>
-<li><strong>api_version</strong>: API version to use (default v2.0)</li>
-</ul>
-<p><strong>Payload Attributes:</strong> </p>
-<ul>
-<li><strong>_etag:</strong>  Type: integer </li>
-<li><strong>description:</strong>  Type: string </li>
-<li><strong>name:</strong>  Type: string </li>
-<li><strong>tags:</strong>  [Type: string] </li>
-</ul>
-<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
-  <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.post_api.Post.query_panetworks', this);">Show source &equiv;</a></p>
-  <div id="source-prisma_sase.post_api.Post.query_panetworks" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">query_panetworks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Query db for PA networks that match query parameters (v2.0)</span>
-<span class="sd">      **Parameters:**:</span>
-<span class="sd">      - **data**: Dictionary containing data to POST as JSON</span>
-<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
-<span class="sd">      **Payload Attributes:** </span>
-<span class="sd">       - **_etag:**  Type: integer </span>
-<span class="sd">       - **description:**  Type: string </span>
-<span class="sd">       - **name:**  Type: string </span>
-<span class="sd">       - **tags:**  [Type: string] </span>
-<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/panetworks/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
@@ -63626,6 +63614,86 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
     <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/topology&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item" id="prisma_sase.post_api.Post.topology_links_query">
+    <div class="name def">
+    <p>def <span class="ident">topology_links_query</span>(</p><p>self, data, api_version=&#39;v2.0&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>POST Topology_Links_Query API Function</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>data</strong>: Dictionary containing data to POST as JSON</li>
+<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+</ul>
+<p><strong>Payload Attributes:</strong> </p>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.post_api.Post.topology_links_query', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.post_api.Post.topology_links_query" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">topology_links_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    POST Topology_Links_Query API Function</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **data**: Dictionary containing data to POST as JSON</span>
+<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">      **Payload Attributes:** </span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/topology/links/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item" id="prisma_sase.post_api.Post.topology_nodes_query">
+    <div class="name def">
+    <p>def <span class="ident">topology_nodes_query</span>(</p><p>self, data, api_version=&#39;v2.0&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>POST Topology_Nodes_Query API Function</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>data</strong>: Dictionary containing data to POST as JSON</li>
+<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+</ul>
+<p><strong>Payload Attributes:</strong> </p>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.post_api.Post.topology_nodes_query', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.post_api.Post.topology_nodes_query" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">topology_nodes_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    POST Topology_Nodes_Query API Function</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **data**: Dictionary containing data to POST as JSON</span>
+<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">      **Payload Attributes:** </span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/topology/nodes/query&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
     <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;post&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 </pre></div>

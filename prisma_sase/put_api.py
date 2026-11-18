@@ -8,9 +8,7 @@ PRISMA SASE Python SDK - PUT
 
 **License:** MIT
 """
-import functools
 import logging
-import warnings
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
@@ -42,19 +40,6 @@ __license__ = """
 # Set logging to function name
 api_logger = logging.getLogger(__name__)
 """logging.getlogger object to enable debug printing via `prisma_sase.API.set_debug`"""
-
-def _deprecated_alias(new_func, old_name):
-    """Wrap `new_func` so that calling it under its old name emits a DeprecationWarning."""
-    @functools.wraps(new_func)
-    def wrapper(*args, **kwargs):
-        warnings.warn("`%s` is deprecated and will be removed in the next release; use `%s` instead."
-                      % (old_name, new_func.__name__), DeprecationWarning, stacklevel=2)
-        return new_func(*args, **kwargs)
-    wrapper.__name__ = old_name
-    wrapper.__doc__ = ("**Deprecated:** use `%s` instead; `%s` will be removed in the next release.\n\n%s"
-                       % (new_func.__name__, old_name, new_func.__doc__ or ""))
-    return wrapper
-
 
 
 class Put(object):
@@ -491,6 +476,36 @@ class Put(object):
         url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/demsiteconfigs/{}".format(api_version,
                                                                                 site_id,
                                                                                 demsiteconfig_id)
+
+        api_logger.debug("URL = %s", url)
+        return self._parent_class.rest_call(url, "put", data=data)
+
+    def deviceidconfigs(self, site_id, deviceidconfig_id, data, api_version="v2.1"):
+        """
+        Update device Id site config (v2.1)
+
+          **Parameters:**:
+
+          - **site_id**: Site ID
+          - **deviceidconfig_id**: Device Id Config ID
+          - **data**: Dictionary containing data to PUT as JSON
+          - **api_version**: API version to use (default v2.1)
+
+          **Payload Attributes:** 
+
+           - **_etag:**  Type: integer 
+           - **cfg_device_id_enabled:**  Type: boolean 
+           - **deviceid_profile_id:**  Type: string 
+           - **site_id:**  Type: string 
+
+        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
+        """
+
+        cur_ctlr = self._parent_class.controller
+
+        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}".format(api_version,
+                                                                                 site_id,
+                                                                                 deviceidconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
@@ -1376,6 +1391,220 @@ class Put(object):
 
           **Payload Attributes:** 
 
+           - **_etag:**  Type: integer 
+           - **admin_up:**  Type: boolean 
+           - **attached_lan_networks:**           
+               - **lan_network_id:**  Type: string 
+               - **vlan_id:**  Type: integer 
+           - **authentication_config:**           
+               - **fallback_retry_count:**  Type: integer 
+               - **mode:**  Type: string 
+               - **reauthentication_timeout:**  Type: integer 
+           - **bound_interfaces:**  [Type: string] 
+           - **bypass_pair:**           
+               - **lan:**  Type: string 
+               - **lan_state_propagation:**  Type: boolean 
+               - **use_relay:**  Type: boolean 
+               - **wan:**  Type: string 
+           - **cellular_config:**           
+               - **apn_config:**           
+                   - **apn:**  Type: string 
+                   - **authentication:**  Type: string 
+                   - **clear_password:**  Type: boolean 
+                   - **password:**  Type: string 
+                   - **password_encrypted:**  Type: string 
+                   - **user_name:**  Type: string 
+               - **apnprofile_id:**  Type: string 
+               - **auto_apn:**  Type: boolean 
+               - **ip_address_type:**  Type: string 
+               - **parent_module_id:**  Type: string 
+               - **parent_sim_slot_number:**  Type: integer 
+           - **description:**  Type: string 
+           - **devicemgmt_policysetstack_id:**  Type: string 
+           - **dhcp_relay:**           
+               - **enabled:**  Type: boolean 
+               - **option_82:**           
+                   - **circuit_id:**  Type: string 
+                   - **enabled:**  Type: boolean 
+                   - **reforwarding_policy:**  Type: string 
+                   - **remote_id:**  Type: string 
+               - **server_ips:**  [Type: string] 
+               - **source_interface:**  Type: string 
+           - **directed_broadcast:**  Type: boolean 
+           - **ethernet_port:**           
+               - **full_duplex:**  Type: boolean 
+               - **speed:**  Type: integer 
+           - **fec_mode:**  Type: string 
+           - **interface_profile_id:**  Type: string 
+           - **ipfixcollectorcontext_id:**  Type: string 
+           - **ipfixfiltercontext_id:**  Type: string 
+           - **ipv4_config:**           
+               - **dhcp_config:**           
+                   - **client_id:**  Type: string 
+                   - **hostname:**  Type: string 
+               - **dns_v4_config:**           
+                   - **name_servers:**  [Type: string] 
+                   - **search:**  [Type: string] 
+               - **routes:**           
+                   - **destination:**  Type: string 
+                   - **via:**  Type: string 
+               - **static_config:**           
+                   - **address:**  Type: string 
+               - **type:**  Type: string 
+           - **ipv6_config:**           
+               - **dhcp_config:**           
+                   - **client_id:**  Type: string 
+                   - **hostname:**  Type: string 
+               - **dns_v6_config:**           
+                   - **name_servers:**  [Type: string] 
+                   - **search:**  [Type: string] 
+               - **routes:**           
+                   - **destination:**  Type: string 
+                   - **via:**  Type: string 
+               - **static_config:**           
+                   - **address:**  Type: string 
+                   - **enable_prefix_distribution:**  Type: boolean 
+               - **type:**  Type: string 
+           - **lldp_enabled:**  Type: boolean 
+           - **loopback_config:**           
+               - **binding_interface_id:**  Type: string 
+           - **mac_address:**  Type: string 
+           - **mtu:**  Type: integer 
+           - **multicast_config:**           
+               - **dr_priority:**  Type: integer 
+               - **igmp_static_joins:**           
+                   - **igmp_static_grp_ipv4:**  Type: string 
+                   - **igmp_static_src_ipv4:**  Type: string 
+               - **igmp_version:**  Type: string 
+               - **multicast_enabled:**  Type: boolean 
+           - **name:**  Type: string 
+           - **nat_address:**  Type: string 
+           - **nat_address_v6:**  Type: string 
+           - **nat_pools:**           
+               - **ipv4_ranges:**           
+                   - **end:**  Type: string 
+                   - **start:**  Type: string 
+               - **nat_pool_id:**  Type: string 
+           - **nat_port:**  Type: integer 
+           - **nat_port_v6:**  Type: integer 
+           - **nat_zone_id:**  Type: string 
+           - **network_context_id:**  Type: string 
+           - **parent:**  Type: string 
+           - **peer_bypasspair_wan_port_type:**  Type: string 
+           - **poe_enabled:**  Type: boolean 
+           - **port_channel_config:**           
+               - **lacp_enabled:**  Type: boolean 
+               - **transmission_mode:**  Type: string 
+           - **power_usage_threshold:**  Type: integer 
+           - **pppoe_config:**           
+               - **host_uniq:**  Type: string 
+               - **ip_address_type:**  Type: string 
+               - **password:**  Type: string 
+               - **reconnection_delay:**  Type: integer 
+               - **service_name:**  Type: string 
+               - **username:**  Type: string 
+           - **scope:**  Type: string 
+           - **secondary_ip_configs:**           
+               - **ipv4_address:**  Type: string 
+               - **scope:**  Type: string 
+           - **service_link_config:**           
+               - **gre_config:**           
+                   - **csum:**  Type: boolean 
+                   - **keepalive_enable:**  Type: boolean 
+                   - **keepalive_fail_count:**  Type: integer 
+                   - **keepalive_interval:**  Type: integer 
+               - **ipsec_config:**           
+                   - **authentication:**           
+                       - **certificate:**  Type: string 
+                       - **certificate_profile_id:**  Type: string 
+                       - **comment:**  Type: string 
+                       - **ikev1_params:**           
+                           - **xauth_id:**  Type: string 
+                           - **xauth_secret:**  Type: string 
+                           - **xauth_secret_encrypted:**  Type: string 
+                           - **xauth_secret_hash:**  Type: string 
+                           - **xauth_type:**  Type: string 
+                       - **local_ca_certificate:**  Type: string 
+                       - **local_id:**  Type: string 
+                       - **local_id_custom:**  Type: string 
+                       - **local_pa_certificate_id:**  Type: string 
+                       - **pa_master_key_id:**  Type: string 
+                       - **passphrase:**  Type: string 
+                       - **passphrase_encrypted:**  Type: string 
+                       - **peer_id_check:**  Type: string 
+                       - **permit_peer_id_mismatch:**  Type: boolean 
+                       - **ppk_config:**           
+                           - **enabled:**  Type: boolean 
+                           - **mode:**  Type: string 
+                           - **ppk_key_id:**  Type: string 
+                           - **ppk_secret:**  Type: string 
+                           - **ppk_secret_configured:**  Type: boolean 
+                           - **ppk_secret_encrypted:**  Type: string 
+                           - **ppk_secret_hash:**  Type: string 
+                       - **private_key:**  Type: string 
+                       - **private_key_encrypted:**  Type: string 
+                       - **remote_ca_certificate:**  Type: string 
+                       - **remote_id:**  Type: string 
+                       - **secret:**  Type: string 
+                       - **secret_encrypted:**  Type: string 
+                       - **secret_hash:**  Type: string 
+                       - **strict_validation_peer_extended_key_use:**  Type: boolean 
+                       - **type:**  Type: string 
+                       - **x509Objects:**           
+                           - **certHolder:**  Type: object 
+                           - **certificate:**  Type: string 
+                           - **is_local_ca_cert_set:**  Type: boolean 
+                           - **is_remote_ca_cert_set:**  Type: boolean 
+                           - **keyPair:**  Type: object 
+                           - **local_ca_certificate:**  Type: string 
+                           - **local_ca_certs_set:**  [Type: object] 
+                           - **passphrase:**  Type: string 
+                           - **pkcs12_certificate:**  Type: string 
+                           - **private_key:**  Type: string 
+                           - **remote_ca_certificate:**  Type: string 
+                           - **remote_ca_certs_set:**  [Type: object] 
+                   - **ipsec_profile_id:**  Type: string 
+               - **last_parent:**  Type: string 
+               - **parent:**  Type: string 
+               - **passive_mode:**           
+                   - **enable:**  Type: boolean 
+               - **peer:**           
+                   - **hostname:**  Type: string 
+                   - **ip_addresses:**  [Type: string] 
+               - **service_endpoint_id:**  Type: string 
+               - **type:**  Type: string 
+           - **sgi_apply_static_tag:**  Type: boolean 
+           - **site_wan_interface_ids:**  [Type: string] 
+           - **static_arp_configs:**           
+               - **ipv4_address:**  Type: string 
+               - **mac_address:**  Type: string 
+           - **sub_interface:**           
+               - **native_vlan:**  Type: boolean 
+               - **vlan_id:**  Type: integer 
+           - **switch_port_config:**           
+               - **access_vlan_id:**  Type: integer 
+               - **bpdu_guard_enabled:**  Type: boolean 
+               - **forward_fast_enabled:**  Type: boolean 
+               - **native_vlan_id:**  Type: integer 
+               - **root_guard_enabled:**  Type: boolean 
+               - **storm_control_config:**           
+                   - **broadcast_threshold:**  Type: integer 
+                   - **multicast_threshold:**  Type: integer 
+                   - **unicast_threshold:**  Type: integer 
+               - **stp_port_cost:**  Type: integer 
+               - **stp_port_enabled:**  Type: boolean 
+               - **stp_port_priority:**  Type: integer 
+               - **trunk_vlans:**  [Type: string] 
+               - **vlan_mode:**  Type: string 
+               - **voice_vlan_id:**  Type: integer 
+           - **tags:**  [Type: string] 
+           - **type:**  Type: string 
+           - **used_for:**  Type: string 
+           - **vlan_config:**           
+               - **mstp_instance:**  Type: integer 
+               - **vlan_id:**  Type: integer 
+               - **voice_enabled:**  Type: boolean 
+           - **vrf_context_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1392,7 +1621,7 @@ class Put(object):
 
     def elementsystemlimitprofiles(self, elementsystemlimitprofile_id, data, api_version="v2.0"):
         """
-        PUT Elementsystemlimitprofiles API Function
+        Update Element System Limit Profile (v2.0)
 
           **Parameters:**:
 
@@ -1402,6 +1631,12 @@ class Put(object):
 
           **Payload Attributes:** 
 
+           - **_etag:**  Type: integer 
+           - **description:**  Type: string 
+           - **flow_acceptance_criteria:**           
+               - **flow_limit_percentage_per_source:**  Type: integer 
+           - **name:**  Type: string 
+           - **tags:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -1477,7 +1712,7 @@ class Put(object):
 
     def enterpriseprefixset(self, data, api_version="v2.1"):
         """
-        PUT Enterpriseprefixset API Function
+        Update the tenant enterprise prefix set (v2.1)
 
           **Parameters:**:
 
@@ -1647,7 +1882,7 @@ class Put(object):
 
     def events(self, event_id, data, api_version="v3.0"):
         """
-        PUT Events API Function
+        Put Events API (v3.0)
 
           **Parameters:**:
 
@@ -1671,7 +1906,7 @@ class Put(object):
 
     def externalcaconfigs(self, externalcaconfig_id, data, api_version="v2.0"):
         """
-        PUT Externalcaconfigs API Function
+        Update an existing certificate authority configuration (v2.0)
 
           **Parameters:**:
 
@@ -2091,7 +2326,7 @@ class Put(object):
 
     def iotservices(self, iotservice_id, data, api_version="v2.0"):
         """
-        PUT Iotservices API Function
+        PUT the confidence score of the mappings stored in the IOT portal (v2.0)
 
           **Parameters:**:
 
@@ -2101,6 +2336,8 @@ class Put(object):
 
           **Payload Attributes:** 
 
+           - **_etag:**  Type: integer 
+           - **device_confidence_score:**  Type: integer 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -2586,7 +2823,7 @@ class Put(object):
 
     def microsegments(self, site_id, microsegment_id, data, api_version="v2.0"):
         """
-        PUT Microsegments API Function
+        Update microsegment (v2.0)
 
           **Parameters:**:
 
@@ -2597,6 +2834,10 @@ class Put(object):
 
           **Payload Attributes:** 
 
+           - **_etag:**  Type: integer 
+           - **microsegmentation_enabled:**  Type: boolean 
+           - **site_id:**  Type: string 
+           - **vlan_ids:**  [Type: integer] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -3610,7 +3851,7 @@ class Put(object):
 
     def ntp_templates_operations(self, template_id, data, api_version="v2.0"):
         """
-        PUT Ntp_Templates_Operations API Function
+        Sync NTP Templates (v2.0)
 
           **Parameters:**:
 
@@ -3620,6 +3861,9 @@ class Put(object):
 
           **Payload Attributes:** 
 
+           - **_etag:**  Type: integer 
+           - **failed_to_sync_element_ids:**  [Type: string] 
+           - **status:**  Type: boolean 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -4677,7 +4921,7 @@ class Put(object):
 
     def prismasase_connections(self, site_id, prismasase_connection_id, data, api_version="v3.1"):
         """
-        PUT Prismasase_Connections API Function
+        Update the SASE connection (v3.1)
 
           **Parameters:**:
 
@@ -4703,7 +4947,7 @@ class Put(object):
 
     def prismasase_connections_configs(self, data, api_version="v3.2"):
         """
-        PUT Prismasase_Connections_Configs API Function
+        Update the SASE connection config (v3.2)
 
           **Parameters:**:
 
@@ -5085,7 +5329,7 @@ class Put(object):
 
     def sdwanapps_configs(self, sdwanapp_id, config_id, data, api_version="v2.0"):
         """
-        PUT Sdwanapps_Configs API Function
+        Update SD-WAN application configuration (v2.0)
 
           **Parameters:**:
 
@@ -5175,7 +5419,7 @@ class Put(object):
 
     def securityprofilegroups(self, securityprofilegroup_id, data, api_version="v2.0"):
         """
-        PUT Securityprofilegroups API Function
+        Update an existing Security Profile Group (v2.0)
 
           **Parameters:**:
 
@@ -5185,6 +5429,29 @@ class Put(object):
 
           **Payload Attributes:** 
 
+           - **_etag:**  Type: integer 
+           - **dns_security_profile:**           
+               - **cm_version:**  Type: string 
+               - **etag:**  Type: integer 
+               - **name:**  Type: string 
+               - **profile_id:**  Type: string 
+           - **name:**  Type: string 
+           - **predefined:**  Type: boolean 
+           - **spyware_profile:**           
+               - **cm_version:**  Type: string 
+               - **etag:**  Type: integer 
+               - **name:**  Type: string 
+               - **profile_id:**  Type: string 
+           - **url_filtering_profile:**           
+               - **cm_version:**  Type: string 
+               - **etag:**  Type: integer 
+               - **name:**  Type: string 
+               - **profile_id:**  Type: string 
+           - **vulnerability_profile:**           
+               - **cm_version:**  Type: string 
+               - **etag:**  Type: integer 
+               - **name:**  Type: string 
+               - **profile_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -5389,32 +5656,6 @@ class Put(object):
 
         url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/admin_state".format(api_version,
                                                                           site_id)
-
-        api_logger.debug("URL = %s", url)
-        return self._parent_class.rest_call(url, "put", data=data)
-
-    def site_deviceidconfigs(self, site_id, deviceidconfig_id, data, api_version="v2.1"):
-        """
-        Update device Id site config (v2.1)
-
-          **Parameters:**:
-
-          - **site_id**: Site ID
-          - **deviceidconfig_id**: Device Id Config ID
-          - **data**: Dictionary containing data to PUT as JSON
-          - **api_version**: API version to use (default v2.1)
-
-          **Payload Attributes:** 
-
-
-        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
-        """
-
-        cur_ctlr = self._parent_class.controller
-
-        url = str(cur_ctlr) + "/sdwan/{}/api/sites/{}/deviceidconfigs/{}".format(api_version,
-                                                                                 site_id,
-                                                                                 deviceidconfig_id)
 
         api_logger.debug("URL = %s", url)
         return self._parent_class.rest_call(url, "put", data=data)
@@ -6044,7 +6285,7 @@ class Put(object):
 
     def tacacs_plus_profiles(self, tacacs_plus_profile_id, data, api_version="v2.0"):
         """
-        PUT Tacacs_Plus_Profiles API Function
+        Update TACACS+ Profile (v2.0)
 
           **Parameters:**:
 
@@ -6054,6 +6295,18 @@ class Put(object):
 
           **Payload Attributes:** 
 
+           - **_etag:**  Type: integer 
+           - **authentication_protocol:**  Type: string 
+           - **description:**  Type: string 
+           - **name:**  Type: string 
+           - **tacacs_plus_servers:**           
+               - **secret:**  Type: string 
+               - **server_fqdn:**  Type: string 
+               - **server_ip:**  Type: string 
+               - **server_ipv6:**  Type: string 
+               - **server_port:**  Type: integer 
+               - **timeout:**  Type: integer 
+           - **tags:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -6068,7 +6321,7 @@ class Put(object):
 
     def tacacs_plus_servers(self, site_id, element_id, tacacs_plus_server_id, data, api_version="v2.0"):
         """
-        PUT Tacacs_Plus_Servers API Function
+        Update TACACS+ Server (v2.0)
 
           **Parameters:**:
 
@@ -6080,6 +6333,21 @@ class Put(object):
 
           **Payload Attributes:** 
 
+           - **_etag:**  Type: integer 
+           - **authentication_protocol:**  Type: string 
+           - **description:**  Type: string 
+           - **enabled:**  Type: boolean 
+           - **name:**  Type: string 
+           - **source_interface_id:**  Type: string 
+           - **tacacs_plus_profile_id:**  Type: string 
+           - **tacacs_plus_servers:**           
+               - **secret:**  Type: string 
+               - **server_fqdn:**  Type: string 
+               - **server_ip:**  Type: string 
+               - **server_ipv6:**  Type: string 
+               - **server_port:**  Type: integer 
+               - **timeout:**  Type: integer 
+           - **tags:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -6130,7 +6398,7 @@ class Put(object):
 
     def tenant_anynetlinks(self, anynetlink_id, data, api_version="v4.0"):
         """
-        PUT Tenant_Anynetlinks API Function
+        Update anynet link (v4.0)
 
           **Parameters:**:
 
@@ -6154,7 +6422,7 @@ class Put(object):
 
     def tenant_api_versions(self, data, api_version="v2.0"):
         """
-        PUT Tenant_Api_Versions API Function
+        Update Api Versions (v2.0)
 
           **Parameters:**:
 
@@ -6163,6 +6431,9 @@ class Put(object):
 
           **Payload Attributes:** 
 
+           - **_etag:**  Type: integer 
+           - **api_versions:**  Type: object 
+           - **tenant_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -6612,7 +6883,7 @@ class Put(object):
 
     def tenants_certificates(self, certificate_id, data, api_version="v2.0"):
         """
-        PUT Tenants_Certificates API Function
+        Update certificate v2.0 (v2.0)
 
           **Parameters:**:
 
@@ -6622,6 +6893,21 @@ class Put(object):
 
           **Payload Attributes:** 
 
+           - **_etag:**  Type: integer 
+           - **algorithm:**  Type: string 
+           - **ca:**  Type: boolean 
+           - **certificate_file:**  Type: string 
+           - **format:**  Type: string 
+           - **issuer:**  Type: string 
+           - **issuer_hash:**  Type: string 
+           - **key_file:**  Type: string 
+           - **name:**  Type: string 
+           - **not_valid_after:**  Type: string 
+           - **not_valid_before:**  Type: string 
+           - **passphrase:**  Type: string 
+           - **subject:**  Type: string 
+           - **subject_hash:**  Type: string 
+           - **used_for:**  [Type: string] 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """
@@ -6999,7 +7285,7 @@ class Put(object):
 
     def ws_extensions(self, extension_id, data, api_version="v2.0"):
         """
-        PUT Ws_Extensions API Function
+        Update extensions configuration (v2.0)
 
           **Parameters:**:
 
@@ -7051,8 +7337,8 @@ class Put(object):
     configs_sdwanapps = sdwanapps_configs
     """ Backwards-compatibility alias of `configs_sdwanapps` to `sdwanapps_configs`"""
 
-    deviceidconfigs = site_deviceidconfigs
-    """ Backwards-compatibility alias of `deviceidconfigs` to `site_deviceidconfigs`"""
+    deviceidconfigs = deviceidconfigs
+    """ Backwards-compatibility alias of `deviceidconfigs` to `deviceidconfigs`"""
 
     deviceidconfigs_i = element_deviceidconfigs
     """ Backwards-compatibility alias of `deviceidconfigs_i` to `element_deviceidconfigs`"""

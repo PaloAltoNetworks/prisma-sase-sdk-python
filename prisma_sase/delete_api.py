@@ -8,9 +8,7 @@ PRISMA SASE Python SDK - DELETE
 
 **License:** MIT
 """
-import functools
 import logging
-import warnings
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
@@ -42,19 +40,6 @@ __license__ = """
 # Set logging to function name
 api_logger = logging.getLogger(__name__)
 """logging.getlogger object to enable debug printing via `prisma_sase.API.set_debug`"""
-
-def _deprecated_alias(new_func, old_name):
-    """Wrap `new_func` so that calling it under its old name emits a DeprecationWarning."""
-    @functools.wraps(new_func)
-    def wrapper(*args, **kwargs):
-        warnings.warn("`%s` is deprecated and will be removed in the next release; use `%s` instead."
-                      % (old_name, new_func.__name__), DeprecationWarning, stacklevel=2)
-        return new_func(*args, **kwargs)
-    wrapper.__name__ = old_name
-    wrapper.__doc__ = ("**Deprecated:** use `%s` instead; `%s` will be removed in the next release.\n\n%s"
-                       % (new_func.__name__, old_name, new_func.__doc__ or ""))
-    return wrapper
-
 
 
 class Delete(object):
@@ -439,7 +424,7 @@ class Delete(object):
 
     def element_passages(self, element_id, passage_id, api_version="v2.0"):
         """
-        DELETE Element_Passages API Function
+        Delete passage from NB (v2.0)
 
           **Parameters:**:
 
@@ -461,7 +446,7 @@ class Delete(object):
 
     def element_toolkitsessions(self, element_id, toolkitsession_id, api_version="v2.0"):
         """
-        DELETE Element_Toolkitsessions API Function
+        Delete Active Passage (v2.0)
 
           **Parameters:**:
 
@@ -483,7 +468,7 @@ class Delete(object):
 
     def elementpassageconfigs(self, element_id, elementpassageconfig_id, api_version="v2.0"):
         """
-        DELETE Elementpassageconfigs API Function
+        Deletes element passage configuration from NB (v2.0)
 
           **Parameters:**:
 
@@ -575,7 +560,7 @@ class Delete(object):
 
     def elementsystemlimitprofiles(self, elementsystemlimitprofile_id, api_version="v2.0"):
         """
-        DELETE Elementsystemlimitprofiles API Function
+        Delete Element System Limit Profile (v2.0)
 
           **Parameters:**:
 
@@ -701,7 +686,7 @@ class Delete(object):
 
     def externalcaconfigs(self, externalcaconfig_id, api_version="v2.0"):
         """
-        DELETE Externalcaconfigs API Function
+        Delete a existing CertificateAuthorityConfigDO object by tenant ID and ID (v2.0)
 
           **Parameters:**:
 
@@ -1017,7 +1002,7 @@ class Delete(object):
 
     def microsegments(self, site_id, microsegment_id, api_version="v2.0"):
         """
-        DELETE Microsegments API Function
+        Delete microsegment (v2.0)
 
           **Parameters:**:
 
@@ -1879,7 +1864,7 @@ class Delete(object):
 
     def prismasase_connections_configs(self, api_version="v3.2"):
         """
-        DELETE Prismasase_Connections_Configs API Function
+        Delete existing SASE connection config (v3.2)
 
           **Parameters:**:
 
@@ -2075,7 +2060,7 @@ class Delete(object):
 
     def sdwanapps_configs(self, sdwanapp_id, config_id, api_version="v2.0"):
         """
-        DELETE Sdwanapps_Configs API Function
+        Delete SD-WAN application configuration (v2.0)
 
           **Parameters:**:
 
@@ -2139,7 +2124,7 @@ class Delete(object):
 
     def securityprofilegroups(self, securityprofilegroup_id, api_version="v2.0"):
         """
-        DELETE Securityprofilegroups API Function
+        Delete an existing Security Profile Group by tenant ID and its ID (v2.0)
 
           **Parameters:**:
 
@@ -2551,7 +2536,7 @@ class Delete(object):
 
     def tacacs_plus_profiles(self, tacacs_plus_profile_id, api_version="v2.0"):
         """
-        DELETE Tacacs_Plus_Profiles API Function
+        Delete TACACS+ Profile (v2.0)
 
           **Parameters:**:
 
@@ -2571,7 +2556,7 @@ class Delete(object):
 
     def tacacs_plus_servers(self, site_id, element_id, tacacs_plus_server_id, api_version="v2.0"):
         """
-        DELETE Tacacs_Plus_Servers API Function
+        Delete TACACS+ Server (v2.0)
 
           **Parameters:**:
 
@@ -2615,7 +2600,7 @@ class Delete(object):
 
     def tenant_anynetlinks(self, anynetlink_id, api_version="v4.0"):
         """
-        DELETE Tenant_Anynetlinks API Function
+        Delete anynet link (v4.0)
 
           **Parameters:**:
 
@@ -2735,7 +2720,7 @@ class Delete(object):
 
     def tenantpassageconfigs(self, tenantpassageconfig_id, api_version="v2.0"):
         """
-        DELETE Tenantpassageconfigs API Function
+        Deletes tenant passage configuration from NB (v2.0)
 
           **Parameters:**:
 
@@ -2755,7 +2740,7 @@ class Delete(object):
 
     def tenants_certificates(self, certificate_id, api_version="v2.0"):
         """
-        DELETE Tenants_Certificates API Function
+        Delete a certificate of tenant v2.0 (v2.0)
 
           **Parameters:**:
 
@@ -2917,7 +2902,7 @@ class Delete(object):
 
     def ws_extensions(self, extension_id, api_version="v2.0"):
         """
-        DELETE Ws_Extensions API Function
+        Delete extension (v2.0)
 
           **Parameters:**:
 

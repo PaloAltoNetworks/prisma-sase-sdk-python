@@ -8,9 +8,7 @@ PRISMA SASE Python SDK - PATCH
 
 **License:** MIT
 """
-import functools
 import logging
-import warnings
 
 __author__ = "Prisma SASE Developer Support <prisma-sase-developers@paloaltonetworks.com>"
 __email__ = "prisma-sase-developers@paloaltonetworks.com"
@@ -42,19 +40,6 @@ __license__ = """
 # Set logging to function name
 api_logger = logging.getLogger(__name__)
 """logging.getlogger object to enable debug printing via `prisma_sase.API.set_debug`"""
-
-def _deprecated_alias(new_func, old_name):
-    """Wrap `new_func` so that calling it under its old name emits a DeprecationWarning."""
-    @functools.wraps(new_func)
-    def wrapper(*args, **kwargs):
-        warnings.warn("`%s` is deprecated and will be removed in the next release; use `%s` instead."
-                      % (old_name, new_func.__name__), DeprecationWarning, stacklevel=2)
-        return new_func(*args, **kwargs)
-    wrapper.__name__ = old_name
-    wrapper.__doc__ = ("**Deprecated:** use `%s` instead; `%s` will be removed in the next release.\n\n%s"
-                       % (new_func.__name__, old_name, new_func.__doc__ or ""))
-    return wrapper
-
 
 
 class Patch(object):
@@ -95,7 +80,7 @@ class Patch(object):
 
     def tenant_api_versions(self, data, api_version="v2.0"):
         """
-        PATCH Tenant_Api_Versions API Function
+        Patch api versions (v2.0)
 
           **Parameters:**:
 
@@ -104,6 +89,9 @@ class Patch(object):
 
           **Payload Attributes:** 
 
+           - **_etag:**  Type: integer 
+           - **api_versions:**  Type: object 
+           - **tenant_id:**  Type: string 
 
         **Returns:** requests.Response object extended with sdk_status and sdk_content properties.
         """

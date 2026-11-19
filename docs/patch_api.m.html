@@ -2575,6 +2575,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
           
   <ul>
     <li class="mono"><a href="#prisma_sase.patch_api.Patch.bgppeers">bgppeers</a></li>
+    <li class="mono"><a href="#prisma_sase.patch_api.Patch.tenant_api_versions">tenant_api_versions</a></li>
     <li class="mono"><a href="#prisma_sase.patch_api.Patch.tenant_operators">tenant_operators</a></li>
     <li class="mono"><a href="#prisma_sase.patch_api.Patch.tenants">tenants</a></li>
   </ul>
@@ -2683,6 +2684,31 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;patch&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">tenant_api_versions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Patch api versions (v2.0)</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **data**: Dictionary containing data to PATCH as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+<span class="sd">           - **_etag:**  Type: integer </span>
+<span class="sd">           - **api_versions:**  Type: object </span>
+<span class="sd">           - **tenant_id:**  Type: string </span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/api_versions&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;patch&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">tenant_operators</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Patch a tenant operator (v2.2)</span>
@@ -2695,6 +2721,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          **Payload Attributes:** </span>
 
+<span class="sd">           - **_etag:**  Type: integer </span>
 <span class="sd">           - **addresses:**           </span>
 <span class="sd">               - **city:**  Type: string </span>
 <span class="sd">               - **country:**  Type: string </span>
@@ -2703,17 +2730,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">               - **street:**  Type: string </span>
 <span class="sd">               - **street2:**  Type: string </span>
 <span class="sd">           - **custom_roles:**           </span>
+<span class="sd">               - **_etag:**  Type: integer </span>
 <span class="sd">               - **custom_permissions:**           </span>
 <span class="sd">                   - **allowed_after_ms:**  Type: integer </span>
 <span class="sd">                   - **allowed_before_ms:**  Type: integer </span>
-<span class="sd">                   - **disabled:**  Type: boolean </span>
-<span class="sd">                   - **disabled_reason:**  Type: string </span>
 <span class="sd">                   - **disallow_permission:**  Type: boolean </span>
 <span class="sd">                   - **id:**  Type: string </span>
-<span class="sd">                   - **inactive:**  Type: boolean </span>
-<span class="sd">                   - **inactive_reason:**  Type: string </span>
-<span class="sd">                   - **region:**  Type: string </span>
-<span class="sd">                   - **tenant_id:**  Type: string </span>
 <span class="sd">                   - **value:**  Type: string </span>
 <span class="sd">               - **description:**  Type: string </span>
 <span class="sd">               - **disabled:**  Type: boolean </span>
@@ -2751,6 +2773,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">           - **last_login:**  Type: string </span>
 <span class="sd">           - **last_name:**  Type: string </span>
 <span class="sd">           - **linked_accounts:**           </span>
+<span class="sd">               - **_etag:**  Type: integer </span>
 <span class="sd">               - **disabled:**  Type: boolean </span>
 <span class="sd">               - **disabled_reason:**  Type: string </span>
 <span class="sd">               - **failed_login_attempts:**  Type: integer </span>
@@ -2799,7 +2822,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          **Payload Attributes:** </span>
 
-<span class="sd">           - **:**  Type: string </span>
+<span class="sd">           - **_etag:**  Type: integer </span>
 <span class="sd">           - **address:**           </span>
 <span class="sd">               - **city:**  Type: string </span>
 <span class="sd">               - **country:**  Type: string </span>
@@ -2830,6 +2853,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">           - **is_support:**  Type: boolean </span>
 <span class="sd">           - **name:**  Type: string </span>
 <span class="sd">           - **operator:**           </span>
+<span class="sd">               - **_etag:**  Type: integer </span>
 <span class="sd">               - **addresses:**           </span>
 <span class="sd">                   - **city:**  Type: string </span>
 <span class="sd">                   - **country:**  Type: string </span>
@@ -2838,28 +2862,29 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">                   - **street:**  Type: string </span>
 <span class="sd">                   - **street2:**  Type: string </span>
 <span class="sd">               - **custom_roles:**           </span>
+<span class="sd">                   - **_etag:**  Type: integer </span>
 <span class="sd">                   - **custom_permissions:**           </span>
 <span class="sd">                       - **allowed_after_ms:**  Type: integer </span>
 <span class="sd">                       - **allowed_before_ms:**  Type: integer </span>
-<span class="sd">                       - **disabled:**  Type: boolean </span>
-<span class="sd">                       - **disabled_reason:**  Type: string </span>
 <span class="sd">                       - **disallow_permission:**  Type: boolean </span>
 <span class="sd">                       - **id:**  Type: string </span>
-<span class="sd">                       - **inactive:**  Type: boolean </span>
-<span class="sd">                       - **inactive_reason:**  Type: string </span>
-<span class="sd">                       - **region:**  Type: string </span>
-<span class="sd">                       - **tenant_id:**  Type: string </span>
 <span class="sd">                       - **value:**  Type: string </span>
+<span class="sd">                   - **description:**  Type: string </span>
 <span class="sd">                   - **disabled:**  Type: boolean </span>
+<span class="sd">                   - **disabled_reason:**  Type: string </span>
 <span class="sd">                   - **disallow_permissions:**           </span>
 <span class="sd">                       - **value:**  Type: string </span>
 <span class="sd">                   - **id:**  Type: string </span>
 <span class="sd">                   - **inactive:**  Type: boolean </span>
+<span class="sd">                   - **inactive_reason:**  Type: string </span>
+<span class="sd">                   - **is_system_owned:**  Type: boolean </span>
 <span class="sd">                   - **name:**  Type: string </span>
 <span class="sd">                   - **permissions:**           </span>
 <span class="sd">                       - **value:**  Type: string </span>
+<span class="sd">                   - **region:**  Type: string </span>
 <span class="sd">                   - **roles:**           </span>
 <span class="sd">                       - **name:**  Type: string </span>
+<span class="sd">                   - **tenant_id:**  Type: string </span>
 <span class="sd">               - **disable_idp_login:**  Type: boolean </span>
 <span class="sd">               - **disabled:**  Type: boolean </span>
 <span class="sd">               - **disabled_reason:**  Type: string </span>
@@ -2882,6 +2907,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">               - **last_login:**  Type: string </span>
 <span class="sd">               - **last_name:**  Type: string </span>
 <span class="sd">               - **linked_accounts:**           </span>
+<span class="sd">                   - **_etag:**  Type: integer </span>
 <span class="sd">                   - **disabled:**  Type: boolean </span>
 <span class="sd">                   - **disabled_reason:**  Type: string </span>
 <span class="sd">                   - **failed_login_attempts:**  Type: integer </span>
@@ -2940,6 +2966,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">           - **prisma_access_tenant_id:**  Type: string </span>
 <span class="sd">           - **provider_data:**           </span>
 <span class="sd">               - **certificate:**           </span>
+<span class="sd">                   - **_etag:**  Type: integer </span>
 <span class="sd">                   - **certificate:**  Type: string </span>
 <span class="sd">                   - **certificate_expiry_utc:**  Type: integer </span>
 <span class="sd">                   - **certificate_type:**  Type: string </span>
@@ -2969,6 +2996,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">                   - **version:**  Type: string </span>
 <span class="sd">               - **password_hash:**  Type: string </span>
 <span class="sd">               - **provider:**           </span>
+<span class="sd">                   - **_etag:**  Type: integer </span>
 <span class="sd">                   - **canonical_name:**  Type: string </span>
 <span class="sd">                   - **description:**  Type: string </span>
 <span class="sd">                   - **disabled:**  Type: boolean </span>
@@ -2993,6 +3021,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">               - **app_id:**  Type: string </span>
 <span class="sd">               - **region:**  Type: string </span>
 <span class="sd">               - **tenant_id:**  Type: string </span>
+<span class="sd">           - **x_panw_region:**  Type: string </span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3006,6 +3035,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="c1"># Public Digest compatibility maps below, mapping what is available via</span>
     <span class="c1"># /v2.0/permissions API versus what is used in this SDK.</span>
+
+    <span class="n">api_versions_t</span> <span class="o">=</span> <span class="n">tenant_api_versions</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `api_versions_t` to `tenant_api_versions`&quot;&quot;&quot;</span>
 
     <span class="n">operators_t</span> <span class="o">=</span> <span class="n">tenant_operators</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `operators_t` to `tenant_operators`&quot;&quot;&quot;</span>
@@ -3075,6 +3107,31 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;patch&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">tenant_api_versions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Patch api versions (v2.0)</span>
+
+<span class="sd">          **Parameters:**:</span>
+
+<span class="sd">          - **data**: Dictionary containing data to PATCH as JSON</span>
+<span class="sd">          - **api_version**: API version to use (default v2.0)</span>
+
+<span class="sd">          **Payload Attributes:** </span>
+
+<span class="sd">           - **_etag:**  Type: integer </span>
+<span class="sd">           - **api_versions:**  Type: object </span>
+<span class="sd">           - **tenant_id:**  Type: string </span>
+
+<span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/api_versions&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+
+        <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;patch&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">tenant_operators</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.2&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Patch a tenant operator (v2.2)</span>
@@ -3087,6 +3144,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          **Payload Attributes:** </span>
 
+<span class="sd">           - **_etag:**  Type: integer </span>
 <span class="sd">           - **addresses:**           </span>
 <span class="sd">               - **city:**  Type: string </span>
 <span class="sd">               - **country:**  Type: string </span>
@@ -3095,17 +3153,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">               - **street:**  Type: string </span>
 <span class="sd">               - **street2:**  Type: string </span>
 <span class="sd">           - **custom_roles:**           </span>
+<span class="sd">               - **_etag:**  Type: integer </span>
 <span class="sd">               - **custom_permissions:**           </span>
 <span class="sd">                   - **allowed_after_ms:**  Type: integer </span>
 <span class="sd">                   - **allowed_before_ms:**  Type: integer </span>
-<span class="sd">                   - **disabled:**  Type: boolean </span>
-<span class="sd">                   - **disabled_reason:**  Type: string </span>
 <span class="sd">                   - **disallow_permission:**  Type: boolean </span>
 <span class="sd">                   - **id:**  Type: string </span>
-<span class="sd">                   - **inactive:**  Type: boolean </span>
-<span class="sd">                   - **inactive_reason:**  Type: string </span>
-<span class="sd">                   - **region:**  Type: string </span>
-<span class="sd">                   - **tenant_id:**  Type: string </span>
 <span class="sd">                   - **value:**  Type: string </span>
 <span class="sd">               - **description:**  Type: string </span>
 <span class="sd">               - **disabled:**  Type: boolean </span>
@@ -3143,6 +3196,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">           - **last_login:**  Type: string </span>
 <span class="sd">           - **last_name:**  Type: string </span>
 <span class="sd">           - **linked_accounts:**           </span>
+<span class="sd">               - **_etag:**  Type: integer </span>
 <span class="sd">               - **disabled:**  Type: boolean </span>
 <span class="sd">               - **disabled_reason:**  Type: string </span>
 <span class="sd">               - **failed_login_attempts:**  Type: integer </span>
@@ -3191,7 +3245,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 <span class="sd">          **Payload Attributes:** </span>
 
-<span class="sd">           - **:**  Type: string </span>
+<span class="sd">           - **_etag:**  Type: integer </span>
 <span class="sd">           - **address:**           </span>
 <span class="sd">               - **city:**  Type: string </span>
 <span class="sd">               - **country:**  Type: string </span>
@@ -3222,6 +3276,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">           - **is_support:**  Type: boolean </span>
 <span class="sd">           - **name:**  Type: string </span>
 <span class="sd">           - **operator:**           </span>
+<span class="sd">               - **_etag:**  Type: integer </span>
 <span class="sd">               - **addresses:**           </span>
 <span class="sd">                   - **city:**  Type: string </span>
 <span class="sd">                   - **country:**  Type: string </span>
@@ -3230,28 +3285,29 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">                   - **street:**  Type: string </span>
 <span class="sd">                   - **street2:**  Type: string </span>
 <span class="sd">               - **custom_roles:**           </span>
+<span class="sd">                   - **_etag:**  Type: integer </span>
 <span class="sd">                   - **custom_permissions:**           </span>
 <span class="sd">                       - **allowed_after_ms:**  Type: integer </span>
 <span class="sd">                       - **allowed_before_ms:**  Type: integer </span>
-<span class="sd">                       - **disabled:**  Type: boolean </span>
-<span class="sd">                       - **disabled_reason:**  Type: string </span>
 <span class="sd">                       - **disallow_permission:**  Type: boolean </span>
 <span class="sd">                       - **id:**  Type: string </span>
-<span class="sd">                       - **inactive:**  Type: boolean </span>
-<span class="sd">                       - **inactive_reason:**  Type: string </span>
-<span class="sd">                       - **region:**  Type: string </span>
-<span class="sd">                       - **tenant_id:**  Type: string </span>
 <span class="sd">                       - **value:**  Type: string </span>
+<span class="sd">                   - **description:**  Type: string </span>
 <span class="sd">                   - **disabled:**  Type: boolean </span>
+<span class="sd">                   - **disabled_reason:**  Type: string </span>
 <span class="sd">                   - **disallow_permissions:**           </span>
 <span class="sd">                       - **value:**  Type: string </span>
 <span class="sd">                   - **id:**  Type: string </span>
 <span class="sd">                   - **inactive:**  Type: boolean </span>
+<span class="sd">                   - **inactive_reason:**  Type: string </span>
+<span class="sd">                   - **is_system_owned:**  Type: boolean </span>
 <span class="sd">                   - **name:**  Type: string </span>
 <span class="sd">                   - **permissions:**           </span>
 <span class="sd">                       - **value:**  Type: string </span>
+<span class="sd">                   - **region:**  Type: string </span>
 <span class="sd">                   - **roles:**           </span>
 <span class="sd">                       - **name:**  Type: string </span>
+<span class="sd">                   - **tenant_id:**  Type: string </span>
 <span class="sd">               - **disable_idp_login:**  Type: boolean </span>
 <span class="sd">               - **disabled:**  Type: boolean </span>
 <span class="sd">               - **disabled_reason:**  Type: string </span>
@@ -3274,6 +3330,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">               - **last_login:**  Type: string </span>
 <span class="sd">               - **last_name:**  Type: string </span>
 <span class="sd">               - **linked_accounts:**           </span>
+<span class="sd">                   - **_etag:**  Type: integer </span>
 <span class="sd">                   - **disabled:**  Type: boolean </span>
 <span class="sd">                   - **disabled_reason:**  Type: string </span>
 <span class="sd">                   - **failed_login_attempts:**  Type: integer </span>
@@ -3332,6 +3389,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">           - **prisma_access_tenant_id:**  Type: string </span>
 <span class="sd">           - **provider_data:**           </span>
 <span class="sd">               - **certificate:**           </span>
+<span class="sd">                   - **_etag:**  Type: integer </span>
 <span class="sd">                   - **certificate:**  Type: string </span>
 <span class="sd">                   - **certificate_expiry_utc:**  Type: integer </span>
 <span class="sd">                   - **certificate_type:**  Type: string </span>
@@ -3361,6 +3419,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">                   - **version:**  Type: string </span>
 <span class="sd">               - **password_hash:**  Type: string </span>
 <span class="sd">               - **provider:**           </span>
+<span class="sd">                   - **_etag:**  Type: integer </span>
 <span class="sd">                   - **canonical_name:**  Type: string </span>
 <span class="sd">                   - **description:**  Type: string </span>
 <span class="sd">                   - **disabled:**  Type: boolean </span>
@@ -3385,6 +3444,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">               - **app_id:**  Type: string </span>
 <span class="sd">               - **region:**  Type: string </span>
 <span class="sd">               - **tenant_id:**  Type: string </span>
+<span class="sd">           - **x_panw_region:**  Type: string </span>
 
 <span class="sd">        **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3398,6 +3458,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
     <span class="c1"># Public Digest compatibility maps below, mapping what is available via</span>
     <span class="c1"># /v2.0/permissions API versus what is used in this SDK.</span>
+
+    <span class="n">api_versions_t</span> <span class="o">=</span> <span class="n">tenant_api_versions</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `api_versions_t` to `tenant_api_versions`&quot;&quot;&quot;</span>
 
     <span class="n">operators_t</span> <span class="o">=</span> <span class="n">tenant_operators</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Backwards-compatibility alias of `operators_t` to `tenant_operators`&quot;&quot;&quot;</span>
@@ -3414,6 +3477,17 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
           <li>builtins.object</li>
           </ul>
           <h3>Class variables</h3>
+            <div class="item" id="prisma_sase.patch_api.Patch.api_versions_t">
+            <p class="name">var <span class="ident">api_versions_t</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Backwards-compatibility alias of <code>api_versions_t</code> to <code>tenant_api_versions</code></p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
             <div class="item" id="prisma_sase.patch_api.Patch.operators_t">
             <p class="name">var <span class="ident">operators_t</span></p>
             
@@ -3473,6 +3547,54 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
   </div>
   
             
+  <div class="item" id="prisma_sase.patch_api.Patch.tenant_api_versions">
+    <div class="name def">
+    <p>def <span class="ident">tenant_api_versions</span>(</p><p>self, data, api_version=&#39;v2.0&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Patch api versions (v2.0)</p>
+<p><strong>Parameters:</strong>:</p>
+<ul>
+<li><strong>data</strong>: Dictionary containing data to PATCH as JSON</li>
+<li><strong>api_version</strong>: API version to use (default v2.0)</li>
+</ul>
+<p><strong>Payload Attributes:</strong> </p>
+<ul>
+<li><strong>_etag:</strong>  Type: integer </li>
+<li><strong>api_versions:</strong>  Type: object </li>
+<li><strong>tenant_id:</strong>  Type: string </li>
+</ul>
+<p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-prisma_sase.patch_api.Patch.tenant_api_versions', this);">Show source &equiv;</a></p>
+  <div id="source-prisma_sase.patch_api.Patch.tenant_api_versions" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">tenant_api_versions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;v2.0&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Patch api versions (v2.0)</span>
+<span class="sd">      **Parameters:**:</span>
+<span class="sd">      - **data**: Dictionary containing data to PATCH as JSON</span>
+<span class="sd">      - **api_version**: API version to use (default v2.0)</span>
+<span class="sd">      **Payload Attributes:** </span>
+<span class="sd">       - **_etag:**  Type: integer </span>
+<span class="sd">       - **api_versions:**  Type: object </span>
+<span class="sd">       - **tenant_id:**  Type: string </span>
+<span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur_ctlr</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/sdwan/</span><span class="si">{}</span><span class="s2">/api/api_versions&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span>
+    <span class="n">api_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;URL = </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">rest_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;patch&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
   <div class="item" id="prisma_sase.patch_api.Patch.tenant_operators">
     <div class="name def">
     <p>def <span class="ident">tenant_operators</span>(</p><p>self, operator_id, data, api_version=&#39;v2.2&#39;)</p>
@@ -3490,6 +3612,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <ul>
+<li><strong>_etag:</strong>  Type: integer </li>
 <li><strong>addresses:</strong>           <ul>
 <li><strong>city:</strong>  Type: string </li>
 <li><strong>country:</strong>  Type: string </li>
@@ -3500,17 +3623,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </ul>
 </li>
 <li><strong>custom_roles:</strong>           <ul>
+<li><strong>_etag:</strong>  Type: integer </li>
 <li><strong>custom_permissions:</strong>           <ul>
 <li><strong>allowed_after_ms:</strong>  Type: integer </li>
 <li><strong>allowed_before_ms:</strong>  Type: integer </li>
-<li><strong>disabled:</strong>  Type: boolean </li>
-<li><strong>disabled_reason:</strong>  Type: string </li>
 <li><strong>disallow_permission:</strong>  Type: boolean </li>
 <li><strong>id:</strong>  Type: string </li>
-<li><strong>inactive:</strong>  Type: boolean </li>
-<li><strong>inactive_reason:</strong>  Type: string </li>
-<li><strong>region:</strong>  Type: string </li>
-<li><strong>tenant_id:</strong>  Type: string </li>
 <li><strong>value:</strong>  Type: string </li>
 </ul>
 </li>
@@ -3560,6 +3678,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>last_login:</strong>  Type: string </li>
 <li><strong>last_name:</strong>  Type: string </li>
 <li><strong>linked_accounts:</strong>           <ul>
+<li><strong>_etag:</strong>  Type: integer </li>
 <li><strong>disabled:</strong>  Type: boolean </li>
 <li><strong>disabled_reason:</strong>  Type: string </li>
 <li><strong>failed_login_attempts:</strong>  Type: integer </li>
@@ -3608,6 +3727,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">      - **data**: Dictionary containing data to PATCH as JSON</span>
 <span class="sd">      - **api_version**: API version to use (default v2.2)</span>
 <span class="sd">      **Payload Attributes:** </span>
+<span class="sd">       - **_etag:**  Type: integer </span>
 <span class="sd">       - **addresses:**           </span>
 <span class="sd">           - **city:**  Type: string </span>
 <span class="sd">           - **country:**  Type: string </span>
@@ -3616,17 +3736,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">           - **street:**  Type: string </span>
 <span class="sd">           - **street2:**  Type: string </span>
 <span class="sd">       - **custom_roles:**           </span>
+<span class="sd">           - **_etag:**  Type: integer </span>
 <span class="sd">           - **custom_permissions:**           </span>
 <span class="sd">               - **allowed_after_ms:**  Type: integer </span>
 <span class="sd">               - **allowed_before_ms:**  Type: integer </span>
-<span class="sd">               - **disabled:**  Type: boolean </span>
-<span class="sd">               - **disabled_reason:**  Type: string </span>
 <span class="sd">               - **disallow_permission:**  Type: boolean </span>
 <span class="sd">               - **id:**  Type: string </span>
-<span class="sd">               - **inactive:**  Type: boolean </span>
-<span class="sd">               - **inactive_reason:**  Type: string </span>
-<span class="sd">               - **region:**  Type: string </span>
-<span class="sd">               - **tenant_id:**  Type: string </span>
 <span class="sd">               - **value:**  Type: string </span>
 <span class="sd">           - **description:**  Type: string </span>
 <span class="sd">           - **disabled:**  Type: boolean </span>
@@ -3664,6 +3779,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">       - **last_login:**  Type: string </span>
 <span class="sd">       - **last_name:**  Type: string </span>
 <span class="sd">       - **linked_accounts:**           </span>
+<span class="sd">           - **_etag:**  Type: integer </span>
 <span class="sd">           - **disabled:**  Type: boolean </span>
 <span class="sd">           - **disabled_reason:**  Type: string </span>
 <span class="sd">           - **failed_login_attempts:**  Type: integer </span>
@@ -3720,7 +3836,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </ul>
 <p><strong>Payload Attributes:</strong> </p>
 <ul>
-<li><strong>:</strong>  Type: string </li>
+<li><strong>_etag:</strong>  Type: integer </li>
 <li><strong>address:</strong>           <ul>
 <li><strong>city:</strong>  Type: string </li>
 <li><strong>country:</strong>  Type: string </li>
@@ -3755,6 +3871,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>is_support:</strong>  Type: boolean </li>
 <li><strong>name:</strong>  Type: string </li>
 <li><strong>operator:</strong>           <ul>
+<li><strong>_etag:</strong>  Type: integer </li>
 <li><strong>addresses:</strong>           <ul>
 <li><strong>city:</strong>  Type: string </li>
 <li><strong>country:</strong>  Type: string </li>
@@ -3765,36 +3882,37 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </ul>
 </li>
 <li><strong>custom_roles:</strong>           <ul>
+<li><strong>_etag:</strong>  Type: integer </li>
 <li><strong>custom_permissions:</strong>           <ul>
 <li><strong>allowed_after_ms:</strong>  Type: integer </li>
 <li><strong>allowed_before_ms:</strong>  Type: integer </li>
-<li><strong>disabled:</strong>  Type: boolean </li>
-<li><strong>disabled_reason:</strong>  Type: string </li>
 <li><strong>disallow_permission:</strong>  Type: boolean </li>
 <li><strong>id:</strong>  Type: string </li>
-<li><strong>inactive:</strong>  Type: boolean </li>
-<li><strong>inactive_reason:</strong>  Type: string </li>
-<li><strong>region:</strong>  Type: string </li>
-<li><strong>tenant_id:</strong>  Type: string </li>
 <li><strong>value:</strong>  Type: string </li>
 </ul>
 </li>
+<li><strong>description:</strong>  Type: string </li>
 <li><strong>disabled:</strong>  Type: boolean </li>
+<li><strong>disabled_reason:</strong>  Type: string </li>
 <li><strong>disallow_permissions:</strong>           <ul>
 <li><strong>value:</strong>  Type: string </li>
 </ul>
 </li>
 <li><strong>id:</strong>  Type: string </li>
 <li><strong>inactive:</strong>  Type: boolean </li>
+<li><strong>inactive_reason:</strong>  Type: string </li>
+<li><strong>is_system_owned:</strong>  Type: boolean </li>
 <li><strong>name:</strong>  Type: string </li>
 <li><strong>permissions:</strong>           <ul>
 <li><strong>value:</strong>  Type: string </li>
 </ul>
 </li>
+<li><strong>region:</strong>  Type: string </li>
 <li><strong>roles:</strong>           <ul>
 <li><strong>name:</strong>  Type: string </li>
 </ul>
 </li>
+<li><strong>tenant_id:</strong>  Type: string </li>
 </ul>
 </li>
 <li><strong>disable_idp_login:</strong>  Type: boolean </li>
@@ -3821,6 +3939,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>last_login:</strong>  Type: string </li>
 <li><strong>last_name:</strong>  Type: string </li>
 <li><strong>linked_accounts:</strong>           <ul>
+<li><strong>_etag:</strong>  Type: integer </li>
 <li><strong>disabled:</strong>  Type: boolean </li>
 <li><strong>disabled_reason:</strong>  Type: string </li>
 <li><strong>failed_login_attempts:</strong>  Type: integer </li>
@@ -3897,6 +4016,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>prisma_access_tenant_id:</strong>  Type: string </li>
 <li><strong>provider_data:</strong>           <ul>
 <li><strong>certificate:</strong>           <ul>
+<li><strong>_etag:</strong>  Type: integer </li>
 <li><strong>certificate:</strong>  Type: string </li>
 <li><strong>certificate_expiry_utc:</strong>  Type: integer </li>
 <li><strong>certificate_type:</strong>  Type: string </li>
@@ -3932,6 +4052,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </li>
 <li><strong>password_hash:</strong>  Type: string </li>
 <li><strong>provider:</strong>           <ul>
+<li><strong>_etag:</strong>  Type: integer </li>
 <li><strong>canonical_name:</strong>  Type: string </li>
 <li><strong>description:</strong>  Type: string </li>
 <li><strong>disabled:</strong>  Type: boolean </li>
@@ -3962,6 +4083,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <li><strong>tenant_id:</strong>  Type: string </li>
 </ul>
 </li>
+<li><strong>x_panw_region:</strong>  Type: string </li>
 </ul>
 <p><strong>Returns:</strong> requests.Response object extended with sdk_status and sdk_content properties.</p></div>
   <div class="source_cont">
@@ -3974,7 +4096,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">      - **data**: Dictionary containing data to PATCH as JSON</span>
 <span class="sd">      - **api_version**: API version to use (default v2.13)</span>
 <span class="sd">      **Payload Attributes:** </span>
-<span class="sd">       - **:**  Type: string </span>
+<span class="sd">       - **_etag:**  Type: integer </span>
 <span class="sd">       - **address:**           </span>
 <span class="sd">           - **city:**  Type: string </span>
 <span class="sd">           - **country:**  Type: string </span>
@@ -4005,6 +4127,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">       - **is_support:**  Type: boolean </span>
 <span class="sd">       - **name:**  Type: string </span>
 <span class="sd">       - **operator:**           </span>
+<span class="sd">           - **_etag:**  Type: integer </span>
 <span class="sd">           - **addresses:**           </span>
 <span class="sd">               - **city:**  Type: string </span>
 <span class="sd">               - **country:**  Type: string </span>
@@ -4013,28 +4136,29 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">               - **street:**  Type: string </span>
 <span class="sd">               - **street2:**  Type: string </span>
 <span class="sd">           - **custom_roles:**           </span>
+<span class="sd">               - **_etag:**  Type: integer </span>
 <span class="sd">               - **custom_permissions:**           </span>
 <span class="sd">                   - **allowed_after_ms:**  Type: integer </span>
 <span class="sd">                   - **allowed_before_ms:**  Type: integer </span>
-<span class="sd">                   - **disabled:**  Type: boolean </span>
-<span class="sd">                   - **disabled_reason:**  Type: string </span>
 <span class="sd">                   - **disallow_permission:**  Type: boolean </span>
 <span class="sd">                   - **id:**  Type: string </span>
-<span class="sd">                   - **inactive:**  Type: boolean </span>
-<span class="sd">                   - **inactive_reason:**  Type: string </span>
-<span class="sd">                   - **region:**  Type: string </span>
-<span class="sd">                   - **tenant_id:**  Type: string </span>
 <span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">               - **description:**  Type: string </span>
 <span class="sd">               - **disabled:**  Type: boolean </span>
+<span class="sd">               - **disabled_reason:**  Type: string </span>
 <span class="sd">               - **disallow_permissions:**           </span>
 <span class="sd">                   - **value:**  Type: string </span>
 <span class="sd">               - **id:**  Type: string </span>
 <span class="sd">               - **inactive:**  Type: boolean </span>
+<span class="sd">               - **inactive_reason:**  Type: string </span>
+<span class="sd">               - **is_system_owned:**  Type: boolean </span>
 <span class="sd">               - **name:**  Type: string </span>
 <span class="sd">               - **permissions:**           </span>
 <span class="sd">                   - **value:**  Type: string </span>
+<span class="sd">               - **region:**  Type: string </span>
 <span class="sd">               - **roles:**           </span>
 <span class="sd">                   - **name:**  Type: string </span>
+<span class="sd">               - **tenant_id:**  Type: string </span>
 <span class="sd">           - **disable_idp_login:**  Type: boolean </span>
 <span class="sd">           - **disabled:**  Type: boolean </span>
 <span class="sd">           - **disabled_reason:**  Type: string </span>
@@ -4057,6 +4181,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">           - **last_login:**  Type: string </span>
 <span class="sd">           - **last_name:**  Type: string </span>
 <span class="sd">           - **linked_accounts:**           </span>
+<span class="sd">               - **_etag:**  Type: integer </span>
 <span class="sd">               - **disabled:**  Type: boolean </span>
 <span class="sd">               - **disabled_reason:**  Type: string </span>
 <span class="sd">               - **failed_login_attempts:**  Type: integer </span>
@@ -4115,6 +4240,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">       - **prisma_access_tenant_id:**  Type: string </span>
 <span class="sd">       - **provider_data:**           </span>
 <span class="sd">           - **certificate:**           </span>
+<span class="sd">               - **_etag:**  Type: integer </span>
 <span class="sd">               - **certificate:**  Type: string </span>
 <span class="sd">               - **certificate_expiry_utc:**  Type: integer </span>
 <span class="sd">               - **certificate_type:**  Type: string </span>
@@ -4144,6 +4270,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">               - **version:**  Type: string </span>
 <span class="sd">           - **password_hash:**  Type: string </span>
 <span class="sd">           - **provider:**           </span>
+<span class="sd">               - **_etag:**  Type: integer </span>
 <span class="sd">               - **canonical_name:**  Type: string </span>
 <span class="sd">               - **description:**  Type: string </span>
 <span class="sd">               - **disabled:**  Type: boolean </span>
@@ -4168,6 +4295,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <span class="sd">           - **app_id:**  Type: string </span>
 <span class="sd">           - **region:**  Type: string </span>
 <span class="sd">           - **tenant_id:**  Type: string </span>
+<span class="sd">       - **x_panw_region:**  Type: string </span>
 <span class="sd">    **Returns:** requests.Response object extended with sdk_status and sdk_content properties.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cur_ctlr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent_class</span><span class="o">.</span><span class="n">controller</span>
